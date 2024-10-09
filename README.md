@@ -1,8 +1,11 @@
 # sbo-nxt
 
-Extra SlackBuilds for Slackware Linux
+# This is my personal slackbuild. It is not in anyway endorsed by 
+# slackbuilds.org or by slackware Linux.
 
-# This is my personal slackbuild. It is not in anyway endorsed by slackbuilds.org or by slackware Linux.
+Extra SlackBuilds for Slackware Linux. Consider all of these 
+slackbuilds are experimental. Some of them are not even fully
+finished.
 
 
 THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
