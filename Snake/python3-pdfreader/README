@@ -1,0 +1,23 @@
+pdfreader is a python api for extracting texts,images and
+other data from PDF documents and accessing different objects
+within PDF.
+
+It features:
+
+1. Extracts texts 
+
+2. Extract PDF forms data as pure strings 
+   and formatted text objects
+
+3. Supports all PDF encodings, CMap, predefined cmaps.
+
+4. Extracts images and image masks as Pillow/PIL Images
+
+5. Supports encrypted and password-protected PDF documents
+
+6. Allows browse any document objects, resources and extract 
+   any data you need.
+
+7. Follows PDF-1.7 specification
+
+8. Lazy objects access allows to process huge PDF documents quite fast
