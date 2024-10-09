@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# Slackware build script for mpc-qt
+
+# Copyright 2024 Vijay Marcel
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=mpc-qt
+VERSION=${VERSION:-24.06}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+nprocr=$(expr $(nproc) + 1)
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i586" ]; then
+  SLKCFLAGS="-march=i586 -mtune=i686 -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=i686 -mtune=i686 -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX="64"
+elif [ "$ARCH" = "aarch64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+set -eu
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+cd $PRGNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+export CC=gcc
+export CXX=g++
+export ld=/usr/bin/ld
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+
+export c1=${c1:-/opt/bin}
+export c2=${c2:-/opt/share}
+export c3=${c3:-$c2/cmake-3.30/include}
+export c4=${c4:-$c2/aclocal}
+export c5=${c5:-$c2/cmake-3.30/Modules}
+export c6=${c6:-$c2/cmake-3.30/Templates}
+
+export q1=${q1:-/opt/lib}
+export q2=${q2:-$q1/pkgconfig}
+export q3=${q3:-/opt/qt6}
+export q4=${q4:-$q3/bin}
+export q5=${q5:-$q3/include}
+export q6=${q6:-$q3/lib64}
+export q7=${q7:-qt3/libexec64}
+
+export PATH=$c1:$c2:$c3:$c4:$c5:$c6:$q1:$q2:$q3:$q4:$q5:$q6:$q7:$PATH
+export PKG_CONFIG_PATH=$q2:$PKG_CONFIG_PATH
+#export LD_LIBRARY_PATH=$q1:$q5:$q6:$q7:$LD_LIBRARY_PATH
+
+
+qmake QMAKE_CFLAGS_RELEASE="${SLKCFLAGS}" QMAKE_CXXFLAGS_RELEASE="${SLKCFLAGS}" "MPCQT_VERSION=${VERSION}" PREFIX=/usr mpc-qt.pro
+make -j$nprocr
+make INSTALL_ROOT="${PKG}" install
+
+mkdir -pv $PKG/usr/share/pixmaps
+cp -av $TMP/$PRGNAM-$VERSION/images/icon/mpc-qt.svg $PKG/usr/share/pixmaps
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION
+cp -av DOCS LICENSE README.md  $PKG/usr/doc/$PRGNAM-$VERSION
+mv -v $PKG/usr/share/doc/mpc-qt $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+rm -rvf $PKG/usr/share/doc
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

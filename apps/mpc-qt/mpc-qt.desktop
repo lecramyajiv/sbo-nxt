@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=mpc-qt
+Comment=media player
+Exec=/usr/bin/mpc-qt
+Icon=/usr/share/pixmaps/mpc-qt.svg
+Terminal=false
+Type=
+Categories=Multimedia;
+GenericName=
