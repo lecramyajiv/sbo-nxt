@@ -1,0 +1,3 @@
+C-Edit is TUI text editor written in C with drop down
+menus without ncurses that mimics MS-DOS Edit
+

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+c-edit: c-edit (Text Editor)
+c-edit:
+c-edit:
+c-edit: C-Edit is TUI text editor written in C with drop down
+c-edit: menus without ncurses that mimics MS-DOS Edit
+c-edit:
+c-edit:
+c-edit:
+c-edit:
+c-edit: Homepage:https://github.com/velorek1/c-edit
+c-edit:

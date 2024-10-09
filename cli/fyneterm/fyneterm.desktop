@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=fyneterm
+Comment=Terminal Emulator
+Exec=/usr/bin/fyneterm
+Icon=/usr/share/pixmaps/fyneterm.png
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;
+GenericName=Terminal

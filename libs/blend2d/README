@@ -1,0 +1,4 @@
+Blend2x is a high performance 2D vector graphics engine written
+in C++.It's goal is to achieve the best possible software
+based acceleration of 2D rendering.
+
