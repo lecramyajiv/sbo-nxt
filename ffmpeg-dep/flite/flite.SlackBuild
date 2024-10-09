@@ -53,6 +53,7 @@
 # The updated version is released under the WTFPL, see
 # http://www.wtfpl.net/txt/copying/ for details.
 
+
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=flite
