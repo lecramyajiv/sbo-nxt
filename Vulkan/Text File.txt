@@ -1,0 +1,29 @@
+ 
+package manager for Vulkan development libraries.
+https://vulkan.lunarg.com/doc/sdk/1.3.290.0/linux/getting_started.html
+
+Otherwise you may download and build from publicly available repositories. Everything provided in the SDK is open source. The following list are the core repositories that the SDK is composed of:
+
+    Khronos Vulkan Headers: https://github.com/KhronosGroup/Vulkan-Headers
+    Khronos Vulkan Loader source: https://github.com/KhronosGroup/Vulkan-Loader
+    Khronos Vulkan Validation Layers source: https://github.com/KhronosGroup/Vulkan-ValidationLayers
+    Khronos Vulkan Tools source: https://github.com/KhronosGroup/Vulkan-Tools
+    LunarG Vulkan Tools source: https://github.com/LunarG/VulkanTools
+    Khronos glslang source: https://github.com/KhronosGroup/glslang
+    Google Shaderc source: https://github.com/google/shaderc
+    Khronos SPIRV-Headers source: https://github.com/KhronosGroup/SPIRV-Headers
+    Khronos SPIRV-Tools source: https://github.com/KhronosGroup/SPIRV-Tools
+    Khronos SPIRV-Cross source: https://github.com/KhronosGroup/SPIRV-Cross
+    LunarG GFXReconstruct source: https://github.com/LunarG/gfxreconstruct
+    Khronos SPIRV-Reflect source: https://github.com/KhronosGroup/SPIRV-Reflect
+    Khronos Vulkan Extension Layer source: https://github.com/KhronosGroup/Vulkan-ExtensionLayer
+    Khronos Vulkan Profiles: https://github.com/KhronosGroup/Vulkan-Profiles
+    Microsoft DirectX Shader Compiler: https://github.com/microsoft/DirectXShaderCompiler
+    Volk Vulkan Meta Loader: https://github.com/zeux/volk
+    Vulkan Memory Allocator Library: https://gpuopen.com/vulkan-memory-allocator/
+    Vulkan Caps Viewer: https://github.com/SaschaWillems/VulkanCapsViewer
+    Vulkan Utility Libraries: https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
+    Crash Diagnostic Layer: https://github.com/LunarG/CrashDiagnosticLayer.git
+    Vulkan Profiles: https://github.com/KhronosGroup/Vulkan-Profiles.git
+
+You will find instructions to build all of the above in their respective repositories.
