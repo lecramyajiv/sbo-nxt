@@ -1,0 +1,4 @@
+libblkio is a library for high-performance block device I/O
+with support for multi queue devices. A C API is provided
+so applications can use it from most programming languages.
+

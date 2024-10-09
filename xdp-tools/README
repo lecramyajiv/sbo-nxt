@@ -1,0 +1,8 @@
+This contains the library and the utilities for working with
+eXpress Data Path facility of the Linux Kernel.
+
+bpftool is optional.
+bpftool src compilation results in error use binary build.
+The binary build is only available for 64-bit system only.
+if bpftool is not installed xdp-tools only builds a reduced
+subset of tools.

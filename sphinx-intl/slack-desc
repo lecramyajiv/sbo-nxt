@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+           |-----handy-ruler------------------------------------------------------|
+sphinx-intl: sphinx-intl (sphinx utility for translations)
+sphinx-intl:
+sphinx-intl: sphinx-intl is a utility tool that provides several features
+sphinx-intl: that make it easy to translate and to apply translation
+sphinx-intl: to sphinx generated document.
+sphinx-intl:
+sphinx-intl:
+sphinx-intl:
+sphinx-intl:
+sphinx-intl: Homepage:http://sphinx-intl.rtfd.io/
+sphinx-intl:
