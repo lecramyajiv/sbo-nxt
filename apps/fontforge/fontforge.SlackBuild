@@ -3,38 +3,22 @@
 # Slackware build script for fontforge
 
 # Copyright 2006-2012,2016  Robby Workman  Tuscaloosa, Alabama, USA
-# Copyright 2024
+# Copyright 2020-2023 D. Woodfall  dave@slackbuilds.org
+# Copyright 2024 Vijay Marcel
 # All rights reserved.
 #
-# Redistribution and use of this script, with or without modification, is
-# permitted provided that the following conditions are met:
 #
-# 1. Redistributions of this script must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
-#
-# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
-# EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 
-# Currently maintained by David Woodfall <dave@slackbuilds.org>
-#
-# 2022-02-08 19:11:35 +0000,20201107
-# Switch to cmake
-#
-# 2020-10-12 20:48:40 +0100:
-# Update to Version ff 20190801, gnulib 20200505~0747bf0
-# Added --without-libuninameslist
+#       http://www.apache.org/licenses/LICENSE-2.0
 
-# 20220409 bkw: Modified by SlackBuilds.org, BUILD=2:
-# - make PRINT_PACKAGE_NAME work even if fontforge already installed.
-# - get rid of /usr/share/doc.
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 cd $(dirname $0) ; CWD=$(pwd)
 
