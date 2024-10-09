@@ -1,0 +1,4 @@
+cmake is used to control the software process using simple platform
+compiler independent configuration files. CMake generates
+live makefiles and workspaces that can be used in the
+compiler environment of your choice.
