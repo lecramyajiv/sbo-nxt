@@ -80,10 +80,6 @@ find -L . \
 mkdir -pv $PKG/opt
 mkdir -pv $PKG/opt/bin
 mkdir -pv $PKG/opt/share
-mkdir -pv $PKG/opt/sbin
-mkdir -pv $PKG/opt/libexec
-mkdir -pv $PKG/opt/lib${LIBDIRSUFFIX}
-mkdir -pv $PKG/opt/include
 mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION
 
 mkdir cmake-build

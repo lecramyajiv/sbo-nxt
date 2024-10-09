@@ -3,7 +3,6 @@
 # Slackware build script for qt6-base
 
 # Copyright 2024 Vijay Marcel
-
 # All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=qt6-base
 VERSION=${VERSION:-6.5.3}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_lec}
 PKGTYPE=${PKGTYPE:-tgz}
 SRCNAM=${SRCNAM:-qtbase-everywhere-src}
 #BSCLANG=libclang-release_130-based-linux-Ubuntu20.04-gcc9.3-x86_64
