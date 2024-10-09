@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+       |-----handy-ruler------------------------------------------------------|
+qt6-svg: qt6-svg (Qt SVG)
+qt6-svg:
+qt6-svg:
+qt6-svg:  SVG module for Qt6
+qt6-svg:
+qt6-svg:
+qt6-svg:
+qt6-svg:
+qt6-svg:
+qt6-svg: Homepage:https://qt.io
+qt6-svg:
