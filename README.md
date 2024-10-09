@@ -4,8 +4,8 @@
 **slackbuilds.org or by slackware Linux.**
 
 Extra SlackBuilds for Slackware Linux. Consider all of these 
-slackbuilds are experimental. Some of them are not even fully
-finished.
+slackbuilds as experimental. Some of them are not even fully
+finished.Use it at your own risk.
 
 ## Disclaimer
 
