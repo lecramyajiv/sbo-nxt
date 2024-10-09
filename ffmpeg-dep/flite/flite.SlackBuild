@@ -4,6 +4,7 @@
 # Originally written by Martin Lefebvre (email removed)
 # Now maintained by B. Watson (urchlay@slackware.uk), original author is MIA.
 # Licensed under the WTFPL. See http://www.wtfpl.net/txt/copying/ for details.
+# modified by Vijay Marcel in year 2024
 
 # 20210802 bkw: update for v2.2
 # - remove texi2html dep, as upstream now uses texi2any
