@@ -1,0 +1,18 @@
+PRGNAM="fonts-tamil-bharathi-sa"
+VERSION="1.0"
+HOMEPAGE="https://github.com/lecramyajiv"
+DOWNLOAD="https://github.com/lecramyajiv/fonts-tamil-bharathi-1sa/archive/1.0/fonts-tamil-bharathi-1sa-1.0.tar.gz \
+          https://github.com/lecramyajiv/fonts-tamil-bharathi-1sb/archive/1.0/fonts-tamil-bharathi-1sb-1.0.tar.gz \
+          https://github.com/lecramyajiv/fonts-tamil-bharathi-1sc/archive/1.0/fonts-tamil-bharathi-1sc-1.0.tar.gz \
+          https://github.com/lecramyajiv/fonts-tamil-bharathi-1sd/archive/1.0/fonts-tamil-bharathi-1sd-1.0.tar.gz \
+          https://github.com/lecramyajiv/fonts-tamil-bharathi-1se/archive/1.0/fonts-tamil-bharathi-1se-1.0.tar.gz"
+MD5SUM="2d707cb62bebc1c25cd7c024f96dfb2a \
+        af93103bc85769aeac4188b71b8f216a \
+        fa541dd192d333cc538c2fc07a9b17e3 \
+        837deed969294f5e613337055d589ce7 \
+        f5d3bcf39821e7fd3771d42503eb8e28"
+DOWNLOAD_x86_64=""
+MD5SUM_x86_64=""
+REQUIRES=""
+MAINTAINER="Vijay Marcel"
+EMAIL="vijaymarcel@outlook.com"

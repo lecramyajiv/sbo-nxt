@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                       |-----handy-ruler------------------------------------------------------|
+fonts-tamil-bharathi-sc: fonts-tamil-bharathi-sc (Bharathi Three Star Tamil Fonts)
+fonts-tamil-bharathi-sc:
+fonts-tamil-bharathi-sc: This is a collection of Tamil Fonts published by Bharathi
+fonts-tamil-bharathi-sc: Puthakaalayam in collaboration with ChalkPiece Foundation
+fonts-tamil-bharathi-sc: under CC-By-SA-4.0 license. This is the collection of
+fonts-tamil-bharathi-sc: Three star fonts for professional usage.The catalogue of fonts
+fonts-tamil-bharathi-sc: is in the doc folder.
+fonts-tamil-bharathi-sc:
+fonts-tamil-bharathi-sc: Homepage:https://github.com/lecramyajiv
+fonts-tamil-bharathi-sc:
+fonts-tamil-bharathi-sc:
