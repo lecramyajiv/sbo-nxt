@@ -1,0 +1,6 @@
+Provides the modules QtGrpc and QtProtobuf
+
+protobuf is optional dependency if installed
+it will detect it automatically, problem
+with 6.5.3 version.
+

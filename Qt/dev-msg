@@ -1,0 +1,69 @@
+CMake Warning (dev) at /opt/lib/cmake/Qt6Qml/Qt6QmlBuildInternals.cmake:404 (message):
+  INSTALL_SOURCE_QMLTYPES option is deprecated and should not be used.
+  Please port your module to use declarative type registration.
+Call Stack (most recent call first):
+  src/imports/webchannel/CMakeLists.txt:10 (qt_internal_add_qml_module)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+
+WebEngine Repository Build Options:
+  Build Ninja ............................ no
+  Build Gn ............................... yes
+  Jumbo Build ............................ yes
+  Developer build ........................ no
+  Build QtWebEngine Modules:
+    Build QtWebEngineCore ................ yes
+    Build QtWebEngineWidgets ............. yes
+    Build QtWebEngineQuick ............... yes
+  Build QtPdf Modules:
+    Build QtPdfWidgets ................... yes
+    Build QtPdfQuick ..................... yes
+  Optional system libraries:
+    webengine_system_re2 ................. yes
+    webengine_system_icu ................. yes
+    libwebp, libwebpmux and libwebpdemux . yes
+    opus ................................. yes
+    webengine_system_ffmpeg .............. yes
+    libvpx ............................... yes
+    snappy ............................... yes
+    glib ................................. yes
+    zlib ................................. yes
+    minizip .............................. no
+    webengine_system_libevent ............ yes
+    libxml2 and libxslt .................. no
+    lcms2 ................................ yes
+    png .................................. yes
+    jpeg ................................. yes
+    libopenjpeg2 ......................... yes
+    harfbuzz ............................. no
+    freetype ............................. yes
+    libpci ............................... yes
+Qt WebEngineCore:
+  Embedded build ......................... no
+  Full debug information ................. no
+  Sanitizer support ...................... no
+  Pepper Plugins ......................... yes
+  Printing and PDF ....................... yes
+  webengine_proprietary_codecs ........... yes
+  Spellchecker ........................... yes
+  WebRTC ................................. yes
+  webengine_webrtc_pipewire .............. no
+  Geolocation ............................ yes
+  WebChannel support ..................... yes
+  webengine_kerberos ..................... yes
+  Extensions ............................. yes
+  Support GLX on qpa-xcb ................. yes
+  Vulkan support ......................... yes
+  Use ALSA ............................... yes
+  Use PulseAudio ......................... yes
+Qt WebEngineQuick:
+  UI Delegates ........................... yes
+Qt PDF:
+  Support V8 ............................. no
+  Support XFA ............................ no
+  Support XFA-BMP ........................ no
+  Support XFA-GIF ........................ no
+  Support XFA-PNG ........................ no
+  Support XFA-TIFF ....................... no
+  Bitcode support ........................ no
+  Use static runtime ..................... no

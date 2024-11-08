@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+             |-----handy-ruler------------------------------------------------------|
+qt6-webengine: qt6-webengine (Qt webengine)
+qt6-webengine:
+qt6-webengine: Provides support for web applications using the Chromium browser
+qt6-webengine: project.
+qt6-webengine:
+qt6-webengine:
+qt6-webengine:
+qt6-webengine:
+qt6-webengine:
+qt6-webengine: Homepage:https://www.qt.io/
+qt6-webengine:

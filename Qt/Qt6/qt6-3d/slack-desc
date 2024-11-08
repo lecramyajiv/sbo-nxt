@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+qt6-3d: qt6-3d (Qt 3D)
+qt6-3d:
+qt6-3d: C++ and QML APIs for easy inclusion of 3D graphics
+qt6-3d:
+qt6-3d:
+qt6-3d:
+qt6-3d:
+qt6-3d:
+qt6-3d:
+qt6-3d: Homepage:https://www.qt.io/
+qt6-3d:
