@@ -20,19 +20,17 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=mpc-qt
-VERSION=${VERSION:-24.06}
+VERSION=${VERSION:-24.12}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_lec}
-PKGTYPE=${PKGTYPE:-tgz}
+PKGTYPE=${PKGTYPE:-tbz}
 nprocr=$(expr $(nproc) + 1)
+sys_arch=${sys_arch:-$(uname -m)}
 
-if [ -z "$ARCH" ]; then
-  case "$( uname -m )" in
-    i?86) ARCH=i586 ;;
-    arm*) ARCH=arm ;;
-       *) ARCH=$( uname -m ) ;;
-  esac
-fi
+case "$sys_arch" in
+     	x86_64) export ARCH=x86_64 ;;
+	     *) echo "This SlackBuild will not run on $sys_arch platform" && exit 1 ;;
+esac
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
@@ -43,24 +41,14 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-if [ "$ARCH" = "i586" ]; then
-  SLKCFLAGS="-march=i586 -mtune=i686 -pipe -O2 -fPIC"
-  LIBDIRSUFFIX=""
-elif [ "$ARCH" = "i686" ]; then
-  SLKCFLAGS="-march=i686 -mtune=i686 -pipe -O2 -fPIC"
-  LIBDIRSUFFIX=""
-elif [ "$ARCH" = "x86_64" ]; then
+if [ "$ARCH" = "x86_64" ]; then
   SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
   LIBDIRSUFFIX="64"
-elif [ "$ARCH" = "aarch64" ]; then
-  SLKCFLAGS="-O2 -fPIC"
-  LIBDIRSUFFIX="64"
 else
-  SLKCFLAGS="-O2"
-  LIBDIRSUFFIX=""
+echo "This SlackBuild will not run on $sys_arch platform" && exit 1
 fi
 
-set -eu
+set -e
 trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
 
 rm -rf $PKG
@@ -83,26 +71,24 @@ export CFLAGS="$SLKCFLAGS"
 export CXXFLAGS="$SLKCFLAGS"
 
 export c1=${c1:-/opt/bin}
-export c2=${c2:-/opt/share}
-export c3=${c3:-$c2/cmake-3.30/include}
-export c4=${c4:-$c2/aclocal}
-export c5=${c5:-$c2/cmake-3.30/Modules}
-export c6=${c6:-$c2/cmake-3.30/Templates}
+export c2=${c2:-/opt/include}
+export c3=${c3:-/opt/lib64}
+export c4=${c4:-/opt/share/include}
+export c5=${c5:-/opt/share/Modules}
 
-export q1=${q1:-/opt/lib}
-export q2=${q2:-$q1/pkgconfig}
-export q3=${q3:-/opt/qt6}
-export q4=${q4:-$q3/bin}
-export q5=${q5:-$q3/include}
-export q6=${q6:-$q3/lib64}
-export q7=${q7:-qt3/libexec64}
+export q1=${q1:-/opt/qt6}
+export q2=${q2:-$q1/bin}
+export q3=${q3:-$q1/include}
+export q4=${q4:-$q1/lib}
+export q5=${q5:-$q1/libexec}
+export q6=${q6:-$q4/pkgconfig}
+export q7=${q7:-$q4/cmake}
 
-export PATH=$c1:$c2:$c3:$c4:$c5:$c6:$q1:$q2:$q3:$q4:$q5:$q6:$q7:$PATH
-export PKG_CONFIG_PATH=$q2:$PKG_CONFIG_PATH
-#export LD_LIBRARY_PATH=$q1:$q5:$q6:$q7:$LD_LIBRARY_PATH
+export PATH=$c1:$c2:$c3:$c4:$c5:$q1:$q2:$q3:$q4:$q5:$q6:$q7:$PATH
+export PKG_CONFIG_PATH=$q6:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$c3:$q4:$q5:$LD_LIBRARY_PATH
 
-
-qmake QMAKE_CFLAGS_RELEASE="${SLKCFLAGS}" QMAKE_CXXFLAGS_RELEASE="${SLKCFLAGS}" "MPCQT_VERSION=${VERSION}" PREFIX=/usr mpc-qt.pro
+/opt/qt6/bin/qmake QMAKE_CFLAGS_RELEASE="${SLKCFLAGS}" QMAKE_CXXFLAGS_RELEASE="${SLKCFLAGS}" "MPCQT_VERSION=${VERSION}" PREFIX=/usr mpc-qt.pro
 make -j$nprocr
 make INSTALL_ROOT="${PKG}" install
 

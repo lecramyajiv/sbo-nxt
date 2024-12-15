@@ -1,3 +1,5 @@
 mpc-qt is Qt based mpv frontend on the style of
 Media player classic player.
 
+This uses the latest Qt binary modules.Use the qt-bin
+modules from lecramyajiv/Qt-lts github repo.
