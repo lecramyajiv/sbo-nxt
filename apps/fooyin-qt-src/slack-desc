@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+fooyin: fooyin (Music Player)
+fooyin:
+fooyin: fooyin is a music player built around customisation.It provides
+fooyin: a variety of widgets to help you manage and play your local
+fooyin: collection.It's highly extensible with a plugin system and includes
+fooyin: Fooscript a scripting language for advanced configuration of widgets
+fooyin: A layout editing mode enables the entire user interface to be
+fooyin:  customised, starting from a blank slate or a preset layout.
+fooyin:
+fooyin: Homepage:https://www.fooyin.org/
+fooyin:

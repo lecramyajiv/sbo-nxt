@@ -1,0 +1,7 @@
+fooyin is a music player built around customisation.It provides
+a variety of widgets to help you manage and play your local
+collection.It's highly extensible with a plugin system and includes
+Fooscript a scripting language for advanced configuration of widgets
+A layout editing mode enables the entire user interface to be
+customised, starting from a blank slate or a preset layout.
+

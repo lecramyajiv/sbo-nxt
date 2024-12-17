@@ -1,0 +1,134 @@
+#!/bin/bash
+
+# Slackware build script for fooyin
+
+# Copyright 2024 Vijay Marcel
+# All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#       http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=fooyin
+VERSION=${VERSION:-0.8.1}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-txz}
+nprocr=$(expr $(nproc) + 1)
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=pentium4 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+cd $PRGNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+export CC=gcc
+export CXX=g++
+export ld=/usr/bin/ld
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+
+export c1=${c1:-/opt/bin}
+export c2=${c2:-/opt/share}
+export c3=${c3:-$c2/include}
+export c4=${c4:-$c2/aclocal}
+export c5=${c5:-$c2/Modules}
+export c6=${c6:-$c2/Templates}
+
+export q1=${q1:-/opt/qt6}
+export q2=${q2:-$q1/bin}
+export q3=${q3:-$q1/lib${LIBDIRSUFFIX}}
+export q4=${q4:-$q3/pkgconfig}
+export q5=${q5:-$q1/include}
+export q6=${q6:-$q1/libexec}
+export q7=${q7:-$q1/share}
+export q8=${q8:-$q7/translations}
+
+export PATH=$c1:$c2:$c3:$c4:$c5:$c6:$q1:$q2:$q3:$q4:$q5:$q6:$q7:$q8:$PATH
+export PKG_CONFIG_PATH=$q4:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$q3:$LD_LIBRARY_PATH
+
+cmake -B build -S $TMP/$PRGNAM-$VERSION \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_MODULE_PATH:STRING=/opt/share/Modules \
+    -DCMAKE_SKIP_BUILD_RPATH=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_BINDIR=/usr/bin \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
+    -DINSTALL_HEADERS=ON \
+    -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build --parallel $nprocr
+DESTDIR="$PKG" cmake --install build
+
+# Don't ship .la files:
+rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -av COPYING README.md  $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+mv -v $PKG/usr/share/doc/* $PKG/usr/doc/$PRGNAM-$VERSION
+rm -rvf $PKG/usr/share/doc
+
+mkdir -pv $PKG/etc/profile.d
+sed -e "s|@LIBDIRSUFFIX@|${LIBDIRSUFFIX}|g" $CWD/profile.d/$PRGNAM.sh  > $PKG/etc/profile.d/$PRGNAM.sh
+chmod 0755 $PKG/etc/profile.d/*
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+sed -e "s|@LIBDIRSUFFIX@|$LIBDIRSUFFIX|" $CWD/doinst.sh > $PKG/install/doinst.sh
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
