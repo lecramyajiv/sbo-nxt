@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+# Remove the link /usr/share/apps/kworldwatch.
+if [ \( "$1" = "upgrade" -o "$1" = "remove" \) -a -L /usr/share/apps/kworldwatch ]; then
+	rm -f /usr/share/apps/kworldwatch
+fi
+
+#DEBHELPER#
+exit 0

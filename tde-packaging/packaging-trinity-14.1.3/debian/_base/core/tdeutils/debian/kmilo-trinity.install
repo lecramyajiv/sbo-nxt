@@ -1,0 +1,9 @@
+debian/tmp/opt/trinity/lib/trinity/kded_kmilod.la
+debian/tmp/opt/trinity/lib/trinity/kded_kmilod.so
+debian/tmp/opt/trinity/lib/trinity/kmilo_generic.la
+debian/tmp/opt/trinity/lib/trinity/kmilo_generic.so
+debian/tmp/opt/trinity/lib/libkmilo.so.1
+debian/tmp/opt/trinity/lib/libkmilo.so.1.0.0
+debian/tmp/opt/trinity/share/services/kded/kmilod.desktop
+debian/tmp/opt/trinity/share/services/kmilo/kmilo_generic.desktop
+debian/tmp/opt/trinity/share/servicetypes/kmilo/kmilopluginsvc.desktop

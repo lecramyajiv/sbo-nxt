@@ -1,0 +1,87 @@
+Source: sip4-tqt
+Section: devel
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Torsten Marek <shlomme@debian.org>, Bernd Zeimetz <bzed@debian.org>, Michael Casadevall <mcasadevall@debian.org>
+Build-Depends: debhelper (>= 10~), python3-all-dev, python3-all-dbg, dh-python, libtqtinterface-dev, bison, flex
+Standards-Version: 3.8.4
+XS-Python-Version: all
+X-Python3-Version: >= 3.0
+
+Package: python3-sip-tqt
+Architecture: any
+Section: python
+Provides: ${python3:Provides}
+Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends}
+Description: Python 3/C++ bindings generator runtime library
+ SIP-TQt is a tool for generating bindings for C++ classes with some ideas
+ borrowed from SWIG, but capable of tighter bindings because of its
+ specificity towards C++ and Python.
+ .
+ This package provides the SIP-TQt module for Python 3
+
+Package: python3-sip-tqt-dev
+Architecture: any
+Section: python
+Depends: ${python3:Depends}, python3-sip-tqt (= ${binary:Version}), sip-tqt-dev, python3-all-dev, ${shlibs:Depends}, libjs-jquery, ${misc:Depends}
+Description: Python/C++ bindings generator development files
+ SIP-TQt is a tool for generating bindings for C++ classes with some ideas
+ borrowed from SWIG, but capable of tighter bindings because of its
+ specificity towards C++ and Python.
+ .
+ SIP-TQt was originally designed to generate Python bindings for TDE and so
+ has explicit support for the signal slot mechanism used by the TQt/TDE
+ class libraries.
+ .
+ Features:
+     - connecting TQt signals to Python functions and class methods
+     - connecting Python signals to TQt slots
+     - overloading virtual member functions with Python class methods
+     - protected member functions
+     - abstract classes
+     - enumerated types
+     - global class instances
+     - static member functions.
+ .
+ This package contains the code generator tool and the development headers
+ needed to develop Python 3 bindings with sip-tqt.
+
+Package: python3-sip-tqt-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: python3-sip-tqt (= ${binary:Version}), python3-all-dbg, ${shlibs:Depends}, ${misc:Depends}
+Description: Python 3/C++ bindings generator runtime library
+ SIP-TQt is a tool for generating bindings for C++ classes with some ideas
+ borrowed from SWIG, but capable of tighter bindings because of its
+ specificity towards C++ and Python.
+ .
+ This package provides the SIP-TQt module for the debug build of the Python 3.
+
+Package: sip-tqt-dev
+Architecture: any
+Section: python
+Depends: ${python3:Depends}, ${shlibs:Depends}
+Breaks: python-sip-tqt-dev (<< 4:14.1.0~)
+Recommends: python3-sip-tqt-dev
+Description: Python/C++ bindings generator development files
+ SIP-TQt is a tool for generating bindings for C++ classes with some ideas
+ borrowed from SWIG, but capable of tighter bindings because of its
+ specificity towards C++ and Python.
+ .
+ SIP-TQt was originally designed to generate Python bindings for TDE and so
+ has explicit support for the signal slot mechanism used by the TQt/TDE
+ class libraries.
+ .
+ Features:
+     - connecting TQt signals to Python functions and class methods
+     - connecting Python signals to TQt slots
+     - overloading virtual member functions with Python class methods
+     - protected member functions
+     - abstract classes
+     - enumerated types
+     - global class instances
+     - static member functions.
+ .
+ This package contains the code generator tool needed to develop Python 3 bindings with sip-tqt.

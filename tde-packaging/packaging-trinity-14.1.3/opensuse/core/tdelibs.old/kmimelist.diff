@@ -1,0 +1,81 @@
+Index: kded/Makefile.am
+===================================================================
+--- kded/Makefile.am.orig
++++ kded/Makefile.am
+@@ -36,12 +36,16 @@ kbuildsycoca_la_SOURCES = kbuildsycoca.c
+ 				kctimefactory.cpp \
+ 				vfolder_menu.cpp
+ 
+-bin_PROGRAMS = kdontchangethehostname kde-menu
++bin_PROGRAMS = kdontchangethehostname kde-menu kmimelist
+ 
+ kdontchangethehostname_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+ kdontchangethehostname_LDADD = $(LIB_KDECORE) 
+ kdontchangethehostname_SOURCES = khostname.cpp
+ 
++kmimelist_LDFLAGS = $(all_libraries) $(KDE_RPATH)
++kmimelist_LDADD = ../kio/libkio.la
++kmimelist_SOURCES = kmimelist.cpp
++
+ kde_menu_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+ kde_menu_LDADD = $(LIB_KIO) 
+ kde_menu_SOURCES = kde-menu.cpp
+Index: kded/kmimelist.cpp
+===================================================================
+--- /dev/null
++++ kded/kmimelist.cpp
+@@ -0,0 +1,54 @@
++#include <ktrader.h>
++#include <kservice.h>
++#include <kmimetype.h>
++#include <assert.h>
++#include <kstandarddirs.h>
++#include <kservicegroup.h>
++#include <kimageio.h>
++#include <kuserprofile.h>
++#include <kprotocolinfo.h>
++
++#include <kapplication.h>
++
++#include <stdio.h>
++
++int main(int argc, char *argv[])
++{
++   KApplication k(argc,argv,"blurb",false);
++
++   KMimeType::List mtl = KMimeType::allMimeTypes( );
++   assert( mtl.count() );
++   qDebug( "Found %d mime types.", mtl.count() );
++   QValueListIterator<KMimeType::Ptr> it(mtl.begin());
++   KServiceTypeProfile::OfferList ol;
++
++   for (; it != mtl.end(); ++it)
++   {
++     {
++      // Application
++      printf( "APP:%s:", (*it)->name().latin1() );
++      ol = KServiceTypeProfile::offers((*it)->name(), "Application");
++      QValueListIterator<KServiceOffer> it2(ol.begin());
++      for (; it2 != ol.end(); ++it2) {
++        if ((*it2).allowAsDefault())
++           printf( " %s", (*it2).service()->desktopEntryPath().ascii() );
++
++      }
++      printf( "\n" );
++     }
++
++     {
++      // Embedded
++      printf( "PART:%s:", (*it)->name().latin1() );
++      ol = KServiceTypeProfile::offers((*it)->name(), "KParts/ReadOnlyPart");
++      QValueListIterator<KServiceOffer> it2(ol.begin());
++      for (; it2 != ol.end(); ++it2) {
++        if ((*it2).allowAsDefault())
++           printf( " %s", (*it2).service()->desktopEntryPath().ascii() );
++
++      }
++      printf( "\n" );
++     }
++   }
++}
++

@@ -1,0 +1,39 @@
+#! /bin/sh
+set -e
+
+#DEBHELPER#
+
+case "$1" in
+  configure)
+    # Set default cursor theme
+    update-alternatives --set x-cursor-theme /etc/X11/cursors/crystalwhite.theme || true
+
+    # clean the driver database for tdeprint
+    if [ -x /usr/sbin/foomatic-cleanupdrivers ]; then
+      foomatic-cleanupdrivers
+    fi
+
+	# Clean this file, as it seems to be removal resistant...
+	rm -rf /etc/default/tdm-trinity.d/20_kubuntu_default_settings
+
+	# create links for .hidden files, don't bail out if s.th. goes wrong.
+	if [ -d /media ]; then
+		if [ ! -e /media/.hidden ]; then
+			ln -s /etc/redmond-default-settings-trinity/hidden-media /media/.hidden || \
+				echo "Could not create symlink /media/.hidden, skipping."
+		fi
+		if [ ! -e /media/.directory ]; then
+			ln -s /etc/redmond-default-settings-trinity/directory-media /media/.directory || \
+				echo "Could not create symlink /media/.directory, skipping."
+		fi
+	fi
+	if [ -d /home ]; then
+		if [ ! -e /home/.directory ]; then
+			ln -s /etc/redmond-default-settings-trinity/directory-home /home/.directory || \
+				echo "Could not create symlink /home/.directory, skipping."
+		fi
+	fi
+    ;;
+esac
+
+exit 0

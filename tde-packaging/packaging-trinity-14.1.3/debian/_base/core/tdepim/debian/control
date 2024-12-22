@@ -1,0 +1,697 @@
+Source: tdepim-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Ana Beatriz Guerrero Lopez <ana@debian.org>, Josh Metzler <joshdeb@metzlers.org>, Sune Vuorela <debian@pusling.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build,
+ tdelibs14-trinity-dev, bison, byacc, bzip2,
+ flex, groff-base, libogg-dev,
+ libboost-dev (>= 1.33.1), libgpgme11-dev | libgpgme-dev (>= 1.0~),
+ libreadline-dev | libreadline6-dev | libreadline5-dev, libsasl2-dev, libssl-dev,
+ libxpm-dev, libxss-dev, texinfo, dpkg-dev (>= 1.14.4),
+ libgpg-error-dev (>= 1.4-2), gpgsm, libical-dev,
+ libcaldav-dev (>= 0.6.5), libcarddav-dev (>= 0.6.2), libcurl4-gnutls-dev
+Build-Depends-Indep: doxygen, graphviz, gsfonts-x11, libtqtinterface-doc, tdelibs14-trinity-doc
+Build-Conflicts: libkleopatra0-trinity-dev
+Standards-Version: 3.8.4
+
+Package: tdepim-trinity
+Section: tde
+Architecture: all
+Replaces: kdepim-trinity (<< 4:14.0.0~)
+Breaks: kdepim-trinity (<< 4:14.0.0~)
+Depends: akregator-trinity (>= ${source:Version}), kaddressbook-trinity (>= ${source:Version}), kalarm-trinity (>= ${source:Version}), kandy-trinity (>= ${source:Version}), karm-trinity (>= ${source:Version}), tdepim-tdefile-plugins-trinity (>= ${source:Version}), tdepim-tdeio-plugins-trinity (>= ${source:Version}), tdepim-tderesources-trinity (>= ${source:Version}), tdepim-wizards-trinity (>= ${source:Version}), kleopatra-trinity (>= ${source:Version}), kmail-trinity (>= ${source:Version}), kmailcvt-trinity (>= ${source:Version}), knode-trinity (>= ${source:Version}), knotes-trinity (>= ${source:Version}), konsolekalendar-trinity (>= ${source:Version}), kontact-trinity (>= ${source:Version}), korganizer-trinity (>= ${source:Version}), korn-trinity (>= ${source:Version}), ktnef-trinity (>= ${source:Version}), libindex0-trinity (>= ${source:Version}), libtdepim1a-trinity (>= ${source:Version}), libkgantt0-trinity (>= ${source:Version}), libkleopatra1-trinity (>= ${source:Version}) | libkleopatra1t64-trinity (>= ${source:Version}), libkpimexchange1-trinity (>= ${source:Version}), libkpimidentities1-trinity (>= ${source:Version}), libksieve0-trinity (>= ${source:Version}), libktnef1-trinity (>= ${source:Version}), libmimelib1c2a-trinity (>= ${source:Version}) | libmimelib1t64-trinity (>= ${source:Version})
+Suggests: tdepim-trinity-doc-html
+Description: Personal Information Management apps from the official Trinity release
+ TDE (the Trinity Desktop Environment) is a powerful Open Source graphical
+ desktop environment for Unix workstations. It combines ease of use,
+ contemporary functionality, and outstanding graphical design with the
+ technological superiority of the Unix operating system.
+ .
+ This metapackage includes a collection of Personal Information Management
+ (PIM) applications provided with the official release of Trinity.
+ .
+  Homepage: http://pim.kde.org/
+
+Package: tdepim-trinity-dbg
+Priority: extra
+Section: libdevel
+Replaces: kdepim-trinity-dbg (<< 4:14.0.0~)
+Breaks: kdepim-trinity-dbg (<< 4:14.0.0~)
+Depends: tdelibs-trinity-dbg
+Architecture: any
+Description: debugging symbols for tdepim-trinity
+ This package contains the debugging symbols associated with tdepim-trinity.
+ They will automatically be used by gdb for debugging tdepim-related
+ issues.
+
+Package: tdepim-trinity-dev
+Section: devel
+Architecture: any
+Replaces: kdepim-trinity-dev (<< 4:14.0.0~)
+Breaks: kdepim-trinity-dev (<< 4:14.0.0~)
+Depends: kaddressbook-trinity (= ${source:Version}),
+ kalarm-trinity (= ${source:Version}),
+ tdepim-tderesources-trinity (= ${source:Version}),
+ kmail-trinity (= ${source:Version}),
+ knotes-trinity (= ${source:Version}),
+ kontact-trinity (= ${source:Version}),
+ korganizer-trinity (= ${source:Version}),
+ libkpimidentities1-trinity (= ${source:Version}),
+ libical-dev,
+ libtdepim1-trinity-dev (= ${source:Version}),
+ libkgantt0-trinity-dev (= ${source:Version}),
+ libkleopatra1-trinity-dev (= ${source:Version}),
+ libkpimexchange1-trinity-dev (= ${source:Version}),
+ libksieve0-trinity-dev (= ${source:Version}),
+ libktnef1-trinity-dev (= ${source:Version}),
+ libmimelib1-trinity-dev (= ${source:Version})
+Description: TDE Personal Information Management [development]
+ This package contains development files needed to compile tdepim applications.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+ . 
+  Homepage: http://pim.kde.org/
+  
+Package: tdepim-trinity-doc
+Section: doc
+Architecture: all
+Replaces: kdepim-trinity-doc (<< 4:14.0.0~)
+Breaks: kdepim-trinity-doc (<< 4:14.0.0~)
+Suggests: konqueror-trinity | www-browser, doc-base
+Description: TDE Personal Information Management library documentation
+ TDE core library documentation. You need this documentation to develop TDE PIM
+ applications.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+ . 
+  Homepage: http://pim.kde.org/
+  
+Package: tdepim-trinity-doc-html
+Section: doc
+Architecture: all
+Replaces: kdepim-trinity-doc-html (<< 4:14.0.0~)
+Breaks: kdepim-trinity-doc-html (<< 4:14.0.0~)
+Suggests: konqueror-trinity | www-browser, tdepim-trinity
+Description: TDE PIM documentation in HTML format
+ By default the Personal Information Management applications provided with
+ TDE only provide their documentation in TDE docbook format, which can only
+ be read by Konqueror or KHelpCenter. This package provides all of the
+ TDE PIM documentation converted to HTML format so it can be read with any
+ web browser.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+ . 
+  Homepage: http://pim.kde.org/
+
+Package: akregator-trinity
+Section: web
+Architecture: any
+Replaces: akregator-trinity (<< 4:14.0.0~)
+Breaks: akregator-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: RSS feed aggregator for TDE
+ aKregator is a fast, lightweight, and intuitive feed reader program
+ for TDE.  It allows you to quickly browse through hundreds of
+ thousands of internet feeds in a quick, efficient, and familiar way.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+ .
+  Homepage: http://akregator.kde.org/
+
+Package: kaddressbook-trinity
+Section: utils
+Architecture: any
+Replaces: kaddressbook-trinity (<< 4:14.0.0~)
+Breaks: kaddressbook-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: tdepim-tderesources-trinity, tdebase-tdeio-plugins-trinity
+Description: TDE NG addressbook application
+ KAddressBook is the main address book application for TDE; it enables you
+ to manage your contacts efficiently and comfortably. It can load and save
+ your contacts to many different locations, including the local file system,
+ LDAP servers, and SQL databases.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: kalarm-trinity
+Section: tde
+Architecture: any
+Replaces: kalarm-trinity (<< 4:14.0.0~)
+Breaks: kalarm-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: kmix-trinity, kttsd-trinity
+Description: Trinity alarm message, command and email scheduler
+ KAlarm provides a graphical interface to schedule personal timed events -
+ pop-up alarm messages, command execution and sending emails. There is a
+ range of options for configuring recurring events.
+ .
+ A pop-up alarm can show either a simple text message, or the contents of a
+ text or image file, It can optionally be spoken, or play a sound file. You
+ can choose its appearance, and set reminders. Among KAlarm's other
+ facilities, you can set up templates to allow KAlarm to be used as a 'tea
+ timer'.
+ .
+ As an alternative to using the graphical interface, alarms can be scheduled
+ from the command line or via DCOP calls from other programs. KAlarm is
+ TDE-based, but will also run on other desktops.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: kandy-trinity
+Section: utils
+Architecture: any
+Replaces: kandy-trinity (<< 4:14.0.0~)
+Breaks: kandy-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity mobile phone utility
+ At the moment Kandy is more or less a terminal program with some special
+ features to store commands and their parameters, but is also has a simple GUI
+ to access the phone book of a mobile phone and it is able to save this phone
+ book to the TDE address book.
+ .
+ Kandy is aimed at mobile phones with integrated (GSM) modems.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: karm-trinity
+Section: utils
+Architecture: any
+Replaces: karm-trinity (<< 4:14.0.0~)
+Breaks: karm-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity time tracker tool
+ KArm is a time tracker for busy people who need to keep track of the amount of
+ time they spend on various tasks.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: tdepim-tdefile-plugins-trinity
+Section: tde
+Architecture: any
+Replaces: kdepim-kfile-plugins-trinity (<< 4:14.0.0~)
+Breaks: kdepim-kfile-plugins-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: TDE File dialog plugins for palm and vcf files
+ File dialog plugins for palm and vcf files.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: tdepim-tdeio-plugins-trinity
+Section: tde
+Architecture: any
+Replaces: kdepim-kio-plugins-trinity (<< 4:14.0.0~)
+Breaks: kdepim-kio-plugins-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity pim I/O Slaves
+ This package includes the pim tdeioslaves. This includes imap4, sieve,
+ and mbox.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: tdepim-tderesources-trinity
+Section: tde
+Architecture: any
+Replaces: kdepim-kresources-trinity (<< 4:14.0.0~)
+Breaks: kdepim-kresources-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Recommends: ${shlibs:Recommends}, korganizer-trinity
+Suggests: knotes-trinity
+Description: Trinity pim resource plugins
+ This package includes several plugins needed to interface with groupware
+ servers. It also includes plugins for features such as blogging and
+ tracking feature plans.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: tdepim-wizards-trinity
+Section: tde
+Architecture: any
+Replaces: kdepim-wizards-trinity (<< 4:14.0.0~)
+Breaks: kdepim-wizards-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: egroupware
+Description: Trinity server configuration wizards
+ This package contains TDE-based wizards for configuring eGroupware,
+ Kolab, and SUSE Linux Openexchange servers.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: kleopatra-trinity
+Section: net
+Architecture: any
+Replaces: kleopatra-trinity (<< 4:14.0.0~)
+Breaks: kleopatra-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, gnupg-agent, gnupg2, gpgsm, dirmngr, pinentry-tqt | pinentry-qt | pinentry-x11
+Description: Trinity Certificate Manager
+ Kleopatra is the TDE tool for managing X.509 certificates in the gpgsm
+ keybox and for retrieving certificates from LDAP servers.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: kmail-trinity
+Section: mail
+Architecture: any
+Replaces: kmail-trinity (<< 4:14.0.0~)
+Breaks: kmail-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${perl:Depends}, tdepim-tdeio-plugins-trinity, tdebase-tdeio-plugins-trinity, gpgsm, gnupg-agent, pinentry-tqt | pinentry-qt | pinentry-x11
+Suggests: gnupg, gnupg-agent, pinentry-tqt | pinentry-qt | pinentry-x11, kaddressbook-trinity, kleopatra-trinity, spamassassin | bogofilter | annoyance-filter | spambayes | bsfilter | crm114, clamav | f-prot-installer, procmail
+Provides: imap-client, mail-reader
+Description: Trinity Email client
+ KMail is a fully-featured email client that fits nicely into the TDE
+ desktop. It has features such as support for IMAP, POP3, multiple accounts,
+ mail filtering and sorting, PGP/GnuPG privacy, and inline attachments.
+ .
+ You need to install tdepim-tdeio-plugins if you want to use IMAP or
+ mbox files, and/or tdebase-tdeio-plugins if you want to use POP3.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+ .
+  Homepage: http://kmail.kde.org/
+ 
+Package: kmailcvt-trinity
+Section: mail
+Architecture: any
+Replaces: kmailcvt-trinity (<< 4:14.0.0~)
+Breaks: kmailcvt-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, kmail-trinity
+Description: Trinity KMail mail folder converter
+ Converts mail folders to KMail format.  Formats supported for import
+ include Outlook Express, Evolution, and plain mbox.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: knode-trinity
+Section: news
+Architecture: any
+Replaces: knode-trinity (<< 4:14.0.0~)
+Breaks: knode-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Provides: news-reader
+Description: Trinity news reader
+ KNode is an easy-to-use, convenient newsreader. It is intended to be usable
+ by inexperienced users, but also includes support for such features as
+ MIME attachments, article scoring, and creating and verifying GnuPG
+ signatures.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: knotes-trinity
+Section: tde
+Architecture: any
+Replaces: knotes-trinity (<< 4:14.0.0~)
+Breaks: knotes-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: tdepim-tderesources-trinity
+Description: Trinity sticky notes
+ KNotes is a program that lets you write sticky notes. The notes are saved
+ automatically when you exit the program, and they display when you open the
+ program.  The program supports printing and mailing your notes.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: kode-trinity
+Section: devel
+Architecture: any
+Replaces: kode-trinity (<< 4:14.0.0~)
+Breaks: kode-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Helper library for programmatic generation of C++ code
+ This package includes a program kode for generation of C++ template files
+ and kxml_compiler for generation of C++ classes representing XML data
+ described by RelaxNG schemes.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: konsolekalendar-trinity
+Section: tde
+Architecture: any
+Replaces: konsolekalendar-trinity (<< 4:14.0.0~)
+Breaks: konsolekalendar-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity konsole personal organizer
+ KonsoleKalendar is a command-line interface to TDE calendars.
+ Konsolekalendar complements the TDE KOrganizer by providing a console
+ frontend to manage your calendars.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: kontact-trinity
+Section: tde
+Architecture: any
+Replaces: kontact-trinity (<< 4:14.0.0~)
+Breaks: kontact-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, kmail-trinity, korganizer-trinity, kaddressbook-trinity
+Recommends: ${shlibs:Recommends}, kmail-trinity, knode-trinity, knotes-trinity
+Suggests: ${shlibs:Suggests}, akregator-trinity, knewsticker-trinity, kweather-trinity, gnokii
+Conflicts: akregator-kontact-plugin-trinity
+Description: Trinity pim application
+ Kontact is the integrated solution to your personal information management
+ needs. It combines TDE applications like KMail, KOrganizer, and
+ KAddressBook into a single interface to provide easy access to mail,
+ scheduling, address book and other PIM functionality.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+ .
+  Homepage: http://kontact.kde.org/
+
+Package: korganizer-trinity
+Section: tde
+Architecture: any
+Replaces: korganizer-trinity (<< 4:14.0.0~)
+Breaks: korganizer-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${perl:Depends}
+Recommends: kghostview-trinity
+Description: Trinity personal organizer
+ This package contains KOrganizer, a calendar and scheduling program.
+ .
+ KOrganizer aims to be a complete program for organizing appointments,
+ contacts, projects, etc. KOrganizer natively supports information interchange
+ with other calendar applications, through the industry standard vCalendar
+ personal data interchange file format. This eases the move from other
+ modern PIMs to KOrganizer.
+ .
+ KOrganizer offers full synchronization with Palm Pilots, if kpilot is
+ installed.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: korn-trinity
+Section: tde
+Architecture: any
+Replaces: korn-trinity (<< 4:14.0.0~)
+Breaks: korn-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, tdepim-tdeio-plugins-trinity, tdebase-tdeio-plugins-trinity
+Description: Trinity mail checker
+ Korn is a TDE mail checker that can display a small summary in the Kicker
+ tray.  It supports checking mbox, pop3, imap4, and nntp sources.
+ .
+ Once mail is received you can have Korn run a third party program or change
+ the color/icon of the Kicker display.  In addition to this you can have
+ Korn run a program once you click on the docked icon in Kicker.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: ktnef-trinity
+Section: tde
+Architecture: any
+Replaces: ktnef-trinity (<< 4:14.0.0~)
+Breaks: ktnef-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity TNEF viewer
+ The TNEF File Viewer allows you to handle mail attachments using the TNEF
+ format. These attachments are usually found in mails coming from Microsoft
+ mail servers and embed the mail properties as well as the actual attachments.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libindex0-trinity
+Section: libs
+Architecture: any
+Replaces: libindex0-trinity (<< 4:14.0.0~)
+Breaks: libindex0-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity indexing library
+ This library provides text indexing and is currently used by KMail
+ to implement fast searches in mail bodies.
+ .
+ This is the runtime package for programs that use the libindex-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libindex0-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libindex0-trinity-dev (<< 4:14.0.0~)
+Breaks: libindex0-trinity-dev (<< 4:14.0.0~)
+Depends: libindex0-trinity (= ${source:Version})
+Description: Trinity indexing library [development]
+ This library provides text indexing and is currently used by KMail
+ to implement searching through mail text.
+ .
+ This is the development package which contains the headers for the libindex-trinity
+ library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libtdepim1a-trinity
+Section: libs
+Architecture: any
+Provides: libkcal2b-trinity
+Replaces: libkdepim1a-trinity (<< 4:14.0.0~), libkcal2b-trinity
+Breaks: libkdepim1a-trinity (<< 4:14.0.0~)
+Conflicts: libkcal2-trinity, libkcal2a-trinity, libkcal2b-trinity
+Depends: ${shlibs:Depends}
+Suggests: tdepim-tderesources-trinity
+Description: Trinity PIM library
+ This is the runtime package for programs that use the libtdepim-trinity library.
+ This package also provides a C++ API for handling the vCalendar and iCalendar
+ formats (libkcal-trinity).
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libtdepim1-trinity-dev
+Section: libdevel
+Architecture: any
+Provides: libkcal2-trinity-dev
+Replaces: libkdepim1-trinity-dev (<< 4:14.0.0~), libkcal2-trinity-dev
+Breaks: libkdepim1-trinity-dev (<< 4:14.0.0~)
+Conflicts: libkcal2-trinity-dev
+Depends: libtdepim1a-trinity (= ${source:Version}), tdelibs14-trinity-dev
+Description: Trinity PIM library [development]
+ This is the development package which contains the headers for the libtdepim-trinity
+ library and libkcal-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkgantt0-trinity
+Section: libs
+Architecture: any
+Replaces: libkgantt0-trinity (<< 4:14.0.0~)
+Breaks: libkgantt0-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity gantt charting library
+ This is the runtime package for programs that use the libkgantt-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkgantt0-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libkgantt0-trinity-dev (<< 4:14.0.0~)
+Breaks: libkgantt0-trinity-dev (<< 4:14.0.0~)
+Depends: libkgantt0-trinity (= ${source:Version}), libtdepim1-trinity-dev (= ${source:Version})
+Description: Trinity gantt charting library [development]
+ This is the development package which contains the headers for the libkgantt-trinity
+ library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkleopatra1-trinity
+Section: libs
+Architecture: any
+Replaces: libkleopatra1-trinity (<< 4:14.0.0~)
+Breaks: libkleopatra1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${perl:Depends}, gnupg
+Conflicts: libkleopatra0-trinity
+Description: TDE GnuPG interface libraries
+ This library is used by several TDE applications to interface to the
+ GnuPG program.
+ .
+ This is the runtime package for programs that use the libkleopatra-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkleopatra1-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libkleopatra1-trinity-dev (<< 4:14.0.0~)
+Breaks: libkleopatra1-trinity-dev (<< 4:14.0.0~)
+Depends: libkleopatra1-trinity (= ${source:Version}), libtdepim1-trinity-dev (= ${source:Version})
+Conflicts: libkleopatra0-trinity-dev
+Description: Trinity GnuPG interface libraries [development]
+ This library is used by several TDE applications to interface to the
+ GnuPG program.
+ .
+ This is the development package which contains the headers for the
+ libkleopatra-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkmime2-trinity
+Section: libs
+Architecture: any
+Replaces: libkmime2-trinity (<< 4:14.0.0~)
+Breaks: libkmime2-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Conflicts: libmimelib1a-trinity
+Description: Trinity MIME interface library
+ This library provides a C++ interface to MIME messages, parsing them into
+ an object tree.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkpimexchange1-trinity
+Section: libs
+Architecture: any
+Replaces: libkpimexchange1-trinity (<< 4:14.0.0~)
+Breaks: libkpimexchange1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity PIM Exchange library
+ This is the runtime package for programs that use the libkpimexchange-trinity
+ library. 
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkpimexchange1-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libkpimexchange1-trinity-dev (<< 4:14.0.0~)
+Breaks: libkpimexchange1-trinity-dev (<< 4:14.0.0~)
+Depends: libkpimexchange1-trinity (= ${source:Version}), libtdepim1-trinity-dev (= ${source:Version})
+Description: Trinity PIM Exchange library [development]
+ This is the development package which contains the headers for the
+ libkpimexchange-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libkpimidentities1-trinity
+Section: libs
+Architecture: any
+Replaces: libkpimidentities1-trinity (<< 4:14.0.0~)
+Breaks: libkpimidentities1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity PIM user identity information library
+ This library provides information to TDE programs about user identity,
+ such as email address, organization, etc.
+ .
+ This is the runtime package for programs that use the libkpimidentities-trinity
+ library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libksieve0-trinity
+Section: libs
+Architecture: any
+Replaces: libksieve0-trinity (<< 4:14.0.0~)
+Breaks: libksieve0-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity mail/news message filtering library
+ This is the runtime package for programs that use the libksieve-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libksieve0-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libksieve0-trinity-dev (<< 4:14.0.0~)
+Breaks: libksieve0-trinity-dev (<< 4:14.0.0~)
+Depends: libksieve0-trinity (= ${source:Version}), libtdepim1-trinity-dev (= ${source:Version})
+Description: Trinity mail/news message filtering library [development]
+ This is the development package which contains the headers for the libksieve-trinity
+ library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libktnef1-trinity
+Section: libs
+Architecture: any
+Replaces: libktnef1-trinity (<< 4:14.0.0~)
+Breaks: libktnef1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Library for handling KTNEF email attachments
+ This library handles mail attachments using the TNEF format. These
+ attachments are usually found in mails coming from Microsoft mail
+ servers and embed the mail properties as well as the actual
+ attachments.
+ .
+ This is the runtime library for packages using the ktnef-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libktnef1-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libktnef1-trinity-dev (<< 4:14.0.0~)
+Breaks: libktnef1-trinity-dev (<< 4:14.0.0~)
+Depends: libktnef1-trinity (= ${source:Version}), libtdepim1-trinity-dev (= ${source:Version})
+Description: KTNEF handler library [development]
+ This library handles mail attachments using the TNEF format. These
+ attachments are usually found in mails coming from Microsoft mail
+ servers and embed the mail properties as well as the actual
+ attachments.
+ .
+ This is the development package which contains the headers for the
+ ktnef-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libmimelib1c2a-trinity
+Section: libs
+Architecture: any
+Replaces: libmimelib1c2a-trinity (<< 4:14.0.0~)
+Breaks: libmimelib1c2a-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Conflicts: libmimelib1a-trinity
+Description: Trinity mime library
+ This library is used by several Trinity applications to handle mime types.
+ .
+ This is the runtime package for programs that use the libmimelib-trinity library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.
+
+Package: libmimelib1-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libmimelib1-trinity-dev (<< 4:14.0.0~)
+Breaks: libmimelib1-trinity-dev (<< 4:14.0.0~)
+Depends: libmimelib1c2a-trinity (= ${source:Version})
+Description: Trinity mime library [development]
+ This library is used by several TDE applications to handle mime types.
+ .
+ This is the development package which contains the headers for the
+ libmimelib library.
+ .
+ This package is part of Trinity, and a component of the TDE PIM module.
+ See the 'tde-trinity' and 'tdepim-trinity' packages for more information.

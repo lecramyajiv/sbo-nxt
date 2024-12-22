@@ -1,0 +1,40 @@
+.TH PERLQT 1 "July 31, 2002"
+.SH NAME
+pqtapi \- PerlTQt introspection tool
+.SH SYNOPSIS
+.B pqtapi
+.RI " [ " -r " " <re> " ]  [ " <class> " ]
+
+.SH DESCRIPTION
+This manual page documents briefly the
+.B pqtapi
+command.
+.PP
+\fBpqtapi\fP is a PerlTQt Introspection tool.
+
+For example:
+$ pqtapi -ir 'setpoint.* int'
+  void QCanvasLine::setPoints(int, int, int, int)
+  void QPointArray::setPoint(uint, int, int)
+
+For more information, please see the documentation on the PerlTQt website
+http://perlqt.sourceforge.net/
+
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-r <re>
+Find all functions matching a regular expression/keyword <re>.
+.TP
+.B \-i
+Together with -r, perform a case-insensitive search.
+.TP
+.B \-v
+Display version information.
+.TP
+.B \-h
+Display usage information.
+
+.SH AUTHOR
+This manual page was written by Peter Hawkins <peter@hawkins.emu.id.au>,
+for the Debian GNU/Linux system (but may be used by others).

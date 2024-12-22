@@ -1,0 +1,3 @@
+# Use xz instead of gzip
+compression = "xz"
+compression-level = 9

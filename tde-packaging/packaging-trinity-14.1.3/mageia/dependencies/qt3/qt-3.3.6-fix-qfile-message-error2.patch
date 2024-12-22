@@ -1,0 +1,67 @@
+--- qt-x11-free-3.3.6/src/tools/qfile_unix.cpp--	2006-08-10 09:55:59.000000000 +0200
++++ qt-x11-free-3.3.6/src/tools/qfile_unix.cpp	2006-08-10 10:06:42.000000000 +0200
+@@ -339,7 +339,8 @@
+ {
+     if ( isOpen() ) {
+ #if defined(QT_CHECK_RANGE)
+-	qWarning( "QFile::open: File already open" );
++    QString error = QString("QFile::open: File (%1) already open").arg(fn);
++    qWarning( error );
+ #endif
+ 	return FALSE;
+     }
+@@ -411,7 +412,8 @@
+ {
+     if ( isOpen() ) {
+ #if defined(QT_CHECK_RANGE)
+-	qWarning( "QFile::open: File already open" );
++    QString error = QString("QFile::open: File (%1) already open").arg(fn);
++    qWarning( error );
+ #endif
+ 	return FALSE;
+     }
+@@ -507,7 +509,8 @@
+ {
+     if ( !isOpen() ) {
+ #if defined(QT_CHECK_STATE)
+-	qWarning( "QFile::at: File is not open" );
++    QString error = QString("QFile::at: File (%1) is not open").arg(fn);
++    qWarning( error );
+ #endif
+ 	return FALSE;
+     }
+@@ -563,11 +566,14 @@
+ #endif
+ #if defined(QT_CHECK_STATE)
+     if ( !isOpen() ) {
+-	qWarning( "QFile::readBlock: File not open" );
++    QString error = QString("QFile::readBlock: File (%1) not open").arg(fn);
++    qWarning( error );
++
+ 	return -1;
+     }
+     if ( !isReadable() ) {
+-	qWarning( "QFile::readBlock: Read operation not permitted" );
++    QString error = QString("QFile::readBlock: Read operation not permitted in file %1 ").arg(fn);
++    qWarning( error );
+ 	return -1;
+     }
+ #endif
+@@ -632,11 +638,15 @@
+ #endif
+ #if defined(QT_CHECK_STATE)
+     if ( !isOpen() ) {				// file not open
+-	qWarning( "QFile::writeBlock: File not open" );
++    QString error = QString("QFile::writeBlock: File (%1) not open").arg(fn);
++    qWarning( error );
++
+ 	return -1;
+     }
+     if ( !isWritable() ) {			// writing not permitted
+-	qWarning( "QFile::writeBlock: Write operation not permitted" );
++    QString error = QString("QFile::writeBlock: Write operation not permitted in file %1 ").arg(fn);
++    qWarning( error );
++
+ 	return -1;
+     }
+ #endif

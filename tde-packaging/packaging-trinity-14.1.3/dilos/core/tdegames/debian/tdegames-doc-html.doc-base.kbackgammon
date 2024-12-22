@@ -1,0 +1,12 @@
+Document: tdegames-doc-html-kbackgammon
+Title: The KBackgammon Handbook
+Author: Jens Hoefkens, Bo Thorsen
+Abstract: KBackgammon is a graphical backgammon program for TDE.
+ It supports backgammon games with other players, games against
+ computer engines like GNU bg and even on-line games on the First
+ Internet Backgammon Server.
+Section: Games/Board
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kbackgammon/index.html
+Files: /usr/share/doc/tde/HTML/en/kbackgammon/*.html

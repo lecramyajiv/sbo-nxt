@@ -1,0 +1,16 @@
+Source: kaffeine-mozilla-trinity
+Section: web
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Riku Voipio <riku.voipio@iki.fi>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, pkg-config, libxaw7-dev, libnspr4-dev
+Standards-Version: 3.8.4
+
+Package: kaffeine-mozilla-trinity
+Architecture: any
+Depends: kaffeine-trinity, ${shlibs:Depends}, ${misc:Depends}
+Replaces: kaffeine-mozilla-trinity (<< 4:14.0.0~)
+Breaks: kaffeine-mozilla-trinity (<< 4:14.0.0~)
+Description: mozilla plugin that lanches kaffeine for supported media types [Trinity]
+ This mozilla plugin launches kaffeine, the xine-based media player for TDE,
+ when a page containing a supported media format is loaded.

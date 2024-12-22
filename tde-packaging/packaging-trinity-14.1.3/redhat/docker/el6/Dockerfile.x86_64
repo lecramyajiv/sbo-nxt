@@ -1,0 +1,71 @@
+FROM centos:6
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+# Enable proxy
+# Add EPEL repository
+# Add RPMFUSION repository
+# Install Trinity build dependencies
+COPY packages /packages
+RUN echo "proxy=http://proxy:3128" >>"/etc/yum.conf" \
+ && rpm -Uvh http://repo/repo/archives/centos/6/os/x86_64/Packages/wget-1.12-10.el6.x86_64.rpm \
+ && rm -fv /etc/yum.repos.d/*.repo \
+ && wget -P /etc/yum.repos.d -nv http://repo/repo/{centos6,epel6}.repo \
+ && yum -y clean all \
+ && yum -y update \
+ && rm -fv /etc/yum.repos.d/CentOS-*.repo \
+ && rpm -Uvh --nodeps https://download1.rpmfusion.org/free/el/rpmfusion-free-release-6.noarch.rpm \
+ && yum -y install $(</packages)
+
+# Add YUM repository for locally built packages
+WORKDIR /etc/yum.repos.d
+COPY rpmbuild.repo rpmbuild.repo
+RUN sed -i "rpmbuild.repo" -e "s|\${ARCH}|${ARCH}|g" -e "s|\${TDE_VERSION}|${TDE_VERSION}|g"
+
+# Fix utempter detection
+# Distro-specific patches
+RUN chmod a+r /usr/libexec/utempter/utempter \
+ && sed -i "/usr/include/jasper/jas_math.h" -e "/#include <stdint.h>/ s|$|\n#ifndef SIZE_MAX\n#define SIZE_MAX ((size_t) -1)\n#endif\n|" \
+ && ln -sf libmp4v2.so /usr/lib64/libmp4.so
+
+# Add non-root user to build packages
+RUN useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>"/etc/sudoers"
+
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+# Build supplementary development tools
+
+RUN sudo rpm -Uvh http://repo/repo/build-tools/el6/RPMS/x86_64/m4-1.4.16-10.el6.x86_64.rpm
+
+RUN rpmbuild --rebuild http://vault.centos.org/7.7.1908/os/Source/SPackages/autoconf-2.69-11.el7.src.rpm --nodeps \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/autoconf-2*.rpm
+
+RUN rpmbuild --rebuild http://vault.centos.org/7.7.1908/os/Source/SPackages/perl-Module-Install-1.06-4.el7.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-Module-Install-*.rpm
+
+RUN rpmbuild --rebuild http://vault.centos.org/7.7.1908/os/Source/SPackages/perl-Module-ScanDeps-1.10-3.el7.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-Module-ScanDeps-*.rpm
+
+RUN rpm -i https://fr2.rpmfind.net/linux/epel/7/SRPMS/Packages/p/perl-PAR-1.015-4.el7.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/perl-PAR.spec -e "s|%license|%doc|" \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/perl-PAR.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-PAR-1*.rpm
+
+RUN rpmbuild --rebuild https://fr2.rpmfind.net/linux/epel/7/SRPMS/Packages/p/perl-Getopt-ArgvFile-1.11-24.el7.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-Getopt-ArgvFile-*.rpm
+
+RUN rpm -i https://fr2.rpmfind.net/linux/epel/7/SRPMS/Packages/p/perl-PAR-Packer-1.041-2.el7.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/perl-PAR-Packer.spec -e "s|%license|%doc|" -e "/^make test/ s|^|#|" \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/perl-PAR-Packer.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-PAR-Packer-1*.rpm --nodeps
+
+RUN rpm -i https://dl.fedoraproject.org/pub/epel/7/SRPMS/Packages/c/cln-1.3.4-1.el7.src.rpm \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/cln.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/cln{,-devel}-1*.rpm
+
+RUN rpm -i https://dl.fedoraproject.org/pub/epel/7/SRPMS/Packages/l/libqalculate-0.9.7-7.el7.src.rpm \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/libqalculate.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/libqalculate{,-devel}-0*.rpm

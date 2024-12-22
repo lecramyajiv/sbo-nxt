@@ -1,0 +1,124 @@
+Source: amarok-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Modestas Vainius <modestas@vainius.eu>
+Uploaders: Ana Beatriz Guerrero Lopez <ana@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, bzip2,
+ tdelibs14-trinity-dev, tdebase-trinity-dev,
+ libakode-dev, libxine2-dev | libxine-dev,
+ libtag1-dev, libsqlite3-dev,
+ default-libmysqlclient-dev | libmysqlclient-dev, libpq-dev,
+ libvisual-0.4-dev, libsdl1.2-dev,
+ libusb-dev, libgpod-nogtk-dev (>= 0.4.2) | libgpod-dev (>> 0.8.3-8), libnjb-dev, libmtp-dev,
+ ruby, ruby-dev, dh-python
+Standards-Version: 3.8.4
+Homepage: http://amarok.kde.org
+
+Package: amarok-trinity
+Architecture: any
+Depends: libamarok-trinity (= ${binary:Version}), amarok-common-trinity (>= ${source:Version}), amarok-engine-xine-trinity (= ${binary:Version}) | amarok-engines-trinity, unzip, ${shlibs:Depends}
+Replaces: amarok-trinity (<< 4:14.0.0~)
+Breaks: amarok-trinity (<< 4:14.0.0~)
+Suggests: amarok-konqsidebar-trinity, moodbar, konqueror-trinity | www-browser,
+ python3-all, python3-pytqt, libqt0-ruby-trinity, libvisual-0.4-plugins
+Description: versatile and easy to use audio player for Trinity
+ Amarok tries to be a little different, providing a simple drag and drop
+ interface that really makes playlist handling easy.
+ .
+ Features include:
+   - rapid playlist creation, with drag and drop from a directory view
+   - nice playlist browser for your existing playlists (PLS or M3U formats)
+   - collection-indexing support, for smart browsing and playlist creation
+   - possibility of accessing media via tdeioslaves, allowing you to play
+     via smb:// or fish:// (normal streams are of course supported)
+   - inline ID3 tag editing, capable of retrieving tags via MusicBrainz
+   - album cover support: automatically displays album covers from the
+     filesystem, or downloaded on the fly
+   - miscellaneous audio effects, including crossfading
+   - easy bindable global shortcuts, rich DCOP interface
+   - On-Screen Display (OSD), on track change or at keypress
+   - iPod and iRiver support
+   - Last.fm stream playing support (if ruby is installed)
+   - Track "mood" display (requires moodbar package installed)
+ .
+ Support for libvisual visualization plugins is also compiled in (you need 
+ to have libvisual-0.4-plugins installed to be able to use it).
+
+Package: libamarok-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Breaks: amarok-trinity (<< 4:14.0.11~)
+Replaces: amarok-trinity (<< 4:14.0.11~)
+Description: base library for Amarok [Trinity]
+ This package contains base library needed for Amarok to run properly.
+ Therefore, unless you have 'amarok' package installed, you will hardly
+ find this package useful.
+
+Package: amarok-common-trinity
+Architecture: all
+Depends: ruby, ${python3:Depends}
+Replaces: amarok-common-trinity (<< 4:14.0.0~)
+Breaks: amarok-common-trinity (<< 4:14.0.0~)
+Recommends: amarok-trinity (>= ${source:Version})
+Suggests: libqt0-ruby-trinity, python3-all, python3-pytqt
+Description: architecture independent files for Amarok [Trinity]
+ This package contains architecture independent files needed for Amarok to run
+ properly. It also provides Amarok documentation. Therefore, unless you have
+ 'amarok' package installed, you will hardly find this package useful.
+ .
+ You need to install Python if you intend to use Zeroconf support, WebControl
+ and/or playlist2html scripts. You will also need python3-pytqt for the
+ WebControl script.
+
+Package: amarok-konqsidebar-trinity
+Architecture: any
+Depends: amarok-trinity (= ${binary:Version}), konqueror-trinity (>= 4:3.0.0), ${shlibs:Depends}
+Description: Amarok sidebar for konqueror [Trinity]
+ This package contains the Amarok sidebar plugin for konqueror from Trinity.
+ The sidebar provides a convenient way for a user to control amarok directly
+ from the running konqueror instance.
+
+Package: amarok-engines-trinity
+Architecture: all
+Depends: amarok-engine-xine-trinity (>= ${source:Version}) | amarok-engine-akode-trinity (>= ${source:Version})
+Recommends: amarok-engine-xine-trinity (>= ${source:Version}), amarok-engine-akode-trinity (>= ${source:Version})
+Replaces: amarok-engines-trinity (<< 4:14.0.0~)
+Breaks: amarok-engines-trinity (<< 4:14.0.0~)
+Description: output engines for the Amarok music player [Trinity]
+ This package serves merely as a reference point if you want to install
+ all available Amarok engines. It depends on those Amarok engines that
+ generally can be used by most users. You can safely remove this metapackage
+ as you can remove the amarok-engine-$engine packages that you don't use.
+
+Package: amarok-engine-akode-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Recommends: amarok-trinity (= ${binary:Version}), libakode2-mpeg
+Description: aKode engine for the Amarok audio player, providing aRts support [Trinity]
+ This package provides the aKode engine for Amarok, which will output sound to
+ the TDE sound system, the aRts daemon.
+
+Package: amarok-engine-xine-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: amarok-engine-xine-trinity (<< 4:14.0.0~)
+Breaks: amarok-engine-xine-trinity (<< 4:14.0.0~)
+Recommends: amarok-trinity (= ${binary:Version})
+Description: xine engine for the Amarok audio player [Trinity]
+ This package provides the xine engine for Amarok, which you may prefer
+ for some reason over the other engines (e.g., it is the lightest engine
+ Dependency-wise).
+
+Package: amarok-trinity-dbg
+Priority: extra
+Architecture: any
+Replaces: amarok-trinity-dbg (<< 4:14.0.0~)
+Breaks: amarok-trinity-dbg (<< 4:14.0.0~)
+Depends: amarok-trinity (= ${binary:Version})
+Recommends: tdelibs-trinity-dbg
+Description: debugging symbols for Amarok [Trinity]
+ This package provides debugging symbols for all binary packages built from
+ amarok source package. It's highly recommended to have this package installed
+ before reporting any Amarok crashes to either Amarok developers or Debian
+ package maintainers.

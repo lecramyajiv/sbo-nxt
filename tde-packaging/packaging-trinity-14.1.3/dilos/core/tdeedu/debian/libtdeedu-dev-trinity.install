@@ -1,0 +1,9 @@
+/usr/include/libtdeedu
+usr/lib/*/libextdate.la
+usr/lib/*/libextdate.so
+usr/lib/*/libtdeeducore.la
+usr/lib/*/libtdeeducore.so
+usr/lib/*/libtdeeduui.la
+usr/lib/*/libtdeeduui.so
+usr/lib/*/libtdeeduplot.la
+usr/lib/*/libtdeeduplot.so

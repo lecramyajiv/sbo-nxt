@@ -1,0 +1,14 @@
+Source: mathemagics-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: mathemagics-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A RPN scientific calculator for TDE
+ Mathemagics makes use of the Reverse Polish Notation or RPN.
+ Mathemagics can store and use user-defined functions and variables,
+ It comes with large number of built-in functions as well.

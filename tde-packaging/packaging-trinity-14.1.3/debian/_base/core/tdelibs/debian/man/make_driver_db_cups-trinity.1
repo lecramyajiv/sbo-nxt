@@ -1,0 +1,47 @@
+.TH MAKE_DRIVER_DB_CUPS 1 "Jun 2006" "Trinity Desktop Environment" ""
+.SH NAME
+make_driver_db_cups
+\- create a printer database from ppd files
+.SH SYNOPSIS
+.B make_driver_db_cups
+.RI [ db_directory ]\ [ output_filename ]
+.SH DESCRIPTION
+\fBmake_driver_db_cups\fP creates a printer database from PPD files. PPD files (Postscript Printer Description files) describe a specific printer. Nowadays they are also used for non\-Postscript printers.
+.sp 1
+\fBmake_driver_db_cups\fP prints all printer descriptions found in a given directory and all its subdirectories to stdout.
+The first line gives the number of all found printers. Every printer description block consists of the items FILE, MANUFACTURER, MODELNAME, MODEL and DESCRIPTION.
+The block is followed by the current block number.
+.sp 1
+If an output file is given \fBmake_driver_db_cups\fP suppresses all numbers.
+.sp 1
+The PPD files may be gzip compressed.
+.SH OPTIONS
+.SS Arguments:
+.TP
+.I db_directory
+directory with ppd files
+.TP
+.I output_filename
+write printer database into this file
+.SH FILES
+.TP
+.I $TDEHOME/share/apps/tdeprint/printerdb_cups.txt
+TDE printer database
+.br
+(if $TDEHOME is not set ~/.trinity is used)
+.SH SEE ALSO
+.BR make_driver_db_lpr (1)
+.TP
+.B www.linuxprinting.org
+Information about printing under UNIX
+.SH AUTHORS
+.nf
+The KDE project
+
+.br
+.fi
+Please use http://bugs.trinitydesktop.org to report bugs.
+.PP
+This manual page was written by Holger Hartmann <Holger_Hartmann@gmx.de> for the \fBDebian\fP Project (but may be used by others). Permission is granted to copy, distribute and/or modify this document under the terms of the GNU General Public License, Version 2 or any later version published by the Free Software Foundation.
+.PP
+On \fBDebian\fP systems, the complete text of the GNU General Public License can be found in /usr/share/common\-licenses/GPL.

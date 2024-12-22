@@ -1,0 +1,42 @@
+Source: libkipi-trinity
+Section: libs
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Achim Bohnet <ach@mpe.mpg.de>, Mark Purcell <msp@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, libexif-dev, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: libkipi0-trinity-dev
+Provides: libkipi-trinity-dev
+Conflicts: libkipi-trinity-dev
+Replaces: libkipi0-trinity-dev (<< 4:14.0.0~)
+Breaks: libkipi0-trinity-dev (<< 4:14.0.0~)
+Section: libdevel
+Architecture: any
+Depends: libkipi0-trinity (= ${source:Version}), pkg-config
+Description: library for apps that want to use kipi-plugins (development version) [Trinity]
+ Libkipi is a library
+ .
+     o that contains common routines and widget used by kipi-plugins
+     o to ease implementation of the kipi-plugins interface in an application
+       that wants to use kipi-plugins
+ .
+ This pkg contains development files and documentation for libkipi library.
+ .
+ Homepage: http://www.kipi-plugins.org/
+
+Package: libkipi0-trinity
+Conflicts: libkipi0c2-trinity
+Section: libs
+Replaces: libkipi0-trinity (<< 4:14.0.0~)
+Breaks: libkipi0-trinity (<< 4:14.0.0~)
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: library for apps that want to use kipi-plugins (runtime version) [Trinity]
+ Libkipi is a library
+ .
+     o that contains common routines and widget used by kipi-plugins
+     o to ease implementation of the kipi-plugins interface in an application
+       that wants to use kipi-plugins
+ .
+ Homepage: http://extragear.kde.org/apps/kipi

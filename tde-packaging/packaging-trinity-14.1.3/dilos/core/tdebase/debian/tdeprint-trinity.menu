@@ -1,0 +1,35 @@
+?package(tdeprint-trinity):\
+	needs="X11"\
+	section="Applications/System/Monitoring"\
+	hints="TDE"\
+	title="KJobViewer"\
+	icon32x32="/usr/share/pixmaps/kjobviewer.xpm"\
+	icon16x16="/usr/share/pixmaps/kjobviewer-16.xpm"\
+	command="/usr/bin/kjobviewer --show --all"
+
+?package(tdeprint-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="KPrinter"\
+	icon32x32="/usr/share/pixmaps/tdeprint.xpm"\
+	icon16x16="/usr/share/pixmaps/tdeprint-16.xpm"\
+	command="/usr/bin/kprinter"
+
+?package(tdeprint-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="TDEPrintFax"\
+	icon32x32="/usr/share/pixmaps/tdeprintfax.xpm"\
+	icon16x16="/usr/share/pixmaps/tdeprintfax-16.xpm"\
+	command="/usr/bin/tdeprintfax"
+
+# Icon 32x32 tdeprint/kjobviewer/cr32-app-kjobviewer.png kjobviewer.xpm
+# Icon 16x16 tdeprint/kjobviewer/cr16-app-kjobviewer.png kjobviewer-16.xpm
+
+# Icon 32x32 tdeprint/printmgr/cr32-app-printmgr.png tdeprint.xpm
+# Icon 16x16 tdeprint/printmgr/cr16-app-printmgr.png tdeprint-16.xpm
+
+# Icon 32x32 tdeprint/tdeprintfax/cr32-app-tdeprintfax.png tdeprintfax.xpm
+# Icon 16x16 tdeprint/tdeprintfax/cr16-app-tdeprintfax.png tdeprintfax-16.xpm

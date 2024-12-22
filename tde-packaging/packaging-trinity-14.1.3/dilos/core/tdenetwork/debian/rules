@@ -1,0 +1,65 @@
+#!/usr/bin/make -f
+
+DEB_HOST_ARCH_OS=$(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+DEB_HOST_ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+ifeq ($(DEB_HOST_ARCH),s390)
+DONT_BUILD+= kwifimanager
+endif
+ifneq ($(DEB_HOST_ARCH_OS),linux)
+DONT_BUILD+= kwifimanager tdednssd
+endif
+export DH_OPTIONS
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CONFIGURE_INCLUDEDIR := /usr/include
+DEB_CONFIGURE_MANDIR := /usr/share/man
+DEB_CONFIGURE_PREFIX := /usr
+DEB_CONFIGURE_INFODIR := /usr/share/info
+
+cdbs_configure_flags := --with-qt-dir=/usr/share/qt3 --disable-rpath --with-xinerama $(cdbs_kde_enable_final) $(cdbs_kde_enable_debug)
+
+DEB_CONFIGURE_EXTRA_FLAGS := --prefix=/usr --with-extra-libs=/usr/lib
+
+CPPFLAGS+= -D__dilos__ -DUSE_SOLARIS
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_INSTALL_PREFIX="/usr" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DWITH_ALL_OPTIONS="ON" \
+ -DWITH_WEBCAM="OFF" \
+ -DWITH_GSM="OFF" \
+ -DWITH_XMMS="OFF" \
+ -DBUILD_ALL="ON" \
+ -DBUILD_KOPETE_PROTOCOL_ALL="ON" \
+ -DBUILD_KOPETE_PLUGIN_ALL="ON" \
+ -DBUILD_KOPETE_PLUGIN_MOTIONAUTOAWAY="OFF" \
+ -DBUILD_WIFI="OFF" \
+ -DCMAKE_C_COMPILER=gcc \
+ -DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)"
+
+DEB_DH_STRIP_ARGS  := --dbg-package=tdenetwork-trinity-dbg \
+-Xkrfb -Xktalkd -Xlisa
+
+PACKAGES_WITH_LIBS := librss1-trinity kopete-trinity ksirc-trinity kwifimanager-trinity
+
+#shlibs_ver = 4:3.5.0-1
+#$(foreach p,$(PACKAGES_WITH_LIBS),$(eval DEB_DH_MAKESHLIBS_ARGS_$(p) := -V'$(p) (>= $(shlibs_ver))'))
+
+DEB_FIXPERMS_EXCLUDE := usr/bin/kppp usr/bin/kppplogview \
+	etc/ppp/peers/kppp-options
+
+binary-install/kppp-trinity::
+	chown root:dip debian/kppp-trinity/usr/bin/kppp*
+	chown root:dip debian/kppp-trinity/etc/ppp/peers/kppp-options
+	chmod 4754 debian/kppp-trinity/usr/bin/kppp
+	chmod 0754 debian/kppp-trinity/usr/bin/kppplogview
+	chmod 0640 debian/kppp-trinity/etc/ppp/peers/kppp-options

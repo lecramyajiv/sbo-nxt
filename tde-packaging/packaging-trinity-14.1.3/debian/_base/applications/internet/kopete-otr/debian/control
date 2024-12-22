@@ -1,0 +1,17 @@
+Source: kopete-otr-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Harald Sitter <apachelogger@ubuntu.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdenetwork-trinity-dev, libotr5-dev | libotr2-dev (>= 3.0.0)
+Standards-Version: 3.8.4
+
+Package: kopete-otr-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: kopete-otr-trinity (<< 4:14.0.0~)
+Breaks: kopete-otr-trinity (<< 4:14.0.0~)
+Description: Off-The-Record encryption for Kopete [Trinity]
+ This plugin enables Off-The-Record encryption for the TDE instant
+ messenger Kopete. Using this plugin you can encrypt chatsessions to other
+ users with IM-Cients supporting the OTR encryption method.

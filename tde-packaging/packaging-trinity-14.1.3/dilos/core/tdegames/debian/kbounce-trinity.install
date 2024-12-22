@@ -1,0 +1,13 @@
+/usr/share/apps/kbounce/*
+/usr/share/applications/tde/kbounce.desktop
+/usr/share/icons/hicolor/16x16/apps/kbounce.png
+/usr/share/icons/hicolor/22x22/apps/kbounce.png
+/usr/share/icons/hicolor/32x32/apps/kbounce.png
+/usr/share/icons/hicolor/48x48/apps/kbounce.png
+/usr/share/icons/hicolor/64x64/apps/kbounce.png
+/usr/share/icons/hicolor/128x128/apps/kbounce.png
+/usr/games/kbounce
+/usr/share/doc/tde/HTML/en/kbounce/*
+/usr/share/man/man6/kbounce.6
+../icons/kbounce.xpm /usr/share/pixmaps
+../icons/kbounce-16.xpm /usr/share/pixmaps

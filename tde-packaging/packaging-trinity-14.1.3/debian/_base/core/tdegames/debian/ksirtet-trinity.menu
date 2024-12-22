@@ -1,0 +1,9 @@
+?package(ksirtet-trinity):\
+	needs="x11"\
+	section="Games/Tetris-like"\
+	hints="TDE"\
+	title="TDE Sirtet"\
+	icon32x32="/opt/trinity/share/pixmaps/ksirtet.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/ksirtet-16.xpm"\
+	command="/opt/trinity/games/ksirtet"
+

@@ -1,0 +1,13 @@
+Index: tdecore/kstandarddirs.cpp
+===================================================================
+--- tdecore/kstandarddirs.cpp.orig
++++ tdecore/kstandarddirs.cpp
+@@ -1303,6 +1303,8 @@ void KStandardDirs::addKDEDefaults()
+         }
+     }
+ 
++    tdedirList.append("/etc/opt/tde");
++
+ #ifndef Q_OS_WIN //no default TDEDIR on win32 defined
+     tdedirList.append(TDEDIR);
+ #endif

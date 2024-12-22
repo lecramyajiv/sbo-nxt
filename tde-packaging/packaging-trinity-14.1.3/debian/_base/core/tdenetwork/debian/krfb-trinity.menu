@@ -1,0 +1,8 @@
+?package(krfb-trinity):\
+	needs="X11"\
+	section="Apps/Net"\
+	hints="TDE"\
+	title="Krfb"\
+	icon32x32="/opt/trinity/share/pixmaps/krfb.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/krfb-16.xpm"\
+	command="/opt/trinity/bin/krfb"

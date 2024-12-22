@@ -1,0 +1,30 @@
+kpicosim-trinity (0.6a-4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+kpicosim-trinity (0.6a-3) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 05 March 2009 01:11:00 -0600
+
+kpicosim-trinity (0.6a-1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 04 Dec 2008 21:38:00 -0600
+
+kpicosim (0.6a-1) unstable; urgency=low
+
+  * Repackaged upstream's v0.6. kpicosim-0.6-1 was actually v0.5. 
+
+ -- Adrian Knoth <adi@thur.de>  Wed, 20 Jun 2007 14:48:01 +0200
+
+kpicosim (0.6-1) unstable; urgency=low
+
+  * Initial release Closes: #344945
+
+ -- Adrian Knoth <adi@thur.de>  Sat, 12 Nov 2005 15:36:56 +0200

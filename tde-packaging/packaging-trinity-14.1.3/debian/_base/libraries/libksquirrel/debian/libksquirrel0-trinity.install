@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/lib/libksquirrel-libs*.so.*
+debian/tmp/opt/trinity/lib/ksquirrel-libs/libkls*.so.*
+debian/tmp/opt/trinity/share/ksquirrel-libs/*
+debian/tmp/opt/trinity/share/man/man1/*

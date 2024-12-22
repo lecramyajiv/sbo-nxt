@@ -1,0 +1,10 @@
+--- kcontrol/randr/randroutput.cpp
++++ kcontrol/randr/randroutput.cpp
+@@ -383,6 +383,7 @@ RandRCrtc *RandROutput::findEmptyCrtc()
+ 		if (crtc->connectedOutputs().count() == 0)
+ 			return crtc;
+ 	}
++        return crtc;
+ }
+ 
+ bool RandROutput::tryCrtc(RandRCrtc *crtc, int changes)

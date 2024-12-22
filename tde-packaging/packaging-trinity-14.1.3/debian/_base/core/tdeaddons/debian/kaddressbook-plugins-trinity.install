@@ -1,0 +1,6 @@
+debian/tmp/opt/trinity/lib/trinity/libkaddrbk_geo_xxport.la
+debian/tmp/opt/trinity/lib/trinity/libkaddrbk_geo_xxport.so
+debian/tmp/opt/trinity/lib/trinity/libkaddrbk_gmx_xxport.la
+debian/tmp/opt/trinity/lib/trinity/libkaddrbk_gmx_xxport.so
+debian/tmp/opt/trinity/share/apps/kaddressbook
+debian/tmp/opt/trinity/share/services/kaddressbook

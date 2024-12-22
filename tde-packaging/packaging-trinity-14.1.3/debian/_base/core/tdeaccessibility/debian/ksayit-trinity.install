@@ -1,0 +1,21 @@
+debian/tmp/opt/trinity/bin/ksayit
+debian/tmp/opt/trinity/include/ksayit_fxplugin.h
+debian/tmp/opt/trinity/lib/trinity/libFreeverb_plugin.la
+debian/tmp/opt/trinity/lib/trinity/libFreeverb_plugin.so
+debian/tmp/opt/trinity/lib/libKTTSD_Lib.la
+debian/tmp/opt/trinity/lib/libKTTSD_Lib.so
+debian/tmp/opt/trinity/lib/libKTTSD_Lib.so.0
+debian/tmp/opt/trinity/lib/libKTTSD_Lib.so.0.0.1
+debian/tmp/opt/trinity/share/applications/tde/ksayit.desktop
+debian/tmp/opt/trinity/share/apps/ksayit/ContextMenus.xml
+debian/tmp/opt/trinity/share/apps/ksayit/ksayitui.rc
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/ksayit.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/ksayit.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/ksayit_clipempty.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/ksayit_talking.png
+debian/tmp/opt/trinity/share/services/ksayit_libFreeverb.desktop
+debian/tmp/opt/trinity/share/servicetypes/ksayit_libFreeverb_service.desktop
+debian/tmp/opt/trinity/share/man/man1/ksayit.1
+
+debian/icons/ksayit.xpm		/opt/trinity/share/pixmaps
+debian/icons/ksayit-16.xpm	/opt/trinity/share/pixmaps

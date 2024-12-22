@@ -1,0 +1,15 @@
+debian/tmp/opt/trinity/bin/amor
+debian/tmp/opt/trinity/include/AmorIface.h
+debian/tmp/opt/trinity/share/apps/amor
+debian/tmp/opt/trinity/share/applications/tde/amor.desktop
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/amor/*.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/amor/*.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/amor/*.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/amor/common
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/amor.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/amor.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/amor.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/amor.png
+debian/tmp/opt/trinity/share/man/man1/amor.1
+
+debian/icons/amor.xpm	opt/trinity/share/pixmaps

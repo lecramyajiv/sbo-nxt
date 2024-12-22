@@ -1,0 +1,22 @@
+Source: ktorrent-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: debhelper (>= 10~), quilt, cdbs, tdelibs14-trinity-dev, libx11-dev, libgmp3-dev, libavahi-tqt-dev, libgeoip-dev, automake, autoconf, libtool, libltdl-dev
+Standards-Version: 3.8.4
+
+Package: ktorrent-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: ktorrent-trinity (<< 4:14.0.0~)
+Breaks: ktorrent-trinity (<< 4:14.0.0~)
+Suggests: php-cli | php5-cli
+Recommends: tdebase-tdeio-plugins-trinity
+Description: BitTorrent client for Trinity
+ KTorrent is a BitTorrent program for Trinity. Its features include speed capping
+ (both down and up), integrated searching, UDP tracker support, preview of
+ certain file types (video and audio) and integration into the TDE Panel
+ enabling background downloading.
+ .
+  Homepage: http://ktorrent.org
+

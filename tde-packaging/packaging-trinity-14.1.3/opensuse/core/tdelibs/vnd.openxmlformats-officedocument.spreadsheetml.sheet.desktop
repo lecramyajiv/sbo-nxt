@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=MimeType
+MimeType=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Patterns=*.xlsx;*.XLSX
+Icon=spreadsheet
+Comment=Open XML Spreadsheet Document
+[Property::X-KDE-NativeExtension]
+Type=QString
+Value=.xlsx

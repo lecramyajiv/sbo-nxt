@@ -1,0 +1,14 @@
+Index: kdecore/klocale.cpp
+===================================================================
+--- kdecore/klocale.cpp.orig
++++ kdecore/klocale.cpp
+@@ -131,6 +131,9 @@ void KLocale::initMainCatalogues(const Q
+     d->catalogNames.append( mainCatalogue );   // application catalog
+     d->catalogNames.append( SYSTEM_MESSAGES ); // always include kdelibs.mo
+     d->catalogNames.append( "kio" );            // always include kio.mo
++    KGlobal::dirs()->addResourceDir("locale", "/usr/share/locale");
++    d->catalogNames.append( "desktop_translations" );
++    d->catalogNames.append( "susetranslations" );
+     updateCatalogues(); // evaluate this for all languages
+   }
+ }

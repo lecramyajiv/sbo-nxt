@@ -1,0 +1,27 @@
+Index: kioslave/media/medianotifier/medianotifier.cpp
+===================================================================
+--- kioslave/media/medianotifier/medianotifier.cpp.orig
++++ kioslave/media/medianotifier/medianotifier.cpp
+@@ -133,7 +133,7 @@ bool MediaNotifier::autostart( const KFi
+ 	// be checked for the following Autostart files in order of precedence:
+ 	// .autorun, autorun, autorun.sh
+ 	QStringList autorun_list;
+-	autorun_list << ".autorun" << "autorun" << "autorun.sh";
++	autorun_list << ".autorun" << "autorun" << "autorun.sh" << "setup.sh" << "media.1/patches";
+ 
+ 	QStringList::iterator it = autorun_list.begin();
+ 	QStringList::iterator end = autorun_list.end();
+@@ -191,7 +191,12 @@ bool MediaNotifier::execAutorun( const K
+ 		// with the current working directory ( CWD ) set to the root
+ 		// directory of the medium.
+ 		KProcess proc;
+-		proc << "sh" << autorunFile;
++		if (autorunFile == "setup.sh")
++		  proc << "kdesu" << autorunFile;
++		else if (autorunFile == "media.1/patches") 
++  		  proc << "kdesu" << "--nonewdcop" << "/sbin/yast2" << "online_update" << ".cd_default";
++		else
++		  proc << "sh" << autorunFile;
+ 		proc.setWorkingDirectory( path );
+ 		proc.start();
+ 		proc.detach();

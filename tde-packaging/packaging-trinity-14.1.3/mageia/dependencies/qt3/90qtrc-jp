@@ -1,0 +1,15 @@
+# fix .qtrc for Japanese
+if [ "$LANG" = ja_JP ]; then
+    [ ! -d $HOME/.qt ] && mkdir $HOME/.qt
+
+    if [ ! -r $HOME/.qt/qtrc ] || ! grep -q '[General]' $HOME/.qt/qtrc; then
+    cat >> $HOME/.qt/qtrc <<EOF
+[General]
+XIMInputStyle=Over The Spot
+EOF
+    elif ! grep -q XIMInputStyle $HOME/.qt/qtrc; then
+    rm -f $HOME/.qt/qtrc.$$
+    sed "s/\[General\]/[General]\nXIMInputStyle=Over The Spot/" < $HOME/.qt/qtrc > $HOME/.qt/qtrc.$$
+    mv -f $HOME/.qt/qtrc.$$ $HOME/.qt/qtrc
+    fi
+fi

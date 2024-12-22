@@ -1,0 +1,49 @@
+#!/usr/bin/perl -w
+
+=head1 NAME
+
+dh_py3sip_tqt - set the correct dependencies for Python 3 packages using sip
+
+=cut
+
+use strict;
+use Debian::Debhelper::Dh_Lib;
+
+=head1 SYNOPSIS
+
+B<dh_py3sip_tqt>
+
+=head1 DESCRIPTION
+
+dh_py3sip_tqt creates the ${py3sip-tqt:Depends} substitution variable which must be
+used by Python 3 extensions built with sip-tqt in order to depend on a version of
+python3-sip-tqt that exports the correct public API.
+
+=cut
+
+init();
+
+my $sip_tqt_provides = `dpkg -s python3-sip-tqt`;
+$sip_tqt_provides =~ /^Provides:\s*(.+)$/m;
+
+my @sip_tqt_apis = sort(grep(/sip\-tqt\-py3api/, split(/,\s*/, $1)));
+
+my $sip_tqt_api_version=$sip_tqt_apis[-1];
+
+foreach my $package (@{$dh{DOPACKAGES}}) {
+        addsubstvar($package, "py3sip-tqt:Depends", $sip_tqt_api_version);
+}
+
+=head1 SEE ALSO
+
+L<debhelper(7)>
+
+This program is a part of python3-sip-tqt-dev but is made to work with debhelper.
+
+=head1 AUTHORS
+
+Torsten Marek <shlomme@debian.org>
+Adapted for Python3 by
+Slávek Banko <slavek.banko@axis.cz>
+
+=cut

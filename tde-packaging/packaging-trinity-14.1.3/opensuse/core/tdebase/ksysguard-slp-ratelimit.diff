@@ -1,0 +1,15 @@
+--- ksysguard/gui/ksysguard.cc
++++ ksysguard/gui/ksysguard.cc
+@@ -407,7 +407,11 @@
+   }
+ 
+ #if HAVE_SLP
+-  rescanSLP();
++  static int rate;
++  if (++rate > 100) {
++    rate = 0;
++    rescanSLP();
++  }
+ #endif
+ }
+ 

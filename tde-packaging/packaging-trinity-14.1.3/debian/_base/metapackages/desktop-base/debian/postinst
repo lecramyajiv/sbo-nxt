@@ -1,0 +1,101 @@
+#!/bin/bash -e
+
+#DEBHELPER#
+
+
+if [ "${1}" = "configure" ] && [ "$2" != "" ] ; then
+
+    if dpkg --compare-versions ${2} lt 0.3.11 && dpkg --compare-versions ${2} gt 0.3.5; then
+        if test -x /var/lib/dpkg/info/libgnome2-common.postinst; then
+            /var/lib/dpkg/info/libgnome2-common.postinst configure
+        fi
+    fi
+fi
+
+if [ "$1" = "configure" -o "$1" = "abort-upgrade" ]; then
+    # Alternatives for the background
+    update-alternatives --install \
+        /usr/share/images/desktop-base/desktop-background \
+        desktop-background \
+        /usr/share/images/desktop-base/moreblue-orbit-wallpaper.svg 60
+
+    update-alternatives --install \
+        /usr/share/images/desktop-base/desktop-background \
+        desktop-background \
+        /usr/share/images/desktop-base/moreblue-orbit-wallpaper-widescreen.svg  55
+
+    update-alternatives --install \
+        /usr/share/images/desktop-base/desktop-background \
+        desktop-background \
+        /usr/share/images/desktop-base/nightly-wallpaper.png 50
+
+    update-alternatives --install \
+        /usr/share/images/desktop-base/desktop-background \
+        desktop-background \
+        /usr/share/images/desktop-base/debian-blueish-wallpaper.svg 40
+
+#    update-alternatives --install \
+#        /usr/share/images/desktop-base/desktop-background \
+#        desktop-background \
+#        /usr/share/images/desktop-base/debblue-1600x1200.png 30
+
+#    update-alternatives --install \
+#        /usr/share/images/desktop-base/desktop-background \
+#        desktop-background \
+#        /usr/share/images/desktop-base/debian-background.svg 20
+
+#    update-alternatives --install \
+#        /usr/share/images/desktop-base/desktop-background \
+#        desktop-background \
+#        /usr/share/images/desktop-base/bluedeb-1024x768.jpg 10
+
+#    update-alternatives --install \
+#        /usr/share/images/desktop-base/desktop-background \
+#        desktop-background \
+#        /usr/share/images/desktop-base/Debian.jpg 10
+
+    # Alternatives for the splash
+    update-alternatives --install \
+        /usr/share/images/desktop-base/desktop-splash \
+        desktop-splash \
+        /usr/share/images/desktop-base/moreblue-orbit-splash.png 50
+
+    update-alternatives --install \
+        /usr/share/images/desktop-base/desktop-splash \
+        desktop-splash \
+        /usr/share/images/desktop-base/gnome-splash-curves.png 40
+
+#    update-alternatives --install \
+#        /usr/share/images/desktop-base/desktop-splash \
+#        desktop-splash \
+#        /usr/share/images/desktop-base/Splash-debblue.png 30
+
+#    update-alternatives --install \
+#        /usr/share/images/desktop-base/desktop-splash \
+#        desktop-splash \
+#        /usr/share/images/desktop-base/Splash-Debian.png 10
+
+#    update-alternatives --install \
+#        /usr/share/images/desktop-base/desktop-splash \
+#        desktop-splash \
+#        /usr/share/images/desktop-base/Splash-Debian_red.png 10
+
+    # Alternatives for grub
+    update-alternatives --install \
+        /usr/share/images/desktop-base/desktop-grub \
+        desktop-grub \
+        /usr/share/images/desktop-base/moreblue-orbit-grub.png 10
+
+    # GRUB background
+    if which update-grub2 > /dev/null ; then
+        update-grub2
+    fi
+
+    if [ -x /sbin/splashy_config ] && [ -w /etc/splashy/config.xml ]; then
+        splashy_config --set-theme moreblue-orbit
+    fi
+
+    if [ -x /usr/sbin/update-initramfs ]; then
+        update-initramfs -u
+    fi
+fi

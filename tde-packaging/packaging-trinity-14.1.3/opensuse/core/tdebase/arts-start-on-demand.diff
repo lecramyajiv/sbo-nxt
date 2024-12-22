@@ -1,0 +1,98 @@
+Index: kcontrol/arts/Makefile.am
+===================================================================
+--- kcontrol/arts/Makefile.am.orig
++++ kcontrol/arts/Makefile.am
+@@ -1,3 +1,9 @@
++bin_PROGRAMS = arts-start
++
++arts_start_SOURCES = arts-start.cpp
++arts_start_LDFLAGS = $(all_libraries)
++arts_start_LDADD = $(LIB_KDECORE)
++
+ kde_module_LTLIBRARIES = kcm_arts.la
+ 
+ kcm_arts_la_SOURCES = arts.cpp generaltab.ui hardwaretab.ui krichtextlabel.cpp
+Index: kcontrol/arts/arts-start.cpp
+===================================================================
+--- /dev/null
++++ kcontrol/arts/arts-start.cpp
+@@ -0,0 +1,79 @@
++/*
++
++    Copyright (C) 2007 Lubos Lunak <l.lunak@suse.cz>
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program; if not, write to the Free Software
++    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++
++    Permission is also granted to link this program with the Qt
++    library, treating Qt like a library that normally accompanies the
++    operating system kernel, whether or not that is in fact the case.
++
++*/
++
++#include <kconfig.h>
++#include <kinstance.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <X11/Xlib.h>
++
++static bool arts_running()
++    {
++    int status = system( "artsshell status >/dev/null 2>/dev/null" );
++    return WIFEXITED( status ) && WEXITSTATUS( status ) == 0;
++    }
++
++int main()
++    {
++    // Try to launch arts this way only a single time in the whole session. After first
++    // try set X property on the root window and following attemps bail out if it's set.
++    Display* dpy = XOpenDisplay( NULL );
++    if( dpy == NULL ) // don't launch arts without X
++        return 4;
++    Atom atom = XInternAtom( dpy, "_KDE_ARTS_TRIED", False );
++    int count;
++    Atom* atoms = XListProperties( dpy, DefaultRootWindow( dpy ), &count );
++    bool tried = false;
++    if( atoms != NULL )
++        {
++        for( int i = 0;
++             i < count;
++             ++i )
++            if( atoms[ i ] == atom )
++                {
++                tried = true;
++                break;
++                }
++        }
++    if( tried ) // this should probably wait, but artsshell will result in calling this too
++        return 2;
++    long dummy = 1;
++    XChangeProperty( dpy, DefaultRootWindow( dpy ), atom, atom, 32, PropModeReplace, (const unsigned char*)&dummy, 1 );
++    XCloseDisplay( dpy );
++    KInstance inst( "arts-start" );
++    KConfig config("kcmartsrc", true, false);
++    config.setGroup("Arts");
++    if( !config.readBoolEntry("StartServer",true))
++        return 2;
++    system( "kcminit arts" );
++    for( int i = 0;
++         i < 50; // give it 5 seconds
++         ++i )
++        {
++        if( arts_running())
++            return 0;
++        usleep( 100 * 1000 );
++        }
++    return 3;
++    }

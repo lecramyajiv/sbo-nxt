@@ -1,0 +1,26 @@
+Index: tdepim/mimelib/CMakeLists.txt
+===================================================================
+--- tdepim.orig/mimelib/CMakeLists.txt
++++ tdepim/mimelib/CMakeLists.txt
+@@ -43,7 +43,7 @@ tde_add_library( mimelib SHARED
+     dwstring.cpp text.cpp token.cpp uuencode.cpp
+     binhex.cpp
+   VERSION 1.0.1
+-  LINK ${TQT_LIBRARIES} ${TDE_LIB_DIR}/libtdefakes_pic.a
++  LINK ${TQT_LIBRARIES} ${TDE_LIB_DIR}/libtdefakes_pic.a socket nsl
+   DESTINATION ${LIB_INSTALL_DIR}
+ )
+ 
+Index: tdepim/kmail/kmfoldermbox.cpp
+===================================================================
+--- tdepim.orig/kmail/kmfoldermbox.cpp
++++ tdepim/kmail/kmfoldermbox.cpp
+@@ -46,7 +46,7 @@
+ #include <ctype.h>
+ #include <unistd.h>
+ 
+-#ifdef HAVE_FCNTL_H
++#if	defined(HAVE_FCNTL_H) || defined(__dilos__)
+ #include <fcntl.h>
+ #endif
+ 

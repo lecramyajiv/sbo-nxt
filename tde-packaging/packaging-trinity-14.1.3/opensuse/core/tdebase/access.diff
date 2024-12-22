@@ -1,0 +1,51 @@
+Index: kcontrol/access/kaccess.cpp
+===================================================================
+--- kcontrol/access/kaccess.cpp.orig
++++ kcontrol/access/kaccess.cpp
+@@ -216,7 +216,7 @@ void KAccessApp::readSettings()
+   xkb->ctrls->debounce_delay = config->readNumEntry("BounceKeysDelay", 500);
+ 
+   // gestures for enabling the other features
+-  _gestures = config->readBoolEntry("Gestures", true);
++  _gestures = config->readBoolEntry("Gestures", ::access("/opt/kde3/bin/kmag", X_OK) == 0);
+   if (_gestures)
+       xkb->ctrls->enabled_ctrls |= XkbAccessXKeysMask;
+   else
+@@ -241,7 +241,7 @@ void KAccessApp::readSettings()
+   else
+      xkb->ctrls->ax_options &= ~(XkbAX_FeatureFBMask | XkbAX_SlowWarnFBMask);
+ 
+-  _gestureConfirmation = config->readBoolEntry("GestureConfirmation", true);
++  _gestureConfirmation = config->readBoolEntry("GestureConfirmation", ::access("/opt/kde3/bin/kmag", X_OK) == 0);
+ 
+   _kNotifyModifiers = config->readBoolEntry("kNotifyModifiers", false);
+   _kNotifyAccessX = config->readBoolEntry("kNotifyAccessX", false);
+Index: kcontrol/access/kcmaccess.cpp
+===================================================================
+--- kcontrol/access/kcmaccess.cpp.orig
++++ kcontrol/access/kcmaccess.cpp
+@@ -7,6 +7,7 @@
+ 
+ 
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <math.h>
+ 
+ #include <dcopref.h>
+@@ -686,12 +687,14 @@ void KAccessConfig::load( bool useDefaul
+   bounceKeysDelay->setValue(config->readNumEntry("BounceKeysDelay", 500));
+   bounceKeysRejectBeep->setChecked(config->readBoolEntry("BounceKeysRejectBeep", true));
+ 
+-  gestures->setChecked(config->readBoolEntry("Gestures", true));
++  gestures->setChecked(config->readBoolEntry("Gestures",
++              ::access("/opt/kde3/bin/kmag", X_OK) == 0));
+   timeout->setChecked(config->readBoolEntry("AccessXTimeout", false));
+   timeoutDelay->setValue(config->readNumEntry("AccessXTimeoutDelay", 30));
+ 
+   accessxBeep->setChecked(config->readBoolEntry("AccessXBeep", true));
+-  gestureConfirmation->setChecked(config->readBoolEntry("GestureConfirmation", false));
++  gestureConfirmation->setChecked(config->readBoolEntry("GestureConfirmation",
++              ::access("/opt/kde3/bin/kmag", X_OK) == 0));
+   kNotifyAccessX->setChecked(config->readBoolEntry("kNotifyAccessX", false));
+ 
+   delete config;

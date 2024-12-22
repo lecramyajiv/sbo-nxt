@@ -1,0 +1,60 @@
+.TH KSHELL 1 "Jun 2006" "Trinity Desktop Environment" ""
+.SH NAME
+tdeinit_wrapper, kshell, kwrapper
+\- start applications via tdeinit
+.SH SYNOPSIS
+\fBtdeinit_wrapper\fP application [arguments]
+.sp 1
+\fBkshell\fP application [arguments]
+.sp 1
+\fBkwrapper\fP application [arguments]
+.SH DESCRIPTION
+\fBtdeinit_wrapper\fP, \fBkshell\fP and \fBkwrapper\fP start applications via \fBtdeinit\fP.
+.sp 1
+\fBtdeinit_wrapper\fP simply passes application name and arguments to \fBtdeinit\fP.
+.sp 1
+\fBkshell\fP passes application name, arguments, complete environment and current working directory to \fBtdeinit\fP.
+.sp 1
+\fBkwrapper\fP tries to make the application look like it was actually started directly and not via \fBtdeinit\fP. Like \fBkshell\fP it passes application name, arguments, complete environment and current working directory to \fBtdeinit\fP.
+.br
+Additionally it
+.IP "    \-"
+tries to redirect application output to the console from which \fBkwrapper\fP was started
+.IP "    \-"
+waits for the application to finish (but does not return its return value)
+.IP "    \-"
+passes most signals it gets to the process of the started application
+.PP
+The signal passing allows you to use Ctrl\-C to break the started application or Ctrl\-Z to stop it.
+.sp 1
+Note: With the use of \fBkwrapper\fP you will have one more process running and also the signal passing and output redirection may not work properly.
+.SH OPTIONS
+.TP
+.B application
+application to start
+.TP
+.B arguments
+arguments of application to start
+.SS 
+.SH SEE ALSO
+.BR tdeinit (1)
+.br
+.SH AUTHORS
+.nf
+\fBkshell\fP:
+.br
+Oswald Buddenhagen <ossi@kde.org>
+
+\fBkwrapper\fP and \fBtdeinit_wrapper\fP:
+.br
+Waldo Bastian <bastian@kde.org>
+Mario Weilguni <mweilguni@sime.org>
+Lubos Lunak <l.lunak@kde.org>
+
+.br
+.fi
+Please use http://bugs.trinitydesktop.org to report bugs, do not mail the authors directly.
+.PP
+This manual page was written by Holger Hartmann <Holger_Hartmann@gmx.de> for the \fBDebian\fP Project (but may be used by others). Permission is granted to copy, distribute and/or modify this document under the terms of the GNU General Public License, Version 2 or any later version published by the Free Software Foundation.
+.PP
+On \fBDebian\fP systems, the complete text of the GNU General Public License can be found in /usr/share/common\-licenses/GPL.

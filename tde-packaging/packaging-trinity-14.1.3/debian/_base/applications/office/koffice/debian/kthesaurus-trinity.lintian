@@ -1,0 +1,2 @@
+kthesaurus-trinity: no-shlibs-control-file opt/trinity/lib/libtdeinit_kthesaurus.so
+kthesaurus-trinity: package-name-doesnt-match-sonames libtdeinit-kthesaurus

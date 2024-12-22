@@ -1,0 +1,4 @@
+application/x-chalk; chalk %s;test=test "$DISPLAY" != ""; priority=7
+image/png; chalk %s;test=test "$DISPLAY" != ""; priority=2
+image/jpeg; chalk %s;test=test "$DISPLAY" != ""; priority=2
+image/gif; chalk %s;test=test "$DISPLAY" != ""; priority=2

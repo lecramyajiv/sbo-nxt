@@ -1,0 +1,8 @@
+[Other Settings]
+Configured=true
+[Path Settings]
+RunlevelPath=/etc/rc.d
+ScriptPath=/etc/rc.d/init.d
+[Runlevels]
+Show Runlevels=0,1,2,3,4,5,6
+

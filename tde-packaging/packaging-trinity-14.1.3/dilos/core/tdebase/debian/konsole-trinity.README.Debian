@@ -1,0 +1,18 @@
+Installing konsole's bitmap fonts
+=================================
+
+Formerly, the few bitmap fonts TDE included, designed for use with Konsole,
+were shipped as part of the xfonts-konsole package. However, as Konsole no
+longer uses these fonts by default, and most users no longer use bitmap
+fonts at all, TDE now includes these fonts with Konsole itself, and Debian
+has followed this practice, including the fonts in the konsole package, and
+eliminating the xfonts-konsole package entirely.
+
+To make use of these legacy fonts, start Konsole, and under Settings --> Font
+select "Install Bitmap...". This will allow you to copy the legacy Konsole
+fonts to $HOME/.fonts, where, after restarting TDE, all applications run by
+that user, including Konsole, will be able to find them. Also make sure that
+fontconfig is configured to allow the use of bitmap fonts. If you're not sure,
+run, as root, 'dpkg-reconfigure fontconfig-config' from Konsole.
+
+ -- jr <jr@lichts.Belkin>, Wed, 14 Nov 2007 14:26:31 +0000

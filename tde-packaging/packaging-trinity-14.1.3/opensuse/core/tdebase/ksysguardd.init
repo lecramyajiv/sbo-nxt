@@ -1,0 +1,80 @@
+#! /bin/sh
+# Copyright (c) 1995-2001 SuSE GmbH Nuernberg, Germany.
+#
+# Author: adrian@suse.de
+#
+# /etc/init.d/ksysguardd
+#   and its symbolic  link
+# /usr/sbin/rcksysguardd
+#
+### BEGIN INIT INFO
+# Provides:          ksysguardd
+# Required-Start:    $time $named
+# Should-Start:      $syslog slpd
+# Required-Stop:     $null
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 4 6
+# Description:       remote monitor daemon for ksysguard
+# Short-Description: remote monitor daemon for ksysguard
+### END INIT INFO
+
+. /etc/rc.status
+test -e /etc/rc.config && source /etc/rc.config
+
+# Determine the base and follow a runlevel link name.
+base=${0##*/}
+link=${base#*[SK][0-9][0-9]}
+
+# Force execution if not called by a runlevel directory.
+test -x /usr/bin/ksysguardd    || exit 0
+
+rc_reset
+case "$1" in
+    start)
+	echo -n "Starting remote monitor daemon for ksysguard "
+
+	/usr/bin/ksysguardd -d -i >/dev/null
+	rc_status -v
+	;;
+    stop)
+        if [ -e /var/run/ksysguardd.pid ]; then
+	   echo -n "Shutting down remote monitor daemon for ksysguard "
+	   killproc -p /var/run/ksysguardd.pid -TERM /usr/bin/ksysguardd
+	   rc_status -v
+        fi
+	;;
+    try-restart|condrestart)
+        if test "$1" = "condrestart"; then
+                echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+        fi
+        $0 status
+        if test $? = 0; then
+                $0 restart
+        else
+                rc_reset        # Not running is not a failure.
+        fi
+        # Remember status and be quiet
+        rc_status
+        ;;
+    restart|force-reload)
+	## If first returns OK call the second, if first or
+	## second command fails, set echo return value.
+	$0 stop; sleep 1  &&  $0 start
+	rc_status
+	;;
+    reload)
+	$0 stop  &&  $0 start
+	rc_status
+	;;
+    status)
+	echo -n "Checking for remote monitor daemon for ksysguard "
+
+        checkproc -p /var/run/ksysguardd.pid /usr/bin/ksysguardd
+	rc_status -v
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|restart|reload|try-restart|force-reload}"
+	exit 1
+	;;
+esac
+rc_exit

@@ -1,0 +1,18 @@
+debian/tmp/opt/trinity/bin/konversation
+debian/tmp/opt/trinity/share/applications/tde/konversation.desktop
+debian/tmp/opt/trinity/share/apps/tdeconf_update/*
+debian/tmp/opt/trinity/share/apps/konversation/eventsrc
+debian/tmp/opt/trinity/share/apps/konversation/konversationui.rc
+debian/tmp/opt/trinity/share/apps/konversation/scripts/*
+debian/tmp/opt/trinity/share/apps/konversation/themes/*
+debian/tmp/opt/trinity/share/config.kcfg/konversation.kcfg
+debian/tmp/opt/trinity/share/doc/tde/HTML/*
+debian/tmp/opt/trinity/share/icons/*
+debian/tmp/opt/trinity/share/locale/*
+debian/tmp/opt/trinity/share/man/man1/*
+debian/tmp/opt/trinity/share/services/konvirc.protocol
+debian/tmp/opt/trinity/share/services/konvirc6.protocol
+
+# Debian menu XPM icons
+debian/*.xpm /opt/trinity/share/pixmaps
+

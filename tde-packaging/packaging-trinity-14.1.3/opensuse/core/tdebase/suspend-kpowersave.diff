@@ -1,0 +1,178 @@
+Subject: Use KPowersave for suspend if available
+From: Lubos Lunak
+Bug: bnc#326848
+Patch-upstream: No
+
+--- kicker/kicker/ui/k_new_mnu.cpp.sav	2008-11-20 10:12:42.000000000 +0100
++++ kicker/kicker/ui/k_new_mnu.cpp	2008-11-20 13:49:20.000000000 +0100
+@@ -3691,6 +3691,9 @@ int KMenu::max_items(int category) const
+ 
+ #ifdef KDELIBS_SUSE
+ #include <liblazy.h>
++
++#include <X11/Xlib.h>
++#include <fixx11h.h>
+ #endif
+ 
+ void KMenu::insertSuspendOption( int &nId, int &index )
+@@ -3699,6 +3702,14 @@ void KMenu::insertSuspendOption( int &nI
+     int supported = -1;
+     bool suspend_ram, suspend_disk, standby;
+ 
++    DCOPRef kpowersave( "kpowersave", "KPowersaveIface" );
++    DCOPReply reply = kpowersave.call( "allowed_sleepingStates" );
++    if( reply.isValid()) {
++        QStringList supported = reply;
++        suspend_ram = supported.contains( "suspendToRAM" );
++        suspend_disk = supported.contains( "suspendToDisk" );
++        standby = supported.contains( "standBy" );
++    } else {
+     liblazy_hal_get_property_bool(HAL_UDI_COMPUTER, "power_management.can_suspend", &supported);
+     if (supported == 1)
+         suspend_ram = true;
+@@ -3721,6 +3732,7 @@ void KMenu::insertSuspendOption( int &nI
+ 	     suspend_ram = false;
+ 	if (liblazy_hal_is_caller_privileged("org.freedesktop.hal.power-management.standby") != 1)
+ 	    standby = false;
++    }
+ 
+ 	if ( ! ( standby + suspend_ram + suspend_disk ) )
+             return;
+@@ -3745,6 +3757,25 @@ void KMenu::slotSuspend(int id)
+ {
+ #ifdef KDELIBS_SUSE
+     int error = 0;
++
++    DCOPRef kpowersave( "kpowersave", "KPowersaveIface" );
++    DCOPReply reply = kpowersave.call( "allowed_sleepingStates" );
++    if( reply.isValid()) {
++	bool ok;
++	extern Time qt_x_time;
++	XUngrabKeyboard( qt_xdisplay(), qt_x_time );
++	XUngrabPointer( qt_xdisplay(), qt_x_time );
++	XSync( qt_xdisplay(), False );
++	if( id == 1 )
++	    ok = kpowersave.call( "do_suspendToDisk" );
++	else if( id == 2 )
++	    ok = kpowersave.call( "do_suspendToRAM" );
++	else if( id == 3 )
++	    ok = kpowersave.call( "do_standBy" );
++	else
++	    return;
++	error = ok ? 0 : 1;
++    } else {
+     int wake = 0;
+     DBusMessage *reply = 0;
+ 
+@@ -3773,6 +3804,8 @@ void KMenu::slotSuspend(int id)
+                                                      DBUS_TYPE_INVALID);
+     else
+         return;
++    }
++
+     if (error)
+ #endif
+         KMessageBox::error(this, i18n("Suspend failed"));
+--- ksmserver/shutdowndlg.cpp.sav	2008-11-20 10:12:41.000000000 +0100
++++ ksmserver/shutdowndlg.cpp	2008-11-20 13:34:19.000000000 +0100
+@@ -40,6 +40,7 @@ Copyright (C) 2000 Matthias Ettrich <ett
+ #include <kdialog.h>
+ #include <kseparator.h>
+ #include <kmessagebox.h>
++#include <dcopref.h>
+ 
+ #include <sys/types.h>
+ #include <sys/utsname.h>
+@@ -264,6 +265,14 @@ KSMShutdownDlg::KSMShutdownDlg( QWidget*
+ 	} else
+             QToolTip::add( btnReboot, i18n( "<qt><h3>Restart Computer</h3><p>Log out of the current session and restart the computer</p></qt>" ) );
+ 
++	DCOPRef kpowersave( "kpowersave", "KPowersaveIface" );
++	DCOPReply reply = kpowersave.call( "allowed_sleepingStates" );
++	if( reply.isValid()) {
++	    QStringList supported = reply;
++	    suspend_ram = supported.contains( "suspendToRAM" );
++	    suspend_disk = supported.contains( "suspendToDisk" );
++	    standby = supported.contains( "standBy" );
++	} else {
+ 	int supported = -1;
+ 	liblazy_hal_get_property_bool(HAL_UDI_COMPUTER, "power_management.can_suspend", &supported);
+ 	if (supported == 1)
+@@ -287,6 +296,7 @@ KSMShutdownDlg::KSMShutdownDlg( QWidget*
+ 	     suspend_ram = false;
+ 	if (liblazy_hal_is_caller_privileged("org.freedesktop.hal.power-management.standby") != 1) 
+ 	    standby = false;
++	}
+ 	
+ 	int sum = standby + suspend_ram + suspend_disk;
+ 	if ( sum ) {
+@@ -325,6 +335,24 @@ KSMShutdownDlg::KSMShutdownDlg( QWidget*
+ void KSMShutdownDlg::slotSuspend()
+ {
+   int error = 0;
++    DCOPRef kpowersave( "kpowersave", "KPowersaveIface" );
++    DCOPReply reply = kpowersave.call( "allowed_sleepingStates" );
++    if( reply.isValid()) {
++	bool ok;
++	// so that screen locking can take place
++	extern Time qt_x_time;
++	XUngrabKeyboard( qt_xdisplay(), qt_x_time );
++	XUngrabPointer( qt_xdisplay(), qt_x_time );
++	XSync( qt_xdisplay(), False );
++	if( suspend_disk )
++	    ok = kpowersave.call( "do_suspendToDisk" );
++	else if( suspend_ram )
++	    ok = kpowersave.call( "do_suspendToRAM" );
++	else
++	    ok = kpowersave.call( "do_standBy" );
++	error = ok ? 0 : 1;
++    } else {
++  
+   int wake = 0;
+   DBusMessage *reply;
+ 
+@@ -351,6 +379,7 @@ void KSMShutdownDlg::slotSuspend()
+ 						    "Standby",
+ 						    &reply,
+ 						    DBUS_TYPE_INVALID);
++    }
+   
+   if (error)
+        KMessageBox::error(this, i18n("Suspend failed"));
+@@ -362,6 +391,27 @@ void KSMShutdownDlg::slotSuspend()
+ void KSMShutdownDlg::slotSuspend(int id)
+ {
+   int error = 0;
++
++    DCOPRef kpowersave( "kpowersave", "KPowersaveIface" );
++    DCOPReply reply = kpowersave.call( "allowed_sleepingStates" );
++    if( reply.isValid()) {
++	bool ok;
++	extern Time qt_x_time;
++	XUngrabKeyboard( qt_xdisplay(), qt_x_time );
++	XUngrabPointer( qt_xdisplay(), qt_x_time );
++	XSync( qt_xdisplay(), False );
++	if( suspend_disk && id == 1 )
++	    ok = kpowersave.call( "do_suspendToDisk" );
++	else if( suspend_ram && id == 2 )
++	    ok = kpowersave.call( "do_suspendToRAM" );
++	else if( standby && id == 3 )
++	    ok = kpowersave.call( "do_standBy" );
++	else
++	    return;
++	error = ok ? 0 : 1;
++    } else {
++
++
+   int wake = 0;
+   DBusMessage *reply;
+ 
+@@ -390,6 +440,8 @@ void KSMShutdownDlg::slotSuspend(int id)
+ 						  DBUS_TYPE_INVALID);
+   else
+        return;
++    }
++
+   if (error)
+        KMessageBox::error(this, i18n("Suspend failed"));
+   

@@ -1,0 +1,9 @@
+?package(kicker-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="Kicker"\
+	icon="/opt/trinity/share/pixmaps/kicker.xpm"\
+	command="/opt/trinity/bin/kicker"
+
+# Icon 16x16 kicker/data/icons/cr16-app-kicker.png kicker.xpm

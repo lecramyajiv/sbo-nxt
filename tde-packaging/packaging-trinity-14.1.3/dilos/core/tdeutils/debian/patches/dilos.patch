@@ -1,0 +1,92 @@
+Index: tdeutils/ConfigureChecks.cmake
+===================================================================
+--- tdeutils.orig/ConfigureChecks.cmake
++++ tdeutils/ConfigureChecks.cmake
+@@ -150,10 +150,12 @@ if ( BUILD_KSIM )
+   check_include_file( "sys/vfs.h"     HAVE_SYS_VFS_H )
+   check_include_file( "sys/mount.h"   HAVE_SYS_MOUNT_H )
+   check_include_file( "mntent.h"      HAVE_MNTENT_H )
++  check_include_file( "sys/mntent.h"  HAVE_SYS_MNTENT_H )
+   check_include_file( "sys/ucred.h"   HAVE_SYS_UCRED_H )
+-  check_include_file( "sys/mnttab.h"  HAVE_SYS_MNTTAB_H )
++  check_include_file( "ucred.h"       HAVE_UCRED_H )
++  check_include_files( "stdio.h;sys/mnttab.h"  HAVE_SYS_MNTTAB_H )
+ 
+-  check_include_file( "sys/loadavg.h"  HAVE_SYS_LOADAVG_H )
++  check_include_files( "sys/time.h;sys/loadavg.h"  HAVE_SYS_LOADAVG_H )
+   check_function_exists( getloadavg    HAVE_GETLOADAVG )
+   check_function_exists( statfs        HAVE_STATFS )
+   check_function_exists( statvfs       HAVE_STATVFS )
+Index: tdeutils/ksim/monitors/filesystem/filesystemstats.cpp
+===================================================================
+--- tdeutils.orig/ksim/monitors/filesystem/filesystemstats.cpp
++++ tdeutils/ksim/monitors/filesystem/filesystemstats.cpp
+@@ -30,6 +30,10 @@
+ #include <sys/types.h>
+ #include <sys/param.h>
+ 
++#ifdef	__dilos__
++#include <ucred.h>
++#endif	/* __dilos__ */
++
+ #if defined(HAVE_SYS_STATVFS_H)
+ #include <sys/statvfs.h>
+ #elif defined( HAVE_SYS_STATFS_H )
+@@ -47,6 +51,10 @@
+ #define _PATH_MOUNTED MNTTAB
+ #endif
+ #endif
++#ifdef HAVE_SYS_MNTENT_H
++#include <sys/mntent.h>
++#define _PATH_MOUNTED MNTTAB
++#endif
+ #ifdef HAVE_SYS_UCRED_H
+ #include <sys/ucred.h>
+ #endif
+@@ -133,6 +141,21 @@ ksim_mntent * ksim_getmntent( FILE * fil
+ }
+ 
+ #define delete_mntent( x )
++#elif defined(HAVE_SYS_MNTENT_H)
++#define USE_MNTENT
++
++// Dummy setup
++typedef struct mnttab ksim_mntent;
++ksim_mntent * ksim_getmntent( FILE * file )
++{
++	static ksim_mntent	ent;
++	if (getmntent(file, &ent) == 0)
++		return (&ent);
++
++	return (NULL);
++}
++
++#define delete_mntent( x )
+ #elif defined( HAVE_GETMNTINFO )
+ #define USE_MNTINFO
+ #else
+Index: tdeutils/ksim/systeminfo.cpp
+===================================================================
+--- tdeutils.orig/ksim/systeminfo.cpp
++++ tdeutils/ksim/systeminfo.cpp
+@@ -32,7 +32,7 @@
+ #include <linux/kernel.h>
+ #endif
+ 
+-#ifdef HAVE_SYS_LOADAVG_H
++#if	defined(HAVE_SYS_LOADAVG_H) || defined(__dilos__)
+ #include <sys/loadavg.h>
+ #endif
+ 
+Index: tdeutils/config.h.cmake
+===================================================================
+--- tdeutils.orig/config.h.cmake
++++ tdeutils/config.h.cmake
+@@ -82,6 +82,7 @@
+ #cmakedefine HAVE_SYS_VFS_H
+ #cmakedefine HAVE_SYS_MOUNT_H
+ #cmakedefine HAVE_MNTENT_H
++#cmakedefine HAVE_SYS_MNTENT_H
+ #cmakedefine HAVE_SYS_UCRED_H
+ #cmakedefine HAVE_SYS_MNTTAB_H
+ #cmakedefine HAVE_SYS_LOADAVG_H

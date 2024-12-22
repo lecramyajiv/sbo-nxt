@@ -1,0 +1,21 @@
+Source: compizconfig-backend-tdeconfig-trinity
+Section: libs
+Priority: extra
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, compiz-trinity-dev, pkg-config, tdelibs14-trinity-dev, libcompizconfig0-trinity-dev
+Standards-Version: 3.8.4
+
+Package: compizconfig-backend-tdeconfig-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: compizconfig-backend-kconfig-trinity (<< 4:14.0.0~)
+Breaks: compizconfig-backend-kconfig-trinity (<< 4:14.0.0~)
+Conflicts: libcompizconfig-backend-tdeconfig-trinity
+Description: TDEConfig [Trinity] Settings library for plugins - OpenCompositing Project
+ The OpenCompositing Project brings 3D desktop visual effects that improve
+ usability of the X Window System and provide increased productivity
+ through plugins and themes contributed by the community giving a
+ rich desktop experience.
+ .
+ This package contains the TDEConfig (Trinity) settings backend for
+ libcompizconfig.

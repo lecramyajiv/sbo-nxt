@@ -1,0 +1,13 @@
+Index: src/qt.pro
+===================================================================
+--- src/qt.pro.orig
++++ src/qt.pro
+@@ -41,6 +41,8 @@ INPUTMETHOD_CPP	= inputmethod
+ XML_CPP	        = xml
+ STYLES_CPP	= styles
+ EMBEDDED_CPP	= embedded
++TQMAKE_CFLAGS += -fno-strict-aliasing
++TQMAKE_CFLAGS_MT += -fno-strict-aliasing
+ 
+ win32 {
+ 	contains(QT_PRODUCT,qt-internal) {

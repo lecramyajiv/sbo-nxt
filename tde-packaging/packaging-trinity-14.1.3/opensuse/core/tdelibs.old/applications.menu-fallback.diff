@@ -1,0 +1,19 @@
+Index: kded/kbuildsycoca.cpp
+===================================================================
+--- kded/kbuildsycoca.cpp.orig
++++ kded/kbuildsycoca.cpp
+@@ -378,8 +378,12 @@ bool KBuildSycoca::build()
+ 
+      connect(g_vfolder, SIGNAL(newService(const QString &, KService **)),
+              this, SLOT(slotCreateEntry(const QString &, KService **)));
+-             
+-     VFolderMenu::SubMenu *kdeMenu = g_vfolder->parseMenu("applications.menu", true);
++
++     VFolderMenu::SubMenu *kdeMenu;
++     if ( QFile::exists( "/etc/xdg/menus/applications.menu" ) )
++        kdeMenu = g_vfolder->parseMenu("applications.menu", true);
++     else
++        kdeMenu = g_vfolder->parseMenu("applications.menu.kde", true);
+ 
+      KServiceGroup *entry = g_bsgf->addNew("/", kdeMenu->directoryFile, 0, false);
+      entry->setLayoutInfo(kdeMenu->layoutList);

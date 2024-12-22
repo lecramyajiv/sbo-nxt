@@ -1,0 +1,26 @@
+debian/tmp/usr/bin/kghostview
+debian/tmp/usr/lib/*/trinity/libkghostviewpart.la
+debian/tmp/usr/lib/*/trinity/libkghostviewpart.so
+debian/tmp/usr/lib/*/libkghostviewlib.so.0
+debian/tmp/usr/lib/*/libkghostviewlib.so.0.0.0
+debian/tmp/usr/share/applications/tde/kghostview.desktop
+debian/tmp/usr/share/apps/tdeconf_update/kghostview.upd
+debian/tmp/usr/share/apps/tdeconf_update/update-to-xt-names.pl
+debian/tmp/usr/share/apps/kghostview/kghostviewui.rc
+debian/tmp/usr/share/apps/kghostview/kgv_part.rc
+debian/tmp/usr/share/apps/kghostview/pdf_sec.ps
+debian/tmp/usr/share/config.kcfg/kghostview.kcfg
+debian/tmp/usr/share/doc/tde/HTML/en/kghostview/common
+debian/tmp/usr/share/doc/tde/HTML/en/kghostview/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kghostview/index.docbook
+debian/tmp/usr/share/icons/hicolor/128x128/apps/kghostview.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kghostview.png
+debian/tmp/usr/share/icons/hicolor/22x22/apps/kghostview.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kghostview.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kghostview.png
+debian/tmp/usr/share/icons/hicolor/64x64/apps/kghostview.png
+debian/tmp/usr/share/man/man1/kghostview.1
+debian/tmp/usr/share/services/kghostview_part.desktop
+
+debian/icons/kghostview.xpm		/usr/share/pixmaps
+debian/icons/kghostview-16.xpm		/usr/share/pixmaps

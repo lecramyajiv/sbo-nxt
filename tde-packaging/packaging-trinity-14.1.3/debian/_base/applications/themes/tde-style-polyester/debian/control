@@ -1,0 +1,15 @@
+Source: tde-style-polyester-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Sune Vuorela <debian@pusling.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs-trinity-dev, tdebase-trinity-dev, librsvg2-bin
+Standards-Version: 3.7.3
+
+Package: tde-style-polyester-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Polyester widget style and twin decoration for TDE
+ Widget style and twin decoration both aim to maintain a good balance between
+ eyecandy and simplicity. Widget style is based on Plastik, window decoration
+ is based on Smoothblend.

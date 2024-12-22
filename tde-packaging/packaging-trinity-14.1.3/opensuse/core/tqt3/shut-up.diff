@@ -1,0 +1,52 @@
+Index: src/kernel/qpixmap_x11.cpp
+===================================================================
+--- src/kernel/qpixmap_x11.cpp.orig
++++ src/kernel/qpixmap_x11.cpp
+@@ -394,8 +394,9 @@ void TQPixmap::init( int w, int h, int d
+ {
+ #if defined(QT_CHECK_STATE)
+     if ( tqApp->type() == TQApplication::Tty ) {
+-	tqWarning( "TQPixmap: Cannot create a TQPixmap when no GUI "
+-		  "is being used" );
++//	tqWarning( "TQPixmap: Cannot create a TQPixmap when no GUI "
++//		  "is being used" );
++	;
+     }
+ #endif
+ 
+Index: src/tools/qcomlibrary.cpp
+===================================================================
+--- src/tools/qcomlibrary.cpp.orig
++++ src/tools/qcomlibrary.cpp
+@@ -105,27 +105,13 @@ static bool qt_verify( const TQString& l
+ 		      (const char*) TQFile::encodeName(library) );
+     } else if ( ( version > TQT_VERSION ) ||
+ 		( ( TQT_VERSION & 0xff0000 ) > ( version & 0xff0000 ) ) ) {
+-	if ( warn )
+-	    tqWarning( "Conflict in %s:\n"
+-		      "  Plugin uses incompatible TQt library (%d.%d.%d)!",
+-		      (const char*) TQFile::encodeName(library),
+-		      (version&0xff0000) >> 16, (version&0xff00) >> 8, version&0xff );
++		return FALSE;
+     } else if ( (flags & 2) != (our_flags & 2) ) {
+-	if ( warn )
+-	    tqWarning( "Conflict in %s:\n"
+-		      "  Plugin uses %s TQt library!",
+-		      (const char*) TQFile::encodeName(library),
+-		      (flags & 2) ? "multi threaded" : "single threaded" );
++		return FALSE;
+     } else if ( key != TQT_BUILD_KEY ) {
+-	if ( warn )
+-	    tqWarning( "Conflict in %s:\n"
+-		      "  Plugin uses incompatible TQt library!\n"
+-		      "  expected build key \"%s\", got \"%s\".",
+-		      (const char*) TQFile::encodeName(library),
+-		      TQT_BUILD_KEY,
+-		      key.isEmpty() ? "<null>" : (const char *) key );
++		return FALSE;
+     } else {
+-	return TRUE;
++		return TRUE;
+     }
+     return FALSE;
+ }

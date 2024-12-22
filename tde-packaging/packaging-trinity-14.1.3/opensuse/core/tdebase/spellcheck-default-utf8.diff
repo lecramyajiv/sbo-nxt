@@ -1,0 +1,13 @@
+Index: kcontrol/spellchecking/spellchecking.cpp
+===================================================================
+--- kcontrol/spellchecking/spellchecking.cpp.orig
++++ kcontrol/spellchecking/spellchecking.cpp
+@@ -67,7 +67,7 @@ void KSpellCheckingConfig::defaults()
+     spellConfig->setRunTogether(0);
+     spellConfig->setDictionary("");
+     spellConfig->setDictFromList(FALSE);
+-    spellConfig->setEncoding (KS_E_ASCII);
++    spellConfig->setEncoding (KS_E_UTF8);
+     spellConfig->setClient (KS_CLIENT_ISPELL);
+ }
+ 

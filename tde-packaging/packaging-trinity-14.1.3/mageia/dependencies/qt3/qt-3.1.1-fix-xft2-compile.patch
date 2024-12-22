@@ -1,0 +1,13 @@
+--- qt-x11-free-3.1.1/config.tests/x11/xfreetype.test--	2002-12-17 17:26:19.000000000 +0100
++++ qt-x11-free-3.1.1/config.tests/x11/xfreetype.test	2002-12-17 17:36:31.000000000 +0100
+@@ -6,8 +6,8 @@ VERBOSE=$2
+ SRCDIR=$3
+ OUTDIR=$4
+ shift 4
+-IN_LIBDIRS=""
+-IN_INCDIRS=""
++IN_LIBDIRS="/usr/lib/"
++IN_INCDIRS="/usr/include/fontconfig /usr/include/Xft2 /usr/include/Xft2/X11/Xft"
+ PARAMS=$@
+ for PARAM in $PARAMS; do
+     PREFIX=`echo $PARAM | sed 's/^\(..\).*/\1/'`

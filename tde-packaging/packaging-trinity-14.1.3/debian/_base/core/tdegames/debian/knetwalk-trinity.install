@@ -1,0 +1,10 @@
+/opt/trinity/games/knetwalk
+/opt/trinity/share/applications/tde/knetwalk.desktop
+/opt/trinity/share/apps/knetwalk
+/opt/trinity/share/icons/hicolor/22x22/apps/knetwalk.png
+/opt/trinity/share/icons/hicolor/32x32/apps/knetwalk.png
+/opt/trinity/share/icons/hicolor/64x64/apps/knetwalk.png
+/opt/trinity/share/icons/hicolor/128x128/apps/knetwalk.png
+/opt/trinity/share/man/man6/knetwalk.6
+../icons/knetwalk.xpm /opt/trinity/share/pixmaps
+../icons/knetwalk-16.xpm /opt/trinity/share/pixmaps

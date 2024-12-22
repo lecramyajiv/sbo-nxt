@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-ksokoban
+Title: The KSokoban Handbook
+Author: Anders Widell
+Abstract: KSokoban is a TDE implementation of the Japanese warehouse
+ keeper game sokoban. This document describes KSobona version 0.4.2.
+Section: Games/Puzzles
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/ksokoban/index.html
+Files: /usr/share/doc/tde/HTML/en/ksokoban/*.html

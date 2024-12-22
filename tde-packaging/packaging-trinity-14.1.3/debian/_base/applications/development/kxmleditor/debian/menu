@@ -1,0 +1,6 @@
+?package(kxmleditor-trinity):\
+  needs="X11"\
+  section="Apps/Editors"\
+  title="kxmleditor"\
+  hints="TDE"\
+  command="/opt/trinity/bin/kxmleditor"

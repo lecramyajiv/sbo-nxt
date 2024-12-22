@@ -1,0 +1,9 @@
+Document: kwordquiz
+Title: KWordQuiz Handbook
+Author: Peter Hedlund <peter@peterandlinda.com>
+Abstract: KWordQuiz is a flashcard and vocabulary learning program for TDE.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kwordquiz/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kwordquiz/*.html

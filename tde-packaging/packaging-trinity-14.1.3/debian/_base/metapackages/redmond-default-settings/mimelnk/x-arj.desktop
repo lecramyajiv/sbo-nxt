@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Archive ARJ
+Hidden=false
+Patterns=*.arj;*.ARJ
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

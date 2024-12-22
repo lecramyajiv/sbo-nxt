@@ -1,0 +1,17 @@
+debian/tmp/usr/bin/xf86gammacfg
+debian/tmp/usr/lib/*/trinity/kcm_kgamma.la
+debian/tmp/usr/lib/*/trinity/kcm_kgamma.so
+debian/tmp/usr/share/applnk/.hidden/kgamma.desktop
+debian/tmp/usr/share/apps/kgamma/pics/background.png
+debian/tmp/usr/share/apps/kgamma/pics/cmyscale.png
+debian/tmp/usr/share/apps/kgamma/pics/darkgrey.png
+debian/tmp/usr/share/apps/kgamma/pics/greyscale.png
+debian/tmp/usr/share/apps/kgamma/pics/lightgrey.png
+debian/tmp/usr/share/apps/kgamma/pics/midgrey.png
+debian/tmp/usr/share/apps/kgamma/pics/rgbscale.png
+debian/tmp/usr/share/doc/tde/HTML/en/kgamma/common
+debian/tmp/usr/share/doc/tde/HTML/en/kgamma/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kgamma/index.docbook
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kgamma.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kgamma.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kgamma.png

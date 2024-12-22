@@ -1,0 +1,242 @@
+knutclient-trinity (0.9.5-0ubuntu1) karmic; urgency=low
+
+  * Karmic build
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 09 Dec 2009 21:24:00 -0600
+
+knutclient (0.9.5-1ubuntu1) karmic; urgency=low
+
+  * Merge from debian unstable (LP: #369649), remaining changes:
+    - debian/rules: Dropped arts support by adding --without-arts parameter to
+      configure script call
+    - debian/rules: Use dh_icons
+
+ -- Fabrice Coutadeur <fabricesp@ubuntu.com>  Thu, 30 Apr 2009 05:42:32 +0200
+
+knutclient (0.9.5-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/rules: remove the empty TODO file from dh_installdocs
+  * debian/control: add a missing comma on Depends
+
+ -- Arnaud Quette <aquette@debian.org>  Mon, 30 Mar 2009 09:29:30 +0200
+
+knutclient (0.9.4-1ubuntu2) jaunty; urgency=low
+
+  * debian/rules: added --without-arts parameter to configure script call to
+    rebuild without arts support (LP: #320915)
+
+ -- Fabrice Coutadeur <fabricesp@ubuntu.com>  Sat, 18 Apr 2009 05:54:52 +0000
+
+knutclient (0.9.4-1ubuntu1) jaunty; urgency=low
+
+  * Merge from Debian unstable. Remaining Ubuntu changes:
+    - debian/rules: Use dh_icons
+
+ -- Andreas Wenning <awen@awen.dk>  Tue, 11 Nov 2008 19:17:11 +0100
+
+knutclient (0.9.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Merge back Ubuntu changes
+  * debian/knutclient.menu: update section to fix lintian warnings
+  * debian/watch: update the pattern for matching new releases (Closes: #471247)
+  * debian/control:
+    - move Homepage to the field and update the URL
+    - update Standards-Version to 3.8.0
+    - update debhelper Build-Depends to 5.0.51
+    - add automake and autoconf to Build-Depends
+    - update NUT URL
+  * debian/rules:
+    - fix lintian warning debian-rules-ignores-make-clean-error
+    - add a commented call to dh_icons
+
+ -- Arnaud Quette <aquette@debian.org>  Thu, 19 Jun 2008 11:09:50 +0200
+
+knutclient (0.9.3-1.1ubuntu1) intrepid; urgency=low
+
+  * Merge from debian unstable, remaining changes:
+    - debian/rules:
+      + Replace dh_iconcache with dh_icons.
+      + Fix lintian warning: debian-rules-ignores-make-clean-error
+    - debian/control:
+      + Build-depend on debhelper >= 5.0.51 (for dh_icons).
+      + MOTU maintainer update
+  * debian/control:
+    + Add Homepage field and update homepage
+
+ -- Andreas Wenning <awen@awen.dk>  Tue, 03 Jun 2008 23:32:28 +0200
+
+knutclient (0.9.3-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix gcc-4.3 FTBFS, patch by KiBi (Closes: #455358)
+
+ -- Marc 'HE' Brockschmidt <he@debian.org>  Sun, 16 Mar 2008 18:36:10 +0100
+
+knutclient (0.9.3-1ubuntu2) hardy; urgency=low
+
+  * debian/rules:
+    + Replace dh_iconcache with dh_icons.
+    + Fix lintian warning: debian-rules-ignores-make-clean-error
+  * debian/control:
+    + Build-depend on debhelper >= 5.0.51 (for dh_icons).
+
+ -- Michael Bienia <geser@ubuntu.com>  Sun, 02 Mar 2008 01:08:40 +0100
+
+knutclient (0.9.3-1ubuntu1) feisty; urgency=low
+
+  * UVE Exception: New Upstream release
+  * Fixes BTS #410405 (FTBFS on x86_64)
+  * debian/rules:
+    - commented out dh_iconcache call
+  * debian/control:
+    - Added Ubuntu MOTU Maintainer Field
+    - Moved old Maintainer field to Original-Maintainer
+  * debian/changelog:
+    - Merged Ubuntu Changelog entries
+
+ -- Stephan Hermann <sh@sourcecode.de>  Thu,  8 Mar 2007 16:08:31 +0100
+
+knutclient (0.9.3-1) unstable; urgency=low
+
+  * New upstream release (Closes: #410405)
+  * debian/watch: remove the stable directory from the URL. This symlink seems
+    to break uscan.
+  * debian/rules: add a commented call to dh_iconcache (Ubuntu patch)
+
+ -- Arnaud Quette <aquette@debian.org>  Mon, 19 Feb 2007 09:36:52 +0100
+
+knutclient (0.9.2-1) unstable; urgency=low
+
+  * New upstream release (Closes: #337211)
+  * debian/control: update the Standards-Version to 3.7.2
+  * debian/rules: dh_clean also suppress po/*gmo in the clean rule
+
+ -- Arnaud Quette <aquette@debian.org>  Thu,  8 Feb 2007 12:58:35 +0100
+
+knutclient (0.8.6-2ubuntu1) dapper; urgency=low
+
+  * Added dh_iconcache
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Sat, 13 May 2006 21:04:15 +1000
+
+knutclient (0.8.6-2build1) dapper; urgency=low
+
+  * Rebuild KDE universe for libstdc++ transition
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 17 Dec 2005 16:24:48 +0000
+
+knutclient (0.8.6-2) unstable; urgency=low
+
+  * Rebuilt against KDE 3.4 with g++-4 for the C++ ABI transition
+    (closes: #327959). Build-dependencies and shlibs updated accordingly.
+  * debian/control: change Section to kde, and rework a bit the Homepage URL
+
+ -- Arnaud Quette <aquette@debian.org>  Tue, 13 Sep 2005 11:12:18 +0200
+
+knutclient (0.8.6-1) unstable; urgency=low
+
+  * New upstream release (closes: #314005)
+  * debian/control: update Standard to 3.6.2
+
+ -- Arnaud Quette <aquette@debian.org>  Tue, 19 Jul 2005 09:03:18 +0200
+
+knutclient (0.8.5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Arnaud Quette <aquette@debian.org>  Sun, 17 Oct 2004 20:01:05 +0200
+
+knutclient (0.8.4-1) unstable; urgency=low
+
+  * New upstream release (closes: #265446)
+  * debian/watch: update to new format
+  * debian/knutclient.menu: change section to System
+
+ -- Arnaud Quette <aquette@debian.org>  Sat, 11 Sep 2004 21:32:08 +0200
+
+knutclient (0.8.3-1) unstable; urgency=low
+
+  * New upstream release (closes: #259038)
+  * debian/rules: properly install menu file by fixing dh_installmenu call
+
+ -- Arnaud Quette <aquette@debian.org>  Thu, 12 Aug 2004 22:24:08 +0200
+
+knutclient (0.8.2-2) unstable; urgency=low
+
+  * debian/knutclient.menu: renamed from debian/menu
+  * debian/knutclient.menu: reformat, complete command path and quotes strings
+  * debian.knutclient.1x: change forgotten section, and update NUT URL
+
+ -- Arnaud Quette <aquette@debian.org>  Thu,  8 Jul 2004 21:16:23 +0200
+
+knutclient (0.8.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Arnaud Quette <aquette@debian.org>  Thu,  8 Jul 2004 13:26:43 +0200
+
+knutclient (0.8.1-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/watch: update target
+
+ -- Arnaud Quette <aquette@debian.org>  Tue, 20 Apr 2004 21:08:38 +0200
+
+knutclient (0.7.5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Arnaud Quette <aquette@debian.org>  Sat, 14 Feb 2004 14:06:54 +0100
+
+knutclient (0.7.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Arnaud Quette <aquette@debian.org>  Wed, 21 Jan 2004 22:17:05 +0100
+
+knutclient (0.7.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Arnaud Quette <aquette@debian.org>  Wed,  5 Nov 2003 18:45:06 +0100
+
+knutclient (0.7.2-release-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/rules: add --enable-mt to configure call
+
+ -- Arnaud Quette <aquette@debian.org>  Sat, 18 Oct 2003 15:52:04 +0200
+
+knutclient (0.7.2-pre2-1) unstable; urgency=low
+
+  * New upstream release
+    * admin/debianrules has been updated to fix KDE doc path
+      problems (thanks to Ben Burton) (closes: Bug#210962)
+  * debian/preinst: add script for cleaning /usr/share/doc/tde/HTML/*/knutclient/
+    on upgrading from previous release
+  * debian/control: add Homepage to Description
+  * debian/control: change maintainer address to the good debian's one
+
+ -- Arnaud Quette <aquette@debian.org>  Sun, 12 Oct 2003 18:32:02 +0200
+
+knutclient (0.7.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Arnaud Quette <arnaud.quette@debian.org>  Thu, 11 Sep 2003 21:25:22 +0200
+
+knutclient (0.7.0-release-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control: change Maintainer address to debian.org
+
+ -- Arnaud Quette <arnaud.quette@debian.org>  Thu,  4 Sep 2003 23:42:05 +0200
+
+knutclient (0.7.0-pre2-1) unstable; urgency=low
+
+  * Initial Release (closes: Bug#201015).
+
+ -- Arnaud Quette <arnaud.quette@free.fr>  Tue, 19 Aug 2003 18:44:47 +0200
+

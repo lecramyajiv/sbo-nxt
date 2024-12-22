@@ -1,0 +1,2 @@
+kplato-trinity: no-shlibs-control-file opt/trinity/lib/libtdeinit_kplato.so
+kplato-trinity: package-name-doesnt-match-sonames libtdeinit-kplato

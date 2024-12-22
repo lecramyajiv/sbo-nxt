@@ -1,0 +1,10 @@
+Document: tdeaccessibility-doc-html-kmag
+Title: KMag Handbook
+Author: Sarang Lakare 
+Abstract: KMag is a screen magnifier.
+Section: Apps/Utils 
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kmag/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kmag/*.html
+

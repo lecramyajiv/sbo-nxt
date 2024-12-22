@@ -1,0 +1,16 @@
+Index: kio/kio/kservice.cpp
+===================================================================
+--- kio/kio/kservice.cpp.orig
++++ kio/kio/kservice.cpp
+@@ -249,7 +249,10 @@ KService::init( KDesktopFile *config )
+   m_bAllowAsDefault = config->readBoolEntry( "AllowDefault", true );
+   entryMap.remove("AllowDefault");
+ 
+-  m_initialPreference = config->readNumEntry( "InitialPreference", 1 );
++  m_initialPreference = config->readNumEntry( "X-KDE-InitialPreference", 1 );
++  entryMap.remove("X-KDE-InitialPreference");
++  if ( m_initialPreference == 1 )
++     m_initialPreference = config->readNumEntry( "InitialPreference", 1 );
+   entryMap.remove("InitialPreference");
+ 
+   // Store all additional entries in the property map.

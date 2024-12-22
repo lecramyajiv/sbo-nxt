@@ -1,0 +1,11 @@
+Document: tdemultimedia-doc-html-kscd
+Title: KsCD Handbook
+Author: Jonathan Singer, David White, Bernd Johannes Wuebben,
+ Dirk Foersterling, Lauri Watts
+Abstract: KsCD is a small, fast, CDDB-enabled audio CD player for TDE.
+Section: Apps/Music
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kscd/index.html
+Files: /usr/share/doc/tde/HTML/en/kscd/*.html
+

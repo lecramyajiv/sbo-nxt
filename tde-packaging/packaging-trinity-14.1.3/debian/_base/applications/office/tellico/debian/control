@@ -1,0 +1,79 @@
+Source: tellico-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Regis Boudin <regis@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build,
+ tdelibs14-trinity-dev, tdemultimedia-trinity-dev, libtdepim1-trinity-dev,
+ libxml2-dev, libxslt1-dev, libtag1-dev, libyaz-dev,
+ libpoppler-tqt-dev, libexempi-dev, libbtparse-dev, libv4l-dev, dh-python
+Standards-Version: 3.8.4
+Homepage: http://periapsis.org/tellico/
+
+Package: tellico-trinity
+Architecture: any
+Depends: tellico-data-trinity (= ${source:Version}), tellico-scripts-trinity, ${shlibs:Depends}
+Replaces: tellico-trinity (<< 4:14.0.0~)
+Breaks: tellico-trinity (<< 4:14.0.0~)
+Description: collection manager for books, videos, music [Trinity]
+ Tellico is a collection manager for TDE. It includes default collections for
+ books, bibliographies, comic books, videos, music, coins, stamps, trading
+ cards, and wines, and also allows custom collections; with unlimited
+ user-defined fields allowed. Automatically formatted names, sorting by any
+ property, filters, automatic ISBN validation and full customization for
+ printing or display through XSLT files are some of the features present. It
+ can import CSV, RIS, BibTeX, and BibTeXML files; and export CSV, HTML, BibTeX,
+ BibTeXML, and PilotDB. Tellico can also import data from Amazon, IMDb, CDDB,
+ or any US-MARC compliant z39.50 server.
+ .
+ The files are stored in XML format, avoiding the need for database server.
+ It also makes it easy for other softwares to use the Tellico data.
+
+Package: tellico-data-trinity
+Architecture: all
+Depends: tdelibs-data-trinity, ${python3:Depends}
+Replaces: tellico-data-trinity (<< 4:14.0.0~)
+Breaks: tellico-data-trinity (<< 4:14.0.0~)
+Recommends: tellico-trinity
+Suggests: python3-all
+Description: collection manager for books, videos, music [data] [Trinity]
+ Tellico is a collection manager for TDE. It includes default collections for
+ books, bibliographies, comic books, videos, music, coins, stamps, trading
+ cards, and wines, and also allows custom collections; with unlimited
+ user-defined fields allowed. Automatically formatted names, sorting by any
+ property, filters, automatic ISBN validation and full customization for
+ printing or display through XSLT files are some of the features present. It
+ can import CSV, RIS, BibTeX, and BibTeXML files; and export CSV, HTML, BibTeX,
+ BibTeXML, and PilotDB. Tellico can also import data from Amazon, IMDb, CDDB,
+ or any US-MARC compliant z39.50 server.
+ .
+ The files are stored in XML format, avoiding the need for database server.
+ It also makes it easy for other softwares to use the Tellico data.
+ .
+ This package contains the architecture independent files, such data files and
+ documentation.
+
+Package: tellico-scripts-trinity
+Architecture: all
+Depends: ${python3:Depends}
+Recommends: tellico-trinity
+Replaces: tellico-scripts-trinity (<< 4:14.0.0~)
+Breaks: tellico-scripts-trinity (<< 4:14.0.0~)
+Suggests: python3-all, ruby
+Description: collection manager for books, videos, music [scripts] [Trinity]
+ Tellico is a collection manager for TDE. It includes default collections for
+ books, bibliographies, comic books, videos, music, coins, stamps, trading
+ cards, and wines, and also allows custom collections; with unlimited
+ user-defined fields allowed. Automatically formatted names, sorting by any
+ property, filters, automatic ISBN validation and full customization for
+ printing or display through XSLT files are some of the features present. It
+ can import CSV, RIS, BibTeX, and BibTeXML files; and export CSV, HTML, BibTeX,
+ BibTeXML, and PilotDB. Tellico can also import data from Amazon, IMDb, CDDB,
+ or any US-MARC compliant z39.50 server.
+ .
+ The files are stored in XML format, avoiding the need for database server.
+ It also makes it easy for other softwares to use the Tellico data.
+ .
+ This package contains the scripts to import data from external sources, such
+ as websites. As the format of the data may change, these scripts are provided
+ as a separate package which can be updated through debian-volatile.

@@ -1,0 +1,45 @@
+--- src/kernel/qpixmap_x11.cpp
++++ src/kernel/qpixmap_x11.cpp
+@@ -394,8 +394,9 @@
+ {
+ #if defined(QT_CHECK_STATE)
+     if ( qApp->type() == QApplication::Tty ) {
+-	qWarning( "QPixmap: Cannot create a QPixmap when no GUI "
+-		  "is being used" );
++//	qWarning( "QPixmap: Cannot create a QPixmap when no GUI "
++//		  "is being used" );
++       ;
+     }
+ #endif
+ 
+--- src/tools/qcomlibrary.cpp
++++ src/tools/qcomlibrary.cpp
+@@ -105,25 +105,11 @@
+ 		      (const char*) QFile::encodeName(library) );
+     } else if ( ( version > QT_VERSION ) ||
+ 		( ( QT_VERSION & 0xff0000 ) > ( version & 0xff0000 ) ) ) {
+-	if ( warn )
+-	    qWarning( "Conflict in %s:\n"
+-		      "  Plugin uses incompatible Qt library (%d.%d.%d)!",
+-		      (const char*) QFile::encodeName(library),
+-		      (version&0xff0000) >> 16, (version&0xff00) >> 8, version&0xff );
++	return FALSE;
+     } else if ( (flags & 2) != (our_flags & 2) ) {
+-	if ( warn )
+-	    qWarning( "Conflict in %s:\n"
+-		      "  Plugin uses %s Qt library!",
+-		      (const char*) QFile::encodeName(library),
+-		      (flags & 2) ? "multi threaded" : "single threaded" );
++	return FALSE;
+     } else if ( key != QT_BUILD_KEY ) {
+-	if ( warn )
+-	    qWarning( "Conflict in %s:\n"
+-		      "  Plugin uses incompatible Qt library!\n"
+-		      "  expected build key \"%s\", got \"%s\".",
+-		      (const char*) QFile::encodeName(library),
+-		      QT_BUILD_KEY,
+-		      key.isEmpty() ? "<null>" : (const char *) key );
++	return FALSE;
+     } else {
+ 	return TRUE;
+     }

@@ -1,0 +1,9 @@
+?package(konquest-trinity):\
+	needs="x11"\
+	section="Games/Strategy"\
+	hints="TDE"\
+	title="Konquest"\
+	icon32x32="/opt/trinity/share/pixmaps/konquest.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/konquest-16.xpm"\
+	command="/opt/trinity/games/konquest"
+

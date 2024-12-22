@@ -1,0 +1,103 @@
+Index: kernel/qasyncimageio.cpp
+================================================================================
+--- src/kernel/qasyncimageio.cpp
++++ src/kernel/qasyncimageio.cpp
+@@ -904,7 +904,12 @@
+ 		    sheight = newtop + newheight;
+ 
+ 		if (img.isNull()) {
+-		    img.create(swidth, sheight, 32);
++		    bool ok = img.create(swidth, sheight, 32);
++		    if (!ok)
++		    {
++			state = Error;
++			break;
++		    }
+ 		    memset( img.bits(), 0, img.numBytes() );
+ 		    if (consumer) consumer->setSize(swidth, sheight);
+ 		}
+@@ -959,9 +964,15 @@
+ 		    if (backingstore.width() < w
+ 			|| backingstore.height() < h) {
+ 			// We just use the backing store as a byte array
+-			backingstore.create( QMAX(backingstore.width(), w),
++			bool ok = backingstore.create(
++			                     QMAX(backingstore.width(), w),
+ 					     QMAX(backingstore.height(), h),
+ 					     32);
++			if (!ok)
++			{
++			    state = Error;
++			    break;
++			}
+ 			memset( img.bits(), 0, img.numBytes() );
+ 		    }
+ 		    for (int ln=0; ln<h; ln++) {
+--- src/kernel/qimage.cpp
++++ src/kernel/qimage.cpp
+@@ -68,6 +68,8 @@
+ #define QT_NO_IMAGE_16_BIT
+ #endif
+ 
++int qt_max_image_height = 0;
++int qt_max_image_width = 0;
+ 
+ /*!
+     \class QImage
+@@ -1211,6 +1213,28 @@
+     data->alpha = enable;
+ }
+ 
++QSize QImage::maxImageSize()
++{
++    if (!qt_max_image_height || !qt_max_image_width)
++       return QSize();
++    return QSize(qt_max_image_height, qt_max_image_width);
++}
++
++void QImage::setMaxImageSize(const QSize &size)
++{
++    if (size.isValid())
++    {
++        qt_max_image_height = size.height();
++        qt_max_image_width = size.width();
++    }
++    else
++    {
++        qt_max_image_height = 0;
++        qt_max_image_width = 0;
++    }
++}
++
++
+ 
+ /*!
+     Sets the image \a width, \a height, \a depth, its number of colors
+@@ -1240,6 +1264,14 @@
+     reset();					// reset old data
+     if ( width <= 0 || height <= 0 || depth <= 0 || numColors < 0 )
+ 	return FALSE;				// invalid parameter(s)
++    if ( qt_max_image_height && (height > qt_max_image_height * 4))
++        return FALSE; // Too high
++    if ( qt_max_image_width && (width > qt_max_image_width * 4))
++        return FALSE; // Too wide
++    if ( qt_max_image_height && qt_max_image_width &&
++         (height * width > qt_max_image_height * qt_max_image_width))
++        return FALSE; // Too large
++    
+     if ( depth == 1 && bitOrder == IgnoreEndian ) {
+ #if defined(QT_CHECK_RANGE)
+ 	qWarning( "QImage::create: Bit order is required for 1 bpp images" );
+--- src/kernel/qimage.h
++++ src/kernel/qimage.h
+@@ -197,6 +197,10 @@
+ 		      int quality=-1 ) const;
+     bool	save( QIODevice * device, const char* format,
+ 		      int quality=-1 ) const;
++		      
++#define QT_HAVE_MAX_IMAGE_SIZE
++    static QSize maxImageSize();
++    static void setMaxImageSize(const QSize &size);
+ #endif //QT_NO_IMAGEIO
+ 
+     bool	valid( int x, int y ) const;

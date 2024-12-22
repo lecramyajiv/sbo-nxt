@@ -1,0 +1,19 @@
+Source: keep-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Fathi Boudra <fboudra@free.fr>, Mark Purcell <msp@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: keep-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, rdiff-backup
+Replaces: keep-trinity (<< 4:14.0.0~)
+Breaks: keep-trinity (<< 4:14.0.0~)
+Description: backup system for TDE [Trinity]
+ Keep is an automatic backup program that allows users to set the parameters of
+ the backup, including the frequency and the number of backups.
+ .
+  Homepage: http://jr.falleri.free.fr/keep

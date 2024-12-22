@@ -1,0 +1,4 @@
+/opt/trinity/include/tdepim/exchangeaccount.h
+/opt/trinity/include/tdepim/exchangeclient.h
+/opt/trinity/lib/libkpimexchange.la
+/opt/trinity/lib/libkpimexchange.so

@@ -1,0 +1,74 @@
+This package was debianized by Joel Johnson <mrjoel@lixil.net> on
+Tue, 21 Jun 2005 11:19:46 -0700.
+
+The original source was downloaded from 
+http://ktorrent.org/downloads/1.2/ktorrent-1.2.tar.gz
+
+Copyright 2005 Joris Guisson <joris.guisson@gmail.com> unless otherwise indicated below
+
+Copyright (C) 2005 by
+Joris Guisson <joris.guisson@gmail.com>
+Ivan Vasic <ivasic@gmail.com>
+
+	apps/ktorrent/ktorrent.cpp
+	apps/ktorrent/ktorrentcore.cpp
+	apps/ktorrent/pastedialog.h
+	apps/ktorrent/pastedialog.cpp
+	apps/ktorrent/ktorrentview.h
+	apps/ktorrent/ktorrentview.cpp
+	apps/ktorrent/trayicon.h
+	apps/ktorrent/trayicon.cpp
+	libktorrent/interfaces/ipblockinginterface.h
+	libktorrent/interfaces/ipblockinginterface.cpp
+	libktorrent/torrent/ipblocklist.h
+	libktorrent/torrent/ipblocklist.cpp
+	libktorrent/torrent/torrentfile.h
+	libktorrent/torrent/torrentfile.cpp
+	libktorrent/torrent/torrent.h
+	libktorrent/torrent/torrent.cpp
+	libktorrent/torrent/chunkmanager.cpp
+	libktorrent/torrent/torrentcontrol.h
+	libktorrent/torrent/torrentcontrol.cpp
+	libktorrent/torrent/queuemanager.h
+	libktorrent/torrent/queuemanager.cpp
+	plugins/infowidget/infowidget.h
+	plugins/infowidget/infowidget.cpp
+	plugins/ipfilter/ipblockingprefpage.h
+	plugins/ipfilter/ipblockingprefpage.cpp
+	plugins/ipfilter/ipfilterplugin.h
+	plugins/ipfilter/ipfilterplugin.cpp
+	plugins/ipfilter/antip2p.h
+	plugins/ipfilter/antip2p.cpp
+
+Copyright (C) 2005 by Ivan Vasic <ivasic@gmail.com>
+	apps/ktorrent/queuedialog.h
+	apps/ktorrent/queuedialog.cpp
+
+Copyright (C) 2005 by
+Joris Guisson <joris.guisson@gmail.com>
+Vincent Wagelaar <vincent@ricardis.tudelft.nl>
+	plugins/infowidget/chunkbar.h
+	plugins/infowidget/chunkbar.cpp
+
+Copyright (C) 2005 by Adam Treat <treat@kde.org>
+	apps/ktorrent/ktorrentapp.h
+	apps/ktorrent/ktorrentapp.cpp
+
+License (for all components):
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.

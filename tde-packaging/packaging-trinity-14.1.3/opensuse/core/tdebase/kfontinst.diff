@@ -1,0 +1,10 @@
+--- kcontrol/kfontinst/kfontinst/Main.cpp
++++ kcontrol/kfontinst/kfontinst/Main.cpp	2004/01/27 08:43:25
+@@ -80,6 +80,7 @@
+         QStringList::ConstIterator xftIt;
+ 
+         for(xftIt=CGlobal::cfg().getUserFontsDirs().begin(); xftIt!=CGlobal::cfg().getUserFontsDirs().end(); ++xftIt)
++            CMisc::doCmd("/sbin/conf.d/SuSEconfig.fonts", "--module", "fonts");
+             CMisc::doCmd(XFT_CACHE_CMD, CMisc::xDirSyntax(*xftIt));
+ #else
+         CMisc::doCmd(XFT_CACHE_CMD, CMisc::xDirSyntax(ds));

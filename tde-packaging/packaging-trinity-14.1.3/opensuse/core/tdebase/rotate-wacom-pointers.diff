@@ -1,0 +1,291 @@
+--- kcontrol/randr/legacyrandrscreen.cpp
++++ kcontrol/randr/legacyrandrscreen.cpp
+@@ -30,6 +30,8 @@
+ #include <kiconloader.h>
+ #include <qlabel.h>
+ #include <qdesktopwidget.h>
++#include <kprocess.h>
++#include <kstandarddirs.h>
+ 
+ #include "ktimerdialog.h"
+ #include "legacyrandrscreen.h"
+@@ -103,12 +105,55 @@ bool LegacyRandRScreen::applyProposed()
+ 		m_currentSize = m_proposedSize;
+ 		m_currentRotation = m_proposedRotation;
+ 		m_currentRefreshRate = m_proposedRefreshRate;
++
++		// search wacom utility and set orientation for available wacom pointers
++		QString xsetwacom = KStandardDirs::findExe("xsetwacom");
++		if (!xsetwacom.isEmpty()) {
++			m_wacomPointers.clear();
++			KProcess *proc = new KProcess;
++			connect(proc, SIGNAL(receivedStdout(KProcess *, char *, int)), SLOT(gotAvailablePointers(KProcess *, char *, int)));
++                        *proc << "xsetwacom" << "list";
++			if (!proc->start(KProcess::Block,KProcess::Stdout))
++				kdError("Could not ask xsetwacom for available pointers.");
++                        else {
++				for ( QStringList::Iterator it = m_wacomPointers.begin(); it != m_wacomPointers.end(); ++it ) {
++					KProcess *set = new KProcess;
++					*set << "xsetwacom" << "set" << (*it) << "Rotate";
++					switch (m_currentRotation) {
++						case RR_Rotate_90:
++							*set << "CW";
++							break;
++						case RR_Rotate_180:
++							*set << "HALF";
++							break;
++						case RR_Rotate_270:
++							*set << "CCW";
++							break;
++						default:
++							*set << "NONE";
++				        }
++					if (!set->start())
++						kdError("Could not set orientation for wacom pointers.");
++				}
++			}
++		}
++
+ 		return true;
+ 	}
+ 
+ 	return false;
+ }
+ 
++void LegacyRandRScreen::gotAvailablePointers(KProcess*, char *buffer, int len)
++{
++    QString myBuf = QString::fromLatin1(buffer, len);
++    QStringList lines = QStringList::split('\n', myBuf);
++    for ( QStringList::Iterator it = lines.begin(); it != lines.end(); it++) {
++	QStringList split = QStringList::split(' ', (*it));
++	m_wacomPointers+=split.first();
++    }
++}
++
+ bool LegacyRandRScreen::applyProposedAndConfirm()
+ {
+ 	if (proposedChanged()) {
+--- kcontrol/randr/legacyrandrscreen.h
++++ kcontrol/randr/legacyrandrscreen.h
+@@ -30,6 +30,7 @@
+ #include "randr.h"
+ 
+ class KTimerDialog;
++class KProcess;
+ 
+ class LegacyRandRScreen : public QObject
+ {
+@@ -135,6 +136,9 @@ public:
+ 	void		load(KConfig& config);
+ 	void		save(KConfig& config) const;
+ 
++private slots:
++	void 		gotAvailablePointers(KProcess*, char *buffer, int len);
++
+ private:
+ 	XRRScreenConfiguration*	m_config;
+ 
+@@ -156,6 +160,8 @@ private:
+ 	int			m_proposedSize;
+ 	int			m_proposedRefreshRate;
+ 
++	QStringList		m_wacomPointers;
++
+ 	KTimerDialog*	m_shownDialog;
+ 
+ };
+--- kcontrol/randr/randrscreen.cpp
++++ kcontrol/randr/randrscreen.cpp
+@@ -18,6 +18,8 @@
+ 
+ #include <kdebug.h>
+ #include <kconfig.h>
++#include <kprocess.h>
++#include <kstandarddirs.h>
+ #include "randrscreen.h"
+ #include "randrcrtc.h"
+ #include "randroutput.h"
+@@ -429,6 +431,40 @@ bool RandRScreen::applyProposed(bool confirm)
+ 	if (succeed && confirm)
+ 		succeed = RandR::confirm(r);
+ 
++        if (succeed) {
++               // search wacom utility and set orientation for available wacom pointers
++               QString xsetwacom = KStandardDirs::findExe("xsetwacom");
++               if (!xsetwacom.isEmpty()) {
++                       m_wacomPointers.clear();
++                       KProcess *proc = new KProcess;
++                       connect(proc, SIGNAL(receivedStdout(KProcess *, char *, int)), SLOT(gotAvailablePointers(KProcess *, char *, int)));
++                        *proc << "xsetwacom" << "list";
++                       if (!proc->start(KProcess::Block,KProcess::Stdout))
++                               kdError("Could not ask xsetwacom for available pointers.");
++                        else {
++                               for ( QStringList::Iterator it = m_wacomPointers.begin(); it != m_wacomPointers.end(); ++it ) {
++                                       KProcess *set = new KProcess;
++                                       *set << "xsetwacom" << "set" << (*it) << "Rotate";
++                                       switch (m_unifiedRotation) {
++                                               case RR_Rotate_90:
++                                                       *set << "CW";
++                                                       break;
++                                               case RR_Rotate_180:
++                                                       *set << "HALF";
++                                                       break;
++                                               case RR_Rotate_270:
++                                                       *set << "CCW";
++                                                       break;
++                                               default:
++                                                       *set << "NONE";
++                                       }
++                                       if (!set->start())
++                                               kdError("Could not set orientation for wacom pointers.");
++                               }
++                       }
++               }
++        }
++
+ 	// if we succeded applying and the user confirmer the changes,
+ 	// just return from here
+ 	if (succeed)
+@@ -447,6 +483,16 @@ bool RandRScreen::applyProposed(bool confirm)
+ 	return false;
+ }
+ 
++void RandRScreen::gotAvailablePointers(KProcess*, char *buffer, int len)
++{
++    QString myBuf = QString::fromLatin1(buffer, len);
++    QStringList lines = QStringList::split('\n', myBuf);
++    for ( QStringList::Iterator it = lines.begin(); it != lines.end(); it++) {
++       QStringList split = QStringList::split(' ', (*it));
++       m_wacomPointers+=split.first();
++    }
++}
++
+ void RandRScreen::unifyOutputs()
+ {
+ 	SizeList sizes = unifiedSizes();
+--- kcontrol/randr/randrscreen.h
++++ kcontrol/randr/randrscreen.h
+@@ -29,6 +29,7 @@
+ 
+ class QAction;
+ class KConfig;
++class KProcess;
+ 
+ class RandRScreen : public QObject
+ {
+@@ -95,6 +96,9 @@ public slots:
+ 	void save();
+ 	void load();
+ 
++private slots:
++        void gotAvailablePointers(KProcess*, char *buffer, int len);
++
+ signals:
+ 	void configChanged();
+ 
+@@ -119,7 +123,7 @@ private:
+ 	CrtcMap m_crtcs;
+ 	OutputMap m_outputs;
+ 	ModeMap m_modes;
+-		
++        QStringList m_wacomPointers;
+ };
+ #endif
+ 
+--- kcontrol/randr/randrcrtc.cpp
++++ kcontrol/randr/randrcrtc.cpp
+@@ -17,6 +17,8 @@
+  */
+ 
+ #include <kdebug.h>
++#include <kprocess.h>
++#include <kstandarddirs.h>
+ #include "randrcrtc.h"
+ #include "randrscreen.h"
+ #include "randroutput.h"
+@@ -298,6 +300,38 @@
+ 		m_currentRate = mode.refreshRate();
+ 		emit crtcChanged(m_id, RandR::ChangeMode);
+ 		ret = true;
++
++		// search wacom utility and set orientation for available wacom pointers
++               QString xsetwacom = KStandardDirs::findExe("xsetwacom");
++               if (!xsetwacom.isEmpty()) {
++                       m_wacomPointers.clear();
++                       KProcess *proc = new KProcess;
++                       connect(proc, SIGNAL(receivedStdout(KProcess *, char *, int)), SLOT(gotAvailablePointers(KProcess *, char *, int)));
++                        *proc << "xsetwacom" << "list";
++                       if (!proc->start(KProcess::Block,KProcess::Stdout))
++                               kdError("Could not ask xsetwacom for available pointers.");
++                        else {
++                               for ( QStringList::Iterator it = m_wacomPointers.begin(); it != m_wacomPointers.end(); ++it ) {
++                                       KProcess *set = new KProcess;
++                                       *set << "xsetwacom" << "set" << (*it) << "Rotate";
++                                       switch (m_currentRotation) {
++                                               case RR_Rotate_90:
++                                                       *set << "CW";
++                                                       break;
++                                               case RR_Rotate_180:
++                                                       *set << "HALF";
++                                                       break;
++                                               case RR_Rotate_270:
++                                                       *set << "CCW";
++                                                       break;
++                                               default:
++                                                       *set << "NONE";
++                                       }
++                                       if (!set->start())
++                                               kdError("Could not set orientation for wacom pointers.");
++                               }
++                       }
++               }
+ 	}
+ 	else
+ 	{
+@@ -309,6 +343,16 @@
+ 	return ret;
+ }
+ 
++void RandRCrtc::gotAvailablePointers(KProcess*, char *buffer, int len)
++{
++    QString myBuf = QString::fromLatin1(buffer, len);
++    QStringList lines = QStringList::split('\n', myBuf);
++    for ( QStringList::Iterator it = lines.begin(); it != lines.end(); it++) {
++       QStringList split = QStringList::split(' ', (*it));
++       m_wacomPointers+=split.first();
++    }
++}
++
+ bool RandRCrtc::proposeSize(QSize s)
+ {
+ 	m_proposedRect.setSize(s);
+--- kcontrol/randr/randrcrtc.h
++++ kcontrol/randr/randrcrtc.h
+@@ -26,6 +26,8 @@
+ 
+ #ifdef HAS_RANDR_1_2
+ 
++class KProcess;
++
+ class RandRCrtc : public QObject
+ {
+ 	Q_OBJECT
+@@ -62,6 +64,9 @@
+ 
+ 	ModeList modes() const;
+ 
++private slots:
++        void gotAvailablePointers(KProcess*, char *buffer, int len);
++
+ signals:
+ 	void crtcChanged(RRCrtc c, int changes);
+ 
+@@ -86,6 +91,8 @@
+ 	float m_currentRate;
+ 
+ 	RandRScreen *m_screen;
++
++	QStringList m_wacomPointers;
+ };
+ #endif
+ 

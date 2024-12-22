@@ -1,0 +1,9 @@
+Document: tdegames-doc-html-katomic
+Title: The Atomic Entertainment Handbook
+Author: Dirk Doerflinger
+Abstract: This Handbook describes KAtomic Version 2.0
+Section: Games/Puzzles
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/katomic/index.html
+Files: /usr/share/doc/tde/HTML/en/katomic/*.html

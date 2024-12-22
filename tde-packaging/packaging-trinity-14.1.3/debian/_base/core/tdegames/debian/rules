@@ -1,0 +1,39 @@
+#! /usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+export kde_bindir = /opt/trinity/games
+
+DEB_KDE_APIDOX := yes
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DBIN_INSTALL_DIR="/opt/trinity/games" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DBUILD_ALL="ON" \
+ -DWITH_ALL_OPTIONS="ON"
+
+DEB_DH_INSTALL_SOURCEDIR := $(DEB_DESTDIR)
+
+DEB_INSTALL_DOCS_ALL :=
+
+DEB_INSTALL_CHANGELOGS_ALL = $(shell for f in ChangeLog CHANGELOG CHANGES; do if test -s $(DEB_SRCDIR)/$(cdbs_curpkg)/$$f; then echo $(DEB_SRCDIR)/$(cdbs_curpkg)/$$f; break; fi; done)
+
+DEB_INSTALL_CHANGELOGS_tdegames := $(DEB_SRCDIR)/ChangeLog
+
+DEB_DH_MAKESHLIBS_ARGS_libtdegames1-trinity := -V'libtdegames1-trinity'
+DEB_DH_MAKESHLIBS_ARGS_atlantik-trinity := -V
+DEB_DH_MAKESHLIBS_ARGS_kolf-trinity := -V
+
+PACKAGES_WITH_LIBS := libtdegames1-trinity atlantik-trinity kolf-trinity
+
+common-binary-indep::
+	if ! test -d debian/tmp/opt/trinity/share/doc/tde/HTML/en/tdegames-apidocs; then mv debian/tmp/opt/trinity/share/doc/tde/HTML/en/tdegames-*apidocs debian/tmp/opt/trinity/share/doc/tde/HTML/en/tdegames-apidocs; fi

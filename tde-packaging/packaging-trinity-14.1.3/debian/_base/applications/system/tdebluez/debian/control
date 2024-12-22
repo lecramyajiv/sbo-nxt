@@ -1,0 +1,76 @@
+Source: tdebluez-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libdbus-1-tqt-dev
+Build-Depends-Indep: doxygen, graphviz
+Standards-Version: 3.8.0
+
+Package: tdebluez-trinity
+Section: tde
+Architecture: any
+Depends: ${shlibs:Depends}, bluez (>= 5~), bluez-obexd (>= 5~)
+Suggests: pulseaudio-module-bluetooth
+Description: TDE Bluetooth Framework
+ The TDE Bluetooth Framework is a set of tools built on top of Linux' Bluetooth
+ stack BlueZ5. It provides easy access to the most common Bluetooth profiles and
+ makes data exchange with Bluetooth devices like phones and PDAs as
+ straightforward as possible.
+ .
+ Features:
+  * tdebluez -- a tray applet to handle incoming inquiries and control
+                adapters and devices
+  * tdebluezauth -- authentication agent
+  * tdeioclient -- cli to obex
+
+Package: libtdebluez-trinity
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, bluez (>= 5~)
+Description: Bluetooth library for TDE
+ This package is part of the TDE Bluetooth Framework.
+ It contains a Bluetooth library for TDE.
+ .
+ See the 'tdebluez-trinity' package for more informations.
+
+Package: libtdeobex-trinity
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, bluez-obexd (>= 5~)
+Description: Obex library for TDE
+ This package is part of the TDE Bluetooth Framework.
+ It contains a Bluetooth library for TDE.
+ .
+ See the 'tdebluez-trinity' package for more informations.
+
+Package: libtdebluez-trinity-dev
+Architecture: any
+Section: libdevel
+Depends: libtdebluez-trinity (= ${binary:Version})
+Description: development files for libtdebluez
+ This package is part of the TDE Bluetooth Framework.
+ It contains the development files for libtdebluez.
+ .
+ See the 'tdebluez-trinity' and 'tdebluez-trinity-api-doc' package for more informations.
+
+Package: libtdeobex-trinity-dev
+Architecture: any
+Section: libdevel
+Depends: libtdeobex-trinity (= ${binary:Version})
+Description: development files for libtdeobex
+ This package is part of the TDE Bluetooth Framework.
+ It contains the development files for libtdeobex.
+ .
+ See the 'tdebluez-trinity' and 'tdebluez-trinity-api-doc' package for more informations.
+
+Package: tdebluez-trinity-api-doc
+Section: doc
+Architecture: all
+Description: developer documentation for the libtdebluez-trinity and libtdeobex-trinity libraries
+ This package contains documentation for the libtdebluez-trinity and libtdeobex-trinity libraries of
+ use more for developers creating applications which use the libtdebluez-trinity and libtdeobex-trinity 
+ libraries, than regular users.
+ .
+ This package is part of the provided bindings for the Trinity TQt interface.
+ .
+ See the tdebluez-trinity description for more information about tdebluez in general.

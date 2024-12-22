@@ -1,0 +1,16 @@
+debian/tmp/opt/trinity/bin/rbtdesh
+debian/tmp/opt/trinity/bin/rbtdeapi
+debian/tmp/opt/trinity/bin/krubyinit
+debian/tmp/opt/trinity/bin/rbtdeconfig_compiler
+
+debian/tmp/opt/trinity/lib/ruby/*/Korundum.rb
+debian/tmp/opt/trinity/lib/ruby/*/TDE/korundum.rb
+
+debian/tmp/opt/trinity/lib/*/*/*/korundum.so*
+debian/tmp/opt/trinity/lib/*/*/*/korundum.la
+
+debian/tmp/opt/trinity/share/man/man1/krubyinit.1
+debian/tmp/opt/trinity/share/man/man1/rbtdesh.1
+debian/tmp/opt/trinity/share/man/man1/rbtdeapi.1
+
+korundum/ChangeLog /opt/trinity/share/doc/libkorundum0-ruby

@@ -1,0 +1,10 @@
+python-trinity (3.16.0-3) unstable; urgency=low
+
+   python-trinity-dbg contains modules built for a debug Python interpreter.
+   However, it contains modules only for the default Python version. Also,
+   the debug symbols from python-trinity are not stored inside python-trinity-dbg,
+   in order to keep the package size sane. If you need those debug symbols,
+   locate the dh_strip command in debian/rules and uncomment the "--dbg-package"
+   options.
+
+ -- Torsten Marek <shlomme@debian.org>  Sun, 16 Sep 2007 13:57:44 +0200

@@ -1,0 +1,9 @@
+debian/tmp/usr/include/cvsjob_stub.h
+debian/tmp/usr/include/cvsservice_stub.h
+debian/tmp/usr/include/repository_stub.h
+debian/tmp/usr/lib/*/libcvsservice.la
+debian/tmp/usr/lib/*/libcvsservice.so
+debian/tmp/usr/lib/*/libtdeinit_cvsaskpass.la
+debian/tmp/usr/lib/*/libtdeinit_cvsservice.la
+
+debian/tmp/usr/share/cmake/cervisia.cmake

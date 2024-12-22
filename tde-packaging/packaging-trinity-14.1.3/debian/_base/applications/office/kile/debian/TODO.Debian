@@ -1,0 +1,5 @@
+* confirm #319409 resolution.
+* Add script to keep bibtex.xml and latex.xml up-to-date in tdelibs-data
+  (Closes: #358863).
+  Updated issue: highlighters will be shipped with tdelibs and users could
+  use "load new highlightings" button in the configuration dialog.

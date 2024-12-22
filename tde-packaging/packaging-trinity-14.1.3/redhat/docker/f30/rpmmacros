@@ -1,0 +1,3 @@
+%dist .fc30
+%_smp_mflags -j8
+%jobs 8

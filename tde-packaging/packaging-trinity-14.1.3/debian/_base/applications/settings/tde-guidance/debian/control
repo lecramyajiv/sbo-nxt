@@ -1,0 +1,42 @@
+Source: tde-guidance-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Fathi Boudra <fboudra@free.fr>, Mark Purcell <msp@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev,
+ python3-setuptools, python3-sip-tqt-dev, libpythonize0-trinity-dev, pytde-dev
+Standards-Version: 3.8.4
+
+Package: tde-guidance-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}, pytdeextensions-trinity, python3-pytde, guidance-backends-trinity, python3-all, python3-all-dev
+Replaces: kde-guidance-trinity (<< 4:14.0.0~)
+Breaks: kde-guidance-trinity (<< 4:14.0.0~)
+Conflicts: guidance-power-manager, kde-guidance-powermanager
+Provides: ${python3:Provides}
+Description: collection of TDE system administration tools for GNU/Linux [Trinity]
+ Guidance currently consists of three programs designed to help you
+ look after your system:
+  o  userconfig - User and Group administration
+  o  serviceconfig - Service/daemon administration
+  o  mountconfig - Disk and filesystem administration
+ .
+ These tools are available in Trinity Control Center, System Settings 
+ or can be run as standalone applications.
+ .
+  Homepage: http://www.simonzone.com/software/guidance
+
+Package: guidance-backends-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}, python3-all, python3-all-dev
+Replaces: guidance-backends-trinity (<< 4:14.0.0~)
+Breaks: guidance-backends-trinity (<< 4:14.0.0~)
+Conflicts: guidance-power-manager, kde-guidance-powermanager
+Provides: ${python3:Provides}
+Description: collection of system administration tools for GNU/Linux [Trinity]
+ This package contains the platform neutral backends used in the
+ Guidance configuration tools.
+ .
+  Homepage: http://www.simonzone.com/software/guidance
+

@@ -1,0 +1,5 @@
+opt/trinity/lib/trinity/libkmplayerpart.so
+opt/trinity/lib/trinity/libkmplayerpart.la
+opt/trinity/share/apps/kmplayer/kmplayerpartui.rc
+opt/trinity/share/apps/kmplayer/pluginsinfo
+opt/trinity/share/services/kmplayer_part.desktop

@@ -1,0 +1,13 @@
+Index: nsplugins/pluginscan.cpp
+===================================================================
+--- nsplugins/pluginscan.cpp.orig
++++ nsplugins/pluginscan.cpp
+@@ -463,7 +463,7 @@ void writeServicesFile( QStringList mime
+         ts << "Icon=netscape" << endl;
+         ts << "Comment=" << i18n("Netscape plugin viewer") << endl;
+         ts << "X-KDE-Library=libnsplugin" << endl;
+-        ts << "InitialPreference=0" << endl;
++        ts << "InitialPreference=7" << endl;
+         ts << "ServiceTypes=KParts/ReadOnlyPart,Browser/View" << endl;
+         ts << "X-KDE-BrowserView-PluginsInfo=nsplugins/pluginsinfo" << endl;
+ 

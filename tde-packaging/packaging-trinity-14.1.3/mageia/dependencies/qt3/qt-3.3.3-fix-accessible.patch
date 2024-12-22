@@ -1,0 +1,10 @@
+--- qt-x11-free-3.3.3/plugins/src/accessible/widgets/widgets.pro--	2004-08-26 12:04:30.408520889 +0200
++++ qt-x11-free-3.3.3/plugins/src/accessible/widgets/widgets.pro	2004-08-26 12:04:47.606921352 +0200
+@@ -13,3 +13,7 @@ SOURCES  += main.cpp \
+ 
+ HEADERS  += qaccessiblewidget.h \
+ 	    qaccessiblemenu.h
++
++target.path += $$plugins.path/accessible
++INSTALLS += target
++

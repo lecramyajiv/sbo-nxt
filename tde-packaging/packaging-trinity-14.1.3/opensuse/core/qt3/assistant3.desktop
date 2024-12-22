@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Qt;Development;
+Encoding=UTF-8
+Exec=/usr/lib/qt3/bin/assistant
+Name=Qt Assistant
+GenericName=Document Browser
+X-KDE-StartupNotify=true
+Icon=assistant3
+Terminal=false
+Type=Application

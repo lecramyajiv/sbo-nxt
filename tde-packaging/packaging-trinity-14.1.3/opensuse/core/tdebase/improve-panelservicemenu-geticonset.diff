@@ -1,0 +1,32 @@
+Index: kicker/libkicker/global.cpp
+===================================================================
+--- kicker/libkicker/global.cpp.orig
++++ kicker/libkicker/global.cpp
+@@ -425,6 +425,12 @@ QIconSet menuIconSet(const QString& icon
+                                                          KIcon::ActiveState,
+                                                          0,
+                                                          true);
++            QPixmap disabled = KGlobal::iconLoader()->loadIcon(icon,
++                                                         KIcon::Small,
++                                                         0,
++                                                         KIcon::DisabledState,
++                                                         0,
++                                                         true);
+ 
+             // make sure they are not larger than 20x20
+             if (normal.width() > 20 || normal.height() > 20)
+@@ -437,8 +443,14 @@ QIconSet menuIconSet(const QString& icon
+                 active.convertFromImage(active.convertToImage().smoothScale(20,20));
+             }
+ 
++            if (disabled.width() > 20 || disabled.height() > 20)
++            {
++                disabled.convertFromImage(disabled.convertToImage().smoothScale(20,20));
++            }
++
+             iconset.setPixmap(normal, QIconSet::Small, QIconSet::Normal);
+             iconset.setPixmap(active, QIconSet::Small, QIconSet::Active);
++            iconset.setPixmap(disabled, QIconSet::Small, QIconSet::Disabled);
+         }
+     }
+ 

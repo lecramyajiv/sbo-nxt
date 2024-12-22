@@ -1,0 +1,17 @@
+opt/trinity/bin/klatin
+/opt/trinity/share/applications/tde/klatin.desktop
+/opt/trinity/share/apps/klatin
+/opt/trinity/share/config.kcfg/klatin.kcfg
+/opt/trinity/share/doc/tde/HTML/en/klatin/*.bz2
+/opt/trinity/share/doc/tde/HTML/en/klatin/common
+/opt/trinity/share/doc/tde/HTML/en/klatin/*.docbook
+/opt/trinity/share/doc/tde/HTML/en/klatin/*.png
+/opt/trinity/share/icons/hicolor/16x16/apps/klatin.png
+/opt/trinity/share/icons/hicolor/22x22/apps/klatin.png
+/opt/trinity/share/icons/hicolor/32x32/apps/klatin.png
+/opt/trinity/share/icons/hicolor/48x48/apps/klatin.png
+/opt/trinity/share/icons/hicolor/64x64/apps/klatin.png
+/opt/trinity/share/icons/hicolor/128x128/apps/klatin.png
+/opt/trinity/share/icons/hicolor/scalable/apps/klatin.svgz
+/opt/trinity/share/man/man1/klatin.1
+../icons/klatin.xpm /opt/trinity/share/pixmaps

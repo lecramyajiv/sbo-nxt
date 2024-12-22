@@ -1,0 +1,15 @@
+Index: kdecore/kwinmodule.cpp
+===================================================================
+--- kdecore/kwinmodule.cpp.orig
++++ kdecore/kwinmodule.cpp
+@@ -436,7 +436,9 @@ QRect KWinModule::workArea( const QValue
+ 	if ( strut.bottom > 0  )
+ 	    r.setBottom( r.bottom() - (int) strut.bottom );
+ 
+-	a = a.intersect(r);
++        QRect tmp;
++	tmp = a.intersect(r);
++        a = tmp;
+     }
+     return a;
+ }

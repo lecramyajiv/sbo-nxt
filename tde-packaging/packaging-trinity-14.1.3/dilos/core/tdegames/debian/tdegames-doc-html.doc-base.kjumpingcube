@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-kjumpingcube
+Title: The KJumpingcube Handbook
+Author: Matthias Kiefer
+Abstract: KJumpingcube is a simple tactical game you can play against
+ a friend or the computer.
+Section: Games/Strategy
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kjumpingcube/index.html
+Files: /usr/share/doc/tde/HTML/en/kjumpingcube/*.html

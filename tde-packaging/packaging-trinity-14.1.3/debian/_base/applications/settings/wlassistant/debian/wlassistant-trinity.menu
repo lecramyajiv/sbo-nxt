@@ -1,0 +1,10 @@
+?package(wlassistant-trinity):\
+        needs="X11"\
+        section="Applications/Network/Monitoring"\
+        hints="TDE"\
+        icon32x32="/opt/trinity/share/pixmaps/wlassistant.xpm"\
+        icon16x16="/opt/trinity/share/pixmaps/wlassistant-16.xpm"\
+        title="wlassistant"\
+        command="/opt/trinity/bin/tdesu -X -c /opt/trinity/bin/wlassistant"
+
+

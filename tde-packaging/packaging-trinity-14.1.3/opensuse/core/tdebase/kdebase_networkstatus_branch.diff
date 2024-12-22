@@ -1,0 +1,36 @@
+Index: konqueror/konq_frame.cc
+===================================================================
+--- konqueror/konq_frame.cc.orig
++++ konqueror/konq_frame.cc
+@@ -34,6 +34,7 @@
+ #include <kprogress.h>
+ #include <klocale.h>
+ #include <ksqueezedtextlabel.h>
++#include <networkstatusindicator.h>
+ 
+ #include "konq_events.h"
+ #include "konq_frame.h"
+@@ -97,6 +98,10 @@ KonqFrameStatusBar::KonqFrameStatusBar(
+     m_progressBar->hide();
+     addWidget( m_progressBar, 0, true /*permanent->right align*/ );
+ 
++    StatusBarNetworkStatusIndicator * indicator = new StatusBarNetworkStatusIndicator( this, "networkstatusindicator" );
++    addWidget( indicator, 0, false );
++    indicator->init();
++
+     fontChange(QFont());
+     installEventFilter( this );
+ }
+Index: konqueror/Makefile.am
+===================================================================
+--- konqueror/Makefile.am.orig
++++ konqueror/Makefile.am
+@@ -48,7 +48,7 @@ noinst_HEADERS = KonqMainWindowIface.h K
+ 	konq_misc.h konq_openurlrequest.h konq_profiledlg.h konq_run.h \
+ 	konq_view.h konq_viewmgr.h konq_extensionmanager.h version.h
+ 
+-konqueror_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
++konqueror_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries) -lconnectionmanager
+ konqueror_la_LIBADD = ../libkonq/libkonq.la libkonqueror_intern.la $(LIBMALLOC) $(LIB_KUTILS)
+ 
+ # Hmm, this experiment of a static konq failed, don't trust it...

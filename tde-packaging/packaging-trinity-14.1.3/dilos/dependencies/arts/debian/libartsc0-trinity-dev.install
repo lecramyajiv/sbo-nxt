@@ -1,0 +1,10 @@
+debian/tmp/usr/bin/artsc-config
+debian/tmp/usr/include/artsc/artsc.h
+debian/tmp/usr/include/artsc/artsc_export.h
+debian/tmp/usr/lib/*/libartsc.la
+debian/tmp/usr/lib/*/libartsc.so
+debian/tmp/usr/lib/*/libartsgsl.a
+debian/tmp/usr/share/man/man1/artsc-config-trinity.1
+
+debian/tmp/usr/lib/*/pkgconfig/arts.pc
+debian/tmp/usr/lib/*/pkgconfig/artsc.pc

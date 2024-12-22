@@ -1,0 +1,7 @@
+?package(kvirc-trinity):\
+ needs="x11"\
+ section="Applications/Network/Communication"\
+ title="KVIrc"\
+ command="/opt/trinity/bin/kvirc"\
+ hints="irc,scripting"\
+ icon="/opt/trinity/share/icons/hicolor/32x32/apps/kvirc.xpm"

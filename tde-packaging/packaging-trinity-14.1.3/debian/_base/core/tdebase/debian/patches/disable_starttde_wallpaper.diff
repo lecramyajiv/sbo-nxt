@@ -1,0 +1,31 @@
+--- a/starttde
++++ b/starttde
+@@ -288,17 +288,17 @@
+   . "$tdehome/share/config/startupconfig"
+ fi
+ 
+-# Make sure a default wallpaper is set.
+-if [ ! -e "$tdehome/share/config/kdesktoprc" ]; then
+- # With Trinity this file should exist, but test first.
+-  if [ -r $TDEDIR/share/wallpapers/Trinity-lineart.svg.desktop ]; then
+-cat >"$tdehome/share/config/kdesktoprc" <<EOF
+-[Desktop0]
+-Wallpaper=Trinity-lineart.svg
+-WallpaperMode=Scaled
+-EOF
+-  fi
+-fi
++## Make sure a default wallpaper is set.
++#if [ ! -e "$tdehome/share/config/kdesktoprc" ]; then
++# # With Trinity this file should exist, but test first.
++#  if [ -r $TDEDIR/share/wallpapers/Trinity-lineart.svg.desktop ]; then
++#cat >"$tdehome/share/config/kdesktoprc" <<EOF
++#[Desktop0]
++#Wallpaper=Trinity-lineart.svg
++#WallpaperMode=Scaled
++#EOF
++#  fi
++#fi
+ 
+ # XCursor mouse theme needs to be applied here to work even for kded or ksmserver.
+ if test -n "$kcminputrc_mouse_cursortheme" -o -n "$kcminputrc_mouse_cursorsize" ; then

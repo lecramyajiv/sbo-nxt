@@ -1,0 +1,14 @@
+Index: kdeprint/kprintpreview.cpp
+===================================================================
+--- kdeprint/kprintpreview.cpp.orig
++++ kdeprint/kprintpreview.cpp
+@@ -108,6 +108,9 @@ static KLibFactory* componentFactory()
+ {
+ 	kdDebug(500) << "kdeprint: querying trader for 'application/postscript' service" << endl;
+ 	KLibFactory	*factory(0);
++	factory = KLibLoader::self()->factory("libkghostviewpart");
++        if( factory )
++            return factory;
+ 	KTrader::OfferList	offers = KTrader::self()->query(QString::fromLatin1("application/postscript"), QString::fromLatin1("KParts/ReadOnlyPart"), QString::null, QString::null);
+ 	for (KTrader::OfferList::ConstIterator it = offers.begin(); it != offers.end(); ++it)
+ 	{

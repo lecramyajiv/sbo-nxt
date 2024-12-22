@@ -1,0 +1,704 @@
+Source: tdegames-trinity
+Section: games
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Ana Beatriz Guerrero Lopez <ana@debian.org>, Christopher Martin <chrsmrtn@debian.org>, Daniel Schepler <schepler@debian.org>, Sune Vuorela <debian@pusling.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, tdemultimedia-trinity-dev, groff-base, bzip2, libogg-dev
+Build-Depends-Indep: doxygen, graphviz, gsfonts-x11, libtqtinterface-doc, tdelibs14-trinity-doc
+Standards-Version: 3.8.4
+
+Package: tdegames-trinity
+Architecture: all
+Section: tde
+Replaces: kdegames-trinity (<< 4:14.0.0~)
+Breaks: kdegames-trinity (<< 4:14.0.0~)
+Depends: atlantik-trinity (>= ${source:Version}), kasteroids-trinity (>= ${source:Version}), katomic-trinity (>= ${source:Version}), kbackgammon-trinity (>= ${source:Version}), kbattleship-trinity (>= ${source:Version}), kblackbox-trinity (>= ${source:Version}), kbounce-trinity (>= ${source:Version}), kenolaba-trinity (>= ${source:Version}), kfouleggs-trinity (>= ${source:Version}), kgoldrunner-trinity (>= ${source:Version}), kjumpingcube-trinity (>= ${source:Version}), klickety-trinity (>= ${source:Version}), klines-trinity (>= ${source:Version}), kmahjongg-trinity (>= ${source:Version}), kmines-trinity (>= ${source:Version}), knetwalk-trinity (>= ${source:Version}), kolf-trinity (>= ${source:Version}), konquest-trinity (>= ${source:Version}), kpat-trinity (>= ${source:Version}), kpoker-trinity (>= ${source:Version}), kreversi-trinity (>= ${source:Version}), ksame-trinity (>= ${source:Version}), kshisen-trinity (>= ${source:Version}), ksirtet-trinity (>= ${source:Version}), ksmiletris-trinity (>= ${source:Version}), ksnake-trinity (>= ${source:Version}), ksokoban-trinity (>= ${source:Version}), kspaceduel-trinity (>= ${source:Version}), ktron-trinity (>= ${source:Version}), ktuberling-trinity (>= ${source:Version}), twin4-trinity (>= ${source:Version}), lskat-trinity (>= ${source:Version}), tdefifteen-trinity (>= ${source:Version})
+Suggests: tdegames-trinity-doc-html (>= ${source:Version}), khelpcenter-trinity
+Description: games from the official Trinity release
+ TDE (the Trinity Desktop Environment) is a powerful Open Source graphical
+ desktop environment for Unix workstations. It combines ease of use,
+ contemporary functionality, and outstanding graphical design with the
+ technological superiority of the Unix operating system.
+ .
+ This metapackage includes a collection of games provided with
+ the official release of TDE.
+
+Package: tdegames-trinity-doc-html
+Architecture: all
+Section: doc
+Replaces: kdegames-trinity-doc-html (<< 4:14.0.0~)
+Breaks: kdegames-trinity-doc-html (<< 4:14.0.0~)
+Suggests: konqueror-trinity | www-browser, tdegames-trinity
+Description: TDE games documentation in HTML format
+ By default the games provided with TDE (the Trinity Desktop Environment)
+ only provide their documentation in TDE docbook format, which can
+ only be read by Konqueror or KHelpCenter.  This package provides all
+ of the TDE games documentation converted to HTML format so it can be
+ read with any web browser.
+ .
+ The documentation will be installed into the usual directories
+ /usr/share/doc/tde/HTML/en/<package>/, for instance
+ /usr/share/doc/tde/HTML/en/kasteroids/.
+ .
+ This package is part of TDE, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: libtdegames1-trinity
+Architecture: any
+Section: games
+Replaces: libkdegames1-trinity (<< 4:14.0.0~)
+Breaks: libkdegames1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Trinity games library and common files
+ This library provides a common infrastructure for several of the
+ games in the TDE distribution. Features include standardized menu
+ items, high score handling, card display, and network connections
+ including chat capabilities.
+ .
+ This package is part of TDE, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: tdegames-trinity-dbg
+Architecture: linux-any
+Depends: tdelibs-trinity-dbg
+Replaces: kdegames-trinity-dbg (<< 4:14.0.0~)
+Breaks: kdegames-trinity-dbg (<< 4:14.0.0~)
+Priority: extra
+Section: tde
+Description: debugging symbols for tdegames
+ This package contains the debugging symbols associated with tdegames.
+ They will automatically be used by gdb for debugging tdegames-related
+ issues.
+
+Package: libtdegames-trinity-dev
+Architecture: any
+Section: libdevel
+Replaces: libkdegames-trinity-dev (<< 4:14.0.0~)
+Breaks: libkdegames-trinity-dev (<< 4:14.0.0~)
+Depends: tdelibs14-trinity-dev, libtdegames1-trinity (= ${source:Version})
+Description: Trinity games library headers
+ This package is necessary if you want to develop your own games using
+ the TDE games library.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: libtdegames-trinity-doc
+Architecture: all
+Section: doc
+Replaces: libkdegames-trinity-doc (<< 4:14.0.0~)
+Breaks: libkdegames-trinity-doc (<< 4:14.0.0~)
+Recommends: tdelibs14-trinity-doc, libtqtinterface-doc
+Suggests: konqueror-trinity | www-browser, libtdegames-trinity-dev
+Description: API documentation for the Trinity games library
+ This package contains the developers' documentation for libtdegames.
+ You may want to install it if you wish to develop games for TDE.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: tdegames-card-data-trinity
+Architecture: all
+Section: games
+Replaces: kdegames-card-data-trinity (<< 4:14.0.0~)
+Breaks: kdegames-card-data-trinity (<< 4:14.0.0~)
+Description: Card decks for Trinity games
+ Several different collections of card images for use by TDE games.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: atlantik-trinity
+Architecture: any
+Section: games
+Replaces: atlantik-trinity (<< 4:14.0.0~)
+Breaks: atlantik-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: atlantikdesigner-trinity, monopd
+Description: TDE client for Monopoly-like network games
+ This is a TDE client for playing Monopoly-like boardgames on the
+ monopd network.  It can play any board supported by the network
+ server, including the classic Monopoly game, as well as the Atlantik
+ game in which the property includes several major cities in North
+ America and Europe.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: atlantik-trinity-dev
+Architecture: any
+Section: devel
+Replaces: atlantik-trinity-dev (<< 4:14.0.0~)
+Breaks: atlantik-trinity-dev (<< 4:14.0.0~)
+Priority: extra
+Depends: ${shlibs:Depends}, atlantik-trinity (= ${source:Version}), libtdegames-trinity-dev (= ${source:Version})
+Description: Development files for Atlantik
+ This package contains header files for compiling programs against the
+ libraries which come with Atlantik.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kasteroids-trinity
+Architecture: any
+Section: games
+Replaces: kasteroids-trinity (<< 4:14.0.0~)
+Breaks: kasteroids-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Asteroids for Trinity
+ You know this game.  It is based on Warwick Allison's QwSpriteField
+ widget.
+ .
+ The objective of kasteroids is to destroy all the asteroids on the
+ screen to advance to the next level. Your ship is destroyed if it
+ makes contact with an asteroid.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: katomic-trinity
+Architecture: any
+Section: games
+Replaces: katomic-trinity (<< 4:14.0.0~)
+Breaks: katomic-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Atomic Entertainment game for Trinity
+ This is a puzzle game, in which the object is to assemble a molecule
+ from its atoms on a Sokoban-like board.  On each move, an atom goes
+ as far as it can in a specified direction before being stopped by a
+ wall or another atom.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kbackgammon-trinity
+Architecture: any
+Section: games
+Replaces: kbackgammon-trinity (<< 4:14.0.0~)
+Breaks: kbackgammon-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: gnubg
+Description: A Backgammon game for Trinity
+ KBackgammon is a backgammon program for Trinity. It is based on the
+ code, ideas and concepts of KFibs (which is a FIBS client for
+ KDE1). For a short time, KBackgammon was called bacKgammon (if you
+ know somebody who is still using bacKgammon, please force them to
+ upgrade :-)).
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kbattleship-trinity
+Architecture: any
+Section: games
+Replaces: kbattleship-trinity (<< 4:14.0.0~)
+Breaks: kbattleship-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Battleship game for Trinity
+ This is an implementation of the Battleship game.  Each player tries
+ to be the first to sink all the opponent's ships by firing "blindly"
+ at them.  The game has options to play over a network connection or
+ against the computer.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kblackbox-trinity
+Architecture: any
+Section: games
+Replaces: kblackbox-trinity (<< 4:14.0.0~)
+Breaks: kblackbox-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: A simple logical game for the Trinity project
+ KBlackBox is a game of hide and seek played on an grid of boxes. Your
+ opponent (Random number generator, in this case) has hidden several
+ balls within this box. By shooting rays into the box and observing
+ where they emerge it is possible to deduce the positions of the
+ hidden balls. The fewer rays you use to find the balls, the lower
+ your score.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kbounce-trinity
+Architecture: any
+Section: games
+Replaces: kbounce-trinity (<< 4:14.0.0~)
+Breaks: kbounce-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Jezzball clone for the Trinity Desktop Environment
+ This is a clone of the popular Jezzball game originally created by
+ Microsoft. Jezzball is one of the rare and simple games requiring
+ skill, timing, and patience in order to be successful.  A ball begins
+ to bounce off of an area enclosed by four borders (like a
+ square). You must move your pointer to certain areas within the
+ square. Upon clicking, a new border is constructed at a relatively
+ quick pace. You can change the direction of the borders by 90 degrees
+ as well. Ultimately, you must force the ball to bounce around in a
+ smaller, and smaller area as time goes by without the ball ever
+ touching the borders as they are being constructed. If a ball touches
+ a certain part of the border as it is being built, the game is over.
+ After 75% of the original space has been blocked off from the moving
+ ball, you advance one level, and one more ball is added to the mix in
+ the following level.
+ .
+ This game was previously known as kjezz.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kenolaba-trinity
+Architecture: any
+Section: games
+Replaces: kenolaba-trinity (<< 4:14.0.0~)
+Breaks: kenolaba-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Enolaba board game for Trinity
+ kenolaba is a simple board strategy game that is played by two
+ players. There are red and yellow pieces for each player. Beginning
+ from a start position where each player has 14 pieces, moves are
+ drawn until one player has pushed 6 pieces of his opponent out of the
+ board.
+ .
+ This game was previously known as kabalone, and was inspired by the
+ board game Abalone by Abalone SA, France.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kfouleggs-trinity
+Architecture: any
+Section: games
+Replaces: kfouleggs-trinity (<< 4:14.0.0~)
+Breaks: kfouleggs-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: A TDE clone of the Japanese PuyoPuyo game
+ KFouleggs is a clone of the Japanese PuyoPuyo game, with advanced
+ features such as multiplayer games against human or AI, and network
+ play.  If you have played Tetris or one of its many clones, you will
+ find KFouleggs easy to learn.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kgoldrunner-trinity
+Architecture: any
+Section: games
+Replaces: kgoldrunner-trinity (<< 4:14.0.0~)
+Breaks: kgoldrunner-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: A Trinity clone of the Loderunner arcade game
+ KGoldrunner, a game of action and puzzle solving.  Run through the
+ maze, dodge your enemies, collect all the gold and climb up to the
+ next level.
+ .
+ You must guide the hero with the mouse or keyboard and collect all
+ the gold nuggets, then you can climb up into the next level.  Your
+ enemies are also after the gold and they will kill you if they catch
+ you!
+ .
+ The problem is you have no weapon to kill them.  All you can do is
+ run away, dig holes in the floor to trap them or lure them into some
+ area where they cannot hurt you.  After a short time a trapped enemy
+ climbs out of his hole, but if it closes before that, he will die and
+ reappear somewhere else.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kjumpingcube-trinity
+Architecture: any
+Section: games
+Replaces: kjumpingcube-trinity (<< 4:14.0.0~)
+Breaks: kjumpingcube-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Tactical one or two player game
+ KJumpingCube is a simple tactical game. You can play it against the
+ computer or against a friend. The playing field consists of squares
+ that contains points.  By clicking on the squares you can increase
+ the points and if the points reach a maximum the points will jump to
+ the squares neighbours and take them over. Winner is the one, who
+ owns all squares.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: klickety-trinity
+Architecture: any
+Section: games
+Replaces: klickety-trinity (<< 4:14.0.0~)
+Breaks: klickety-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: A Clickomania-like game for Trinity
+ Klickety is an adaptation of the (perhaps) well-known Clickomania
+ game; it is very similar to the "same" game.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: klines-trinity
+Architecture: any
+Section: games
+Replaces: klines-trinity (<< 4:14.0.0~)
+Breaks: klines-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Color lines for Trinity
+ KLines is a simple game. It is played by one player, so there is only
+ one winner :-). You play for fun and against the high score. It was
+ inspired by a well known game - "Color lines", written for DOS by
+ Olga Demina, Igor Demina, Igor Ivkin and Gennady Denisov back in
+ 1992.
+ .
+ The main rules of the game are as simple as possible: you move (using
+ the mouse) marbles from cell to cell and build lines (horizontal,
+ vertical or diagonal). When a line contains 5 or more marbles, they
+ are removed and your score grows. After each turn the computer drops
+ three more marbles.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kmahjongg-trinity
+Architecture: any
+Section: games
+Replaces: kmahjongg-trinity (<< 4:14.0.0~)
+Breaks: kmahjongg-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: the classic mahjongg game for Trinity project
+ Your mission in this game is to remove all tiles from the game board. A
+ matching pair of tiles can be removed, if they are 'free', which means that
+ no other tiles block them on the left or right side.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kmines-trinity
+Architecture: any
+Section: games
+Replaces: kmines-trinity (<< 4:14.0.0~)
+Breaks: kmines-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Minesweeper for Trinity
+ KMines is the classic Minesweeper game. You must uncover all the
+ empty cases without blowing on a mine.
+ .
+ When you uncover a case, a number appears : it indicates how many
+ mines surround this case. If there is no number the neighbour cases
+ are automatically uncovered. In your process of uncovering secure
+ cases, it is very useful to put a flag on the cases which contain a
+ mine.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: knetwalk-trinity
+Architecture: any
+Section: games
+Replaces: knetwalk-trinity (<< 4:14.0.0~)
+Breaks: knetwalk-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: A game for system administrators
+ This game presents the player with a rectangular field consisting of
+ a server, several clients, and pieces of wire.  The object is to
+ rotate these elements until every client is connected to the server,
+ and no wires are left unconnected.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kolf-trinity
+Architecture: any
+Section: games
+Replaces: kolf-trinity (<< 4:14.0.0~)
+Breaks: kolf-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Minigolf game for TDE
+ This is a minigolf game for TDE that allows you to go through different
+ golf courses and waste an exorbitant amount of time.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kolf-trinity-dev
+Architecture: any
+Section: devel
+Replaces: kolf-trinity-dev (<< 4:14.0.0~)
+Breaks: kolf-trinity-dev (<< 4:14.0.0~)
+Priority: extra
+Depends: ${shlibs:Depends}, kolf-trinity (= ${source:Version}), libtdegames-trinity-dev (= ${source:Version})
+Description: Development files for Kolf
+ This package contains headers and development libraries for compiling
+ Kolf plugins.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: konquest-trinity
+Architecture: any
+Section: games
+Replaces: konquest-trinity (<< 4:14.0.0~)
+Breaks: konquest-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: TDE based GNU-Lactic Konquest game
+ This the TDE version of Gnu-Lactic Konquest, a multi-player strategy
+ game. The goal of the game is to expand your interstellar empire
+ across the galaxy and, of course, crush your rivals in the process.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kpat-trinity
+Architecture: any
+Section: games
+Replaces: kpat-trinity (<< 4:14.0.0~)
+Breaks: kpat-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, tdebase-data-trinity, tdegames-card-data-trinity
+Description: Trinity solitaire patience game
+ KPatience is a collection of 14 card games. All the games are single
+ player games.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kpoker-trinity
+Architecture: any
+Section: games
+Replaces: kpoker-trinity (<< 4:14.0.0~)
+Breaks: kpoker-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, tdegames-card-data-trinity
+Description: Trinity based Poker clone
+ KPoker is a TDE compliant clone of those highly addictive pocket
+ video poker games which are sometimes called "Videopoker" as well.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kreversi-trinity
+Architecture: any
+Section: games
+Replaces: kreversi-trinity (<< 4:14.0.0~)
+Breaks: kreversi-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Reversi for Trinity
+ Reversi is a simple strategy game that is played by two
+ players. There is only one type of piece - one side of it is black,
+ the other white. If a player captures a piece on the board, that
+ piece is turned and belongs to that player. The winner is the person
+ that has more pieces of his own color on the board and if there are
+ no more moves possible.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: ksame-trinity
+Architecture: any
+Section: games
+Replaces: ksame-trinity (<< 4:14.0.0~)
+Breaks: ksame-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: SameGame for Trinity
+ KSame is a simple game. It's played by one player, so there is only
+ one winner :-) You play for fun and against the high score. It has
+ been inspired by SameGame, that is only famous on the Macintosh
+ platform.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kshisen-trinity
+Architecture: any
+Section: games
+Replaces: kshisen-trinity (<< 4:14.0.0~)
+Breaks: kshisen-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Shisen-Sho for Trinity
+ KShisen-Sho is a single-player-game similar to Mahjongg and uses the
+ same set of tiles as Mahjongg.
+ .
+ The object of the game is to remove all tiles from the field.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: ksirtet-trinity
+Architecture: any
+Section: games
+Replaces: ksirtet-trinity (<< 4:14.0.0~)
+Breaks: ksirtet-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Tetris and Puyo-Puyo games for Trinity
+ This program is a clone of the well known game Tetris. You must fit
+ the falling pieces to form full lines. You can rotate and translate
+ the falling piece. The game ends when no more piece can fall ie when
+ your incomplete lines reach the top of the board.
+ .
+ Every time you have destroyed 10 lines, you gain a level and the
+ pieces fall quicker (exactly the piece falls from a line each
+ 1/(1+level) second).
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: ksmiletris-trinity
+Architecture: any
+Section: games
+Replaces: ksmiletris-trinity (<< 4:14.0.0~)
+Breaks: ksmiletris-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Tetris like game for Trinity
+ This is a game with falling blocks composed of different types of
+ smilies. The object of the game is to "crack a smile" by guiding
+ blocks so there are two or more of the same symbol vertically.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: ksnake-trinity
+Architecture: any
+Section: games
+Replaces: ksnake-trinity (<< 4:14.0.0~)
+Breaks: ksnake-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Snake Race for Trinity
+ Snake Race is a game of speed and agility. You are a hungry snake and
+ are trying to eat all the apples in the room before getting out!
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: ksokoban-trinity
+Architecture: any
+Section: games
+Replaces: ksokoban-trinity (<< 4:14.0.0~)
+Breaks: ksokoban-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Sokoban game for Trinity
+ The first sokoban game was created in 1982 by Hiroyuki Imabayashi at
+ the Japanese company Thinking Rabbit, Inc. "Sokoban" is japanese for
+ "warehouse keeper". The idea is that you are a warehouse keeper
+ trying to push crates to their proper locations in a warehouse.
+ .
+ The problem is that you cannot pull the crates or step over them. If
+ you are not careful, some of the crates can get stuck in wrong places
+ and/or block your way.
+ .
+ It can be rather difficult just to solve a level. But if you want to
+ make it even harder, you can try to minimise the number of moves
+ and/or pushes you use to solve the level.
+ .
+ To make the game more fun for small kids (below 10 years or so), some
+ collections with easier levels are also included in KSokoban. These
+ are marked (easy) in the level collection menu. Of course, these
+ levels can be fun for adults too, for example if you don't want to
+ expose yourself to too much mental strain.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: kspaceduel-trinity
+Architecture: any
+Section: games
+Replaces: kspaceduel-trinity (<< 4:14.0.0~)
+Breaks: kspaceduel-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Arcade two-player space game for Trinity
+ KSpaceduel is an space arcade game for two players.
+ .
+ Each player controls a ship that flies around the sun and tries to
+ shoot at the other ship. You can play KSpaceduel with another person,
+ against the computer, or you can have the computer control both ships
+ and play each other.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: ktron-trinity
+Architecture: any
+Section: games
+Replaces: ktron-trinity (<< 4:14.0.0~)
+Breaks: ktron-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Tron clone for the Trinity Desktop Environment
+ The object of the game is to avoid running into walls, your own tail,
+ and that of your opponent.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: ktuberling-trinity
+Architecture: any
+Section: games
+Replaces: ktuberling-trinity (<< 4:14.0.0~)
+Breaks: ktuberling-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Potato Guy for Trinity
+ KTuberling is a game intended for small children. Of course, it may
+ be suitable for adults who have remained young at heart.
+ .
+ It is a potato editor. That means that you can drag and drop eyes,
+ mouths, moustache, and other parts of face and goodies onto a
+ potato-like guy.  Similarly, you have a penguin on which you can drop
+ other stuff.
+ .
+ There is no winner for the game. The only purpose is to make the
+ funniest faces you can.
+ .
+ There is a museum (like a "Madame Tusseau" gallery) where you can
+ find many funny examples of decorated potatoes. Of course, you can
+ send your own creations to the programmer, Eric Bischoff, who will
+ include them in the museum if he gets some spare time.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: twin4-trinity
+Architecture: any
+Section: games
+Replaces: kwin4-trinity (<< 4:14.0.0~)
+Breaks: kwin4-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Connect Four clone for Trinity
+ Four wins is a game for two players. Each player is represented by a
+ colour (yellow and red). The goal of the game is to get four
+ connected pieces of your colour into a row, column or any
+ diagonal. This is done by placing one of your pieces into any of the
+ seven columns. A piece will begin to fill a column from the bottom,
+ i.e. it will fall down until it reaches the ground level or another
+ stone. After a move is done it is the turn of the other player. This
+ is repeated until the game is over, i.e. one of the players has four
+ pieces in a row, column or diagonal or no more moves are possible
+ because the board is filled.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: lskat-trinity
+Architecture: any
+Section: games
+Replaces: lskat-trinity (<< 4:14.0.0~)
+Breaks: lskat-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, tdegames-card-data-trinity
+Description: Lieutnant Skat card game for Trinity
+ Lieutnant Skat (from German Offiziersskat) is a card game for two
+ players. It is roughly played according to the rules of Skat but with
+ only two players and simplified rules.
+ .
+ Every player has a set of cards in front of him/her, half of them
+ covered and half of them open. Both players try to win more than 60
+ of the 120 possible points. After 16 moves all cards are played and
+ the game ends.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.
+
+Package: tdefifteen-trinity
+Architecture: any
+Section: games
+Depends: ${shlibs:Depends}
+Description: Puzzle-solving game for Trinity
+ TDEFifteen is a sliding puzzle that consists of a frame of numbered square
+ tiles in random order with one tile missing.
+ .
+ This package is part of Trinity, and a component of the TDE games module.
+ See the 'tde-trinity' and 'tdegames-trinity' packages for more information.

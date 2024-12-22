@@ -1,0 +1,34 @@
+diff -ur kdelibs-3.5.10.orig/kstyles/light/lightstyle-v2.cpp kdelibs-3.5.10/kstyles/light/lightstyle-v2.cpp
+--- kdelibs-3.5.10.orig/kstyles/light/lightstyle-v2.cpp	2006-03-17 13:19:10.000000000 +0300
++++ kdelibs-3.5.10/kstyles/light/lightstyle-v2.cpp	2011-05-07 23:30:18.000000000 +0400
+@@ -501,12 +501,14 @@
+ 		p->drawLine(r.topLeft(), r.topRight());
+ 		p->setPen(cg.background());
+ 		p->drawLine(r.left(), r.top() + 1, r.right(), r.top() + 1);
+-		fr.addCoords(0, 2, 0, 0);
++		p->drawLine(r.left(), r.bottom(), r.right(), r.bottom());
++		fr.addCoords(0, 2, 0, -1);
+ 	    } else {
+ 		p->drawLine(r.topLeft(), r.bottomLeft());
+ 		p->setPen(cg.background());
+ 		p->drawLine(r.left() + 1, r.top(), r.left() + 1, r.bottom());
+-		fr.addCoords(2, 0, 0, 0);
++		p->drawLine(r.right(), r.top(), r.right(), r.bottom());
++		fr.addCoords(2, 0, -1, 0);
+ 	    }
+ 
+ 	    p->fillRect(fr, cg.brush((flags & Style_Down) ?
+@@ -523,11 +525,13 @@
+ 	    if (flags & Style_Horizontal) {
+ 		p->drawLine(r.topLeft(), r.topRight());
+ 		p->setPen(cg.background());
++		p->drawLine(r.left(), r.bottom(), r.right(), r.bottom());
+ 		p->drawLine(r.left(), r.top() + 1, r.right(), r.top() + 1);
+ 		fr.addCoords(0, 2, 0, -1);
+ 	    } else {
+ 		p->drawLine(r.topLeft(), r.bottomLeft());
+ 		p->setPen(cg.background());
++		p->drawLine(r.right(), r.top(), r.right(), r.bottom());
+ 		p->drawLine(r.left() + 1, r.top(), r.left() + 1, r.bottom());
+ 		fr.addCoords(2, 0, -1, 0);
+ 	    }

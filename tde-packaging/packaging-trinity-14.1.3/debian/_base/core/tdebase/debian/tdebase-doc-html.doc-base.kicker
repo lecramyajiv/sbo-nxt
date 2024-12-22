@@ -1,0 +1,11 @@
+Document: tdebase-doc-html-kicker
+Title: Kicker Handbook
+Author: Orville Bennett, Dirk Doerflinger
+Abstract: Kicker is the TDE application starter panel and is also capable of
+ some useful applets and extensions.
+Section: Apps/Utils
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kicker/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kicker/*.html
+

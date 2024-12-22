@@ -1,0 +1,13 @@
+Index: kdecore/kicontheme.cpp
+===================================================================
+--- kdecore/kicontheme.cpp.orig
++++ kdecore/kicontheme.cpp
+@@ -150,6 +150,8 @@ KIconTheme::KIconTheme(const QString& na
+     if ( name != "crystalsvg" )
+       for ( QStringList::Iterator it = mInherits.begin(); it != mInherits.end(); ++it )
+          if ( *it == "default" || *it == "hicolor" ) *it="crystalsvg";
++    if ( name == "hicolor" )
++	mInherits = "crystalsuse";
+ 
+     d->hidden = cfg.readBoolEntry("Hidden", false);
+     d->example = cfg.readPathEntry("Example");

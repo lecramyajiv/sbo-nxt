@@ -1,0 +1,33 @@
+Index: konsole/other/BlackOnWhite.schema
+===================================================================
+--- konsole/other/BlackOnWhite.schema.orig
++++ konsole/other/BlackOnWhite.schema
+@@ -18,11 +18,11 @@ color  1 255 255 255  1 0  # regular   b
+ 
+ color  2   0   0   0  0 0  # regular   color 0 Black
+ color  3 178  24  24  0 0  # regular   color 1 Red
+-color  4  24 178  24  0 0  # regular   color 2 Green
++color  4   0 128   0  0 0  # regular   color 2 Green
+ color  5 178 104  24  0 0  # regular   color 3 Yellow
+ color  6  24  24 178  0 0  # regular   color 4 Blue
+-color  7 178  24 178  0 0  # regular   color 5 Magenta
+-color  8  24 178 178  0 0  # regular   color 6 Cyan
++color  7 128   0 128  0 0  # regular   color 5 Magenta
++color  8  16 128 128  0 0  # regular   color 6 Cyan
+ color  9 178 178 178  0 0  # regular   color 7 White
+ 
+ # intensive colors
+@@ -34,9 +34,9 @@ color 11 255 255 255  1 0  # intensive b
+ 
+ color 12 104 104 104  0 0  # intensive color 0
+ color 13 255  84  84  0 0  # intensive color 1
+-color 14  84 255  84  0 0  # intensive color 2
+-color 15 255 255  84  0 0  # intensive color 3
++color 14   0 178   0  0 0  # intensive color 2
++color 15 192 193  64  0 0  # intensive color 3
+ color 16  84  84 255  0 0  # intensive color 4
+-color 17 255  84 255  0 0  # intensive color 5
+-color 18  84 255 255  0 0  # intensive color 6
++color 17 178   0 178  0 0  # intensive color 5
++color 18  55 178 178  0 0  # intensive color 6
+ color 19 255 255 255  0 0  # intensive color 7

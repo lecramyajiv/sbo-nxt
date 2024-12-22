@@ -1,0 +1,44 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+VERSION := $(shell dpkg-parsechangelog | grep ^Version: | cut -d' ' -f2)
+DISTRIBUTION := $(shell dpkg-parsechangelog | grep ^Distribution: | cut -d' ' -f2)
+
+# The default gzip compressor has been changed in dpkg >= 1.17.0.
+deb_default_compress = $(shell LANG=C dpkg-deb --version | head -n1 | \
+                         sed -e "s|.*version ||" -e "s| .*||" | \
+                         xargs -r dpkg --compare-versions 1.17.0 lt \
+                         && echo xz || echo gzip)
+ifeq ($(deb_default_compress),gzip)
+DEB_DH_BUILDDEB_ARGS += -- -Z$(shell dpkg-deb --help | grep -q ":.* xz[,.]" \
+                               && echo xz || echo bzip2)
+endif
+
+pre-build:: debian/stamp-distrospecific
+
+debian/stamp-distrospecific:
+	dh_testdir
+	[ -e debian/stamp-distrospecific ] || \
+	ls -a1 debian/distrospecific | grep -v "^\.*$$" | \
+	tee debian/stamp-distrospecific | \
+	tr "\n" "\0" | (cd debian/distrospecific && xargs -r0 mv -t ../..)
+
+clean::
+	dh_testdir
+	[ ! -e debian/stamp-distrospecific ] || \
+	cat debian/stamp-distrospecific | \
+	tr "\n" "\0" | xargs -r0 mv -t debian/distrospecific
+	rm -f debian/stamp-distrospecific
+
+binary-install/trinity-keyring::
+	dh_testdir
+	mkdir -p debian/$(cdbs_curpkg)/etc/apt/trusted.gpg.d
+	gpg --output debian/$(cdbs_curpkg)/etc/apt/trusted.gpg.d/trinity-keyring.gpg \
+	    --dearmor keyrings/trinity-keyring.gpg
+	touch -r keyrings/trinity-keyring.gpg \
+	    debian/$(cdbs_curpkg)/etc/apt/trusted.gpg.d/trinity-keyring.gpg
+	gpg --output debian/$(cdbs_curpkg)/etc/apt/trusted.gpg.d/trinity-archive-keyring.gpg \
+	    --dearmor keyrings/trinity-archive-keyring.gpg
+	touch -r keyrings/trinity-archive-keyring.gpg \
+	    debian/$(cdbs_curpkg)/etc/apt/trusted.gpg.d/trinity-archive-keyring.gpg

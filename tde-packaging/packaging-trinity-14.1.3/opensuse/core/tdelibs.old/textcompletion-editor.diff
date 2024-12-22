@@ -1,0 +1,344 @@
+Index: khtml/khtmlview.h
+===================================================================
+--- khtml/khtmlview.h.orig
++++ khtml/khtmlview.h
+@@ -314,6 +314,7 @@ private:
+     QStringList formCompletionItems(const QString &name) const;
+     void clearCompletionHistory(const QString& name);
+     void addFormCompletionItem(const QString &name, const QString &value);
++    void removeFormCompletionItem(const QString &name, const QString &value);
+ 
+     void addNonPasswordStorableSite( const QString& host );
+     bool nonPasswordStorableSite( const QString& host ) const;
+Index: khtml/khtmlview.cpp
+===================================================================
+--- khtml/khtmlview.cpp.orig
++++ khtml/khtmlview.cpp
+@@ -3088,6 +3088,16 @@ void KHTMLView::addFormCompletionItem(co
+     d->formCompletions->writeEntry(name, items);
+ }
+ 
++void KHTMLView::removeFormCompletionItem(const QString &name, const QString &value)
++{
++    if (!m_part->settings()->isFormCompletionEnabled())
++        return;
++
++    QStringList items = formCompletionItems(name);
++    if (items.remove(value))
++        d->formCompletions->writeEntry(name, items);
++}
++
+ void KHTMLView::addNonPasswordStorableSite(const QString& host)
+ {
+     if (!d->formCompletions) {
+Index: khtml/rendering/render_form.h
+===================================================================
+--- khtml/rendering/render_form.h.orig
++++ khtml/rendering/render_form.h
+@@ -272,10 +272,12 @@ private slots:
+     void spellCheckerMisspelling( const QString &text, const QStringList &, unsigned int pos);
+     void spellCheckerCorrected( const QString &, const QString &, unsigned int );
+     void spellCheckerFinished();
++    void slotRemoveFromHistory( const QString & );
+ 
+ private:
+     enum LineEditMenuID {
+-        ClearHistory
++        ClearHistory,
++        EditHistory
+     };
+     DOM::HTMLInputElementImpl* m_input;
+     KHTMLView* m_view;
+Index: khtml/rendering/render_form.cpp
+===================================================================
+--- khtml/rendering/render_form.cpp.orig
++++ khtml/rendering/render_form.cpp
+@@ -385,7 +385,9 @@ QPopupMenu *LineEditWidget::createPopupM
+ 
+     if (m_input->autoComplete()) {
+         popup->insertSeparator();
+-        int id = popup->insertItem( SmallIconSet("history_clear"), i18n("Clear &History"), ClearHistory );
++        int id = popup->insertItem( SmallIconSet("edit"), i18n("&Edit History..."), EditHistory );
++        popup->setItemEnabled( id, (compObj() && !compObj()->isEmpty()) );
++        id = popup->insertItem( SmallIconSet("history_clear"), i18n("Clear &History"), ClearHistory );
+         popup->setItemEnabled( id, (compObj() && !compObj()->isEmpty()) );
+     }
+ 
+@@ -409,11 +411,25 @@ void LineEditWidget::extendedMenuActivat
+         m_view->clearCompletionHistory(m_input->name().string());
+         if (compObj())
+           compObj()->clear();
++    case EditHistory:
++      {
++        KHistoryComboEditor dlg( compObj() ? compObj()->items() : QStringList(), this );
++        connect( &dlg, SIGNAL( removeFromHistory(const QString&) ), SLOT( slotRemoveFromHistory(const QString&)) );
++        dlg.exec();
++      }
+     default:
+         break;
+     }
+ }
+ 
++void LineEditWidget::slotRemoveFromHistory(const QString &entry)
++{
++    m_view->removeFormCompletionItem(m_input->name().string(), entry);
++    if (compObj())
++       compObj()->removeItem(entry);
++}
++
++
+ bool LineEditWidget::event( QEvent *e )
+ {
+     if (KLineEdit::event(e))
+Index: kdeui/kcombobox.h
+===================================================================
+--- kdeui/kcombobox.h.orig
++++ kdeui/kcombobox.h
+@@ -24,8 +24,15 @@
+ 
+ #include <qlineedit.h>
+ #include <qcombobox.h>
++#include <qvbox.h>
++#include <qlabel.h>
++#include <qlayout.h>
++#include <qtoolbutton.h>
++#include <qheader.h>
+ 
+ #include <kcompletion.h>
++#include <kdialogbase.h>
++#include <klistview.h>
+ 
+ class QListBoxItem;
+ class QPopupMenu;
+@@ -669,6 +676,12 @@ public:
+      */
+     void reset() { slotReset(); }
+ 
++    /**
++     * When enabling it you have to connect to "removed" signal and save changes
++    */
++    void setHistoryEditorEnabled( bool enable );
++    bool isHistoryEditorEnabled() const;
++
+ public slots:
+     /**
+      * Adds an item to the end of the history list and to the completion list.
+@@ -702,6 +715,8 @@ signals:
+      */
+     void cleared();
+ 
++    void removed( const QString& item );
++
+ protected:
+     /**
+      * Handling key-events, the shortcuts to rotate the items.
+@@ -741,10 +756,17 @@ private slots:
+     void slotClear();
+ 
+     /**
++     * Called from the popupmenu,
++     */
++    void slotEdit();
++
++    /**
+      * Appends our own context menu entry.
+      */
+     void addContextMenuItems( QPopupMenu* );
+ 
++    void slotRemoveFromHistory( const QString & );
++
+ private:
+     void init( bool useCompletion );
+     void rotateUp();
+@@ -774,6 +796,30 @@ private:
+     KHistoryComboPrivate* const d;
+ };
+ 
++class KDEUI_EXPORT KHistoryComboEditor : public KDialogBase
++{
++    Q_OBJECT
++
++public:
++    KHistoryComboEditor( const QStringList& entries, QWidget *parent = 0L );
++    ~KHistoryComboEditor();
++
++signals:
++    void removeFromHistory( const QString& );
++
++protected slots:
++    virtual void slotUser1(); // User1 is "Delete Entry" button
++    void slotSelectionChanged( QListViewItem * item );
++
++protected:
++    virtual void virtual_hook( int id, void* data );
++
++private:
++    KListView *m_pListView;
++
++    class KHistoryComboEditorPrivate;
++    KHistoryComboEditorPrivate* const d;
++};
+ 
+ #endif
+ 
+Index: kdeui/kcombobox.cpp
+===================================================================
+--- kdeui/kcombobox.cpp.orig
++++ kdeui/kcombobox.cpp
+@@ -29,6 +29,7 @@
+ #include <kcursor.h>
+ #include <kiconloader.h>
+ #include <kicontheme.h>
++#include <klistviewsearchline.h>
+ #include <klineedit.h>
+ #include <klocale.h>
+ #include <knotifyclient.h>
+@@ -343,10 +344,22 @@ void KComboBox::lineEditDeleted()
+ // *********************************************************************
+ // *********************************************************************
+ 
++class KHistoryCombo::KHistoryComboPrivate
++{
++public:
++    KHistoryComboPrivate() : bHistoryEditorEnabled(false)
++    {
++    }
++    ~KHistoryComboPrivate()
++    {
++    }
++
++    bool bHistoryEditorEnabled;
++};
+ 
+ // we are always read-write
+ KHistoryCombo::KHistoryCombo( QWidget *parent, const char *name )
+-    : KComboBox( true, parent, name ), d(0)
++    : KComboBox( true, parent, name ), d(new KHistoryComboPrivate)
+ {
+     init( true ); // using completion
+ }
+@@ -354,7 +367,7 @@ KHistoryCombo::KHistoryCombo( QWidget *p
+ // we are always read-write
+ KHistoryCombo::KHistoryCombo( bool useCompletion,
+                               QWidget *parent, const char *name )
+-    : KComboBox( true, parent, name ), d(0)
++    : KComboBox( true, parent, name ), d(new KHistoryComboPrivate)
+ {
+     init( useCompletion );
+ }
+@@ -441,6 +454,10 @@ void KHistoryCombo::addContextMenuItems(
+     if ( menu )
+     {
+         menu->insertSeparator();
++        if (d->bHistoryEditorEnabled) {
++           int idedit = menu->insertItem( SmallIconSet("edit"), i18n("&Edit History..."), this, SLOT( slotEdit()) );
++           menu->setItemEnabled(idedit, count());
++        }
+         int id = menu->insertItem( SmallIconSet("history_clear"), i18n("Clear &History"), this, SLOT( slotClear()));
+         if (!count())
+            menu->setItemEnabled(id, false);
+@@ -677,10 +694,104 @@ void KHistoryCombo::slotClear()
+     emit cleared();
+ }
+ 
++void KHistoryCombo::slotEdit()
++{
++    KHistoryComboEditor dlg( historyItems(), this );
++    connect( &dlg, SIGNAL( removeFromHistory(const QString&) ), SLOT( slotRemoveFromHistory(const QString&)) );
++    dlg.exec();
++}
++
++void KHistoryCombo::slotRemoveFromHistory(const QString &entry)
++{
++    removeFromHistory(entry);
++    emit removed(entry);
++}
++
++void KHistoryCombo::setHistoryEditorEnabled( bool enable )
++{
++    d->bHistoryEditorEnabled = enable;
++}
++
++bool KHistoryCombo::isHistoryEditorEnabled() const
++{
++    return d->bHistoryEditorEnabled;
++}
++
+ void KComboBox::virtual_hook( int id, void* data )
+ { KCompletionBase::virtual_hook( id, data ); }
+ 
+ void KHistoryCombo::virtual_hook( int id, void* data )
+ { KComboBox::virtual_hook( id, data ); }
+ 
++void KHistoryComboEditor::virtual_hook( int id, void* data )
++{ KDialogBase::virtual_hook( id, data ); }
++
++KHistoryComboEditor::KHistoryComboEditor( const QStringList& entries, QWidget *parent )
++: KDialogBase( parent, "khistorycomboeditor", true, i18n( "History Editor" ),
++    KDialogBase::Close | KDialogBase::User1, KDialogBase::User1, true,
++    KGuiItem( i18n( "&Delete Entry" ), "editdelete") ), d(0)
++{
++    QVBox* box = new QVBox( this );
++    box->setSpacing( KDialog::spacingHint() );
++    setMainWidget( box );
++
++    new QLabel( i18n( "This dialog allows you to delete unwanted history items." ), box );
++
++    // Add searchline
++    QHBox* searchbox = new QHBox( box );
++    searchbox->setSpacing( KDialog::spacingHint() );
++
++    QToolButton *clearSearch = new QToolButton(searchbox);
++    clearSearch->setTextLabel(i18n("Clear Search"), true);
++    clearSearch->setIconSet(SmallIconSet(QApplication::reverseLayout() ? "clear_left" : "locationbar_erase"));
++    QLabel* slbl = new QLabel(i18n("&Search:"), searchbox);
++    KListViewSearchLine* listViewSearch = new KListViewSearchLine(searchbox);
++    slbl->setBuddy(listViewSearch);
++    connect(clearSearch, SIGNAL(pressed()), listViewSearch, SLOT(clear()));
++
++    // Add ListView
++    m_pListView = new KListView( box );
++    listViewSearch->setListView(m_pListView);
++    m_pListView->setAllColumnsShowFocus(true);
++    m_pListView->header()->hide();
++    m_pListView->addColumn("");
++    m_pListView->setRenameable( 0 );
++
++    box->setStretchFactor( m_pListView, 1 );
++
++    QStringList newlist = entries;
++    for ( QStringList::Iterator it = newlist.begin(); it != newlist.end(); ++it ) {
++        new QListViewItem( m_pListView, *it );
++    }
++
++    m_pListView->setMinimumSize( m_pListView->sizeHint() );
++
++    connect( m_pListView, SIGNAL( selectionChanged( QListViewItem * ) ),
++             this, SLOT( slotSelectionChanged( QListViewItem * ) ) );
++
++    enableButton( KDialogBase::User1, false );
++
++    resize( sizeHint() );
++}
++
++KHistoryComboEditor::~KHistoryComboEditor()
++{
++}
++
++void KHistoryComboEditor::slotUser1() // Delete button
++{
++    QListViewItem *item = m_pListView->selectedItem();
++
++    if ( item ) {
++       emit removeFromHistory( item->text(0) );
++       m_pListView->takeItem( item );
++       enableButton( KDialogBase::User1, false );
++    }
++}
++
++void KHistoryComboEditor::slotSelectionChanged( QListViewItem * item )
++{
++    enableButton( KDialogBase::User1, item );
++}
++
+ #include "kcombobox.moc"

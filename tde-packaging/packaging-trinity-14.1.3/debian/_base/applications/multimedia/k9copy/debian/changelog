@@ -1,0 +1,112 @@
+k9copy-trinity (1.2.3-0ubuntu2) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+k9copy-trinity (1.2.3-0ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+  * Changed prefix to /opt/trinity
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 08 Apr 2000 10:46:00 -0600
+
+k9copy (1.2.3-0ubuntu1) hardy; urgency=low
+
+  * New upstream release.
+  * debian/patches/kubuntu_05_typo_fix.patch: dropped, included upstream
+
+ -- Luka Renko <lure@ubuntu.com>  Sun, 20 Jan 2008 16:38:59 +0100
+
+k9copy (1.2.2-0ubuntu1) hardy; urgency=low
+
+  * New upstream release.
+  * Moved Homepage field to source stanza.
+  * Removed kubuntu_01_kdepot.diff - no longer need (upstream updated
+    admin).
+
+ -- Jonathan Patrick Davies <jpatrick@kubuntu.org>  Mon, 31 Dec 2007 16:40:34 +0100
+
+k9copy (1.2.1-0ubuntu2) hardy; urgency=low
+
+  * debian/patches:
+    - Added kubuntu_05_typo_fix.patch to fix a typo error (LP: #177715)
+  * debian/control
+     - Bump Standards-Version to 3.7.3
+     - Added autotools-dev as Build-Depends to avoid the following lintian
+       error: outdated-autotools-helper-file admin/config.{guess,sub}
+
+ -- Miguel Ruiz <mruiz@ubuntu.com>  Wed, 26 Dec 2007 12:32:26 -0300
+
+k9copy (1.2.1-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+  * debian/control: 
+    * Build-Depends on libdvdread-dev (was libdvdread3-dev)
+    * Build-Depends on libavformat-dev & libavcodec-dev
+  * debian/patches/kubuntu_04_fix_header_files_inclusion.patch: 
+    * Dropped, as it is resolved upstream
+  * debian/patches/kubuntu_04_fix_libGL_crash.patch:
+    * fix crash when libGL.so is not present, instead ask for 
+      versioned name,  libGL.so.1 (LP: #174752)
+
+ -- Luka Renko <lure@ubuntu.com>  Sun, 16 Dec 2007 12:34:12 +0100
+
+k9copy (1.1.3-0ubuntu2) gutsy; urgency=low
+
+  * Update upstream web site address (LP: #139193)
+  * Change maintainer to MOTU
+
+ -- Scott Kitterman <scott@kitterman.com>  Wed, 12 Sep 2007 15:22:36 -0400
+
+k9copy (1.1.3-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+  * kubuntu_03_fix_Makefile_files_in_po_directory.patch: updated to apply
+
+ -- Luka Renko <lure@ubuntu.com>  Thu, 16 Aug 2007 16:42:33 +0200
+
+k9copy (1.1.2-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+  * debian/control: add Build-Depends on DBus and HAL
+  * kubuntu_02_fix_desktop_file.patch: drop, fixed upstream
+  * kubuntu_03_fix_Makefile_files_in_po_directory.patch: updated to apply
+  * kubuntu_04_fix_header_files_inclusion.patch: updated to apply
+
+ -- Luka Renko <lure@ubuntu.com>  Sun, 12 Aug 2007 21:59:39 +0200
+
+k9copy (1.1.0~beta2-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+  * Bump Standards-Version
+
+ -- Adrien Cunin <adri2000@gmail.com>  Wed, 29 Nov 2006 16:30:24 +0100
+
+k9copy (1.1.0~beta1-0ubuntu2) edgy; urgency=low
+
+  * Added dependency on libdvdnav and mencoder
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 17 Oct 2006 02:19:52 +0200
+
+k9copy (1.1.0~beta1-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+  * Added kubuntu_04_fix_header_files_inclusion.patch to fix progress.h file
+    inclusion in k9progress.h file
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 11 Jul 2006 22:10:52 +0200
+
+k9copy (1.0.2-0ubuntu1) dapper; urgency=low
+
+  * Initial Release.
+  * Added kubuntu_01_kdepot for pot file inclusion in Rosetta.
+  * Added kubuntu_02_fix_desktop_file to add french and english GenericName,
+    and Categories to K9copy.desktop file.
+  * Added kubuntu_03_fix_Makefile_files_in_po_directory to fix po/Makefile.am
+    and po/Makefile.in. k9copy.pot entry needs to be removed for the
+    application to build.
+  * Tarball rebuild to correct permissions, too many files were executable.
+  * Sponsored upload for Anthony Mercatante <anthony.mercatante@laposte.net>
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 28 Dec 2005 13:46:20 +0200

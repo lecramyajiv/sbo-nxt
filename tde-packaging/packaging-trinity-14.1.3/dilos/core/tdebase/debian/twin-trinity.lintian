@@ -1,0 +1,2 @@
+twin-trinity: shlib-missing-in-control-file libtdeinit_twin.so usr/lib/libtdeinit_twin.so
+twin-trinity: shlib-missing-in-control-file libtdeinit_twin_rules_dialog.so usr/lib/libtdeinit_twin_rules_dialog.so

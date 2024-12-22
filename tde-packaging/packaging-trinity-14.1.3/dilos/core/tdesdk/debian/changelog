@@ -1,0 +1,1131 @@
+tdesdk-trinity (4:3.5.10-0ubuntu3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+tdesdk-trinity (4:3.5.10-0ubuntu1~intrepid5) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 02 March 2009 21:41:00 -0600
+
+tdesdk-trinity (4:3.5.10-0ubuntu1~intrepid2) intrepid; urgency=low
+
+  * SVN import
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 28 Nov 2008 12:28:00 -0600
+
+tdesdk (4:3.5.10-0ubuntu1~hardy1) hardy-backports; urgency=low
+
+  * Upstream bug fix release (LP: #261366)
+    - Bump build-dep versions for tdelibs4-dev, tdepim-dev, libkcal2-dev,
+      and libktnef1-dev to 3.5.10 
+
+ -- Scott Kitterman <scott@kitterman.com>  Tue, 26 Aug 2008 00:52:27 -0400
+
+tdesdk (4:3.5.9-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 14 Feb 2008 12:27:08 +0000
+
+tdesdk (4:3.5.8-1ubuntu7) hardy; urgency=low
+
+  * Rebuild to get rid of libdb4.4.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 04 Feb 2008 20:41:27 +0000
+
+tdesdk (4:3.5.8-1ubuntu6) hardy; urgency=low
+
+  * Add desktop i18n scripts to /usr/lib/kubuntu-desktop-i18n/
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 14 Dec 2007 16:41:08 +0000
+
+tdesdk (4:3.5.8-1ubuntu5) hardy; urgency=low
+
+  * Build-dep on tdepim 3.5.7enterprise20070926-1ubuntu4
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 23 Nov 2007 14:50:30 +0000
+
+tdesdk (4:3.5.8-1ubuntu4) hardy; urgency=low
+
+  * Downgrade build-dep version of libktnef1-dev
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 23 Nov 2007 11:27:44 +0000
+
+tdesdk (4:3.5.8-1ubuntu3) hardy; urgency=low
+
+  * Downgrade libkcal2-dev dependency to 3.5.8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 15:11:08 +0000
+
+tdesdk (4:3.5.8-1ubuntu2) hardy; urgency=low
+
+  * Run buildprep before upload
+  * Downgrade tdepim dependency to 3.5.7
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 11:03:22 +0000
+
+tdesdk (4:3.5.8-1ubuntu1) hardy; urgency=low
+
+  * Merge with Debian, no changes except LP translations patch
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 14 Nov 2007 17:25:47 +0000
+
+tdesdk (4:3.5.8-1) unstable; urgency=low
+
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+  
+  * New upstream release:
+    - Patches: remove 01_branches_umbrello_update_1.5.71, merged upstream.
+  * Update *.install files.
+  * Change kbugbuster menu section. (Closes: #444899)
+
+  +++ Changes by Fathi Boudra:
+
+  * Fix typo in kompare menu file. (Closes: #440945, #444251, #445122)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon, 15 Oct 2007 16:17:11 +0200
+
+tdesdk (4:3.5.8-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 09 Oct 2007 11:41:27 +0100
+
+tdesdk (4:3.5.7-2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian for new Umbrello upstream
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 27 Jul 2007 13:36:44 +0100
+
+tdesdk (4:3.5.7-3) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+
+  * Implement the use of uploaders.mk and update uploaders.
+  * Pull newer umbrello release in. (Closes: 428059). Thanks to Eric Valette
+    for his friendly attitude.
+  * Don't think that all gnu triplets end with gnu on glibc based systems. 
+    We also have gnueabi for new arm eabi and the different newer mipsen 
+    also doesn't end with -gnu. Thanks to Aurelien Jarno for the bug report 
+    and a suggested fix. (Closes: 431346)
+  * Update buildprep.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon, 23 Jul 2007 23:27:56 +0200
+
+tdesdk (4:3.5.7-2) unstable; urgency=low
+
+  * Install new images in kompare documentation. Thanks to Jonathan Riddell 
+    for the pointer.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Wed, 23 May 2007 22:03:38 +0100
+
+tdesdk (4:3.5.7-1ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian for new upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 23 May 2007 17:42:32 +0100
+
+tdesdk (4:3.5.7-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #421918, #417309)
+
+  +++ Changes by Sune Vuorela:
+
+  * Add gettext to kbabel recommends (related to upstream bug
+    http://bugs.kde.org/show_bug.cgi?id=144789)
+  * Depend on php5-cli instead of php4. Php4 is going away. (Closes: #412596)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 16 May 2007 16:08:05 +0100
+
+tdesdk (4:3.5.6-2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 30 Apr 2007 20:32:57 +0100
+
+tdesdk (4:3.5.6-2) unstable; urgency=low
+
+  * Upload to unstable after Etch release.
+
+  +++ Changes by Sune Vuorela:
+
+  * Promote graphviz from tdecachegrind Suggests to Recommends. (Closes: #407043)
+  * Don't install the licensecheck script in tdesdk. The devscripts package
+    has taken it and is working actively on it. Let tdesdk-scripts suggest
+    devscripts instead. (Closes: #420154)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon, 23 Apr 2007 11:53:44 +0100
+
+tdesdk (4:3.5.6-1) experimental; urgency=low
+
+  * New upstream release.
+  
+  +++ Changes by Josh Metzler:
+
+  * Make tdesdk-dbg depend on tdelibs-dbg to get useful backtraces when
+    debugging.
+
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+  
+  * Update Uploaders.
+  * Drop patch 07_support_automake1-10, merged upstream.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu, 18 Jan 2007 18:32:21 +0100
+
+tdesdk (4:3.5.5-3) unstable; urgency=low
+
+  * Update automake 1.10 support patch as cdbs runs patch with -p1 before -p0
+    and patches the wrong file. (Closes: #396985)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu, 16 Nov 2006 17:01:23 -0500
+
+tdesdk (4:3.5.6-0ubuntu2) feisty; urgency=low
+
+  * Added kubuntu_01_umbrello_1.5.61.diff, brings Umbrello up to 1.5.61 release
+
+ -- Juan Carlos G. Torres <jucato@kubuntu.org>  Fri, 30 Mar 2007 22:57:02 +0800
+
+tdesdk (4:3.5.6-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+  * Remove 07_support_automake1-10_in_template.diff, applied upstream
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 17 Jan 2007 11:22:31 +0000
+
+tdesdk (4:3.5.5-3ubuntu2) feisty; urgency=low
+
+  * Merge back Ubuntu changes
+   - build with --enable-gcc-hidden-visibility
+   - Add kubuntu_01_kdepot.diff
+   - Install desktop i18n scripts to /usr/lib/kubuntu-desktop-i18n/
+   - Build-dep on libapr0-dev not libapr1-dev
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 24 Nov 2006 12:36:00 +0000
+
+tdesdk (4:3.5.5-3ubuntu1) feisty; urgency=low
+
+  * Fake sync.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Fri, 24 Nov 2006 11:13:09 +0000
+
+tdesdk (4:3.5.5-2) unstable; urgency=low
+
+  +++ Changes by Fathi Boudra:
+
+  * Rename svn-clean and svnversions to svn-clean-kde and svnversion-kde to
+    avoid conflicts and mistakes with subversion scripts. (Closes: #397874)
+
+  +++ Changes by Sune Vuorela:
+
+  * Add support for automake 1.10 to kapptemplate. (Closes: #396985)
+  * Add Suggests: tdelibs4-doc to tdeunittest. tdelibs4-doc contains tdeunittest
+    documentation. (Closes: #386040)
+  * Don't install /usr/bin/tdeunittest and /usr/bin/tdeunittest_debughelper. These
+    are not useful without the dcopperl bindings which are not built in the
+    Debian tdebindings packages. (Closes: #386039)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 14 Nov 2006 17:34:11 -0500
+
+tdesdk (4:3.5.5-1) unstable; urgency=low
+
+  [ Debian Qt/KDE Maintainers ]
+  * New upstream release.
+    + Fixes kbabel: Kbabel Spellcheck window moves outside the screen.
+      (Closes: #360445)
+
+  +++ Changes by Fathi Boudra:
+
+  * Remove libdb4.3-dev build dependency; libapr0-dev depends on libdb4.4-dev.
+    Fixes installability. (Closes: #388092)
+
+  +++ Changes by Luk Claes:
+
+  * Build depend on libapr1-dev instead of libapr0-dev for apache2.2
+    transition.
+  * Build depend on libsvn-dev instead of libsvn0-dev. (Closes: #388092).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 10 Oct 2006 00:53:47 +0200
+
+tdesdk (4:3.5.4-1) unstable; urgency=low
+
+  * New upstream release.
+    + Contains up-to-date KDE admin dir in kapptemplate. This includes
+      autoconf 2.6* awareness. (Closes: #378763)
+
+  * KDE_3_5_BRANCH update (up to r577421).
+
+  +++ Changes by Christopher Martin:
+
+  * De-version libcvsservice0's dependency on cvs, since this prevents the
+    installation of cvs alternatives. The required version is ancient and
+    in Sarge anyway.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 26 Aug 2006 13:20:23 -0400
+
+tdesdk (4:3.5.5-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  3 Oct 2006 10:56:07 +0000
+
+tdesdk (4:3.5.4-0ubuntu4) edgy; urgency=low
+
+  * Rebuild with latest cdbs to add gettext domain to .desktop files for
+    langpacks-desktopfiles-kde, no source changes
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  5 Sep 2006 22:53:11 +0000
+
+tdesdk (4:3.5.4-0ubuntu3) edgy; urgency=low
+
+  * Remove broken kolf rules from debian/desktop-i18n/findfiles
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 30 Aug 2006 16:44:06 +0000
+
+tdesdk (4:3.5.4-0ubuntu2) edgy; urgency=low
+
+  * Add desktop i18n scripts to /usr/lib/kubuntu-desktop-i18n/
+    for building packages, see 
+    https://launchpad.net/distros/ubuntu/+spec/langpacks-desktopfiles-kde
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  2 Aug 2006 10:42:16 +0000
+
+tdesdk (4:3.5.4-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 25 Jul 2006 10:12:19 +0000
+
+tdesdk (4:3.5.3-1ubuntu3) edgy; urgency=low
+
+  * Build-dep on tdepim-dev 3.5.3-2ubuntu3 to avoid libfam.la breakage
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 13 Jul 2006 15:20:07 +0000
+
+tdesdk (4:3.5.3-1ubuntu2) edgy; urgency=low
+
+  * Rebuild without lifam.la, no changes
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 12 Jul 2006 10:42:52 +0000
+
+tdesdk (4:3.5.3-1ubuntu1) edgy; urgency=low
+
+  * New upstream release
+  * Sync with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  4 Jul 2006 16:03:08 +0000
+
+tdesdk (4:3.5.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * KDE_3_5_BRANCH update (up to r524399).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu, 30 Mar 2006 08:43:32 -0500
+
+tdesdk (4:3.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Christopher Martin:
+
+  * Allow tdesvn-kio-plugins to satisfy tdesdk's dependencies instead of
+    tdesdk-kio-plugins, since it is a replacement for tdesdk-kio-plugins
+    and provides equivalent functionality. (Closes: #347903)
+
+  * Eliminate libcvsservice0's Recommends on tdelibs-bin.
+
+  * Upload to unstable.
+
+  +++ Changes by Luk Claes:
+
+  * Move kbabel to the Apps/Text submenu and add a l10n hint (Closes: #311740)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  2 Feb 2006 11:06:25 -0500
+
+tdesdk (4:3.5.0-3) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * Upload to unstable.
+
+  * KDE_3_5_BRANCH update (up to r497528).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu, 12 Jan 2006 20:12:15 -0500
+
+tdesdk (4:3.5.0-2) experimental; urgency=low
+
+  * Upload to experimental.
+
+  * KDE_3_5_BRANCH update (up to r490305).
+
+  +++ Changes by Christopher Martin:
+ 
+  * Improve kapptemplate's admin directory, setting proper permissions on the
+    scripts and removing files that are artifacts of the Debian build system.
+    (Closes: #343678)
+
+  * No longer build with gcc-3.4 on any architectures, since gcc-4.0 should
+    be fixed. (Closes: #342988)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 21 Dec 2005 08:28:13 -0500
+
+tdesdk (4:3.5.2-0ubuntu3) dapper; urgency=low
+
+  * Edit debian/cdbs/debian-qt-kde.mk to use dh_iconcache
+
+ -- Gauvain Pocentek <gauvainpocentek@ubuntu.com>  Tue, 23 May 2006 19:34:53 +0200
+
+tdesdk (4:3.5.2-0ubuntu2) dapper; urgency=low
+
+  * Edit debian/cdbs/kde.mk to generate .po files
+  * Edit debian/cdbs/kde.mk to mark .po files as UTF-8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 21 Apr 2006 16:29:18 +0100
+
+tdesdk (4:3.5.2-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 20 Mar 2006 12:06:31 +0000
+
+tdesdk (4:3.5.1-0ubuntu3) dapper; urgency=low
+
+  * Remove build-dep on libdb4.x, correct versin will be
+    brought in by other packages
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 21 Feb 2006 14:55:07 +0000
+
+tdesdk (4:3.5.1-0ubuntu2) dapper; urgency=low
+
+  * Don't use GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 16 Feb 2006 12:03:17 +0000
+
+tdesdk (4:3.5.1-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Update Replaces on libcvsservice0 for cervisia
+  * Build-dep on libdb4.2-dev | libdb4.3-dev for backports
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 23 Jan 2006 14:26:07 +0000
+
+tdesdk (4:3.5.0-1ubuntu1) dapper; urgency=low
+
+  * Sync with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  8 Dec 2005 17:54:03 +0000
+
+tdesdk (4:3.5.0-1) alioth; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Christopher Martin:
+
+  * Add a tdesdk-dbg package for helping to trace problems.
+
+  * New packages: tdeunittest, and tdesdk-kio-plugins, which splits
+    out the svn ioslave from tdesdk-misc.
+
+  * Re-libtoolize. This fixes GNU/kFreeBSD, and prunes poxml's
+    excessive dependencies. (Closes: #327706, #329902)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue,  6 Dec 2005 13:10:37 -0500
+
+tdesdk (4:3.4.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * This package is now in the hands of the Debian Qt/KDE Maintainers. Thanks
+    to Ben Burton for all his work.
+
+  * Acknowledge NMU. (Closes: #330934)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon,  5 Dec 2005 07:23:04 -0500
+
+tdesdk (4:3.5.0-0ubuntu2) dapper; urgency=low
+
+  * Change libdb4.2 build-dep to libdb4.3
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  8 Dec 2005 02:48:59 +0000
+
+tdesdk (4:3.5.0-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Remove GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  6 Dec 2005 12:28:57 +0000
+
+tdesdk (4:3.5-rc2-0ubuntu1) dapper; urgency=low
+
+  * Sync with Debian
+  * New upstream pre-release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 23 Nov 2005 15:00:05 +0000
+
+tdesdk (4:3.4.2-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Build-dep on g++-3.4 on arm, hppa and m68k (closes:#330934). 
+
+ -- Luk Claes <luk@debian.org>  Sat,  1 Oct 2005 20:21:41 +0200
+
+tdesdk (4:3.4.2-2) unstable; urgency=low
+
+  * Built against libfam-dev, not libgamin-dev (closes: #326547).
+  * Updated overrides files to account for tdeinit black magic.
+
+ -- Ben Burton <bab@debian.org>  Sun,  4 Sep 2005 10:58:17 +1000
+
+tdesdk (4:3.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * First g++-4 upload to sid.
+  * Adjusted build-dependencies and shlibs files for the C++ ABI transition.
+    Note that the libcvsservice0 package name does not need to change.
+  * Updated FSF address in the copyright file.
+  * Changed the conflicts on tdevelop3-plugins to a versioned replaces as
+    described in the changelog for 4:3.4.0-0pre2.
+  * Removed redundant xlibs-dev recommendation from kapptemplate.
+  * Adjusted Ivan's changelog entry from 29 Feb 2001 to 01 Mar 2001 so the
+    changelog is parseable.
+  * KBabel now treats multiple-line headers correctly (closes: #277341).
+  * Bumped standards-version to 3.6.2.1 (no changes required).
+
+ -- Ben Burton <bab@debian.org>  Sun,  4 Sep 2005 01:14:27 +1000
+
+tdesdk (4:3.4.3-0ubuntu1) breezy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat,  8 Oct 2005 21:59:11 +0000
+
+tdesdk (4:3.4.2-0ubuntu2) breezy; urgency=low
+
+  * Add missing files to libcvsserver0, tdesdk-scripts and kompare.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 28 Jul 2005 17:55:43 +0000
+
+tdesdk (4:3.4.2-0ubuntu1) breezy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 26 Jul 2005 16:25:16 +0000
+
+tdesdk (4:3.4.1-0ubuntu5) breezy; urgency=low
+
+  * Rebuild for removed libXcursor.la and libXrender.la
+    and tighten tdelibs dependency.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Sun, 24 Jul 2005 23:54:37 +0000
+
+tdesdk (4:3.4.1-0ubuntu4) breezy; urgency=low
+
+  * Add build-depend on libxi-dev
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu, 30 Jun 2005 13:42:22 +0000
+
+tdesdk (4:3.4.1-0ubuntu3) breezy; urgency=low
+
+  * Add version to tdesdk-misc conflict on tdevelop3-plugins
+
+ -- Jonathan Riddell <jr@jriddell.org>  Mon,  6 Jun 2005 22:45:10 +0000
+
+tdesdk (4:3.4.1-0ubuntu2) breezy; urgency=low
+
+  * Add libtdeinit_cvsservice.so to libcvsservice0.install
+  * Add cervisia.so and libtdeinit_cervisia.so to cervisia.install
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu,  2 Jun 2005 01:33:59 +0000
+
+tdesdk (4:3.4.1-0ubuntu1) breezy; urgency=low
+
+  * Update version number following KDE 3.4.1 release
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed,  1 Jun 2005 00:56:16 +0000
+
+tdesdk (4:3.4.1-0ubuntu0pre1) breezy; urgency=low
+
+  * Sync with Debian
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu, 26 May 2005 16:34:06 +0000
+
+tdesdk (4:3.4.0-0pre2) unstable; urgency=low
+
+  * Merge in recent packaging changes from the 3.3 branch.
+  * Introduce a temporary conflicts against tdevelop3-plugins, which provides
+    a copy of the subversion I/O slave taken from tdesdk-misc.  This will be
+    removed once tdevelop has been rebuilt against KDE 3.4 (without the
+    subversion I/O slave), and a versioned replaces will be put in place
+    instead.
+  * Now that KDE has moved to subversion, disable cvs-clean in debian/rules
+    for the time being.
+
+ -- Ben Burton <bab@debian.org>  Sat, 14 May 2005 19:20:58 +1000
+
+tdesdk (4:3.4.0-0pre1) unstable; urgency=low
+
+  * New major upstream release.
+  * Note that although libktnef.la has moved from tdepim-dev to libktnef1-dev,
+    a build-dependency on tdepim-dev is still required for some header files.
+  * Removed cvs dependency from cervisia, since this comes indirectly through
+    libcvsservice0 anyway.  Updated the cvs dependency for libcvsservice
+    to require cvs (>= 1.11), as cervisia used to when it handled cvs itself.
+  * Removed obsolete kderemove tags from menu items.
+
+ -- Ben Burton <bab@debian.org>  Fri, 25 Mar 2005 12:56:49 +1100
+
+tdesdk (4:3.4.0-0ubuntu5) hoary; urgency=low
+
+  * Update cdbs/kde.mk
+
+ -- Jonathan Riddell <jr@jriddell.org>  Tue, 29 Mar 2005 22:58:09 +0000
+
+tdesdk (4:3.4.0-0ubuntu4) hoary; urgency=low
+
+  * Add paths.diff
+
+ -- Jonathan Riddell <jr@jriddell.org>  Mon, 28 Mar 2005 23:01:12 +0000
+
+tdesdk (4:3.4.0-0ubuntu3) hoary; urgency=low
+
+  * added empty empty patches 
+
+ -- Andreas Mueller <amu@ubuntu.com>  Wed, 23 Mar 2005 10:46:56 +0000
+
+tdesdk (4:3.4.0-0ubuntu2) hoary; urgency=low
+
+  * fixed broken patchdir
+  * added KDE branch patches   
+
+ -- Andreas Mueller <amu@ubuntu.com>  Tue, 22 Mar 2005 20:57:56 +0000
+
+tdesdk (4:3.4.0-0ubuntu1) hoary; urgency=low
+
+  * New upstream release.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu, 17 Mar 2005 04:18:57 +0000
+
+tdesdk (4:3.3.2-3) unstable; urgency=high
+
+  * Fresh pull from KDE_3_3_BRANCH for recent bugfixes.
+  * Many thanks to upstream who have relicensed cervisia under the GPL
+    (closes: #296514).  Also noted in debian/copyright that cvsservice is
+    under the LGPL.
+  * Fix kdemangen.pl output to use minus instead of hyphen where appropriate,
+    thanks to Achim Bohnet (closes: #295454).
+  * Fixed amd64/gcc-4.0 build by using longs for node IDs in tdecachegrind,
+    thanks to Andreas Jochens (closes: #287032).
+
+ -- Ben Burton <bab@debian.org>  Thu, 31 Mar 2005 19:59:13 +1000
+
+tdesdk (4:3.3.2-2) unstable; urgency=high
+
+  * Fixed drag-and-drop problems in umbrello that can cause a real and/or
+    apparent loss of data (closes: #296433).
+  * Patched kbabel spell-check-as-you-go to use checkWord() instead of check(),
+    which seems to protect it from the tdelibs crash described in #289646.
+  * Added the full text of the GFDL to debian/copyright, since all of the
+    docbook documentation is under this license.
+  * Added a note to README.Debian in the poxml package regarding the
+    necessity of system identifiers (closes: #286103).
+  * Installing the new script cvsforwardport and a corresponding manpage.
+
+ -- Ben Burton <bab@debian.org>  Thu, 24 Mar 2005 07:59:47 +1100
+
+tdesdk (4:3.3.2-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Rebuilt against libkcal2a and reversioned tdepim-dev and libkcal2-dev
+    build-depends to >= 4:3.3.2 accordingly (closes: #291592).
+  * Fixed setupGUI() typo in kapptemplate (part of #289304).
+  * Added a README.Debian for poxml that outlines the available binaries
+    (closes: #286106).
+  * Applied upstream patch for poxml that addresses escaped literals
+    and KDE-specific credits in split2po (closes: #288929).
+
+ -- Ben Burton <bab@debian.org>  Sat, 22 Jan 2005 07:29:29 +1100
+
+tdesdk (4:3.3.1-2) unstable; urgency=medium
+
+  * Build-depends on tdepim-dev (>= 4:3.3.1), which provides libktnef.la.
+    When building against libkcal2-dev (>= 4:3.3.1), libktnef.la is needed
+    at link time.
+  * Also changed libkcal2-dev in the build-depends to the versioned
+    libkcal2-dev (>= 4:3.3.1) to ensure consistency.
+
+ -- Ben Burton <bab@debian.org>  Thu,  9 Dec 2004 08:16:17 +1100
+
+tdesdk (4:3.3.1-1) unstable; urgency=medium
+
+  * New upstream bugfix release.
+  * Build-conflicts with autoconf2.13, which does not play well with
+    Makefile.common.
+  * Force a rerun of admin/Makefile.common when building (not just after
+    a clean), since the debian patches affect Makefile.ams.
+
+ -- Ben Burton <bab@debian.org>  Thu, 28 Oct 2004 19:03:02 +1000
+
+tdesdk (4:3.3.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * New package tdecachegrind-converters.  These foreign format converters
+    are packaged separately so that tdecachegrind need not depend on php.
+  * Binary package kmtrace has returned.  Note that the kmtrace libraries
+    for debian are now installed in /usr/lib/kmtrace, not in /usr/lib as
+    is done upstream.
+  * Versioned libqt3-mt-dev build-depends is no longer necessary since
+    tdelibs4-dev already forces Qt 3.3.
+  * Made libcvsservice-dev depend on tdelibs4-dev.
+  * Removed python dependency from poxml, since all apps are now compiled
+    binaries.
+  * Added a sample kde-buildrc to the tdesdk-scripts documentation.
+
+ -- Ben Burton <bab@debian.org>  Fri, 15 Oct 2004 09:55:26 +1000
+
+tdesdk (4:3.2.3-2) unstable; urgency=low
+
+  * Fixed C++ code generator to use keyword "virtual" when declaring
+    abstract operations (closes: #255552).
+
+ -- Ben Burton <bab@debian.org>  Thu, 24 Jun 2004 08:35:22 +1000
+
+tdesdk (4:3.2.3-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Rebuilt against STL-enabled Qt and corresponding tdelibs.
+  * Added manpages for cvs2dist and build-progress.sh.
+  * Use real paths for doc-base entries instead of symlinked paths
+    (closes: #247690).
+  * Suggests (konqueror | www-browser) for tdesdk-doc-html instead of
+    just www-browser.
+  * KBabel catalogue manager no longer opens spurious empty windows
+    (closes: #237031).
+
+ -- Ben Burton <bab@debian.org>  Wed, 16 Jun 2004 08:41:42 +1000
+
+tdesdk (4:3.2.2-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Add Conflicts/Replaces for umbrello-manual (closes: #237173).
+  * Don't use Conflicts/Replaces elsewhere where we should just use Replaces.
+  * Have tdecachegrind suggest graphviz (closes: #243883).
+
+ -- Ben Burton <bab@debian.org>  Tue, 16 Mar 2004 09:15:01 +1100
+
+tdesdk (4:3.2.1-1) unstable; urgency=low
+
+  * First KDE 3.2 upload to sid.
+
+ -- Ben Burton <bab@debian.org>  Sun,  7 Mar 2004 17:42:59 +1100
+
+tdesdk (4:3.2.0-2) experimental; urgency=low
+
+  * First KDE 3.2 upload to experimental.
+  * Sync from KDE_3_2_BRANCH for recent bugfixes.
+  * Using versioned dependencies for the tdesdk metapackage.
+
+ -- Ben Burton <bab@debian.org>  Mon, 23 Feb 2004 08:14:22 +1100
+
+tdesdk (4:3.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Many thanks to Ralf Nolden for all his help with packaging KDE 3.2.
+  * Thanks to Robert Lemmen for previous packaging work on umbrello and
+    to Philipp Frauenfelder for previous packaging work on tdecachegrind.
+  * New binary packages tdecachegrind, kuiviewer and umbrello.
+  * Created a new package tdesdk-doc-html for HTML documentation.
+
+ -- Ben Burton <bab@debian.org>  Sat, 31 Jan 2004 12:08:48 +1100
+
+tdesdk (4:3.1.5-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ben Burton <bab@debian.org>  Sun, 18 Jan 2004 12:55:12 +1100
+
+tdesdk (4:3.1.4-3) unstable; urgency=low
+
+  * New pull from BRANCH; includes bugfixes for kbabel and kompare.
+  * Fixed freeze in KBabel spellcheck (closes: #209397).
+
+ -- Ben Burton <bab@debian.org>  Fri, 12 Dec 2003 10:42:10 +1100
+
+tdesdk (4:3.1.4-2) unstable; urgency=low
+
+  * Patched split2po to handle entities inside attributes correctly;
+    thanks to Denis Barbier (closes: #213036).
+  * Added encoding header to fixsgml; thanks to Petter Reinholdtsen
+    (closes: #208949).  Note that fixsgml is no longer supported
+    upstream and will not be shipped with KDE 3.2.
+
+ -- Ben Burton <bab@debian.org>  Tue, 14 Oct 2003 16:26:05 +1000
+
+tdesdk (4:3.1.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bumped standards-version to 3.6.1.
+
+ -- Ben Burton <bab@debian.org>  Mon, 29 Sep 2003 15:08:53 +1000
+
+tdesdk (4:3.1.3-2) unstable; urgency=low
+
+  * Rebuilt against Qt 3.2 so kbabel no longer crashes (closes: #208509).
+  * Added versioned build-depends on libqt3-mt-dev (>= 3:3.2.1).
+  * Updated admin/ from CVS.
+
+ -- Ben Burton <bab@debian.org>  Fri,  5 Sep 2003 12:07:17 +1000
+
+tdesdk (4:3.1.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Split menu titles into title/longtitle.
+  * Bumped standards-version to 3.6.0.
+
+ -- Ben Burton <bab@debian.org>  Wed, 13 Aug 2003 11:02:26 +1000
+
+tdesdk (4:3.1.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Build-depends on flex-old instead of flex (closes: #193871).
+  * Debian menu pixmaps no longer use a restricted colour map.
+  * Man page overhaul.
+
+ -- Ben Burton <bab@debian.org>  Sun,  1 Jun 2003 14:15:47 +1000
+
+tdesdk (4:3.1.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Removed binary package kmtrace which claims not to work with
+    glibc >= 2.3.x.
+
+ -- Ben Burton <bab@debian.org>  Sat, 22 Mar 2003 16:18:51 +1100
+
+tdesdk (4:3.1.0-5) unstable; urgency=low
+
+  * Renamed symbolmatch to kmmatch and kdefixincludes to fixkdeincludes;
+    these will be the upstream names in KDE 3.2.
+  * Removed alpha compile options.
+
+ -- Ben Burton <bab@debian.org>  Mon, 17 Mar 2003 08:35:19 +1100
+
+tdesdk (4:3.1.0-4) unstable; urgency=low
+
+  * Updated admin/ so that kapptemplate's admin/ works with the new Qt
+    packaging style.
+
+ -- Ben Burton <bab@debian.org>  Wed, 12 Mar 2003 13:28:16 +1100
+
+tdesdk (4:3.1.0-3) unstable; urgency=low
+
+  * Changed /usr/bin/match to /usr/bin/symbolmatch to avoid filename
+    conflicts (closes: #181840).
+  * Build-depends on libqt3-compat-headers for now until obsolete
+    #includes are removed from both tdesdk and tdelibs.
+  * Added patch to work around flex's namespace problems until the
+    flex package is fixed.
+
+ -- Ben Burton <bab@debian.org>  Tue, 25 Feb 2003 11:50:26 +1100
+
+tdesdk (4:3.1.0-2) unstable; urgency=low
+
+  * First Trinity upload to debian (closes: #167062).
+  * Rolled the epoch to aid upgrades from the unofficial repository on
+    ftp.kde.org.. *sigh*
+
+ -- Ben Burton <bab@debian.org>  Sun,  2 Feb 2003 19:40:16 +1100
+
+tdesdk (3.1.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Merged kdepalettes package into tdesdk-misc.
+  * Installs shell completion controls.
+  * Replaced the old kde-devel-emacs.el with the new kde-emacs.el.
+
+ -- Ben Burton <bab@debian.org>  Mon, 18 Nov 2002 14:15:59 +1100
+
+tdesdk (3.0.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * Built with g++-3.2.
+  * Build-depends on automake1.7.
+
+ -- Ben Burton <benb@acm.org>  Tue, 22 Oct 2002 11:57:39 +1000
+
+tdesdk (3.0.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Moved to Chris Cheney's style of debian/rules.
+  * Moved kbabel *.la files into kbabel-dev.
+  * Build-depends on automake1.6.
+
+ -- Ben Burton <benb@acm.org>  Sun, 22 Sep 2002 17:57:55 +1000
+
+tdesdk (3.0.3-2) unstable; urgency=low
+
+  * Rename static kmtrace library to libktrace_s.a.
+  * Install vim helper file.
+  * Take out cvschanged again since it's superseded by cvscheck.
+
+ -- Ben Burton <benb@acm.org>  Sat,  7 Sep 2002 19:03:33 +1000
+
+tdesdk (3.0.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ben Burton <benb@acm.org>  Thu, 15 Aug 2002 13:22:22 +1000
+
+tdesdk (3.0.2-2) unstable; urgency=low
+
+  * Build-depends on automake1.5.
+  * Install cvschanged.
+  * Don't install kde-build (relies on kde-buildrc).
+
+ -- Ben Burton <benb@acm.org>  Sat,  6 Jul 2002 14:58:13 +1000
+
+tdesdk (3.0.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ben Burton <benb@acm.org>  Thu,  4 Jul 2002 19:36:49 +1000
+
+tdesdk (3.0.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ben Burton <benb@acm.org>  Mon, 13 May 2002 03:15:24 +1000
+
+tdesdk (2.2.2-7) unstable; urgency=low
+
+  * tdesdk-scripts recommends gawk for kdekillall (closes: Bug#156109).
+
+ -- Ben Burton <benb@acm.org>  Sat, 10 Aug 2002 14:25:35 +1000
+
+tdesdk (2.2.2-6) unstable; urgency=low
+
+  * Emptied tdesdk-scripts.links instead of removing it so the diff works
+    correctly (closes: Bug#154803).
+
+ -- Ben Burton <benb@acm.org>  Fri,  2 Aug 2002 14:28:27 +1000
+
+tdesdk (2.2.2-5) unstable; urgency=low
+
+  * Fixed manpage section for kdelnk2desktop.py.1 (closes: #148371).
+
+ -- Ben Burton <benb@acm.org>  Sat,  6 Jul 2002 14:02:27 +1000
+
+tdesdk (2.2.2-4) unstable; urgency=low
+
+  * Package kspy depends on tdelibs-dev (closes: Bug#150707).
+
+ -- Ben Burton <benb@acm.org>  Sun, 23 Jun 2002 13:02:06 +1000
+
+tdesdk (2.2.2-3) unstable; urgency=low
+
+  * Fixed gcc3 build (closes: Bug#138177).
+
+ -- Ben Burton <benb@acm.org>  Tue, 19 Mar 2002 17:01:44 +1100
+
+tdesdk (2.2.2-2) unstable; urgency=low
+
+  * Moved kspy.h to /usr/include/tde (closes: Bug#122448, Bug#122449).
+
+ -- Ben Burton <benb@acm.org>  Thu,  6 Dec 2001 09:50:47 -0600
+
+tdesdk (2.2.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ben Burton <benb@acm.org>  Wed,  7 Nov 2001 10:49:53 -0600
+
+tdesdk (2.2.1-4) unstable; urgency=low
+
+  * Uses automake again to solve new alpha problems.
+  * Updated to reflect new python policy.
+
+ -- Ben Burton <benb@acm.org>  Tue,  6 Nov 2001 23:51:27 -0600
+
+tdesdk (2.2.1-3) unstable; urgency=low
+
+  * Builds with automake 1.5.
+  * Installs .py.1 man pages in the correct locations (requires newer
+    debhelper).
+
+ -- Ben Burton <benb@acm.org>  Thu, 11 Oct 2001 15:31:32 -0500
+
+tdesdk (2.2.1-2) unstable; urgency=low
+
+  * Updated parameters for alpha build (closes: Bug#113110).
+
+ -- Ben Burton <benb@acm.org>  Sat, 22 Sep 2001 12:00:37 -0500
+
+tdesdk (2.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ben Burton <benb@acm.org>  Fri, 31 Aug 2001 21:08:56 -0500
+
+tdesdk (2.2.0-final-1) unstable; urgency=low
+
+  * New upstream release.
+  * Generating HTML docs for users who can't view KDE docbook files.
+  * Build-Depends: requires newer tdelibs-dev for working meinproc.
+  * Suggests: konqueror for packages with docs to view through khelpcenter.
+  * Reinstating doc-base entries.
+  * Bumped standards-version to 3.5.6.
+  * Cleaned up debian/rules.
+
+ -- Ben Burton <benb@acm.org>  Sun, 29 Jul 2001 17:48:59 +1000
+
+tdesdk (2.2-beta1-4) unstable; urgency=low
+
+  * Builds on alpha.
+
+ -- Ben Burton <benb@acm.org>  Sun, 29 Jul 2001 00:20:23 +1000
+
+tdesdk (2.2-beta1-3) unstable; urgency=low
+
+  * Build-Depends: added version to tdebase-dev (closes: Bug#103514).
+
+ -- Ben Burton <benb@acm.org>  Wed,  4 Jul 2001 11:41:50 -0500
+
+tdesdk (2.2-beta1-2) unstable; urgency=low
+
+  * Build-Depends: added tdebase-dev (closes: Bug#103255).
+  * Build-Depends: changed libdb-dev back to libdb2-dev since libdb3-dev
+    doesn't work.
+
+ -- Ben Burton <benb@acm.org>  Mon,  2 Jul 2001 22:15:53 -0500
+
+tdesdk (2.2-beta1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added packages tdesdk-doc, kspy and poxml.
+  * Build-Depends: added uic.
+
+ -- Ben Burton <benb@acm.org>  Sun, 17 Jun 2001 14:44:38 -0500
+
+tdesdk (2.1.1-8) unstable; urgency=low
+
+  * Added arm/m68k to the libtool linux arch list (closes: Bug#99498).
+
+ -- Ben Burton <benb@acm.org>  Fri,  1 Jun 2001 18:29:27 -0500
+
+tdesdk (2.1.1-7) unstable; urgency=low
+
+  * Build-Depends: replaced libdb2-dev with libdb-dev; removed sed
+    which is build-essential.
+  * Changed tdesdk to Architecture: any to please the autobuilders.
+  * Minor cosmetic changes.
+
+ -- Ben Burton <benb@acm.org>  Thu, 31 May 2001 12:21:41 -0500
+
+tdesdk (2.1.1-6) unstable; urgency=low
+
+  * Added man pages for tdesdk-scripts (closes: Bug#92451).
+  * Added gdb macros and emacs helper files.
+  * Added suggestions and recommendations for tdesdk-scripts
+    to satisfy requirements of individual scripts.
+  * Fixed location of KDE docs in /usr/bin/kdedoc.
+  * Fixed location of Qt docs in /usr/bin/qtdoc.
+  * Changed conflict for kexample to version (<< 2.1.1-0) so potato
+    packages don't break.
+
+ -- Ben Burton <benb@acm.org>  Sun, 29 Apr 2001 15:52:54 -0500
+
+tdesdk (2.1.1-5) unstable; urgency=low
+ 
+  * Updated Standards-Version to 3.5.2.
+  * Added kderemove="1" to the debian menu items.
+  * Reformatted and fleshed out man pages.
+
+ -- Ben Burton <benb@acm.org>  Fri, 27 Apr 2001 14:56:02 -0500
+
+tdesdk (2.1.1-4) unstable; urgency=low
+
+  * Ensures /usr/bin/extractrc is installed (needed by tdevelop) and
+    conflicts with earlier versions of tdevelop (which provided its own
+    /usr/bin/extractrc).
+
+ -- Ben Burton <benb@acm.org>  Thu,  5 Apr 2001 15:19:13 -0500
+
+tdesdk (2.1.1-3) unstable; urgency=low
+
+  * Added man page for /usr/bin/extractmsg (closes: Bug#92450).
+  * Tidied up various other man pages.
+  * Build-Depends: now requires version (>> 3.0.0) of debhelper.
+  * Added Suggests: tdebase to packages kbabel, kexample.
+  * Replaced gimp, xpaint with gimp | xpaint in Suggests: for kdepalettes.
+  * Upgraded to debian/rules DH_COMPAT=3 and removed postinst scripts.
+  * Rebuilt using correct gcc/libc6 packages.
+
+ -- Ben Burton <benb@acm.org>  Sun,  1 Apr 2001 22:30:27 -0500
+
+tdesdk (2.1.1-2) unstable; urgency=low
+
+  * Build-Depends: Added libdb2-dev (closes: Bug#92174).
+  * Conflicts (kexample): Added tdesdk-scripts (<< 2.1.1-1)
+    (closes: Bug#92432).
+
+ -- Ben Burton <benb@acm.org>  Sun,  1 Apr 2001 11:59:48 -0500
+
+tdesdk (2.1.1-1) unstable; urgency=low
+
+  * New upstream sources.
+  * Adopted by Ben Burton <benb@acm.org> (closes: Bug#84531).
+  * Added packages tdesdk, kapptemplate, kdepalettes.
+  * Split kexample from package tdesdk-scripts into a new package.
+  * Changed some package architectures to all.
+  * Build-Depends: Removed autoconf and gettext which are redundant;
+    required version (>> 2.0.0) of debhelper; added sed.
+  * Removed all Suggests: tdebase flags.
+  * Completely reworked debian/rules.
+  * Added a mime type for kbabel.
+  * Added various man pages.
+  * Added icons to the debian menu items.
+  * Changed admin/Makefile.common to ignore cvs-clean in debian/ so
+    new debian files aren't deleted!
+  * Tidied up package descriptions.
+  * Miscellaneous cleanups in debian.
+
+ -- Ben Burton <benb@acm.org>  Mon, 26 Mar 2001 09:10:56 -0600
+
+tdesdk (2.1.0-1) unstable; urgency=low
+ 
+  * New upstream CVS pull
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 07 Mar 2001 02:00:00 -0700
+
+tdesdk (2.1-final-1.1) unstable; urgency=low
+
+  * Fix for doc link (Closes: #84075)
+  * Fix the description of kbabel (Closes: #84078)
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 01 Mar 2001 00:10:00 -0700
+
+tdesdk (2.1-final-1) unstable; urgency=low
+ 
+  * New upstream version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Feb 2001 02:00:00 +0100
+
+tdesdk (2.1-beta2-2) unstable; urgency=low
+
+  * Closes: #83652.
+  * Package maintaner change.
+  * Upload sponsored by Ivan E. Moore II <rkrusty@debian.org>.
+
+ -- Mariusz Przygodzki <dune@home.pl>  Sat, 27 Jan 2001 17:18:53 +0100
+
+tdesdk (2.1-beta2-1) unstable; urgency=low
+ 
+  * New upstream beta
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 26 Jan 2001 18:00:00 -0700
+
+Local variables:
+mode: debian-changelog
+End:

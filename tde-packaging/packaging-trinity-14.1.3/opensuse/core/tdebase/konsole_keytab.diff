@@ -1,0 +1,17 @@
+Index: konsole/other/x11r5.keytab
+===================================================================
+--- konsole/other/x11r5.keytab.orig
++++ konsole/other/x11r5.keytab
+@@ -32,10 +32,10 @@ key Left  -Shift   : "\EOD"
+ 
+ key Enter          : "\r"
+ 
+-key Home           : "\E[1~"
++key Home           : "\E[H"
+ key Insert-Shift   : "\E[2~"
+ key Delete         : "\E[3~"
+-key End            : "\E[4~"
++key End            : "\E[F"
+ key Prior -Shift   : "\E[5~"
+ key Next  -Shift   : "\E[6~"
+ 

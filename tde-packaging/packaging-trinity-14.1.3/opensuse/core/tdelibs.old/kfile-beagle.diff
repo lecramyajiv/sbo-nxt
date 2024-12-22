@@ -1,0 +1,42 @@
+Index: kio/kfile/kurlbar.cpp
+===================================================================
+--- kio/kfile/kurlbar.cpp.orig
++++ kio/kfile/kurlbar.cpp
+@@ -605,8 +605,19 @@ void KURLBar::readItem( int i, KConfig *
+     if ( !url.isValid() || !KProtocolInfo::isKnownProtocol( url ))
+         return; // nothing we could do.
+ 
++    QString description = config->readEntry( QString("Description_") + number ); 
++
++    if (description.isEmpty() && url.protocol()=="beagle") {
++        KIO::UDSEntry uds;
++        const KURL kurl("beagle:?beagled-status");
++        if (!KIO::NetAccess::stat(kurl, uds))
++            return;
++
++        description = i18n("Desktop Search");
++    }
++
+     insertItem( url,
+-                config->readEntry( QString("Description_") + number ),
++                description,
+                 applicationLocal,
+                 config->readEntry( QString("Icon_") + number ),
+                 static_cast<KIcon::Group>(
+Index: kio/kfile/kfiledialog.cpp
+===================================================================
+--- kio/kfile/kfiledialog.cpp.orig
++++ kio/kfile/kfiledialog.cpp
+@@ -1165,6 +1165,12 @@ void KFileDialog::urlEntered(const KURL&
+         d->pathCombo->setURL( url );
+     }
+ 
++    if (url.protocol()=="beagle" && url.path()=="/") {
++       d->pathCombo->setEditText("beagle:/<"+i18n("search term")+">");
++       d->pathCombo->lineEdit()->setSelection(8,255);
++       d->pathCombo->setFocus();
++    }
++
+     locationEdit->blockSignals( true );
+     locationEdit->setCurrentItem( 0 );
+     if ( d->keepLocation )

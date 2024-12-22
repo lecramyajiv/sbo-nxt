@@ -1,0 +1,8 @@
+o check for doxygen docs -> -dev pkg (+ add to build deps)
+o add -dbg pkg
+o for parallel libkipi1 libkipi2 installs (see libkexif):
+	o append soname to msg catalog
+	o add a note in dev package about the renamed msg catalog
+	o check rdepends for addcatalogs(libkipi) calls and file
+	  bug reports if necessary
+__END__

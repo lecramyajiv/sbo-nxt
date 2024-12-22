@@ -1,0 +1,164 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# The default gzip compressor has been changed in dpkg >= 1.17.0.
+deb_default_compress = $(shell LANG=C dpkg-deb --version | head -n1 | \
+                         sed -e "s|.*version ||" -e "s| .*||" | \
+                         xargs -r dpkg --compare-versions 1.17.0 lt \
+                         && echo xz || echo gzip)
+ifeq ($(deb_default_compress),gzip)
+DEB_DH_BUILDDEB_ARGS += -- -Z$(shell dpkg-deb --help | grep -q ":.* xz[,.]" \
+                               && echo xz || echo bzip2)
+endif
+
+export DEB_HOST_ARCH  		?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+export DEB_HOST_ARCH_CPU	?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
+export DEB_HOST_MULTIARCH	?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+export DH_OPTIONS
+
+PY3_PROVIDES=sip-tqt-py3api-7.0, sip-tqt-py3api-7.1
+PYDIST=sip $(shell python -c "a=[i.strip() for i in '$(PY3_PROVIDES)'.split(',')]; print sorted(a, reverse=True)[0]")
+
+INSTDIR=$(CURDIR)/debian
+
+CFLAGS=
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	CFLAGS += -O0 -g
+else
+	CFLAGS += -O2 -g
+endif
+
+PYTHONS := $(shell py3versions -vr)
+
+-include /usr/share/python3/python.mk
+ifeq (,$(py_sitename))
+py_sitename = site-packages
+py_libdir = /usr/lib/python$(subst python,,$(1))/site-packages
+py_sitename_sh = $(py_sitename)
+py_libdir_sh = $(py_libdir)
+endif
+
+
+.PRECIOUS: build-%/configure-stamp dbg-build-%/configure-stamp
+
+configure: $(PYTHONS:%=build-%/configure-stamp) $(PYTHONS:%=dbg-build-%/configure-stamp)
+
+build-%/configure-stamp:
+	dh_testdir
+	mkdir -p build-$*
+	cd build-$* \
+		&& python$* ../configure.py \
+			-d /usr/lib/python$*/$(call py_sitename,$*) \
+			-u STRIP="" CFLAGS="${CFLAGS} -I/usr/include/tqt -I/usr/include/tqt3 -I/usr/include/qt3" CFLAGS_RELEASE="" CXXFLAGS="${CFLAGS} -I/usr/include/tqt -I/usr/include/tqt3 -I/usr/include/qt3" CXXFLAGS_RELEASE=""
+	touch $@
+
+dbg-build-%/configure-stamp:
+	dh_testdir
+	mkdir -p dbg-build-$*
+	cd dbg-build-$* \
+		&& python$*-dbg ../configure.py \
+			-d /usr/lib/python$*/$(call py_sitename,$*) \
+			-u CFLAGS="-O0 -g -I/usr/include/tqt -I/usr/include/tqt3 -I/usr/include/qt3" CFLAGS_RELEASE="" CXXFLAGS="-O0 -g -I/usr/include/tqt -I/usr/include/tqt3 -I/usr/include/qt3" CXXFLAGS_RELEASE="" STRIP=""
+	touch $@
+
+
+build: $(PYTHONS:%=build-%/build-stamp) $(PYTHONS:%=dbg-build-%/build-stamp)
+
+build-%/build-stamp: build-%/configure-stamp
+	dh_testdir
+	$(MAKE) -C build-$*
+	touch $@
+
+dbg-build-%/build-stamp: dbg-build-%/configure-stamp
+	dh_testdir
+	$(MAKE) -C dbg-build-$*
+	touch $@
+
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -rf *-stamp siputils.pyc $(PYTHONS:%=build-%) $(PYTHONS:%=dbg-build-%)
+	dh_clean debian/python3-sip.pydist
+
+install-arch: build
+	dh_testdir
+	dh_testroot
+	dh_prep -a
+	echo "python3:Provides=$(PY3_PROVIDES)" >> debian/python3-sip-tqt.substvars
+	dh_installdirs -a
+	# This is needed to enforce that the install-arch-% rules are
+	# not run in parallel. Both rules install into the same directory,
+	# and therefore might try to access the same files at the same time.
+	# Therefore, instead of depending on the install-arch-% rules,
+	# we invoke them explicitly.
+	for p in $(PYTHONS) ; do \
+		$(MAKE) -f debian/rules install-arch-$$p;\
+	done
+
+	for i in $$(find debian/python3-sip-tqt-dbg -name '*.so'); do \
+		b=$$(basename $$i .so); \
+		mv $$i $$(dirname $$i)/$${b}_d.so; \
+	done
+	find debian/python3-sip-tqt-dbg ! -type d ! -name '*_d.*' | xargs rm -f
+	find debian/python3-sip-tqt-dbg -depth -empty -exec rmdir {} \;
+
+	dh_install -a --sourcedir=$(CURDIR)/debian/tmp
+
+install-arch-3.%:
+	$(MAKE) -C build-3.$* install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C dbg-build-3.$* install DESTDIR=$(CURDIR)/debian/python3-sip-tqt-dbg
+	mkdir -p debian/python3-sip-tqt/usr/lib/python3.$*/dist-packages/
+	install -m 644 -o root -g root debian/sip_tqt_config_py3.py debian/python3-sip-tqt/usr/lib/python3.$*/dist-packages/sip_tqt_config.py
+	install -m 644 -o root -g root build-3.$*/sip_tqt_config.py debian/python3-sip-tqt/usr/lib/python3.$*/dist-packages/sip_tqt_config_nd.py
+	install -m 644 -o root -g root dbg-build-3.$*/sip_tqt_config.py debian/python3-sip-tqt-dbg/usr/lib/python3.$*/dist-packages/sip_tqt_config_d.py
+	mkdir -p debian/python3-sip-tqt-dev$$(python3.$* -c 'import sysconfig; print (sysconfig.get_path("include"))')
+	install -m 644 -o root -g root siplib/sip-tqt.h debian/python3-sip-tqt-dev$$(python3.$* -c 'import sysconfig; print (sysconfig.get_path("include"))')/
+	mkdir -p debian/python3-sip-tqt-dev/$$(python3.$*-dbg -c 'import sysconfig; print (sysconfig.get_path("include"))')
+	ln -s ../$$(python3.$* -c 'import sysconfig; print (sysconfig.get_path("include"))' | xargs basename)/sip-tqt.h \
+	    debian/python3-sip-tqt-dev/$$(python3.$*-dbg -c 'import sysconfig; print (sysconfig.get_path("include"))')/sip-tqt.h
+	mkdir -p debian/python3-sip-tqt-dev/usr/lib/python3.$*/dist-packages
+	install -m 644 -o root -g root sip_tqt_distutils.py debian/python3-sip-tqt-dev/usr/lib/python3.$*/dist-packages
+
+
+# Must not depend on anything. This is to be called by
+# binary-arch/binary-indep
+# in another 'make' thread.
+binary-common:
+	dh_testdir
+	dh_testroot
+	dh_installman
+	dh_installchangelogs
+	dh_installdocs -A
+	dh_installexamples
+	dh_link
+# don't call strip twice, it's in binary-common
+ifneq (,$(findstring -a, $(DH_OPTIONS)))
+	DH_OPTIONS= dh_strip -ppython3-sip-tqt-dev
+	DH_OPTIONS= dh_strip -ppython3-sip-tqt -Npython3-sip-tqt-dev --dbg-package=python3-sip-tqt-dbg
+	rm -rf debian/python3-sip-tqt-dbg/usr/share/doc/python3-sip-tqt-dbg
+	mkdir -p debian/python3-sip-tqt-dbg/usr/share/doc
+	ln -s python3-sip-tqt debian/python3-sip-tqt-dbg/usr/share/doc/python3-sip-tqt-dbg
+endif
+	dh_compress -X.inv
+	dh_fixperms
+	dh_python3 --no-dbg-cleaning
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb $(DEB_DH_BUILDDEB_ARGS)
+
+# Build architecture independant packages using the common target.
+binary-indep: 
+	$(MAKE) -f debian/rules DH_OPTIONS=-i binary-common
+
+# Build architecture dependant packages using the common target.
+binary-arch: install-arch
+	$(MAKE) -f debian/rules DH_OPTIONS=-a binary-common
+
+binary: binary-arch binary-indep
+.PHONY: build build-arch clean binary-indep binary-arch binary configure

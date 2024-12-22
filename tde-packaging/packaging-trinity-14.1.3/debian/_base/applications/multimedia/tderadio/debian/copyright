@@ -1,0 +1,33 @@
+This package was debianized by Ernst Martin Witte <emw@users.sourceforge.net> on
+Sun, 14 Sep 2003 13:31:07 +0200.
+
+It was downloaded from http://tderadio.sourceforge.net/
+
+Copyright Holder: Ernst Martin Witte, Klas Kalass (C) 2002-2003 
+Additional copyright information:
+   		  (C) 2001, 2002 by Frank Schwanz, Ernst Martin Witte
+                   schwanz@fh-brandenburg.de, witte@kawo1.rwth-aachen.de
+                  (C) 2001-2005 by Ernst Martin Witte, Frank Schwanz
+                   witte@kawo1.rwth-aachen.de, schwanz@fh-brandenburg.de
+                  (C) 2005 by Marcus Camen
+                   mcamen@mcamen.de
+		  
+
+		  The following files have the copyright notice
+		  Trolltech AS Copyright (C) 1996-1997
+tderadio3/plugins/gui-quickbar/buttonflowlayout.h
+tderadio3/plugins/gui-quickbar/buttonflowlayout.cpp
+
+License:
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License, version 2
+or higher as published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANDABILITY of FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for details.
+
+On Debian GNU/Linux systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.

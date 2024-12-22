@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-konsole
+Title: Konsole Handbook
+Author: Jonathan Singer, Kurt Hindenburg
+Abstract: Konsole is an X terminal emulator for TDE.
+Section: Xshells 
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/konsole/index.html
+Files: /usr/share/doc/tde/HTML/en/konsole/*.html
+

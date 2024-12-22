@@ -1,0 +1,22 @@
+Source: knemo-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Achim Bohnet <ach@mpe.mpg.de>, Mark Purcell <msp@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libiw-dev
+Standards-Version: 3.8.4
+
+Package: knemo-trinity
+Architecture: any
+Depends: kicker-trinity, ${shlibs:Depends}
+Replaces: knemo-trinity (<< 4:14.0.0~)
+Breaks: knemo-trinity (<< 4:14.0.0~)
+Recommends: kcontrol-trinity
+Description: network interfaces monitor for the Trinity systray
+ KNemo displays an icon in the systray for every network interface.
+ Tooltips and an info dialog provide further information about the
+ interface.  Passive popups inform about interface changes.
+ A traffic plotter is also integrated.
+ .
+ knemo polls the network interface status every second from sysfs,
+ procfs and using libiw.

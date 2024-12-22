@@ -1,0 +1,5 @@
+libtqtinterface (4:0.3.0) lucid; urgency=low
+
+  * Initial release of the TQt Interface Library, supporting Qt3
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Mon, 12 Jul 2010 03:13:00 -0600

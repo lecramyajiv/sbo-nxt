@@ -1,0 +1,13 @@
+/usr/games/ksame
+/usr/share/doc/tde/HTML/en/ksame/*
+/usr/share/icons/hicolor/128x128/apps/ksame.png
+/usr/share/icons/hicolor/64x64/apps/ksame.png
+/usr/share/icons/hicolor/48x48/apps/ksame.png
+/usr/share/icons/hicolor/32x32/apps/ksame.png
+/usr/share/icons/hicolor/22x22/apps/ksame.png
+/usr/share/icons/hicolor/16x16/apps/ksame.png
+/usr/share/apps/ksame/*
+/usr/share/applications/tde/ksame.desktop
+/usr/share/man/man6/ksame.6
+../icons/ksame.xpm /usr/share/pixmaps
+../icons/ksame-16.xpm /usr/share/pixmaps

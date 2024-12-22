@@ -1,0 +1,16 @@
+debian/tmp/usr/bin/ksnapshot
+debian/tmp/usr/share/applications/tde/ksnapshot.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/ksnapshot/common
+debian/tmp/usr/share/doc/tde/HTML/en/ksnapshot/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/ksnapshot/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/ksnapshot/preview.png
+debian/tmp/usr/share/doc/tde/HTML/en/ksnapshot/window.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/ksnapshot.png
+debian/tmp/usr/share/icons/hicolor/22x22/apps/ksnapshot.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/ksnapshot.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/ksnapshot.png
+debian/tmp/usr/share/icons/hicolor/scalable/apps/ksnapshot.svgz
+debian/tmp/usr/share/man/man1/ksnapshot.1
+
+debian/icons/ksnapshot.xpm		/usr/share/pixmaps
+debian/icons/ksnapshot-16.xpm		/usr/share/pixmaps

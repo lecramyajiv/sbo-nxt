@@ -1,0 +1,13 @@
+/usr/share/apps/konquest/*
+/usr/share/icons/hicolor/128x128/apps/konquest.png
+/usr/share/icons/hicolor/64x64/apps/konquest.png
+/usr/share/icons/hicolor/48x48/apps/konquest.png
+/usr/share/icons/hicolor/32x32/apps/konquest.png
+/usr/share/icons/hicolor/22x22/apps/konquest.png
+/usr/share/icons/hicolor/16x16/apps/konquest.png
+/usr/share/applications/tde/konquest.desktop
+/usr/games/konquest
+/usr/share/doc/tde/HTML/en/konquest/*
+/usr/share/man/man6/konquest.6
+../icons/konquest.xpm /usr/share/pixmaps
+../icons/konquest-16.xpm /usr/share/pixmaps

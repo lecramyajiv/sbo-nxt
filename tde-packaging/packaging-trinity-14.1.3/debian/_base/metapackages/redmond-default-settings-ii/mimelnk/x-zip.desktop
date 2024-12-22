@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Archive Zip
+Hidden=false
+Patterns=*.zip;*.ZIP
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

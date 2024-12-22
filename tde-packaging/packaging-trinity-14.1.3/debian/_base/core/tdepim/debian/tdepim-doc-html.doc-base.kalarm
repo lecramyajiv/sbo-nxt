@@ -1,0 +1,10 @@
+Document: tdepim-doc-html-kalarm
+Title: The KAlarm Handbook
+Author: David Jarvie
+Abstract: KAlarm is a personal alarm message, command and email
+ scheduler for TDE.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kalarm/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kalarm/*.html

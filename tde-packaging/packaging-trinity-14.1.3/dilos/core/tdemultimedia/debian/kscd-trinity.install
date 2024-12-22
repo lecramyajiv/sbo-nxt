@@ -1,0 +1,33 @@
+debian/tmp/usr/bin/kscd
+debian/tmp/usr/bin/workman2cddb.pl
+debian/tmp/usr/share/applications/tde/kscd.desktop
+debian/tmp/usr/share/apps/konqueror/servicemenus/audiocd_play.desktop
+debian/tmp/usr/share/apps/kscd/icons/crystalsvg/22x22/actions/cdsmall.png
+debian/tmp/usr/share/apps/profiles/kscd.profile.xml
+debian/tmp/usr/share/config.kcfg/kscd.kcfg
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/common
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscdannounc.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd11.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd12.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd13.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd14.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd16.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd18.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd19.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd2.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd3.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd5.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd6.png
+debian/tmp/usr/share/doc/tde/HTML/en/kscd/kscd9.png
+debian/tmp/usr/share/icons/hicolor/128x128/apps/kscd.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kscd.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kscd.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kscd.png
+debian/tmp/usr/share/icons/hicolor/64x64/apps/kscd.png
+debian/tmp/usr/share/mimelnk/text/xmcd.desktop
+
+debian/icons/kscd.xpm		/usr/share/pixmaps
+debian/icons/kscd-16.xpm	/usr/share/pixmaps

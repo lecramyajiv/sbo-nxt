@@ -1,0 +1,13 @@
+/usr/share/icons/hicolor/128x128/apps/kmines.png
+/usr/share/icons/hicolor/64x64/apps/kmines.png
+/usr/share/icons/hicolor/48x48/apps/kmines.png
+/usr/share/icons/hicolor/32x32/apps/kmines.png
+/usr/share/icons/hicolor/22x22/apps/kmines.png
+/usr/share/icons/hicolor/16x16/apps/kmines.png
+/usr/share/applications/tde/kmines.desktop
+/usr/share/apps/kmines/*
+/usr/games/kmines
+/usr/share/doc/tde/HTML/en/kmines/*
+/usr/share/man/man6/kmines.6
+../icons/kmines.xpm /usr/share/pixmaps
+../icons/kmines-16.xpm /usr/share/pixmaps

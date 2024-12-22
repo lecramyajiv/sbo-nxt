@@ -1,0 +1,35 @@
+kooldock-trinity (0.4.7-1) squeeze; urgency=low
+
+  * Initial Release for TDE
+
+ -- Slávek Banko <slavek.banko@axis.cz>  Thu, 01 Sep 2015 19:50:25 +0200
+
+kooldock (0.3-1ubuntu3) gutsy; urgency=low
+
+  * debian/control: Update maintainer fields according to debian-
+    maintainer-field spec.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Wed, 15 Aug 2007 08:06:56 +0000
+
+kooldock (0.3-1ubuntu2) edgy; urgency=low
+
+  * libgamin0 kubuntu transition
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Wed, 16 Aug 2006 18:01:51 -0500
+
+kooldock (0.3-1ubuntu1) dapper; urgency=low
+
+  * debian/applied-patches/strip-empty-de.po.patch:
+    - po/Makefile.in:
+      - remove de.po and de.gmo
+    - debian/rules:
+      - remove empty po/de.po.
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Mon, 29 May 2006 11:11:26 +0200
+
+kooldock (0.3-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Claudio Moratti <maxer@knio.it>  Fri, 23 Sep 2005 18:19:20 +0200
+

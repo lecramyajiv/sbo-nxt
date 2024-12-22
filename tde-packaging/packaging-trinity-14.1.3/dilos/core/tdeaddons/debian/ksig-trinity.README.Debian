@@ -1,0 +1,19 @@
+KSig for Debian
+---------------
+
+To use KSig to generate automatic signatures in KMail, perform the
+following steps.
+
+- Set up your list of signatures in KSig.
+- In KMail, go to Settings / Configure KMail.
+- Click on the Identities tab and choose an identity to modify.
+- When modifying the identity, click on the Signature tab.
+- Check "Enable signature".
+- In the "Obtain signature text from:" list, select "Output of Command".
+- In the "Specify command:" area, type either "ksig --random" or
+  "ksig --daily".
+
+Now whenever you are using that identity, all of your new mails will
+have signatures generated automatically by KSig.
+
+ -- Ben Burton <bab@debian.org>, Wed,  4 Feb 2004 07:56:56 +1100

@@ -1,0 +1,7 @@
+Quanta Plus data for Debian
+---------------------------
+
+This package merely provides supporting data files for Quanta Plus.  The
+Quanta Plus application itself can be found in the quanta package.
+
+ -- Ben Burton <bab@debian.org>, Tue,  8 Jun 2004 17:31:32 +1000

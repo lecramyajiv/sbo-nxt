@@ -1,0 +1,10 @@
+Document: tdetoys-doc-html-kmoon
+Title: KMoon Handbook
+Author: Pam Roberts <pamroberts@blueyonde.co.uk>
+Abstract: KMoon is an applet that shows the current phase of the moon.
+Section: Games/Toys
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kmoon/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kmoon/*.html
+

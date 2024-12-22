@@ -1,0 +1,26 @@
+usr/bin/keduca
+usr/bin/keducabuilder
+usr/lib/*/trinity/libkeducapart.la
+usr/lib/*/trinity/libkeducapart.so
+/usr/share/applications/tde/keduca.desktop
+/usr/share/applications/tde/keducabuilder.desktop
+/usr/share/apps/keduca
+/usr/share/config.kcfg/keduca.kcfg
+/usr/share/doc/tde/HTML/en/keduca/common
+/usr/share/doc/tde/HTML/en/keduca/index.cache.bz2
+/usr/share/doc/tde/HTML/en/keduca/*.docbook
+/usr/share/doc/tde/HTML/en/keduca/*.png
+/usr/share/icons/hicolor/16x16/apps/keduca.png
+/usr/share/icons/hicolor/22x22/apps/keduca.png
+/usr/share/icons/hicolor/32x32/apps/keduca.png
+/usr/share/icons/hicolor/48x48/apps/keduca.png
+/usr/share/icons/hicolor/64x64/apps/keduca.png
+/usr/share/icons/hicolor/128x128/apps/keduca.png
+/usr/share/mimelnk/application/x-edu.desktop
+/usr/share/mimelnk/application/x-edugallery.desktop
+/usr/share/services/keduca_part.desktop
+/usr/share/man/man1/keduca.1
+/usr/share/man/man1/keduca-shrinker.1
+/usr/share/man/man1/keducabuilder.1
+../icons/keduca.xpm /usr/share/pixmaps
+../keduca-shrinker usr/bin

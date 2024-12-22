@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-kenolaba
+Title: The Kenolaba Handbook
+Author: Josef Weidendorfer, Philip Rodrigues
+Abstract: Kenolaba is a simple board strategy game that is played
+ by two players.
+Section: Games/Board
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kenolaba/index.html
+Files: /usr/share/doc/tde/HTML/en/kenolaba/*.html

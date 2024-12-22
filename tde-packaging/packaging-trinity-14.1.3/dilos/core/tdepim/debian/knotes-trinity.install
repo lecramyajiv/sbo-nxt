@@ -1,0 +1,24 @@
+/usr/bin/knotes
+/usr/lib/*/trinity/knotes_local.la
+/usr/lib/*/trinity/knotes_local.so
+/usr/lib/*/libknotes.so
+/usr/lib/*/libknotes.so.0
+/usr/lib/*/libknotes.so.0.0.0
+/usr/share/applications/tde/knotes.desktop
+/usr/share/apps/knotes
+/usr/share/config.kcfg/knoteconfig.kcfg
+/usr/share/config.kcfg/knotesglobalconfig.kcfg
+/usr/share/doc/tde/HTML/en/knotes
+/usr/share/icons/hicolor/128x128/apps/knotes.png
+/usr/share/icons/hicolor/16x16/apps/knotes.png
+/usr/share/icons/hicolor/22x22/apps/knotes.png
+/usr/share/icons/hicolor/32x32/apps/knotes.png
+/usr/share/icons/hicolor/48x48/apps/knotes.png
+/usr/share/icons/hicolor/64x64/apps/knotes.png
+/usr/share/services/tderesources/knotes/imap.desktop
+/usr/share/services/tderesources/knotes/local.desktop
+/usr/share/services/tderesources/knotes_manager.desktop
+../icons/knotes.xpm /usr/share/pixmaps
+../icons/knotes-16.xpm /usr/share/pixmaps
+
+/usr/share/services/kontact/knotesplugin.desktop

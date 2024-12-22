@@ -1,0 +1,2 @@
+kmix-trinity: no-shlibs-control-file usr/lib/*/libtdeinit_kmixctrl.so
+kmix-trinity: no-shlibs-control-file usr/lib/*/libtdeinit_kmix.so

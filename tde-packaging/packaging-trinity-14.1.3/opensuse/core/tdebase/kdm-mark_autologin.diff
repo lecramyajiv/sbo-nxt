@@ -1,0 +1,13 @@
+Index: kdm/backend/client.c
+===================================================================
+--- kdm/backend/client.c.orig
++++ kdm/backend/client.c
+@@ -1214,6 +1214,8 @@ StartClient()
+ 	env = setEnv( env, "PATH", curuid ? td->userPath : td->systemPath );
+ 	env = setEnv( env, "SHELL", p->pw_shell );
+ 	env = setEnv( env, "HOME", p->pw_dir );
++	if (cursource == PWSRC_AUTOLOGIN)
++		env = setEnv (env, "KDM_AUTOLOGIN", curuser);
+ #if !defined(USE_PAM) && !defined(_AIX) && defined(KERBEROS)
+ 	if (krbtkfile[0] != '\0')
+ 		env = setEnv( env, "KRBTKFILE", krbtkfile );

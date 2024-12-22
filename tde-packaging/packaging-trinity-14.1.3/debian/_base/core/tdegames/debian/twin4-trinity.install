@@ -1,0 +1,16 @@
+/opt/trinity/games/twin4
+/opt/trinity/games/twin4proc
+/opt/trinity/share/apps/twin4/*
+/opt/trinity/share/config.kcfg/twin4.kcfg
+/opt/trinity/share/icons/hicolor/128x128/apps/twin4.png
+/opt/trinity/share/icons/hicolor/64x64/apps/twin4.png
+/opt/trinity/share/icons/hicolor/48x48/apps/twin4.png
+/opt/trinity/share/icons/hicolor/32x32/apps/twin4.png
+/opt/trinity/share/icons/hicolor/22x22/apps/twin4.png
+/opt/trinity/share/icons/hicolor/16x16/apps/twin4.png
+/opt/trinity/share/applications/tde/twin4.desktop
+/opt/trinity/share/doc/tde/HTML/en/twin4/*
+/opt/trinity/share/man/man6/twin4.6
+/opt/trinity/share/man/man6/twin4proc.6
+../icons/twin4.xpm /opt/trinity/share/pixmaps
+../icons/twin4-16.xpm /opt/trinity/share/pixmaps

@@ -1,0 +1,11 @@
+Document: tdenetwork-doc-html-kppp
+Title: KPPP Handbook
+Author: Lauri Watts
+Abstract: KPPP is a dialer and front end for pppd, allowing for interactive
+ script generation and network setup.
+Section: Apps/Net
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kppp/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kppp/*.html
+

@@ -1,0 +1,8 @@
+debian/tmp/opt/trinity/lib/libkscan.la
+debian/tmp/opt/trinity/lib/libkscan.so.1
+debian/tmp/opt/trinity/lib/libkscan.so.1.0.0
+debian/tmp/opt/trinity/share/icons/crystalsvg/16x16/actions/palette_color.png
+debian/tmp/opt/trinity/share/icons/crystalsvg/16x16/actions/palette_gray.png
+debian/tmp/opt/trinity/share/icons/crystalsvg/16x16/actions/palette_halftone.png
+debian/tmp/opt/trinity/share/icons/crystalsvg/16x16/actions/palette_lineart.png
+debian/tmp/opt/trinity/share/services/scanservice.desktop

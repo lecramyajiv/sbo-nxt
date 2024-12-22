@@ -1,0 +1,74 @@
+Source: digikam-trinity
+Section: graphics
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Achim Bohnet <ach@mpe.mpg.de>, Mark Purcell <msp@debian.org>, Fathi Boudra <fabo@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tdelibs14-trinity-dev,
+ libtiff-dev, libgphoto2-dev | libgphoto2-6-dev | libgphoto2-2-dev, libkipi0-trinity-dev,
+ libsqlite3-dev, liblcms1-dev, libkexiv2-3-trinity-dev (>= 0.1.6),
+ libjasper-dev, libpng-dev, libexiv2-dev,
+ libkdcraw3-trinity-dev (>= 0.1.4),
+ automake, autoconf, libtool, libltdl-dev
+Standards-Version: 3.8.4
+Homepage: http://www.digikam.org
+
+Package: digikam-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: digikam-trinity (<< 4:14.0.0~)
+Breaks: digikam-trinity (<< 4:14.0.0~)
+Recommends: kipi-plugins-trinity, tdeprint-trinity, konqueror-trinity
+Suggests: digikam-trinity-doc
+Description: digital photo management application for TDE [Trinity]
+ An easy to use and powerful digital photo management
+ application, which makes importing, organizing and manipulating
+ digital photos a "snap".  An interface is provided to connect to
+ your digital camera, preview the images and download and/or
+ delete them.
+ .
+ The digiKam built-in image editor makes the common photo correction
+ a simple task. The image editor is extensible via plugins and,
+ the digikamimageplugins project has been merged to digiKam core
+ since release 0.9.2, all useful image editor plugins are available
+ in the base installation.
+ .
+ digiKam can also make use of the KIPI image handling plugins to
+ extend its capabilities even further for photo manipulations,
+ import and export, etc. The kipi-plugins package contains many
+ very useful extentions.
+ .
+ digiKam is based in part on the work of the Independent JPEG Group.
+
+Package: showfoto-trinity
+Architecture: any
+Section: graphics
+Replaces: showfoto-trinity (<< 4:14.0.0~)
+Breaks: showfoto-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, digikam-trinity
+Recommends: kipi-plugins-trinity, tdeprint-trinity, konqueror-trinity
+Description: image viewer/editor for TDE [Trinity]
+ Showphoto is part of the Digikam project.
+ It allows to browse your photo collection and edit them with ease.
+
+Package: digikam-trinity-dbg
+Architecture: any
+Section: devel
+Replaces: digikam-trinity-dbg (<< 4:14.0.0~)
+Breaks: digikam-trinity-dbg (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, digikam-trinity (= ${binary:Version}), showfoto-trinity (= ${binary:Version}), tdelibs-trinity-dbg
+Priority: extra
+Description: debugging symbols for digikam [Trinity]
+ The debugging symbols associated with digikam and showfoto. They will
+ automatically be used by gdb for debugging digikam-related issues.
+
+Package: digikam-trinity-doc
+Architecture: all
+Depends: ${misc:Depends}, khelpcenter-trinity
+Recommends: digikam-trinity
+Section: doc
+Description: handbook for digikam and showfoto in several languages [Trinity]
+ Digikam is an easy to use and powerful digital photo management
+ application.
+ .
+ This package contains the handbooks for digikam and showfoto.

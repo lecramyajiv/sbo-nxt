@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Bzip File
+Hidden=false
+Patterns=*.bz;*.BZ
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

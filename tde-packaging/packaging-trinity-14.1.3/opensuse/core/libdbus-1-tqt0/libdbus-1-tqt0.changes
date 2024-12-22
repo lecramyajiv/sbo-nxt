@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Feb  2 03:12:24 UTC 2012 - robxu9@gmail.com
+
+- update to R13.99 
+
+-------------------------------------------------------------------
+Sat Aug 13 15:57:46 UTC 2011 - rxu@lincomlinux.org
+
+- upgrade to TQt version and adjust accordingly
+
+-------------------------------------------------------------------
+Fri Mar  6 15:38:51 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Thu May  8 17:15:13 CEST 2008 - hschaa@suse.de
+
+- Add fix_circular_destructor.patch which fixes a crash in the
+  generated objects
+
+-------------------------------------------------------------------
+Wed Apr  9 17:45:53 CEST 2008 - hschaa@suse.de
+
+- Update to SVN revision 795238 which fixes some issues with KNM
+
+-------------------------------------------------------------------
+Thu Mar 13 10:32:01 CET 2008 - hschaa@suse.de
+
+- Update to 0.8.1 + SVN revision 785103
+- Remove BRANCH_UPDATE.diff
+- Add r785103.patch
+
+-------------------------------------------------------------------
+Fri Feb  8 01:03:49 CET 2008 - dmueller@suse.de
+
+- also allow building on s390/s390x
+
+-------------------------------------------------------------------
+Fri Jan 11 12:14:10 CET 2008 - hschaa@suse.de
+
+- add ifdefs to qdbusobjectpath.h (fix_ifdef.patch)
+
+-------------------------------------------------------------------
+Wed Jan  9 19:01:49 CET 2008 - dmueller@suse.de
+
+- fix generation of nm introspection (branch update)
+
+-------------------------------------------------------------------
+Mon Dec 17 16:43:44 CET 2007 - dmueller@suse.de
+
+- include bugfixes from SVN
+
+-------------------------------------------------------------------
+Wed Dec 12 14:03:53 CET 2007 - hschaa@suse.de
+
+- Added packages to PDB
+
+-------------------------------------------------------------------
+Fri Nov 30 13:30:33 CET 2007 - hschaa@suse.de
+
+- Initial checkin
+

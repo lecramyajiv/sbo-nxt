@@ -1,0 +1,13 @@
+Index: ksmserver/shutdowndlg.cpp
+===================================================================
+--- ksmserver/shutdowndlg.cpp.orig
++++ ksmserver/shutdowndlg.cpp
+@@ -222,7 +222,7 @@ KSMShutdownDlg::KSMShutdownDlg( QWidget*
+         btnHalt->setFont( btnFont );
+         buttonlay->addWidget( btnHalt );
+         connect(btnHalt, SIGNAL(clicked()), SLOT(slotHalt()));
+-        if ( sdtype == KApplication::ShutdownTypeHalt )
++        if ( sdtype == KApplication::ShutdownTypeHalt || getenv("KDM_AUTOLOGIN") ) 
+             btnHalt->setFocus();
+ 
+         // Reboot

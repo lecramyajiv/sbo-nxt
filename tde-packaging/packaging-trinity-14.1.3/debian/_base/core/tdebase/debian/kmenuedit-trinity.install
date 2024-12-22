@@ -1,0 +1,36 @@
+debian/tmp/opt/trinity/bin/kcontroledit
+debian/tmp/opt/trinity/bin/kmenuedit
+debian/tmp/opt/trinity/lib/trinity/kcontroledit.la
+debian/tmp/opt/trinity/lib/trinity/kcontroledit.so
+debian/tmp/opt/trinity/lib/trinity/kmenuedit.la
+debian/tmp/opt/trinity/lib/trinity/kmenuedit.so
+debian/tmp/opt/trinity/lib/libtdeinit_kcontroledit.so
+debian/tmp/opt/trinity/lib/libtdeinit_kmenuedit.so
+debian/tmp/opt/trinity/share/applications/tde/kmenuedit.desktop
+debian/tmp/opt/trinity/share/applnk/System/kmenuedit.desktop
+debian/tmp/opt/trinity/share/apps/kcontroledit/icons/crystalsvg/22x22/actions/menu_new.png
+debian/tmp/opt/trinity/share/apps/kcontroledit/icons/crystalsvg/22x22/actions/menu_new_sep.png
+debian/tmp/opt/trinity/share/apps/kcontroledit/icons/crystalsvg/32x32/actions/menu_new.png
+debian/tmp/opt/trinity/share/apps/kcontroledit/icons/crystalsvg/32x32/actions/menu_new_sep.png
+debian/tmp/opt/trinity/share/apps/kcontroledit/icons/locolor/16x16/actions/menu_new.png
+debian/tmp/opt/trinity/share/apps/kcontroledit/kcontroleditui.rc
+debian/tmp/opt/trinity/share/apps/kmenuedit/icons/crystalsvg/22x22/actions/menu_new.png
+debian/tmp/opt/trinity/share/apps/kmenuedit/icons/crystalsvg/22x22/actions/menu_new_sep.png
+debian/tmp/opt/trinity/share/apps/kmenuedit/icons/crystalsvg/22x22/actions/filesave_and_close.png
+debian/tmp/opt/trinity/share/apps/kmenuedit/icons/crystalsvg/32x32/actions/menu_new.png
+debian/tmp/opt/trinity/share/apps/kmenuedit/icons/crystalsvg/32x32/actions/menu_new_sep.png
+debian/tmp/opt/trinity/share/apps/kmenuedit/icons/locolor/16x16/actions/menu_new.png
+debian/tmp/opt/trinity/share/apps/kmenuedit/kmenueditui.rc
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/done.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/index.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/itemname.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/kmenueditmain.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/new.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/selecticon.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmenuedit/selectinternet.png
+debian/tmp/opt/trinity/share/man/man1/kmenuedit.1
+
+debian/icons/kmenuedit.xpm		/opt/trinity/share/pixmaps
+debian/icons/kmenuedit-16.xpm		/opt/trinity/share/pixmaps

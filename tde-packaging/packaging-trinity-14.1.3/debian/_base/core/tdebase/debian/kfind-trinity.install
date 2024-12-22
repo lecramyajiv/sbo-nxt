@@ -1,0 +1,21 @@
+debian/tmp/opt/trinity/bin/kfind
+debian/tmp/opt/trinity/lib/trinity/libkfindpart.la
+debian/tmp/opt/trinity/lib/trinity/libkfindpart.so
+debian/tmp/opt/trinity/share/applications/tde/Kfind.desktop
+debian/tmp/opt/trinity/share/apps/kfindpart/icons/locolor/22x22/actions/archive.png
+debian/tmp/opt/trinity/share/apps/kfindpart/icons/locolor/22x22/actions/delete.png
+debian/tmp/opt/trinity/share/apps/kfindpart/icons/locolor/22x22/actions/idea.png
+debian/tmp/opt/trinity/share/apps/kfindpart/icons/locolor/22x22/actions/info.png
+debian/tmp/opt/trinity/share/apps/kfindpart/icons/locolor/22x22/actions/openfile.png
+debian/tmp/opt/trinity/share/apps/kfindpart/icons/locolor/22x22/actions/save.png
+debian/tmp/opt/trinity/share/apps/kfindpart/icons/locolor/22x22/actions/search.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kfind/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kfind/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kfind/index.docbook
+debian/tmp/opt/trinity/share/icons/hicolor/*/apps/kfind.png
+debian/tmp/opt/trinity/share/man/man1/kfind.1
+debian/tmp/opt/trinity/share/services/kfindpart.desktop
+debian/tmp/opt/trinity/share/servicetypes/findpart.desktop
+
+debian/icons/kfind.xpm		/opt/trinity/share/pixmaps
+debian/icons/kfind-16.xpm	/opt/trinity/share/pixmaps

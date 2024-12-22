@@ -1,0 +1,13 @@
+Index: kdecore/kstandarddirs.cpp
+===================================================================
+--- kdecore/kstandarddirs.cpp.orig
++++ kdecore/kstandarddirs.cpp
+@@ -1290,6 +1290,8 @@ void KStandardDirs::addKDEDefaults()
+         }
+     }
+ 
++    kdedirList.append("/etc/opt/kde3");
++
+ #ifndef Q_OS_WIN //no default KDEDIR on win32 defined
+     kdedirList.append(KDEDIR);
+ #endif

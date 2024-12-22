@@ -1,0 +1,9 @@
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/Generic.Newsticker.Error /opt/trinity/share/doc/knewsticker-scripts
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/Readme.newsrss /opt/trinity/share/doc/knewsticker-scripts
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/Readme.ErrorHandling  /opt/trinity/share/doc/knewsticker-scripts
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/Readme.stock  /opt/trinity/share/doc/knewsticker-scripts
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/bbc.pl
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/fyensget.py
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/newsrss.pl
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/stock.pl
+debian/tmp/opt/trinity/share/apps/knewsticker/scripts/sportscores.py

@@ -1,0 +1,10 @@
+--- plugins/src/accessible/widgets/widgets.pro
++++ plugins/src/accessible/widgets/widgets.pro
+@@ -13,3 +13,7 @@
+ 
+ HEADERS  += qaccessiblewidget.h \
+ 	    qaccessiblemenu.h
++
++target.path += $$plugins.path/accessible
++INSTALLS += target
++

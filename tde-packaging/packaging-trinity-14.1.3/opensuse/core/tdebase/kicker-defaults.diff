@@ -1,0 +1,57 @@
+Index: kcontrol/kcontrol/KControl.desktop
+===================================================================
+--- kcontrol/kcontrol/KControl.desktop.orig
++++ kcontrol/kcontrol/KControl.desktop
+@@ -7,7 +7,9 @@ Type=Application
+ DocPath=kcontrol/index.html
+ X-KDE-StartupNotify=true
+ 
+-Name=Control Center
++GenericName=Configure Desktop
++GenericName[de]=Desktop-Einstellungen
++Name=Personal Settings
+ Name[af]=Beheer Sentrum
+ Name[ar]=مركز التحكم
+ Name[az]=İdarə Mərkəzi
+@@ -93,3 +95,4 @@ Name[zu]=Indawo Yokulawula
+ 
+ X-DCOP-ServiceType=Unique
+ Categories=Qt;KDE;Core;
++Keywords=control,center
+Index: kicker/libkicker/kickerSettings.kcfg
+===================================================================
+--- kicker/libkicker/kickerSettings.kcfg.orig
++++ kicker/libkicker/kickerSettings.kcfg
+@@ -159,7 +159,7 @@
+ 
+ <entry name="MenuExtensions" key="Extensions" type="StringList" >
+       <label>Optional Menus</label>
+-      <default>prefmenu.desktop,systemmenu.desktop</default>
++      <default>recentdocs.desktop,systemmenu.desktop</default>
+    </entry>
+ 
+ <entry name="RecentAppsStat" type="StringList" >
+Index: kicker/menuext/system/systemmenu.desktop
+===================================================================
+--- kicker/menuext/system/systemmenu.desktop.orig
++++ kicker/menuext/system/systemmenu.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Name=System Menu
++Name=My System
+ Name[af]=Stelsel Kieslys
+ Name[ar]=قائمة النظام
+ Name[be]=Сістэмнае меню
+Index: kcontrol/kicker/hidingtab_impl.cpp
+===================================================================
+--- kcontrol/kicker/hidingtab_impl.cpp.orig
++++ kcontrol/kicker/hidingtab_impl.cpp
+@@ -200,7 +200,7 @@ void HidingTab::defaults()
+    m_delaySpinBox->setValue( 3 );
+    m_autoHideSwitch->setChecked( false );
+    m_lHB->setChecked(  false );
+-   m_rHB->setChecked(  true );
++   m_rHB->setChecked(  false );
+    m_animateHiding->setChecked( true );
+    m_hideSlider->setValue( 10 );
+    m_delaySpinBox->setValue( 3 );

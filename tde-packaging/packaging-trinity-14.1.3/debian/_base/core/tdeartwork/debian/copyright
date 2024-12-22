@@ -1,0 +1,241 @@
+This package was debianized by Ben Burton <bab@debian.org> on
+Tue, 22 May 2001 01:53:05 -0500.
+
+It was downloaded from: http://www.kde.org/download
+
+Upstream Authors:
+
+  Note that tdeartwork has many contributers beyond those listed below.
+
+  Icon Themes:
+    iKons: Kristof Borrey <kborrey@skynet.be>
+    Kids: Everaldo Coelho <everaldo@everaldo.com>
+    Slick: Robert Cosgrove <rob@digital-confusion.net> and others
+    Technical: Antialias <antialias@b2mail.dk>
+
+  KWorldClock Themes:
+    (see below)
+
+  Screen Savers:
+    Banner: Martin R. Jones <mjones@kde.org> and others
+    Blob: Tiaan Wessels <tiaan@netsys.co.za>
+    Clock: Melchior Franz <mfranz@kde.org>
+    Euphoria: Terence Welsh and Karl Robillard
+    Fireworks 3D: Enrico Ros <asy@libero.it> and David Sansome
+    Flux: Terence Welsh and Karl Robillard
+    Gravity: Ian Reinhart Geiser <geiseri@msoe.edu>,
+        Jeff Molofee <nehe@connect.ab.ca> and
+        Nick Betcher <nbetcher@usinternet.com>
+    Lines: Dirk Staneker <dirk.stanerker@student.uni-tuebingen.de>,
+        Martin R. Jones <mjones@kde.org> and Mario Weilguni <mweilguni@kde.org>
+    Lorenz Attractor: Nicolas Brodu <brodu@kde.org> and others
+    Media: Stefan Schimanski <1Stein@gmx.de>
+    Particle Fountain: Ian Reinhart Geiser <geiseri@msoe.edu>,
+        Jeff Molofee <nehe@connect.ab.ca> and
+        Nick Betcher <nbetcher@usinternet.com>
+    Pendulum: Georg Drenkhahn <georg-d@users.sourceforge.net>
+    Polygons: Martin R. Jones <mjones@kde.org> and
+        Mario Weilguni <mweilguni@kde.org>
+    Rotation: Georg Drenkhahn <georg-d@users.sourceforge.net>
+    Science: Rene Beutler <rbeutler@g26.ethz.ch>
+    Slide Show: Stefan Taferner <taferner@kde.org>,
+        Martin R. Jones <mjones@kde.org>, Chris Howells <howells@kde.org>
+        and Sven Leiber <s.leiber@web.de>
+    Solar Winds: Terence Welsh and Karl Robillard
+    Space: Bernd Johannes Wuebben <wuebben@math.cornell.edu> and
+        Silicon Graphics, Inc.
+    Swarm: Patrick J. Naughton, Emanuel Pirker <epirker@edu.uni-klu.ac.at>,
+        Jeff Butterworth <butterwo@ncsc.org> and
+        Mario Weilguni <mweilguni@kde.org>
+    Virtual Machine: Artur Rataj <art@zeus.polsl.gliwice.pl>,
+        Eric Plante and Jamie Zawinski <jwz@jwz.org>
+    Wave: Ian Reinhart Geiser <geiseri@msoe.edu> and
+        Jeff Molofee <nehe@connect.ab.ca>
+
+    KDE xscreensaver tools: Martin R. Jones <mjones@kde.org>
+    Original xscreensaver code: Jamie Zawinski <jwz@jwz.org>
+
+  Wallpapers:
+    (see below)
+
+  Widget Styles:
+    .NET: Chris Lee <lee@azsites.com>, Carsten Pfeiffer <pfeiffer@kde.org>,
+        Karol Szwed <gallium@kde.org> and others
+    Plastik: Sandro Giessl <ceebx@users.sourceforge.net> and many others
+
+  Window Decoration Themes:
+    CDE: Chris Lee <lee@azsites.com>, Lennart Kudling <kudling@kde.org>,
+        Fredrik Höglund <fredrik@kde.org> and
+        Luciano Montanaro <mikelima@cirulla.net>
+    Glow: Henning Burchardt <h_burchardt@gmx.net>
+    IceWM support: Karol Szwed <gallium@kde.org>
+    KDE1: Matthias Ettrich <ettrich@kde.org>
+    MenschMaschine: <kraftw@gmx.de>
+    Model: <kraftw@gmx.de>
+    OpenLook: Luciano Montanaro <mikelima@cirulla.net> and others
+    Plastik: Sandro Giessl <ceebx@users.sourceforge.net>,
+        Rik Hemsley (rikkus) <rik@kde.org> and Laur Ivan <laurivan@eircom.net>
+    Risc OS: Rik Hemsley <rik@kde.org>
+
+Copyright:
+
+  All components of this package are released under the GNU General
+  Public License (GPL), with the following exceptions:
+
+    CDE window decoration theme: BSD License
+    KDE-Classic and KDE-LoColor icon themes: (see below)
+    KWorldClock Themes: (see below)
+    OpenLook window decoration theme: (see below)
+    Media screen saver: GNU Lesser General Public License (LGPL)
+    .NET widget style: GNU Lesser General Public License (LGPL)
+    Plastik widget style: GNU Lesser General Public License (LGPL)
+    Plastik window decoration theme: Mixture of GPL and LGPL
+    Space screen saver: GNU Lesser General Public License (LGPL)
+    Virtual Machine screen saver: (see below)
+    Wallpapers: (see below)
+    xscreensaver code, used in various screen savers: (see below)
+
+  On Debian GNU/Linux systems, the complete texts of these licenses
+  can be found in `/usr/share/common-licenses/GPL',
+  `/usr/share/common-licenses/LGPL' and `/usr/share/common-licenses/BSD'.
+
+  --------------------
+
+  KDE-Classic and KDE-LoColor icon themes:
+
+  The images inside this directory are COMPLETELY FREE for commercial
+  and non-commercial use.
+  Clarification: this means you can copy, modify and redistribute them.
+
+  --------------------
+
+  KWorldClock themes:
+
+  Map Copyright Information
+
+  These maps have been taken from:
+
+  http://www.radcyberzine.com/xglobe/
+
+  Most maps are images available primarily from US Government agencies and
+  web sites.  None of the maps on this distrubution are copyrighted to my
+  knowledge. This web page gives no permission to sell any maps and make
+  no copyright claim on any map images found therein.
+
+  alt_xxx.jpg:
+    Taken from USGS National Mapping Division, EROS Data Center, GTOPO30
+    (Global 30 Arc Second Elebation Data).
+  bio_xxx.jpg:
+    Taken from http://seawifs.gsfc.nasa.gov/SEAWIFS/IMAGES/SEAWIFS_GALLERY.html
+    with black ocean replaced by auqa-blue.
+  caida_xxx.jpg & caida_bw_xxx.jpg:
+    Cooperative Association for Internet Data Analysis (CAIDA) at
+    http://www.caida.org. (Taken from
+    http://hum.amu.edu.pl/~zbzw/glob/glob7d.htm).
+  mggd_xxx.jpg:
+    Taken from http://www.ngdc.noaa.gov/mgg/.
+
+  --------------------
+
+  OpenLook window decoration theme:
+
+  'OpenLook' twin client
+
+  Porting to trinity.2 API
+    Copyright 2003 Luciano Montanaro <mikelima@cirulla.net>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+  AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+  ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+  --------------------
+
+  Virtual Machine screen saver:
+
+  Mixture of GNU General Public License and the following:
+
+    Copyright (c) 1983 Regents of the University of California.
+    All rights reserved.
+
+    Redistribution and use in source and binary forms are permitted
+    provided that the above copyright notice and this paragraph are
+    duplicated in all such forms and that any documentation,
+    advertising materials, and other materials related to such
+    distribution and use acknowledge that the software was developed
+    by the University of California, Berkeley.  The name of the
+    University may not be used to endorse or promote products derived
+    from this software without specific prior written permission.
+    THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+    IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+    WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+  These licenses would seem incompatible, but note the following:
+
+  /*
+   * Please note that as of July 22, 1999, the licensees and distributors
+   * are no longer required to include the above mentioned acknowledgement
+   * within advertising materials. For full details see
+   * ftp://ftp.cs.berkeley.edu/pub/4bsd/README.Impt.License.Change
+   */
+
+  Since this change is generally though retroactive, the incompatibility
+  is resolved, and we can ship the Virtual Machine screen saver with
+  tdeartwork.
+
+  --------------------
+
+  Wallpapers:
+
+  Credits and licensing:
+
+  Dasding.jpg - Qwertz <kraftw@gmx.de>
+  alien-night.jpg - Rob Cosgrove <abug@ozemail.com.au>
+  kde_passion.jpg - Benjamin Keating <ben@digitalsimplicity.com>
+  kdemagic.jpg - "El Tonno Loco" <tunnash@libero.it>
+  kiagara.jpg - Thomas Cherouny <th.cherouny@web.de>
+  kraftwurm.jpg - Qwertz <kraftw@gmx.de>
+  linux_addict.jpg - Ayo <73lab@free.fr>
+  mystical_rightturn.jpg - Christian Müller <cmue81@gmx.de>
+  only_k.jpg - Sven Müller <lightmaker@web.de>
+  triplegears.jpg - Jörg Gastner <gastner@t-online.de>
+  winter_theme_1.jpg - Ayo <73lab@free.fr>
+  trinityblue.jpg - Matthias Grünler <matthias.gruenler@web.de>
+
+  License: free for commercial and noncommercial usage, distribution and
+  modification
+
+  The following tiles are courteously provided by  Bowie J. Poag /
+  PROPAGANDA:
+
+  Superfluous-Organ-1.jpg, The-Good-Times-1.jpg, Whirling_Spirit.jpg,
+  Appropriately-Left-Handed-2.jpg
+
+  License: Copyleft
+
+  --------------------
+
+  xscreensaver code:
+
+  xscreensaver, Copyright (c) 1993-2002 Jamie Zawinski <jwz@jwz.org>
+
+  Permission to use, copy, modify, distribute, and sell this software and its
+  documentation for any purpose is hereby granted without fee, provided that
+  the above copyright notice appear in all copies and that both that
+  copyright notice and this permission notice appear in supporting
+  documentation.  No representations are made about the suitability of this
+  software for any purpose.  It is provided "as is" without express or
+  implied warranty.
+

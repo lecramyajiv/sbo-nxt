@@ -1,0 +1,11 @@
+Document: tdegraphics-doc-html-kghostview
+Title: KGhostView Handbook
+Author: Pamela Roberts
+Abstract: KGhostView displays and prints PostScript and
+ Portable Document Format files.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kghostview/index.html
+Files: /usr/share/doc/tde/HTML/en/kghostview/*.html
+

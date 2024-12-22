@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-klipper
+Title: Klipper Handbook
+Author: Philip.Rodrigues
+Abstract: Klipper is the TDE clipboard cut and paste utility.
+Section: Apps/Utils
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/klipper/index.html
+Files: /usr/share/doc/tde/HTML/en/klipper/*.html
+

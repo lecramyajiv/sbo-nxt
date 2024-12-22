@@ -1,0 +1,14 @@
+/usr/share/apps/ksnake/*
+/usr/share/config.kcfg/ksnake.kcfg
+/usr/share/icons/hicolor/128x128/apps/ksnake.png
+/usr/share/icons/hicolor/64x64/apps/ksnake.png
+/usr/share/icons/hicolor/48x48/apps/ksnake.png
+/usr/share/icons/hicolor/32x32/apps/ksnake.png
+/usr/share/icons/hicolor/22x22/apps/ksnake.png
+/usr/share/icons/hicolor/16x16/apps/ksnake.png
+/usr/share/applications/tde/ksnake.desktop
+/usr/games/ksnake
+/usr/share/doc/tde/HTML/en/ksnake/*
+/usr/share/man/man6/ksnake.6
+../icons/ksnake.xpm /usr/share/pixmaps
+../icons/ksnake-16.xpm /usr/share/pixmaps

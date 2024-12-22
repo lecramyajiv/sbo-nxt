@@ -1,0 +1,3 @@
+debian/tmp/opt/trinity/lib/libk3b.so
+debian/tmp/opt/trinity/lib/libk3bdevice.so
+debian/tmp/opt/trinity/include/*

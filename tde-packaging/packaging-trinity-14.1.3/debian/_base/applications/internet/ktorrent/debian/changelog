@@ -1,0 +1,371 @@
+ktorrent-trinity (2.2.6-0ubuntu1) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+ktorrent-trinity (2.2.5-0ubuntu3) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 06 March 2009 01:35:00 -0600
+
+ktorrent-trinity (2.2.5-0ubuntu2) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 31 Dec 2008 15:45:00 -0600
+
+ktorrent (2.2.5-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+   - Numerous bugfixes, notably to DHT and webui
+  * Added a watchfile to track 2.x.x series
+
+ -- John Dong <jdong@ubuntu.com>  Sun, 27 Jan 2008 17:26:13 -0500
+
+ktorrent (2.2.4-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+  * Drop kubuntu_04_revert_threaded_filelist, included upstream
+
+ -- John Dong <jdong@ubuntu.com>  Wed, 21 Nov 2007 14:28:35 -0500
+
+ktorrent (2.2.3-0ubuntu3) hardy; urgency=low
+
+  * Adopt better approach from upstream for filelist (LP: #163426)
+   - kubuntu_04_revert_threaded_filelist.patch: Switch to fix
+    in r738262 using more responsive QTimers approach
+
+ -- John Dong <jdong@ubuntu.com>  Sun, 18 Nov 2007 12:19:26 -0500
+
+ktorrent (2.2.3-0ubuntu2) hardy; urgency=low
+
+  * kubuntu_04_revert_threaded_filelist.patch: Revert svn revno 728567
+    due to crashes. (LP: #163426)
+
+ -- John Dong <jdong@ubuntu.com>  Sat, 17 Nov 2007 16:46:47 -0500
+
+ktorrent (2.2.3-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+  * kubuntu_03_remove_nasty_search_engines.patch: rebase against 2.2.3
+  * Add tdebase-kio-plugins to Recommends, needed for IP Filters plugin
+    (LP: #150062)
+
+ -- John Dong <jdong@ubuntu.com>  Fri, 16 Nov 2007 02:11:41 -0500
+
+ktorrent (2.2.2-0ubuntu2) hardy; urgency=low
+
+  * Reuploaded as the buildd seems to be fixed
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 12 Nov 2007 14:16:59 +0100
+
+ktorrent (2.2.2-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+  * Removed upstream_01_fix_exit_crash.patch, merged upstream
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sat, 10 Nov 2007 11:22:05 +0100
+
+ktorrent (2.2.1-0ubuntu3) gutsy; urgency=low
+
+  * Fix debdiff spacing that I screwed up.
+   - Fixes LP: #130300
+
+ -- John Dong <jdong@ubuntu.com>  Sat, 11 Aug 2007 14:59:17 -0400
+
+ktorrent (2.2.1-0ubuntu2) gutsy; urgency=low
+
+  * Backport SVN rev 692284
+    - Fixes LP: #130300
+
+ -- John Dong <jdong@ubuntu.com>  Fri, 10 Aug 2007 11:27:51 -0400
+
+ktorrent (2.2.1-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+    - Fixes LP: #128341
+
+ -- Ryan Kavanagh <ryanakca@kubuntu.org>  Wed, 25 Jul 2007 15:37:41 -0400
+
+ktorrent (2.2-0ubuntu2) gutsy; urgency=low
+
+  * Fixed homepage in debian/control. Fixes LP: #113972
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Wed, 18 Jul 2007 23:29:16 +0200
+
+ktorrent (2.2-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Wed, 04 Jul 2007 14:43:57 +0200
+
+ktorrent (2.2~rc1-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- jdong <jdong@ubuntu.com>  Wed, 13 Jun 2007 23:05:16 -0400
+
+ktorrent (2.2~beta1-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- John Dong <jdong@ubuntu.com>  Sat, 26 May 2007 15:22:14 -0400
+
+ktorrent (2.1.4-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- John Dong <jdong@ubuntu.com>  Tue, 24 Apr 2007 14:47:01 -0400
+
+ktorrent (2.1.3-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+    * fixes crasher in 2.1.2 series
+
+ -- John Dong <jdong@ubuntu.com>  Sat,  7 Apr 2007 22:04:38 -0400
+
+ktorrent (2.1.2-0ubuntu1) feisty; urgency=low
+
+  * New Upstream Release 
+
+ -- Richard A. Johnson <nixternal@ubuntu.com>  Fri,  9 Mar 2007 13:09:09 -0600
+
+ktorrent (2.1.1-0ubuntu1) feisty; urgency=low
+
+  * New Upstream Release
+
+ -- Richard A. Johnson <nixternal@ubuntu.com>  Mon,  5 Mar 2007 13:05:13 -0600
+
+ktorrent (2.1-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon,  5 Feb 2007 20:52:18 +0100
+
+ktorrent (2.1~rc1-0ubuntu3) feisty; urgency=low
+
+  * debian/patches/kubuntu_03_remove_nasty_search_engines.patch:
+    - isohunt is just back online.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 22 Jan 2007 16:51:45 +0100
+
+ktorrent (2.1~rc1-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+     * uTorrent-compatible Peer Exchange
+     * Zeroconf LAN peer finder
+     * Misc bugfixes
+  * dropped debian/patches/kubuntu_01_autoconf2.60.patch, included upstream
+  * dropped debian/patches/kubuntu_02_kdepot.patch, no longer needed
+
+ -- John Dong <jdong@ubuntu.com>  Wed,  3 Jan 2007 15:21:56 -0500
+
+ktorrent (2.1~beta1-0ubuntu2) feisty; urgency=low
+
+  * Corrected builddeps (docbook2x instead of docbook)
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 18 Dec 2006 16:09:09 +0100
+
+ktorrent (2.1~beta1-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+  * Cleaned packaging, switching to cdbs
+  * Removed obsolete kubuntu_03_powerpc_compile_fix.diff
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 05 Dec 2006 18:14:05 +0100
+
+ktorrent (2.0.3+dfsg1-0ubuntu2) feisty; urgency=low
+
+  * Add kubuntu_03_remove_nasty_search_engines.diff to remove
+    nasty search engines
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 11 Nov 2006 15:56:19 -0800
+
+ktorrent (2.0.3+dfsg1-0ubuntu1) edgy; urgency=low
+
+  * built with GeoIP support enabled, but removed the database file
+    and country flags due to licensing restrictions (see README.Debian)
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 20 Oct 2006 12:56:19 +0100
+
+ktorrent (2.0.3-0ubuntu4) edgy; urgency=low
+
+  * Add kubuntu_00_autoconf2.60.diff to allow relibtoolise with autoconf 2.6
+  * Add kubuntu_02_powerpc_compile_fix.diff to fix fail to build on powerpc, 
+    Closes https://launchpad.net/malone/66169
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 15 Oct 2006 22:41:14 +0100
+
+ktorrent (2.0.3-0ubuntu3) edgy; urgency=low
+
+  * Removed kubuntu_04_ktshell_bash.patch, included
+    upstream
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 11 Oct 2006 16:30:01 +0200
+
+ktorrent (2.0.3-0ubuntu2) edgy; urgency=low
+
+  * Removed kubuntu_02_r586445_choke.patch and 
+    kubuntu_03_r588047_faster_download.patch adopted upstream
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Tue, 10 Oct 2006 17:46:01 -0500
+
+ktorrent (2.0.3-0ubuntu1) edgy; urgency=low
+
+  * New Upstream Version ( uvfe approved by mdz )
+  * Closes Malone: #65066
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Tue, 10 Oct 2006 17:46:01 -0500
+
+ktorrent (2.0.2-0ubuntu3) edgy; urgency=low
+
+  * Added kubuntu_04_ktshell_bash.patch, closes Malone
+    #61324
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 02 Oct 2006 21:01:07 +0200
+
+ktorrent (2.0.2-0ubuntu2) edgy; urgency=low
+
+  * Backport SVN revisions 586445 and 588047, fixes download speed oscillation
+    and instances where all peers are choked/snubbed.
+
+ -- John Dong <jdong@ubuntu.com>  Wed, 27 Sep 2006 02:07:07 -0400
+
+ktorrent (2.0.2-0ubuntu1) edgy; urgency=low
+
+  * New Upstream Release
+  * UVFe approved by Colin Watson ( https://launchpad.net/bugs/58139 )
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Mon, 18 Sep 2006 13:28:37 -0500
+
+ktorrent (2.0.1-0ubuntu1) edgy; urgency=low
+
+  * New Upstream Version approved by mdz at https://launchpad.net/bugs/57219
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Tue, 22 Aug 2006 09:51:44 -0500
+
+ktorrent (2.0-0ubuntu2) edgy; urgency=low
+
+  * Fixed install issue by removing debian/ktorrent/usr/share/applnk and 
+    debian/ktorrent/usr/share/mimelnk in debian/rules already provided by tdelibs-data
+  * Closes Malone Bug #55969
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Wed, 09 Aug 2006 09:51:44 -0500
+
+ktorrent (2.0-0ubuntu1) edgy; urgency=low
+
+  * New Upstream Version
+  * Updated admin/ directory so .pot would generate correctly
+  * commented debian/patches/kubuntu_01_kdepot.patch from debian/rules , not needed
+  * added libgmp3-dev to build depends as required to build 2.0
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Wed, 09 Aug 2006 09:51:44 -0500
+
+ktorrent (1.2-1ubuntu3) edgy; urgency=low
+
+  * debian/rules: moved the fix from clean to install rule, to fix the ftbfs,
+    really
+
+ -- Stephan Hermann <sh@sourcecode.de>  Thu, 13 Jul 2006 09:51:44 +0200
+
+ktorrent (1.2-1ubuntu2) edgy; urgency=low
+
+  * debian/rules: Removed translations/nb/messages/ktorrent.po to be friendly
+    to our buildds
+
+ -- Stephan Hermann <sh@sourcecode.de>  Wed, 12 Jul 2006 18:37:00 +0200
+
+ktorrent (1.2-1ubuntu1) edgy; urgency=low
+
+  * Merge from debian unstable.
+
+ -- Stephan Hermann <sh@sourcecode.de>  Thu,  6 Jul 2006 13:53:48 +0200
+
+ktorrent (1.2-1) unstable; urgency=low
+
+  * Acknowledge NMU (Closes: 349983)
+      Actually removed debian libtoolization temporarily due to
+      package inclusion of a library in upstream. Soon to be reapplied
+      with proper support for avoiding redundant dependencies.
+  * New upstream release (Closes: 348605)
+      + Doesn't freeze/lock anymore (Closes: 340766)
+      + Properly builds with G++ 4.1 (Closes: 357096)
+  * add shlib support and post{inst,rm} via debhelper for new shared library
+  * Set --enable-final as configure directive
+  * Update copyright file to reflect additional files and changed dir layout
+  * patch upstream Makefile.in to include translations directory
+  * Update upstream homepage URL in control
+
+ -- Joel Johnson <mrjoel@lixil.net>  Tue, 6 Jun 2006 22:07:58 -0700
+
+ktorrent (1.2-0ubuntu5) dapper; urgency=low
+
+  * added debian/patches/kubuntu_01_kdepot.patch
+  * debian/rules: added generation of po/ktorrent.pot
+
+ -- Bastian Holst <bastianholst@gmx.de>  Tue, 23 May 2006 17:37:34 +0200
+
+ktorrent (1.2-0ubuntu4) dapper; urgency=low
+
+  * debian/rules: Remove ./translations/nb/messages/ktorrent.po since it's
+    empty (and thus invalid).
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Tue, 23 May 2006 12:25:14 +0200
+
+ktorrent (1.2-0ubuntu3) dapper; urgency=low
+
+  * Added dh_iconcache
+
+ -- Brandon Holtsclaw <brandon@imbrandon.com>  Tue, 23 May 2006 17:05:49 +0100
+
+ktorrent (1.2-0ubuntu2) dapper; urgency=low
+
+  * Make debian/rules relibtoolise, installs .po translation files
+    closes Malone #45791
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 22 May 2006 17:05:49 +0100
+
+ktorrent (1.2-0ubuntu1) dapper; urgency=low
+
+  * New Upstream Version
+  * Sponsored upload for Sarah Hobbs <hobbsee@gmail.com>
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 10 Feb 2006 12:02:16 +1100
+
+ktorrent (1.1-2.1) unstable; urgency=low 
+
+   * Non-maintainer upload by sponsor due to no maintainer reaction.
+   * Relibtoolize _after_ setting AM_MAINTAINER_MODE (Closes: #349983)
+
+ -- Florian Ernst <florian@debian.org>  Tue, 7 Feb 2006 13:15:30 +0100
+
+ktorrent (1.1-2) unstable; urgency=low
+
+  * Limit build dependencies to what we directly depend on
+    and set AM_MAINTAINER_MODE in configure.in.in
+  * Change section from net to kde
+  * Remove sponsor as Uploader as requested
+
+ -- Joel Johnson <mrjoel@lixil.net>  Thu,  1 Dec 2005 13:11:22 -0800
+
+ktorrent (1.1-1build1) dapper; urgency=low
+
+  * Rebulid for libstdc++ transition
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 17 Dec 2005 15:20:35 +0000
+
+ktorrent (1.1-1) unstable; urgency=low
+
+  * Initial Debian Upload (Closes: #313659)
+  * Update copyright file with new FSF address
+  * Incorporate changes to a previous package version
+      - disable rpath in ./configure
+      - add lintian override (missing manpage)
+    Thanks to Jonathan Riddell <jriddell@ubuntu.com>
+  * Add linda override (missing manpage)
+
+ -- Joel Johnson <mrjoel@lixil.net>  Thu, 24 Oct 2005 08:47:09 -0700
+

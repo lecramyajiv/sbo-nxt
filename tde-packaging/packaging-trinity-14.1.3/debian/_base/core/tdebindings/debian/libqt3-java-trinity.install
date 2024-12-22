@@ -1,0 +1,2 @@
+debian/tmp/opt/trinity/share/java/qtjava*.jar
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/javalib/*.html /opt/trinity/share/doc/libqt3-java-trinity/html

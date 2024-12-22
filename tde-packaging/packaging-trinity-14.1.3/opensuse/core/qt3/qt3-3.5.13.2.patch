@@ -1,0 +1,840 @@
+--- src/qt.pro
++++ src/qt.pro
+@@ -41,6 +41,8 @@
+ XML_CPP	        = xml
+ STYLES_CPP	= styles
+ EMBEDDED_CPP	= embedded
++QMAKE_CFLAGS += -fno-strict-aliasing
++QMAKE_CFLAGS_MT += -fno-strict-aliasing
+ 
+ win32 {
+ 	contains(QT_PRODUCT,qt-internal) {
+--- src/3rdparty/libmng/aclocal.m4
++++ src/3rdparty/libmng/aclocal.m4
+@@ -1607,7 +1607,7 @@
+     # If the export-symbols file already is a .def file (1st line
+     # is EXPORTS), use it as is.
+     # If DATA tags from a recent dlltool are present, honour them!
+-    archive_expsym_cmds='if test "x`head -1 $export_symbols`" = xEXPORTS; then
++    archive_expsym_cmds='if test "x`head -n 1 $export_symbols`" = xEXPORTS; then
+ 	cp $export_symbols $output_objdir/$soname-def;
+       else
+ 	echo EXPORTS > $output_objdir/$soname-def;
+@@ -3546,7 +3546,7 @@
+   lt_cv_file_magic_cmd='/usr/bin/file -L'
+   case "$host_os" in
+   rhapsody* | darwin1.[[012]])
+-    lt_cv_file_magic_test_file=`echo /System/Library/Frameworks/System.framework/Versions/*/System | head -1`
++    lt_cv_file_magic_test_file=`echo /System/Library/Frameworks/System.framework/Versions/*/System | head -n 1`
+     ;;
+   *) # Darwin 1.3 on
+     lt_cv_file_magic_test_file='/usr/lib/libSystem.dylib'
+--- src/3rdparty/libmng/config.guess
++++ src/3rdparty/libmng/config.guess
+@@ -319,7 +319,7 @@
+ 	echo m68k-sun-sunos${UNAME_RELEASE}
+ 	exit 0 ;;
+     sun*:*:4.2BSD:*)
+-	UNAME_RELEASE=`(head -1 /etc/motd | awk '{print substr($5,1,3)}') 2>/dev/null`
++	UNAME_RELEASE=`(head -n 1 /etc/motd | awk '{print substr($5,1,3)}') 2>/dev/null`
+ 	test "x${UNAME_RELEASE}" = "x" && UNAME_RELEASE=3
+ 	case "`/bin/arch`" in
+ 	    sun3)
+@@ -506,7 +506,7 @@
+ 	fi
+ 	exit 0 ;;
+     *:AIX:*:[45])
+-	IBM_CPU_ID=`/usr/sbin/lsdev -C -c processor -S available | head -1 | awk '{ print $1 }'`
++	IBM_CPU_ID=`/usr/sbin/lsdev -C -c processor -S available | head -n 1 | awk '{ print $1 }'`
+ 	if /usr/sbin/lsattr -El ${IBM_CPU_ID} | grep ' POWER' >/dev/null 2>&1; then
+ 		IBM_ARCH=rs6000
+ 	else
+--- src/3rdparty/libmng/configure
++++ src/3rdparty/libmng/configure
+@@ -1956,7 +1956,7 @@
+   lt_cv_file_magic_cmd='/usr/bin/file -L'
+   case "$host_os" in
+   rhapsody* | darwin1.[012])
+-    lt_cv_file_magic_test_file=`echo /System/Library/Frameworks/System.framework/Versions/*/System | head -1`
++    lt_cv_file_magic_test_file=`echo /System/Library/Frameworks/System.framework/Versions/*/System | head -n 1`
+     ;;
+   *) # Darwin 1.3 on
+     lt_cv_file_magic_test_file='/usr/lib/libSystem.dylib'
+@@ -3433,7 +3433,7 @@
+     # If the export-symbols file already is a .def file (1st line
+     # is EXPORTS), use it as is.
+     # If DATA tags from a recent dlltool are present, honour them!
+-    archive_expsym_cmds='if test "x`head -1 $export_symbols`" = xEXPORTS; then
++    archive_expsym_cmds='if test "x`head -n 1 $export_symbols`" = xEXPORTS; then
+ 	cp $export_symbols $output_objdir/$soname-def;
+       else
+ 	echo EXPORTS > $output_objdir/$soname-def;
+--- qmake/generators/unix/unixmake.cpp
++++ qmake/generators/unix/unixmake.cpp
+@@ -839,7 +839,7 @@
+ 	    ret += "\n\t";
+ 	ret += QString(resource ? "-$(INSTALL_DIR)" : "-$(INSTALL_FILE)") + " \"" +
+ 	       src_targ + "\" \"" + dst_targ + "\"";
+-	if(!project->isActiveConfig("debug") && !project->isEmpty("QMAKE_STRIP") &&
++	if(false && !project->isActiveConfig("debug") && !project->isEmpty("QMAKE_STRIP") &&
+ 	   (project->first("TEMPLATE") != "lib" || !project->isActiveConfig("staticlib"))) {
+ 	    ret += "\n\t-" + var("QMAKE_STRIP");
+ 	    if(project->first("TEMPLATE") == "lib" && !project->isEmpty("QMAKE_STRIPFLAGS_LIB"))
+--- plugins/src/sqldrivers/sqlite/sqlite.pro
++++ plugins/src/sqldrivers/sqlite/sqlite.pro
+@@ -10,6 +10,9 @@
+ 
+ unix {
+ 	OBJECTS_DIR = .obj
++	!contains( LIBS, .*sqlite.* ) {
++		LIBS    *= -lsqlite
++	}
+ }
+ 
+ win32 {
+@@ -23,54 +26,6 @@
+ #	}
+ }
+ 
+-!contains( LIBS, .*sqlite.* ) {
+-    INCLUDEPATH += ../../../../src/3rdparty/sqlite
+-
+-    HEADERS += ../../../../src/3rdparty/sqlite/btree.h \
+-               ../../../../src/3rdparty/sqlite/config.h \
+-               ../../../../src/3rdparty/sqlite/hash.h \
+-               ../../../../src/3rdparty/sqlite/opcodes.h \
+-               ../../../../src/3rdparty/sqlite/os.h \
+-               ../../../../src/3rdparty/sqlite/pager.h \
+-               ../../../../src/3rdparty/sqlite/parse.h \
+-               ../../../../src/3rdparty/sqlite/sqlite.h \
+-               ../../../../src/3rdparty/sqlite/sqliteInt.h \
+-               ../../../../src/3rdparty/sqlite/vdbe.h \
+-	       ../../../../src/3rdparty/sqlite/vdbeInt.h
+-
+-    SOURCES += ../../../../src/3rdparty/sqlite/attach.c \
+-               ../../../../src/3rdparty/sqlite/auth.c \
+-               ../../../../src/3rdparty/sqlite/btree.c \
+-               ../../../../src/3rdparty/sqlite/btree_rb.c \
+-               ../../../../src/3rdparty/sqlite/build.c \
+-               ../../../../src/3rdparty/sqlite/copy.c \
+-	       ../../../../src/3rdparty/sqlite/date.c \
+-               ../../../../src/3rdparty/sqlite/delete.c \
+-               ../../../../src/3rdparty/sqlite/expr.c \
+-               ../../../../src/3rdparty/sqlite/func.c \
+-               ../../../../src/3rdparty/sqlite/hash.c \
+-               ../../../../src/3rdparty/sqlite/insert.c \
+-               ../../../../src/3rdparty/sqlite/main.c \
+-               ../../../../src/3rdparty/sqlite/opcodes.c \
+-               ../../../../src/3rdparty/sqlite/os.c \
+-               ../../../../src/3rdparty/sqlite/pager.c \
+-               ../../../../src/3rdparty/sqlite/parse.c \
+-               ../../../../src/3rdparty/sqlite/pragma.c \
+-               ../../../../src/3rdparty/sqlite/printf.c \
+-               ../../../../src/3rdparty/sqlite/random.c \
+-               ../../../../src/3rdparty/sqlite/select.c \
+-               ../../../../src/3rdparty/sqlite/shell.c \
+-               ../../../../src/3rdparty/sqlite/table.c \
+-               ../../../../src/3rdparty/sqlite/tokenize.c \
+-               ../../../../src/3rdparty/sqlite/trigger.c \
+-               ../../../../src/3rdparty/sqlite/update.c \
+-               ../../../../src/3rdparty/sqlite/util.c \
+-               ../../../../src/3rdparty/sqlite/vacuum.c \
+-               ../../../../src/3rdparty/sqlite/vdbe.c \
+-	       ../../../../src/3rdparty/sqlite/vdbeaux.c \
+-               ../../../../src/3rdparty/sqlite/where.c
+-}
+-
+ REQUIRES	= sql
+ 
+ target.path += $$plugins.path/sqldrivers
+--- src/tools/qcstring.cpp
++++ src/tools/qcstring.cpp
+@@ -53,7 +53,7 @@
+ #include <ctype.h>
+ #include <limits.h>
+ #ifndef QT_NO_COMPRESS
+-#include "../3rdparty/zlib/zlib.h"
++#include <zlib.h>
+ #endif
+ 
+ /*****************************************************************************
+--- src/tools/qsettings.cpp
++++ src/tools/qsettings.cpp
+@@ -39,6 +39,7 @@
+ **********************************************************************/
+ 
+ #include "qplatformdefs.h"
++#include <stdlib.h>
+ 
+ // POSIX Large File Support redefines open -> open64
+ static inline int qt_open( const char *pathname, int flags, mode_t mode )
+@@ -468,8 +469,18 @@
+     Q_UNUSED( format );
+ #endif
+ 
+-    QString appSettings(QDir::homeDirPath() + "/.qt/");
+-    QString defPath;
++    QString home;
++    home = getenv("QT_HOME_DIR");
++    if ( !home.isEmpty() ){
++       home += "/";
++       QFileInfo i( home + "qtrc" );
++       if ( !i.isReadable() )
++         home = QDir::homeDirPath() + "/.qt/";
++    }else
++       home = QDir::homeDirPath() + "/.qt/";
++    QString appSettings(home);
++
++    QString defPath("/etc/X11/");
+ #ifdef Q_WS_WIN
+ #ifdef Q_OS_TEMP
+ 	TCHAR path[MAX_PATH];
+@@ -517,6 +528,15 @@
+ 
+     if ( !!defPath )
+ 	searchPaths.append(defPath);
++
++    QString system;
++    system = getenv("QT_SYSTEM_DIR");
++    if ( !system.isEmpty() && system[0] == '/') {
++       QFileInfo i( system + "/qtrc" );
++       if ( i.isReadable() )
++           searchPaths.append(system);
++    }
++
+     searchPaths.append(dir.path());
+ }
+ 
+--- src/tools/qgpluginmanager.cpp
++++ src/tools/qgpluginmanager.cpp
+@@ -389,6 +389,8 @@
+ 		sameBasename << (*git).mid( (*git).find( QChar(0xfffd) ) + 1 );
+ 		++git;
+ 	    }
++	    if( !sameBasename.isEmpty())
++		sameBasename.prepend( lib );
+ 
+ 	    if ( sameBasename.isEmpty() ) {
+ 		that->addLibrary( new QComLibrary( lib ) );
+--- mkspecs/linux-g++-64/qmake.conf
++++ mkspecs/linux-g++-64/qmake.conf
+@@ -58,7 +58,7 @@
+ QMAKE_LFLAGS_PLUGIN	= $$QMAKE_LFLAGS_SHLIB
+ QMAKE_LFLAGS_SONAME	= -Wl,-soname,
+ QMAKE_LFLAGS_THREAD	=
+-QMAKE_RPATH		= -Wl,-rpath,
++QMAKE_RPATH		= 
+ 
+ QMAKE_LIBS		=
+ QMAKE_LIBS_DYNLOAD	= -ldl
+--- mkspecs/linux-g++/qmake.conf
++++ mkspecs/linux-g++/qmake.conf
+@@ -55,7 +55,6 @@
+ QMAKE_LFLAGS_PLUGIN	= $$QMAKE_LFLAGS_SHLIB
+ QMAKE_LFLAGS_SONAME	= -Wl,-soname,
+ QMAKE_LFLAGS_THREAD	=
+-QMAKE_RPATH		= -Wl,-rpath,
+ 
+ QMAKE_LIBS		=
+ QMAKE_LIBS_DYNLOAD	= -ldl
+--- src/kernel/qpixmap_x11.cpp
++++ src/kernel/qpixmap_x11.cpp
+@@ -394,8 +394,9 @@
+ {
+ #if defined(QT_CHECK_STATE)
+     if ( qApp->type() == QApplication::Tty ) {
+-	qWarning( "QPixmap: Cannot create a QPixmap when no GUI "
+-		  "is being used" );
++//	qWarning( "QPixmap: Cannot create a QPixmap when no GUI "
++//		  "is being used" );
++       ;
+     }
+ #endif
+ 
+--- src/tools/qcomlibrary.cpp
++++ src/tools/qcomlibrary.cpp
+@@ -105,25 +105,11 @@
+ 		      (const char*) QFile::encodeName(library) );
+     } else if ( ( version > QT_VERSION ) ||
+ 		( ( QT_VERSION & 0xff0000 ) > ( version & 0xff0000 ) ) ) {
+-	if ( warn )
+-	    qWarning( "Conflict in %s:\n"
+-		      "  Plugin uses incompatible Qt library (%d.%d.%d)!",
+-		      (const char*) QFile::encodeName(library),
+-		      (version&0xff0000) >> 16, (version&0xff00) >> 8, version&0xff );
++	return FALSE;
+     } else if ( (flags & 2) != (our_flags & 2) ) {
+-	if ( warn )
+-	    qWarning( "Conflict in %s:\n"
+-		      "  Plugin uses %s Qt library!",
+-		      (const char*) QFile::encodeName(library),
+-		      (flags & 2) ? "multi threaded" : "single threaded" );
++	return FALSE;
+     } else if ( key != QT_BUILD_KEY ) {
+-	if ( warn )
+-	    qWarning( "Conflict in %s:\n"
+-		      "  Plugin uses incompatible Qt library!\n"
+-		      "  expected build key \"%s\", got \"%s\".",
+-		      (const char*) QFile::encodeName(library),
+-		      QT_BUILD_KEY,
+-		      key.isEmpty() ? "<null>" : (const char *) key );
++	return FALSE;
+     } else {
+ 	return TRUE;
+     }
+--- plugins/src/accessible/widgets/widgets.pro
++++ plugins/src/accessible/widgets/widgets.pro
+@@ -13,3 +13,7 @@
+ 
+ HEADERS  += qaccessiblewidget.h \
+ 	    qaccessiblemenu.h
++
++target.path += $$plugins.path/accessible
++INSTALLS += target
++
+Index: kernel/qasyncimageio.cpp
+================================================================================
+--- src/kernel/qasyncimageio.cpp
++++ src/kernel/qasyncimageio.cpp
+@@ -904,7 +904,12 @@
+ 		    sheight = newtop + newheight;
+ 
+ 		if (img.isNull()) {
+-		    img.create(swidth, sheight, 32);
++		    bool ok = img.create(swidth, sheight, 32);
++		    if (!ok)
++		    {
++			state = Error;
++			break;
++		    }
+ 		    memset( img.bits(), 0, img.numBytes() );
+ 		    if (consumer) consumer->setSize(swidth, sheight);
+ 		}
+@@ -959,9 +964,15 @@
+ 		    if (backingstore.width() < w
+ 			|| backingstore.height() < h) {
+ 			// We just use the backing store as a byte array
+-			backingstore.create( QMAX(backingstore.width(), w),
++			bool ok = backingstore.create(
++			                     QMAX(backingstore.width(), w),
+ 					     QMAX(backingstore.height(), h),
+ 					     32);
++			if (!ok)
++			{
++			    state = Error;
++			    break;
++			}
+ 			memset( img.bits(), 0, img.numBytes() );
+ 		    }
+ 		    for (int ln=0; ln<h; ln++) {
+--- src/kernel/qimage.cpp
++++ src/kernel/qimage.cpp
+@@ -68,6 +68,8 @@
+ #define QT_NO_IMAGE_16_BIT
+ #endif
+ 
++int qt_max_image_height = 0;
++int qt_max_image_width = 0;
+ 
+ /*!
+     \class QImage
+@@ -1211,6 +1213,28 @@
+     data->alpha = enable;
+ }
+ 
++QSize QImage::maxImageSize()
++{
++    if (!qt_max_image_height || !qt_max_image_width)
++       return QSize();
++    return QSize(qt_max_image_height, qt_max_image_width);
++}
++
++void QImage::setMaxImageSize(const QSize &size)
++{
++    if (size.isValid())
++    {
++        qt_max_image_height = size.height();
++        qt_max_image_width = size.width();
++    }
++    else
++    {
++        qt_max_image_height = 0;
++        qt_max_image_width = 0;
++    }
++}
++
++
+ 
+ /*!
+     Sets the image \a width, \a height, \a depth, its number of colors
+@@ -1240,6 +1264,14 @@
+     reset();					// reset old data
+     if ( width <= 0 || height <= 0 || depth <= 0 || numColors < 0 )
+ 	return FALSE;				// invalid parameter(s)
++    if ( qt_max_image_height && (height > qt_max_image_height * 4))
++        return FALSE; // Too high
++    if ( qt_max_image_width && (width > qt_max_image_width * 4))
++        return FALSE; // Too wide
++    if ( qt_max_image_height && qt_max_image_width &&
++         (height * width > qt_max_image_height * qt_max_image_width))
++        return FALSE; // Too large
++    
+     if ( depth == 1 && bitOrder == IgnoreEndian ) {
+ #if defined(QT_CHECK_RANGE)
+ 	qWarning( "QImage::create: Bit order is required for 1 bpp images" );
+--- src/kernel/qimage.h
++++ src/kernel/qimage.h
+@@ -197,6 +197,10 @@
+ 		      int quality=-1 ) const;
+     bool	save( QIODevice * device, const char* format,
+ 		      int quality=-1 ) const;
++		      
++#define QT_HAVE_MAX_IMAGE_SIZE
++    static QSize maxImageSize();
++    static void setMaxImageSize(const QSize &size);
+ #endif //QT_NO_IMAGEIO
+ 
+     bool	valid( int x, int y ) const;
+qt-bugs@ issue : 
+bugs.kde.org number :
+applied: yes
+author: Waldo Bastian <bastian@kde.org>
+
+QTextEdit::zoomIn /QTextEdit::zoomOut does not work if the original
+font had its size specified in pixels instead of points.
+pointSize() returns 0 in such case.
+
+Index: widgets/qtextedit.cpp
+================================================================================
+--- src/widgets/qtextedit.cpp
++++ src/widgets/qtextedit.cpp
+@@ -5774,7 +5774,11 @@
+ void QTextEdit::zoomIn( int range )
+ {
+     QFont f( QScrollView::font() );
+-    f.setPointSize( QFontInfo(f).pointSize() + range );
++    QFontInfo fi(f);
++    if (fi.pointSize() <= 0)
++       f.setPixelSize( fi.pixelSize() + range );
++    else
++       f.setPointSize( fi.pointSize() + range );
+     setFont( f );
+ }
+ 
+@@ -5789,7 +5793,11 @@
+ void QTextEdit::zoomOut( int range )
+ {
+     QFont f( QScrollView::font() );
+-    f.setPointSize( QMAX( 1, QFontInfo(f).pointSize() - range ) );
++    QFontInfo fi(f);
++    if (fi.pointSize() <= 0)
++       f.setPixelSize( QMAX( 1, fi.pixelSize() - range ) );
++    else
++       f.setPointSize( QMAX( 1, fi.pointSize() - range ) );
+     setFont( f );
+ }
+ 
+--- src/kernel/qtranslator.cpp
++++ src/kernel/qtranslator.cpp
+@@ -1015,7 +1015,7 @@
+ 	char con[256];
+ 	for ( ;; ) {
+ 	    t >> len;
+-	    if ( len == 0 )
++	    if ( len == 0 || t.atEnd())
+ 		return QTranslatorMessage();
+ 	    t.readRawBytes( con, len );
+ 	    con[len] = '\0';
+Index: src/kernel/qgplugin.h
+================================================================================
+--- src/kernel/qgplugin.h
++++ src/kernel/qgplugin.h
+@@ -90,35 +90,19 @@
+ 	    return i->iface(); \
+ 	}
+ 
+-#    ifdef Q_WS_WIN
+-#	ifdef Q_CC_BOR
+-#	    define Q_EXPORT_PLUGIN(PLUGIN) \
+-	        Q_PLUGIN_VERIFICATION_DATA \
+-		Q_EXTERN_C __declspec(dllexport) \
+-                const char * __stdcall qt_ucm_query_verification_data() \
+-                { return qt_ucm_verification_data; } \
+-		Q_EXTERN_C __declspec(dllexport) QUnknownInterface* \
+-                __stdcall ucm_instantiate() \
+-		Q_PLUGIN_INSTANTIATE( PLUGIN )
+-#	else
+-#	    define Q_EXPORT_PLUGIN(PLUGIN) \
+-	        Q_PLUGIN_VERIFICATION_DATA \
+-		Q_EXTERN_C __declspec(dllexport) \
+-                const char *qt_ucm_query_verification_data() \
+-                { return qt_ucm_verification_data; } \
+-		Q_EXTERN_C __declspec(dllexport) QUnknownInterface* ucm_instantiate() \
+-		Q_PLUGIN_INSTANTIATE( PLUGIN )
+-#	endif
+-#    else
+-#	define Q_EXPORT_PLUGIN(PLUGIN) \
++#if defined(Q_WS_WIN) && defined(Q_CC_BOR)
++#   define Q_STDCALL __stdcall
++#else
++#   define Q_STDCALL
++#endif
++
++#define Q_EXPORT_PLUGIN(PLUGIN) \
+ 	    Q_PLUGIN_VERIFICATION_DATA \
+-	    Q_EXTERN_C \
+-            const char *qt_ucm_query_verification_data() \
++	    Q_EXTERN_C Q_EXPORT \
++            const char * Q_STDCALL qt_ucm_query_verification_data() \
+             { return qt_ucm_verification_data; } \
+-	    Q_EXTERN_C QUnknownInterface* ucm_instantiate() \
++	    Q_EXTERN_C Q_EXPORT QUnknownInterface* Q_STDCALL ucm_instantiate() \
+             Q_PLUGIN_INSTANTIATE( PLUGIN )
+-#    endif
+-
+ #endif
+ 
+ struct QUnknownInterface;
+--- src/tools/qglobal.h
++++ src/tools/qglobal.h
+@@ -882,6 +882,10 @@
+ #    define Q_TEMPLATE_EXTERN
+ #    undef  Q_DISABLE_COPY 	/* avoid unresolved externals */
+ #  endif
++#elif defined(Q_CC_GNU) && __GNUC__ - 0 >= 4
++#    define Q_EXPORT __attribute__((visibility("default")))
++#    undef QT_MAKEDLL		/* ignore these for other platforms */
++#    undef QT_DLL
+ #else
+ #  undef QT_MAKEDLL		/* ignore these for other platforms */
+ #  undef QT_DLL
+--- src/widgets/qpopupmenu.cpp
++++ src/widgets/qpopupmenu.cpp
+@@ -1391,6 +1391,7 @@
+     performDelayedChanges();
+     updateSize(TRUE);
+     QWidget::show();
++    updateSize();
+     popupActive = -1;
+     if(style().styleHint(QStyle::SH_PopupMenu_SubMenuPopupDelay, this))
+ 	d->mouseMoveBuffer = QRegion();
+--- tools/assistant/lib/qassistantclient.cpp
++++ tools/assistant/lib/qassistantclient.cpp
+@@ -135,7 +135,7 @@
+     : QObject( parent, name ), host ( "localhost" )
+ {
+     if ( path.isEmpty() )
+-	assistantCommand = "assistant";
++	assistantCommand = "/usr/lib/qt3/bin/assistant";
+     else {
+ 	QFileInfo fi( path );
+ 	if ( fi.isDir() )
+--- src/kernel/qeventloop_unix.cpp
++++ src/kernel/qeventloop_unix.cpp
+@@ -517,6 +531,17 @@
+     return (tm->tv_sec*1000) + (tm->tv_usec/1000);
+ }
+ 
++static QString fullName(QObject* obj)
++{
++    QString oname;
++    if (obj && obj->name())
++        oname = QString(obj->name()) + "(" + QString(obj->className()) + ")";
++
++    if (obj && obj->parent())
++        return fullName(obj->parent()) + "/" + oname;
++    return oname;
++}
++
+ int QEventLoop::activateTimers()
+ {
+     if ( !timerList || !timerList->count() )	// no timers
+@@ -552,9 +577,27 @@
+ 	t->timeout += t->interval;
+ 	if ( t->timeout < currentTime )
+ 	    t->timeout = currentTime + t->interval;
++        // prefer system clock ticks for low resolution timers
++        // to save cpu power
++        if (t->interval.tv_sec * 1000 + t->interval.tv_usec / 1000 >= 1000) {
++            timeval drift;
++            drift.tv_sec = 0;
++            drift.tv_usec = (t->interval.tv_usec / 8) + (t->interval.tv_sec % 8) * 1000 * 1000 / 8;
++            timeval synced = t->timeout + drift;
++            if (synced.tv_usec < 2 * drift.tv_usec)
++                synced.tv_usec = 0;
++            t->timeout = synced;
++        }
+ 	insertTimer( t );			// relink timer
+ 	if ( t->interval.tv_usec > 0 || t->interval.tv_sec > 0 )
+ 	    n_act++;
++
++        if (t->obj && getenv("QT_DEBUG_TIMER"))
++            qDebug("qtimer: %ld/%s %d ms for %p/%s %s",
++                    getpid(), qApp && qApp->name() ? qApp->name() : "", 
++                    t->interval.tv_sec * 1000 + t->interval.tv_usec / 1000,
++                    t->obj, fullName(t->obj).latin1(), t->obj->className());
++
+ 	QTimerEvent e( t->id );
+ 	QApplication::sendEvent( t->obj, &e );	// send event
+ 	if ( timerList->findRef( begin ) == -1 )
+Index: src/kernel/qimage.h
+===================================================================
+--- src/kernel/qimage.h	(revision 594273)
++++ src/kernel/qimage.h	(working copy)
+@@ -55,7 +55,7 @@ public:
+     QCString lang;
+ 
+     bool operator< (const QImageTextKeyLang& other) const
+-	{ return key < other.key || key==other.key && lang < other.lang; }
++	{ return key < other.key || (key==other.key && lang < other.lang); }
+     bool operator== (const QImageTextKeyLang& other) const
+ 	{ return key==other.key && lang==other.lang; }
+ };
+--- src/tools/qcstring.h		(revision 658213)
++++ src/tools/qcstring.h		(working copy)
+@@ -161,7 +161,11 @@ public:
+ 
+     QCString	copy()	const;
+ 
+-    QCString    &sprintf( const char *format, ... );
++    QCString    &sprintf( const char *format, ... )
++#if defined(Q_CC_GNU) && !defined(__INSURE__)
++    __attribute__ ((format (printf, 2, 3)))
++#endif
++        ;
+ 
+     int		find( char c, int index=0, bool cs=TRUE ) const;
+     int		find( const char *str, int index=0, bool cs=TRUE ) const;
+--- src/kernel/qmngio.cpp.sav	2007-02-23 14:01:19.000000000 +0100
++++ src/kernel/qmngio.cpp	2007-08-28 15:27:28.000000000 +0200
+@@ -414,8 +414,11 @@ int QMNGFormat::decode( QImage& img, QIm
+     }
+ 
+     losttime += losingtimer.elapsed();
+-    if ( ndata || !length )
+-	mng_display_resume(handle);
++    bool needmore = false;
++    if ( ndata ) {
++	mng_retcode r = mng_display_resume(handle);
++	needmore = ( r == MNG_NEEDMOREDATA );
++    }
+     losingtimer.start();
+ 
+     image = 0;
+@@ -425,6 +428,13 @@ int QMNGFormat::decode( QImage& img, QIm
+ 	// Move back unused tail
+ 	memcpy(buffer,buffer+ubuffer,nbuffer);
+     }
++    // "The function should return without processing all the data if it reaches the end of a frame in the input."
++    if( ndata && !needmore ) {
++	length -= ndata;
++	ndata = 0;
++	if( length == 0 ) // 0 means done, process at least one byte
++	    length = ndata = 1;
++    }
+     if ( ndata ) {
+ 	// Not all used.
+ 	enlargeBuffer(nbuffer+ndata);
+--- src/kernel/qtaddons_x11.cpp
++++ src/kernel/qtaddons_x11.cpp
+@@ -22,6 +22,10 @@
+  * PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#ifndef QT_CLEAN_NAMESPACE
++#define QT_CLEAN_NAMESPACE
++#endif
++
+ #include "qt_x11_p.h"
+ 
+ #if !defined(QT_NO_XFTFREETYPE) && !defined(QT_XFT2)
+--- src/kernel/qt_x11_p.h
++++ src/kernel/qt_x11_p.h
+@@ -86,7 +86,7 @@
+ 
+ 
+ // the wacom tablet (currently just the IRIX version)
+-#if defined (QT_TABLET_SUPPORT)
++#if defined (QT_TABLET_SUPPORT) && defined (QT_CLEAN_NAMESPACE)
+ #  include <X11/extensions/XInput.h>
+ #if defined (Q_OS_IRIX)
+ #  include <wacom.h>  // wacom driver defines for IRIX (quite handy)
+--- src/kernel/qwidget_x11.cpp
++++ src/kernel/qwidget_x11.cpp
+@@ -38,6 +38,10 @@
+ **
+ **********************************************************************/
+ 
++#ifndef QT_CLEAN_NAMESPACE
++#define QT_CLEAN_NAMESPACE
++#endif
++
+ #include "qapplication.h"
+ #include "qapplication_p.h"
+ #include "qnamespace.h"
+--- src/kernel/qfontdatabase.cpp
++++ src/kernel/qfontdatabase.cpp
+@@ -2476,11 +2476,14 @@ void QFontDatabase::parseFontName(const
+ 	int i = name.find('[');
+ 	int li = name.findRev(']');
+ 
+-	if (i < li) {
++	if (i > 0 && i + 1 < li) {
+ 	    foundry = name.mid(i + 1, li - i - 1);
+ 	    if (name[i - 1] == ' ')
+ 		i--;
+ 	    family = name.left(i);
++	} else {
++	    foundry = QString::null;
++	    family = name;
+ 	}
+     } else {
+ 	foundry = QString::null;
+--- src/moc/moc.y	2008-01-15 20:09:13.000000000 +0100
++++ src/moc/moc.y	2009-02-07 19:35:47.703930527 +0100
+@@ -2833,7 +2833,7 @@
+ {
+     const char *hdr1 = "/****************************************************************************\n"
+ 		 "** %s meta object code from reading C++ file '%s'\n**\n";
+-    const char *hdr2 = "** Created: %s\n"
++    const char *hdr2 = "** Created:\n"
+     const char *hdr3 = "** WARNING! All changes made in this file will be lost!\n";
+     const char *hdr4 = "*****************************************************************************/\n\n";
+     int   i;
+@@ -2872,7 +2872,7 @@
+ 	if ( i >= 0 )
+ 	    fn = &g->fileName[i];
+ 	fprintf( out, hdr1, (const char*)qualifiedClassName(),(const char*)fn);
+-	fprintf( out, hdr2, (const char*)dstr );
++	fprintf( out, hdr2 );
+ 	fprintf( out, hdr3 );
+ 	fprintf( out, hdr4 );
+ 
+diff -ru src/moc/moc_yacc.cpp src/moc/moc_yacc.cpp
+--- src/moc/moc_yacc.cpp	2008-01-14 13:24:36.000000000 +0100
++++ src/moc/moc_yacc.cpp	2009-02-07 19:35:30.039680400 +0100
+@@ -2872,7 +2872,7 @@
+ {
+     const char *hdr1 = "/****************************************************************************\n"
+ 		 "** %s meta object code from reading C++ file '%s'\n**\n";
+-    const char *hdr2 = "** Created: %s\n"
++    const char *hdr2 = "** Created: \n"
+ 		 "**      by: The Qt MOC ($Id: qt/moc_yacc.cpp   3.3.8   edited Feb 2 14:59 $)\n**\n";
+     const char *hdr3 = "** WARNING! All changes made in this file will be lost!\n";
+     const char *hdr4 = "*****************************************************************************/\n\n";
+@@ -2912,7 +2912,7 @@
+ 	if ( i >= 0 )
+ 	    fn = &g->fileName[i];
+ 	fprintf( out, hdr1, (const char*)qualifiedClassName(),(const char*)fn);
+-	fprintf( out, hdr2, (const char*)dstr );
++	fprintf( out, hdr2 );
+ 	fprintf( out, hdr3 );
+ 	fprintf( out, hdr4 );
+ 
+diff -ru tools/designer/uic/embed.cpp tools/designer/uic/embed.cpp
+--- tools/designer/uic/embed.cpp	2008-01-15 20:09:14.000000000 +0100
++++ tools/designer/uic/embed.cpp	2009-02-07 19:36:25.950931409 +0100
+@@ -137,7 +137,7 @@
+     for ( it = images.begin(); it != images.end(); ++it )
+ 	out << "**      " << *it << "\n";
+     out << "**\n";
+-    out << "** Created: " << QDateTime::currentDateTime().toString() << "\n";
++    out << "** Created:\n";
+     out << "**\n";
+     out << "** WARNING! All changes made in this file will be lost!\n";
+     out << "****************************************************************************/\n";
+diff -ru tools/designer/uic/main.cpp tools/designer/uic/main.cpp
+--- tools/designer/uic/main.cpp	2008-01-15 20:09:14.000000000 +0100
++++ tools/designer/uic/main.cpp	2009-02-07 19:36:36.603680916 +0100
+@@ -320,7 +320,7 @@
+ 	out << "/****************************************************************************" << endl;
+ 	out << "** Form "<< (impl? "implementation" : "interface") << " generated from reading ui file '" << fileName << "'" << endl;
+ 	out << "**" << endl;
+-	out << "** Created: " << QDateTime::currentDateTime().toString() << endl;
++	out << "** Created:" << endl;
+ 	out << "**" << endl;
+ 	out << "** WARNING! All changes made in this file will be lost!" << endl;
+ 	out << "****************************************************************************/" << endl << endl;
+Index: src/tools/qvaluevector.h
+===================================================================
+--- src/tools/qvaluevector.h.orig	2008-01-15 20:09:13.000000000 +0100
++++ src/tools/qvaluevector.h	2011-03-31 20:15:15.904712567 +0200
+@@ -246,7 +246,7 @@ public:
+     typedef const value_type& const_reference;
+     typedef size_t size_type;
+ #ifndef QT_NO_STL
+-    typedef ptrdiff_t difference_type;
++    typedef std::ptrdiff_t difference_type;
+ #else
+     typedef int difference_type;
+ #endif
+Index: src/tools/qmap.h
+===================================================================
+--- src/tools/qmap.h.orig	2008-01-15 20:09:13.000000000 +0100
++++ src/tools/qmap.h	2011-03-31 20:24:35.802101605 +0200
+@@ -108,7 +108,7 @@ class QMapIterator
+ #endif
+     typedef T          value_type;
+ #ifndef QT_NO_STL
+-    typedef ptrdiff_t  difference_type;
++    typedef std::ptrdiff_t  difference_type;
+ #else
+     typedef int difference_type;
+ #endif
+@@ -224,7 +224,7 @@ class QMapConstIterator
+ #endif
+     typedef T          value_type;
+ #ifndef QT_NO_STL
+-    typedef ptrdiff_t  difference_type;
++    typedef std::ptrdiff_t  difference_type;
+ #else
+     typedef int difference_type;
+ #endif
+@@ -605,7 +605,7 @@ public:
+     typedef value_type& reference;
+     typedef const value_type& const_reference;
+ #ifndef QT_NO_STL
+-    typedef ptrdiff_t  difference_type;
++    typedef std::ptrdiff_t  difference_type;
+ #else
+     typedef int difference_type;
+ #endif
+commit 1ee1ffbae69dc78721af139f0794628571fd35ef
+Author: Slávek Banko <slavek.banko@axis.cz>
+Date:   1386900429 +0100
+
+    Fix FTBFS with libfreetype6 >= 2.5.x
+    This resolves Bug 1765
+
+diff --git a/config.tests/x11/xfreetype.test b/config.tests/x11/xfreetype.test
+index 5cabc32..d4cb4ba 100755
+--- config.tests/x11/xfreetype.test
++++ config.tests/x11/xfreetype.test
+@@ -116,12 +116,15 @@ fi
+ # check for freetype2 headers
+ FREETYPE2_INCDIR=
+ if [ "$XFT" = "yes" ]; then
+-    INC="freetype2/freetype/freetype.h"
+     XDIRS=`sed -n -e '/^QMAKE_INCDIR_X11[	]*=/ { s/[^=]*=[	 ]*//; s/-I/ /g; p; }' $XCONFIG`
+     LDIRS=`sed -n -e '/^QMAKE_INCDIR[	]*=/ { s/[^=]*=[	 ]*//; s/-I/ /g; p; }' $XCONFIG`
+     INCDIRS="$IN_INCDIRS $XDIRS $LDIRS /usr/include /include"
+     F=
+     for INCDIR in $INCDIRS; do
++	INC="freetype2/freetype/freetype.h"  # libfreetype <= 2.4.9-1.1
++	if ! [ -f $INCDIR/$INC ]; then
++	    INC="freetype2/freetype.h"  # libfreetype >= 2.5.1-1
++	fi
+ 	if [ -f $INCDIR/$INC ]; then
+ 	    # detect major version of freetype2
+ 	    FREETYPE_MAJOR=`grep "#define FREETYPE_MAJOR" $INCDIR/$INC | head -n 1 | awk '{ print \$3 }'`
+--- qmake/project.cpp.orig	2015-04-10 17:15:10.731091347 +0200
++++ qmake/project.cpp	2013-12-30 17:58:15.471703644 +0100
+@@ -685,7 +685,7 @@
+ //	    fprintf(stderr,"Current QT version number: " + ver + "\n");
+ 	    if (ver != "" && ver != test_version) {
+ 		ver = test_version;
+-		fprintf(stderr,"Changed QT version number to " + test_version + "!\n");
++		fprintf(stderr,"Changed QT version number to %s!\n", test_version.ascii());
+ 	    }
+ 	}
+     }

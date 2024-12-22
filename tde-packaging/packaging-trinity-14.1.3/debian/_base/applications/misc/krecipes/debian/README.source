@@ -1,0 +1,5 @@
+This package uses CDBS as build system.  See /usr/share/doc/cdbs/cdbs-doc.{html|pdf.gz}.
+
+This package uses quilt for patch management.  See /usr/share/doc/quilt/README.gz.
+
+ -- Matthias Julius <mdeb@julius-net.net>, Fri, 27 Mar 2009 15:32:58 -0400

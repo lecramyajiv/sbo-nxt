@@ -1,0 +1,19 @@
+Source: k3b-i18n-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Francois Marier <francois@debian.org>, Fathi Boudra <fabo@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build
+Build-Depends-Indep: tdelibs14-trinity-dev
+Standards-Version: 3.8.3
+
+Package: k3b-i18n-trinity
+Architecture: all 
+Depends: k3b-trinity
+Pre-Depends: dpkg (>= 1.10.24)
+Description: Internationalized (i18n) files for k3b-trinity
+ This package contains the translations for k3b-trinity.
+ .
+ K3b is a GUI frontend to the cd recording programs cdrdao and cdrecord.  Its
+ aim is to provide a very user friendly interface to all the tasks that come
+ with cd recording.

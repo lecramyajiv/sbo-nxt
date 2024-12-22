@@ -1,0 +1,12 @@
+#############################################################################
+#
+# OpenSLP registration file
+#
+# register ksysguard daemon
+#
+#############################################################################
+
+service:ksysguardd.kde://$HOSTNAME:3112,en,65535
+watch-port-udp=3112
+description=KDE ksysguard daemon
+

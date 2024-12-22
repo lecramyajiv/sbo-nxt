@@ -1,0 +1,44 @@
+desktop-effects-tde-trinity (0.4-7.4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+desktop-effects-tde-trinity (0.4-5) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 06 March 2009 01:35:00 -0600
+
+desktop-effects-tde-trinity (0.4-3) intrepid; urgency=low
+
+  * Added -trinity prefix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Mon, 01 Dec 2008 09:29:00 -0600
+
+desktop-effects-tde (0.4) hardy; urgency=low
+
+  * added translation support
+
+ -- Michael Anderson <nosrednaekim@gmail.com>  Sun, 20 Apr 2008 21:04:40 -0400
+
+desktop-effects-tde (0.3) hardy; urgency=low
+
+  * Remove bashism in 25enable-compiz
+  * Fixed LP: #207609 which installed the packages even when the user
+    was selecting uninstall
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 31 Mar 2008 14:05:01 +0100
+
+desktop-effects-tde (0.2) hardy; urgency=low
+
+  * Fix compile, image install paths and add .desktop file
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 12 Mar 2008 21:47:16 +0000
+
+desktop-effects-tde (0.1) hardy; urgency=low
+
+  * Initial package
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 29 Jan 2008 22:13:32 +0000

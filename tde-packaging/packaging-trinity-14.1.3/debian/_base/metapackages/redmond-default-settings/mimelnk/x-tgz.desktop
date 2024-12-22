@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Gzipped Tar Archive
+Hidden=false
+Patterns=*.tar.gz;*.tgz
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

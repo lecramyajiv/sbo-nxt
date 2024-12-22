@@ -1,0 +1,42 @@
+#! /bin/sh -e
+
+package_name=kappfinder-trinity
+
+divert_remove()
+ {
+    divert=`dpkg-divert --listpackage "$1"`
+    if [ -n "$divert" ] && [ "$divert" = "LOCAL" ]; then
+        dpkg-divert --remove --local --rename "$1"
+    fi
+    if [ -n "$divert" ] && [ "$divert" = "$package_name" ]; then
+        dpkg-divert --remove --package $package_name --rename "$1"
+    fi
+ }
+
+case "$1" in
+
+    configure)
+        divert_remove /usr/share/icons/hicolor/128x128/apps/kappfinder.png
+        divert_remove /usr/share/icons/hicolor/16x16/apps/kappfinder.png
+        divert_remove /usr/share/icons/hicolor/22x22/apps/kappfinder.png
+        divert_remove /usr/share/icons/hicolor/32x32/apps/kappfinder.png
+        divert_remove /usr/share/icons/hicolor/48x48/apps/kappfinder.png
+        divert_remove /usr/share/icons/hicolor/64x64/apps/kappfinder.png
+    ;;
+
+    install)
+    ;;
+
+    abort-upgrade)
+    ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+
+esac
+
+#DEBHELPER#
+
+exit 0

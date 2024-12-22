@@ -1,0 +1,15 @@
+This package was debianized by Arnaud Quette <arnaud.quette@free.fr> on
+Thu, 10 Jul 2003 14:13:53 +0200.
+
+It was downloaded from ftp://ftp.buzuluk.cz/pub/alo/knutclient
+
+Upstream Author: Daniel Prynych <Daniel.Prynych at alo.cz>
+
+Copyright:
+
+KNutClient is copyright (c) 2001-2003 by Daniel Prynych and licensed through
+the GNU General Public License v2. Read the COPYING file for the complete
+GNU license.
+
+On Debian systems, the full text of the GNU General Public Licesne can
+be found in /usr/share/common-licenses/GPL.

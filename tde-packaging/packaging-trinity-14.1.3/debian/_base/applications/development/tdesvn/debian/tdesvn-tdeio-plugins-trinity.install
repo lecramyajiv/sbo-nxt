@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/share/services/*.protocol
+debian/tmp/opt/trinity/lib/trinity/tdeio*
+debian/tmp/opt/trinity/lib/trinity/kded_tdesvnd.*
+debian/tmp/opt/trinity/share/services/kded/

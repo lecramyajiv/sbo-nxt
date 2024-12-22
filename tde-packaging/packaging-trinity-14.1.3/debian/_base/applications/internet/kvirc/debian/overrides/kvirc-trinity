@@ -1,0 +1,2 @@
+kvirc-trinity: binary-without-manpage kvirc
+kvirc-trinity: menu-icon-missing /opt/trinity/share/icons/hicolor/32x32/apps/kvirc.xpm

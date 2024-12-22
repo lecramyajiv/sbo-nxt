@@ -1,0 +1,13 @@
+Index: kcontrol/background/bgwallpaper.cpp
+===================================================================
+--- kcontrol/background/bgwallpaper.cpp.orig
++++ kcontrol/background/bgwallpaper.cpp
+@@ -149,7 +149,7 @@ void BGMultiWallpaperDialog::slotAdd()
+     mimeTypes += "image/svg+xml";
+ #endif
+ 
+-    KFileDialog fileDialog(KGlobal::dirs()->findDirs("wallpaper", "").first(),
++    KFileDialog fileDialog("/usr/share/wallpapers",
+ 			   mimeTypes.join( " " ), this,
+ 			   0L, true);
+ 

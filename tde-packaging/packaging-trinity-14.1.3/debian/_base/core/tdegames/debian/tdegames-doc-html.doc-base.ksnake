@@ -1,0 +1,11 @@
+Document: tdegames-doc-html-ksnake
+Title: The KSnake Handbook
+Author: Michel Filippi
+Abstract: Snake Race is a game of speed and agility. You are a hungry
+ snake and are trying to eat all the apples in the room before getting
+ out!
+Section: Games/Arcade
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/ksnake/index.html
+Files: /usr/share/doc/tde/HTML/en/ksnake/*.html

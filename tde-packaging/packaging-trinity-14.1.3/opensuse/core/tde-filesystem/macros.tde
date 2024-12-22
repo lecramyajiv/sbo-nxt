@@ -1,0 +1,181 @@
+#
+# Disclaimer: this was taken from macros.kde4. Some items
+# are not applicable to Trinity, but are still here.
+# NEW: this obsoletes common_options from kdelibs3
+
+%_tde_prefix /opt/tde
+%_tde_bindir %{_tde_prefix}/bin
+%_tde_libdir %{_tde_prefix}/%{_lib}
+%_tde_modulesdir %{_tde_libdir}/tde
+%_tde_libexecdir %{_tde_libdir}/tde/libexec
+%_tde_sysconfdir %{_sysconfdir}
+%_tde_iconsdir %{_tde_prefix}/share/icons
+%_tde_sbindir %{_tde_prefix}/sbin
+%_tde_sharedir %{_tde_prefix}/share
+%_tde_datadir %{_tde_sharedir}/apps
+%_tde_appdir %{_tde_datadir}
+%_tde_applicationsdir %{_tde_sharedir}/applications
+%_tde_appsdir %{_tde_sharedir}/applnk
+%_tde_configdir %{_tde_sharedir}/config
+%_tde_configkcfgdir %{_tde_sharedir}/config.kcfg
+%_tde_servicesdir %{_tde_sharedir}/services
+%_tde_servicetypesdir %{_tde_sharedir}/servicetypes
+%_tde_includedir %{_tde_prefix}/include
+%_tde_docdir %{_tde_sharedir}/doc/
+%_tde_htmldir %{_tde_sharedir}/doc/HTML
+%_tde_wallpapersdir %{_tde_sharedir}/wallpapers
+%_tde_icondir %{_tde_iconsdir}
+%_tde_sounddir %{_tde_sharedir}/sounds
+%_tde_locale %{_tde_sharedir}/locale
+%_tde_mimedir %{_tde_sharedir}/mimelnk
+%_tde_styledir %{_tde_libdir}/tde/plugins/styles
+%_tde_widgetdir %{_tde_libdir}/tde/plugins/designer
+ 
+# these are for backwards compatibility
+%_kde3_prefix %{_tde_prefix}
+%_kde3_libdir %{_tde_libdir}
+%_kde3_share_dir %{_tde_sharedir}
+%_kde3_config_dir %{_tde_configdir}
+%_kde3_html_dir %{_tde_htmldir}
+%_tde_modules %{_tde_modulesdir}
+%_tde_servicetypes %{_tde_servicetypesdir}
+ 
+%_tde_platform_version R13.99
+ 
+%tde_runtime_requires Requires: tdebase3-runtime >= %_tde_platform_version qt3 >= 3.4.0
+ 
+%_tde_build_type release
+
+%cmake_tdeusr(d:) \
+  export CFLAGS=$RPM_OPT_FLAGS \
+  export CXXFLAGS=$RPM_OPT_FLAGS \
+  export LDFLAGS="-Wl,-Bsymbolic-functions $LDFLAGS" \
+  _tde_libsuffix=$(echo %_lib | cut -b4-) \
+  bdir=. \
+  %{-d:dir=%{-d*} \
+  mkdir $dir \
+  cd $dir \
+  bdir=.. } \
+  cmake -DCMAKE_SKIP_RPATH=ON \\\
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} \\\
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \\\
+        -DINCLUDE_INSTALL_DIR:PATH=%{_includedir} \\\
+        -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
+        -DLIBEXEC_INSTALL_DIR:PATH=%{_libexecdir} \\\
+        -DLIB_SUFFIX="$_tde_libsuffix" \\\
+        -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
+        -DCMAKE_BUILD_TYPE=%{_tde_build_type} \\\
+        -DCMAKE_VERBOSE_MAKEFILE=ON \\\
+        -DQT_LIBRARY_DIRS=/usr/lib/qt3/%{_lib} \\\
+        -DQT_INCLUDE_DIRS=/usr/lib/qt3/include \\\
+        -DPKGCONFIG_INSTALL_DIR=%{_libdir}/pkgconfig \\\
+        -DMAN_INSTALL_DIR=%{_mandir} \\\
+        -DINFO_INSTALL_DIR=%{_infodir} \\\
+        $bdir %* \
+   if [ "$bdir" == ".." ]; then \
+	cd .. \
+   fi \
+%{nil}
+ 
+%cmake_tde(d:) \
+  export CFLAGS=$RPM_OPT_FLAGS \
+  export CXXFLAGS=$RPM_OPT_FLAGS \
+  export LDFLAGS="-Wl,-Bsymbolic-functions $LDFLAGS" \
+  _tde_libsuffix=$(echo %_lib | cut -b4-) \
+  bdir=. \
+  %{-d:dir=%{-d*} \
+  mkdir $dir \
+  cd $dir \
+  bdir=.. } \
+  cmake -DCMAKE_SKIP_RPATH=ON \\\
+        -DCMAKE_INSTALL_PREFIX=%{_tde_prefix} \\\
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_tde_libdir} \\\
+        -DINCLUDE_INSTALL_DIR:PATH=%{_tde_includedir} \\\
+        -DLIB_INSTALL_DIR:PATH=%{_tde_libdir} \\\
+        -DLIBEXEC_INSTALL_DIR:PATH=%{_tde_libexecdir} \\\
+        -DLIB_SUFFIX="$_tde_libsuffix" \\\
+        -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
+        -DCMAKE_BUILD_TYPE=%{_tde_build_type} \\\
+        -DCMAKE_VERBOSE_MAKEFILE=ON \\\
+        -DQT_LIBRARY_DIRS=/usr/lib/qt3/%{_lib} \\\
+        -DQT_INCLUDE_DIRS=/usr/lib/qt3/include \\\
+        -DPKGCONFIG_INSTALL_DIR=%{_libdir}/pkgconfig \\\
+        -DMAN_INSTALL_DIR=%{_mandir} \\\
+        -DINFO_INSTALL_DIR=%{_infodir} \\\
+        $bdir %* \
+   if [ "$bdir" == ".." ]; then \
+	cd .. \
+   fi \
+%{nil}
+
+%make_tde(d:) \
+  bdir=. \
+  %{-d:dir=%{-d*} \
+  cd $dir \
+  bdir=.. } \
+  make %{?_smp_mflags} VERBOSE=1 \
+  if [ "$bdir" == ".." ]; then \
+       cd .. \
+  fi \
+%{nil}
+
+%makeinstall_tde(d:) \
+  bdir=. \
+  %{-d:dir=%{-d*} \
+  cd $dir \
+  bdir=.. } \
+  make DESTDIR=%{?buildroot:%{buildroot}} install VERBOSE=1 \
+  if [ "$bdir" == ".." ]; then \
+       cd .. \
+  fi \
+%{nil}
+ 
+%tde_post_install \
+	# remove not needed development files
+	rm -f $RPM_BUILD_ROOT/%{_tde_libdir}/libkdeinit_*.la \
+	# not worth the hassle
+	rm -rf $RPM_BUILD_ROOT/%{_tde_icondir}/locolor \
+	# move icons in one theme - prefering hicolor
+	d="$RPM_BUILD_ROOT/%{_tde_icondir}/crystalsvg" \
+        if [ -d "$d" -a ! -e "$d/index.theme" ]; then \
+		find "$d" -type f | while read src; do \
+		  dest="${src/\/crystalsvg\///hicolor/}" \
+		  dir="${dest%/*}" \
+		  mkdir -p "$dir" \
+		  mv "$src" "$dest" \
+		done \
+	fi \
+	# we do this 3 times as there is a 3 fold hierarchy
+        if [ -d  $RPM_BUILD_ROOT/%{_tde_icondir} ]; then \
+  	    for i in `seq 1 3`; do \
+    	        find $RPM_BUILD_ROOT/%{_tde_icondir} -type d -exec rmdir -v --ignore-fail-on-non-empty -- {} \; || true \
+  	    done \
+	fi \
+	if [ -d $RPM_BUILD_ROOT/%{_tde_locale}/sr@Latn ]; then \
+             mv $RPM_BUILD_ROOT/%{_tde_locale}/sr@Latn $RPM_BUILD_ROOT/%{_tde_locale}/sr@latin \
+        fi \
+        if test -e /usr/lib/rpm/suse_update_desktop_file.sh; then \
+		distribution='' \
+		if test -f $HOME/.rpmmacros && test -d /usr/src/packages/SRPMS; then \
+			distribution=`grep ^%distribution $HOME/.rpmmacros | cut '-d ' -f2` \
+		fi \
+		find $RPM_BUILD_ROOT/%{_tde_sharedir} \\\
+			-name '*.desktop' 2> /dev/null | while read file; do \
+			test -r "$file" || continue \
+			grep -q "^X-SuSE-translate=" "$file" && continue \
+			case "$file" in \
+				*/.hidden/*) \
+					/usr/lib/rpm/suse_update_desktop_file.sh -n "$file" \
+					;; \
+				 *) \
+					if test -n "$distribution"; then \
+						/usr/lib/rpm/suse_update_desktop_file.sh --project "$distribution" --basedir /usr/src/packages/SRPMS "$file" \
+					else \
+						/usr/lib/rpm/suse_update_desktop_file.sh "$file" \
+					fi \
+					;; \
+			esac \
+		done \
+	fi \
+%{nil}
+

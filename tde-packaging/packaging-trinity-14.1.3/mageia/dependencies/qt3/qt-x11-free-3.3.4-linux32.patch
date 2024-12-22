@@ -1,0 +1,50 @@
+--- qt-x11-free-3.3.4/qmake/project.cpp.linux32	2005-01-21 12:16:26.000000000 -0500
++++ qt-x11-free-3.3.4/qmake/project.cpp	2005-04-11 08:18:48.734289865 -0400
+@@ -47,6 +47,13 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
++#if defined(__linux__) && defined(__x86_64__)
++#include <sys/syscall.h>
++#include <sys/personality.h>
++
++#define is_linux32() ((syscall(SYS_personality, 0xffffffff) & PER_MASK) == PER_LINUX32)
++#endif
++
+ #ifdef Q_OS_WIN32
+ #define QT_POPEN _popen
+ #else
+@@ -63,6 +70,15 @@ static void qmake_error_msg(const char *
+     fprintf(stderr, "%s:%d: %s\n", parser.file.latin1(), parser.line_no, msg);
+ }
+ 
++static QString qmake_mkspecs_default()
++{
++#ifdef is_linux32
++	if (!is_linux32())
++		return "default64";
++#endif
++	return "default";
++}
++
+ QStringList qmake_mkspec_paths()
+ {
+     QStringList ret;
+@@ -552,7 +568,7 @@ QMakeProject::read(uchar cmd)
+ 	    QStringList mkspec_roots = qmake_mkspec_paths();
+ 	    if(Option::mkfile::qmakespec.isEmpty()) {
+ 		for(QStringList::Iterator it = mkspec_roots.begin(); it != mkspec_roots.end(); ++it) {
+-		    QString mkspec = (*it) + QDir::separator() + "default";
++		    QString mkspec = (*it) + QDir::separator() + qmake_mkspecs_default();
+                     QFileInfo default_info(mkspec);
+                     if(default_info.exists() && default_info.isSymLink()) {
+ 			Option::mkfile::qmakespec = mkspec;
+@@ -717,7 +733,7 @@ QMakeProject::isActiveConfig(const QStri
+     if((regex && re.exactMatch(spec)) || (!regex && spec == x))
+ 	return TRUE;
+ #ifdef Q_OS_UNIX
+-    else if(spec == "default") {
++    else if(spec == qmake_mkspecs_default()) {
+ 	static char *buffer = NULL;
+ 	if(!buffer)
+ 	    buffer = (char *)malloc(1024);

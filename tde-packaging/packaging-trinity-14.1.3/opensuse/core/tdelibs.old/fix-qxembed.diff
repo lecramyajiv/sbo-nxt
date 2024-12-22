@@ -1,0 +1,80 @@
+Index: kdeui/qxembed.h
+===================================================================
+--- kdeui/qxembed.h.orig
++++ kdeui/qxembed.h
+@@ -191,6 +191,11 @@ public:
+     void enterWhatsThisMode(); // temporary, fix in Qt (Matthias, Mon Jul 17 15:20:55 CEST 2000  )
+     virtual void reparent( QWidget * parent, WFlags f, const QPoint & p, bool showIt = false );
+ 
++    /**
++     * @internal
++     */
++    void updateEmbeddedFocus( bool hasfocus );
++
+ signals:
+     /**
+      * This signal is emitted when the embedded window has been lost (destroyed or reparented away)
+Index: kdeui/qxembed.cpp
+===================================================================
+--- kdeui/qxembed.cpp.orig
++++ kdeui/qxembed.cpp
+@@ -314,8 +314,8 @@ bool QXEmbedAppFilter::eventFilter( QObj
+         if ( qApp->focusWidget() == o &&
+              ((QPublicWidget*)qApp->focusWidget()->topLevelWidget())->topData()->embedded ) {
+             QFocusEvent* fe = (QFocusEvent*) e;
+-            if ( obeyFocus || fe->reason() == QFocusEvent::Mouse ||
+-                 fe->reason() == QFocusEvent::Shortcut ) {
++            if ( obeyFocus || fe->reason() != QFocusEvent::ActiveWindow /*|| fe->reason() == QFocusEvent::Mouse ||
++                 fe->reason() == QFocusEvent::Shortcut*/ ) {
+                 // L0614: A widget in the embedded client was just given the Qt focus.
+                 //        Variable `obeyFocus' suggests that this is the result of mouse
+                 //        activity in the client.  The XEMBED_REQUEST_FOCUS message causes
+@@ -478,8 +478,11 @@ static int qxembed_x11_event_filter( XEv
+                     switch ( detail ) {
+                     case XEMBED_FOCUS_CURRENT:
+                         // L0683: Set focus on saved focus widget
+-                        if ( focusCurrent )
++                        if ( focusCurrent ) {
+                             focusCurrent->setFocus();
++                            if( QXEmbed* emb = dynamic_cast< QXEmbed* >( focusCurrent ))
++                                emb->updateEmbeddedFocus( true );
++                        }
+                         else if ( !w->topLevelWidget()->focusWidget() )
+                             w->topLevelWidget()->setFocus();
+                         break;
+@@ -511,6 +514,8 @@ static int qxembed_x11_event_filter( XEv
+                 //        We first record what the focus widget was
+                 //        and clear the Qt focus.
+                 if ( w->topLevelWidget()->focusWidget() ) {
++                    if( QXEmbed* emb = dynamic_cast< QXEmbed* >( w->topLevelWidget()->focusWidget()))
++                        emb->updateEmbeddedFocus( false );
+                     focusMap->insert( w->topLevelWidget(),
+                         new QGuardedPtr<QWidget>(w->topLevelWidget()->focusWidget() ) );
+                     w->topLevelWidget()->focusWidget()->clearFocus();
+@@ -919,6 +924,17 @@ void QXEmbed::focusOutEvent( QFocusEvent
+ }
+ 
+ 
++// When QXEmbed has Qt focus and gets/loses X focus, make sure the client knows
++// about the state of the focus.
++void QXEmbed::updateEmbeddedFocus( bool hasfocus ){
++    if (!window || d->xplain)
++        return;
++    if( hasfocus )
++        sendXEmbedMessage( window, XEMBED_FOCUS_IN, XEMBED_FOCUS_CURRENT);
++    else
++        sendXEmbedMessage( window, XEMBED_FOCUS_OUT);
++}
++
+ // L1600: Helper for QXEmbed::embed()
+ //        Check whether a window is in withdrawn state.
+ static bool wstate_withdrawn( WId winid )
+@@ -1161,6 +1177,8 @@ bool QXEmbed::x11Event( XEvent* e)
+                 // L2085: The client asks for the focus.
+             case XEMBED_REQUEST_FOCUS:
+                 if( ((QPublicWidget*)topLevelWidget())->topData()->embedded ) {
++                    focusMap->remove( topLevelWidget() );
++                    focusMap->insert( topLevelWidget(), new QGuardedPtr<QWidget>( this ));
+                     WId window = ((QPublicWidget*)topLevelWidget())->topData()->parentWinId;
+                     sendXEmbedMessage( window, XEMBED_REQUEST_FOCUS );
+                 } else {

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+osc build -b -d --local-package --alternative-project=home:bravoall1552:tde3.5.13 openSUSE_12.1 i586

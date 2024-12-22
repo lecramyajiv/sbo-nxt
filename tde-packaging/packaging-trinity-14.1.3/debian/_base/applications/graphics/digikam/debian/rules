@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CONFIGURE_INCLUDEDIR := /opt/trinity/include/tde
+DEB_CONFIGURE_MANDIR := /opt/trinity/share/man
+DEB_CONFIGURE_PREFIX := /opt/trinity
+DEB_CONFIGURE_INFODIR := /opt/trinity/share/info
+
+cdbs_configure_flags := --with-qt-dir=/usr/share/qt3 --disable-rpath --with-xinerama $(cdbs_kde_enable_final) $(cdbs_kde_enable_debug)
+
+TARBALL_EXT=tar.bz2
+
+DEB_CONFIGURE_EXTRA_FLAGS := --without-included-sqlite3 --prefix=/opt/trinity --disable-static
+
+DEB_CONFIGURE_SCRIPT_ENV += LDFLAGS="-Wl,--as-needed"
+
+DEB_KDE_ENABLE_FINAL := yes
+DEB_INSTALL_DOCS_ALL :=
+
+DEB_DH_MAKESHLIBS_ARGS_ALL := -V
+DEB_SHLIBDEPS_INCLUDE = $(foreach p,$(PACKAGES_WITH_LIBS),debian/$(p)/opt/trinity/lib)
+
+PKG_CONFIG_PATH=/opt/trinity/lib/pkgconfig:$PKG_CONFIG_PATH
+
+ifeq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+    cdbs_treat_me_gently_arches := arm m68k alpha ppc64 armel armeb
+    ifeq (,$(filter $(DEB_HOST_ARCH_CPU),$(cdbs_treat_me_gently_arches)))
+        cdbs_kde_enable_final = $(if $(DEB_KDE_ENABLE_FINAL),--enable-final,)
+    else
+        cdbs_kde_enable_final =
+    endif
+endif
+
+binary-install/digikam-trinity-doc::
+	# remove empty API-docs dirs tree
+	rm -rf $(CURDIR)/debian/digikam-trinity-doc/opt/trinity/share/doc/tde/HTML/en/digikam-apidocs
+
+binary-install/digikam-trinity::
+	mv debian/digikam-trinity/usr/share/man debian/digikam-trinity/opt/trinity/share/

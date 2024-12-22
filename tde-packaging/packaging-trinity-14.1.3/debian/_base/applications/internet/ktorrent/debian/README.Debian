@@ -1,0 +1,26 @@
+Due to licensing restrictions, the source and binary packages of ktorrent do
+not include a GeoIP database. The binary package *is* built to support it
+however (the API is GPL, but data used from ARIN to generate the data files
+is *not* DFSG compliant). If you wish to use the GeoIP support, there are free
+databases made available at the following URL:
+
+http://www.maxmind.com/app/geoip_country
+
+Place the uncompressed database file in /usr/share/apps/ktorrent/geoip/ and
+the country information will be displayed in the peers tab. The commercial
+version offered *should* also work, but I have no means to confirm or deny
+this.
+
+The flag images are also not distributed with this package. Although the
+original author seems to wish the grant free use, the verbage used in
+granting it restricts their use to websites. I've tried, and will continue
+to try to contact him and find a resolution.
+
+----
+
+The upstream source was modified in the following ways:
+	removed ./plugins/infowidget/geoip/geoip.dat
+	removed ./plugins/infowidget/geoip/*.png
+	removed ./plugins/infowidget/geoip/FLAGS_LICENSE
+	modified ./plugins/infowidget/Makefile.{am,in} to not depend on above
+	appended "+dfsg" to base directory name

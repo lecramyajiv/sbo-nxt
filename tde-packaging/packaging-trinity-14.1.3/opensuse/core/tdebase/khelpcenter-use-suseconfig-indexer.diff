@@ -1,0 +1,25 @@
+Index: khelpcenter/navigator.cpp
+===================================================================
+--- khelpcenter/navigator.cpp.orig
++++ khelpcenter/navigator.cpp
+@@ -654,10 +654,16 @@ void Navigator::hideSearch()
+ 
+ bool Navigator::checkSearchIndex()
+ {
+-  KConfig *cfg = KGlobal::config();
+-  cfg->setGroup( "Search" );
+-  if ( cfg->readBoolEntry( "IndexExists", false ) ) return true;
+-
++  // just check that the index dir contains something
++  QDir indexDir( Prefs::indexDirectory() );
++  QStringList dirEntries = indexDir.entryList();
++  QStringList::Iterator it = dirEntries.begin();
++  const QStringList::Iterator end = dirEntries.end();
++  for ( ; it != end; ++it )
++  {
++    if ( *it != "." && *it != ".." )
++      return true;
++  }
+   if ( mIndexDialog && mIndexDialog->isShown() ) return true;
+ 
+   QString text = i18n( "A search index does not yet exist. Do you want "

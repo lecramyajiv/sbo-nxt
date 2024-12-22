@@ -1,0 +1,683 @@
+tdebindings-trinity (4:3.5.10-0ubuntu2) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+tdebindings-trinity (4:3.5.10-0ubuntu1~intrepid8) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 05 March 2009 01:11:00 -0600
+
+tdebindings-trinity (4:3.5.10-0ubuntu1~intrepid1) intrepid; urgency=low
+
+  * Added -trinity prefix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue, 02 Dec 2008 14:02:00 -0600
+
+tdebindings (4:3.5.10-0ubuntu1) intrepid; urgency=low
+
+  * New upstream release.
+  * Update Standards-Version to 3.8.0.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sat, 23 Aug 2008 12:35:35 +0200
+
+tdebindings (4:3.5.9-3ubuntu1) intrepid; urgency=low
+
+  * Merge with Debian, remaining change, don't build-dep on libgtk1.2
+  * Build-depend on default-jdk.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 31 Jul 2008 11:49:46 +0000
+
+tdebindings (4:3.5.9-3) unstable; urgency=high
+
+  * No java in alpha:
+    - Do not build depend on java-gcj-compat-dev.
+    - Remove binaries in alpha: libdcop3-jni, libdcop3-java-dev, libqt3-jni,
+      libtrinity-jni
+  (Closes: #491510)
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Sun, 27 Jul 2008 06:17:52 +0200
+
+tdebindings (4:3.5.9-2) unstable; urgency=low
+
+  * Fix FTBFS with gcc 4.3. Thanks a lot to peter green <plugwash@p10link.net>
+    for the patch. (Closes: #484191). Patch 032_ruby_fix_const.diff
+  * Update patch 018-juic-uixsldir.diff to fix bashism. (Closes: #473459)
+    Thanks to Michael Meskes.
+  * Update kjscmd.menu to new menu policy. 
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 12 Jun 2008 18:30:33 +0200
+
+tdebindings (4:3.5.9-1ubuntu1) intrepid; urgency=low
+
+  * Merge with Debian, remaining change, don't build-dep on libgtk1.2
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 10 Jun 2008 16:05:23 +0000
+
+tdebindings (4:3.5.9-1) unstable; urgency=low
+
+  * New upstream release: no code changes.
+  * Update to Standards-Version 3.7.3:
+    - Replace Source-Version for proper variables.
+  * debian/rules: Add [ ! -f Makefile ] || before $(MAKE) clean.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 06 Mar 2008 21:00:02 +0100
+
+tdebindings (4:3.5.9-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 14 Feb 2008 12:27:06 +0000
+
+tdebindings (4:3.5.8-1ubuntu3) hardy; urgency=low
+
+  * Remove build-dep on libgtk1.2-dev
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 26 Nov 2007 23:13:51 +0000
+
+tdebindings (4:3.5.8-1ubuntu2) hardy; urgency=low
+
+  * Run buildprep before upload
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 11:11:59 +0000
+
+tdebindings (4:3.5.8-1ubuntu1) hardy; urgency=low
+
+  * Merge with Debian, remaining change:
+   - don't build-dep on libgtk
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 14 Nov 2007 22:37:55 +0000
+
+tdebindings (4:3.5.8-1) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+
+  * New upstream release.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 16 May 2007 22:54:19 +0200
+
+tdebindings (4:3.5.7-1ubuntu4) gutsy; urgency=low
+
+  * Build java packages for lpia.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 07 Aug 2007 17:55:02 +0000
+
+tdebindings (4:3.5.7-1ubuntu3) gutsy; urgency=low
+
+  * Remove gtk1.2 from build-depends, it's needed for xparts which we don't package
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 13 Jul 2007 14:27:49 +0100
+
+tdebindings (4:3.5.7-1ubuntu2) gutsy; urgency=low
+
+  * kjsembed/kjscmd.1: Fixed typo on command usage summary line
+    (LP: #26493)
+  * debian/control: Updated Maintainer Field
+
+ -- Joseph Jackson IV <jjacksoniv@fluxbuntu.org>  Fri, 25 May 2007 12:02:16 -0400
+
+tdebindings (4:3.5.7-1ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian for new upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 23 May 2007 19:01:27 +0100
+
+tdebindings (4:3.5.7-1) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+
+  * New upstream release.
+  * Newer javah seems to not respect the CLASSPATH env var, but needs a
+    -classpath argument instead. Fixes FTBFS. (Closes: #421990)
+  * Improve clean target to actually clean up.
+  * Remove patch to build against newer pythons. Applied upstream.
+  * Remove patch about number of arguments to make. It isn't needed now that
+    we build in sourcedir.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 16 May 2007 22:54:19 +0200
+
+tdebindings (4:3.5.6-2ubuntu2) gutsy; urgency=low
+
+  * Remove non-existant 98_buildprep patch from debian/patches/series
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 02 May 2007 18:05:50 +0100
+
+tdebindings (4:3.5.6-2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 02 May 2007 10:17:28 +0100
+
+tdebindings (4:3.5.6-2) unstable; urgency=low
+
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+
+  * Add patch tdebindings-3.5.6-build-against-python-before-2.5.diff provided
+    by upstream. It is supposed to fix problems building in 64 bits archs.
+    (Closes: #420665)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 24 Apr 2007 12:25:57 +0100
+
+tdebindings (4:3.5.6-1) unstable; urgency=low
+
+  [ Debian Qt/KDE Maintainers ]
+  * New upstream release.
+
+  +++ Changes by Ricardo Cardenes:
+
+  * Clean-up the dcopjava directory. (Closes: #406725)
+  * Workaround at debian/rules the substitution of DEB_BUILDDIR
+    from /usr/share/cdbs/1/class/kde.mk which leads to ignoring
+    the existing config.status. (Closes: #406726)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  1 Feb 2007 18:26:59 +0000
+
+tdebindings (4:3.5.5-1ubuntu4) feisty; urgency=low
+
+  * Clean up build system before upload
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 13 Jan 2007 16:46:24 +0000
+
+tdebindings (4:3.5.5-1ubuntu3) feisty; urgency=low
+
+  * Fix FTBFS on 64bit archs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 13 Jan 2007 11:47:57 +0100
+
+tdebindings (4:3.5.5-1ubuntu2) feisty; urgency=low
+
+  * Rebuild for python2.5 as the default python version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 12 Jan 2007 13:21:15 +0000
+
+tdebindings (4:3.5.5-1ubuntu1) feisty; urgency=low
+
+  * Merge with debian.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 04 Dec 2006 23:28:56 +0200
+
+tdebindings (4:3.5.5-1) unstable; urgency=low
+
+  [ Debian Qt/KDE Maintainers ]
+  * New upstream release.
+
+  +++ Changes by Christopher Martin:
+
+  * Fix formatting of the Uploaders line. (Closes: #378908)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun,  8 Oct 2006 22:11:28 +0200
+
+tdebindings (4:3.5.3-1) unstable; urgency=low
+
+  [ Debian Qt/KDE Maintainers ]
+  * New upstream release.
+
+  * Removed patches (merged upstream, or apparently unneeded):
+      + 020-unbreak_dcopjava_Makefile.am.diff
+      + 040-configure-give-kde_java_libgcjdir.diff
+
+  +++ Changes by Pierre Habouzit:
+
+  * Python policy update (Closes: #373448).
+  * debian/control can wrap its field, do that, so that we can read them.
+
+ -- Pierre Habouzit <madcoder@debian.org>  Tue, 11 Jul 2006 02:45:20 +0200
+
+tdebindings (4:3.5.1-1) unstable; urgency=low
+
+  * The "Greetings from Barcelona, aKademy-ES; P.S.: I wonder why I'm
+    uploading this two weeks later" release.
+
+  +++ Changes by Adeodato Simó:
+
+  * New upstream release packaged.
+    + drop 016_QPointArray_begin_end_jlong.diff, upstream removed the affected
+      functions since they were not useful at all.
+
+  * No longer builds with g++-3.4 in m68k, arm, and hppa. (Closes: #342981)
+
+  * Switched to quilt for patch management (68% pain reduction guaranteed!).
+
+  * Added Ricardo Cárdenes to Uploaders: he's looking over my shoulder while I
+    prepare this upload with a "hmmm, I may be interested in helping with this
+    in the future" expression.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun, 19 Mar 2006 21:36:27 +0100
+
+tdebindings (4:3.4.3-2) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * Fix a debian/rules bashism which resulted in some extra files being
+    installed, which led to conflicts. (Closes: #341789)
+
+  * Bump DH_COMPAT to 5. No changes required.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun,  4 Dec 2005 09:56:22 -0500
+
+tdebindings (4:3.4.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Luk Claes:
+
+  * Added me to Uploaders.
+
+  * 015-smokekde_ignore_KEditToolbarWidget_moveActive_r437699: upstream so
+    removed.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri,  2 Dec 2005 09:22:27 +0100
+
+tdebindings (4:3.4.2-2) unstable; urgency=low
+
+  * The "I love the smell of 6 FTBFS first thing in the morning" release.
+
+  +++ Changes by Adeodato Simó:
+
+  * Java bindings handling:
+    - do not build them on m68k, ecj-bootstrap does not work there.
+    - restrict the java-gcj-compat-dev build-dependency to the arches where it
+      will be used, since on some it is available but uninstallable.
+
+    This takes care of arm and m68k failures.
+
+  * Apply patch from Steve Langasek (thaaaanks!) to use jlong for
+    QPointArray::begin() and ::end() on 64-bit architectures, since JNI
+    doesn't have an integer type that's right-sized for pointers.
+
+    This takes care of alpha and ia64 failures.
+
+  * Do not use --enable-final in the kdejava/koala/kdejava directory, since
+    compiling libkdejava_la.all_cpp.cpp requires an incredible amount of
+    memory and time. (For the record, --enable-final does the equivalent of
+    "cat *.cpp >>all.cpp; g++ -c all.cpp".)
+
+    This takes care of powerpc (timeout) and s390 (OOM) failures.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 21 Oct 2005 19:53:18 +0200
+
+tdebindings (4:3.4.2-1) unstable; urgency=low
+
+  +++ Changes by Adeodato Simó:
+
+  * New upstream release:
+    - QtRuby no longer pollutes the Module namespace. (Closes: #303608)
+
+    Also, this upload is compiled against c++-transitioned Qt and KDE
+    libraries, so closes: #327558, #327948.
+
+    And this version compiles fine on mipsen machines, so closes: #282134.
+    (No need to use -xgot, even.)
+
+  * Compile with g++ 3.4 on arm, m68k, and hppa (g++ 4.0 ICEs).
+
+  * Build-depend on java-gcj-compat-dev, and pass
+    --with-java=/usr/lib/jvm/java-gcj to ./configure; necessary because
+    libgcj6-dev no longer provides /usr/include/jni.h. Remove the rest of
+    java-related build-depends, because j-g-c-d pulls all we need. Also, this
+    upload closes: #332864, since we no longer build-depend on unavailable
+    libgcj4-dev.
+
+  * Do not build the Java bindings arm and hppa in addition to mips, since gij
+    (needed to execute ecj) fails there. Other interpreters than gij may work
+    there, but this will need time to investigate. Ideally, j-g-c-d above, or
+    some other meta-package, should take care of linking java and javac to the
+    right binaries...
+
+    Loose debian/mipsen.mk, because setting -Npackage in DH_OPTIONS no longer
+    works with cdbs (since dh_foo -Npackage -ppackage fails). Instead, list
+    allowed arches in debian/control, and use dh_listpackages -s to determine
+    whether to build java or not.
+
+  * Build-depend on python-dev instead of python2.3-dev, and determine
+    dependencies of python-dcop with dh_python's ${python:Depends}, so that a
+    simple rebuild is enough to transition to a new default python version.
+    Introduce a wilcard in the .install file, and don't pass a hardcoded path
+    to ./configure.
+
+  * Work under patches/, each fixing a different FTBFS:
+
+    - Further improve 030-koala-makefile-too-much-arguments.diff to do test -n
+      "$<" instead of "$?", to avoid new "Argument list too long" errors.
+
+    - Added 013-kdejava_qtjava_objdir_classpath.diff to look for compiled
+      classes in the appropriate dir now that srcdir != builddir.
+
+    - Added 014_kdejava_link_qtjava.la_not_-lqtjava.diff to make libkdejava
+      link against libtqtjava.la instead of -lqtjava.
+
+    - Added 015-smokekde_ignore_KEditToolbarWidget_moveActive_r437699.diff to
+      ignore KEditToolbarWidget::moveActive(), since it fails to link.
+
+  * Install python-dcop examples. (Closes: #303654)
+
+  * CDBSized debian/rules, to match the rest of KDE packages.
+
+  * Removed some not needed build-dependencies (binutils-dev, sharutils, perl,
+    libglib1.2-dev).
+
+  * Updated Standards-Version to 3.6.2 (no changes needed).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 21 Oct 2005 05:01:59 +0200
+
+tdebindings (4:3.3.2-1) unstable; urgency=low
+
+  +++ Changes by Adeodato Simó:
+
+  * New upstream release.
+
+  * Added section to libqt3-java.README.Debian about generating native
+    executables. (Closes: #282483)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  3 Feb 2005 21:41:17 +0100
+
+tdebindings (4:3.3.1-2) unstable; urgency=low
+
+  * Don't build java packages on mipsen, since gcj is not available there (and
+    gcj-3.4 will be removed soon). Changes needed:
+
+    - debian/control: add "[!mips !mipsel]" stanzas to Build-Depends entries
+      for gij, gcj, libgcj4-dev and fastjar.
+
+    - debian/rules:
+      + include debian/mipsen.mk (see below).
+      + define WITH_JAVA := --with-java=/usr and let CONFIGURE_FLAGS use that,
+        so that it can be overriden to --without-java inside mipsen.mk.
+
+    - debian/mipsen.mk:
+      + new makefile snippet.
+      + check if DEB_HOST_ARCH is in FUCKED_GCJ_ARCHS and, if so, define
+        WITHOUT_JAVA, redefine WITH_JAVA and override DH_OPTIONS adding -N
+        arguments for all seven java packages.
+
+  * Fix build failure on machines with a lower limit on argument list length,
+    e.g. q650 on the m68k buildd network. Modify the already existing patch
+    030-koala-makefile-too-much-arguments.diff to apply the same changes to
+    qtjava/javalib/org/kde/qt/Makefile.in.
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Sun, 14 Nov 2004 03:38:05 +0100
+
+tdebindings (4:3.3.1-1) unstable; urgency=low
+
+  * New upstream release plus KDE_3_3_BRANCH update.
+
+  * Correct install paths for ruby packages not to be i386-specific, thus
+    fixing FTBFS on architectures other than i386. (Closes: #278834)
+
+  * New qtruby designer library, adjusted install files and modified
+    026-install-qtruby-and-korundum-in-usr.diff accordingly.
+
+  * Added debian/patches/040-configure-give-kde_java_libgcjdir.diff:
+    - prevents configure from doing a find over /usr just to find out
+      that gcj libraries are installed in /usr/lib.
+
+  * ChangeLogs get now installed with policy-compliant name.
+
+  * Built using an experimental debian/common directory:
+    - debian/rules rewritten accordingly.
+    - use ${package:arch} substvars for dependencies in debian/control.
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Sun, 07 Nov 2004 07:24:56 +0100
+
+tdebindings (4:3.3.0-2) unstable; urgency=low
+
+  * Clean Version Number
+
+ -- Riku Voipio <riku.voipio@iki.fi>  Fri,  8 Oct 2004 08:20:25 +0000
+
+tdebindings (4:3.3.0-1~kalyxo2) unstable; urgency=low
+
+  * New upstream version packaged. (Closes: #274709)
+
+  * New team of maintainers (closes: #274816). Thanks to Dominique
+    Devriese for all his previous (great) work in the package.
+
+  * debian/kjscmd.menu: 
+    - fix command invocation and improve title. (Closes: #275170)
+
+  * debian/patches/:
+    - added 030-koala-makefile-too-much-arguments.diff to fix a build
+      failure ("Argument list too long").
+    - added 001-automake-1.9.diff for maintainer's convenience; build
+      system now properly detects automake-1.9 and uses it if available.
+
+  * debian/control:
+    - added ruby1.8-dev to Build-Depends.
+    - conflict with libqt-perl <= 3.008-1 (half of the fix for #274816).
+    - added to some packages' description a paragraph noting that it includes
+      examples and/or documentation.
+    - added libqt0-ruby1.8 as a Dependency: of libkorundum0-ruby1.8.
+    - bump Build-Depends to tdelibs4-dev (>= 4:3.3.0-1) and libqt3-compat-headers
+      (>= 3:3.3.3).
+
+  * debian/rules:
+    - don't use -s for dh_installdirs.
+    - call to dh_link right after dh_installdirs.
+    - use the "dist" target of admin/Makefile.common.
+    - added some more suffixes to exclude from dh_compress.
+    - add "-l debian/$somepackages/usr/lib" parameter to dh_shlibdeps.
+
+  * Some other boring changes:
+    - libqt3-jni.install: added missing libtqtjavasupport.{la,so}.
+    - libkjsembed-dev.docs: added lots of available documentation.
+    - added missing README, NEWS, TODO and ChangeLog files to *.docs.
+    - moved contents from *.examples to *.docs.
+
+  * Made half usr/share/doc/$package into symlinks.
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Thu, 07 Oct 2004 20:37:00 +0200
+
+tdebindings (4:3.2.92-1) unstable; urgency=low
+
+  * New upstream version.
+  * debian/patches/013-qtc_clib_qtc_Makefile.am-noqaccessible.diff,
+    debian/patches/019-libtqtjavasupport_la.diff,
+    debian/patches/020-cleanjarfiles.diff: Accepted upstream, removed.
+  * debian/patches/017-install-jnilibs-in-lib-jni.diff: updated.
+  * debian/control: made libqt3-java suggest juic.
+  * debian/control: removed the obsolete libkdec1 and libqtc1 packages.
+  * debian/local/kjscmd.1, debian/kjscmd.manpages: removed kjscmd.1 which
+    was accepted upstream.
+  * debian/libkjsembed1.install: install the qprocess kjsembed plugin.
+  * debian/rules: disable the python directory, as sip, pyqt and
+    pytde are all packaged in Debian already.
+  * debian/control: added the libsmokekde1, libsmokekde-dev,
+    libkorundum-ruby1.8 and libqtruby-ruby1.8 packages because of upstream
+    additions.
+  * debian/control: fix libsmokeqt-dev to depend on libsmokeqt1.
+    (Closes: #274989)
+
+ -- Dominique Devriese <devriese@kde.org>  Thu,  5 Aug 2004 21:08:08 +0200
+
+tdebindings (4:3.2.3-1) unstable; urgency=low
+
+  * New upstream version.
+  * Change maintainer address to "Debian Qt/KDE Maintainers
+    <debian-qt-kde@lists.debian.org>" and list me as uploader.
+  * Fix a simple bug in juic: juic: Incorrect code generated in polish()
+    (closes: 254882)
+
+ -- Dominique Devriese <devriese@kde.org>  Thu, 17 Jun 2004 23:05:27 +0200
+
+tdebindings (4:3.2.2-5) unstable; urgency=low
+
+  * qtjava/designer/juic/lib: remove the two xml parsers, so they don't bloat the package and the diff.gz
+  * debian/rules: make it clean properly by using builddir!=srcdir
+
+ -- Dominique Devriese <devriese@kde.org>  Sat, 22 May 2004 20:39:58 +0200
+
+tdebindings (4:3.2.2-4) unstable; urgency=low
+
+  * debian/control: Removed Build-Depends on autoconf and automake.
+  * debian/control: Added Build-Depends on sharutils for uudecode.
+
+ -- Dominique Devriese <devriese@kde.org>  Wed,  5 May 2004 23:04:44 +0200
+
+tdebindings (4:3.2.2-3) unstable; urgency=low
+
+  * debian/dirs: removed, no longer necessary.
+  * debian/compat, debian/rules: Replaced DH_COMPAT envvar with the
+    debian/compat file.
+  * debian/rules: cosmetic improvements, removed cruft.
+  * debian/rules: fixed the version number of the qtjava and koala jar
+    files.  The rules file now gets it automatically from the changelog,
+    so I can't forget to change it again.
+
+ -- Dominique Devriese <devriese@kde.org>  Tue, 13 Apr 2004 14:45:19 +0200
+
+tdebindings (4:3.2.2-2) unstable; urgency=low
+
+  * Added a lot of documentation and examples about the use of the kde and
+    qt java bindings.
+  * Removed the python-dcop overrides file.
+
+ -- Dominique Devriese <devriese@kde.org>  Fri,  9 Apr 2004 03:15:36 +0200
+
+tdebindings (4:3.2.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules: stopped running make in the disabled dcopperl directory.
+  * debian/rules: explicitly disabled all the directories that aren't
+    packaged.
+
+ -- Dominique Devriese <devriese@kde.org>  Thu,  8 Apr 2004 21:43:08 +0200
+
+tdebindings (4:3.2.1-5) unstable; urgency=low
+
+  * Added a patch that makes sure the .jar files are cleaned properly on
+    debian/rules clean.
+  * debian/rules: make the clean target run "make distclean" in all
+    directories that the build target ran "make" in.
+
+ -- Dominique Devriese <devriese@kde.org>  Tue,  6 Apr 2004 22:16:02 +0200
+
+tdebindings (4:3.2.1-4) unstable; urgency=low
+
+  * Added a manual page for kjscmd ( from CVS HEAD ).
+  * Moved manpages into debian/local.
+  * Disable libdcop-perl, it's not usable atm.
+  * debian/kjscmd.menu: removed obsolete kderemove tag.
+  * debian/local/juic.1, debian/juic.manpages: added a manpage for the
+    juic program.
+  * debian/rules: fix lintian postinst-has-useless-call-to-ldconfig
+    warnings.
+  * debian/patches/019-libtqtjavasupport_la.diff: Added a library
+    libtqtjavasupport.la, and made both libtqtjava and libkdejava link
+    against it, to remove the dependency of libkdejava on libtqtjava, and
+    the accompanying rpathing problem.
+  * debian/control: Added a Build-Depends on libqt3-compat-headers after a
+    chroot test.
+
+ -- Dominique Devriese <devriese@kde.org>  Tue,  6 Apr 2004 19:59:28 +0200
+
+tdebindings (4:3.2.1-3) unstable; urgency=low
+
+  * Package juic, the ui compiler for java.
+  * Debug build.
+  * Make sure the qtjava and kdejava think they're installed in the
+    location they really are installed.
+  * debian/rules: update the patch code snippets to the code from recent
+    tdelibs.
+  * Remove some patches that have been accepted upstream.
+
+ -- Dominique Devriese <devriese@kde.org>  Sun,  4 Apr 2004 21:00:22 +0200
+
+tdebindings (4:3.2.1-2) unstable; urgency=low
+
+  * Fix qtjava install locations, and library naming.
+
+ -- Dominique Devriese <devriese@kde.org>  Mon, 29 Mar 2004 11:42:59 +0200
+
+tdebindings (4:3.2.1-1) unstable; urgency=low
+
+  * New maintainer.
+  * Updated packaging for the KDE 3.1.5 upstream release
+  * debian/control: Fixed the descriptions of the packages.
+  * debian/control: Removed the kdexparts, xparts-notepad, kmozilla packages,
+    as they are unusable, and not supported upstream.
+  * debian/control: Removed kalyptus as it is not useful at the moment
+  * debian/control: Split the *java packages into *-java *-jni *-doc as
+    required by the Debian Java Policy and the Debian policy
+  * Fixed the dcopperl package to conform to the Debian Perl Policy; renamed
+    it to libdcop-perl, added ${perl:Depends} to Depends,
+    added a Build-Depends on perl.
+  * Fixed the dcoppython package to conform to the Debian Python Policy;
+    renamed it to python-dcop, added a proper versioned dependency on python
+  * Don't install the Qt and KDE JNI headers they are only meant for
+    internal use.
+  * Java packages are now built with gij/gcj.
+
+ -- Dominique Devriese <devriese@kde.org>  Wed, 24 Mar 2004 21:46:29 +0100
+
+tdebindings (4:3.0.9+cvs20030112-0woody1) unstable; urgency=low
+
+  * Major cleanup of tdebindings using Karolina's build sources and merged in 
+    standard KDE debian stuff to make things work the same across KDE modules 
+  * builddir != srcdir not possible due to kdejava exceeding the possible argument
+    list of 32 k on Linux with its target. This happens if builddir != srcdir where
+    the strings of pathes to the compile directory are included in the build string 
+  * moved libkdexparts-data to xpart-notepad; added kmozilla and kalyptus as well as 
+    libsmokeqt1 and libsmokeqt-dev
+
+ -- Ralf Nolden (KDE) <nolden@kde.org>  Sun, 12 Jan 2003 17:22:38 +0100 
+
+tdebindings (4:3.1.0+rc5+kl-1) unstable; urgency=low
+
+  * New upstreams versions kde 3.1.0 (rc5)
+  * Changed the shlibs handling in the rules file
+  * Changed MAKE_COMMON_DOC_LINKS to MAKE_STANDARD_DOC_LINKS
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Sun, 15 Dec 2002 12:29:24 +0100
+
+tdebindings (4:3.0.98-1) experimental; urgency=low
+
+  * kde 3.1 rc2
+  * Moved common functions from "rules" to debian/debianrules
+  * Changed order so that the "tdebindings" package is the main package
+  * Changed dependencies in "tdebindings" to (>= ${Source-Version}) instead of (= ${Source-Version}) 
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Sun, 10 Nov 2002 09:58:10 +0100
+
+tdebindings (4:3.0.9.cvs20021101-1) experimental; urgency=low
+
+  * kde 3.1 rc1, with tag HEAD to get updates
+  * bild-dependencies updated
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Fri,  1 Nov 2002 10:36:22 +0100
+
+tdebindings (4:3.0.8.cvs20021020-1) experimental; urgency=low
+
+  * New version from CVS
+  * Removed references to CVS from the build files
+  * More cleanup in control file dependencies, conflicts etc.
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Wed, 23 Oct 2002 10:19:33 +0200
+
+tdebindings (4:3.0.8.cvs20020930-1) experimental; urgency=low
+
+  * KDE 3.1 beta 2
+  * Fixed conflicts and dependancies with kde-2 and kde-3.0
+  * General overhaul of package division and package names
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Thu, 19 Sep 2002 12:49:16 +0200
+
+tdebindings (4:3.0.7-1) unstable; urgency=low
+
+  * Version: KDE 3.1 beta 1
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Tue, 13 Aug 2002 08:16:36 +0200
+
+tdebindings (4:3.0.6-1) unstable; urgency=low
+
+  * Bumped the version number
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Sat,  6 Jul 2002 09:15:39 +0200
+
+tdebindings (2.1-final-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Feb 2001 01:21:35 -0700

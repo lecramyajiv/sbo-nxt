@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Fichier archive PAK
+Hidden=false
+Patterns=*.pak;*.PAK
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

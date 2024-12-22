@@ -1,0 +1,12 @@
+Document: tdebase-doc-html-kpager
+Title: KPager Handbook
+Author: Dirk Doerflinger
+Abstract: KPager gives you a thumbnail sketch of all your desktops. It is a handy
+ tool to let you see, resize or close windows on any desktop and move windows
+ around within or between desktops. 
+Section: Apps/Utils
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kpager/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kpager/*.html
+

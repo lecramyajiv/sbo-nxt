@@ -1,0 +1,17 @@
+debian/tmp/opt/trinity/bin/kvi_run_netscape
+debian/tmp/opt/trinity/bin/kvi_search_help
+debian/tmp/opt/trinity/share/applnk/Internet/kvirc.desktop
+debian/tmp/opt/trinity/share/apps/tdeconf_update/
+debian/tmp/opt/trinity/share/icons/hicolor/
+debian/tmp/opt/trinity/share/kvirc/*/config/
+debian/tmp/opt/trinity/share/kvirc/*/defscript/
+debian/tmp/opt/trinity/share/kvirc/*/help/
+debian/tmp/opt/trinity/share/kvirc/*/license/
+debian/tmp/opt/trinity/share/kvirc/*/locale/
+debian/tmp/opt/trinity/lib/kvirc/*/modules/caps/
+debian/tmp/opt/trinity/share/kvirc/*/msgcolors/
+debian/tmp/opt/trinity/share/kvirc/*/pics/
+#debian/tmp/opt/trinity/share/kvirc/*/services/
+debian/tmp/opt/trinity/share/kvirc/*/themes/
+debian/tmp/opt/trinity/share/mimelnk/text/*.desktop
+debian/tmp/opt/trinity/share/man/man1/kvirc.1

@@ -1,0 +1,7 @@
+?package(kkbswitch-trinity):\
+    needs="X11" \
+    hints="TDE,Keyboard" \
+    section="Applications/System/Language Environment" \
+    title="KKBSwitch" \
+    command="/opt/trinity/bin/kkbswitch" \
+    icon="/opt/trinity/share/pixmaps/kkbswitch.xpm"

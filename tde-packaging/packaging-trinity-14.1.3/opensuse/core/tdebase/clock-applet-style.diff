@@ -1,0 +1,22 @@
+Index: kicker/applets/clock/clockapplet.kcfg
+===================================================================
+--- kicker/applets/clock/clockapplet.kcfg.orig
++++ kicker/applets/clock/clockapplet.kcfg
+@@ -14,7 +14,7 @@
+         <choice name="Analog"/>
+         <choice name="Fuzzy"/>
+       </choices>
+-      <default>Digital</default>
++      <default>Plain</default>
+     </entry>
+   </group>
+   <group name="Date">
+@@ -56,7 +56,7 @@ defFont.setPointSize(8);
+       <label>Font for the clock.</label>
+       <code>
+ defFont=KGlobalSettings::generalFont();
+-defFont.setPointSize(8);
++defFont.setPointSize(16);
+ defFont.setBold(true);
+       </code>
+       <default code="true">defFont</default>

@@ -1,0 +1,10 @@
+[KMenu]
+CustomIcon=kmenu
+ShowText=true
+Text=Start
+
+[buttons]
+Font=Tahoma,9,-1,5,75,0,0,0,0,0
+
+[General]
+ShowIconActivationEffect=false

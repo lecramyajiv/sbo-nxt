@@ -1,0 +1,121 @@
+ksplash-engine-moodin-trinity (0.4.2-1ubuntu4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+ksplash-engine-moodin-trinity (0.4.2-1ubuntu3) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 06 Mar 2009 13:36:00 -0600
+
+ksplash-engine-moodin-trinity (0.4.2-1ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 04 Dec 2008 17:37:00 -0600
+
+ksplash-engine-moodin (0.4.2-1ubuntu6) hardy; urgency=low
+
+  * Added kubuntu_05_disable_cache.diff - disables Moodin's caching of themes
+    in home directory (LP: #129126). Many thanks to Michael
+    Ummels <michael@ummels.de>.
+  * Modify Maintainer value to match the DebianMaintainerField
+    specification.
+  * Updated Standards-Version to 3.7.3.
+
+ -- Jonathan Patrick Davies <jpatrick@kubuntu.org>  Wed, 26 Mar 2008 20:57:22 +0100
+
+ksplash-engine-moodin (0.4.2-1ubuntu5) gutsy; urgency=low
+
+  * Updated kubuntu_02_our_theme.diff to fix icon spacing on
+    twin monitor setups.  Thanks to David Solbach
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 04 Oct 2007 12:07:08 +0100
+
+ksplash-engine-moodin (0.4.2-1ubuntu4) feisty; urgency=low
+
+  * Add kubuntu_04_effect_transparency.diff:
+    - Closes Malone #59566
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 03 Apr 2007 14:23:21 +0100
+
+ksplash-engine-moodin (0.4.2-1ubuntu3) edgy; urgency=low
+
+  * Edit kubuntu_02_our_theme.diff to make icons fit current theme by
+    being on one line
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 18 Sep 2006 13:04:17 +0100
+
+ksplash-engine-moodin (0.4.2-1ubuntu2) edgy; urgency=low
+
+  * Update kubuntu_02_our_theme.diff to support DebianStyle in Theme.rc 
+  * Bump Standards-Version to 3.7.2
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Thu, 14 Sep 2006 17:20:38 +0200
+
+ksplash-engine-moodin (0.4.2-1ubuntu1) edgy; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  7 Jul 2006 11:09:30 +0000
+
+ksplash-engine-moodin (0.4.2-1) unstable; urgency=low
+
+  * Initial release Closes: #329690
+
+ -- Fathi Boudra <fboudra@free.fr>  Wed, 21 Sep 2005 20:29:39 +0200
+
+ksplash-engine-moodin (0.4.2-0ubuntu7) dapper; urgency=low
+
+  * Added kubuntu_03_iconfix.diff: fixes MoodinKDE's KMenu icon and
+    reduces icon size to remove pixelising. (Closes: Malone #39651)
+  * Update maintainer email.
+  * Increased debhelper build-dep and compat level to 5.
+
+ -- Jonathan Patrick Davies <jpatrick@ubuntu.com>  Sat, 15 Apr 2006 17:01:34 +0200
+
+ksplash-engine-moodin (0.4.2-0ubuntu6) dapper; urgency=low
+
+  * Update kubuntu_02_our_theme.diff to scale 
+    icon positions correctly
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 17 Mar 2006 17:38:14 +0000
+
+ksplash-engine-moodin (0.4.2-0ubuntu5) dapper; urgency=low
+
+  * Update kubuntu_02_our_theme.diff to not 
+    scale background on kubuntu theme
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 15 Mar 2006 21:03:48 +0000
+
+ksplash-engine-moodin (0.4.2-0ubuntu4) dapper; urgency=low
+
+  * Fix debian/rules to apply patches
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 14 Mar 2006 00:07:44 +0000
+
+ksplash-engine-moodin (0.4.2-0ubuntu3) dapper; urgency=low
+
+  * Add kubuntu_02_our_theme.diff, changes for Debian theme
+    show central dialogue and don't scale images
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  9 Mar 2006 12:43:03 +0000
+
+ksplash-engine-moodin (0.4.2-0ubuntu2) dapper; urgency=low
+
+  * Rebuild for libstdc++ transition
+  * Alter debian/rules for .pot generation and add kubuntu_01_kdepot.diff
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 11 Dec 2005 22:53:51 +0000
+
+ksplash-engine-moodin (0.4.2-0ubuntu1) dapper; urgency=low
+
+  * Initial release.
+  * Removed SVN source in source.
+  * Removed /debian dir in source.
+  * Sponsored upload for Jonathan Patrick Davies <jpatrickdavies@gmail.com>
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 18 Nov 2005 21:03:40 +0100

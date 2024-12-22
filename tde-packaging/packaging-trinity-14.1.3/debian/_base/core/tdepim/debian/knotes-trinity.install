@@ -1,0 +1,24 @@
+/opt/trinity/bin/knotes
+/opt/trinity/lib/trinity/knotes_local.la
+/opt/trinity/lib/trinity/knotes_local.so
+/opt/trinity/lib/libknotes.so
+/opt/trinity/lib/libknotes.so.0
+/opt/trinity/lib/libknotes.so.0.0.0
+/opt/trinity/share/applications/tde/knotes.desktop
+/opt/trinity/share/apps/knotes
+/opt/trinity/share/config.kcfg/knoteconfig.kcfg
+/opt/trinity/share/config.kcfg/knotesglobalconfig.kcfg
+/opt/trinity/share/doc/tde/HTML/en/knotes
+/opt/trinity/share/icons/hicolor/128x128/apps/knotes.png
+/opt/trinity/share/icons/hicolor/16x16/apps/knotes.png
+/opt/trinity/share/icons/hicolor/22x22/apps/knotes.png
+/opt/trinity/share/icons/hicolor/32x32/apps/knotes.png
+/opt/trinity/share/icons/hicolor/48x48/apps/knotes.png
+/opt/trinity/share/icons/hicolor/64x64/apps/knotes.png
+/opt/trinity/share/services/tderesources/knotes/imap.desktop
+/opt/trinity/share/services/tderesources/knotes/local.desktop
+/opt/trinity/share/services/tderesources/knotes_manager.desktop
+../icons/knotes.xpm /opt/trinity/share/pixmaps
+../icons/knotes-16.xpm /opt/trinity/share/pixmaps
+
+/opt/trinity/share/services/kontact/knotesplugin.desktop

@@ -1,0 +1,9 @@
+usr/include/*
+usr/include/libr/*
+usr/lib/lib*.a
+usr/lib/lib*.so
+usr/lib/*.la
+usr/lib/pkgconfig/*
+usr/share/man/man3/*.3
+#usr/share/pkgconfig/*
+

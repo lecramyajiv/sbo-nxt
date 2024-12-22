@@ -1,0 +1,15 @@
+?package(kppp-trinity):\
+	needs="X11"\
+	section="Apps/Net"\
+	hints="TDE"\
+	title="KPPP"\
+	icon32x32="/opt/trinity/share/pixmaps/kppp.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kppp-16.xpm"\
+	command="/opt/trinity/bin/kppp"
+
+?package(kppp-trinity):\
+	needs="X11"\
+	section="Apps/Net"\
+	hints="TDE"\
+	title="KPPP - Logview"\
+	command="/opt/trinity/bin/kppplogview"

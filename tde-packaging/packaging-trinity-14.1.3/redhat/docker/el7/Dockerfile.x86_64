@@ -1,0 +1,61 @@
+FROM centos:7
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+# Enable proxy
+# Add EPEL repository
+# Add RPMFUSION repository
+# Install Trinity build dependencies
+COPY packages /packages
+RUN set -x \
+ && cd /etc/yum.repos.d \
+ && rm -fv *.repo \
+ && curl http://repo/repo/{centos7,epel7,rpmfusion7}.repo >repos.repo \
+ && sed -i "repos.repo" -e "s|https://|http://|" \
+ && yum -y clean all \
+ && yum -y update \
+ && rm -fv {CentOS,epel}-*.repo \
+ && yum -y install $(</packages)
+
+# Add YUM repository for locally built packages
+WORKDIR /etc/yum.repos.d
+COPY rpmbuild.repo rpmbuild.repo
+RUN sed -i "rpmbuild.repo" -e "s|\${ARCH}|${ARCH}|g" -e "s|\${TDE_VERSION}|${TDE_VERSION}|g"
+
+# Fix utempter detection
+# Distro-specific patches
+# Fix python3.6 detection (tdebindings; kvirc)
+RUN chmod a+r /usr/libexec/utempter/utempter \
+ && sed -i "/usr/include/jasper/jas_math.h" -e "/#include <stdint.h>/ s|$|\n#ifndef SIZE_MAX\n#define SIZE_MAX ((size_t) -1)\n#endif\n|" \
+ && ln -sfv libmp4v2.so /usr/lib64/libmp4.so \
+ && ln -sfv python3.6m /usr/include/python3.6
+
+# Add non-root user to build packages
+RUN useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>"/etc/sudoers"
+
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+# Build supplementary development tools
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/21/Everything/source/SRPMS/d/dirmngr-1.1.1-5.fc21.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/dirmngr-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/y/yaz-5.31.1-4.fc36.src.rpm --define "_pkgdocdir /usr/share/doc/yaz" \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/libyaz{,-devel}-5*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/r/rdesktop-1.9.0-7.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/rdesktop-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/pilot-link-0.12.5-50.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/pilot-link{,-devel,-libs}-0*.rpm
+
+RUN set -x \
+ && rpmbuild --rebuild https://archives.fedoraproject.org/pub/fedora/linux/releases/39/Everything/source/tree/Packages/l/libunibreak-4.0-13.fc39.src.rpm --define "ldconfig_scriptlets %post -p /sbin/ldconfig" \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/libunibreak-{4,devel}*.rpm
+
+RUN set -x \
+ && rpmbuild --rebuild http://vault.almalinux.org/8.10/AppStream/Source/Packages/taglib-1.11.1-8.el8.src.rpm --define "ldconfig_scriptlets %post -p /sbin/ldconfig" \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/taglib-{1,devel}*.rpm

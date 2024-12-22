@@ -1,0 +1,83 @@
+Source: tde-ebook-reader
+Section: text
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, libtqtinterface-dev,
+               libbz2-dev, libexpat1-dev, libfribidi-dev,
+               libsqlite3-dev, libunibreak-dev, libz-dev, pkgconf
+Standards-Version: 4.7.0
+
+Package: tde-ebook-reader
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: sensible-utils,
+Description: e-book reader for TDE
+ tde-ebook-reader is an e-book reader for TDE.
+ .
+ Main features:
+  * supports several open e-book formats: fb2, html, chm, plucker,
+    palmdoc, ztxt, tcr (psion text), rtf, oeb, openreader, non-DRM'ed
+    mobipocket, plain text, epub, eReader
+  * reads directly from tar, zip, gzip, bzip2 archives (you can have
+    several books in one archive)
+  * supports a structured view of your e-book collection
+  * automatically determines encodings
+  * automatically generates a table of contents
+  * keeps the last open book and the last read positions for all open books
+    between runs
+  * automatic hyphenation (patterns for several languages are included)
+  * searching and downloading books from www.feedbooks.com and www.litres.ru
+  * partial CSS support for epub files
+
+Package: libzlcore-tqt
+Section: libs
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}, libzlcore-data-tqt
+Description: ZLibrary TQt3-based development library (shared library)
+ This is the core of ZLibrary, the library that tde-ebook-reader is based on.
+
+Package: libzlcore-data-tqt
+Section: libs
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: ZLibrary TQt3-based development library (support files)
+ This package contains the support files for the core of ZLibrary, the library
+ that the fbreader e-book reader is based on.
+
+Package: libzltext-tqt
+Section: libs
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}, libzlcore-tqt, libzltext-data-tqt
+Description: ZLibrary TQt3-based text model/viewer part (shared library)
+ This package provides text model/viewer part of ZLibrary.
+
+Package: libzltext-data-tqt
+Section: libs
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: ZLibrary TQt3-based text model/viewer part (support files)
+ This package contains the support files for the text model/viewer part
+ of ZLibrary.
+
+Package: libzlcore-tqt-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, libzlcore-tqt
+Description: ZLibrary TQt3-based development library (development files)
+ This package contains development files for the ZLibrary core.
+
+Package: libzltext-tqt-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, libzltext-tqt
+Description: ZLibrary TQt3-based text model/viewer part (development files)
+ This package contains development files for the ZLibrary text model/viewer
+ library.

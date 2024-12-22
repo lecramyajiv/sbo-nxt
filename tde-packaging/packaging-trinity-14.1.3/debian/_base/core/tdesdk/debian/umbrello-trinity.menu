@@ -1,0 +1,9 @@
+?package(umbrello-trinity):\
+  needs="x11"\
+  section="Applications/Programming"\
+  hints="TDE"\
+  title="Umbrello"\
+  longtitle="Umbrello (UML Modeller)"\
+  icon="/opt/trinity/share/pixmaps/umbrello.xpm"\
+  command="/opt/trinity/bin/umbrello"
+

@@ -1,0 +1,31 @@
+debian/tmp/opt/trinity/bin/kuickshow
+debian/tmp/opt/trinity/lib/trinity/kuickshow.la
+debian/tmp/opt/trinity/lib/trinity/kuickshow.so
+debian/tmp/opt/trinity/lib/libtdeinit_kuickshow.so
+debian/tmp/opt/trinity/share/applications/tde/kuickshow.desktop
+debian/tmp/opt/trinity/share/apps/kuickshow/im_palette.pal
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/about.png
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/calibrate.png
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/handcursor.png
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/imageviewer-medium.png
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/imageviewer-small.png
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/ksslide.png
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/kuickshow-day.jpg
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/kuickshow-night.jpg
+debian/tmp/opt/trinity/share/apps/kuickshow/pics/logo.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/index.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/screenshot.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kuickshow.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kuickshow.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kuickshow.png
+debian/tmp/opt/trinity/share/man/man1/kuickshow.1
+
+debian/icons/kuickshow.xpm		/opt/trinity/share/pixmaps
+debian/icons/kuickshow-16.xpm		/opt/trinity/share/pixmaps
+
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/screenshot.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kuickshow/index.docbook

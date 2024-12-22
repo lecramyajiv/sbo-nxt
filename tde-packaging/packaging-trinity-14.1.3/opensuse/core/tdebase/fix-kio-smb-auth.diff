@@ -1,0 +1,13 @@
+? kioslave/smb/kio_smb_la_all_cpp.cpp
+Index: kioslave/smb/kio_smb_auth.cpp
+===================================================================
+--- kioslave/smb/kio_smb_auth.cpp.orig
++++ kioslave/smb/kio_smb_auth.cpp
+@@ -144,6 +144,7 @@ bool SMBSlave::checkPassword(SMBUrl &url
+     if ( openPassDlg(info) ) {
+         kdDebug(KIO_SMB) << "openPassDlg returned " << info.username << endl;
+         url.setUser(info.username);
++        url.setPass(info.password);
+         return true;
+     }
+     kdDebug(KIO_SMB) << "no value from openPassDlg\n";

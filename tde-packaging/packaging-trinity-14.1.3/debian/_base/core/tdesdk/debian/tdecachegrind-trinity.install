@@ -1,0 +1,20 @@
+debian/tmp/opt/trinity/bin/tdecachegrind
+debian/tmp/opt/trinity/share/applications/tde/tdecachegrind.desktop
+debian/tmp/opt/trinity/share/apps/tdecachegrind/icons/hicolor/16x16/actions/fromrec.png
+debian/tmp/opt/trinity/share/apps/tdecachegrind/icons/hicolor/16x16/actions/percent.png
+debian/tmp/opt/trinity/share/apps/tdecachegrind/icons/hicolor/16x16/actions/recrec.png
+debian/tmp/opt/trinity/share/apps/tdecachegrind/icons/hicolor/16x16/actions/torec.png
+debian/tmp/opt/trinity/share/apps/tdecachegrind/icons/hicolor/22x22/actions/percent.png
+debian/tmp/opt/trinity/share/apps/tdecachegrind/icons/hicolor/32x32/actions/percent.png
+debian/tmp/opt/trinity/share/apps/tdecachegrind/tdecachegrindui.rc
+debian/tmp/opt/trinity/share/apps/tdecachegrind/tips
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/tdecachegrind/*.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/tdecachegrind/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/tdecachegrind/*.docbook
+debian/tmp/opt/trinity/share/icons/locolor/32x32/apps/tdecachegrind.png
+debian/tmp/opt/trinity/share/icons/locolor/16x16/apps/tdecachegrind.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/tdecachegrind.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/tdecachegrind.png
+debian/tmp/opt/trinity/share/man/man1/tdecachegrind.1
+debian/tmp/opt/trinity/share/mimelnk/application/x-tdecachegrind.desktop
+debian/icons/tdecachegrind.xpm /opt/trinity/share/pixmaps

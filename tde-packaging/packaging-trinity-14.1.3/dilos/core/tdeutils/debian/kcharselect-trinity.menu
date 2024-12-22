@@ -1,0 +1,11 @@
+?package(kcharselect-trinity):\
+	needs="X11"\
+	section="Apps/Tools"\
+	hints="TDE,Characters"\
+	title="KCharSelect"\
+	icon32x32="/usr/share/pixmaps/kcharselect.xpm"\
+	icon16x16="/usr/share/pixmaps/kcharselect-16.xpm"\
+	command="/usr/bin/kcharselect"
+
+# Icon 32x32 kcharselect/cr48-app-kcharselect.png kcharselect.xpm
+# Icon 16x16 kcharselect/cr16-app-kcharselect.png kcharselect-16.xpm

@@ -1,0 +1,32 @@
+Source: kkbswitch-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Hebrew Packaging Team <debian-hebrew-package@lists.alioth.debian.org>
+Uploaders: Baruch Even <baruch@debian.org>, Lior Kaplan <kaplan@debian.org>, Shachar Shemesh <shachar@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libxkbfile-dev
+Standards-Version: 3.7.3
+Homepage: http://kkbswitch.sourceforge.net/
+
+Package: kkbswitch-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: tdebase-data-trinity, xkb-data-extra-trinity
+Description: keyboard layout indicator for TDE
+ KKBSwitch displays an icon in the system tray that indicates which layout is 
+ currently active and enables you to switch layouts by clicking the icon or by 
+ selecting from the menu. It works with all desktop environments.
+ .
+ Features include:
+   - Configurable icons for the keyboard layouts.
+   - The "toggle mode" to toggle between the two most recently-used keyboard 
+     layouts.
+   - Choose to use a global layout or per-application or per-window layouts.
+   - Configurable keyboard shortcuts.
+
+Package: xkb-data-extra-trinity
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Enhances: xkb-data
+Description: Additional data for xkb
+ This package contains additional keyboard layout definitions for xkb.

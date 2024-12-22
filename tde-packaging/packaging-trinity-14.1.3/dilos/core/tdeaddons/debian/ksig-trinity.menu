@@ -1,0 +1,7 @@
+?package(ksig-trinity):needs="X11"\
+  section="Applications/Network/Communication"\
+  hints="TDE"\
+  title="KSig"\
+  longtitle="KSig (Signature Editor)"\
+  command="/usr/bin/ksig"\
+  icon="/usr/share/pixmaps/ksig.xpm"

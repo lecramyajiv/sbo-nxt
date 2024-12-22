@@ -1,0 +1,17 @@
+debian/tmp/opt/trinity/bin/printnodetest
+debian/tmp/opt/trinity/bin/svgdisplay
+debian/tmp/opt/trinity/lib/trinity/libksvgplugin.la
+debian/tmp/opt/trinity/lib/trinity/libksvgplugin.so
+debian/tmp/opt/trinity/lib/trinity/libksvgrendererlibart.la
+debian/tmp/opt/trinity/lib/trinity/libksvgrendererlibart.so
+debian/tmp/opt/trinity/lib/trinity/svgthumbnail.la
+debian/tmp/opt/trinity/lib/trinity/svgthumbnail.so
+debian/tmp/opt/trinity/lib/libksvg.so.0
+debian/tmp/opt/trinity/lib/libksvg.so.0.0.1
+debian/tmp/opt/trinity/lib/libtext2path.so.0
+debian/tmp/opt/trinity/lib/libtext2path.so.0.0.0
+debian/tmp/opt/trinity/share/apps/ksvg/ksvgplugin.rc
+debian/tmp/opt/trinity/share/services/ksvglibartcanvas.desktop
+debian/tmp/opt/trinity/share/services/ksvgplugin.desktop
+debian/tmp/opt/trinity/share/services/svgthumbnail.desktop
+debian/tmp/opt/trinity/share/servicetypes/ksvgrenderer.desktop

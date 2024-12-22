@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-kate
+Title: Kate Handbook
+Author: Anders Lund, Seth Rothberg, Dominik Haumann
+Abstract: Kate is a programmer's text editor for TDE.
+Section: Apps/Text
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kate/index.html
+Files: /usr/share/doc/tde/HTML/en/kate/*.html
+

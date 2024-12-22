@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-tdm
+Title: TDM Handbook
+Author: Oswald Buddenhagen 
+Abstract: This document describes TDM, the Trinity Display Manager, an X session manager.
+Section: System 
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/tdm/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/tdm/*.html
+

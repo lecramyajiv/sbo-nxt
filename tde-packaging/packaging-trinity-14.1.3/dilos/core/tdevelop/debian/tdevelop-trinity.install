@@ -1,0 +1,12 @@
+debian/tmp/etc/trinity/kdevassistantrc
+debian/tmp/etc/trinity/tdeveloprc
+debian/tmp/usr/bin/tdevelop-htdig
+debian/tmp/usr/bin/kdevprofileeditor
+debian/tmp/usr/bin/kdevassistant
+debian/tmp/usr/bin/kdevprj2kdevelop
+debian/tmp/usr/bin/tdevelop
+debian/tmp/usr/lib/*/tdeconf_update_bin/kdev-gen-settings-tdeconf_update
+debian/tmp/usr/share/services
+debian/tmp/usr/share/servicetypes
+debian/tmp/usr/lib/*/trinity
+debian/tmp/usr/lib/*/lib*.so.*

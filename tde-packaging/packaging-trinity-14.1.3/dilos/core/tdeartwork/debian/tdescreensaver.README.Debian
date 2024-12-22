@@ -1,0 +1,11 @@
+TDE Screensavers for Debian
+===========================
+
+This package (tdescreensaver) no longer contains the hooks for the standard
+xscreensavers.  It only contains the additional screensavers that are
+specifically shipped with TDE.
+
+To select and/or configure the standard xscreensavers through the Trinity Control
+Centre, install the separate package tdescreensaver-xsavers.
+
+ -- Ben Burton <bab@debian.org>, Thu, 14 Oct 2004 08:30:34 +1000

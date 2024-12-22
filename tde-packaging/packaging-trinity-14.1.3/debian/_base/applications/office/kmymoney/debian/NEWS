@@ -1,0 +1,17 @@
+kmymoney2 (0.8.7-1) unstable; urgency=low
+
+   * Due to licencing restrictions Debian is not able to distribute kmymoney2
+   with HBCI (online banking) enabled, however you are allowed and can
+   build your own with HBCI enabled!
+
+   # apt-get build-dep kmymoney2
+   # apt-get install libaqbanking16-dev
+   # apt-get -b source kmymoney2
+
+   For more information on this issue please refer to:
+   http://bugs.debian.org/434278
+
+   * Debian will endeavour to distribute kmymoney2 with HBCI enabled as
+   soon as licencing allows.
+
+ -- Mark Purcell <msp@debian.org>  Sun, 22 Jul 2007 21:56:30 +0100

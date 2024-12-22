@@ -1,0 +1,5 @@
+*~
+_build*
+.osc
+.metadata
+*.tar.bz2

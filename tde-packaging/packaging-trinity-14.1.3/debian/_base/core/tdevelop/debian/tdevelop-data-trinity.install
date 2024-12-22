@@ -1,0 +1,5 @@
+debian/tmp/opt/trinity/share/applications
+debian/tmp/opt/trinity/share/apps
+debian/tmp/opt/trinity/share/desktop-directories
+debian/tmp/opt/trinity/share/icons
+debian/tmp/opt/trinity/share/mimelnk

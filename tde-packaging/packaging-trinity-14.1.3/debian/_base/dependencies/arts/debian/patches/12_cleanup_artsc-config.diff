@@ -1,0 +1,11 @@
+Index: b/artsc/artsc.pc.in
+===================================================================
+--- a/artsc/artsc.pc.in
++++ b/artsc/artsc.pc.in
+@@ -7,5 +7,5 @@
+ Name: aRtsC
+ Description: aRts sound system C support library (TDE)
+ Version: 0.9.5
+-Libs: -L${libdir} -lartsc @LIBDL@ @USE_THREADS@ @LIBPTHREAD@ @GLIB_LDFLAGS@ @GLIB_LIBADD@
++Libs: -L${libdir} -lartsc
+ Cflags: -I${includedir} @GLIB_CFLAGS@

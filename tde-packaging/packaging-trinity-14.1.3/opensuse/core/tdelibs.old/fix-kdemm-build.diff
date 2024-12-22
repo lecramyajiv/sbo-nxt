@@ -1,0 +1,88 @@
+Index: kdemm/backend.h
+===================================================================
+--- kdemm/backend.h.orig
++++ kdemm/backend.h
+@@ -41,7 +41,7 @@ namespace Multimedia
+ 	 * \author Matthias Kretz <kretz@kde.org>
+ 	 * \since 4.0
+ 	 */
+-	class Backend : public QObject
++	class KDE_EXPORT Backend : public QObject
+ 	{
+ 		Q_OBJECT
+ 		public:
+Index: kdemm/channel.h
+===================================================================
+--- kdemm/channel.h.orig
++++ kdemm/channel.h
+@@ -34,7 +34,7 @@ namespace Multimedia
+ 	 * \author Matthias Kretz <kretz@kde.org>
+ 	 * \since 4.0
+ 	 */
+-	class Channel : public QObject, virtual public MixerIface
++	class KDE_EXPORT Channel : public QObject, virtual public MixerIface
+ 	{
+ 		Q_OBJECT
+ 		public:
+Index: kdemm/factory.h
+===================================================================
+--- kdemm/factory.h.orig
++++ kdemm/factory.h
+@@ -64,7 +64,7 @@ class VideoPlayer;
+  * \author Matthias Kretz <kretz@kde.org>
+  * \since 4.0
+  */
+-class Factory : public QObject, public DCOPObject
++class KDE_EXPORT Factory : public QObject, public DCOPObject
+ {
+ 	Q_OBJECT
+ 	public:
+Index: kdemm/player.h
+===================================================================
+--- kdemm/player.h.orig
++++ kdemm/player.h
+@@ -20,6 +20,7 @@
+ #ifndef PLAYOBJECT_H
+ #define PLAYOBJECT_H
+ 
++#include <kdelibs_export.h>
+ #include <qobject.h>
+ 
+ class KURL;
+@@ -35,7 +36,7 @@ namespace Multimedia
+ 	 * \author Matthias Kretz <kretz@kde.org>
+ 	 * \since 4.0
+ 	 */
+-	class Player : public QObject
++	class KDE_EXPORT Player : public QObject
+ 	{
+ 		Q_OBJECT
+ 		public:
+Index: kdemm/simpleplayer.h
+===================================================================
+--- kdemm/simpleplayer.h.orig
++++ kdemm/simpleplayer.h
+@@ -32,7 +32,7 @@ namespace KDE
+ namespace Multimedia
+ {
+ 
+-class SimplePlayer : public QObject
++class KDE_EXPORT SimplePlayer : public QObject
+ {
+ 	Q_OBJECT
+ 	public:
+Index: kdemm/mixeriface.h
+===================================================================
+--- kdemm/mixeriface.h.orig
++++ kdemm/mixeriface.h
+@@ -21,8 +21,9 @@
+ #define MIXERIFACE_H
+ 
+ #include <dcopobject.h>
++#include <kdelibs_export.h>
+ 
+-class MixerIface : public DCOPObject
++class KDE_EXPORT MixerIface : public DCOPObject
+ {
+ 	K_DCOP
+ 	k_dcop:

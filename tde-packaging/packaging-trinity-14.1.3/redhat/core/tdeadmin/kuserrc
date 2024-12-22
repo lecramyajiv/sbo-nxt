@@ -1,0 +1,6 @@
+[template]
+copySkel=true
+createHomeDir=true
+homeBase=/home
+shell=/bin/bash
+userPrivateGroup=true

@@ -1,0 +1,6 @@
+?package(network-manager-tde): \
+	needs="X11" \
+	section="Applications/Network/Monitoring" \
+  	title="TDENetworkManager" \
+	longtitle="A TDE frontend for NetworkManager" \
+	command="/opt/trinity/bin/tdenetworkmanager"

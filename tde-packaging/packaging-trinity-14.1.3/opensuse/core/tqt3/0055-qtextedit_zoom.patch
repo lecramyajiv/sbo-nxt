@@ -1,0 +1,39 @@
+qt-bugs@ issue : 
+bugs.kde.org number :
+applied: yes
+author: Waldo Bastian <bastian@kde.org>
+
+QTextEdit::zoomIn /QTextEdit::zoomOut does not work if the original
+font had its size specified in pixels instead of points.
+pointSize() returns 0 in such case.
+
+Index: src/widgets/qtextedit.cpp
+===================================================================
+--- src/widgets/qtextedit.cpp.orig
++++ src/widgets/qtextedit.cpp
+@@ -5774,7 +5774,11 @@ void TQTextEdit::setFont( const TQFont &
+ void TQTextEdit::zoomIn( int range )
+ {
+     TQFont f( TQScrollView::font() );
+-    f.setPointSize( TQFontInfo(f).pointSize() + range );
++    TQFontInfo fi(f);
++    if (fi.pointSize() <= 0)
++       f.setPixelSize( fi.pixelSize() + range );
++    else
++       f.setPointSize( fi.pointSize() + range );
+     setFont( f );
+ }
+ 
+@@ -5789,7 +5793,11 @@ void TQTextEdit::zoomIn( int range )
+ void TQTextEdit::zoomOut( int range )
+ {
+     TQFont f( TQScrollView::font() );
+-    f.setPointSize( TQMAX( 1, TQFontInfo(f).pointSize() - range ) );
++    TQFontInfo fi(f);
++    if (fi.pointSize() <= 0)
++       f.setPixelSize( TQMAX( 1, fi.pixelSize() - range ) );
++    else
++       f.setPointSize( TQMAX( 1, fi.pointSize() - range ) );
+     setFont( f );
+ }
+ 

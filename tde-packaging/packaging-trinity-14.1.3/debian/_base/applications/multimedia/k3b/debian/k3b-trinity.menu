@@ -1,0 +1,6 @@
+?package(k3b-trinity):\
+	needs="X11"\
+	section="Applications/File Management"\
+	title="K3b"\
+	command="/opt/trinity/bin/k3b"\
+	icon="/opt/trinity/share/pixmaps/k3b.xpm"

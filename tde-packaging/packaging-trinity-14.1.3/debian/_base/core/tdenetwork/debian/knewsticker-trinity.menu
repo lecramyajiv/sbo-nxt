@@ -1,0 +1,8 @@
+?package(knewsticker-trinity):\
+	needs="X11"\
+	section="Apps/Net"\
+	hints="TDE"\
+	title="KNewsTicker"\
+	icon32x32="/opt/trinity/share/pixmaps/knewsticker.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/knewsticker-16.xpm"\
+	command="/opt/trinity/bin/appletproxy knewsticker.desktop"

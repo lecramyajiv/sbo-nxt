@@ -1,0 +1,33 @@
+debian/tmp/usr/bin/krdc
+debian/tmp/usr/share/applications/tde/krdc.desktop
+debian/tmp/usr/share/apps/konqueror/servicemenus/smb2rdc.desktop
+debian/tmp/usr/share/apps/krdc/pics/close.png
+debian/tmp/usr/share/apps/krdc/pics/iconify.png
+debian/tmp/usr/share/apps/krdc/pics/pindown.png
+debian/tmp/usr/share/apps/krdc/pics/pinup.png
+debian/tmp/usr/share/apps/krdc/pics/pointcursor.png
+debian/tmp/usr/share/apps/krdc/pics/pointcursormask.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/authentication.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/close.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/common
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/krdc_window.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/preferences_profilestab.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/preferences_rdpdefaultstab.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/preferences_vncdefaultstab.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/snapshot.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/snapshot_connectionspeed.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/snapshot_nobrowse.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/snapshot_vncentry.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/window_fullscreen.png
+debian/tmp/usr/share/doc/tde/HTML/en/krdc/window_nofullscreen.png
+debian/tmp/usr/share/doc/tde/HTML/en/tdeioslave/rdp
+debian/tmp/usr/share/doc/tde/HTML/en/tdeioslave/vnc
+debian/tmp/usr/share/icons/crystalsvg/32x32/apps/krdc.png
+debian/tmp/usr/share/icons/crystalsvg/48x48/apps/krdc.png
+debian/tmp/usr/share/services/rdp.protocol
+debian/tmp/usr/share/services/vnc.protocol
+
+debian/icons/krdc-16.xpm	/usr/share/pixmaps
+debian/icons/krdc.xpm		/usr/share/pixmaps

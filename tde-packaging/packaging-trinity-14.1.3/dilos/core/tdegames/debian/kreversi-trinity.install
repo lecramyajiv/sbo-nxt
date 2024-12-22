@@ -1,0 +1,24 @@
+/usr/games/kreversi
+/usr/share/doc/tde/HTML/en/kreversi/*
+/usr/share/applications/tde/kreversi.desktop
+/usr/share/apps/kreversi/*
+/usr/share/config.kcfg/kreversi.kcfg
+/usr/share/icons/crystalsvg/48x48/actions/lastmoves.png
+/usr/share/icons/crystalsvg/48x48/actions/legalmoves.png
+/usr/share/icons/crystalsvg/32x32/actions/lastmoves.png
+/usr/share/icons/crystalsvg/32x32/actions/legalmoves.png
+/usr/share/icons/crystalsvg/22x22/actions/lastmoves.png
+/usr/share/icons/crystalsvg/22x22/actions/legalmoves.png
+/usr/share/icons/crystalsvg/16x16/actions/lastmoves.png
+/usr/share/icons/crystalsvg/16x16/actions/legalmoves.png
+/usr/share/icons/crystalsvg/scalable/actions/lastmoves.svgz
+/usr/share/icons/crystalsvg/scalable/actions/legalmoves.svgz
+/usr/share/icons/hicolor/128x128/apps/kreversi.png
+/usr/share/icons/hicolor/64x64/apps/kreversi.png
+/usr/share/icons/hicolor/48x48/apps/kreversi.png
+/usr/share/icons/hicolor/32x32/apps/kreversi.png
+/usr/share/icons/hicolor/22x22/apps/kreversi.png
+/usr/share/icons/hicolor/16x16/apps/kreversi.png
+/usr/share/man/man6/kreversi.6
+../icons/kreversi.xpm /usr/share/pixmaps
+../icons/kreversi-16.xpm /usr/share/pixmaps

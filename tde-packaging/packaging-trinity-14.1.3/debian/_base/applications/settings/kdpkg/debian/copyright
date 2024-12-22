@@ -1,0 +1,59 @@
+This package was debianized by Fabian Wuertz <xadras@sidux.com> on
+Fri, 3 Sep 2007 19:52:51 +0100.
+
+It was downloaded from http://www.wuertz.org/downloads
+
+Upstream Author: Fabian Wuertz <xadras@sidux.com>
+
+Copyright:
+	(C) 2008 Fabian Wuertz <xadras@sidux.com>
+
+	The following file are from knxcc
+	(C) 2006 Andreas Loibl <andreas@andreas-loibl.de>
+	process.cpp                  klamp/process.cpp
+	                             klamp-install/process.cpp
+	process.h                    klamp/process.h
+	                             klamp-install/process.h
+
+	--- icons ---
+
+	The following icons are from kde-icons-nuovext
+	(C) 2005 Alexandre Moore <alexandre.moore@gmail.com>
+	cancel.png                   in klamp/kdpkgdialog.ui
+	                             in klamp-install/installdialog.ui
+	info.png                     in klamp/kdpkgdialog.ui
+
+	The following icons are from tdelibs-data
+	(c) 2002 Kalle Dalheimer <kalle@kde.org> and many others
+	wizard.png                   in klamp/kdpkgdialog.ui
+	                             in klamp-install/installdialog.ui
+	messagebox_warning.png       in klamp-install/installdialog.ui
+
+	The following icon is from kde-icons-crystalproject
+	(C) 2005 Everaldo Coelho <everaldo@everaldo.com>
+	help.png                     in klamp/kdpkgdialog.ui
+	                             in klamp-install/installdialog.ui
+	package.png                  in klamp/kdpkgdialog.ui
+	                             in klamp-install/installdialog.ui
+
+License:
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License version 2 as
+	published by the Free Software Foundation.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+	MA 02110-1301, USA.
+
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+The Debian packaging is (C) 2008, Alexander Kopf <kopf-alexander@gmx.de> and
+is licensed under the GPL, see above.

@@ -1,0 +1,11 @@
+?package(kcalc-trinity):\
+	needs="X11"\
+	section="Apps/Math"\
+	hints="TDE,Calculators"\
+	title="KCalc"\
+	icon32x32="/opt/trinity/share/pixmaps/kcalc.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kcalc-16.xpm"\
+	command="/opt/trinity/bin/kcalc"
+
+# Icon 32x32 kcalc/cr32-app-kcalc.png kcalc.xpm
+# Icon 16x16 kcalc/cr32-app-kcalc.png kcalc-16.xpm

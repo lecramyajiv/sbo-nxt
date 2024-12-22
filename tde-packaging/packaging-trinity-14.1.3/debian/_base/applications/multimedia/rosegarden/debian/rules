@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DLIB_SUFFIX="" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_INCLUDE_PATH="/opt/trinity/include/" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DBUILD_ALL="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+DEB_COMPRESS_EXCLUDE_ALL += .rg .wav .docbook
+
+binary-install/rosegarden-trinity::
+	dh_testdir
+	find debian/rosegarden-trinity/usr/share/doc/rosegarden-trinity/examples -type f -exec chmod 664 {} \;
+
+clean::
+	dh_testdir

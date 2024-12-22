@@ -1,0 +1,11 @@
+/usr/include/gpgme++
+/usr/include/kleo
+/usr/include/qgpgme
+/usr/lib/*/libgpgme++.la
+/usr/lib/*/libgpgme++.so
+/usr/lib/*/libkleopatra.la
+/usr/lib/*/libkleopatra.so
+/usr/lib/*/libkpgp.la
+/usr/lib/*/libkpgp.so
+/usr/lib/*/libqgpgme.la
+/usr/lib/*/libqgpgme.so

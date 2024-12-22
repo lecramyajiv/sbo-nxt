@@ -1,0 +1,8 @@
+%dist .el9
+%_smp_mflags -j8
+%jobs 8
+%__cmake_in_source_build 1
+%_debugsource_packages %nil
+%_debugsource_template %nil
+%python python3
+%__python /usr/bin/python3

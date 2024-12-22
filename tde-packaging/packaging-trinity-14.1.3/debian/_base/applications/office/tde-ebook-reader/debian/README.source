@@ -1,0 +1,9 @@
+This Debian package for tde-ebook-reader does not contain some of the original
+FBReader hyphenation patterns due to following license problems:
+
+el.pattern: no license
+fi.pattern: modification is not explicitly allowed
+tr.pattern: no license
+
+These files were removed from zlibrary/text/data/hyphenationPatterns.zip.
+

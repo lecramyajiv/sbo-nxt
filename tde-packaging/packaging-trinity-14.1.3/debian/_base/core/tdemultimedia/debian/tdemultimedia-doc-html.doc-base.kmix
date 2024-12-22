@@ -1,0 +1,12 @@
+Document: tdemultimedia-doc-html-kmix
+Title: KMix Handbook
+Author: Matt Johnson, Christian Esken, Helio Chissini de Castro,
+ Stefan Schimanski, Lauri Watts
+Abstract: KMix is an application to allow you to change the volume of
+ your sound card.
+Section: Apps/Sound
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kmix/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kmix/*.html
+

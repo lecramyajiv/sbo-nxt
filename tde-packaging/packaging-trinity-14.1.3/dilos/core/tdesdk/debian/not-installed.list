@@ -1,0 +1,14 @@
+The following files are not installed in any binary package.
+This is deliberate.
+
+/usr/share/man/man1/cvscheck.1
+ - This manpage is junk, so we don't ship it, and include our own instead.
+
+/usr/bin/tdeunittest
+/usr/bin/tdeunittest_debughelper
+ - These are not useful without the dcopperl bindings which are not built
+   in the Debian tdebindings packages.
+
+/usr/bin/licensecheck
+and the associated manpage
+ - devscripts has taken this script

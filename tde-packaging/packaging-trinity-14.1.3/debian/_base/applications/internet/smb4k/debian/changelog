@@ -1,0 +1,222 @@
+smb4k-trinity (0.9.4-0ubuntu3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+smb4k-trinity (0.9.4-0ubuntu2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 05 March 2009 01:11:00 -0600
+
+smb4k-trinity (0.9.4-0ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 07 Feb 2009 21:34:00 -0600
+
+smb4k (0.9.4-1) unstable; urgency=low
+
+  * New upstream release.
+    (closes: #477419)
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 29 Apr 2008 11:00:22 +0200
+
+smb4k (0.9.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Updated minimal build-deps to 3.3 as required upstream.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 28 Jan 2008 10:48:11 +0100
+
+smb4k (0.9.1-1) unstable; urgency=low
+
+  * New upstream release.
+    (closes: #343950, #456077, #461370)
+  * Policy bumped to 3.7.3 (no changes)
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 18 Jan 2008 14:48:20 +0100
+
+smb4k (0.8.6-1) unstable; urgency=low
+
+  * New upstream release.
+  * Introduced Homepage field in debian/control
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 22 Oct 2007 20:06:08 +0200
+
+smb4k (0.8.4-2) unstable; urgency=low
+
+  * debian/menu transitioned to new sections.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 17 Jul 2007 23:03:05 +0200
+
+smb4k (0.8.4-1) unstable; urgency=low
+
+  * New upstream release with minor fixes.
+  * debian/copyright file updated.
+    (closes: #432224)
+  * debian/watch revised.
+  * debian/control revised for description.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 10 Jul 2007 09:56:17 +0200
+
+smb4k (0.8.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 18 Jun 2007 21:38:37 +0200
+
+smb4k (0.8.1-1) unstable; urgency=high
+
+  * New upstream release (fixes a few security issues)
+    (closes: #417697)
+  * Revised watch file.
+
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 10 Apr 2007 11:40:40 +0200
+
+smb4k (0.8.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 22 Dec 2006 12:27:05 +0100
+
+smb4k (0.7.5-1) unstable; urgency=high
+
+  * New upstream release
+    This version fixes a grave security bug present in all 0.7 versions with
+    sudoers file management.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 27 Nov 2006 12:57:57 +0100
+
+smb4k (0.7.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed, 25 Oct 2006 23:30:11 +0200
+
+smb4k (0.7.2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Moved debian/watch to version 3 syntax.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Thu,  3 Aug 2006 14:55:25 +0200
+
+smb4k (0.7.1-1) unstable; urgency=low
+
+  * New upstream release
+    This version works only with Samba 3.0+
+  * Policy bumped to 3.7.2 without changes.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Sun, 25 Jun 2006 10:55:40 +0200
+
+smb4k (0.6.9-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 24 Mar 2006 17:01:31 +0100
+
+smb4k (0.6.8-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 17 Mar 2006 22:55:33 +0100
+
+smb4k (0.6.7-1) unstable; urgency=low
+
+  * New upstream release
+  * Removed superfluous libfam-dev build-dep.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Sun,  5 Feb 2006 23:19:33 +0100
+
+smb4k (0.6.5-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #343094,#314240)
+  * Transitioned to xorg dependencies.
+    (closes: #346905)
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon,  9 Jan 2006 15:25:45 +0100
+
+smb4k (0.6.4-1) unstable; urgency=high
+
+  * New upstream release
+  * Truly fix of #313908 and related issues.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri,  4 Nov 2005 14:54:26 +0100
+
+smb4k (0.6.3-1) unstable; urgency=high
+
+  * New upstream release
+    Fixes a few security flaws due to symlinking abuse.
+    IMHO it require major changes to properly manage IPC with sudo/super,
+    anywy better than nothing...
+  * Little modification (partially yet done by upstream) to de.po
+    (closes: #313908)
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed, 31 Aug 2005 15:26:55 +0200
+
+smb4k (0.6.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 23 Aug 2005 23:44:01 +0200
+
+smb4k (0.6.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Added missing tdebase-dev build-dep
+  * Policy bumped to 3.6.2
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 23 Aug 2005 23:29:26 +0200
+
+smb4k (0.5.2-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #294458, #296458)
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 29 Mar 2005 12:15:53 +0200
+
+smb4k (0.5.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Added sudo to recommended pkgs in control file.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 31 Jan 2005 10:35:10 +0100
+
+smb4k (0.5.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Thu, 13 Jan 2005 15:21:07 +0100
+
+smb4k (0.4.1a-1) unstable; urgency=high
+
+  * New upstream release.
+    A severe bug in Smb4K's exit code has been found and fixed, which led
+    under certain circumstances to complete data loss on remote shares.  
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon,  6 Sep 2004 11:40:26 +0200
+
+smb4k (0.4.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 30 Aug 2004 21:10:00 +0200
+
+smb4k (0.4.0-2) unstable; urgency=low
+
+  * Missing debhelper dependency added. It is only recommended in cdbs, why?
+    (closes: #257367)
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Sat,  3 Jul 2004 10:14:59 +0200
+
+smb4k (0.4.0-1) unstable; urgency=low
+
+  * Initial release.
+    (closes: #255072)
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 18 Jun 2004 20:02:30 +0200
+

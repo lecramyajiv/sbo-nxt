@@ -1,0 +1,26 @@
+debian/tmp/opt/trinity/lib/trinity/kolourpicker_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/kolourpicker_panelapplet.so
+debian/tmp/opt/trinity/lib/trinity/ktimemon_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/ktimemon_panelapplet.so
+debian/tmp/opt/trinity/lib/trinity/math_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/math_panelapplet.so
+debian/tmp/opt/trinity/lib/trinity/mediacontrol_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/mediacontrol_panelapplet.so
+debian/tmp/opt/trinity/lib/trinity/kbinaryclock_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/kbinaryclock_panelapplet.so
+debian/tmp/opt/trinity/share/apps/kicker/applets
+debian/tmp/opt/trinity/share/apps/mediacontrol
+debian/tmp/opt/trinity/share/config.kcfg/kbinaryclock.kcfg
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kicker-applets/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kicker-applets/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kicker-applets/*.docbook
+debian/tmp/opt/trinity/share/icons/locolor/16x16/apps/ktimemon.png
+debian/tmp/opt/trinity/share/icons/locolor/32x32/apps/ktimemon.png
+debian/tmp/opt/trinity/share/icons/crystalsvg/16x16/apps/ktimemon.png
+debian/tmp/opt/trinity/share/icons/crystalsvg/32x32/apps/ktimemon.png
+kicker-applets/kolourpicker/TODO /opt/trinity/share/doc/kicker-applets/kolourpicker
+kicker-applets/mediacontrol/AUTHORS /opt/trinity/share/doc/kicker-applets/mediacontrol
+kicker-applets/mediacontrol/README /opt/trinity/share/doc/kicker-applets/mediacontrol
+kicker-applets/mediacontrol/TODO /opt/trinity/share/doc/kicker-applets/mediacontrol
+kicker-applets/ktimemon/README /opt/trinity/share/doc/kicker-applets/ktimemon
+kicker-applets/ktimemon/TODO /opt/trinity/share/doc/kicker-applets/ktimemon

@@ -1,0 +1,10 @@
+Document: kverbos
+Title: Kverbos Handbook
+Author: Arnold Kraschinski <arnold.k67@gmx.de>
+Abstract: Kverbos is an application specially designed to study Spanish
+ verbforms.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kverbos/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kverbos/*.html

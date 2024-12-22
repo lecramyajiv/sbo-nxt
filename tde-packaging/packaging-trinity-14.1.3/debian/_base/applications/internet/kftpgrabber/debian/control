@@ -1,0 +1,35 @@
+Source: kftpgrabber-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>, Michael Meskes <meskes@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs-trinity-dev, libssl-dev
+Standards-Version: 3.8.3
+Homepage: http://www.kftp.org
+
+Package: kftpgrabber-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: ftp client for TDE
+ KFTPgrabber is a graphical FTP client for the Trinity Desktop Environment. It
+ implements many features required for usable FTP interaction.
+ .
+ Feature list:
+  - Multiple simultaneous FTP sessions in separate tabs
+  - A tree-oriented transfer queue
+  - TLS/SSL support for the control connection and the data channel
+  - X509 certificate support for authentication
+  - FXP site-to-site transfer support
+  - One-time password (OTP) support using S/KEY, MD5, RMD160 or SHA1
+  - Site bookmarks with many options configurable per-site
+  - Distributed FTP daemon support (implementing the PRET command)
+  - Can use Zeroconf for local site discovery
+  - Bookmark import plugins from other FTP clients
+  - Support for the SFTP protocol
+  - A nice traffic graph
+  - Ability to limit upload and download speed
+  - Priority and skip lists
+  - Integrated SFV checksum verifier
+  - Direct viewing/editing of remote files
+  - Advanced default "on file exists" action configuration
+  - Filter displayed files/directories as you type

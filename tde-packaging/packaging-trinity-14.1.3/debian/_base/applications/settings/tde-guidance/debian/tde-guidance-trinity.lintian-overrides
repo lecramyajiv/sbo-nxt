@@ -1,0 +1,2 @@
+# false positive warnings from lintian
+tde-guidance-trinity: package-has-a-duplicate-relation depends

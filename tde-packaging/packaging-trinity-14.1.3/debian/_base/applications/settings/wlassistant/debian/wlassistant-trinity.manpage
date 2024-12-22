@@ -1,0 +1,44 @@
+.TH "wlassistant" "1" "0.5.5" "Pawel Nawrocki <pnawrocki@interia.pl>" "net"
+.SH "NAME"
+.LP 
+Wireless Assistant
+.SH "SYNTAX"
+.LP 
+wlassistant [Qt\-options] [TDE\-options]
+
+Generic options:
+  \-\-help                    Show help about options
+  \-\-help\-qt                 Show Qt specific options
+  \-\-help\-tde                Show TDE specific options
+  \-\-help\-all                Show all options
+  \-\-author                  Show author information
+  \-v, \-\-version             Show version information
+  \-\-license                 Show license information
+  \-\-                        End of options
+.SH "DESCRIPTION"
+.LP 
+Wireless Assistant is a full\-featured TDE application with an intuitive interface. It scans for wireless access points and displays link quality, encryption and other useful information. When user wants to connect to a  network, Wireless Assistant opens up its wizards and guides the user through Wi\-Fi settings. After a successful connection is made the settings are remembered so next time the user won't have to enter them again. 
+
+Unlike other similar applications, Wireless Assistant requires virtually no  configuration, it is ready to use right after installation. Features include WEP  encryption, automatic (DHCP) and manual configuration, hidden ESSIDs and more.
+
+Main Features:
+
+\- Managed Networks Support
+
+\- WEP Encryption Support
+
+\- Not Broadcasted ("hidden") ESSIDs Support
+
+\- Per Network (AP) Configuration Profiles
+
+\- Automatic (DHCP, both dhcpcd and dhclient) and manual configuration options.
+
+The program uses wireless\-tools, route, ifconfig, dhcpcd/dhclient as its backends so they need to be installed.
+.SH "EXAMPLES"
+.LP 
+To run this program type:
+.LP 
+sudo wlassistant
+.SH "AUTHORS"
+.LP 
+Pawel Nawrocki <pnawrocki@interia.pl>

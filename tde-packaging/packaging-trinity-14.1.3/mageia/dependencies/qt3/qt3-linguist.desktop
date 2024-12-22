@@ -1,0 +1,26 @@
+[Desktop Entry]
+TryExec=linguist
+Exec=linguist
+Name=Qt Assistant - 3
+Name[de]=Qt-Linguist - 3
+Name[eo]=Qt-Lingvisto - 3
+Name[es]=Lingüista Qt - 3
+Name[ko]=Qt 언어학자 - 3
+Name[lv]=Qt Lingvists - 3
+Comment=Tool for translating message catalogues of Qt based programs
+Comment[da]=Redskab til at oversætte Qt baserede programmer
+Comment[de]=Dienstprogramm zur Übersetzung von Programmen, die auf Qt basieren
+Comment[eo]=Ilo por tradukado de mesaĝaroj de Qt-bazitaj programoj
+Comment[es]=Herramienta para la traducción de catálogos de mensajes de programas basados en Qt
+Comment[he]=Qt תוססובמ תוינכות לש תועדוה יגולטק םוגרתל ילכ
+Comment[hu]=Segédprogram a Qt-alapú programok üzenetfájljainak lefordításához
+Comment[ko]=Qt를 바탕으로 하는 프로그램에서 쓸 번역된 메세지 목록을 관리하는 도구
+Comment[lv]=Rīks ziņojumu katalogu tulkošanai uz Qt bāzētās programmās
+Comment[pt]=Ferramenta para traduzir os catálogos de mensagens de programas do Qt
+Comment[pt_BR]=Ferramenta para traduzir os catálogos de mensagens de programas do Qt
+Comment[sv]=Verktyg för att översätta meddelandekataloger från Qt-baserade program
+MapNotify=true
+MimeType=application/x-linguist;
+Terminal=false
+Icon=linguist
+Type=Application

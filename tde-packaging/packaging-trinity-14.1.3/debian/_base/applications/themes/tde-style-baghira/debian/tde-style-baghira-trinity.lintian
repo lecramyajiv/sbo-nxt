@@ -1,0 +1,4 @@
+tde-style-baghira-trinity: no-shlibs-control-file opt/trinity/lib/libbaghirastarter.so
+tde-style-baghira-trinity: no-shlibs-control-file opt/trinity/lib/usermanager_panelapplet.so
+tde-style-baghira-trinity: several-sonames-in-same-package usermanager_panelapplet.so libbaghirastarter.so
+tde-style-baghira-trinity: package-name-doesnt-match-sonames usermanager-panelapplet libbaghirastarter

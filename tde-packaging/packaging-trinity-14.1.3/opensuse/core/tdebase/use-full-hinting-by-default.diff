@@ -1,0 +1,35 @@
+Index: kcontrol/fonts/fonts.cpp
+===================================================================
+--- kcontrol/fonts/fonts.cpp.orig
++++ kcontrol/fonts/fonts.cpp
+@@ -332,7 +332,7 @@ bool FontAASettings::load( bool useDefau
+     kglobals.setReadDefaults( useDefaults );
+ 
+     kglobals.setGroup("General");
+-    hStyle=KXftConfig::Hint::Medium;
++    hStyle=KXftConfig::Hint::Full;
+     xft.setHintStyle(hStyle);
+     xft.apply();  // Save this setting
+     kglobals.writeEntry("XftHintStyle", KXftConfig::toStr(hStyle));
+@@ -450,7 +450,7 @@ KXftConfig::Hint::Style FontAASettings::
+     if(hintingStyle->currentText()==KXftConfig::description((KXftConfig::Hint::Style)s))
+       return (KXftConfig::Hint::Style)s;
+ 
+-  return KXftConfig::Hint::Medium;
++  return KXftConfig::Hint::Full;
+ }
+ #endif
+ 
+Index: kcontrol/krdb/krdb.cpp
+===================================================================
+--- kcontrol/krdb/krdb.cpp.orig
++++ kcontrol/krdb/krdb.cpp
+@@ -524,7 +524,7 @@ void runRdb( uint flags )
+ 
+     if (kglobals.hasKey("XftHintStyle"))
+     {
+-      QString hintStyle = kglobals.readEntry("XftHintStyle", "hintmedium");
++      QString hintStyle = kglobals.readEntry("XftHintStyle", "hintfull");
+       contents += "Xft.hinting: ";
+       if(hintStyle.isEmpty())
+         contents += "-1\n";

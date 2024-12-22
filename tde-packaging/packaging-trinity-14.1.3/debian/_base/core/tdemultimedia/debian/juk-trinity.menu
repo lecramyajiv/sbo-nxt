@@ -1,0 +1,11 @@
+?package(juk-trinity):\
+	needs="X11"\
+	section="Apps/Sound"\
+	hints="TDE"\
+	title="JuK"\
+	icon32x32="/opt/trinity/share/pixmaps/juk.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/juk-16.xpm"\
+	command="/opt/trinity/bin/juk"
+
+# Icon 32x32 juk/cr32-app-juk.png juk.xpm
+# Icon 16x16 juk/cr16-app-juk.png juk-16.xpm

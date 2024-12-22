@@ -1,0 +1,8 @@
+?package(smb4k-trinity):\
+	needs="X11"\
+        section="Applications/Network"\
+	hints="TDE"\
+	kderemove="1"\
+        title="SAMBA for TDE"\
+	longtitle="SAMBA Advanced Browser"\
+        command="/opt/trinity/bin/smb4k"

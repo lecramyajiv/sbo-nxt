@@ -1,0 +1,10 @@
+Document: tdeutils-doc-html-kjots
+Title: KJots Handbook
+Author: Matt Johnston
+Abstract: KJots is a small program which is handy for keeping miscellaneous notes.
+Section: Tools
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kjots/index.html
+Files: /usr/share/doc/tde/HTML/en/kjots/*.html
+

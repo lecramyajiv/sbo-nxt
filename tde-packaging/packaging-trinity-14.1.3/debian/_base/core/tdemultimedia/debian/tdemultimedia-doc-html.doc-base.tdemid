@@ -1,0 +1,10 @@
+Document: tdemultimedia-doc-html-tdemid
+Title: KMid Handbook
+Author: Antonio Larrosa Jimenez
+Abstract: KMid is a midi/karaoke multimedia player for TDE.
+Section: Apps/Music
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/tdemid/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/tdemid/*.html
+

@@ -1,0 +1,65 @@
+#! /usr/bin/make -f
+
+include /usr/share/cdbs/1/class/cmake.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CONFIGURE_INCLUDEDIR := /usr/include
+DEB_CONFIGURE_MANDIR := /usr/share/man
+DEB_CONFIGURE_PREFIX := /usr
+DEB_CONFIGURE_INFODIR := /usr/share/info
+
+CPPFLAGS+= -D__dilos__
+
+cdbs_configure_flags := --with-qt-dir=/usr/share/qt3 --disable-rpath --with-xinerama $(cdbs_kde_enable_final) $(cdbs_kde_enable_debug)
+
+DEB_CONFIGURE_EXTRA_FLAGS := \
+	--with-alsa --with-arts-alsa \
+	--with-extra-includes=/usr/include/speex:/usr/include/tde/arts \
+	--prefix=/usr --with-extra-libs=/usr/lib
+	# The include/tde/arts one should be temporary. See
+	# "juk/Makefile.am: arts_includes vs ARTS_CFLAGS" in -talk.
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_INSTALL_PREFIX="/usr" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DBUILD_ALL="ON" \
+ -DWITH_ALL_OPTIONS="ON" \
+ -DWITH_LAME="OFF" \
+ -DCMAKE_C_COMPILER=gcc \
+ -DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)" \
+ -DWITH_ALSA="OFF"
+
+# Tests depend on external services on the Internet - disabled for automatic builds
+# DEB_MAKE_CHECK_TARGET = check
+
+DOC_HTML_PRUNE := kcontrol-trinity
+
+DEB_DH_STRIP_ARGS  := --dbg-package=tdemultimedia-trinity-dbg \
+-Xlibartsmodulescommon.so.0.0.0 -Xlibartsmodules.so.0.0.0 \
+-Xlibartsbuilder.so.0.0.0 -Xlibartsmodulessynth.so.0.0.0 -Xlibartsgui.so.0.0.0 \
+-Xlibartsmidi.so.0.0.0 -Xlibartscontrolsupport.so.1.0.0 \
+-Xlibartsgui_kde.so.0.0.0 -Xlibartsmoduleseffects.so.0.0.0 \
+-Xlibartsmidi_idl.so.0.0.0 -Xlibartsmodulesmixers.so.0.0.0 \
+-Xlibartsgui_idl.so.0.0.0 -Xlibartscontrolapplet.so.1.0.0 -Xartscontrol \
+-Xmidisend -Xlibarts_akode.so.0.0.0 -Xlibarts_audiofile.so.0.0.0 \
+-Xlibarts_mpeglib-0.3.0.so.0.0.3 -Xlibarts_splay.so.0.0.0 \
+-Xlibarts_xine.so.0.0.0 -Xlibyafcore.so -Xlibmpeg-0.3.0.so \
+-Xlibyafxplayer.so -Xlibnoatuncontrols.so.1.2.0 -Xlibtdeinit_noatun.so \
+-Xlibnoatun.so.1.2.0 -Xlibartseffects.so -Xlibnoatuntags.so.1.2.0 \
+-Xlibwinskinvis.so -Xlibnoatunarts.so
+
+PACKAGES_WITH_LIBS := artsbuilder-trinity tdemultimedia-tdeio-plugins-trinity tdemid-trinity kmix-trinity krec-trinity \
+	libarts1-akode-trinity libarts1-audiofile-trinity libarts1-mpeglib-trinity libarts1-xine-trinity \
+	libkcddb1-trinity mpeglib-trinity noatun-trinity
+
+#shlibs_ver = 4:3.5.0-1
+#$(foreach p,$(PACKAGES_WITH_LIBS),$(eval DEB_DH_MAKESHLIBS_ARGS_$(p) := -V'$(p) (>= $(shlibs_ver))'))
+
+install/tdemultimedia-kappfinder-data-trinity::
+	install -p -D -m644 debian/tmp/etc/xdg/menus/applications-merged/tde-multimedia-music.menu debian/tdemultimedia-kappfinder-data-trinity/etc/xdg/menus/applications-merged/trinity-multimedia-music.menu

@@ -1,0 +1,19 @@
+Source: tde-cmake
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, cmake (>= 3.5~)
+Standards-Version: 3.8.4
+
+Package: tde-cmake
+Architecture: all
+Depends: cmake (>= ${CMake-Version2}~), cmake (<< ${CMake-Next-Version2}~), perl-base, libxml-parser-perl
+Replaces: cmake-trinity (<< 4:14.1.0~)
+Breaks: cmake-trinity (<< 4:14.1.0~)
+Provides: cmake-trinity
+Description: TDE CMake modules
+ TDE uses its own set of modules and macros to simplify CMake rules.
+ .
+ This also includes the TDEL10n module that is used to generate and
+ update templates for translations and the modified version of
+ intltool-merge used to merge translations into desktop files.

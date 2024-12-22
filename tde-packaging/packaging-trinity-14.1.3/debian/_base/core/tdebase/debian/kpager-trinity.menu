@@ -1,0 +1,11 @@
+?package(kpager-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="KPager"\
+	icon32x32="/opt/trinity/share/pixmaps/kpager.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kpager-16.xpm"\
+	command="/opt/trinity/bin/kpager"
+
+# Icon 32x32 kpager/cr32-app-kpager.png kpager.xpm
+# Icon 16x16 kpager/cr16-app-kpager.png kpager-16.xpm

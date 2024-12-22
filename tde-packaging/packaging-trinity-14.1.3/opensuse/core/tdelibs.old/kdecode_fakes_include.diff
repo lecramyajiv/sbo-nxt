@@ -1,0 +1,18 @@
+--- kdecore/fakes.c
++++ kdecore/fakes.c	2010/01/10 14:00:22
+@@ -323,6 +323,7 @@
+ #endif
+ 
+ #ifndef HAVE_STRLCPY
++#include <string.h>
+ KDECORE_EXPORT unsigned long strlcpy(char* d, const char* s, unsigned long bufsize)
+ {
+     unsigned long len, ret = strlen(s);
+@@ -341,6 +342,7 @@
+ #endif
+ 
+ #ifndef HAVE_STRLCAT
++#include <string.h>
+ KDECORE_EXPORT unsigned long strlcat(char* d, const char* s, unsigned long bufsize)
+ {
+     char *cp;

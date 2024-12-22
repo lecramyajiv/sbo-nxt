@@ -1,0 +1,8 @@
+?package(klinkstatus-trinity):\
+    needs="X11"\
+    hints="TDE"\
+    section="Apps/Net"\
+    title="KLinkStatus"\
+    longtitle="KLinkStatus (Link Checker)"\
+    icon="/opt/trinity/share/pixmaps/klinkstatus.xpm"\
+    command="/opt/trinity/bin/klinkstatus"

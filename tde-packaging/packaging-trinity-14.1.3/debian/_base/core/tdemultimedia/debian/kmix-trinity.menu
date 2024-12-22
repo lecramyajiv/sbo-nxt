@@ -1,0 +1,11 @@
+?package(kmix-trinity):\
+	needs="X11"\
+	section="Apps/Sound"\
+	hints="TDE"\
+	title="KMix"\
+	icon32x32="/opt/trinity/share/pixmaps/kmix.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kmix-16.xpm"\
+	command="/opt/trinity/bin/kmix"
+
+# Icon 32x32 kmix/pics/cr32-app-kmix.png kmix.xpm
+# Icon 16x16 kmix/pics/cr16-app-kmix.png kmix-16.xpm

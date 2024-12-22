@@ -1,0 +1,6 @@
+The following files are not installed in any binary package.
+This is deliberate.
+
+/usr/lib/pkgconfig/system-tools-backends.pc
+ - This file serves no purpose that we can see, and conflicts
+   with GNOME system tools, so be sure to leave it out.

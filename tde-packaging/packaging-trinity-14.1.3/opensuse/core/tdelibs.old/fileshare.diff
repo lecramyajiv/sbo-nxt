@@ -1,0 +1,296 @@
+--- kio/kfile/kfilesharedlg.cpp
++++ kio/kfile/kfilesharedlg.cpp	2004/08/06 08:38:31
+@@ -24,6 +24,7 @@
+ #include <qradiobutton.h>
+ #include <qbuttongroup.h>
+ #include <qlayout.h>
++#include <qlineedit.h>
+ #include <kprocess.h>
+ #include <kprocio.h>
+ #include <klocale.h>
+@@ -93,8 +94,10 @@
+     delete m_widget;
+     m_rbShare = 0L;
+     m_rbUnShare = 0L;
++    m_rbSharerw = 0L;
+     m_widget = new QWidget( d->m_vBox );
+     QVBoxLayout * vbox = new QVBoxLayout( m_widget );
++    //QHBoxLayout * hbox = new QHBoxLayout( vbox );
+ 
+     switch ( KFileShare::authorization() ) {
+     case KFileShare::Authorized:
+@@ -105,18 +108,31 @@
+             home += '/';
+         bool ok = true;
+         KFileItemList items = properties->items();
+-        // We have 3 possibilities: all shared, all unshared, or mixed.
++        // We have some possibilities: all shared, all unshared (ro,rw), or mixed.
+         bool allShared = true;
+         bool allUnshared = true;
++        bool allreadonly = true;
+         KFileItemListIterator it( items );
+         for ( ; it.current() && ok; ++it ) {
+             QString path = (*it)->url().path();
++            
++            // 0 => not shared
++            // 1 => shared read only
++            // 3 => shared writeable
++            int dirStatus = KFileShare::isDirectoryShared( path );
+             if ( !path.startsWith( home ) )
+                 ok = false;
+-            if ( KFileShare::isDirectoryShared( path ) )
++            if ( dirStatus == 1 ) {
+                 allUnshared = false;
+-            else
++            }
++            else if ( dirStatus == 3 ) {
++                allUnshared = false;
++                allreadonly = false;
++            }
++            else {
+                 allShared = false;
++                allreadonly = false;
++            }
+         }
+         if ( !ok )
+         {
+@@ -136,16 +152,31 @@
+             vbox->addWidget( m_rbUnShare, 0 );
+             rbGroup->insert( m_rbUnShare );
+ 
+-            m_rbShare = new QRadioButton( i18n("Shared"), m_widget );
++            m_rbShare = new QRadioButton( i18n("Shared - read only for others"), m_widget );
+             connect( m_rbShare, SIGNAL( toggled(bool) ), SIGNAL( changed() ) );
+             vbox->addWidget( m_rbShare, 0 );
+             rbGroup->insert( m_rbShare );
+ 
++            m_rbSharerw = new QRadioButton( i18n("Shared - writeable for others"), m_widget );
++            connect( m_rbSharerw, SIGNAL( toggled(bool) ), SIGNAL( changed() ) );
++            vbox->addWidget( m_rbSharerw, 0 );
++            rbGroup->insert( m_rbSharerw );
++
++            //QLabel *testlabel1 = new QLabel(i18n("Enter Samba Share Name here"),m_widget);
++            //m_leSmbShareName = new QLineEdit(m_widget);
++            //m_leSmbShareName->setMaxLength(12);
++
++            //hbox->addWidget( testlabel1, 0 );
++            //hbox->addWidget( m_leSmbShareName );
++            //vbox->addLayout( hbox );
++
+             // Activate depending on status
+             if ( allShared )
+-                m_rbShare->setChecked(true);
++                m_rbSharerw->setChecked(true);
+             if ( allUnshared )
+                 m_rbUnShare->setChecked(true);
++            if ( allreadonly )
++                m_rbShare->setChecked(true);
+ 
+             // Some help text
+             QLabel *label = new QLabel( i18n("Sharing this folder makes it available under Linux/UNIX (NFS) and Windows (Samba).") , m_widget );
+@@ -204,7 +235,7 @@
+ void KFileSharePropsPlugin::applyChanges()
+ {
+     kdDebug() << "KFileSharePropsPlugin::applyChanges" << endl;
+-    if ( m_rbShare && m_rbUnShare )
++    if ( m_rbShare && m_rbUnShare && m_rbSharerw )
+     {
+         bool share = m_rbShare->isChecked();
+         KFileItemList items = properties->items();
+@@ -212,7 +243,7 @@
+         bool ok = true;
+         for ( ; it.current() && ok; ++it ) {
+              QString path = (*it)->url().path();
+-             ok = setShared( path, share );
++             ok = SuSEsetShared( path, share, m_rbSharerw->isChecked() );
+              if (!ok) {
+                 if (share)
+                   KMessageBox::detailedError(properties,
+@@ -239,8 +270,14 @@
+ 
+ bool KFileSharePropsPlugin::setShared( const QString& path, bool shared )
+ {
+-    kdDebug() << "KFileSharePropsPlugin::setShared " << path << "," << shared << endl;
+-    return KFileShare::setShared( path, shared );
++   return SuSEsetShared( path, shared, true );
++}
++
++bool KFileSharePropsPlugin::SuSEsetShared( const QString& path, bool shared, bool readonly )
++{
++    kdDebug() << "KFileSharePropsPlugin::setShared " << path << ","
++              << shared << readonly << endl;
++    return KFileShare::SuSEsetShared( path, shared, readonly );
+ }
+ 
+ QWidget* KFileSharePropsPlugin::page() const
+--- kio/kfile/kfilesharedlg.h
++++ kio/kfile/kfilesharedlg.h	2004/08/06 08:38:31
+@@ -54,10 +54,13 @@
+ private:
+     void init();
+     bool setShared( const QString&path, bool shared );
++    bool SuSEsetShared( const QString&path, bool shared, bool readonly );
+ 
+     QWidget *m_widget;
+     QRadioButton *m_rbShare;
++    QRadioButton *m_rbSharerw;
+     QRadioButton *m_rbUnShare;
++    //QLineEdit    *m_leSmbShareName;
+     QPushButton *m_pbConfig;
+     class Private;
+     Private *d;
+--- kio/kio/kfileshare.cpp
++++ kio/kio/kfileshare.cpp	2004/08/06 08:38:51
+@@ -20,6 +20,7 @@
+ #include "kfileshare.h"
+ #include <qdir.h>
+ #include <qfile.h>
++#include <qregexp.h>
+ #include <kprocess.h>
+ #include <kprocio.h>
+ #include <klocale.h>
+@@ -35,8 +36,10 @@
+ #include <kuser.h>
+ 
+ KFileShare::Authorization KFileShare::s_authorization = NotInitialized;
+-QStringList* KFileShare::s_shareList = 0L;
+-static KStaticDeleter<QStringList> sdShareList;
++//QStringList* KFileShare::s_shareList = 0L;
++//static KStaticDeleter<QStringList> sdShareList;
++QMap<QString,QString>* KFileShare::s_shareMap = 0L;
++static KStaticDeleter<QMap<QString,QString> > sdShareMap;
+ 
+ KFileShare::ShareMode KFileShare::s_shareMode;
+ bool KFileShare::s_sambaEnabled;
+@@ -164,10 +167,10 @@
+ void KFileShare::readShareList() 
+ {
+     KFileSharePrivate::self();
+-    if ( !s_shareList )
+-        sdShareList.setObject( s_shareList, new QStringList );
++    if ( !s_shareMap )
++	sdShareMap.setObject( s_shareMap, new QMap<QString,QString> );
+     else
+-        s_shareList->clear();
++	s_shareMap->clear();
+ 
+     // /usr/sbin on Mandrake, $PATH allows flexibility for other distributions
+     QString exe = findExe( "filesharelist" );
+@@ -185,29 +188,45 @@
+ 
+     // Reading code shamelessly stolen from khostname.cpp ;)
+     QString line;
++    QString options;
++    QString path;
+     int length;
++    QRegExp rx_line("([^\\s]+)\\s+(.*)");
+     do {
+         length = proc.readln(line, true);
+ 	if ( length > 0 )
+ 	{
+             if ( line[length-1] != '/' )
+                 line += '/';
+-            s_shareList->append(line);
++            if( rx_line.search( line ) != -1 ) {
++                options = rx_line.cap(1);
++                path    = rx_line.cap(2);
++                (*s_shareMap)[path] = options;
++            }
+             kdDebug(7000) << "Shared dir:" << line << endl;
+         }
+     } while (length > -1);
+ }
+ 
+ 
+-bool KFileShare::isDirectoryShared( const QString& _path )
++int KFileShare::isDirectoryShared( const QString& _path )
+ {
+-    if ( ! s_shareList )
++    int ret(0);
++
++    if ( ! s_shareMap )
+         readShareList();
+ 
+     QString path( _path );
+     if ( path[path.length()-1] != '/' )
+         path += '/';
+-    return s_shareList && s_shareList->contains( path );
++    //return s_shareList && s_shareList->contains( path );
++    if( (*s_shareMap).contains(path) && !((*s_shareMap)[path].isEmpty()) ) {
++        ret+=1;
++        if( (*s_shareMap)[path].find("readwrite") != -1 )
++            ret+=2;
++    }
++    
++    return ret;
+ }
+ 
+ KFileShare::Authorization KFileShare::authorization()
+@@ -230,17 +249,30 @@
+ 
+ bool KFileShare::setShared( const QString& path, bool shared )
+ {
++   return SuSEsetShared( path, shared, false );
++}
++
++bool KFileShare::SuSEsetShared( const QString& path, bool shared, bool rw )
++{
+     if (! KFileShare::sharingEnabled() ||
+           KFileShare::shareMode() == Advanced)
+        return false;
+ 
+-    kdDebug(7000) << "KFileShare::setShared " << path << "," << shared << endl;
+     QString exe = KFileShare::findExe( "fileshareset" );
+     if (exe.isEmpty())
+         return false;
+-        
++
++    // we want to share, so we kick it first - just to be sure
+     KProcess proc;
+     proc << exe;
++    proc << "--remove";
++    proc << path;
++    proc.start( KProcess::Block );
++    proc.clearArguments();
++        
++    proc << exe;
++     if( rw )
++         proc << "--rw";
+     if ( shared )
+         proc << "--add";
+     else
+--- kio/kio/kfileshare.h
++++ kio/kio/kfileshare.h	2004/08/06 08:38:31
+@@ -65,7 +65,7 @@
+     /**
+      * Call this to know if a directory is currently shared
+      */
+-    static bool isDirectoryShared( const QString& path );
++    static int isDirectoryShared( const QString& path );
+ 
+     enum Authorization { NotInitialized, ErrorNotFound, Authorized, UserNotAllowed };
+     /**
+@@ -83,7 +83,12 @@
+      * @returns wether the perl script was successful
+      */
+     static bool setShared( const QString& path, bool shared );
+-    
++
++    /* 
++     * SuSE only enhancement for now
++     */
++    static bool SuSEsetShared( const QString& path, bool shared, bool ro );
++
+     /**
+      * The used share mode.
+      * Simple means that the simple sharing dialog is used and
+@@ -132,7 +137,8 @@
+ 
+ private:
+     static Authorization s_authorization;
+-    static QStringList* s_shareList;
++//    static QStringList* s_shareList;
++    static QMap<QString,QString>* s_shareMap;
+     static ShareMode s_shareMode;
+     static bool s_sambaEnabled;
+     static bool s_nfsEnabled;

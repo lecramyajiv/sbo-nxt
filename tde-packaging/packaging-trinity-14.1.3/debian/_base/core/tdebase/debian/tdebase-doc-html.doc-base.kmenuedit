@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-kmenuedit
+Title: KMenuEdit Handbook
+Author: Milos Prudek, Lauri Watts
+Abstract: KMenuEdit allows the editing of the TDE main menu.
+Section: Apps/System
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kmenuedit/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kmenuedit/*.html
+

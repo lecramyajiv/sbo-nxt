@@ -1,0 +1,17 @@
+Index: kdesktop/lock/lockprocess.cc
+===================================================================
+--- kdesktop/lock/lockprocess.cc.orig
++++ kdesktop/lock/lockprocess.cc
+@@ -364,8 +364,10 @@ void LockProcess::configure()
+     readSaver();
+ 
+     mPlugins = KDesktopSettings::pluginsUnlock();
+-    if (mPlugins.isEmpty())
+-        mPlugins = QStringList("classic");
++    if (mMethod == "pam")
++        mPlugins << mMethod;
++    if (mMethod == "pam" || mPlugins.isEmpty())
++        mPlugins << "classic";
+     mPluginOptions = KDesktopSettings::pluginOptions();
+ }
+ 

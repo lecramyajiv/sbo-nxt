@@ -1,0 +1,10 @@
+This program was initialy writen for Trinity. To compile it for KDE4 the
+exif support is disabled. That library depends on tdelibs3.
+
+MT is enabled because configure seems not smart enough.
+
+Qt version coded in configure.in.in
+Hard-coded dependency on libtdeio.la (in tdelibs4-dev)
+Hard-coded dependency on dcopidl
+
+ -- Paul Gevers <paul@climbing.nl>  Sun, 14 Sep 2008 10:17:50 -0500

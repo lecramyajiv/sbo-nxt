@@ -1,0 +1,63 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="kpdf_part" version="18">
+<MenuBar>
+  <Menu name="file"><text>&amp;File</text>
+    <Action name="save" group="file_save"/>
+    <Action name="file_print" group="file_print"/>
+    <Action name="file_print_preview" group="file_print"/>
+    <Action name="properties" group="file_print"/>
+  </Menu>
+  <Menu name="edit"><text>&amp;Edit</text>
+    <Action name="find"/>
+    <Action name="find_next"/>
+  </Menu>
+  <Menu name="view"><text>&amp;View</text>
+    <Action name="presentation"/>
+    <Separator/>
+    <Action name="zoom_in"/>
+    <Action name="zoom_out"/>
+    <Action name="zoom_fit_width"/>
+    <Action name="zoom_fit_page"/>
+    <Action name="zoom_fit_rect"/>
+    <Separator/>
+    <Action name="view_continuous"/>
+    <Action name="view_twopages"/>
+  </Menu>
+  <Menu name="go"><text>&amp;Go</text>
+    <Action name="previous_page"/>
+    <Action name="next_page"/>
+    <Separator/>
+    <Action name="first_page"/>
+    <Action name="last_page"/>
+    <Separator/>
+    <Action name="history_back"/>
+    <Action name="history_forward" />
+    <Separator/>
+    <Action name="goto_page"/>
+  </Menu>
+  <Menu name="tools"><text>&amp;Tools</text>
+    <Action name="mouse_drag"/>
+    <Action name="mouse_zoom"/>
+    <Action name="mouse_select"/>
+  </Menu>
+  <Menu name="settings"><text>&amp;Settings</text>
+    <Action name="show_leftpanel" group="show_merge"/>
+    <Action name="preferences"/>
+  </Menu>
+</MenuBar>
+<ToolBar name="contextToolBar" ><text>Context Toolbar</text>
+  <Action name="history_back"/>
+  <Action name="history_forward" />
+  <Separator/>
+  <Action name="zoom_in"/>
+  <Action name="zoom_to" />
+  <Action name="zoom_out"/>
+  <Separator/>
+  <Action name="zoom_fit_width"/>
+  <Action name="zoom_fit_page"/>
+  <Separator/>
+  <Action name="mouse_drag"/>
+  <Action name="mouse_zoom"/>
+  <Action name="mouse_select"/>
+</ToolBar>
+</kpartgui>

@@ -1,0 +1,44 @@
+Index: catalog.xml
+===================================================================
+--- /dev/null
++++ catalog.xml
+@@ -0,0 +1,39 @@
++<?xml version="1.0"?>
++<!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" 
++"http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
++<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
++         prefer="public">
++<public publicId="-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN"
++        uri="dtd/kdex.dtd" />
++<public publicId="-//KDE//ELEMENTS DocBook XML Hierarchy Redeclarations 2 V1.0//EN"
++       uri="dtd/rdbhier2.elements" />
++<public publicId="-//KDE//ELEMENTS DocBook XML Pool Redeclarations V1.1//EN"
++       uri="dtd/rdbpool.elements" />
++<public publicId="-//KDE//ELEMENTS DocBook XML Modifications (Restrictions) V1.1//EN"
++       uri="dtd/modifications.elements" />
++
++<public publicId="-//KDE//ENTITIES DocBook XML General Entity Declarations V1.2//EN"
++       uri="entities/general.entities" />
++<public publicId="-//KDE//ENTITIES DocBook XML General Entity Declarations (Persons) V1.0//EN"
++       uri="entities/contributor.entities" />
++
++<public publicId="-//KDE//ENTITIES DocBook XML Localisation Entity Declarations V1.0//EN"
++       uri="entities/l10n.entities" />
++
++<public publicId="-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN"
++       uri="obsolete/kdex.dtd" />
++<public publicId="-//KDE//ENTITIES DocBook XML General Entity Declarations V1.1//EN"
++       uri="obsolete/general.entities" />
++<public publicId="-//KDE//ELEMENTS DocBook XML Pool Redeclarations V1.0//EN"
++       uri="obsolete/rdbpool.elements" />
++<public publicId="-//KDE//ELEMENTS DocBook XML Modifications V1.0//EN"
++       uri="obsolete/modifications.elements" />
++
++
++<public publicId="-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.0//EN"
++       uri="obsolete/kdex-412-10.dtd" />
++
++
++<public publicId="-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN"
++       uri="obsolete/kdex-412-10.dtd" />
++</catalog>

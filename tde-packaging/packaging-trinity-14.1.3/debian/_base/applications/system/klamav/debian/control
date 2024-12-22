@@ -1,0 +1,20 @@
+Source: klamav-trinity
+Section: admin
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Scott Kitterman <scott@kitterman.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libclamav-dev (>= 0.102~)
+Standards-Version: 3.8.4
+
+Package: klamav-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, clamav (>= 0.102)
+Replaces: klamav-trinity (<< 4:14.0.0~)
+Breaks: klamav-trinity (<< 4:14.0.0~)
+Description: TDE frontend for ClamAV [Trinity]
+ KlamAV is an anti-virus manager for the TDE desktop that allows you to
+ manage your virus-scanning, scheduling, virus research and
+ software/database updates.
+ .
+ KlamAV features manual scanning, quarantine management, virus browser, mail
+ scanning (KMail and Evolution) and scan scheduler.

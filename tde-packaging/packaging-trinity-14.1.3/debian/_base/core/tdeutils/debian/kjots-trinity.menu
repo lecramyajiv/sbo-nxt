@@ -1,0 +1,11 @@
+?package(kjots-trinity):\
+	needs="X11"\
+	section="Apps/Tools"\
+	hints="TDE"\
+	title="KJots"\
+	icon32x32="/opt/trinity/share/pixmaps/kjots.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kjots-16.xpm"\
+	command="/opt/trinity/bin/kjots"
+
+# Icon 32x32 kjots/icons/cr32-app-kjots.png kjots.xpm
+# Icon 16x16 kjots/icons/cr16-app-kjots.png kjots-16.xpm

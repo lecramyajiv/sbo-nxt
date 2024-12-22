@@ -1,0 +1,64 @@
+Source: tqscintilla
+Section: libs
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Torsten Marek <shlomme@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, libtqt3-mt-dev, tqt3-dev-tools, libtqtinterface-dev
+Standards-Version: 3.8.4
+
+Package: libtqscintilla7
+Section: libs
+Architecture: any
+Multi-Arch: same
+Replaces: libtqscintilla7 (<< 4:14.0.0~)
+Breaks: libtqscintilla7 (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Recommends: libtqscintilla7-i18n
+Description: TQt source code editing component based on Scintilla
+ Scintilla is a free source code editing component. It has features found
+ in standard editing components, as well as features especially useful
+ when editing and debugging source code.
+ .
+ TQScintilla is a port or Scintilla to the TQt GUI toolkit.
+
+Package: libtqscintilla7-i18n
+Section: libs
+Architecture: all
+Multi-Arch: foreign
+Replaces: libtqscintilla7 (<< 4:14.0.12~)
+Breaks: libtqscintilla7 (<< 4:14.0.12~)
+Description: i18n files for TQScintilla library
+ Scintilla is a free source code editing component. It has features found
+ in standard editing components, as well as features especially useful
+ when editing and debugging source code.
+ .
+ This package contains the internationalization files for the TQScintilla library.
+
+Package: libtqscintilla-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: foreign
+Replaces: libtqscintilla-dev (<< 4:14.0.0~)
+Breaks: libtqscintilla-dev (<< 4:14.0.0~)
+Depends: libtqscintilla7 (>= ${source:Version})
+Description: TQt source code editing component - development files
+ Scintilla is a free source code editing component. It has features found
+ in standard editing components, as well as features especially useful
+ when editing and debugging source code.
+ .
+ TQScintilla is a port of Scintilla to the TQt GUI toolkit. These are the
+ development files (headers and static libs).
+
+Package: libtqscintilla-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Replaces: libtqscintilla-doc (<< 4:14.0.0~)
+Breaks: libtqscintilla-doc (<< 4:14.0.0~)
+Suggests: libtqscintilla-dev
+Description: TQt source code editing component - documentation
+ Scintilla is a free source code editing component. It has features found
+ in standard editing components, as well as features especially useful
+ when editing and debugging source code.
+ .
+ This package contain HTML files describing TQScintilla classes.

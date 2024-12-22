@@ -1,0 +1,16 @@
+Index: tdeprint/cups/cupsdconf2/cupsddialog.cpp
+===================================================================
+--- tdeprint/cups/cupsdconf2/cupsddialog.cpp.orig
++++ tdeprint/cups/cupsdconf2/cupsddialog.cpp
+@@ -208,7 +208,10 @@
+ 	{
+                 bool success = false;
+ 		KProcess proc;
+-		proc << "tdesu" << "-c" << "/etc/init.d/cupsys restart";
++		if  (getuid() == 0 )
++			proc << "rccups" << "force-reload";
++		else
++			proc << "tdesu" << "-c" << "rccups" << "force-reload";
+ 		success = proc.start( KProcess::Block ) && proc.normalExit();
+                 if( !success )    
+ 			msg = i18n("Unable to restart CUPS server (pid = %1)").arg(serverPid);

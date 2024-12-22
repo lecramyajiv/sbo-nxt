@@ -1,0 +1,5 @@
+remove build-dep on libdvdread-dev
+
+Do not recommend on tdebase-tdeio-plugins, kcontrol, 
+Change recommend to suggest for vcdimager
+

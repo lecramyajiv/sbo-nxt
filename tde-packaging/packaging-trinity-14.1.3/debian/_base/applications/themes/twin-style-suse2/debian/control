@@ -1,0 +1,18 @@
+Source: twin-style-suse2-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Adrian Neumaier <adrian@firehand.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs-trinity-dev, tdebase-trinity-dev
+Standards-Version: 3.6.2
+
+Package: twin-style-suse2-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: TDE window decoration from SUSE 9.3
+ This is a port of the SUSE 9.3 KDE Window decoration extracted from SUSE.
+ .
+ It features in additon to the original theme several new button
+ styles and a changeable titlebar image.
+ .
+ A color scheme for TDE is provided too.

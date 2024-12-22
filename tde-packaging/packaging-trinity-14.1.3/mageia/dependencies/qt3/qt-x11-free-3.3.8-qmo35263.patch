@@ -1,0 +1,41 @@
+--- src/kernel/qfontdatabase_x11.cpp	2006-12-28 21:40:34.000000000 +0200
++++ src/kernel/qfontdatabase_x11.cpp	2006-12-28 21:43:44.000000000 +0200
+@@ -1504,13 +1504,24 @@
+       convert the pixel size to a point size and request that.
+     */
+     double size_value = request.pixelSize;
++    double dpi = QPaintDevice::x11AppDpiY(fp->screen);
+     double scale = 1.;
+     if ( size_value > MAXFONTSIZE_XFT ) {
+ 	scale = (double)size_value/(double)MAXFONTSIZE_XFT;
+ 	size_value = MAXFONTSIZE_XFT;
+     }
+-
+-    size_value = size_value*72./QPaintDevice::x11AppDpiY(fp->screen);
++#ifdef QT_XFT2
++    /*
++     2006-12-28 If QT is not compiled against xft1, there is no need
++     for the workaround above (confirmed). Thus, in addition, add
++     font pixelsize to the pattern to avoid fontconfig making wrong
++     guesses. Also provide a DPI value for fontconfig so it never
++     attempts to fallback to its default.
++    */
++    XftPatternAddDouble(pattern, XFT_PIXEL_SIZE, size_value);
++    XftPatternAddDouble(pattern, XFT_DPI, dpi);
++#endif
++    size_value = size_value*72./dpi;
+     XftPatternAddDouble( pattern, XFT_SIZE, size_value );
+ 
+ #ifdef XFT_MATRIX
+@@ -1875,6 +1886,11 @@
+     FcResult result;
+         FcFontSet *fs = 0;
+         FcPattern *fsp = 0;
++
++	// Properly conform to fontconfig API. We need to call FcDefaultSubstitute()
++	// before FcFontSort()/FcFontMatch().
++	FcDefaultSubstitute(pattern);
++
+         if( use_fontsort ) {
+             fs = FcFontSort(0, pattern, FcFalse, 0, &result);
+     if (!fs)

@@ -1,0 +1,13 @@
+Index: kio/kio/netaccess.cpp
+===================================================================
+--- kio/kio/netaccess.cpp.orig
++++ kio/kio/netaccess.cpp
+@@ -337,7 +337,7 @@ bool NetAccess::statInternal( const KURL
+                               QWidget* window )
+ {
+   bJobOK = true; // success unless further error occurs
+-  KIO::StatJob * job = KIO::stat( url, !url.isLocalFile() );
++  KIO::StatJob * job = KIO::stat( url, !url.isLocalFile() && !url.url().startsWith("beagle:?") );
+   job->setWindow (window);
+   job->setDetails( details );
+   job->setSide( source );

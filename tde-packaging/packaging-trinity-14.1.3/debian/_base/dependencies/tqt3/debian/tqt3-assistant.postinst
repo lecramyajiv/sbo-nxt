@@ -1,0 +1,8 @@
+#!/bin/sh 
+
+set -e
+
+update-alternatives --install \
+	/usr/bin/assistant assistant "/usr/bin/tqassistant" "45" \
+
+#DEBHELPER#

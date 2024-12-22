@@ -1,0 +1,98 @@
+kshutdown-trinity (1.0.4-1) unstable; urgency=low
+
+  * Initial Release for TDE
+
+ -- Slávek Banko <slavek.banko@axis.cz>  Sat, 27 Jul 2013 02:25:45 +0200
+
+kshutdown (1.0.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Updated standard version to 3.8.1 
+  * Dropped patch fixing deprecated desktop entries (fixed upstream). 
+  * Bumped compat level to 7.
+
+ -- Romain Beauxis <toots@rastageeks.org>  Fri, 27 Mar 2009 13:36:48 +0100
+
+kshutdown (1.0.3-1) unstable; urgency=low
+
+  * New upstream release 
+  * Refreshed patch
+  * Updated standard version to 3.8.0
+
+ -- Romain Beauxis <toots@rastageeks.org>  Fri, 20 Jun 2008 02:33:51 +0200
+
+kshutdown (1.0.2-1) unstable; urgency=low
+
+  * New upstream release 
+  * Updated standard version to 3.7.3 (no changes)
+
+ -- Romain Beauxis <toots@rastageeks.org>  Tue, 11 Dec 2007 01:38:55 +0100
+
+kshutdown (1.0.1-2) unstable; urgency=low
+
+  * Added linker flags to remove non-needed link dependencies.
+
+ -- Romain Beauxis <toots@rastageeks.org>  Wed, 21 Nov 2007 09:51:59 +0100
+
+kshutdown (1.0.1-1) unstable; urgency=low
+
+  * New upstream release 
+  * Fixed watch file (thanks to Raphael Geissert)
+    Closes: #449772
+
+ -- Romain Beauxis <toots@rastageeks.org>  Sun, 18 Nov 2007 14:39:07 +0100
+
+kshutdown (1.0-1) unstable; urgency=low
+
+  * New upstream release. 
+  * Fix for FTBFS with GCC 4.3 applied upstream
+  Closes: #417301
+
+ -- Romain Beauxis <toots@rastageeks.org>  Mon, 23 Apr 2007 13:41:01 +0200
+
+kshutdown (0.9.1~beta-1) experimental; urgency=low
+
+  * First upload of the next release to experimental.
+  * Updated debian standards
+  * Added workaround for buggy rpath setting
+  * Switched to cdbs' kde class
+
+ -- Romain Beauxis <toots@rastageeks.org>  Wed, 21 Feb 2007 02:10:26 +0100
+
+kshutdown (0.8.2-1) unstable; urgency=low
+
+  * New upstream release 
+
+ -- Romain Beauxis <toots@rastageeks.org>  Tue, 14 Feb 2006 03:08:46 +0100
+
+kshutdown (0.8-1) unstable; urgency=low
+
+  * New upstream release
+  * Added swedish translation (Closes: #337551)
+
+ -- Romain Beauxis <toots@rastageeks.org>  Tue, 29 Nov 2005 02:30:38 +0100
+
+kshutdown (0.6.0-4) unstable; urgency=low
+
+  * Workaround for FTBFS on some arch (see gcc Bug#323133) 
+
+ -- Romain Beauxis <toots@rastageeks.org>  Mon,  5 Sep 2005 19:54:24 +0200
+
+kshutdown (0.6.0-3) unstable; urgency=low
+
+  * New upload to rebuild against new KDE and C++ libraries. 
+
+ -- Romain Beauxis <toots@rastageeks.org>  Mon,  5 Sep 2005 11:00:11 +0200
+
+kshutdown (0.6.0-2) unstable; urgency=low
+
+  * Minor Debian fixes. 
+
+ -- Romain Beauxis <toots@rastageeks.org>  Fri, 27 May 2005 11:35:55 +0200
+
+kshutdown (0.6.0-1) unstable; urgency=low
+
+  * Initial Release. (closes: #305843)
+
+ -- Romain Beauxis <toots@rastageeks.org>  Thu, 14 Apr 2005 02:05:09 +0200
+

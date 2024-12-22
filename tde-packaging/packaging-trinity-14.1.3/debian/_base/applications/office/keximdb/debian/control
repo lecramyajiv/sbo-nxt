@@ -1,0 +1,20 @@
+Source: keximdb-trinity
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Martin Ellis <martin.ellis@kdemail.net>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, koffice-trinity-dev, libglib2.0-dev
+Standards-Version: 3.7.2
+Section: tde
+
+Package: kexi-mdb-plugin-trinity
+Section: tde
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: MS Access (MDB) driver for Kexi [Trinity]
+ MDB migration driver for converting MS Access databases in MDB files
+ into KexiDB databases.
+ .
+ This driver allows Kexi, the KOffice database program, to convert MDB
+ database files to Kexi databases via the Tools->Migration->Import Database
+ menu option.  Note that this package does not allow MDB files to be opened
+ directly - they must be converted to a Kexi database first.

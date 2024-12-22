@@ -1,0 +1,32 @@
+libksquirrel-trinity (0.8.0-1ubuntu2) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 18 Oct 2009 16:21:00 -0600
+
+libksquirrel (0.8.0-0ubuntu4) intrepid; urgency=low
+
+  * debian/patches/001_missing_declarations.patch: drop an extraneous change
+    that snuck in while trying to test-build on amd64, which in turn breaks
+    the build on 32-bit systems that this package currently supports.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 29 Sep 2008 16:20:23 -0700
+
+libksquirrel (0.8.0-0ubuntu3) intrepid; urgency=low
+
+  * debian/patches/001_missing_declarations.patch: fix a build failure
+    due to missing #includes for C functions.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 29 Sep 2008 18:29:36 +0000
+
+libksquirrel (0.8.0-0ubuntu2) intrepid; urgency=low
+
+  * No-change rebuild against libopenexr6.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 29 Sep 2008 11:38:13 +0000
+
+libksquirrel (0.8.0-0ubuntu1) hardy; urgency=low
+
+  * Initial release (LP: #172740)
+
+ -- Harald Sitter <apachelogger@ubuntu.com>  Sun, 18 Nov 2007 23:36:24 +0100

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Archive LHA
+Hidden=false
+Patterns=*.lha;*.lzh;*.LHA;*.LZH
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

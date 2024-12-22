@@ -1,0 +1,20 @@
+opt/trinity/bin/kgeography
+opt/trinity/bin/kgeography_gen_map.pl
+/opt/trinity/share/applications/tde/kgeography.desktop
+/opt/trinity/share/config.kcfg/kgeography.kcfg
+/opt/trinity/share/doc/tde/HTML/en/kgeography
+/opt/trinity/share/icons/crystalsvg/128x128/apps/kgeography.png
+/opt/trinity/share/icons/crystalsvg/16x16/apps/kgeography.png
+/opt/trinity/share/icons/crystalsvg/22x22/apps/kgeography.png
+/opt/trinity/share/icons/crystalsvg/32x32/apps/kgeography.png
+/opt/trinity/share/icons/crystalsvg/48x48/apps/kgeography.png
+/opt/trinity/share/icons/crystalsvg/64x64/apps/kgeography.png
+/opt/trinity/share/icons/crystalsvg/scalable/apps/kgeography.svgz
+/opt/trinity/share/icons/hicolor/128x128/apps/kgeography.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kgeography.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kgeography.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kgeography.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kgeography.png
+/opt/trinity/share/icons/hicolor/64x64/apps/kgeography.png
+/opt/trinity/share/man/man1/kgeography.1
+../icons/kgeography.xpm /opt/trinity/share/pixmaps

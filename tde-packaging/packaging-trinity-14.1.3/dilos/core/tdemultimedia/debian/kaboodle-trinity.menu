@@ -1,0 +1,11 @@
+?package(kaboodle-trinity):\
+	needs="X11"\
+	section="Apps/Sound"\
+	hints="TDE"\
+	title="Kaboodle"\
+	icon32x32="/usr/share/pixmaps/kaboodle.xpm"\
+	icon16x16="/usr/share/pixmaps/kaboodle-16.xpm"\
+	command="/usr/bin/kaboodle"
+
+# Icon 32x32 kaboodle/pics/cr32-app-kaboodle.png kaboodle.xpm
+# Icon 16x16 kaboodle/pics/cr16-app-kaboodle.png kaboodle-16.xpm

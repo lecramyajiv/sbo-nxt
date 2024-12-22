@@ -1,0 +1,7 @@
+qtjava/designer/juic/bin/juic	/usr/bin
+qtjava/designer/juic/common/*.xml	/usr/share/juic/common
+qtjava/designer/juic/common/*.xsl	/usr/share/juic/common
+qtjava/designer/juic/java/*.xml	/usr/share/juic/java
+qtjava/designer/juic/java/*.xsl	/usr/share/juic/java
+qtjava/designer/juic/juic.xsl	/usr/share/juic
+debian/tmp/usr/share/man/man1/juic.1

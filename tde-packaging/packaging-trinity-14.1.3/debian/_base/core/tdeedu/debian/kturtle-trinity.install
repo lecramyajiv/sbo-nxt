@@ -1,0 +1,13 @@
+opt/trinity/bin/kturtle
+/opt/trinity/share/applications/tde/kturtle.desktop
+/opt/trinity/share/apps/katepart/syntax/logohighlightstyle*
+/opt/trinity/share/apps/kturtle
+/opt/trinity/share/config.kcfg/kturtle.kcfg
+/opt/trinity/share/doc/tde/HTML/en/kturtle/*.bz2
+/opt/trinity/share/doc/tde/HTML/en/kturtle/common
+/opt/trinity/share/doc/tde/HTML/en/kturtle/*.docbook
+/opt/trinity/share/doc/tde/HTML/en/kturtle/*.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kturtle.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kturtle.png
+/opt/trinity/share/man/man1/kturtle.1
+../icons/kturtle.xpm /opt/trinity/share/pixmaps

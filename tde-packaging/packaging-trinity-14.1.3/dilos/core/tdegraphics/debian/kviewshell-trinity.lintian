@@ -1,0 +1,2 @@
+kviewshell-trinity: shlib-missing-in-control-file libdjvu.so usr/lib/libdjvu.so
+kviewshell-trinity: package-name-doesnt-match-sonames libtdemultipage0 libdjvu

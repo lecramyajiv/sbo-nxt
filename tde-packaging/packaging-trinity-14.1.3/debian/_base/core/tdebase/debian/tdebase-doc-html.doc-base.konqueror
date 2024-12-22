@@ -1,0 +1,11 @@
+Document: tdebase-doc-html-konqueror
+Title: Konqueror Handbook
+Author: Pamela Roberts
+Abstract: Konqueror is TDE's advanced File Manager, Web Browser and
+ Universal Viewing Application.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/konqueror/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/konqueror/*.html
+

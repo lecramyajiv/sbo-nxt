@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Lzopped Tar Archive
+Hidden=false
+Patterns=*.tar.lzo;*.tzo
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

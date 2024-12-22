@@ -1,0 +1,9 @@
+Document: koffice-doc-html-kformula
+Title: KFormula Users Manual
+Author: Jonathan Drews <j.e.drews@att.net>
+Abstract: KFormula is used to layout formulas.
+Section: Science/Mathematics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kformula/index.html
+Files: /usr/share/doc/tde/HTML/en/kformula/*.html

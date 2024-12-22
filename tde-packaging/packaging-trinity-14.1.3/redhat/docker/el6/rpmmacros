@@ -1,0 +1,6 @@
+%dist .el6
+%rhel 6
+%_smp_mflags -j8
+%jobs 8
+%_topdir /home/trinity/rpmbuild
+%cmake %cmake3

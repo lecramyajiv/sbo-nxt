@@ -1,0 +1,153 @@
+#! /usr/bin/make -f
+
+# Set LD_LIBRARY_PATH to the installed library directory to allow dh_shlibdeps to function
+# Also include the main Trinity path
+ifeq ("$(LD_LIBRARY_PATH)", "")
+LD_LIBRARY_PATH=/opt/trinity/lib:debian/tmp/opt/trinity/lib
+else
+LD_LIBRARY_PATH += :/opt/trinity/lib:debian/tmp/opt/trinity/lib
+endif
+export LD_LIBRARY_PATH
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_TIME64_API		= $(shell echo | cc $(dpkg-buildflags --get CPPFLAGS) -dM -E -x c++ - | grep -q "_TIME_BITS 64" && echo true || false)
+ifeq ($(DEB_TIME64_API),true)
+DEB_TIME64_SUFFIX	= t64
+else
+DEB_TIME64_SUFFIX	=
+endif
+
+
+DEB_KDE_APIDOX := yes
+
+version=Debian Package $(DEB_VERSION)
+DEB_OPT_FLAG += -DDEBIAN_VERSION=$(DEB_VERSION)
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DLIB_SUFFIX="" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DCMAKE_LIBRARY_PATH="/opt/trinity/lib" \
+ -DCMAKE_INCLUDE_PATH="/opt/trinity/include" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DWITH_GCC_VISIBILITY="ON" \
+ -DWITH_LIBART="ON" \
+ -DWITH_LIBIDN="ON" \
+ -DWITH_TIFF="ON" \
+ -DWITH_WEBP="ON" \
+ -DWITH_JASPER="ON" \
+ -DWITH_OPENEXR="ON" \
+ -DWITH_AVAHI="ON" \
+ -DWITH_ISPELL="ON" \
+ -DWITH_ASPELL="ON" \
+ -DWITH_HSPELL="ON" \
+ -DDEFAULT_SPELL_CHECKER="ASPELL" \
+ -DWITH_ELFICON="ON" \
+ -DWITH_TDEHWLIB="ON" \
+ -DWITH_TDEHWLIB_DAEMONS="ON" \
+ -DWITH_LOGINDPOWER="ON" \
+ -DWITH_UPOWER="ON" \
+ -DWITH_UDISKS="ON" \
+ -DWITH_UDISKS2="ON" \
+ -DWITH_UDEVIL="ON" \
+ -DWITH_CONSOLEKIT="ON" \
+ -DWITH_NETWORK_MANAGER_BACKEND="ON" \
+ -DWITH_LZMA="ON" \
+ -DWITH_XRANDR="ON" \
+ -DWITH_XCOMPOSITE="ON" \
+ -DWITH_MITSHM="ON" \
+ -DWITH_PCSC="ON" \
+ -DWITH_PKCS="ON" \
+ -DWITH_CRYPTSETUP="ON" \
+ -DWITH_IMAGETOPS_BINARY="ON" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+DEB_MAKE_CHECK_TARGET = check
+
+DEB_FIXPERMS_EXCLUDE := \
+	opt/trinity/bin/fileshareset	\
+	opt/trinity/bin/kgrantpty	\
+	opt/trinity/bin/kpac_dhcp_helper \
+	opt/trinity/bin/start_tdeinit
+
+DEB_DH_STRIP_ARGS  := --dbg-package=tdelibs-trinity-dbg
+
+binary-install/tdelibs-data-trinity::
+	install -p -D -m644 kded/tde-applications.menu debian/tdelibs-data-trinity/opt/trinity/etc/xdg/menus/tde-applications.menu
+	install -p -D -m644 debian/trinitylibs.conf debian/tdelibs-data-trinity/etc/ld.so.conf.d/trinitylibs.conf
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/apps/tdeui/pics/abouttde.png debian/icons/abouttde-kubuntu.png.uu
+
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/16x16/devices/computer.png debian/icons/cr16-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/22x22/devices/computer.png debian/icons/cr22-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/32x32/devices/computer.png debian/icons/cr32-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/48x48/devices/computer.png debian/icons/cr48-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/64x64/devices/computer.png debian/icons/cr64-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/128x128/devices/computer.png debian/icons/cr128-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/scalable/devices/computer.svgz debian/icons/crsc-device-computer.svgz.uu
+
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/16x16/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/22x22/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/32x32/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/48x48/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/16x16/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/22x22/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/32x32/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+	uudecode -o debian/tdelibs-data-trinity/opt/trinity/share/icons/crystalsvg/48x48/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+
+### 
+
+DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+
+binary-predeb/tdelibs14-trinity-dev::
+ifeq (linux,$(DEB_HOST_ARCH_OS))
+	echo "libasound2-trinity-dev=libasound2-trinity-dev" >> debian/tdelibs14-trinity-dev.substvars
+endif
+
+binary-install/tdelibs14-trinity::
+	mv debian/tmp/opt/trinity/bin/tdecmshell debian/tmp/opt/trinity/bin/tdecmshell.real
+	install -p -D -m755 debian/tmp/opt/trinity/bin/tdecmshell.real debian/tdelibs14-trinity/opt/trinity/bin/tdecmshell.real
+	install -p -D -m755 debian/tdecmshell debian/tdelibs14-trinity/opt/trinity/bin/tdecmshell
+
+post-patches::
+	dh_testdir
+ifeq ($(DEB_TIME64_API),true)
+	# update library package name for TIME64 ABI
+	ls -d debian/* | \
+	grep -E "/tdelibs14-trinity\." | \
+	grep -v "\.t64$$" | \
+	while read a; do \
+	    [ -d $$a ] || [ -f $$a.t64 ] || \
+	    (cp -a $$a debian/tdelibs14$(DEB_TIME64_SUFFIX)-trinity.$${a##*.} && mv $$a $$a.t64); \
+	done
+	[ -f debian/control.t64 ] || \
+	sed -i.t64 \
+	    -e "s/^\\(Package: tdelibs14\\)-trinity$$/\\1$(DEB_TIME64_SUFFIX)-trinity/" \
+	    -e "s/^\\(Replaces\\|Breaks\\):\\(.*\\)\\(tdelibs\\)4c2a-trinity\\( \|$$\)/\\1:\\2\\34c2a-trinity, \\314-trinity\\4/" \
+	    -e "s/\\(tdelibs14\\)-trinity (=/\\1$(DEB_TIME64_SUFFIX)-trinity (=/" \
+	    debian/control
+endif
+
+clean::
+	dh_testdir
+	dh_clean
+
+ifeq ($(DEB_TIME64_API),true)
+	# revert library package name for TIME64 ABI
+	ls -d debian/* | \
+	grep -E "\.t64$$" | \
+	while read a; do \
+	    mv $$a $${a%.t64}; \
+	done
+	ls -d debian/* | \
+	grep -E "/tdelibs14$(DEB_TIME64_SUFFIX)-trinity\." | \
+	xargs -r rm
+	[ ! -f debian/control.t64 ] || \
+	mv debian/control.t64 debian/control
+endif

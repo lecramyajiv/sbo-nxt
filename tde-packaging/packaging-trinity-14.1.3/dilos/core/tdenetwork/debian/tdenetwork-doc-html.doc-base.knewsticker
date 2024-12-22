@@ -1,0 +1,10 @@
+Document: tdenetwork-doc-html-knewsticker
+Title: KNewsTicker Handbook
+Author: Frerich Raabe, Jonathan Singer
+Abstract: KNewsTicker is a news ticker applet for the TDE panel.
+Section: Apps/Web
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/knewsticker/index.html
+Files: /usr/share/doc/tde/HTML/en/knewsticker/*.html
+

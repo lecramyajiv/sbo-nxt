@@ -1,0 +1,11 @@
+Document: tdeutils-doc-html-kdf
+Title: KDiskFree Handbook
+Author: Jonathan Singer, Michael Kropfberger
+Abstract: KDiskFree displays available file devices, along with information about them.
+Section: Tools
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kdf/index.html
+Files: /usr/share/doc/tde/HTML/en/kdf/*.html
+
+

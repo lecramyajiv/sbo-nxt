@@ -1,0 +1,18 @@
+?package(ksysguard-trinity):\
+	needs="X11"\
+	section="Applications/System/Monitoring"\
+	hints="TDE"\
+	title="TDE System Guard"\
+	icon32x32="/usr/share/pixmaps/ksysguard.xpm"\
+	icon16x16="/usr/share/pixmaps/ksysguard-16.xpm"\
+	command="/usr/bin/ksysguard"
+
+?package(ksysguard-trinity):\
+	needs="X11"\
+	section="Applications/System/Monitoring"\
+	hints="TDE"\
+	title="TDE System Guard - Process Table"\
+	command="/usr/bin/kpm"
+
+# Icon 32x32 ksysguard/cr32-app-ksysguard.png ksysguard.xpm
+# Icon 16x16 ksysguard/cr16-app-ksysguard.png ksysguard-16.xpm

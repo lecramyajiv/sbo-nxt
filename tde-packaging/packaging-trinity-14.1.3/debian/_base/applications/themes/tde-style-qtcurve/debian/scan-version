@@ -1,0 +1,41 @@
+#!/usr/bin/make -sf
+
+DL_LINK = http://www.kde-look.org/content/download.php?content=40492&id=2
+DL_LINK_REAL = $(shell LANG=C wget --spider "$(DL_LINK)" 2>&1 | grep "Location: " | sed "s/Location: //" | sed "s/ \[following\]//")
+PACKAGE = $(shell dpkg-parsechangelog | egrep '^Source: ' | sed s/"Source: "//)
+DEBIAN_VERSION = $(shell dpkg-parsechangelog | egrep '^Version: ' | sed s/"Version: "//)
+UPSTREAM_VERSION = $(shell echo $(DEBIAN_VERSION) | sed s/-.*//)
+FILE_NAME = $(shell echo "$(DL_LINK_REAL)" | sed s/\\//\\n/g | tail -n 1)
+FILE_EXT = $(shell echo "$(DL_LINK_REAL)" | sed s/\\./\\n/g | tail -n 1)
+NET_VERSION = $(shell echo "$(FILE_NAME)" | egrep -o "[0-9]+\.[0-9]+(\.[0-9]+)?")
+ORIG_TAR_GZ = ../$(PACKAGE)_$(NET_VERSION).orig.tar.gz
+
+all:
+		echo "Usage: debian/scan-version {scan|download|get-orig-source}"
+		exit 1
+
+scan:
+		dh_testdir
+		echo "URL: $(DL_LINK_REAL)"
+		echo "File: $(FILE_NAME)"
+		echo "Current version: $(UPSTREAM_VERSION)"
+		echo "Available version: $(NET_VERSION)"
+		echo
+		echo "If the available version is higher, type \"debian/scan-version download\" to download it."
+
+download:
+		dh_testdir
+		echo "Downloading $(DL_LINK_REAL)..."
+		wget $(DL_LINK_REAL) -O "../$(FILE_NAME)" 2> /dev/null
+		echo "Successfully downloaded to ../$(FILE_NAME)"
+
+get-orig-source: download
+		echo "Creating $(ORIG_TAR_GZ)..."
+		if [ "$(FILE_EXT)" = "gz" ]; then \
+			cp "../$(FILE_NAME)" "$(ORIG_TAR_GZ)"; \
+		else \
+			bunzip2 -c "../$(FILE_NAME)" | gzip -9c > "$(ORIG_TAR_GZ)"; \
+		fi
+		echo 
+
+.PHONY: all parse-url scan download get-orig-source

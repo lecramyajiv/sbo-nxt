@@ -1,0 +1,1956 @@
+tdepim-trinity (4:3.5.10-0ubuntu4) karmic; urgency=low
+
+  * Fix KMail crash on compose window destruct; reverting to gcc4.3 for now
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 03 Dec 2009 15:05:00 -0600
+
+tdepim-trinity (4:3.5.10-0ubuntu2) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 July 2009 16:08:00 -0600
+
+tdepim-trinity (4:3.5.10-0ubuntu2~intrepid1) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 01 March 2009 20:46:00 -0600
+
+tdepim-trinity (4:3.5.10-0ubuntu1~intrepid7) intrepid; urgency=low
+
+  * Reactivated knode, korganizer, etc in the KDE menu
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 02 Jan 2009 19:23:00 -0600
+
+tdepim-trinity (4:3.5.10-0ubuntu1~intrepid6) intrepid; urgency=low
+
+  * Fixed conflicts for akregator
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 03 Nov 2008 11:58:00 -0600
+
+tdepim-trinity (4:3.5.10-0ubuntu1~intrepid5) intrepid; urgency=low
+
+  * Repaired AMD64 build of kmail; fixed dependencies for kaddressbook
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 28 Nov 2008 14:51:00 -0600
+
+tdepim-trinity (4:3.5.10-0ubuntu1~intrepid1) intrepid; urgency=low
+
+  * SVN import
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 27 Nov 2008 22:18:00 -0600
+
+tdepim (4:3.5.10-0ubuntu1~hardy1) hardy-backports; urgency=low
+
+  * New upstream bugfix release (LP: #261366)
+    - Bump version of build dep on tdelibs4-dev to 3.5.10
+    - Drop kubuntu_13_fix_seive_truncate.diff - incorporated upstream
+
+ -- Scott Kitterman <scott@kitterman.com>  Tue, 26 Aug 2008 00:48:22 -0400
+
+tdepim (4:3.5.9-0ubuntu3) hardy; urgency=low
+
+  * Add kubuntu_13_fix_seive_truncate.diff from upstream, fixes 
+    http://bugs.kde.org/155223 "sieve script is truncated"
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 10 Apr 2008 17:31:23 +0100
+
+tdepim (4:3.5.9-0ubuntu2) hardy; urgency=low
+
+  * Add patches kubuntu_11_groupwarewizard_categories.diff and
+    kubuntu_12_ktnef_categories.diff, stop showing groupwarewizard and
+    ktnef in three different menu categories.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 25 Mar 2008 15:54:43 +0000
+
+tdepim (4:3.5.9-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 14 Feb 2008 12:27:07 +0000
+
+tdepim (4:3.5.7enterprise20080127-0ubuntu1) hardy; urgency=low
+
+  * New upstream SVN snapshot (SVN r763039)
+    (closes LP: #185846) 
+
+ -- Luka Renko <lure@ubuntu.com>  Sun, 27 Jan 2008 13:08:25 +0100
+
+tdepim (4:3.5.7enterprise20080118-0ubuntu2) hardy; urgency=low
+
+  * Rebuild against new Qt to fix kmail missing fstat64 symbol, still
+    looking into what causes it
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 22 Jan 2008 17:27:45 +0000
+
+tdepim (4:3.5.7enterprise20080118-0ubuntu1) hardy; urgency=low
+
+  * New upstream SVN snapshot (SVN r763039)
+
+ -- Luka Renko <lure@ubuntu.com>  Sat, 19 Jan 2008 09:40:27 +0100
+
+tdepim (4:3.5.7enterprise20071207-1ubuntu2) hardy; urgency=low
+
+  * debian/control: Added Conflict/Replaces on ksync for kitchensync.
+    "ksync" gets shipped with kitchensync now. (LP: #133944)
+
+ -- dAniel hAhler <ubuntu@thequod.de>  Sat, 29 Dec 2007 05:23:59 +0100
+
+tdepim (4:3.5.7enterprise20071207-1ubuntu1) hardy; urgency=low
+
+  * New upstream SVN snapshot (SVN r745814)
+  * Drop patches that were from upstream SVN
+  * Includes new version of libgpgme++.so.0.3.0
+  * Added Scalix support to appropriate packages
+
+ -- Luka Renko <lure@ubuntu.com>  Sat, 08 Dec 2007 20:42:32 +0100
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu9) hardy; urgency=low
+
+  * Re-added networkstatus-dev package:
+    - Fixed control and control.in files
+    - Added networkstatus-dev.install file
+    - Fixed networkstatus.install file, adding missing networkstatus
+      library
+    - kmail depends on gpgsm, gnupg-agent, pinentry-qt | pinentry-x11
+    - build against gpgsm
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 29 Nov 2007 19:33:03 +0100
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu8) hardy; urgency=low
+
+  * tdepim-dev does not depend on kitchensync
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 28 Nov 2007 12:55:39 +0000
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu7) hardy; urgency=low
+
+  * Undo shlibs crack.  Installable packages are overrated, really -
+    especially around CD times...
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Wed, 28 Nov 2007 19:22:00 +1100
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu6) hardy; urgency=low
+
+  * Fix tdepim-doc.install (again)
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 27 Nov 2007 09:20:22 +0000
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu5) hardy; urgency=low
+
+  * Fix tdepim-doc.install for enterprise version
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 23 Nov 2007 17:31:25 +0000
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu4) hardy; urgency=low
+
+  * Lower tdepim-dev depends
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 23 Nov 2007 14:29:09 +0000
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu3) hardy; urgency=low
+
+  * Compile against libgpg-error 1.4-2ubuntu7 to fix build.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 23:20:53 +0000
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu2) hardy; urgency=low
+
+  * Run buildprep before upload
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 10:35:42 +0000
+
+tdepim (4:3.5.7enterprise20070926-1ubuntu1) hardy; urgency=low
+
+  * Merge with Debian, remaining changes in KUBUNTU-DEBIAN-DIFFERENCES
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 14 Nov 2007 17:25:42 +0000
+
+tdepim (4:3.5.8-1) unstable; urgency=low
+
+  * New upstream release.
+    * Resync patches:
+      - Remove, applied upstream:
+        01_branch_kmail_forwarding, 01_branch_korganizer_birthdays,
+  		01_branch_quota-fix,
+      - Fix offset: 14_kmail_filter_icons.
+    * Fixes karm in kontact issue. (Closes: 366668)
+    * Kmail filtering copies. (Closes: 404032)
+
+  * Update *.install files.
+  * Update uploaders.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Sun, 14 Oct 2007 15:51:08 +0200
+
+tdepim (4:3.5.7-4) unstable; urgency=low
+
+  * Rebuild without --enable final on all archs now. It seems the only way
+    to get it built in all the buildd network.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 23 Aug 2007 23:20:38 +0200
+
+tdepim (4:3.5.7-3) unstable; urgency=low
+
+  * Rebuild without --enable-final on mipsel.
+  * Update section in Debian menu files.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Wed, 22 Aug 2007 07:44:48 +0200
+
+tdepim (4:3.5.7-2) unstable; urgency=low
+
+  * Rebuild with a fixed dpkg-dev (Closes: #427893, #425621, #425913, #431576).
+    Add a versioned build dependency.
+
+  +++ Changes by Sune Vuorela:
+
+  * Remove kleopatra readme. It is horribly outdated - and describes how to
+    install unofficial packages that have been in Debian for ages.
+  * Add a patch to fix issues with quotas. Patch pulled from svn.
+    (Closes: 426115)
+  * Implement the use of uploaders.mk
+  * Add patch to fix birthday reminders with korganizer. (Closes: 420826).
+    Patch taken from upstream svn.
+  * Add patch from upstream svn to fix issue with templates and forwarding.
+    (Closes: 427803)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 24 Jul 2007 00:05:45 +0200
+
+tdepim (4:3.5.7enterprise20070926-0ubuntu2) gutsy; urgency=low
+
+  * Change default folder view to "last selected" to reduce confusion 
+    caused by new mails being missed by "jump to new" view
+    debian/patches/kubuntu_12_svn717678_default_last_selected.diff
+  * Create new contact form sometimes read-only (Kolab #2042)
+    debian/patches/kubuntu_12_svn717727_create_contacts.diff
+  * Do not de-activate sieve script (Kolab #2035)
+    debian/patches/kubuntu_12_svn717781_deactivate_sieve.diff
+  * Crash on drag of attachement (Kolab #2046)
+    debian/patches/kubuntu_12_svn718341_drag_crash.diff
+  * Improve rendering of e-mail
+    debian/patches/kubuntu_12_svn718506_fix_rendering.diff
+  * Remove duplicate include 
+    debian/patches/kubuntu_12_svn721122_duplicate_include.diff
+  * Crash on close due to NULL pointer (Kolab #1904)
+    debian/patches/kubuntu_12_svn721407_crash_on_close.diff
+  * Filter processing can cause duplicate e-mail (Kolab #2067)
+    debian/patches/kubuntu_12_svn721425_filter_duplicate_mail.diff
+  * Slow LDAP lookup can overwrite To address (Kolab #1941)
+    debian/patches/kubuntu_12_svn723031_ldap_addr_overwrite.diff
+
+ -- Luka Renko <lure@ubuntu.com>  Mon, 08 Oct 2007 18:41:23 +0200
+
+tdepim (4:3.5.7enterprise20070926-0ubuntu1) gutsy; urgency=low
+
+  [ Sarah Hobbs ]
+  * Added various conflicts/replaces on kontact, to stop the file overwrites
+    (LP: #146688)
+
+  [ Luka Renko ]
+  * New upstream snapshot
+  * Drop patches that are included upstream:
+    debian/patches/gcc43.diff
+    debian/patches/kubuntu_12_svn_r711165_kmkernel_null_check.diff
+    debian/patches/kubuntu_12_svn_r711601_gpg_duplicate_text.diff
+    debian/patches/kubuntu_12_svn_r711604_kmail_close_crash.diff
+    debian/patches/kubuntu_12_svn_r712056_smime_decrypt.diff
+    debian/patches/kubuntu_12_svn_r713462_summary_crash.diff
+
+  [ Christophe Sauthier ]
+  * Add kandy icon (LP: #121984)
+    - add kandy.xpm in debian/icons/
+    - add kandy-16.xpm in debian/icons/ (probably not necessary but all
+      other apps in the package tends to have also a 16x16 icon)
+
+ -- Luka Renko <lure@ubuntu.com>  Wed, 26 Sep 2007 18:10:10 +0200
+
+tdepim (4:3.5.7enterprise20070907-0ubuntu3) gutsy; urgency=low
+
+  * Include some bug-fixes from upstream. Closes LP #140500.
+    debian/patches/kubuntu_12_svn_r711165_kmkernel_null_check.diff
+    debian/patches/kubuntu_12_svn_r711601_gpg_duplicate_text.diff
+    debian/patches/kubuntu_12_svn_r711604_kmail_close_crash.diff
+    debian/patches/kubuntu_12_svn_r712056_smime_decrypt.diff
+    debian/patches/kubuntu_12_svn_r713462_summary_crash.diff
+
+ -- Luka Renko <lure@ubuntu.com>  Mon, 17 Sep 2007 21:19:08 +0200
+
+tdepim (4:3.5.7enterprise20070907-0ubuntu2) gutsy; urgency=low
+
+  * Fix build failures with g++-4.3. LP: #138596.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 13 Sep 2007 01:05:38 +0000
+
+tdepim (4:3.5.7enterprise20070907-0ubuntu1) gutsy; urgency=low
+
+  * New upstream snapshot
+  * Drop debian/patches/kubuntu_12_imap_unread_status_svn708706.diff
+
+ -- Luka Renko <lure@ubuntu.com>  Sat, 08 Sep 2007 08:50:41 +0200
+
+tdepim (4:3.5.7enterprise20070904-0ubuntu2) gutsy; urgency=low
+
+  * Fix unread status wrong on initial load of the folder (from SVN)
+    debian/patches/kubuntu_12_imap_unread_status_svn708706.diff
+
+ -- Luka Renko <lure@ubuntu.com>  Wed, 05 Sep 2007 22:23:33 +0200
+
+tdepim (4:3.5.7enterprise20070904-0ubuntu1) gutsy; urgency=low
+
+  * New upstream snapshot
+  * Fixes lots of crash bugs on pop3 accounts and on text paste
+
+ -- Luka Renko <lure@ubuntu.com>  Tue, 04 Sep 2007 18:21:22 +0200
+
+tdepim (4:3.5.7enterprise20070828really20070825-0ubuntu3) gutsy; urgency=low
+
+  * Fix install path in tdepim-doc.install
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 03 Sep 2007 12:27:31 +0100
+
+tdepim (4:3.5.7enterprise20070828really20070825-0ubuntu2) gutsy; urgency=low
+
+  * Run buildprep before upload
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 03 Sep 2007 10:09:40 +0100
+
+tdepim (4:3.5.7enterprise20070828really20070825-0ubuntu1) gutsy; urgency=low
+
+  * Revert to 20070825 snapshot from Impilinux, should be more stable
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 03 Sep 2007 09:17:12 +0100
+
+tdepim (4:3.5.7enterprise20070828-0ubuntu1) gutsy; urgency=low
+
+  * New upstream snapshot
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 27 Aug 2007 18:34:01 +0100
+
+tdepim (4:3.5.7enterprise20070810-0ubuntu2) gutsy; urgency=low
+
+  * Add missing epoch to kepimlibs1a replace old korganiser,
+    https://bugs.launchpad.net/ubuntu/+source/tdepim/+bug/119664
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 21 Aug 2007 09:28:19 +0100
+
+tdepim (4:3.5.7enterprise20070810-0ubuntu1) gutsy; urgency=low
+
+  * Package enterprise branch from
+    http://websvn.kde.org/branches/tdepim/enterprise/tdepim/
+  * Build-dep on libopensync-dev now we have 0.19 in
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 08 Aug 2007 18:11:22 +0100
+
+tdepim (4:3.5.7-1ubuntu7) gutsy; urgency=low
+
+  * Make tdepimlibs1a replace old korganiser, closes
+    https://bugs.launchpad.net/ubuntu/+source/tdepim/+bug/119664
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 06 Aug 2007 17:02:10 +0100
+
+tdepim (4:3.5.7-1ubuntu6) gutsy; urgency=low
+
+  * Make akregator replaces kontact << 4:3.5.7-1ubuntu5, closes 
+    https://bugs.launchpad.net/ubuntu/+source/tdepim/+bug/124068
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 06 Aug 2007 10:35:48 +0100
+
+tdepim (4:3.5.7-1ubuntu5) gutsy; urgency=low
+ 
+   * Kmail S/MIME and GPG by default
+     -  Add gpgsm to kmail depends
+     -  Move gnupg-agent and pinentry-qt | pinentry-x11 from suggests to
+        depends
+     -  Move kleopatra from suggests to recommends
+   * Closes LP: #124074 
+ 
+ -- Scott Kitterman <scott@kitterman.com>  Wed, 04 Jul 2007 16:12:44 -0400
+
+tdepim (4:3.5.7-1ubuntu4) gutsy; urgency=low
+
+  * Fixed /usr/share/services/kontact/*.desktop files 
+    installation. They currently are all in the kontact package
+    which causes a little issue as the several components might not
+    be install by default (ex: knode). The result is invalid menu
+    content on the left bar in Kontact.
+    Each desktop file is now in the package containing the lib/kpart
+    it uses.
+  * Added kitchensync.install file and fixed debian/control to prepare
+    the build for future libopensync-dev enabled packaging.
+    Everything is disabled by default .
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 29 Jun 2007 15:43:22 +0200
+
+tdepim (4:3.5.7-1ubuntu3) gutsy; urgency=low
+
+  * Added networkstatus-dev back in - thanks Lure for pointing this out.
+  * Removed /usr/share/services/kontact/knodeplugin.desktop from
+    knode.install. Closes #116771
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Fri, 25 May 2007 22:15:39 -0500
+
+tdepim (4:3.5.7-1ubuntu2) gutsy; urgency=low
+
+  * Make kitchensync package empty: new kitchensync depends on opensync
+    which is not in main yet. Will change this back when opensync gets 
+    into main.
+
+ -- Luka Renko <lure@ubuntu.com>  Thu, 24 May 2007 12:01:14 +0000
+
+tdepim (4:3.5.7-1ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian for new upstream version, remaining changes in
+    KUBUNTU-DEBIAN-DIFFERENCES
+  * Closes #60153, #56369, #19450, #74686, #48034
+  * Fixed networkstatus.install.  Closes #112134
+  * Removed kubuntu_11_mail_exporter_patch.diff - upstream has seemed to solve
+    this another way
+  * Removed kubuntu_14_kmail_utf8.diff - applied upstream
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Tue, 22 May 2007 22:12:28 +1000
+
+tdepim (4:3.5.7-1) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+  
+  * New upstream release:
+    - Remove all the branch pull patches (01*).
+    - Remove the clamav patch (merged upstream).
+    - Remove patch to fix theoretical kio imap infinite loop (merged upstream).
+    - Remove template patch - applied upstream.
+    - Remove patch 04 - applied upstream.
+    - Remove kpilot header patches - applied upstream.
+    - Ksync package goes away, bye bye.
+    - kitchensync has changed big time. Conflict against older kdebluetooth.
+  
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+
+  * Non-free IETF docs are now replaced by urls to the docs. Remove
+    get-orig-source rule from debian/runes, not longer necessary.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon, 16 Apr 2007 21:37:29 +0200
+
+tdepim (4:3.5.6-2ubuntu2) gutsy; urgency=low
+
+  * Turn off DEB_KDE_CVS_MAKE in debian/rules
+  * Remove 16_kde_modulename.diff, module name isn't changed in Ubuntu
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 02 May 2007 14:19:49 +0100
+
+tdepim (4:3.5.6-2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 30 Apr 2007 20:32:54 +0100
+
+tdepim (4:3.5.6.dfsg.1-2) unstable; urgency=low
+
+  * Upload to unstable after Etch release.
+  * The pilot-link-please-don't-break-your-api-release
+
+  +++ Changes by Sune Vuorela:
+
+  * Pull 2 patches from pim+ branch to fix compilation with pilot-link 0.12.2.
+    (Closes: #414843)
+  * Pull a lot of kmail patches from upstream to fix various crashes
+    (Closes: #413527, #398182, #412261, #407363, #280223) and probably a
+    couple of more.
+  * Add clamav patch - thanks to Stephen Gran. (Closes: 412861)
+  * The kpilot scripts needs debconf to be able to clean up after itself.
+  * Add a patch from upstream to fix a theoretical kio-imap infinite loop.
+  * Add a patch to include planet debian and debian times as default in
+    akregator. (Closes: #419899)
+
+  * Add two patches pushed out from kde upstream:
+    - one fixes a nasty crash when filtering messages that might lead to
+      dataloss.
+    - one fixes some template related stuff.
+
+ -- Sune Vuorela <debian@pusling.com>  Fri, 20 Apr 2007 14:52:42 +0100
+
+tdepim (4:3.5.6.dfsg.1-1) experimental; urgency=low
+
+  * New upstream release.
+    - Old unused cruft that misbuilds on 64 bit archs, removed. (Closes: 347478)
+    - Fix korganizer crash. (Closes: 365689)
+    - Fix karm & clipboard. (Closes: 374993)
+    - Reenable more of kpilot. (Closes: #406710)
+    - Fix KOrganizer crash on some .ics files. (Closes: #359197)
+
+  +++ Changes by Sune Vuorela:
+
+  * Update list of non-free files (one has been removed from upstream).
+  * Removed the kpilot patches (patch 25 & 26) (Merged upstream).
+  * Removed branch pull (patch 01) (Merged upstream).
+  * Removed akregator default patch (21) (Merged upstream).
+  * Removed liblink patch (Merged upstream).
+  * Added patch to add warning about dimap usage (patch 26_dimap_warning)
+    (Also closes: #321102)
+  * Remove ancient stuff from kpilot postinst, including debconf.
+  * Add db_purge to kpilot postinst. Currently we don't do debconf.
+  * Remove debconf kpilot templates and translations as well.
+
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+
+  * Now kmail has CRM114 support to anti spam wizard, added crm114 to
+    kmail's Suggests field.
+
+  +++ Changes by Josh Metzler:
+
+  * Add kmail.README explaining the correct way to use Disconnected IMAP and
+    warning that incorrect usage can result in mail loss. (Closes: #321102)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu, 18 Jan 2007 20:52:16 +0100
+
+tdepim (4:3.5.5.dfsg.1-5) unstable; urgency=high
+
+  +++ Changes by Sune Vuorela:
+
+  * Add autoconf2.13 to build-conflicts. (Closes: #404157)
+  * Remove build-dep on libmal-dev, malconduit is not built anymore and
+    libmal is being removed from archive. (Closes: #406005)
+  * Really install kmail.NEWS.Debian (moved from NEWS.Debian).
+    (Closes: #405280)
+  * Update kalarm manpages. Thanks to David Jarvie. (Closes: 405589)
+  * Add norwegian (nb) debconf templates, thanks to Bjorn Steensrud.
+    (Closes: #405595)
+
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+  
+  * Improved packages descriptions.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon,  8 Jan 2007 12:02:18 +0100
+
+tdepim (4:3.5.5.dfsg.1-4) unstable; urgency=high
+
+  * Document workaround for kmail crashing on start after upgrade for users
+    using IMAP with namespaces.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 15 Dec 2006 15:05:38 -0500
+
+tdepim (4:3.5.5.dfsg.1-3) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+
+  * Reenabling more conduits in kpilot. New patch 25 and patch 26 added.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 05 Dec 2006 12:39:47 +0100
+
+tdepim (4:3.5.5.dfsg.1-2) unstable; urgency=medium
+
+  * This release is dedicated to Rembrandt van Rijn for his fast response
+    fixing KPilot. Many thanks.
+
+  +++ Changes by Sune Vuorela:
+
+  * Added 18_optimize_splitAddressInternal.diff to fix lock up on weird
+    headers. It is actually a performance tweak, as it normally continues
+    after 10-15 minutes of non-responding state. Fix by Johannes Schaub. It
+    has a nice side effect to be a general performance boost. (Closes: #398073)
+  * Fixed default value for external browser in akregator. (Patch 21) (Closes: #375233)
+  * Added more suggests of spamfilters to kmail. (Closes: #376250)
+  * Added suggests of gnokii to kontact. (Closes: #377356)
+  * Fixed manpage of akregator to not talk about korganizer. Thanks to Kenny
+    Duffus.
+  * Do not build against bluetooth on !linux. (Closes: #399061)
+  * Slowly starting dependency chain on -dbg packages. Adding tdelibs-dbg to
+    tdepim-dbg depends.
+  * Fixed romanian debconf template. (Closes: #397827)
+  * Do not chmod stuff in kpilot if it is not there (in case of udev).
+    (Closes: #378696)
+  * Added gigantic patch in order to make KPilot works with pilot-link 0.12.0 (patch 25).
+    (Closes: #394534)
+    + The new patch does not build all conduits.
+    + kpilot.install modified because of this.
+    + parts of the branch pull removed as it is included in the kpilot diff.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 21 Nov 2006 02:53:59 +0100
+
+tdepim (4:3.5.5.dfsg.1-1) unstable; urgency=medium
+
+  * Improve KOrganizer's description, from Filipus Klutiero.
+    (Closes: #392468)
+  * Remove non-free IETF docs from the source tarball.
+    Closes: #395082.
+    + Urgency medium for the RC bug fix.
+    + Stop using tarball.mk, since the only reason for that in the first
+      place was to get the source package to consist of a file verifiable
+      using upstream md5sums.  But since we have to repackage now anyway,
+      there's no point to doing this any more.
+    + New patch 16_kde_modulename.diff so that admin/cvs.sh finds the
+      right package name.
+  * Update from SVN branch, revision 600288, except for the changes to
+    libkmime, which break binary compatibility, and the changes to kalarm,
+    which I deem to be too invasive this close to a release.
+    + Absorbs 15_tdepim_debug.diff.
+    + Fixes a problem with korganizer.desktop causing it not to start.
+      Closes: #395940, #395286, #394309.
+
+ -- Daniel Schepler <schepler@debian.org>  Mon, 30 Oct 2006 20:46:01 +0100
+
+tdepim (4:3.5.5-1) unstable; urgency=medium
+
+  * New upstream release.
+    + Fixes korganizer: reminder daemon leaks memory. (Closes: #357043)
+
+  +++ Changes by Daniel Schepler:
+  
+  * Disable asking questions in the kmail d-imap debugging patch, since
+    MadCoder has not been able to trigger mail loss answering yes to
+    all questions.
+  * Add new directory for icon files to libtdepim1a.install.
+  * Urgency medium for the RC bug fixes.
+
+  +++ Changes by Christopher Martin:
+
+  * Improve konsolekalendar's description. (Closes: #384941)
+
+  * Add alpha and ppc64 to the problematic arch list, thus disabling
+    --enable-final and allowing tdepim to build. (Closes: #387419, #388014)
+
+  * Add Romanian debconf translation, thanks to Stan Ioan-Eugen.
+    (Closes: #387589)
+
+  +++ Changes by Pierre Habouzit:
+
+  * Modify the tdepim d-imap debugging patch to be less verbose and intrusive,
+    but keep the rest of the patch, with its slightly safer file handling. No
+    reports of d-imap data loss have surfaced with the recent code, and
+    testing suggests that the problem is fixed.
+    (Closes: #321102, #332473, #350851)
+
+ -- Daniel Schepler <schepler@debian.org>  Sat,  7 Oct 2006 17:44:26 +0200
+
+tdepim (4:3.5.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+   +++ Changes by Fathi Boudra:
+
+  * Branch pull to revision 577416, minus the akregator feeddetector
+    changes which don't build.
+
+  * Added tdepim extra debug information from KDE bug #104956. Users of
+    d-imap will have to put up with extra dialogs, but this is hopefully
+    only until the d-imap data loss issues are worked out (some work on
+    that problem is in this upload, but it hasn't been confirmed to fix
+    the problem).
+
+  * Removed autotools-dev from the Build-Depends; automake1.9 depends on it.
+
+   +++ Changes by Christopher Martin:
+
+  * Packaging sync with the rest of the team KDE packages. Update
+    package descriptions, sync debian-qt-kde.mk and other CDBS
+    stuff (should help building on slow architectures). Also fixes a
+    package description typo. (Closes: #364138)
+
+  * Remove patch that disabled --enable-final for kmail, now that we disable
+    it globally on m68k and arm. We'll see if the other architectures can
+    truly cope.
+
+  * Change dependencies on tdepim-kio-plugins or tdebase-kio-plugins to
+    dependencies on both; simple, and should prevent user error.
+    (Closes: #327821)
+
+  * Make kaddressbook suggest tdebase-kio-plugins for LDAP support.
+    (Closes: #337527)
+
+  * Add Spanish debconf translation. (Closes: #383360)
+
+  * Move libemailfunctions/idmapper.h from tdepim-dev to libkcal2-dev.
+    tdepim-dev depends on libkcal2-dev, so this shouldn't cause any problems.
+    Replaces have been added. (Closes: #342452)
+
+  * Fix small bug in kmail_clamav.sh script. (Closes: #354185)
+
+  * Install ktnef MIME entries to /etc/mailcap. (Closes: #316373)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 26 Aug 2006 13:08:00 -0400
+
+tdepim (4:3.5.3-3) unstable; urgency=high
+
+  * Fix FTBFS due to naive autoconf check. Closes: #378163.
+    (using patch from kubuntu, thanks to J. Riddell).
+  * Urgency set to high due to that problem.
+
+ -- Pierre Habouzit <madcoder@debian.org>  Sun, 16 Jul 2006 16:03:06 +0200
+
+tdepim (4:3.5.6-0ubuntu6) feisty; urgency=low
+
+  * Rebuild on qt 3.3.7
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 26 Mar 2007 22:24:59 +0100
+
+tdepim (4:3.5.6-0ubuntu5) feisty; urgency=low
+
+  * Add kubuntu_12_mass_filter_crash.diff, closes
+    Malone 86578
+  * Add kubuntu_13_build_kpilot.diff, fixes kpilot
+    build issue
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 22 Mar 2007 23:00:12 +0100
+
+tdepim (4:3.5.6-0ubuntu4) feisty; urgency=low
+
+  * Added kubuntu_11_mail_exporter_patch.diff, closes
+    KDE bug #77744
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 05 Feb 2007 18:19:31 +0100
+
+tdepim (4:3.5.6-0ubuntu3) feisty; urgency=low
+
+  * kubuntu_09_install_networkstatus_headers.diff
+    - Install headers files for networkstatus (patch from SuSE)
+  * kubuntu_10_kmail_networkstatus_support.diff
+    - Activates networkstatus support for kmail (patch from SuSE)
+  * debian/control:
+    - New package networkstatus-dev
+  * ./libtdepim1-dev.install: added /usr/include/tde/kpimprefs.h
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 02 Feb 2007 15:37:42 +0100
+
+tdepim (4:3.5.6-0ubuntu2) feisty; urgency=low
+
+  * Add patches from KDE (via Debian)
+   - 03_kmail-templates.patch fixes a bug in the new KMail 
+     templates feature
+   - 04_kmail-140660.patch fixes crash and mail loss on control-J
+     http://bugs.kde.org/show_bug.cgi?id=140660
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 27 Jan 2007 23:22:37 +0000
+
+tdepim (4:3.5.6-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+  * Sync patches with Debian
+  * Remove kubuntu_09_launch_korganiser.diff
+  * Remove kubuntu_05_ktnef_kmenu_tidy.diff, closes bug
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 17 Jan 2007 11:22:30 +0000
+
+tdepim (4:3.5.5-0ubuntu5) feisty; urgency=low
+
+  * Added 15_kalarm_default_console.diff.  Closes malone #20877
+  * Added ${shlibs:Depends} to tdepim Depends, so things like libgpgme11
+    actually get installed.  Closes Malone #51399.  Should start making
+    encyption actually work in kmail too, which will close many other bugs.
+  * Added build-deps libpth-dev, libgpg-error-dev, libgcrypt11-dev,
+    libassuan-dev as recommended in http://kmail.kde.org/kmail-pgpmime-howto.html
+  * Added 16_pretrinity.5.6_save_message_quickly_delete_crash_fix.diff and hoping
+    it will stop most of my crashes!  Patch from kde SVN.
+  * Added knode suggests: kcontrol. Closes Malone #52660
+  * Changed kmail depends from tdepim-kio-plugins | tdebase-kio-plugins to
+    tdepim-kio-plugins, tdebase-kio-plugins so that pop3 mail can be sent.
+    Closes Malone #71101, #76836
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Wed, 27 Dec 2006 15:45:02 +1100
+
+tdepim (4:3.5.5-0ubuntu4) feisty; urgency=low
+
+  * Copied 25_fix_kpilot_feature_pull_thx_vanrijn.diff from Debian. 
+    Thanks to the Debian QT/KDE team. (Closes LP: #66313)
+  * Modified debian/kpilot.* to match the new kpilot.
+  * Remove kubuntu_04_kpalmdoc_kmenu_tidy.diff, kpalmdoc is no more.
+
+ -- Frode M. Døving <frode@ubuntu.com>  Thu, 23 Nov 2006 23:37:43 +0100
+
+tdepim (4:3.5.5-0ubuntu3) feisty; urgency=low
+
+  * Added kubuntu_09_launch_korganiser.diff, closes KDE No 135513
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 22 Nov 2006 09:33:50 +0000
+
+tdepim (4:3.5.5-0ubuntu2) feisty; urgency=low
+
+  * Changed kontact.install and knode.install to put
+    knodeplugin.desktop in knode instead of kontact
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue,  7 Nov 2006 16:54:06 -0800
+
+tdepim (4:3.5.5-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+  * Removed kubuntu_10_imap4_loop.diff, merged upstream
+  * Removed kubuntu_11_dimap_data_loss.diff, merged upstream
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  3 Oct 2006 10:56:06 +0000
+
+tdepim (4:3.5.4-0ubuntu7) edgy; urgency=low
+
+  * Remove kubuntu_09_kmail_addressbook.diff.  No longer necessary and causes problems.
+    Closes Malone #47919
+
+ -- Rocco Stanzione <grasshopper@linuxkungfu.org>  Thu, 24 Aug 2006 23:01:01 -0500
+
+tdepim (4:3.5.4-0ubuntu6) edgy; urgency=low
+
+  * Make kontact depend on kmail, korganizer, kaddressbook
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon,  2 Oct 2006 16:59:38 +0100
+
+tdepim (4:3.5.4-0ubuntu5) edgy; urgency=low
+
+  * Add patch kubuntu_11_dimap_data_loss.diff from KDE branch to resolve 
+    dimap data loss issues, should fix https://bugs.kde.org/134292
+
+ -- Fathi Boudra <fboudra@free.fr>  Tue, 19 Sep 2006 13:53:34 +0200
+
+tdepim (4:3.5.4-0ubuntu4) edgy; urgency=low
+
+  * Rebuilt with new libpisock. 
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Mon, 18 Sep 2006 12:13:56 +0200
+
+tdepim (4:3.5.4-0ubuntu3) edgy; urgency=low
+
+  * Rebuild with latest cdbs to add gettext domain to .desktop files for
+    langpacks-desktopfiles-kde, no source changes
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  5 Sep 2006 22:53:13 +0000
+
+tdepim (4:3.5.4-0ubuntu2) edgy; urgency=low
+
+  * Rebuild now that gpgsm is in main
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  2 Aug 2006 10:01:13 +0000
+
+tdepim (4:3.5.4-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 25 Jul 2006 10:12:19 +0000
+
+tdepim (4:3.5.3-2ubuntu4) edgy; urgency=low
+
+  * Add gpgsm as build-dep, all dependencies have passed main inclusion
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 20 Jul 2006 12:58:09 +0100
+
+tdepim (4:3.5.3-2ubuntu3) edgy; urgency=low
+
+  * Rebuild to get rid of libfam.la usage, no changes
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 13 Jul 2006 15:08:51 +0000
+
+tdepim (4:3.5.3-2ubuntu2) edgy; urgency=low
+
+  * Remove build-dep on libgnokii3-dev, it failed main inclusion review.
+  * Remove gpgsm build-dep until it's fully in main
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 11 Jul 2006 21:54:29 +0000
+
+tdepim (4:3.5.3-2ubuntu1) edgy; urgency=low
+
+  * Sync with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  4 Jul 2006 11:26:27 +0000
+
+tdepim (4:3.5.3-2) unstable; urgency=low
+
+  * Rebuild against libgnokii3-dev and libbluetooth2-dev.
+  * New patch 15_groupwise_alpha.diff: fix FTBFS on alpha (again).
+    Closes: #353922.
+
+ -- Daniel Schepler <schepler@debian.org>  Sat,  1 Jul 2006 11:23:08 -0400
+
+tdepim (4:3.5.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Include fixes on branch up to svn revision 555847.
+  * New debconf translations:
+    + Galician.  Closes: #361209.
+    + Russian.  Closes: #367207.
+    + Lithuanian.  Closes: #374447.
+    + Basque.  Closes: #374829.
+  * Rework 14_kmail_filter_icons.diff.
+
+ -- Daniel Schepler <schepler@debian.org>  Wed, 28 Jun 2006 11:58:50 -0400
+
+tdepim (4:3.5.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove package-specific DEB_DH_SHLIBDEPS_ARGS_pkg hack, now that
+    cdbs includes it, and Build-Depend on the appropriate version of
+    cdbs.
+
+ -- Daniel Schepler <schepler@debian.org>  Wed, 29 Mar 2006 19:46:16 +0200
+
+tdepim (4:3.5.1-2) unstable; urgency=medium
+
+  * Update to SVN branches/KDE/3.5, up to revision 518856.
+    + Fixes a FTBFS on alpha.  Closes: #353922.
+    + Adjust *.install files to account for disabled blogging plugin.
+  * New debconf translations:
+    + Czech.  Closes: #289455.
+    + Swedish.  Closes: #333092.
+    + Italian.  Closes: #349343.
+  * Set urgency=medium for the RC bug fix on alpha.
+
+ -- Daniel Schepler <schepler@debian.org>  Wed, 15 Mar 2006 21:26:09 +0100
+
+tdepim (4:3.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daniel Schepler <schepler@debian.org>  Wed,  1 Feb 2006 10:17:03 +0100
+
+tdepim (4:3.5.0-5) unstable; urgency=low
+
+  * New package: tdepim-dbg, to make debugging symbols available.
+  * Add Build-Depends on libboost-dev for indexlib.
+
+ -- Daniel Schepler <schepler@debian.org>  Tue, 17 Jan 2006 13:15:38 +0100
+
+tdepim (4:3.5.0-4) unstable; urgency=low
+
+  * Upload to unstable.
+  * No longer build with g++-3.4 on any architecture, since g++-4.0
+    should be fixed.
+  * Update to SVN branches/KDE/3.5, up to revision 496049.
+    + Bump shlibs version on libkcal2b.
+
+ -- Daniel Schepler <schepler@debian.org>  Mon,  9 Jan 2006 21:06:19 +0100
+
+tdepim (4:3.5.0-3) experimental; urgency=low
+
+  * Upload to experimental.
+  * New patch 14_kmail_filter_icons.diff: update user config files to
+    reflect changed icon names for spam/ham filters.
+
+ -- Daniel Schepler <schepler@debian.org>  Mon, 19 Dec 2005 22:10:28 +0100
+
+tdepim (4:3.5.0-2) alioth; urgency=medium
+
+  * Update from SVN 3.5 branch.
+    + Fixes a serious bug with filtering to IMAP folders.
+
+ -- Daniel Schepler <schepler@debian.org>  Sun, 11 Dec 2005 20:24:08 +0100
+
+tdepim (4:3.5.0-1) alioth; urgency=low
+
+  * New upstream release.
+  * Bump debian/compat to 5.  No changes necessary.
+  * Rename libkleopatra0a to libkleopatra1 due to SONAME change.
+  * New packages: libindex0 and libindex0-dev.
+
+ -- Daniel Schepler <schepler@debian.org>  Tue,  6 Dec 2005 11:18:32 +0100
+
+tdepim (4:3.4.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Apply changes from SVN 3.4 branch.
+    + Fixes a FTBFS with newer versions of g++-4.0.
+  * Rename libmimelib1c2 to libmimelib1c2a due to C++ allocator changes.
+  * New patch 13_mimelib_self_contained.diff:
+    + Link against libtdefakes_pic.a instead of -ltdefakes to
+      eliminate mimelib's dependency on tdelibs.
+    + Fix mimelib/config.h not to require the KDE or QT headers again.
+      This allows dropping the libtdepim-dev dependency from
+      libmimelib1-dev.
+  * Adjust Build-Depends to ensure a version of tdelibs with the
+    allocator changes.
+
+ -- Daniel Schepler <schepler@debian.org>  Thu,  1 Dec 2005 19:59:09 +0100
+
+tdepim (4:3.5.2-0ubuntu6) dapper; urgency=low
+
+  * debian/cdbs/kde.mk:
+    - added dh_iconcache.
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Sun, 21 May 2006 16:38:54 +0200
+
+tdepim (4:3.5.2-0ubuntu5) dapper; urgency=low
+
+  * Add kubuntu_11_korganizer_event.diff to fix Korganizer crash when adding
+    new event (Closes: Malone #39419)
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Fri,  5 May 2006 14:21:53 +0200
+
+tdepim (4:3.5.2-0ubuntu4) dapper; urgency=low
+
+  * Update kubuntu_06_add_akregator_feed.diff, add Planet Ubuntu
+    closes Malone #38719
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  5 May 2006 11:42:44 +0100
+
+tdepim (4:3.5.2-0ubuntu3) dapper; urgency=low
+
+  * Add kubuntu_10_imap4_loop.diff from Dirk Mueller
+    "When a message is sent to a kmail user with a > 71 characters long filename in
+     the content disposition header and tdeio_imap4 was compiled with gcc >= 4.0,
+     then it goes into an endless loop eating up all available system memory."
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  4 May 2006 19:07:10 +0100
+
+tdepim (4:3.5.2-0ubuntu2) dapper; urgency=low
+
+  * Edit debian/cdbs/kde.mk to mark .po files as UTF-8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 21 Apr 2006 19:14:30 +0100
+
+tdepim (4:3.5.2-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 20 Mar 2006 23:43:38 +0000
+
+tdepim (4:3.5.1-0ubuntu4) dapper; urgency=low
+
+  * Add kubuntu_08_kalarm_autostart_kdeonly to prevent kalarm from starting
+    automatically on GNOME (Closes: Malone #31923). 
+  * Add kubuntu_09_kmail_addressbook so kmail access addressbook contacts when
+    composing.  Fixes http://bugs.kde.org/121337
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Sat,  4 Mar 2006 17:41:05 +0100
+
+tdepim (4:3.5.1-0ubuntu3) dapper; urgency=low
+
+  * Fixed akregator manpage closes
+    https://launchpad.net/distros/ubuntu/+source/tdepim/+bug/30753
+  * Fix by Kenny Duffus <kenny@duffus.org>
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 17 Feb 2006 11:36:11 +0000
+
+tdepim (4:3.5.1-0ubuntu2) dapper; urgency=low
+
+  * Add kubuntu_07_autostart_kdeonly.diff
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  9 Feb 2006 13:01:11 +0000
+
+tdepim (4:3.5.1-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Install /usr/share/services/kontact/ desktop files in their supporting
+    programs, not kontact
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 23 Jan 2006 14:26:07 +0000
+
+tdepim (4:3.5.0-0ubuntu4) dapper; urgency=low
+
+  * Install multisynk.desktop in kitchensync not Kontact, 
+    stop empty icon displaying.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 18 Jan 2006 14:53:52 +0000
+
+tdepim (4:3.5.0-0ubuntu3) dapper; urgency=low
+
+  * Increase version number on Replaces for tdepim-tderesources
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  6 Jan 2006 18:42:44 +0000
+
+tdepim (4:3.5.0-0ubuntu2) dapper; urgency=low
+
+  * Add kubuntu_07_branch_fixes.diff from KMail developers
+    fixes http://bugs.kde.org/show_bug.cgi?id=113730
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  9 Dec 2005 23:00:48 +0000
+
+tdepim (4:3.5.0-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Remove GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  6 Dec 2005 12:28:46 +0000
+
+tdepim (4:3.5-rc2-0ubuntu2) dapper; urgency=low
+
+  * s/Depends/Build-Depends/ in control
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 26 Nov 2005 18:56:44 +0000
+
+tdepim (4:3.5-rc2-0ubuntu1) dapper; urgency=low
+
+  * New upstream pre-release
+  * Generate .pot files
+  * Sync with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 21 Nov 2005 21:38:28 +0000
+
+tdepim (4:3.5-rc1-0ubuntu1) dapper; urgency=low
+
+  * New upstream pre-release
+  * Sync with Debian
+  * Remove kubuntu_02_kalarm_kmenu_tidy.diff (now X-TDE-PIM, not X-TDE-More)
+  * Remove kubuntu_03_karm_kmenu_tidy.diff
+  * libkleopatra0a now libkleopatra1
+  * libkleopatra0-dev now libkleopatra1-dev
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 13 Nov 2005 18:09:20 +0000
+
+tdepim (4:3.4.2-2) unstable; urgency=medium
+
+  +++ Changes by Adeodato Simó:
+
+  * Build with g++-3.4 on arm, m68k and hppa. Closes: #327594
+  * Add kitchensync as a dependency of tdepim-dev. Closes: #327159
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 21 Sep 2005 17:45:43 +0200
+
+tdepim (4:3.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bugs fixed in past experimental versions but filed with BTS
+    afterwards:
+    + Compiles on amd64 with g++-4.0.  Closes: #293107.
+    + tdepim-wizards support libraries were mistakenly in tdepim-dev.
+      Closes: #315560.
+    + *.sh manpages in kmail.  Closes: #319808.
+  * Reenable gnokii support since the license issues have now been
+    resolved.
+  * Yet more ABI breakages:
+    + libtdepim1 -> libtdepim1a.  Closes: #312310.
+    + libkcal2a -> libkcal2b.  Closes: #312318.
+  * C++ transition:
+    + Tighten Build-Depends on tdelibs4-dev to new enough version.
+    + Rename libmimelib1a -> libmimelib1c2 in order not to break
+      lurker.  Also split out libkmime2 from this package while I'm
+      at it so that lurker users don't have to install tdelibs4 --
+      at least, they won't have to once I can link libtdefakes statically
+      into mimelib (see bug #326113).
+  * Add Vietnamese debconf translation.  Closes: #312159.
+  * Remove 10_korganizer_makefile.diff, which has been applied in
+    upstream SVN and thus is included in the tdepim_branch patch.
+  * Remove obsolete Conflicts and Replaces on packages not in sarge.
+  * Fix command synopsis in kabc2mutt manpage.  Closes: #324958.
+
+ -- Daniel Schepler <schepler@debian.org>  Thu,  1 Sep 2005 15:17:12 -0700
+
+tdepim (4:3.4.1-2) UNRELEASED; urgency=low
+
+  * Move libraries for egroupware, kolab, slox wizards to tdepim-wizards
+    where they belong.  Thanks to Reinhold Kainhofer for reporting the
+    issue.
+
+ -- Daniel Schepler <schepler@debian.org>  Fri,  3 Jun 2005 08:57:02 -0700
+
+tdepim (4:3.4.1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Split tderesources into new package tdepim-tderesources.
+  * Split tdepimmacros.h into new package libtdepim1-dev, and make all
+    the other -dev packages depend on it.
+
+ -- Daniel Schepler <schepler@debian.org>  Thu,  2 Jun 2005 21:45:31 -0700
+
+tdepim (4:3.4.3-0ubuntu4) dapper; urgency=low
+
+  * Actually build-depend on g++-3.4 on hppa.
+
+ -- LaMont Jones <lamont@ubuntu.com>  Fri, 11 Nov 2005 09:57:38 -0700
+
+tdepim (4:3.4.3-0ubuntu3) breezy-updates; urgency=low
+
+  * Add back gpgme11-dev build-dep, http://bugzilla.ubuntu.com/17546
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 14 Oct 2005 13:10:47 +0000
+
+tdepim (4:3.4.3-0ubuntu2) breezy; urgency=low
+
+  * Add kubuntu_06_add_akregator_feed.diff add kubuntu.org and fridge
+    feeds as default
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 10 Oct 2005 19:14:19 +0100
+
+tdepim (4:3.4.3-0ubuntu1) breezy; urgency=low
+
+  * New upstream release
+  * Remove gpgme11-dev build-dep
+  * Build with GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  7 Oct 2005 16:41:29 +0000
+
+tdepim (4:3.4.2-0ubuntu2) breezy; urgency=low
+
+  * Add kubuntu_07_korganiser_libraries.diff fix compile order
+  * Add kubuntu_08_kmail_attachments.diff fix empty attachments http://bugs.kde.org/109003
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  3 Aug 2005 11:51:41 +0000
+
+tdepim (4:3.4.2-0ubuntu1) breezy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 28 Jul 2005 11:35:01 +0000
+
+tdepim (4:3.4.1-0ubuntu4) breezy; urgency=low
+
+  * Rebuild for removed libXcursor.la and tighten tdelibs dependency
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 24 Jul 2005 23:58:51 +0000
+
+tdepim (4:3.4.1-0ubuntu3) breezy; urgency=low
+
+  * Add back flex build-dep which somehow went missing.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 21 Jul 2005 13:03:06 +0000
+
+tdepim (4:3.4.1-0ubuntu2) breezy; urgency=low
+
+  * Rebuild for libXrender.la changes
+  * Add build-dep on libxfixes-dev
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 20 Jul 2005 23:11:42 +0000
+
+tdepim (4:3.4.1-0ubuntu1) breezy; urgency=low
+
+  * Update version number following KDE 3.4.1 release
+  * Add all dependencies back to meta package
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed,  1 Jun 2005 00:51:23 +0000
+
+tdepim (4:3.4.1-0ubuntu0pre2) breezy; urgency=low
+
+  * Add kubuntu_06_kpilot_tag_to_branch.diff, patch from upstream to
+    prevent data loss.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Fri, 27 May 2005 15:28:51 +0000
+
+tdepim (4:3.4.1-0ubuntu0pre1) breezy; urgency=low
+
+  * New upstream release
+  * Sync with Debian
+  * Remove obsolete script korganizerIn
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 25 May 2005 17:37:34 +0000
+
+tdepim (4:3.4.0-0ubuntu10) hoary; urgency=low
+
+  * Add /usr/share/doc/tde/HTML/en/kcontrol/kalarmd/ to
+    tdepim-doc-html to prevent dhelp error
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 30 Mar 2005 18:05:50 +0000
+
+tdepim (4:3.4.0-0ubuntu9) hoary; urgency=low
+
+  * Remove duplicate files from tdepim-dev for libkleopatra0-dev and libkgantt0.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 30 Mar 2005 04:45:07 +0000
+
+tdepim (4:3.4.0-0ubuntu8) hoary; urgency=low
+
+  * Move wizards from tdepim-dev to tdepim-wizards, removes conflicing files.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 30 Mar 2005 04:45:46 +0100
+
+tdepim (4:3.4.0-0ubuntu7) hoary; urgency=low
+
+  * remoded double depends and a conflict on libkcal2-dev
+
+ -- Andreas Mueller <amu@ubuntu.com>  Tue, 29 Mar 2005 23:53:25 +0000
+
+tdepim (4:3.4.0-0ubuntu6) hoary; urgency=low
+
+  * added tdepim-dev as dep of libkcal2-dev
+  * fixed some typo's
+  * added missing egroupware libs
+
+ -- Andreas Mueller <amu@ubuntu.com>  Tue, 29 Mar 2005 13:53:12 +0000
+
+tdepim (4:3.4.0-0ubuntu5) hoary; urgency=low
+
+  * Removed gpgsm from builddepens 
+  * final sync with kde-branch / backporting cool stuff
+  * Removed kleopatra from kmail depends
+
+ -- Andreas Mueller <amu@ubuntu.com>  Thu, 24 Mar 2005 17:11:22 +0000
+
+tdepim (4:3.4.0-0ubuntu4) hoary; urgency=low
+
+  * Readded cyrpto support for kmail
+  * Readded kleopatra for kmail
+  * Fixed a replaces on akregator
+  * Added gpgsm as a build depends
+
+ -- Andreas Mueller <amu@ubuntu.com>  Tue, 22 Mar 2005 18:45:04 +0000
+
+tdepim (4:3.4.0-0ubuntu3) hoary; urgency=low
+
+  * Removed crypto support for kmail.
+  * Removed depends on Kleopatra for kmail.
+  * Fixed a replaces for knef.
+       
+ -- Andreas Mueller <amu@ubuntu.com>  Thu, 17 Mar 2005 18:05:34 +0000
+
+tdepim (4:3.4.0-0ubuntu2) hoary; urgency=low
+
+  * Remove korn dependency from tdepim meta-package.
+  * Fix kubuntu_01_kmenu_tidy.diff
+  * Add further patches to tidy menu
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu, 17 Mar 2005 01:49:54 +0000
+
+tdepim (4:3.4.0-0ubuntu1) hoary; urgency=low
+
+  * Remove korn dependency from tdepim meta-package.
+  * Add kubuntu_01_kmenu_tidy.diff to tidy up kmenu.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 16 Mar 2005 23:58:26 +0000
+
+tdepim (4:3.4.0-0pre1ubuntu4) hoary; urgency=low
+
+  * fixed  wrong depends in kmail for kleopatra.
+  
+ -- Andreas Mueller <amu@ubuntu.com>  Wed, 16 Mar 2005 21:19:16 +0000
+
+tdepim (4:3.4.0-0pre1ubuntu3) hoary; urgency=low
+
+  * Removed them again, cause it cant move to main. 
+  * Added tdepim-kio-pluging as installdepends for kmail
+    in case someone run only kmail.
+  * Changed suggest kleopatra to depends for gpg decrypt
+    support.     
+  * More lintian cleanup. 
+
+ -- Andreas Mueller <amu@ubuntu.com>  Wed, 16 Mar 2005 19:02:50 +0000
+
+tdepim (4:3.4.0-0pre1ubuntu2) hoary; urgency=low
+
+  * Added gpgsm build depends
+
+ -- Andreas Mueller <amu@ubuntu.com>  Mon, 14 Mar 2005 01:35:50 +0100
+
+tdepim (4:3.4.0-0pre1ubuntu1) hoary; urgency=low
+
+  * New packages: kode, networkstatus.
+  * New groupware wizards added to menu
+  * Added imap-patch for Kolab 
+  * Added gpg/smime/smartcard stuff
+
+ -- Andreas Mueller <amu@ubuntu.com>  Fri, 11 Mar 2005 00:20:53 -0800
+
+tdepim (4:3.4.0-0pre1) alioth; urgency=low
+
+  * New upstream release.
+  * Change to using upstream tar.bz2.
+  * New packages: kode, networkstatus.
+  * Absorb akregator package.  Thanks to Pierre Habouzit for his fine work
+    on this package up until now.
+  * libtdenetwork2 split upstream into libkmime, which is now in the
+    libmimelib1a package, and libkpgp, which is now in the libkleopatra0a
+    package.
+  * Split off libktnef1 from the ktnef package since libkcal now depends
+    on it.
+    + Also split libktnef1-dev from tdepim-dev.
+  * Keep kmail's *.sh manpages from being installed in
+    /usr/share/man/sh/man1.
+
+ -- Daniel Schepler <schepler@debian.org>  Sat, 12 Mar 2005 21:41:20 -0800
+
+tdepim (4:3.3.2-3) unstable; urgency=medium
+
+  * KDE_3_3_BRANCH update.
+  * Move kleopatra to main, now that gnupg2 is in the archive.
+    Closes: #281689, #300499.
+  * Update kmail/kleopatra dependencies accordingly.
+  * Set urgency to medium to hopefully get these changes into sarge.
+  * Add Recommends on procmail to kmail, which is needed for fetching
+    mbox mail.
+  * Tighten libtool build dependency.  This closes half of #285882,
+    while the other half is really a tdelibs issue.
+  * Include the GFDL in debian/copyright, since the handbooks are
+    licensed under it.
+  * Update the list of licenses.
+
+ -- Daniel Schepler <schepler@debian.org>  Sun,  3 Apr 2005 20:23:43 -0700
+
+tdepim (4:3.3.2-2) unstable; urgency=low
+
+  * Disable gnokii support again until bug #266566 is resolved.
+  * Update from KDE_3_3_BRANCH.
+  * Fixed the kmailcvt description to refer to mail folders instead of
+    address books.  Closes: #252668.
+    Also expanded the description a bit to list some supported import
+    formats.
+  * Kontact conflicts with obsolete kontact-plugins package.
+    Closes: #292997.
+  * Add Build-Depends on graphviz to get class hierarchy graphs.
+
+ -- Daniel Schepler <schepler@debian.org>  Tue,  1 Mar 2005 05:20:08 -0800
+
+tdepim (4:3.3.2-1) unstable; urgency=low
+
+  * Uploading to unstable.
+  * Include updates from KDE_3_3_BRANCH.
+  * Reenable gnokii support.
+
+ -- Daniel Schepler <schepler@debian.org>  Wed, 19 Jan 2005 18:20:43 -0800
+
+tdepim (4:3.3.2-0pre1) experimental; urgency=low
+
+  * New upstream release.
+  * They did it again... rename libkcal2 to libkcal2a because of removed
+    symbols SloxAccounts::self(), SloxAccounts::setServer(QString const&),
+    SloxAccounts::SloxAccounts() in libkslox.so.
+  * Bump shlibs version on libtdepim1.
+
+ -- Daniel Schepler <schepler@debian.org>  Fri, 17 Dec 2004 20:45:39 -0800
+
+tdepim (4:3.3.1-3) unstable; urgency=medium
+
+  * Disable gnokii support to attempt getting trinity.3 into sarge.
+    Closes: #284985.
+  * Disable final mode for compiling kmail, which will hopefully fix
+    the buildd timeouts.
+
+ -- Daniel Schepler <schepler@debian.org>  Sat, 11 Dec 2004 15:50:44 -0800
+
+tdepim (4:3.3.1-2) unstable; urgency=medium
+
+  * Urgency medium due to fix for buildd issues.
+  * Updates from KDE_3_3_BRANCH.
+  * Stop building static libraries to make buildd's happy (or at least
+    happier).  They were pretty useless anyway without static versions
+    of Qt or tdelibs.  Closes: #281955.
+  * Update kleopatra dependencies for current experimental gnupg2/gpgsm
+    packages.  Closes: #274611, #280759.
+  * Drop cryptplug from kmail's dependencies, since it's no longer used.
+    Closes: #274612.
+  * Add blurb about tdepim-kio-plugins and tdebase-kio-plugins
+    dependencies to kmail's description, due to the number of people who
+    somehow manage to install kmail without even noticing the Recommends
+    on these packages, then complain that things don't work.
+    Closes: #274657.
+
+ -- Daniel Schepler <schepler@debian.org>  Sun, 21 Nov 2004 15:04:40 -0800
+
+tdepim (4:3.3.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Rename 01_tdepim_branch.diff to 10_tdepim_branch.diff, and
+    other tdepim-specific patches to 2?_*.diff.
+  * New patch 04_disable_static_la_final.diff, to keep --enable-final
+    from messing up the static libraries.
+    + debian/rules: Reenable --enable-final.
+  * kde.mk: Add calls to dh_desktop.
+    + debian/control: Build-Depends on debhelper (>= 4.2.21) to ensure
+      dh_desktop is available.
+  * Correct URL in kleopatra description.  Closes: #275522.
+  * Bump shlibs version to require current version.  Closes: #275211.
+  * Package name change: libmimelib1 -> libmimelib1a, because of
+    missing DwHeaders::AllFieldBodiesAsString(DwString const&) (at least)
+    since version 4:3.2.3-1.  Closes: #276607.
+  * Package name change: libkleopatra0 -> libkleopatra0a, because of
+    missing symbols since last version:
+    + Kleo::Job::showErrorDialog(QWidget*) const
+    + Kleo::KeyListView::parentFor(QCString const&) const
+    + Kleo::KeyListView::refillFingerprintDictionary()
+    + Kleo::QGpgMEEncryptJob::showErrorDialog(QWidget*) const
+    + Kleo::QGpgMESignEncryptJob::showErrorDialog(QWidget*) const
+    + Kleo::QGpgMESignJob::showErrorDialog(QWidget*) const
+    + Kleo::KeyListViewItem::~KeyListViewItem().
+
+    To KDE upstream maintainers: every time you break binary compatibility
+    like this in a public library, I'm going to have to increase the
+    library "subversion" in the package name, which will delay packages
+    entering sid.  Please keep this in mind before making such changes, if
+    the rule that non-backward-compatible changes require a new SONAME
+    carries no weight with you.
+
+ -- Daniel Schepler <schepler@debian.org>  Sat,  6 Nov 2004 12:18:42 -0800
+
+tdepim (4:3.3.0-3) unstable; urgency=low
+
+  * Updates from KDE_3_3_BRANCH.
+    + Fixes konsolekalendar.  Closes: #269295.
+  * Move kleopatra to contrib for now, until GnuPG2 is in unstable.  In
+    the meantime, add a note to the package description on how to
+    install the package.  Closes: #269789.
+  * Move binary dependencies from kontact-plugins for korganizer and
+    kpilot to Recommends and Suggests, respectively.  Closes: #273402.
+  * kmailcvt Depends: kmail.  Closes: #268788.
+
+ -- Daniel Schepler <schepler@debian.org>  Sat, 25 Sep 2004 19:44:44 -0700
+
+tdepim (4:3.3.0-2) unstable; urgency=low
+
+  * Using automake1.7 doesn't fix the korganizer install problems; go to
+    automake1.9 and readd 03_automake1.8.diff and
+    04_korganizer_makefile.diff.
+  * New patch 05_lib_link.diff: Correct link lines for libkalarmd and
+    libkpilot so that they are linked against all necessary libraries.
+  * Include new fixes from KDE_3_3_BRANCH.
+
+ -- Daniel Schepler <schepler@debian.org>  Fri, 27 Aug 2004 07:25:15 -0700
+
+tdepim (4:3.3.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add German debconf translations, thanks to Erik Schanze.
+    Closes: #264825.
+  * Correct typo in kpilot.install which caused file conflicts.
+    Closes: #266311.
+  * Add Recommends: tdepim-kio-plugins to kmail for newimap, and also
+    move tdebase-kio-plugins there from Depends.  Closes: #266603.
+  * Use automake1.7 instead of 1.8 to work around problem in
+    korganizer/Makefile.am.
+
+ -- Daniel Schepler <schepler@debian.org>  Wed, 25 Aug 2004 00:09:09 -0400
+
+tdepim (4:3.2.92+3.3.0rc1-1) experimental; urgency=low
+
+  * New upstream release.
+    + New packages: tdepim-wizards, kitchensync, libkleopatra0[-dev],
+      libkpimidentities1.
+    + Removed packages: libkdgantt0[-dev].
+    + Renamed kgpgcertmanager to kleopatra.
+  * Taking over maintainership, add myself to Uploaders.
+  * Build in gnokii support again.  Closes: #254643.
+  * Add Build-Depends on libgpgme11-dev for kmail.
+  * Make the *.install files a bit more robust by listing directories
+    clearly belonging to packages instead of listing each individual
+    file.
+  * Add tdepim-doc-html package for the benefit of non-KDE users.
+  * Expand package descriptions.  Closes: #209672, #209689, #209862,
+    #209997, #210088, #210094.
+  * Add menu icons.
+  * Add doc-base files for tdepim-doc and tdepim-doc-html.
+  * Write new manual pages for all binaries.
+
+ -- Daniel Schepler <schepler@debian.org>  Sat,  7 Aug 2004 23:20:22 -0700
+
+tdepim (4:3.2.3-1) unstable; urgency=high
+
+  * New upstream release.
+  * kmail Suggests: cryptplug. (Closes: #231797)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Tue,  3 Aug 2004 23:00:00 -0500
+
+tdepim (4:3.2.2-2) unstable; urgency=high
+
+  * Build-Conflicts: gnokii - due to gnokii not being properly maintained.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Mon, 26 Apr 2004 22:00:00 -0500
+
+tdepim (4:3.2.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/*.menu: remove the obsolete kderemove tag.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Fri, 16 Apr 2004 19:00:00 -0500
+
+tdepim (4:3.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added Danish and Japanese po-debconf translations. (Closes: #233579)
+  * Added Brazilian Portuguese po-debconf translations. (Closes: #235461)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sat,  6 Mar 2004 17:00:00 -0600
+
+tdepim (4:3.2.0-0pre1v1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Fri, 20 Feb 2004 01:00:00 -0600
+
+tdepim (4:3.1.95-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Thu, 29 Jan 2004 04:00:00 -0600
+
+tdepim (4:3.1.5-1.1) unstable; urgency=low
+
+  * NMU with Maintainers permission
+  * New patch: 07_libmal1_support.diff from Ludovic Rousseau (Closes: #232500, #217013)
+
+ -- Riku Voipio <riku.voipio@iki.fi>  Sun, 15 Feb 2004 11:06:49 +0000
+
+tdepim (4:3.1.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added libtool arm patch.
+  * Added debconf /dev/pilot question to kpilot. (Closes: #218665)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Wed, 14 Jan 2004 02:00:00 -0600
+
+tdepim (4:3.1.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added patch to update autotools files.
+  * Added patch to remove pedantic-errors from KDE_CHECK_FUNC_EXT since it
+    causes configure checks to fail due to #line numbers being > 32767.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sat, 18 Oct 2003 02:00:00 -0500
+
+tdepim (4:3.1.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sun,  3 Aug 2003 23:00:00 -0500
+
+tdepim (4:3.1.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Mon, 26 May 2003 22:00:00 -0500
+
+tdepim (4:3.1.1-1) unstable; urgency=low
+
+  * New upstream.
+  * Redo debian dir.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Wed, 12 Mar 2003 17:00:00 -0600
+
+tdepim (4:2.2.2-5.2) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team
+  * Added special detection routine for big/little endianess on MIPS since
+    the line "byteorder : {big|little} endian" from /proc/cpuinfo was
+    removed as of Linux 2.4.20, resulting in the mipsel buildd being
+    unable to build this package.
+
+ -- Martin Schulze <joey@infodrom.org>  Wed,  8 Jan 2003 21:24:12 +0100
+
+tdepim (4:2.2.2-5.1) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team
+  * Applied upstream patches to fix several potential vulnerabilities.
+    http://www.kde.org/info/security/advisory-20021220-1.txt
+
+ -- Martin Schulze <joey@infodrom.org>  Mon,  6 Jan 2003 09:16:08 +0100
+
+tdepim (4:2.2.2-5) unstable; urgency=HIGH
+
+  * Change Maintainer to Chris.
+  * Change || in Build-Deps to |. (closes: #130183)
+  * Apply silly fix for silly PowerPC to fix a silly bug because it stupidly
+    doesn't automatically link in -lgcc. Thanks to Kevin Puetz.
+  * Urgency high because it fixes one real and one potental RC.
+
+ -- Daniel Stone <daniel@sfarc.net>  Wed, 27 Feb 2002 17:18:47 +1100
+
+tdepim (4:2.2.2-4) unstable; urgency=low
+
+  * libical/src/libical/icalyacc.y:
+    - Fix bison errors; thanks, Andrew Suffield. (closes: #124383)
+  * debian/control:
+    - Fix spelling errors. (closes: #124778)
+  * debian/{alarmd,ical2vcal}.sgml, debian/korganizer.manpages, debian/rules:
+    - New manpages.
+  * debian/rules:
+    - Clean up *-stamp in debian-clean.
+  * debian/control:
+    - automake1.5 stuffs up our automake Build-Depend, GAH.
+  * debian/control, debian/rules:
+    - Remove all index.cache.bz2 files in the debian-clean target.
+    - Get rid of other crap while I'm here.
+
+ -- Daniel Stone <daniel@sfarc.net>  Tue, 18 Dec 2001 13:45:28 +1100
+
+tdepim (4:2.2.2-3) unstable; urgency=low
+
+  * New maintainer. (closes: #114106) 
+  * libdif/ldif.c:
+    - Kowtow to gcc3 (well, g++-3)'s fascist sticking to standards, add "using
+    namespace std;" - enable building on hppa.
+  * debian/korganizer.sgml, debian/kpilot.sgml, debian/kandy.sgml:
+    - New manpages.
+  * debian/rules:
+    - Be sure to clean up auto* crap.
+
+ -- Daniel Stone <daniel@sfarc.net>  Fri, 30 Nov 2001 21:53:31 +1100
+
+tdepim (4:2.2.2-2) unstable; urgency=low
+
+  * Sync with upstream
+  * Cleanup documentation for freeze
+  * Update Build-Depends, deps, etc.
+  * Cleanup build process
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 29 Nov 2001 04:10:00 -0700
+
+tdepim (4:2.2.2-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 07 Nov 2001 19:38:00 -0700
+
+tdepim (4:2.2.1-1.5) unstable; urgency=low
+
+  * Don't search for auto* as it hoses things
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 08 Oct 2001 19:38:00 -0700
+
+tdepim (4:2.2.1-1.4) unstable; urgency=low
+
+  * fix configure
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 05 Oct 2001 01:11:00 -0700
+
+tdepim (4:2.2.1-1.3) unstable; urgency=low
+
+  * Don't use automake since it's hosed
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 03 Oct 2001 01:11:00 -0700
+
+tdepim (4:2.2.1-1.2) unstable; urgency=low
+
+  * Remove libical (Closes: #113668)
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 27 Sep 2001 01:11:00 -0700
+
+tdepim (4:2.2.1-1.1) unstable; urgency=low
+
+  * Fix overwrite (Closes: #112974)
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 23 Sep 2001 18:18:00 -0700
+
+tdepim (4:2.2.1-1) unstable; urgency=low
+ 
+  * new upstream version 2.2.1
+  * Change maintainer
+  * Lintian fixes
+  * Break out libical packages again
+  * Provide undocumented link (Closes: #110361)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 07 Sep 2001 12:07:00 -0700
+
+tdepim (4:2.2.0-final-1) unstable; urgency=low
+ 
+  * new upstream version 2.2
+  * Hack build for hppa (Closes: #108273)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 12 Aug 2001 01:55:00 -0700
+
+tdepim (4:2.2.0-0beta1-5) unstable; urgency=low
+ 
+  * Sync with upstream
+  * gcc3 build fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 26 Jul 2001 20:28:00 -0700
+
+tdepim (4:2.2.0-0beta1-4) unstable; urgency=low
+ 
+  * Sync with upstream
+  * More alpha build fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 07 Jul 2001 03:38:00 -0700
+
+tdepim (4:2.2.0-0beta1-3) unstable; urgency=low
+ 
+  * Sync with upstream
+  * Recommend kghostview (Closes: #103585)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 05 Jul 2001 09:08:00 -0700
+
+tdepim (4:2.2.0-0beta1-2) unstable; urgency=low
+ 
+  * sync with upstream
+  * Autobuild for alpha now
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 03 Jul 2001 02:35:00 -0700
+
+tdepim (4:2.2.0-0beta1-1) unstable; urgency=low
+ 
+  * Fix overwrites (Closes: #102855)
+  * sync with upstream
+  * build fixes for mips
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 30 Jun 2001 20:48:00 -0700
+
+tdepim (4:2.2-cvs20010622-1) unstable; urgency=low
+ 
+  * New upstream cvs pull
+  * 2.2 beta1
+  * Adding in Enhances
+  * abbrowser moved to tdelibs
+  * New package: kandy
+  * Fix typo (Closes: #101349)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 22 Jun 2001 06:30:00 -0700
+
+tdepim (4:2.1.1-2) unstable; urgency=low
+ 
+  * Update menu bits to include new kde menu removal tag
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 08 Apr 2001 17:46:00 -0700
+
+tdepim (4:2.1.1-1.0.1) unstable; urgency=low
+ 
+  * Rebuild with older libc
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 26 Mar 2001 17:00:00 -0700
+
+tdepim (4:2.1.1-1) unstable; urgency=low
+ 
+  * New upstream version
+  * Upstream fixes (Closes: #77622, #77803)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Mar 2001 22:31:00 -0700
+
+tdepim (4:2.1.0-1) unstable; urgency=low
+ 
+  * New upstream CVS pull
+  * Update shlibs
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 07 Mar 2001 22:31:00 -0700
+
+tdepim (4:2.1-final-1) unstable; urgency=low
+ 
+  * New upstream version
+  * Upping standards version
+  * Fix build problem with new libc 2.2.1 (Closes: #86435)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Feb 2001 02:31:00 -0700
+
+tdepim (4:2.1-beta2-1) unstable; urgency=low
+ 
+  * New upstream beta
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 22 Jan 2001 06:00:00 -0700
+
+tdepim (4:2.1-20010118-1) unstable; urgency=low
+ 
+  * New upstream cvs version
+  * Fixing overwrite problem (Closes: #82965)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 21 Jan 2001 00:46:00 -0700
+
+tdepim (4:2.1-20010115-1) unstable; urgency=low
+ 
+  * New upstream cvs version
+  * no more libical package
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 15 Jan 2001 01:00:00 -0700
+
+tdepim (4:2.1-20010106-1) unstable; urgency=low
+ 
+  * New upstream cvs version
+  * Updating build-depends
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 06 Jan 2001 23:30:00 -0700
+
+tdepim (4:2.1-20010101-1) unstable; urgency=low
+ 
+  * New upstream cvs version
+  * korganizer is now 2.1beta1 as well
+  * Breaking out libical into it's own lib/lib-dev packages
+  * Updating build-depends
+        
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 01 Jan 2001 15:30:00 -0700
+
+tdepim (4:2.1-20001218-1) unstable; urgency=low
+
+  * New upstream cvs version
+  * Including kpilot, 2 years and 10 days after I did the ITP for it (Closes: #68255)
+  * korganizer is the 2.0.1 version still
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 18 Dec 2000 23:00:00 -0700
+
+tdepim (2.0-20001011-0) unstable; urgency=low
+ 
+  * KDE 2.0 RC2
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 12 Sep 2000 06:00:00 -0700
+                                                                                
+tdepim (2.0-20001006-0) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 06 Sep 2000 22:00:00 -0700
+                                                                                
+tdepim (2.0-20001005-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Compiling against non-versioned tdelibs once again
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 05 Sep 2000 15:00:00 -0700
+                                                                                
+tdepim (2.0-20001002-0) unstable; urgency=low
+ 
+  * KDE 2.0 RC1
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 02 Sep 2000 01:30:00 -0700
+                                                                                
+tdepim (2.0-20000925-2) unstable; urgency=low
+
+  * More upstream fixes
+  * Clean build against new libc6
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 26 Sep 2000 22:30:00 -0700
+
+tdepim (2.0-20000925-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Build-Depends work
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 25 Sep 2000 15:30:00 -0700
+
+tdepim (2.0-20000920-2) unstable; urgency=low
+ 
+  * Fixing some dependencies
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 21 Sep 2000 17:30:00 -0700
+
+tdepim (2.0-20000920-0) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 20 Sep 2000 23:00:00 -0700
+
+tdepim (2.0-20000918-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Fixing task-tdepim description (Closes: #71984)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 18 Sep 2000 22:00:00 -0700
+
+tdepim (2.0-20000912-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Fixing non-replacement of old tdepim package
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 12 Sep 2000 22:00:00 -0700
+
+tdepim (2.0-20000909-0) unstable; urgency=low
+
+  * upstream fixes
+  * More build cleanups
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 09 Sep 2000 22:00:00 -0700
+
+tdepim (2.0-20000905-0) unstable; urgency=low
+
+  * upstream fixes
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 05 Sep 2000 17:00:02 -0700
+
+tdepim (2.0-20000901-0) unstable; urgency=low
+ 
+  * Build fixes
+  * upstream fixes 
+  * merging build fixes with upstream cvs
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 01 Sep 2000 17:00:02 -0700
+                                                                               
+tdepim (2.0-20000825-0) experimental; urgency=low
+ 
+  * Build fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 25 Aug 2000 22:30:02 -0700
+                                                                                
+tdepim (2.0-20000823-1.0) experimental; urgency=low
+ 
+  * KDE 2.0 beta 4
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 23 Aug 2000 16:30:02 -0700
+                                                                                
+tdepim (2.0-20000820-1.0) experimental; urgency=low
+ 
+  * New upstream beta version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 20 Aug 2000 15:30:02 -0700
+                                                                                
+tdepim-cvs (2.0-20000521-1.0) experimental; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 21 May 2000 18:15:02 -0700
+
+tdepim-cvs (2.0-20000516-1.0) experimental; urgency=low
+
+  * Initial Release.
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 16 May 2000 20:40:02 -0700

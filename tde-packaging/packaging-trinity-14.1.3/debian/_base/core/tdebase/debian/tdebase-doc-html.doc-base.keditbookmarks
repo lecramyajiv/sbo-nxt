@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-keditbookmarks
+Title: KEditBookmarks Handbook
+Author: The TDE team
+Abstract: KEditBookmarks is TDE editor for bookmarks.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/keditbookmarks/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/keditbookmarks/*.html
+

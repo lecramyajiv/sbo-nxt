@@ -1,0 +1,30 @@
+debian/tmp/usr/bin/juk
+debian/tmp/usr/share/applications/tde/juk.desktop
+debian/tmp/usr/share/apps/juk/jukui-rtl.rc
+debian/tmp/usr/share/apps/juk/jukui.rc
+debian/tmp/usr/share/apps/juk/pics/playing.png
+debian/tmp/usr/share/apps/juk/pics/splash.png
+debian/tmp/usr/share/apps/konqueror/servicemenus/jukservicemenu.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/juk/common
+debian/tmp/usr/share/doc/tde/HTML/en/juk/history-playlist.png
+debian/tmp/usr/share/doc/tde/HTML/en/juk/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/juk/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/juk/juk-adv-search.png
+debian/tmp/usr/share/doc/tde/HTML/en/juk/juk-file-renamer.png
+debian/tmp/usr/share/doc/tde/HTML/en/juk/juk-main.png
+debian/tmp/usr/share/doc/tde/HTML/en/juk/juk-tag-guesser.png
+debian/tmp/usr/share/doc/tde/HTML/en/juk/normal-playlist.png
+debian/tmp/usr/share/doc/tde/HTML/en/juk/search-playlist.png
+debian/tmp/usr/share/doc/tde/HTML/en/juk/toolbar.png
+debian/tmp/usr/share/icons/crystalsvg/22x22/actions/juk_dock.png
+debian/tmp/usr/share/icons/hicolor/128x128/apps/juk.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/juk.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/juk.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/juk.png
+debian/tmp/usr/share/icons/hicolor/64x64/apps/juk.png
+debian/tmp/usr/share/man/man1/juk.1
+
+debian/icons/juk.xpm		/usr/share/pixmaps
+debian/icons/juk-16.xpm		/usr/share/pixmaps
+
+debian/tmp/usr/share/apps/juk/pics/yahoo_credit.png

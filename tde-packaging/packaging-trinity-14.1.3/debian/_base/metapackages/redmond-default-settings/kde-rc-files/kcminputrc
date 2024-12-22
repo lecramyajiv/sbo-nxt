@@ -1,0 +1,6 @@
+[Mouse]
+Acceleration=2
+MouseButtonMapping=RightHanded
+ReverseScrollPolarity=false
+Threshold=2
+cursorTheme=DMZ-White

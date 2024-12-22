@@ -1,0 +1,8 @@
+?package(twin4-trinity):\
+	needs="x11"\
+	section="Games/Board"\
+	hints="TDE"\
+	title="TWin4"\
+	icon32x32="/usr/share/pixmaps/twin4.xpm"\
+	icon16x16="/usr/share/pixmaps/twin4-16.xpm"\
+	command="/usr/games/twin4"

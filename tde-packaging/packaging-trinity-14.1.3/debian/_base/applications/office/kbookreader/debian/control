@@ -1,0 +1,18 @@
+Source: kbookreader-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Anthony Mercatante <tonio@ubuntu.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://k9copy.sourceforge.net/
+
+Package: kbookreader-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: kbookreader-trinity (<< 4:14.0.0~)
+Breaks: kbookreader-trinity (<< 4:14.0.0~)
+Description: eBook reader for Trinity
+ kbookreader is an application which allows you to view eBooks
+ within the Trinity Desktop Environment
+

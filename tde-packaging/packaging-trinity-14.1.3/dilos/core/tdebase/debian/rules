@@ -1,0 +1,154 @@
+#!/usr/bin/make -f
+
+# Set LD_LIBRARY_PATH to the installed library directory to allow dh_shlibdeps to function
+# Also include the main Trinity path
+ifeq ("$(LD_LIBRARY_PATH)", "")
+LD_LIBRARY_PATH=debian/tmp/usr/lib
+else
+LD_LIBRARY_PATH += :debian/tmp/usr/lib
+endif
+export LD_LIBRARY_PATH
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_KDE_APIDOX := yes
+
+CXXFLAGS := -DSMB_CTX_FLAG_USE_KERBEROS -DSMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS -g -Wall $(DEB_OPT_FLAG)
+CPPFLAGS+= -D__dilos__ -D__EXTENSIONS__
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DLIB_SUFFIX="" \
+ -DCMAKE_INSTALL_PREFIX="/usr" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_LIBRARY_PATH="/usr/lib" \
+ -DCMAKE_INCLUDE_PATH="/usr/include/" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DBUILD_ALL="ON" \
+ -DBUILD_TSAK="OFF" \
+ -DWITH_GCC_VISIBILITY="ON" \
+ -DKCHECKPASS_PAM_SERVICE="kcheckpass-trinity" \
+ -DTDM_PAM_SERVICE="tdm-trinity" \
+ -DTDESCREENSAVER_PAM_SERVICE="tdescreensaver-trinity" \
+ -DWITH_USBIDS="/usr/share/misc/usb.ids" \
+ -DWITH_ARTS="ON" \
+ -DWITH_PAM="ON" \
+ -DWITH_SASL="ON" \
+ -DWITH_ELFICON="OFF" \
+ -DWITH_SUDO_TDESU_BACKEND="OFF" \
+ -DWITH_SUDO_KONSOLE_SUPER_USER_COMMAND="OFF" \
+ -DWITH_LDAP="ON" \
+ -DWITH_SAMBA="ON" \
+ -DWITH_SFTP="ON" \
+ -DWITH_LIBUSB="ON" \
+ -DWITH_LIBRAW1394="OFF" \
+ -DWITH_OPENEXR="ON" \
+ -DWITH_XCOMPOSITE="ON" \
+ -DWITH_XCURSOR="ON" \
+ -DWITH_XFIXES="ON" \
+ -DWITH_XRANDR="ON" \
+ -DWITH_XINERAMA="ON" \
+ -DWITH_SENSORS="OFF" \
+ -DWITH_TDEHWLIB="OFF" \
+ -DWITH_XDMCP="ON" \
+ -DWITH_XRENDER="ON" \
+ -DWITH_XTEST="ON" \
+ -DWITH_OPENGL="ON" \
+ -DWITH_XSCREENSAVER="ON" \
+ -DWITH_UPOWER="ON" \
+ -DWITH_LIBART="ON" \
+ -DWITH_LIBCONFIG="ON" \
+ -DWITH_PCRE2="ON" \
+ -DWITH_KRB5="ON" \
+ -DCMAKE_C_COMPILER=gcc \
+ -DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)"
+
+DEB_FIXPERMS_EXCLUDE := \
+	usr/bin/kcheckpass    \
+	usr/bin/tdekbdledsync \
+	usr/bin/tdesud    \
+	usr/bin/tdmtsak
+
+DEB_DH_STRIP_ARGS  := --dbg-package=tdebase-trinity-dbg \
+-Xappletproxy -Xcompton-tde -Xcrashtest -Xdrkonqi -Xextensionproxy \
+-Xgentdmconf -Xkaccess -Xkappfinder -Xkapplymousetheme -Xkasbar -Xkate \
+-Xkblankscrn.kss -Xkbookmarkmerger -Xkcheckpass -Xkcheckrunning -Xkcminit \
+-Xkcminit_startup -Xkcontrol -Xkcontroledit -Xkdcop -Xkdesktop -Xkdesktop_lock \
+-Xkdialog -Xkeditbookmarks -Xkeditfiletype -Xkfind -Xkfmclient \
+-Xkhc_indexbuilder -Xkhelpcenter -Xkhotkeys -Xkicker -Xkjobviewer -Xklipper \
+-Xklocaldomainurifilterhelper -Xkmenuedit -Xknetattach -Xkonqueror -Xkonsole \
+-Xkpager -Xkpersonalizer -Xkpm -Xkprinter -Xkrandom.kss -Xkreadconfig \
+-Xkrootbacking -Xkrootimage -Xksmserver -Xksplash -Xksplashsimple -Xkstart \
+-Xksysguard -Xksysguardd -Xksystraycmd -Xktip -Xktrash -Xkwebdesktop -Xkwrite \
+-Xkwriteconfig -Xkxdglauncher -Xkxkb -Xnspluginscan -Xnspluginviewer \
+-Xtdecryptocardwatcher -Xtdedebugdialog -Xtdefontinst -Xtdefontview \
+-Xtdeinit_displayconfig -Xtdeinit_phase1 -Xtdeio_media_mounthelper \
+-Xtdekbdledsync -Xtdepasswd -Xtdeprintfax -Xtderandrtray -Xtdesu -Xtdesud \
+-Xtdm -Xtdm_config -Xtdm_greet -Xtdmctl -Xtwin -Xtwin_killer_helper \
+-Xtwin_resumer_helper -Xtwin_rules_dialog
+
+DEB_DH_INSTALLINIT_ARGS := --no-start --no-stop-on-upgrade --no-restart-after-upgrade
+DEB_DH_SYSTEMD_START_ARGS := --no-start --no-stop-on-upgrade --no-restart-after-upgrade
+
+DOC_HTML_PRUNE := ksplashml kcontrol khelpcenter tdesu knetattach tdeioslave kxkb tdedebugdialog kdcop
+
+PACKAGES_WITH_LIBS := kate-trinity kcontrol-trinity tdebase-trinity-bin kicker-trinity konqueror-trinity ksplash-trinity \
+			ksysguard-trinity twin-trinity libkonq4-trinity
+
+#shlibs_ver = 4:3.5.0-1
+#$(foreach p,$(PACKAGES_WITH_LIBS),$(eval DEB_DH_MAKESHLIBS_ARGS_$(p) := -V'$(p) (>= $(shlibs_ver))'))
+
+common-install-prehook-arch::
+	grep -v -e joystick -e view1394  debian/kcontrol-trinity.install > debian/kcontrol-trinity.install.kfreebsd-i386
+	grep -v -e joystick -e view1394  debian/kcontrol-trinity.install > debian/kcontrol-trinity.install.kfreebsd-amd64
+	grep -v -e media_propsdlgplugin  debian/tdebase-tdeio-plugins-trinity.install > debian/tdebase-tdeio-plugins-trinity.install.kfreebsd-i386
+	grep -v -e media_propsdlgplugin  debian/tdebase-tdeio-plugins-trinity.install > debian/tdebase-tdeio-plugins-trinity.install.kfreebsd-amd64
+
+clean::
+	rm -f debian/kcontrol-trinity.install.kfreebsd* debian/tdebase-tdeio-plugins-trinity.install.kfreebs*
+
+binary-install/tdebase-data-trinity::
+	# hack the oui.db install, as under kfreebsd it does not get installed and then breaks at dh_install time
+	# it's in fact a linux specific file...
+	install -p -D -m644 kcontrol/view1394/oui.db debian/tdebase-data-trinity/usr/share/apps/kcmview1394/oui.db
+	install -p -D -m644 debian/tmp/etc/xdg/menus/applications-merged/tde-essential.menu debian/tdebase-data-trinity/usr/etc/xdg/menus/applications-merged/tde-essential.menu
+	install -p -D -m644 debian/tmp/etc/xdg/menus/tde-screensavers.menu debian/tdebase-data-trinity/usr/etc/xdg/menus/tde-screensavers.menu
+	install -p -D -m644 debian/tmp/etc/xdg/menus/tde-settings.menu debian/tdebase-data-trinity/usr/etc/xdg/menus/tde-settings.menu
+
+install/tdm-trinity::
+	#sed -i 's/#UseTheme=true/UseTheme=true/g' debian/tmp/etc/trinity/tdm/tdmrc
+	#sed -i 's/Theme=@@@ToBeReplacedByDesktopBase@@@/Theme=\/usr\/share\/apps\/tdm\/themes\/debian-moreblue/g' debian/tmp/etc/trinity/tdm/tdmrc
+
+binary-install/tdm-trinity::
+#	mkdir -p debian/tdm-trinity/etc/init
+#	mkdir -p debian/tdm-trinity/etc/init.d
+#	install -p -D -m755 debian/tdm.init debian/tdm-trinity/etc/init.d/tdm
+	
+	install -p -D -m644 debian/tdm-trinity.pam debian/tdm-trinity/etc/pam.d/tdm-trinity
+	install -p -D -m644 debian/tdm-trinity-np.pam debian/tdm-trinity/etc/pam.d/tdm-trinity-np
+	
+	install -p -D -m644 debian/tdm-trinity.needrestart debian/tdm-trinity/etc/needrestart/conf.d/tdm-trinity.conf
+
+binary-install/kcontrol-trinity::
+#	mkdir -p debian/$(cdbs_curpkg)/etc/udev/rules.d
+#	chmod +x debian/usermap.pl
+#	debian/usermap.pl kcontrol/input/logitechmouse.usermap > debian/$(cdbs_curpkg)/etc/udev/logitechmouse.rules
+
+install/klipper-trinity::
+	sed -i '/X-Ubuntu-Gettext-Domain=/d' debian/tmp/etc/trinity/klipperrc
+
+binary-install/tdebase-trinity-bin::
+	install -p -D -m644 debian/kcheckpass-trinity.pam debian/tdebase-trinity-bin/etc/pam.d/kcheckpass-trinity
+	install -p -D -m644 debian/tdescreensaver-trinity.pam debian/tdebase-trinity-bin/etc/pam.d/tdescreensaver-trinity
+	mkdir -p debian/tdebase-trinity-bin/usr/share/apps/kxkb/
+	install -p -D -m644 debian/ubuntu.xmodmap debian/tdebase-trinity-bin/usr/share/apps/kxkb/system.xmodmap
+	install -p -D -m644 debian/80ubuntu-xmodmap debian/tdebase-trinity-bin/etc/X11/Xsession.d/80ubuntu-trinity-xmodmap
+	mkdir -p debian/tdebase-trinity-bin/usr/share/autostart/
+
+binary-install/ksmserver-trinity::
+	install -p -D -m644 debian/tmp/usr/share/apps/tdm/sessions/tde.desktop debian/ksmserver-trinity/usr/share/xsessions/trinity.desktop

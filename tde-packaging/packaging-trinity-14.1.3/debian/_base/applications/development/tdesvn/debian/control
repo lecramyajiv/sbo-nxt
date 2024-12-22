@@ -1,0 +1,60 @@
+Source: tdesvn-trinity
+Section: devel
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Michael Biebl <biebl@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libsvn-dev (>= 1.2.0), libssl-dev (>= 0.9.8a), libsqlite3-dev, libaprutil1-dev
+Standards-Version: 3.8.4
+
+Package: libsvnqt4-trinity
+Section: libs
+Architecture: any
+Replaces: libsvnqt4-trinity (<< 4:14.0.0~)
+Breaks: libsvnqt4-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: TQt wrapper library for subversion [Trinity]
+ This package provides svnqt, a TQt wrapper library around the 
+ subversion library.
+ .
+ It is based on the RapidSvn SvnCpp library, a subversion client API 
+ written in C++.
+  
+Package: libsvnqt-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libsvnqt-trinity-dev (<< 4:14.0.0~)
+Breaks: libsvnqt-trinity-dev (<< 4:14.0.0~)
+Depends: libsvnqt4-trinity (= ${binary:Version}), libtqt3-mt-dev, libsvn-dev
+Description: TQt wrapper library for subversion (development files) [Trinity]
+ This package contains the header files and symbolic links that developers
+ using svnqt will need.
+
+Package: tdesvn-trinity
+Section: devel
+Architecture: any
+Replaces: kdesvn-trinity (<< 4:14.0.0~)
+Breaks: kdesvn-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${misc:Depends}, tdesvn-tdeio-plugins-trinity (= ${binary:Version})
+Recommends: kompare-trinity, graphviz
+Suggests: khelpcenter-trinity, kdiff3-trinity
+Description: subversion client with tight TDE integration [Trinity]
+ TDESvn is a graphical client for the subversion revision control
+ system (svn).
+ .
+ Besides offering common and advanced svn operations, it features
+ a tight integration into TDE and can be embedded into other TDE 
+ applications like konqueror via the TDE component technology KParts.
+
+Package: tdesvn-tdeio-plugins-trinity
+Section: devel
+Architecture: any
+Replaces: kdesvn-kio-plugins-trinity (<< 4:14.0.0~)
+Breaks: kdesvn-kio-plugins-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: tdesdk-tdeio-plugins-trinity
+Description: subversion I/O slaves for Trinity
+ This packages includes KIO slaves for svn, svn+file, svn+http, 
+ svn+https, svn+ssh. This allows you to access subversion repositories 
+ inside any KIO enabled TDE application.
+ .
+ This package is part of tdesvn-trinity.

@@ -1,0 +1,166 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+I18N_DIR_PREFIX := koffice-i18n
+I18N_DEST_PREFIX := $(I18N_DIR_PREFIX)
+I18N_DIR_PAT := $(I18N_DIR_PREFIX)-%
+I18N_DIRS := $(wildcard $(I18N_DIR_PREFIX)-*)
+
+# Stamps and support variables
+cur_lang = $(word 2,$(subst __, ,$@))
+cur_lang_target = $(subst @,_,$(cur_lang))
+cur_lang_dir = $(patsubst %,$(I18N_DIR_PREFIX)-%,$(cur_lang))
+cur_pkg_lang = $(subst _,,$(subst @,,$(subst @latn,latin,$(shell echo $(cur_lang) | tr '[:upper:]' '[:lower:]'))))
+cur_pkg = $(I18N_DEST_PREFIX)-$(cur_pkg_lang)-trinity
+
+STAMP_BUILD := $(patsubst $(I18N_DIR_PAT),debian/stamp__%__build,$(I18N_DIRS))
+I18N_INSTALL := $(patsubst $(I18N_DIR_PAT),install__%,$(I18N_DIRS))
+I18N_CLEAN := $(patsubst $(I18N_DIR_PAT),clean__%,$(I18N_DIRS))
+
+DEB_BUILD_PARALLEL ?= true
+
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	DEB_PARALLEL_JOBS ?= $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+endif
+DEB_MAKE_PARALLEL ?= $(and $(DEB_BUILD_PARALLEL),$(DEB_PARALLEL_JOBS),-j$(DEB_PARALLEL_JOBS))
+
+ifneq "$(wildcard /usr/bin/ninja)" ""
+MAKE = ninja -v
+DEB_MAKE_ENVVARS += DESTDIR=$(DEB_DESTDIR)
+DEB_MAKE_INSTALL_TARGET = install
+DEB_CMAKE_NORMAL_ARGS += -GNinja
+endif
+
+# The default gzip compressor has been changed in dpkg >= 1.17.0.
+deb_default_compress = $(shell LANG=C dpkg-deb --version | head -n1 | \
+                         sed -e "s|.*version ||" -e "s| .*||" | \
+                         xargs -r dpkg --compare-versions 1.17.0 lt \
+                         && echo xz || echo gzip)
+ifeq ($(deb_default_compress),gzip)
+DEB_DH_BUILDDEB_ARGS += -- -Z$(shell dpkg-deb --help | grep -q ":.* xz[,.]" \
+                               && echo xz || echo bzip2)
+endif
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DBUILD_ALL="ON"
+
+
+build::
+	dh_testdir
+	dh_prep
+
+ifneq "$(wildcard /usr/bin/ninja)" ""
+
+build:: debian/stamp__build
+
+debian/stamp__build:
+	[ -d build ] || \
+	mkdir build
+	cd build && \
+	cmake .. $(DEB_CMAKE_NORMAL_ARGS) $(DEB_CMAKE_EXTRA_FLAGS) && \
+	$(MAKE) $(DEB_MAKE_PARALLEL)
+	touch $@
+
+else
+
+build:: $(STAMP_BUILD)
+
+$(STAMP_BUILD):
+	# Building the '$(cur_lang)' language ...
+	[ -d $(cur_lang_dir)/build ] || \
+	mkdir $(cur_lang_dir)/build
+	[ -e $(cur_lang_dir)/CMakeLists.txt ] || \
+	ln -s ../template/commonCMakeLists.txt $(cur_lang_dir)/CMakeLists.txt
+	cd $(cur_lang_dir)/build && \
+	cmake .. $(DEB_CMAKE_NORMAL_ARGS) $(DEB_CMAKE_EXTRA_FLAGS) && \
+	$(MAKE) $(DEB_MAKE_PARALLEL)
+	touch $@
+
+endif
+
+install::
+	dh_testdir
+	dh_testroot
+
+install:: $(I18N_INSTALL)
+	dh_testdir
+	cat debian/control-source > debian/control
+	find debian -name "control-lang-*" | LANG=C sort | xargs -r cat >> debian/control
+
+$(I18N_INSTALL): build
+ifneq "$(wildcard /usr/bin/ninja)" ""
+	[ ! -e $(cur_lang_dir)/CMakeLists.txt ] || \
+	DESTDIR=$(CURDIR)/debian/$(cur_pkg) $(MAKE) -C build install-$(cur_lang_target)
+else
+	cd $(cur_lang_dir)/build && \
+	DESTDIR=$(CURDIR)/debian/$(cur_pkg) $(MAKE) install $(DEB_MAKE_PARALLEL)
+endif
+	sed -e "s|@lang@|$(cur_lang)|g" \
+	    -e "s|@pkg_lang@|$(cur_pkg_lang)|g" \
+	    -e "s|@lang_desc@|$$(sed -n '/^\[$(cur_lang)\]/,/^\[/s#^Name=##p' /opt/trinity/share/locale/all_languages)|" \
+	    < debian/control-lang > debian/control-lang-$(cur_pkg_lang); \
+
+ifneq "$(wildcard /usr/bin/ninja)" ""
+
+clean: debian-clean
+
+else
+
+clean: $(I18N_CLEAN) debian-clean
+
+$(I18N_CLEAN):
+	dh_testdir
+	rm -rf $(cur_lang_dir)/build
+
+endif
+
+debian-clean:
+	dh_testdir
+	rm -rf build
+	rm -rf debian/$(I18N_DEST_PREFIX)-*
+	rm -f debian/stamp__*
+	rm -f debian/control-lang-*
+	cat debian/control-source > debian/control
+	sed -e "s|@lang@|all|g" \
+	    -e "s|-@pkg_lang@||g" \
+	    -e "s|@lang_desc@|All languages|" \
+	    < debian/control-lang >> debian/control
+	dh_clean
+
+
+binary-arch: build
+	dh_testroot
+	dh_testdir
+
+
+binary-indep: build install
+	dh_testroot
+	dh_testdir
+	dh_installdocs
+	dh_installmenu
+	dh_installchangelogs
+	dh_link
+	dh_strip
+	$(if $(wildcard /usr/bin/dh_strip_nondeterminism),\
+	dh_strip_nondeterminism)
+	dh_compress -X.docbook -X.css -X-license -X.dcl -X.bz2
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb $(DEB_DH_BUILDDEB_ARGS)
+
+
+# Below here is fairly generic really
+binary: binary-indep binary-arch
+
+.PHONY: binary binary-arch binary-indep clean build install $(I18N_INSTALL)

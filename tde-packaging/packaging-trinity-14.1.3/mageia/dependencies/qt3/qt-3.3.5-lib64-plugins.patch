@@ -1,0 +1,12 @@
+--- src/tools/qgpluginmanager.cpp
++++ src/tools/qgpluginmanager.cpp	2004/09/25 11:46:41
+@@ -377,6 +377,9 @@
+ 	    QString basename = (*git).left( (*git).find( QChar(0xfffd) ) );
+ 	    ++git;
+ 
++	    // WARNING: this line should only exist on lib64 systems !
++	    basename += ".lib64";
++
+ 	    QStringList sameBasename;
+ 	    while( git != group.end() &&
+ 		   basename == (*git).left( (*git).find( QChar(0xfffd) ) )  ) {

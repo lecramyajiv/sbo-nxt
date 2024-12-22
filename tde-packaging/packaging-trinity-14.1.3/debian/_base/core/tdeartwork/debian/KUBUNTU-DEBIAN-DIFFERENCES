@@ -1,0 +1,7 @@
+tdescreensaver-xsavers depends on xscreensaver-data not xscreensaver
+build-dep on xscreensaver-data
+add package tdescreensaver-xsavers-extra with screensavers from xscreensaver-data-extra and xscreensaver-gl-extra
+-webcollage depends on -extra not just xsavers
+  * Edit tdescreensaver-xsaver-webcollage.install to use the file
+    from sources, since it does not get installed during build.
+

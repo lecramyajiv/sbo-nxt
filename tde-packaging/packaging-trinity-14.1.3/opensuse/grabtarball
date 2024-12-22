@@ -1,0 +1,20 @@
+#!/bin/bash
+
+URL="http://mirror.its.uidaho.edu/pub/trinity/releases/3.5.13"
+VERSION=3.5.13
+
+runMgr(){
+
+	if [ "$1" == "qt3" ]; then
+		VERSION=3.3.8d
+	fi
+
+	wget $URL/$1-$VERSION.tar.gz
+
+	if [ "$2" != "" ]; then
+		mv -v $1-$VERSION.tar.gz $2-$VERSION.tar.gz
+	fi
+
+}
+
+runMgr $1 $2

@@ -1,0 +1,36 @@
+Index: kcontrol/input/xcursor/themepage.cpp
+===================================================================
+--- kcontrol/input/xcursor/themepage.cpp.orig
++++ kcontrol/input/xcursor/themepage.cpp
+@@ -73,6 +73,13 @@ struct ThemeInfo {
+ };
+ 
+ 
++static QString defaultThemeDescription( const QString& theme )
++{
++    if( theme == "redglass" || theme == "whiteglass" || theme == "pseudocore" || theme == "handhelds" )
++        return i18n( "XFree theme %1 - incomplete for KDE" ).arg( theme );
++    return i18n( "No description available" );;
++}
++
+ ThemePage::ThemePage( QWidget* parent, const char* name )
+ 	: QWidget( parent, name ), selectedTheme( NULL ), currentTheme( NULL )
+ {
+@@ -333,7 +340,7 @@ void ThemePage::insertTheme( const QStri
+ 
+ 	// Defaults in case there's no name or comment field.
+ 	QString name   = dirName;
+-	QString desc   = i18n( "No description available" );
++	QString desc   = defaultThemeDescription( name );
+ 	QString sample = "left_ptr";
+ 
+ 	KSimpleConfig c( path + "/index.theme", true ); // Open read-only
+@@ -480,7 +487,7 @@ void ThemePage::insertThemes()
+ 			// Defaults in case there's no index.theme file or it lacks
+ 			// a name and a comment field.
+ 			QString name   = *it;
+-			QString desc   = i18n( "No description available" );
++			QString desc   = defaultThemeDescription( name );
+ 			QString sample = "left_ptr";
+ 
+ 			// Parse the index.theme file if the theme has one.

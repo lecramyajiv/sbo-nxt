@@ -1,0 +1,14 @@
+Index: tdecore/klocale.cpp
+===================================================================
+--- tdecore/klocale.cpp.orig
++++ tdecore/klocale.cpp
+@@ -139,6 +139,9 @@ void KLocale::initMainCatalogues(const Q
+       d->catalogNames.append( SYSTEM_MESSAGES ); // always include tdelibs.mo
+       d->catalogNames.append( "kio" );            // always include kio.mo
+       d->catalogNames.append( "xdg-user-dirs" );
++      KGlobal::dirs()->addResourceDir("locale", "/usr/share/locale");
++      d->catalogNames.append( "desktop_translations" );
++      d->catalogNames.append( "susetranslations" );
+     }
+     updateCatalogues(); // evaluate this for all languages
+   }

@@ -1,0 +1,28 @@
+Index: kapplication.cpp
+===================================================================
+RCS file: /home/kde/kdelibs/kdecore/kapplication.cpp,v
+retrieving revision 1.670
+diff -u -p -r1.670 kapplication.cpp
+--- kdecore/kapplication.cpp	22 Jul 2004 16:50:04 -0000	1.670
++++ kdecore/kapplication.cpp	16 Aug 2004 20:31:02 -0000
+@@ -43,6 +43,7 @@
+ #include <qtooltip.h>
+ #include <qstylefactory.h>
+ #include <qmetaobject.h>
++#include <qimage.h>
+ #ifndef QT_NO_SQL
+ #include <qsqlpropertymap.h>
+ #endif
+@@ -1975,6 +1976,12 @@ void KApplication::propagateSettings(Set
+     KConfigBase* config = KGlobal::config();
+     KConfigGroupSaver saver( config, "KDE" );
+ 
++#ifdef QT_HAVE_MAX_IMAGE_SIZE
++    QSize maxImageSize(4096, 4096);
++    maxImageSize = config->readSizeEntry("MaxImageSize", &maxImageSize);
++    QImage::setMaxImageSize(maxImageSize);
++#endif
++
+     int num = config->readNumEntry("CursorBlinkRate", QApplication::cursorFlashTime());
+     if ((num != 0) && (num < 200))
+         num = 200;

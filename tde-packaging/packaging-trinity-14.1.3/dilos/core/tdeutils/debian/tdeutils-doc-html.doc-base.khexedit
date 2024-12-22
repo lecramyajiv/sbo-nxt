@@ -1,0 +1,10 @@
+Document: tdeutils-doc-html-khexedit
+Title: KHexEdit Handbook
+Author: Jonathan Singer
+Abstract: KHexEdit is a hexadecimal editor for TDE
+Section: Tools
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/khexedit/index.html
+Files: /usr/share/doc/tde/HTML/en/khexedit/*.html
+

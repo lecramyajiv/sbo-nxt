@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-tdeprint
+Title: TDEPrint Handbook
+Author: Kurt Pfeifle
+Abstract: TDEPrint is the official printing system of TDE. 
+Section: Apps/Tools 
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/tdeprint/index.html
+Files: /usr/share/doc/tde/HTML/en/tdeprint/*.html
+

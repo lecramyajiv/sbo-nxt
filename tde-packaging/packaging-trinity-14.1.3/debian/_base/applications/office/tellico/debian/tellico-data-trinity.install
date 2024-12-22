@@ -1,0 +1,17 @@
+debian/tmp/opt/trinity/share/apps/tellico/*.xsl
+debian/tmp/opt/trinity/share/apps/tellico/*.xml
+debian/tmp/opt/trinity/share/apps/tellico/*.png
+debian/tmp/opt/trinity/share/apps/tellico/entry-templates
+debian/tmp/opt/trinity/share/apps/tellico/*.py
+debian/tmp/opt/trinity/share/apps/tellico/pics
+debian/tmp/opt/trinity/share/apps/tellico/report-templates
+debian/tmp/opt/trinity/share/apps/tellico/tellico.dtd
+debian/tmp/opt/trinity/share/apps/tellico/tellico.tips
+debian/tmp/opt/trinity/share/apps/tellico/tellico2html.js
+debian/tmp/opt/trinity/share/apps/tellico/tellicoui.rc
+debian/tmp/opt/trinity/share/apps/tellico/welcome.html
+debian/tmp/opt/trinity/share/config.kcfg
+debian/tmp/opt/trinity/share/doc/tde
+debian/tmp/opt/trinity/share/icons
+debian/tmp/opt/trinity/share/locale
+debian/tmp/opt/trinity/share/mimelnk

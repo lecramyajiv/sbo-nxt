@@ -1,0 +1,15 @@
+usr/bin/kpercentage
+/usr/share/applications/tde/kpercentage.desktop
+/usr/share/apps/kpercentage
+/usr/share/doc/tde/HTML/en/kpercentage/common
+/usr/share/doc/tde/HTML/en/kpercentage/index.cache.bz2
+/usr/share/doc/tde/HTML/en/kpercentage/*.docbook
+/usr/share/doc/tde/HTML/en/kpercentage/*.png
+/usr/share/icons/hicolor/16x16/apps/kpercentage.png
+/usr/share/icons/hicolor/22x22/apps/kpercentage.png
+/usr/share/icons/hicolor/32x32/apps/kpercentage.png
+/usr/share/icons/hicolor/48x48/apps/kpercentage.png
+/usr/share/icons/hicolor/128x128/apps/kpercentage.png
+/usr/share/icons/hicolor/scalable/apps/kpercentage.svgz
+/usr/share/man/man1/kpercentage.1
+../icons/kpercentage.xpm /usr/share/pixmaps

@@ -1,0 +1,11 @@
+[KSplash Theme: moreblue-orbit-default]
+Name = MoreBlue Orbit (Default)
+Description = MoreBlue Orbit KSplash Theme using Default engine, based on MoreBlue Orbit artwork by Andre L. R. Ferreira and Valessio S. Brito
+Version = 1.0
+Author = Fathi Boudra, based on MoreBlue artwork by Andre L. R. Ferreira and Valessio S. Brito
+Homepage = http://www.debian.org
+Engine = Default
+
+Icons Flashing = true
+Always Show Progress = false
+Label Foreground = #ffffff

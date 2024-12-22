@@ -1,0 +1,19 @@
+debian/tmp/usr/bin/kmag
+debian/tmp/usr/share/applications/tde/kmag.desktop
+debian/tmp/usr/share/apps/kmag/icons/hicolor/16x16/actions/followmouse.png
+debian/tmp/usr/share/apps/kmag/icons/hicolor/16x16/actions/hidemouse.png
+debian/tmp/usr/share/apps/kmag/icons/hicolor/16x16/actions/window.png
+debian/tmp/usr/share/apps/kmag/kmagui.rc
+debian/tmp/usr/share/doc/tde/HTML/en/kmag/common
+debian/tmp/usr/share/doc/tde/HTML/en/kmag/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kmag/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/kmag/man-kmag.1.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/kmag/screenshot.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kmag.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kmag.png
+debian/tmp/usr/share/icons/locolor/16x16/apps/kmag.png
+debian/tmp/usr/share/icons/locolor/32x32/apps/kmag.png
+debian/tmp/usr/share/man/man1/kmag.1
+
+debian/icons/kmag.xpm		/usr/share/pixmaps
+debian/icons/kmag-16.xpm	/usr/share/pixmaps

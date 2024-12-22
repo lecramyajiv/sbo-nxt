@@ -1,0 +1,34 @@
+Source: desktop-base-trinity
+Section: x11
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Loïc Minier <lool@dooz.org>,
+           Fathi Boudra <fabo@debian.org>,
+           Yves-Alexis Perez <corsac@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~)
+# libusplash-dev, imagemagick, librsvg2-bin
+Standards-Version: 3.8.3
+
+Package: desktop-base-trinity
+Architecture: all
+Depends: librsvg2-common
+Suggests: tde-trinity
+Conflicts: desktop-base
+Provides: desktop-base
+Description: common files for the Debian Desktop [Trinity]
+ This package contains various miscellaneous files which are used by
+ Debian Desktop installations.  Currently, it provides some
+ Debian-related artwork and themes, .desktop files containing links to
+ Debian related material (suitable for placement on a user's desktop),
+ and other common files between the available desktop environments
+ such as GNOME and TDE.
+
+#Package: usplash-theme-debian-desktop-trinity
+#Section: misc
+#Architecture: amd64 i386 powerpc sparc
+#Depends: ${shlibs:Depends}, usplash
+#Provides: usplash-theme
+#Description: Debian Desktop usplash theme [Trinity]
+# This package contains an usplash theme based on Debian Desktop project.
+# .
+# See http://wiki.debian.org/DebianDesktopArtwork for more details.

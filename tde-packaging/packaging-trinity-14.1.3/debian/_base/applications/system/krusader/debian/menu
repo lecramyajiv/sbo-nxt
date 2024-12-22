@@ -1,0 +1,17 @@
+?package(krusader-trinity):\
+	needs="X11"\
+	section="Applications/Network/File Transfer"\
+	hints="TDE"\
+	title="krusader (File Manager)"\
+	icon32x32="/opt/trinity/share/pixmaps/krusader_user.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/krusader_user-16.xpm"\
+	command="/opt/trinity/bin/krusader"
+
+?package(krusader-trinity):\
+	needs="X11"\
+	section="Applications/Network/File Transfer"\
+	hints="TDE"\
+	title="krusader - root-mode (File Manager)"\
+	icon32x32="/opt/trinity/share/pixmaps/krusader_root.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/krusader_root-16.xpm"\
+	command="tdesu -c /opt/trinity/bin/krusader"

@@ -1,0 +1,48 @@
+Index: kcontrol/background/bgdialog.cpp
+===================================================================
+--- kcontrol/background/bgdialog.cpp.orig
++++ kcontrol/background/bgdialog.cpp
+@@ -477,14 +477,23 @@ void BGDialog::loadWallpaperFilesList()
+    //search for .desktop files before searching for images without .desktop files
+    QStringList lst = m_pDirs->findAllResources("wallpaper", "*desktop", false, true);
+    QStringList files;
++   QStringList hiddenfiles;
+    for (QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it)
+    {
+       KSimpleConfig fileConfig(*it);
+       fileConfig.setGroup("Wallpaper");
+ 
++      int slash = (*it).findRev('/') + 1;
++      QString directory = (*it).left(slash);
++      
+       QString imageCaption = fileConfig.readEntry("Name");
+       QString fileName = fileConfig.readEntry("File");
+ 
++      if (fileConfig.readBoolEntry("Hidden",false)) {
++         hiddenfiles.append(directory + fileName);
++         continue;
++      }
++      
+       if (imageCaption.isEmpty())
+       {
+          imageCaption = fileName;
+@@ -500,9 +509,8 @@ void BGDialog::loadWallpaperFilesList()
+          rs = imageCaption + " (" + QString::number(n) + ')';
+          lrs = rs.lower();
+       }
+-      int slash = (*it).findRev('/') + 1;
+-      QString directory = (*it).left(slash);
+       bool canLoadScaleable = false;
++
+ #ifdef HAVE_LIBART
+       canLoadScaleable = true;
+ #endif
+@@ -516,7 +524,7 @@ void BGDialog::loadWallpaperFilesList()
+    lst = m_pDirs->findAllResources("wallpaper", "*", false, true);
+    for (QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it)
+    {
+-      if ( !(*it).endsWith(".desktop") && files.grep(*it).empty() ) {
++      if ( !(*it).endsWith(".desktop") && files.grep(*it).empty() && hiddenfiles.grep(*it).empty() ) {
+          // First try to see if we have a comment describing the image.  If we do
+          // just use the first line of said comment.
+          KFileMetaInfo metaInfo(*it);

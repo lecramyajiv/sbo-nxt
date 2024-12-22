@@ -1,0 +1,7 @@
+%dist .fc35
+%_smp_mflags -j8
+%jobs 8
+%__cmake_builddir %nil
+%__cmake_in_source_build 1
+%_debugsource_packages %nil
+%_debugsource_template %nil

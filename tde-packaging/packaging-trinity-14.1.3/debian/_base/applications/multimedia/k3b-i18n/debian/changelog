@@ -1,0 +1,242 @@
+k3b-i18n-trinity (4:3.5.13-1debian0+ax0~squeeze) squeeze; urgency=low
+
+  * Initial Release for TDE
+
+ -- Slávek Banko <slavek.banko@axis.cz>  Fri, 03 Aug 2012 03:41:57 +0200
+
+k3b-i18n (1.0.5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Tue, 03 Jun 2008 13:17:58 +1200
+
+k3b-i18n (1.0.4-3) unstable; urgency=low
+
+  * Update Maintainers and Uploaders fields.
+    K3b is co-maintained with Debian KDE Extras team.
+  * Update Vcs-Browser and Vcs-Svn fields to reflect the new home.
+  * Proper copyright statement in debian/copyright
+  * Bump Standards-Version to 3.7.3
+  * Bump debhelper compatibility/dependency to 6
+  * Move kdelibs4-dev dependency to Build-Depends-Indep
+
+ -- Francois Marier <francois@debian.org>  Wed, 05 Mar 2008 14:26:56 +1300
+
+k3b-i18n (1.0.4-2) unstable; urgency=low
+
+  * Compress the deb using bzip2 instead of gzip
+  * Rename the XS-Vcs-* fields to Vcs-*
+  * Fix the watch file (closes: #453602)
+
+ -- Francois Marier <francois@debian.org>  Fri, 30 Nov 2007 18:25:53 +1300
+
+k3b-i18n (1.0.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump debhelper compatibility and dependency to 5
+  * Remove Build-Depends-Indep (fix linda warning)
+
+ -- Francois Marier <francois@debian.org>  Sat, 03 Nov 2007 18:49:35 +1300
+
+k3b-i18n (1.0.3-3) UNRELEASED; urgency=low
+
+  * Add homepage field to debian/control
+
+ -- Francois Marier <francois@debian.org>  Fri, 19 Oct 2007 15:24:44 +1300
+
+k3b-i18n (1.0.3-2) unstable; urgency=low
+
+  * Refer explicitely to /usr/share/common-licenses/GPL-2
+  * debian/control: point to svn repository
+
+ -- Francois Marier <francois@debian.org>  Mon, 20 Aug 2007 15:08:13 +1200
+
+k3b-i18n (1.0.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Thu, 26 Jul 2007 00:22:34 +1200
+
+k3b-i18n (1.0.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Fix lintian warning: -$(MAKE) distclean
+
+ -- Francois Marier <francois@debian.org>  Sun, 01 Jul 2007 04:09:44 +1200
+
+k3b-i18n (1.0.1-1) unstable; urgency=low
+
+  * New upstream release (1.0.1)
+
+ -- Francois Marier <francois@debian.org>  Fri, 20 Apr 2007 11:52:16 +1200
+
+k3b-i18n (1.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Fri, 30 Mar 2007 18:48:03 -0700
+
+k3b-i18n (0.12.17-2) unstable; urgency=low
+
+  * Fix watch file to use qa.debian.org
+  * Set myself as maintainer with Jean-Michel's permission
+
+ -- Francois Marier <francois@debian.org>  Sun,  3 Dec 2006 16:46:25 -0500
+
+k3b-i18n (0.12.17-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Wed, 23 Aug 2006 17:46:43 -0400
+
+k3b-i18n (0.12.16-1) unstable; urgency=low
+
+  * New upstream release
+  * Moved debhelper to Build-Depends
+  * Bump Standards-Version up to 3.7.2
+
+ -- Francois Marier <francois@debian.org>  Sun, 25 Jun 2006 15:34:56 -0400
+
+k3b-i18n (0.12.15-1) unstable; urgency=low
+
+  * New upstream release
+  * Clarifiy the long description
+  * Fix linda warning (make the package really build-indep)
+
+ -- Francois Marier <francois@debian.org>  Sat, 22 Apr 2006 23:06:00 -0400
+
+k3b-i18n (0.12.14-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Fri, 24 Mar 2006 17:38:43 -0500
+
+k3b-i18n (0.12.13-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Tue,  7 Mar 2006 13:27:49 -0500
+
+k3b-i18n (0.12.12-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Wed, 15 Feb 2006 11:43:13 -0500
+
+k3b-i18n (0.12.11-1) unstable; urgency=low
+
+  * New upstream version
+  * Fix the watch file (.gz -> .bz2)
+
+ -- Francois Marier <francois@debian.org>  Sun, 12 Feb 2006 17:30:40 -0500
+
+k3b-i18n (0.12.10-2) unstable; urgency=low
+
+  * Remove the versioned dependency on k3b
+
+ -- Francois Marier <francois@debian.org>  Sun,  8 Jan 2006 14:17:15 -0500
+
+k3b-i18n (0.12.10-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Fri, 16 Dec 2005 12:32:19 -0500
+
+k3b-i18n (0.12.9-1) unstable; urgency=low
+
+  * New upstream release
+  * Add a watch file
+  * Set the depends version to Source-Version
+
+ -- Francois Marier <francois@debian.org>  Mon, 12 Dec 2005 22:59:08 -0500
+
+k3b-i18n (0.12.8-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Fri, 25 Nov 2005 12:11:56 -0500
+
+k3b-i18n (0.12.7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Francois Marier <francois@debian.org>  Wed,  2 Nov 2005 08:59:44 -0500
+
+k3b-i18n (0.12.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Update depends version
+  * Recommend kde-i18n (otherwise a lot of strings will be left untranslated)
+
+ -- Francois Marier <francois@debian.org>  Sat, 29 Oct 2005 17:27:15 -0400
+
+k3b-i18n (0.12.5-1) unstable; urgency=low
+
+  * New upstream release (closes: #298497)
+  * Remove unneeded dependencies (shlibs:Depends and misc:Depends)
+
+ -- Francois Marier <francois@debian.org>  Wed, 19 Oct 2005 14:53:25 -0400
+
+k3b-i18n (0.12.4a-2) unstable; urgency=low
+
+  * Updated French translation (closes: #331717)
+
+ -- Francois Marier <francois@debian.org>  Wed,  5 Oct 2005 14:16:06 -0400
+
+k3b-i18n (0.12.4a-1) unstable; urgency=low
+
+  * New upstream release
+  * Update depends to k3b >=0.12.4a
+  * Update Standards Version (no changes)
+  * Add myself to uploaders field
+  * Update FSF address in debian/copyright
+  * Clean up .gmo files (Ubuntu patch)
+  * Remove upstream's empty changelog (fixes lintian warning)
+
+ -- Francois Marier <francois@debian.org>  Mon, 19 Sep 2005 01:00:59 -0400
+
+k3b-i18n (0.11-2) unstable; urgency=low
+
+  * Install documentation in /usr/share/doc/kde/HTML/
+  (closes: #241769)
+  * Add a dependancy on k3b >=0.11
+  (closes: #261631)
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Sat, 27 Nov 2004 10:30:18 +0100
+
+k3b-i18n (0.11-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Sun, 28 Mar 2004 13:03:36 +0200
+
+k3b-i18n (0.10-1) unstable; urgency=low
+
+  * New upstream release. 
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Tue,  9 Dec 2003 20:57:37 +0100
+
+k3b-i18n (0.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add k3b in Depends.
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Sat, 26 Jul 2003 17:38:16 +0200
+
+k3b-i18n (0.8-2) unstable; urgency=low
+
+  * Modification of build dependancies.
+    (closes: #190681)
+  * Modification of description.
+    (closes: #186961)
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Fri, 25 Apr 2003 01:11:00 -0400
+
+k3b-i18n (0.8-1) unstable; urgency=low
+
+  * Initial Release.
+    (closes: #185083)
+  * Update admin directory from kde CVS.
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Sun, 16 Mar 2003 23:01:31 -0500
+

@@ -1,0 +1,16 @@
+debian/tmp/usr/include/kprofilemethod.h
+debian/tmp/usr/lib/*/trinity/tdeabcformat_kdeaccounts.la
+debian/tmp/usr/lib/*/trinity/tdeabcformat_kdeaccounts.so
+debian/tmp/usr/lib/*/trinity/plugins/styles/scheck.so
+debian/tmp/usr/lib/*/trinity/plugins/styles/scheck.la
+debian/tmp/usr/share/apps/tdeabc/formats/kdeaccountsplugin.desktop
+debian/tmp/usr/share/apps/tdestyle/themes/scheck.themerc
+kdepalettes/kde_xpaintrc /usr/share/kdepalettes
+kdepalettes/KDE_Gimp /usr/share/kdepalettes
+kdepalettes/README /usr/share/kdepalettes
+
+debian/tmp/usr/lib/*/libkstartperf.so.1.0.0
+debian/tmp/usr/lib/*/libkstartperf.so.1
+debian/tmp/usr/lib/*/libkstartperf.so
+debian/tmp/usr/lib/*/libkstartperf.la
+debian/tmp/usr/bin/kstartperf

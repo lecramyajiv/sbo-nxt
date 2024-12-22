@@ -1,0 +1,13 @@
+Index: interfaces/kimproxy/library/kimproxy.cpp
+===================================================================
+--- interfaces/kimproxy/library/kimproxy.cpp.orig
++++ interfaces/kimproxy/library/kimproxy.cpp
+@@ -204,7 +204,7 @@ KIMProxy::KIMProxy( DCOPClient* dc ) : D
+ 	
+ 	// FIXME: make this work when the sender object id is set to KIMIFace
+ 	if ( !connectDCOPSignal( 0, 0, method, method, false ) )
+-		KMessageBox::information( 0, QString( "Couldn't connect DCOP signal.\nWon't receive any status notifications!" ) );
++		kdWarning() << "Couldn't connect DCOP signal. Won't receive any status notifications!" << endl;
+ }
+ 
+ KIMProxy::~KIMProxy( )

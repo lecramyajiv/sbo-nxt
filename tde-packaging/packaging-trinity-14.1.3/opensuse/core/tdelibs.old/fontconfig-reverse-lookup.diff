@@ -1,0 +1,137 @@
+Index: kdeui/Makefile.am
+===================================================================
+--- kdeui/Makefile.am.orig
++++ kdeui/Makefile.am
+@@ -20,7 +20,7 @@
+ 
+ SUBDIRS = . kdetrayproxy tests about
+ 
+-INCLUDES= -I$(top_srcdir)/kdefx -I$(top_srcdir)/interfaces $(all_includes)
++INCLUDES= -I/usr/include/freetype2/ -I$(top_srcdir)/kdefx -I$(top_srcdir)/interfaces $(all_includes)
+ 
+ # For the future: examine if condensing the tons of *_LDFLAGS variables
+ # into $(all_libraries) isn't better
+Index: kdeui/kaction.cpp
+===================================================================
+--- kdeui/kaction.cpp.orig
++++ kdeui/kaction.cpp
+@@ -42,6 +42,17 @@
+ #include <ktoolbar.h>
+ #include <ktoolbarbutton.h>
+ 
++#include <ft2build.h>
++#include FT_FREETYPE_H
++#include <X11/Xdefs.h>
++#include <X11/Xlib.h>
++#include <X11/Xatom.h>
++#include <X11/Intrinsic.h>
++#include <X11/StringDefs.h>
++#include <X11/Shell.h>
++
++#include <X11/Xft/Xft.h>
++
+ /**
+ * How it works.
+ * KActionCollection is an organizing container for KActions.
+Index: kdeui/kactionclasses.cpp
+===================================================================
+--- kdeui/kactionclasses.cpp.orig
++++ kdeui/kactionclasses.cpp
+@@ -27,6 +27,9 @@
+ #include "kactionclasses.h"
+ 
+ #include <assert.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
++#include <fontconfig/fontconfig.h>
+ 
+ #include <qcursor.h>
+ #include <qclipboard.h>
+@@ -35,6 +38,7 @@
+ #include <qwhatsthis.h>
+ #include <qtimer.h>
+ #include <qfile.h>
++#include <qregexp.h>
+ 
+ #include <dcopclient.h>
+ #include <dcopref.h>
+@@ -1498,7 +1502,24 @@ void KFontAction::setFont( const QString
+           return;
+        }
+     }
+-    kdDebug(129) << "Font not found " << family.lower() << endl;
++
++    // nothing matched yet, try a fontconfig reverse lookup and
++    // check again to solve an alias
++    FcPattern *pattern = NULL;
++    FcConfig *config = NULL;
++    QString realFamily;
++    QRegExp regExp("[-:]");
++    pattern = FcNameParse( (unsigned char*) family.ascii() );
++    FcDefaultSubstitute(pattern);
++    FcConfigSubstitute (config, pattern, FcMatchPattern);
++    pattern = FcFontMatch(NULL, pattern, NULL);
++    realFamily = (char*)FcNameUnparse(pattern);
++    realFamily.remove(realFamily.find(regExp), realFamily.length());
++
++    if ( !realFamily.isEmpty() && realFamily != family )
++       setFont( realFamily );
++    else
++       kdDebug(129) << "Font not found " << family.lower() << endl;
+ }
+ 
+ int KFontAction::plug( QWidget *w, int index )
+Index: kdeui/kfontcombo.cpp
+===================================================================
+--- kdeui/kfontcombo.cpp.orig
++++ kdeui/kfontcombo.cpp
+@@ -20,6 +20,7 @@
+ #include <qfontdatabase.h>
+ #include <qlistbox.h>
+ #include <qpainter.h>
++#include <qregexp.h>
+ 
+ #include <kcharsets.h>
+ #include <kconfig.h>
+@@ -29,6 +30,18 @@
+ #include "kfontcombo.h"
+ #include "kfontcombo.moc"
+ 
++#include <ft2build.h>
++#include FT_FREETYPE_H
++#include <fontconfig/fontconfig.h>
++#include <X11/Xlib.h>
++#include <X11/Xatom.h>
++#include <X11/Intrinsic.h>
++#include <X11/StringDefs.h>
++#include <X11/Shell.h>
++
++#include <X11/Xft/Xft.h>
++
++
+ struct KFontComboPrivate
+ {
+     KFontComboPrivate()
+@@ -227,6 +240,22 @@ void KFontCombo::setCurrentFont(const QS
+           return;
+        }
+     }
++
++    // nothing matched yet, try a fontconfig reverse lookup and
++    // check again to solve an alias
++    FcPattern *pattern = NULL;
++    FcConfig *config = NULL;
++    QString realFamily;
++    QRegExp regExp("[-:]");
++    pattern = FcNameParse( (unsigned char*) family.ascii() );
++    FcDefaultSubstitute(pattern);
++    FcConfigSubstitute (config, pattern, FcMatchPattern);
++    pattern = FcFontMatch(NULL, pattern, NULL);
++    realFamily = (char*)FcNameUnparse(pattern);
++    realFamily.remove(realFamily.find(regExp), realFamily.length());
++
++    if ( !realFamily.isEmpty() && realFamily != family )
++       setCurrentFont( realFamily );
+ }
+ 
+ void KFontCombo::slotModified( int )

@@ -1,0 +1,288 @@
+--- ksysguard/configure.in.in
++++ ksysguard/configure.in.in
+@@ -45,5 +45,34 @@
+ AC_SUBST(LIBHOSTS)
+ AC_SUBST(LIBSENSORS)
+ 
++# check for SLP
++dnl define the configure option that disables slp
++AC_ARG_ENABLE(slp, [  --disable-slp     don't require libslp (ksysguard do not find daemons) ],  with_slp=$enableval, with_slp=yes)
++if test "$with_slp" = "yes"; then
++AC_MSG_CHECKING(for SLP support)
++save_slptest_LIBS="$LIBS"
++save_slptest_LDFLAGS="$LDFLAGS"
++save_slptest_CPPFLAGS="$CPPFLAGS"
++LDFLAGS="$all_libraries $LDFLAGS"
++CPPFLAGS="$CPPFLAGS $all_includes"
++LIBS="-lslp"
++AC_TRY_LINK(    [
++			#include <slp.h>
++                ],[
++			SLPOpen(0, SLP_FALSE, (SLPHandle*) 0);
++                ],[
++			AC_DEFINE(HAVE_SLP,1,[Define if SLP is available])
++			LIB_SLP="-lslp"
++			AC_MSG_RESULT(yes)
++                ],[
++			AC_MSG_RESULT(no)
++			LIB_SLP=""
++])
++CPPFLAGS=$save_slptest_CPPFLAGS
++LDFLAGS=$save_slptest_LDFLAGS
++LIBS=$save_slptest_LIBS
++fi
++AC_SUBST(LIB_SLP)
++
+ dnl Check for dell laptop support
+ AM_CONDITIONAL(supports_i8k, test -f /proc/i8k)
+--- ksysguard/example/ksysguarddrc
++++ ksysguard/example/ksysguarddrc
+@@ -1,5 +1,8 @@
+ # /etc/ksysguardd.conf
+ 
++# refresh SLP registration
++SLPrefresh=1800
++
+ # LogFiles: the list of all available logfiles
+ LogFiles=messages:/var/log/messages,kern:/var/log/kern.log,daemon:/var/log/daemon.log
+ 
+--- ksysguard/gui/Makefile.am
++++ ksysguard/gui/Makefile.am
+@@ -31,7 +31,7 @@
+ ksysguard_LDADD = \
+ 	ksgrd/libksgrd.la \
+ 	SensorDisplayLib/libsensordisplays.la \
+-	$(LIB_KDEUI) $(LIB_KIO) $(LIB_KDNSSD)
++	$(LIB_KDEUI) $(LIB_KIO) $(LIB_KDNSSD) $(LIB_SLP)
+ ksysguard_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+ 
+ kpm_SOURCES = kpm.c
+--- ksysguard/gui/ksysguard.cc
++++ ksysguard/gui/ksysguard.cc
+@@ -34,6 +34,8 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
++#include <qregexp.h>
++
+ #include <kaboutdata.h>
+ #include <kaction.h>
+ #include <kapplication.h>
+@@ -280,6 +282,46 @@
+   mSplitter->setSizes( sizes );
+ }
+ 
++#if HAVE_SLP
++
++SLPBoolean MySLPSrvURLCallback( SLPHandle phslp,
++                              const char* srvurl,
++                              unsigned short lifetime,
++                              SLPError errcode,
++                              void* cookie )
++{
++  QRegExp r("^service:ksysguardd.kde://(\\w+):(.*)$");
++
++  if ( r.search(srvurl) >= 0 ){
++     QString host( r.cap(1) );
++     int port = r.cap(2).toInt() ;
++
++     if ( !host.isEmpty() && port > 0 )
++        KSGRD::SensorMgr->engage( host, "", "", port );
++  };
++  return SLP_TRUE;
++}
++
++void TopLevel::rescanSLP( bool enableErrorPopup )
++{
++  SLPHandle phslp;
++  SLPError result;
++  result = SLPOpen( NULL, SLP_FALSE, &phslp);
++  if (result != SLP_OK)
++     qWarning( "SLPOpen failed" ); // TODO: KMessagebox
++  else {
++     result = SLPFindSrvs( phslp,
++                           "service:ksysguardd.kde",
++                           "", // TODO: Scope selector
++                           "", // all services
++                           MySLPSrvURLCallback,
++                           this );
++     if (result != SLP_OK)
++        qWarning( "unable to register SLP service" ); // TODO: KMessageBox
++  }
++}
++#endif
++
+ void TopLevel::initStatusBar()
+ {
+   KSGRD::SensorMgr->engage( "localhost", "", "ksysguardd" );
+@@ -363,6 +405,10 @@
+     KSGRD::SensorMgr->sendRequest( "localhost", "mem/swap/used",
+                                    (KSGRD::SensorClient*)this, 4 );
+   }
++
++#if HAVE_SLP
++  rescanSLP();
++#endif
+ }
+ 
+ bool TopLevel::queryClose()
+--- ksysguard/gui/ksysguard.h
++++ ksysguard/gui/ksysguard.h
+@@ -24,6 +24,8 @@
+ #ifndef KSG_KSYSGUARD_H
+ #define KSG_KSYSGUARD_H
+ 
++#include <config.h>
++
+ #include <qevent.h>
+ 
+ #include <dcopclient.h>
+@@ -34,6 +36,10 @@
+ 
+ #include <ksgrd/SensorClient.h>
+ 
++#if HAVE_SLP
++#include <slp.h>
++#endif
++
+ class KRecentFilesAction;
+ class KToggleAction;
+ 
+@@ -77,6 +83,9 @@
+     virtual void customEvent( QCustomEvent* );
+     virtual void timerEvent( QTimerEvent* );
+     virtual bool queryClose();
++#if HAVE_SLP
++    virtual void rescanSLP( bool enableErrorPopup = FALSE );
++#endif
+ 
+   protected slots:
+     void connectHost();
+--- ksysguard/ksysguardd/Makefile.am
++++ ksysguard/ksysguardd/Makefile.am
+@@ -31,5 +31,5 @@
+ bin_PROGRAMS = ksysguardd
+ 
+ ksysguardd_SOURCES = Command.c conf.c ksysguardd.c PWUIDCache.c
+-ksysguardd_LDFLAGS = $(all_libraries)
++ksysguardd_LDFLAGS = $(all_libraries) $(LIB_SLP)
+ ksysguardd_LDADD =  $(top_builddir)/ksysguard/ksysguardd/$(UNAME)/libksysguardd.a ../CContLib/libccont.a -lkdefakes_nonpic $(LIBHOSTS) $(LIB_DNSSD) $(LIB_KINFO)
+--- ksysguard/ksysguardd/conf.c
++++ ksysguard/ksysguardd/conf.c
+@@ -56,6 +56,7 @@
+   char *begin, *token, *tmp;
+   ConfigLogFile *confLog;
+ 
++  confSLPrefresh = 0;
+   LogFileList = new_ctnr();
+   SensorList = new_ctnr();
+ 
+@@ -93,6 +94,10 @@
+     if ( line[ strlen( line ) - 1 ] == '\n' )
+       line[ strlen( line ) - 1 ] = '\0';
+ 
++    if ( !strncmp( line, "SLPrefresh=", 11 ) ) {
++      confSLPrefresh = atoi( line + 11 );
++    };
++
+     if ( !strncmp( line, "RegisterDomain",14) && (begin = strchr( line, '=' )) ) RegisterDomain=strdup(begin+1);
+ 
+     if ( !strncmp( line, "LogFiles", 8 ) && (begin = strchr( line, '=' )) ) {
+--- ksysguard/ksysguardd/conf.h
++++ ksysguard/ksysguardd/conf.h
+@@ -30,6 +30,8 @@
+ 
+ extern char* RegisterDomain;
+ 
++short confSLPrefresh;
++
+ void parseConfigFile( const char *filename );
+ void freeConfigFile();
+ 
+--- ksysguard/ksysguardd/ksysguardd.c
++++ ksysguard/ksysguardd/ksysguardd.c
+@@ -43,6 +43,10 @@
+ #ifdef HAVE_DNSSD
+ #include <dns_sd.h>
+ #endif
++#if HAVE_SLP
++#include <slp.h>
++#endif
++
+ #include "modules.h"
+ 
+ #include "ksysguardd.h"
+@@ -348,6 +352,62 @@
+ #endif
+ 
+ 
++#if HAVE_SLP
++void mySLPRegReport(SLPHandle hslp, SLPError errcode, void *cookie)
++{
++    if (errcode)
++       log_error( "SLP (de)registration error" );
++}
++
++void register_slp();
++
++void refresh_slp()
++{
++      register_slp();
++}
++
++void register_slp()
++{
++      SLPHandle phslp;
++      SLPError result;
++      int slp_timeout = confSLPrefresh;
++      struct sigaction act, oact;
++
++      if ( slp_timeout < 120 ) /* do not bomb the slp server with wrong config */
++	 slp_timeout = 120 ;
++      if ( slp_timeout > SLP_LIFETIME_MAXIMUM )
++         slp_timeout = SLP_LIFETIME_MAXIMUM;
++
++      result = SLPOpen( NULL, SLP_FALSE, &phslp);
++      if (result != SLP_OK)
++         log_error( "SLPOpen failed" );
++      else {
++         char hostname[1024];
++         char SLPServiceUrl[2048];
++         gethostname( hostname, 1023 );
++         snprintf( SLPServiceUrl, 1023, "service:ksysguardd.kde://%s:%i", hostname, SocketPort );
++
++         result = SLPReg( phslp, 
++                          SLPServiceUrl, 
++                          slp_timeout, 
++                          0, 
++                          "", 
++                          SLP_TRUE,
++                          mySLPRegReport,
++                          0 );
++
++         if (result != SLP_OK)
++            log_error( "unable to register SLP service" );
++         SLPClose( phslp );
++
++         act.sa_handler = refresh_slp;
++         if (0 != sigaction(SIGALRM, &act, &oact))
++             log_error("Error establishing signal handler for SLP");
++         alarm(slp_timeout - 15);
++      }
++}
++#endif
++
+ int createServerSocket()
+ {
+   int i = 1;
+@@ -402,6 +462,10 @@
+       ServiceSocket = DNSServiceRefSockFD(Ref);
+ #endif
+ 
++#if HAVE_SLP
++  if ( BindToAllInterfaces )
++     register_slp();
++#endif
+   return newSocket;
+ }
+ 

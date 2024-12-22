@@ -1,0 +1,23 @@
+debian/tmp/usr/bin/kbugbuster
+debian/tmp/usr/lib/*/trinity/kcal_bugzilla.la
+debian/tmp/usr/lib/*/trinity/kcal_bugzilla.so
+debian/tmp/usr/share/applications/tde/kbugbuster.desktop
+debian/tmp/usr/share/apps/kbugbuster/kbugbusterui.rc
+debian/tmp/usr/share/apps/kbugbuster/pics/bars.png
+debian/tmp/usr/share/apps/kbugbuster/pics/logo.png
+debian/tmp/usr/share/apps/kbugbuster/pics/tools.png
+debian/tmp/usr/share/apps/kbugbuster/pics/top-right.png
+debian/tmp/usr/share/doc/tde/HTML/en/kbugbuster/*.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kbugbuster/common
+debian/tmp/usr/share/doc/tde/HTML/en/kbugbuster/*.docbook
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kbugbuster.png
+debian/tmp/usr/share/icons/hicolor/22x22/apps/kbugbuster.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kbugbuster.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kbugbuster.png
+debian/tmp/usr/share/icons/hicolor/64x64/apps/kbugbuster.png
+debian/tmp/usr/share/icons/hicolor/128x128/apps/kbugbuster.png
+debian/tmp/usr/share/icons/locolor/16x16/apps/kbugbuster.png
+debian/tmp/usr/share/icons/locolor/32x32/apps/kbugbuster.png
+debian/tmp/usr/share/man/man1/kbugbuster.1
+debian/tmp/usr/share/services/tderesources/kcal/bugzilla.desktop
+debian/icons/kbugbuster.xpm /usr/share/pixmaps

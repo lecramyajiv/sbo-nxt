@@ -1,0 +1,80 @@
+Index: startkde
+===================================================================
+--- startkde.orig
++++ startkde
+@@ -3,6 +3,9 @@
+ #  DEFAULT KDE STARTUP SCRIPT ( KDE-3.5.10 )
+ #
+ 
++PATH=/opt/kde3/bin:${PATH/:\/opt\/kde3\/bin}
++export PATH
++test -x /usr/bin/xrandr && /usr/bin/xrandr --auto
+ # When the X server dies we get a HUP signal from xinit. We must ignore it
+ # because we still need to do some cleanup.
+ trap 'echo GOT SIGHUP' HUP
+@@ -19,7 +22,7 @@ fi
+ # people's heads. We use colours from the standard KDE palette for those with
+ # palettised displays.
+ if test -z "$XDM_MANAGED" || echo "$XDM_MANAGED" | grep ",auto" > /dev/null; then
+-  xsetroot -solid "#000000"
++  : # xsetroot -solid "#C0C0C0"
+ fi
+ 
+ # we have to unset this for Darwin since it will screw up KDE's dynamic-loading
+@@ -62,7 +65,7 @@ cat >$kdehome/share/config/startupconfig
+ kcminputrc Mouse cursorTheme ''
+ kcminputrc Mouse cursorSize ''
+ kpersonalizerrc General FirstLogin true
+-ksplashrc KSplash Theme Default
++ksplashrc KSplash Theme ksplashx-suse
+ kcmrandrrc Display ApplyOnStartup false
+ kcmrandrrc [Screen0]
+ kcmrandrrc [Screen1]
+@@ -160,6 +163,16 @@ Xft.dpi: 96
+ EOF
+ fi
+ 
++case "$ksplashrc_ksplash_theme" in
++   ksplashx-*)
++       if test -x /opt/kde3/bin/ksplashx; then
++         /opt/kde3/bin/ksplashx ${ksplashrc_ksplash_theme#ksplashx-}
++       else
++         ksplashrc_ksplash_theme=Default
++       fi
++       ;;
++esac
++
+ # Source scripts found in <localprefix>/env/*.sh and <prefixes>/env/*.sh
+ # (where <localprefix> is $KDEHOME or ~/.kde, and <prefixes> is where KDE is installed)
+ #
+@@ -286,7 +299,7 @@ dcopserver_shutdown
+ echo 'startkde: Starting up...'  1>&2
+ 
+ # run KPersonalizer before the session, if this is the first login
+-if test "$kpersonalizerrc_general_firstlogin" = "true"; then
++if false && test "$kpersonalizerrc_general_firstlogin" = "true"; then
+     # start only dcopserver, don't start whole kdeinit (takes too long)
+     echo 'startkde: Running kpersonalizer...'  1>&2
+     dcopserver
+@@ -305,6 +318,8 @@ if test -z "$dl"; then
+   case "$ksplashrc_ksplash_theme" in 
+     None)
+        ;; # nothing
++    ksplashx-*)
++      ;; # started earlier
+     Simple)
+        if test "$kpersonalizerrc_general_firstlogin" = "true"; then
+            ksplashsimple 
+@@ -384,9 +399,11 @@ done
+ echo 'startkde: Shutting down...'  1>&2
+ 
+ # Clean up
++if test -e /opt/kde3/bin/artsshell; then
++  artsshell -q terminate
++fi
+ kdeinit_shutdown
+ dcopserver_shutdown --wait
+-artsshell -q terminate
+ # KDE4 support
+ kde4 kdeinit4_shutdown 2>/dev/null
+ 

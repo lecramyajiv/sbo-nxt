@@ -1,0 +1,10 @@
+Index: mimetypes/application/x-jar.desktop
+===================================================================
+--- mimetypes/application/x-jar.desktop.orig
++++ mimetypes/application/x-jar.desktop
+@@ -87,4 +87,4 @@ Comment[zh_CN]=Java 归档
+ Comment[zh_HK]=Java 壓縮檔
+ Comment[zh_TW]=Java 壓縮檔案
+ Comment[zu]=Umqulu we-Java
+-X-KDE-AutoEmbed=true
++X-KDE-AutoEmbed=false

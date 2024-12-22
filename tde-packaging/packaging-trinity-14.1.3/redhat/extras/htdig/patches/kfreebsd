@@ -1,0 +1,25 @@
+From: Steven Chamberlain <steven@pyro.eu.org>
+Subject: only use ETIME if defined
+Bug-Debian: http://bugs.debian.org/765284
+Forwarded: no
+
+ETIME relates to an optional POSIX STREAMS extension not implemented
+on some platforms (such as GNU/kFreeBSD).
+
+Don't check for this return value on platforms that don't define it.
+
+--- htdig-3.2.0b6.orig/db/mut_pthread.c.orig	2002-02-02 18:18:05.000000000 +0000
++++ htdig-3.2.0b6/db/mut_pthread.c	2014-10-14 12:40:53.771737556 +0100
+@@ -201,7 +201,11 @@
+ 			 * call, and Solaris delivers the signal to the wrong
+ 			 * LWP.
+ 			 */
+-			if (ret != 0 && ret != ETIME && ret != ETIMEDOUT)
++			if (ret != 0 &&
++#ifdef ETIME
++			    ret != ETIME &&
++#endif
++			    ret != ETIMEDOUT)
+ 				return (ret);
+ 		}
+ 

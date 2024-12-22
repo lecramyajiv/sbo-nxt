@@ -1,0 +1,23 @@
+kaffeine for Debian
+-------------------
+
+The Gstreamer support is experimental and has been disabled.
+
+CSS issue
+=========
+
+CSS is sold by the DVD industry as a "copy protection", though it's more of a
+"view protection" as it makes DVDs unviewable with unlicensed players. To play
+these DVDs, a library is needed to decode them, libdvdcss. Due to possible
+legal issues, Debian cannot distribute libdvdcss, but it is available on other
+places on the internet.
+
+Region issue
+============
+
+With a brand new DVD drive, it is necessary to set (at least once) the
+region/zone setting, allowing it to decrypt the DVD's sold in this geographical
+zone. Be careful, hardware vendors often limit the number of such
+modifications. You can use regionset utility to achieve this.
+
+ -- Fathi Boudra <fboudra@free.fr>, Mon, 27 Mar 2006 09:44:19 +0200

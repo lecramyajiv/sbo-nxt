@@ -1,0 +1,52 @@
+Source: pytde
+Section: python
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Ricardo Javier Cardenes Medina <rcardenes@debian.org>
+Uploaders: Torsten Marek <shlomme@debian.org>, Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 10~), libtqtinterface-dev, dh-python, python3-all-dev, python3-all-dbg [!solaris-any], python3-sip-tqt, python3-sip-tqt-dev, python3-sip-tqt-dbg [!solaris-any], pytqt-dev, python3-pytqt-dbg [!solaris-any], tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://www.riverbankcomputing.co.uk/pytde/index.php
+
+Package: python3-pytde
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends}, python3-pytqt
+Breaks: python-trinity-trinity (<< 4:14.1.0~)
+Provides: ${python3:Provides}
+Description: Trinity bindings for Python 3 [Trinity]
+ Python binding module that provides wide access to the Trinity API,
+ also known as PyTDE. Using this, you'll get (for example) classes
+ from kio, kjs, tdehtml and kprint.
+
+Package: python3-pytde-dbg
+Priority: extra
+Architecture: linux-any
+Depends: python3-pytde (= ${binary:Version}), python3-all-dbg, python3-pytqt-dbg, ${shlibs:Depends}
+Description: Trinity bindings for Python 3 (debug extensions) [Trinity]
+ Python binding module that provides wide access to the Trinity API,
+ also known as PyTDE. Using this, you'll get (for example) classes
+ from kio, kjs, tdehtml and kprint.
+ .
+ This package contains the extension built for the Python debug interpreter.
+
+Package: pytde-dev
+Section: python
+Architecture: all
+Replaces: python-trinity-trinity-dev (<< 4:14.1.0~)
+Breaks: python-trinity-trinity-dev (<< 4:14.1.0~)
+Depends: pytqt-tools, ${python3:Depends}
+Description: Trinity bindings for Python - Development files and scripts [Trinity]
+ Development .sip files with definitions of PyTDE classes. They
+ are needed to build PyTDE, but also as building blocks of other
+ packages based on them. 
+ The package also contains tdepyuic, a wrapper script around PyTQt's
+ user interface compiler.
+
+Package: pytde-doc
+Section: doc
+Architecture: all
+Replaces: python-trinity-trinity-doc (<< 4:14.1.0~)
+Breaks: python-trinity-trinity-doc (<< 4:14.1.0~)
+Description: Documentation and examples for PyTDE [Trinity]
+ General documentation and examples for PyTDE providing programming
+ tips and working code you can use to learn from.

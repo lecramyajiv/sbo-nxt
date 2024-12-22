@@ -1,0 +1,18 @@
+Source: kompose-trinity
+Section: admin
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Ana Beatriz Guerrero Lopez <ana@debian.org>, Sune Vuorela <debian@pusling.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libimlib2-dev, libx11-dev, libxdamage-dev, libxcomposite-dev
+Standards-Version: 3.8.4
+
+Package: kompose-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: kompose-trinity (<< 4:14.0.0~)
+Breaks: kompose-trinity (<< 4:14.0.0~)
+Description: full screen task manager for TDE
+ Kompose offers a great new way to manage a big number of windows on
+ different Virtual Desktops. It creates a fullscreen view where every
+ window is represented by a scaled screenshot of its own.
+

@@ -1,0 +1,224 @@
+# TDE Config File
+[Tree]
+
+Doc dir=html
+
+#top level elements
+Top Element=HTML
+
+HTML=#Top level elements,#Head elements,#Generic Block-level Elements,#Lists,#Tables,#Forms,#Special Inline Elements,#Phrase Elements,#Font Style Elements,#Frames,Entities,
+
+Top level elements=HTML - HTML document,HEAD - Document head,BODY - Document body,FRAMESET,
+HTML - HTML document=html/html.html
+HEAD - Document head=head/head.html
+BODY - Document body=html/body.html
+FRAMESET=frames/frameset.html
+
+Head elements=BASE - Document base URL,ISINDEX - Input prompt,LINK - Document relationship,META - Metadata,SCRIPT - Client-side script,STYLE - Embedded style sheet,TITLE - Document title,
+BASE - Document base URL=head/base.html
+ISINDEX - Input prompt=block/isindex.html
+LINK - Document relationship=head/link.html
+META - Metadata=head/meta.html
+SCRIPT - Client-side script=special/script.html
+STYLE - Embedded style sheet=head/style.html
+TITLE - Document title=head/title.html
+
+Generic Block-level Elements=ADDRESS - Address,BLOCKQUOTE - Block quotation,CENTER - Centered block,DEL - Deleted text,DIV - Generic block-level container,H1 - Level-one heading,H2 - Level-two heading,H3 - Level-three heading,H4 - Level-four heading,H5 - Level-five heading,H6 - Level-six heading,HR - Horizontal rule,INS - Inserted text,ISINDEX - Input prompt,NOSCRIPT - Alternate script content,P - Paragraph,PRE - Preformatted text,
+ADDRESS - Address=block/address.html
+BLOCKQUOTE - Block quotation=block/blockquote.html
+CENTER - Centered block=block/center.html
+DEL - Deleted text=phrase/del.html
+DIV - Generic block-level container=block/div.html
+H1 - Level-one heading=block/h1.html
+H2 - Level-two heading=block/h2.html
+H3 - Level-three heading=block/h3.html
+H4 - Level-four heading=block/h4.html
+H5 - Level-five heading=block/h5.html
+H6 - Level-six heading=block/h6.html
+HR - Horizontal rule=block/hr.html
+INS - Inserted text=phrase/ins.html
+NOSCRIPT - Alternate script content=block/noscript.html
+P - Paragraph=block/p.html
+PRE - Preformatted text=block/pre.html
+
+Lists=DIR - Directory list,DL - Definition list,DT - Definition term,DD - Definition description,LI - List item,MENU - Menu list,OL - Ordered list,UL - Unordered list,
+DIR - Directory list=lists/dir.html
+DL - Definition list=lists/dl.html
+DT - Definition term=lists/dt.html
+DD - Definition description=lists/dd.html
+LI - List item=lists/li.html
+MENU - Menu list=lists/menu.html
+OL - Ordered list=lists/ol.html
+UL - Unordered list=lists/ul.html
+
+Tables=TABLE - Table,CAPTION - Table caption,COLGROUP - Table column group,COL - Table column,THEAD - Table head,TFOOT - Table foot,TBODY - Table body,TR - Table row,TD - Table data cell,TH - Table header cell,
+TABLE - Table=tables/table.html
+CAPTION - Table caption=tables/caption.html
+COLGROUP - Table column group=tables/colgroup.html
+COL - Table column=tables/col.html
+THEAD - Table head=tables/thead.html
+TFOOT - Table foot=tables/tfoot.html
+TBODY - Table body=tables/tbody.html
+TR - Table row=tables/tr.html
+TD - Table data cell=tables/td.html
+TH - Table header cell=tables/th.html
+
+Forms=FORM - Interactive form,BUTTON - Button,FIELDSET - Form control group,LEGEND - Fieldset caption,INPUT - Form input,LABEL - Form field label,SELECT - Option selector,OPTGROUP - Option group,OPTION - Menu option,TEXTAREA - Multi-line text input,
+FORM - Interactive form=forms/form.html
+BUTTON - Button=forms/button.html
+FIELDSET - Form control group=forms/fieldset.html
+LEGEND - Fieldset caption=forms/legend.html
+INPUT - Form input=forms/input.html
+LABEL - Form field label=forms/label.html
+SELECT - Option selector=forms/select.html
+OPTGROUP - Option group=forms/optgroup.html
+OPTION - Menu option=forms/option.html
+TEXTAREA - Multi-line text input=forms/textarea.html
+
+Special Inline Elements=A - Anchor,APPLET - Java applet,BASEFONT - Base font change,BDO - BiDi override,BR - Line break,FONT - Font change,IFRAME - Inline frame,IMG - Inline image,MAP - Image map,AREA - Image map region,OBJECT - Object,PARAM - Object parameter,Q - Short quotation,SCRIPT - Client-side script,SPAN - Generic inline container,SUB - Subscript,SUP - Superscript,
+A - Anchor=special/a.html
+APPLET - Java applet=special/applet.html
+BASEFONT - Base font change=special/basefont.html
+BDO - BiDi override=special/bdo.html
+BR - Line break=special/br.html
+FONT - Font change=special/font.html
+IFRAME - Inline frame=special/iframe.html
+IMG - Inline image=special/img.html
+MAP - Image map=special/map.html
+AREA - Image map region=special/area.html
+OBJECT - Object=special/object.html
+PARAM - Object parameter=special/param.html
+Q - Short quotation=special/q.html
+SPAN - Generic inline container=special/span.html
+SUB - Subscript=special/sub.html
+SUP - Superscript=special/sup.html
+
+Phrase Elements=ABBR - Abbreviation,ACRONYM - Acronym,CITE - Citation,CODE - Computer code,DEL - Deleted text,DFN - Defined term,EM - Emphasis,INS - Inserted text,KBD - Text to be input,SAMP - Sample output,STRONG - Strong emphasis,VAR - Variable,
+ABBR - Abbreviation=phrase/abbr.html
+ACRONYM - Acronym=phrase/acronym.html
+CITE - Citation=phrase/cite.html
+CODE - Computer code=phrase/code.html
+DEL - Deleted text=phrase/del.html
+DFN - Defined term=phrase/dfn.html
+EM - Emphasis=phrase/em.html
+INS - Inserted text=phrase/ins.html
+KBD - Text to be input=phrase/kbd.html
+SAMP - Sample output=phrase/samp.html
+STRONG - Strong emphasis=phrase/strong.html
+VAR - Variable=phrase/var.html
+
+Font Style Elements=B - Bold text,BIG - Large text,I - Italic text,S - Strike-through text,SMALL - Small text,STRIKE - Strike-through text,TT - Teletype text,U - Underlined text,
+B - Bold text=fontstyle/b.html
+BIG - Large text=fontstyle/big.html
+I - Italic text=fontstyle/i.html
+S - Strike-through text=fontstyle/s.html
+SMALL - Small text=fontstyle/small.html
+STRIKE - Strike-through text=fontstyle/strike.html
+TT - Teletype text=fontstyle/tt.html
+U - Underlined text=fontstyle/u.html
+
+Frames=FRAMESET - Frameset,FRAME - Frame,NOFRAMES - Frames alternate content,
+FRAMESET - Frameset=frames/frameset.html
+FRAME - Frame=frames/frame.html
+NOFRAMES - Frames alternate content=frames/noframes.html
+
+Entities=entities/index.html
+
+# keywords for context help
+[Context]
+
+ContextList=HTML,HEAD,BODY,FRAMESET,BASE,ISINDEX,LINK,META,SCRIPT,STYLE,TITLE,ADDRESS,BLOCKQUOTE,CENTER,DEL,DIV,H1,H2,H3,H4,H5,H6,HR,INS,NOSCRIPT,P,PRE,DIR,DL,DT,DD,LI,MENU,OL,UL,TABLE,CAPTION,COLGROUP,COL,THEAD,TFOOT,TBODY,TR,TD,TH,FORM,BUTTON,FIELDSET,LEGEND,INPUT,LABEL,SELECT,OPTGROUP,OPTION,TEXTAREA,A,APPLET,BASEFONT,BDO,BR,FONT,IFRAME,IMG,MAP,AREA,OBJECT,PARAM,Q,SPAN,SUB,SUP,ABBR,ACRONYM,CITE,CODE,DEL,DFN,EM,INS,KBD,SAMP,STRONG,VAR,B,BIG,I,S,SMALL,STRIKE,TT,U,FRAME,NOFRAMES,
+
+HTML=html/html.html
+HEAD=head/head.html
+BODY=html/body.html
+FRAMESET=frames/frameset.html
+BASE=head/base.html
+ISINDEX=block/isindex.html
+LINK=head/link.html
+META=head/meta.html
+SCRIPT=special/script.html
+STYLE=head/style.html
+TITLE=head/title.html
+ADDRESS=block/address.html
+BLOCKQUOTE=block/blockquote.html
+CENTER=block/center.html
+DEL=phrase/del.html
+DIV=block/div.html
+H1=block/h1.html
+H2=block/h2.html
+H3=block/h3.html
+H4=block/h4.html
+H5=block/h5.html
+H6=block/h6.html
+HR=block/hr.html
+INS=phrase/ins.html
+NOSCRIPT=block/noscript.html
+P=block/p.html
+PRE=block/pre.html
+DIR=lists/dir.html
+DL=lists/dl.html
+DT=lists/dt.html
+DD=lists/dd.html
+LI=lists/li.html
+MENU=lists/menu.html
+OL=lists/ol.html
+UL=lists/ul.html
+TABLE=tables/table.html
+CAPTION=tables/caption.html
+COLGROUP=tables/colgroup.html
+COL=tables/col.html
+THEAD=tables/thead.html
+TFOOT=tables/tfoot.html
+TBODY=tables/tbody.html
+TR=tables/tr.html
+TD=tables/td.html
+TH=tables/th.html
+FORM=forms/form.html
+BUTTON=forms/button.html
+FIELDSET=forms/fieldset.html
+LEGEND=forms/legend.html
+INPUT=forms/input.html
+LABEL=forms/label.html
+SELECT=forms/select.html
+OPTGROUP=forms/optgroup.html
+OPTION=forms/option.html
+TEXTAREA=forms/textarea.html
+A=special/a.html
+APPLET=special/applet.html
+BASEFONT=special/basefont.html
+BDO=special/bdo.html
+BR=special/br.html
+FONT=special/font.html
+IFRAME=special/iframe.html
+IMG=special/img.html
+MAP=special/map.html
+AREA=special/area.html
+OBJECT=special/object.html
+PARAM=special/param.html
+Q=special/q.html
+SPAN=special/span.html
+SUB=special/sub.html
+SUP=special/sup.html
+ABBR=phrase/abbr.html
+ACRONYM=phrase/acronym.html
+CITE=phrase/cite.html
+CODE=phrase/code.html
+DEL=phrase/del.html
+DFN=phrase/dfn.html
+EM=phrase/em.html
+INS=phrase/ins.html
+KBD=phrase/kbd.html
+SAMP=phrase/samp.html
+STRONG=phrase/strong.html
+VAR=phrase/var.html
+B=fontstyle/b.html
+BIG=fontstyle/big.html
+I=fontstyle/i.html
+S=fontstyle/s.html
+SMALL=fontstyle/small.html
+STRIKE=fontstyle/strike.html
+TT=fontstyle/tt.html
+U=fontstyle/u.html
+FRAME=frames/frame.html
+NOFRAMES=frames/noframes.html

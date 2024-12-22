@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/share/services/kded/tdeintegration.desktop
+debian/tmp/opt/trinity/lib/trinity/kded_tdeintegration.la
+debian/tmp/opt/trinity/lib/trinity/kded_tdeintegration.so
+debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/tqt3/plugins/integration/libtqttde.*

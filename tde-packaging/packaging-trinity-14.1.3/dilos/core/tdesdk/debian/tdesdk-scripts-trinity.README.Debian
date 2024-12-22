@@ -1,0 +1,65 @@
+tdesdk-scripts for Debian
+-------------------------
+
+Debugger macros:
+
+  Some handy gdb macros (such as for printing QStrings from gdb)
+  have been placed in /usr/share/tdesdk-scripts/kde-devel-gdb.
+
+  To use them, add this line to your ~/.gdbinit :
+
+    source /usr/share/tdesdk-scripts/kde-devel-gdb
+
+Editor helper files:
+
+  Both vim and emacs helper files are provided containing many functions
+  and keybindings for developing TDE/TQt/C++ applications.
+
+  To use the vim helper file, add this line to your ~/.vimrc :
+
+    source /usr/share/tdesdk-scripts/kde-devel-vim.vim
+
+  To use the emacs helper files, add these lines to your ~/.emacs (with
+  your real name and email address substituted as appropriate):
+
+    (add-to-list 'load-path "/usr/share/emacs/site-lisp/tdesdk-scripts")
+    (require 'kde-emacs)
+
+    (setq kde-full-name "Your Name")
+    (setq kde-email "Your Email")
+
+  See the file /usr/share/emacs/site-lisp/tdesdk-scripts/kde-emacs.el for
+  further information regarding emacs.
+
+Shell completion controls:
+
+  Completion controls are provided in /usr/share/tdesdk-scripts/completions/
+  for a variety of shells.
+
+  To enable completion controls for zsh, you need to add the following
+  lines to your ~/.zshrc :
+
+    # Add the TDE completion controls to the zsh function path.
+    set -A fpath $fpath /usr/share/tdesdk-scripts/completions/zsh
+
+    # Initialise the zsh completion system.
+    autoload -U compinit
+    compinit
+
+  To enable completion controls for bash, you must source each of the bash
+  completion files from your ~/.bashrc .  A sample ~/.bashrc line is:
+
+    . /usr/share/tdesdk-scripts/completions/bash/dcop
+
+Valgrind error suppressions:
+
+  A valgrind suppression file is included for ignoring things we don't
+  care about when valgrinding TDE applications.
+
+  The suppression file is provided as /usr/lib/valgrind/kde.supp .
+
+  To use these suppressions, run valgrind with the option:
+
+    --suppressions=/usr/lib/valgrind/kde.supp
+
+ -- Ben Burton <bab@debian.org>, Fri, 15 Oct 2004 09:55:26 +1000

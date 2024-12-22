@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# debian/rules file - for filelight (1.0)
+# Copyright 2007 Raúl Sánchez Siles
+# This packaging is licensed under GPLv2
+# see /usr/share/common-licenses/GPL-2 for details.
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CONFIGURE_INCLUDEDIR := /opt/trinity/include
+DEB_CONFIGURE_MANDIR := /opt/trinity/share/man
+DEB_CONFIGURE_PREFIX := /opt/trinity
+DEB_CONFIGURE_INFODIR := /opt/trinity/share/info
+
+DEB_DH_ALWAYS_EXCLUDE=.svn
+
+# Build options
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DBUILD_ALL="ON"

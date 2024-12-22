@@ -1,0 +1,8 @@
+?package(korn-trinity):\
+	needs="X11"\
+	section="Applications/Network/Web News"\
+	hints="TDE"\
+	title="KOrn"\
+	icon32x32="/usr/share/pixmaps/korn.xpm"\
+	icon16x16="/usr/share/pixmaps/korn-16.xpm"\
+	command="/usr/bin/korn"

@@ -1,0 +1,3 @@
+debian/tmp/usr/include/tde/smoke.h
+debian/tmp/usr/lib/*/libsmoketqt.so
+debian/tmp/usr/lib/*/libsmoketqt.la

@@ -1,0 +1,13 @@
+?package(kleopatra-trinity):\
+	needs="X11"\
+	section="Applications/Data Management"\
+	hints="TDE"\
+	title="Kleopatra"\
+	command="/opt/trinity/bin/kleopatra"
+
+?package(kleopatra-trinity):\
+	needs="X11"\
+	section="Applications/Data Management"\
+	hints="TDE"\
+	title="KWatchGnuPG"\
+	command="/opt/trinity/bin/kwatchgnupg"

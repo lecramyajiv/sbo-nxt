@@ -1,0 +1,7 @@
+?package(kstars-trinity):needs="X11"\
+  section="Applications/Science/Astronomy"\
+  hints="TDE"\
+  title="KStars"\
+  longtitle="KStars (Desktop Planetarium)"\
+  command="/usr/bin/kstars"\
+  icon="/usr/share/pixmaps/kstars.xpm"

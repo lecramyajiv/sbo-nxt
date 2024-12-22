@@ -1,0 +1,5 @@
+debian/tmp/usr/include/*
+debian/tmp/usr/lib/libdbus-1-tqt*.so
+debian/tmp/usr/bin/dbusxml2qt3
+debian/tmp/usr/lib/pkgconfig/dbus-1-tqt.pc
+debian/tmp/usr/lib/libdbus-1-tqt.la

@@ -1,0 +1,30 @@
+# TDE Config File
+[Tree]
+
+Doc dir=css
+
+#top level elements
+Top Element=Cascading Style Sheets
+
+Cascading Style Sheets=TOC,Font,Background and Color,Text,Box,Classification,Units
+TOC=index.html
+Font=font/index.html
+Background and Color=color-background/index.html
+Text=text/index.html
+Box=box/index.html
+Classification=classification/index.html
+Units=units.html
+
+
+
+# keywords for context help
+[Context]
+
+ContextList=font-family,font-style,font-variant,font-weight,font-size
+
+font-family=font/font-family.html
+font-style=font/font-style.html
+font-variant=font/font-variant.html
+font-weight=font/font-weight.html
+font-size=font/font-size.html
+

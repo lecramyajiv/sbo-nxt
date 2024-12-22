@@ -1,0 +1,31 @@
+Index: kcontrol/samba/kcmsambalog.cpp
+===================================================================
+--- kcontrol/samba/kcmsambalog.cpp.orig
++++ kcontrol/samba/kcmsambalog.cpp
+@@ -39,7 +39,7 @@ LogView::LogView(QWidget *parent,KConfig
+ ,configFile(config)
+ ,filesCount(0)
+ ,connectionsCount(0)
+-,logFileName("/var/log/samba.log",this)
++,logFileName("/var/log/samba/log.smbd",this)
+ ,label(&logFileName,i18n("Samba log file: "),this)
+ ,viewHistory(this)
+ ,showConnOpen(i18n("Show opened connections"),this)
+@@ -88,7 +88,7 @@ LogView::LogView(QWidget *parent,KConfig
+      " on this page. The log file (shown above) will be read to obtain the"
+      " events logged by samba.") );
+ 
+-   logFileName.setURL("/var/log/samba.log");
++   logFileName.setURL("/var/log/samba/log.smbd");
+ 
+    viewHistory.setAllColumnsShowFocus(TRUE);
+    viewHistory.setFocusPolicy(QWidget::ClickFocus);
+@@ -130,7 +130,7 @@ void LogView::loadSettings()
+ {
+    if (configFile==0) return;
+    configFile->setGroup(LOGGROUPNAME);
+-   logFileName.setURL(configFile->readPathEntry( "SambaLogFile", "/var/log/samba.log"));
++   logFileName.setURL(configFile->readPathEntry( "SambaLogFile", "/var/log/samba/log.smbd"));
+ 
+    showConnOpen.setChecked(configFile->readBoolEntry( "ShowConnectionOpen", TRUE));
+    showConnClose.setChecked(configFile->readBoolEntry( "ShowConnectionClose", FALSE));

@@ -1,0 +1,11 @@
+?package(khelpcenter-trinity):\
+	needs="X11"\
+	section="Help"\
+	hints="TDE"\
+	title="TDE Help Center"\
+	icon32x32="/usr/share/pixmaps/khelpcenter.xpm"\
+	icon16x16="/usr/share/pixmaps/khelpcenter-16.xpm"\
+	command="/usr/bin/khelpcenter"
+
+# Icon 32x32 khelpcenter/pics/cr32-app-khelpcenter.png khelpcenter.xpm
+# Icon 16x16 khelpcenter/pics/cr16-app-khelpcenter.png khelpcenter-16.xpm

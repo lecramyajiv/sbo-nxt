@@ -1,0 +1,11 @@
+?package(kregexpeditor-trinity):\
+	needs="X11"\
+	section="Apps/Tools"\
+	hints="TDE"\
+	title="Kregexpeditor"\
+	icon32x32="/usr/share/pixmaps/kregexpeditor.xpm"\
+	icon16x16="/usr/share/pixmaps/kregexpeditor-16.xpm"\
+	command="/usr/bin/kregexpeditor"
+
+# Icon 32x32 kregexpeditor/cr32-app-kregexpeditor.png kregexpeditor.xpm
+# Icon 16x16 kregexpeditor/cr16-app-kregexpeditor.png kregexpeditor-16.xpm

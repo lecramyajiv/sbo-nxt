@@ -1,0 +1,24 @@
+debian/tmp/opt/trinity/bin/kcalc
+debian/tmp/opt/trinity/lib/trinity/kcalc.la
+debian/tmp/opt/trinity/lib/trinity/kcalc.so
+debian/tmp/opt/trinity/lib/libtdeinit_kcalc.so
+debian/tmp/opt/trinity/share/applications/tde/kcalc.desktop
+debian/tmp/opt/trinity/share/apps/kcalc/kcalcui.rc
+debian/tmp/opt/trinity/share/apps/tdeconf_update/kcalcrc.upd
+debian/tmp/opt/trinity/share/config.kcfg/kcalc.kcfg
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcalc/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcalc/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcalc/index.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcalc/commands.docbook
+#debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcalc/kcalc_on_Aix.txt
+#debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcalc/kcalc_on_OSF.txt
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kcalc.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kcalc.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kcalc.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kcalc.png
+debian/tmp/opt/trinity/share/icons/hicolor/64x64/apps/kcalc.png
+debian/tmp/opt/trinity/share/icons/hicolor/scalable/apps/kcalc.svgz
+debian/tmp/opt/trinity/share/man/man1/kcalc.1
+
+debian/icons/kcalc.xpm		/opt/trinity/share/pixmaps
+debian/icons/kcalc-16.xpm	/opt/trinity/share/pixmaps

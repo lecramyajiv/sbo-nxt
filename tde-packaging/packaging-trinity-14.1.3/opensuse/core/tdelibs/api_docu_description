@@ -1,0 +1,36 @@
+arts:KDE bindings for arts including knotify
+dcop:The DCOP communications library
+interfaces:Defines interfaces for common components so that new implementations can be dropped in
+kabc:Access to the KDE address book
+kate:Interfaces for the standard text editor KPart
+kdecore: Core KDE classes that are not related to the user interface
+kded:The KDE daemon interface, to observe your file system
+kdejava:The KDE Java enviroment
+kdeprint:High level printer control functionality
+kdeui:KDE User interface classes such as widgets
+kfile:High level access to the KDE network aware file abstraction
+khtml:The KDE HTML component
+kio:Low level access to network files. Also provides access to facilities such as KDirWatcher which monitors directories for changes
+kjs:Javascript (aka. ECMAScript and JScript) support
+kparts:Support for re-usable, embeddable, extendable applications
+kspell:Easy access to the spell checker
+kspell2:Easy access to the spell checker
+kdefx:A library with pixmap effects
+kssl:KDE secure socket layer interface
+kutils:High-level utils, like search/replace support
+kmdi:MultiDocument Interface library
+kresources:The KDE resources system
+kwallet:KDE password manager classes
+kdeprint:High level printer control functionality
+libkmid:Midi library
+knewstuff:Upload and download of application data
+dnssd:mDNS support library to request and register network services
+kdemm:KDE Multimedia Framework
+kcmshell:KControl module shell
+kdesu:Change user helper framework
+kdoctools:Documentation support
+kimgio:Image Handlers
+kinit:KDEinit support
+kioslave:Basic IO slaves
+kunittest:Support for unit tests
+libkscreensaver:KDE screensavers

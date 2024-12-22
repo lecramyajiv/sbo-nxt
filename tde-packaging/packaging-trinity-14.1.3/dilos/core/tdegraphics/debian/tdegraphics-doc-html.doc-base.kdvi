@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kdvi
+Title: KDVI Handbook
+Author: Stefan Kebekus
+Abstract: This program and KPart allow the user to display *.DVI files from TeX.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kdvi/index.html
+Files: /usr/share/doc/tde/HTML/en/kdvi/*.html
+

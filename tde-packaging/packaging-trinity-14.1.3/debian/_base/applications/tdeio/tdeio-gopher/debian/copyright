@@ -1,0 +1,16 @@
+This package was debianized by Michele Calgaro <michele.calgaro@yahoo.it> on
+Sat, 25 Aug 2018 21:56:00 +0900
+
+Copyright:
+    This program was initially written by Albert Astals Cid.
+    Copyright (C) 2003-2008 by Albert Astals Cid
+    aacid@kde.org
+
+Upstream Authors:
+    Albert Astals Cid <aacid@kde.org>
+
+License:
+    You are free to distribute this software under the terms of
+    the GNU General Public License.
+    On Debian systems, the complete text of the GNU General Public
+    License can be found in the file `/usr/share/common-licenses/GPL'.

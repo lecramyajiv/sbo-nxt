@@ -1,0 +1,14 @@
+--- plugins/src/inputmethods/xim/qximinputcontext_x11.cpp	2006-02-17 16:16:37.000000000 -0500
++++ plugins/src/inputmethods/xim/qximinputcontext_x11.cpp.new	2006-02-17 16:30:47.000000000 -0500
+@@ -491,8 +491,11 @@
+ 		  ximServerName.ascii());
+     else {
+ 	Display *dpy = QPaintDevice::x11AppDisplay();
++	XWindowAttributes attr; // XIM unselects all events on the root window
++	XGetWindowAttributes( dpy, QPaintDevice::x11AppRootWindow(),&attr );
+ 	XRegisterIMInstantiateCallback(dpy, 0, 0, 0,
+ 				       (XIMProc) xim_create_callback, 0);
++	XSelectInput( dpy, QPaintDevice::x11AppRootWindow(), attr.your_event_mask );
+     }
+ #else // !USE_X11R6_XIM
+     else if ( XSetLocaleModifiers ("") == 0 )

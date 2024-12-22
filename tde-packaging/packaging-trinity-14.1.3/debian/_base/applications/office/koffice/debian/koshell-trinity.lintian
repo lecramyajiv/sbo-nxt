@@ -1,0 +1,2 @@
+koshell-trinity: no-shlibs-control-file opt/trinity/lib/libtdeinit_koshell.so
+koshell-trinity: package-name-doesnt-match-sonames libtdeinit-koshell

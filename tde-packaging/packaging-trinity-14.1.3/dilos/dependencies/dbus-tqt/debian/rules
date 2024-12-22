@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+# Copyright © 2002,2003 Colin Walters <walters@verbum.org>
+# Copyright © 2003 Daniel Stone <daniels@debian.org>
+# Copyright © 2006 Sjoerd Simons <sjoerd@debian.org>
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+# Strict library versioning
+DEB_DH_MAKESHLIBS_ARGS_ALL := -V
+
+# Build options
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_C_COMPILER=gcc \
+ -DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)" \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_APIDOX_HTML_DIRECTORY="usr/share/doc/libdbus-1-tqt/HTML" \
+ -DWITH_ALL_OPTIONS="ON"

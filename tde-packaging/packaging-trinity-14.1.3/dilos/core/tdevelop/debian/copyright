@@ -1,0 +1,62 @@
+This package was debianized by Bernd Gehrmann <bernd@physik.hu-berlin.de>,
+then maintained by Ivan E. Moore II <rkrusty@debian.org> and
+Norman Jordan <njordan@debian.org>.
+
+The current Debian maintainer is Jeremy Lainé <jeremy.laine@m4x.org>.
+
+It was downloaded from http://www.tdevelop.org/
+
+Upstream Authors:
+
+  Bernd Gehrmann <bernd@physik.hu-berlin.de>
+  John Birch <jbb@tdevelop.org>
+  Jonas Nordin <jonas.nordin@cenacle.se>
+  Richard Dale <Richard_Dale@tipitina.demon.co.uk>
+  Sandy Meier <smeier@tdevelop.org>
+  Matthias Hoelzer-Kluepfel <hoelzer@kde.org>
+  Victor Roeder <victor_roeder@gmx.de>
+  Kurth Granroth <kurt@granroth.org>
+  The KWrite authors <kwrite-devel@kde.org>
+  Roberto Raggi <roberto@tdevelop.org>
+  Harald Fernengel <harry@tdevelop.org>
+  Simon Hausmann <hausmann@kde.org>
+  Mickael Marchand <marchand@kde.org>
+  Dominic Seichter <domseichter@t-online.de>
+  Yann Hodique <Yann.Hodique@lifl.fr>
+  Heinz Hornung <Hornung-Heinz@t-online.de>
+  Marion Klein <MarionKlein@wanadoo.fr>
+  Ramón Lamana Villar <ramon@alumnos.upm.es>
+  Caleb Tennis <caleb@aei-tech.com>
+  Mario Scalas <mario.scalas@libero.it>
+  Alexander Dymo <cloudtemple@mksat.net>
+  Dominik Haumann <dhdev@gmx.de>
+  Ian Reinhart Geiser <geiseri@kde.org>
+  Amilcar Lucas <a.lucas@tu-bs.de>
+  Jens Dagerbo  <jens.dagerbo@swipnet.se>
+  Robert Gruber <rgruber@users.sourceforge.net>
+
+Copyright: 1999-2006 The KDevelop developers
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License with
+the Debian GNU/Linux distribution in file /usr/share/common-licenses/GPL;
+if not, write to the Free Software Foundation, Inc., 51 Franklin St,
+Fifth Floor, Boston, MA 02110-1301, USA.
+
+On Debian GNU/Linux systems, the complete text of the GNU General Public
+License, version 2, can be found in `/usr/share/common-licenses/GPL-2'.
+
+The Debian packaging is (C) 1999-2006 Bernd Gehrmann 
+<bernd@physik.hu-berlin.de>, Ivan E. Moore II <rkrusty@debian.org>, 
+Norman Jordan <njordan@debian.org> and Jeremy Lainé <jeremy.laine@m4x.org>
+and is licensed under the GPL, see above.
+

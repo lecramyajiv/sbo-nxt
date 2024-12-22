@@ -1,0 +1,16 @@
+/opt/trinity/games/klickety
+/opt/trinity/share/doc/tde/HTML/en/klickety/*
+/opt/trinity/share/applications/tde/klickety.desktop
+/opt/trinity/share/icons/hicolor/16x16/apps/klickety.png
+/opt/trinity/share/icons/hicolor/22x22/apps/klickety.png
+/opt/trinity/share/icons/hicolor/32x32/apps/klickety.png
+/opt/trinity/share/icons/hicolor/48x48/apps/klickety.png
+/opt/trinity/share/icons/hicolor/64x64/apps/klickety.png
+/opt/trinity/share/icons/hicolor/128x128/apps/klickety.png
+/opt/trinity/share/icons/crystalsvg/32x32/actions/endturn.png
+/opt/trinity/share/icons/crystalsvg/16x16/actions/endturn.png
+/opt/trinity/share/apps/klickety/klicketyui.rc
+/opt/trinity/share/apps/klickety/eventsrc
+/opt/trinity/share/man/man6/klickety.6
+../icons/klickety.xpm /opt/trinity/share/pixmaps
+../icons/klickety-16.xpm /opt/trinity/share/pixmaps

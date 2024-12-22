@@ -1,0 +1,12 @@
+--- src/tools/qgpluginmanager.cpp
++++ src/tools/qgpluginmanager.cpp	2004/09/25 11:46:41
+@@ -380,6 +380,9 @@
+ 	    TQString basename = (*git).left( (*git).find( TQChar(0xfffd) ) );
+ 	    ++git;
+ 
++	    // WARNING: this line should only exist on lib64 systems !
++	    basename += ".lib64";
++
+ 	    TQStringList sameBasename;
+ 	    while( git != group.end() &&
+ 		   basename == (*git).left( (*git).find( TQChar(0xfffd) ) )  ) {

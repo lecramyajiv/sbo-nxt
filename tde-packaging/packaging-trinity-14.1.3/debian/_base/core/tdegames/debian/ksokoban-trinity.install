@@ -1,0 +1,12 @@
+/opt/trinity/share/applications/tde/ksokoban.desktop
+/opt/trinity/share/icons/hicolor/128x128/apps/ksokoban.png
+/opt/trinity/share/icons/hicolor/64x64/apps/ksokoban.png
+/opt/trinity/share/icons/hicolor/48x48/apps/ksokoban.png
+/opt/trinity/share/icons/hicolor/32x32/apps/ksokoban.png
+/opt/trinity/share/icons/hicolor/22x22/apps/ksokoban.png
+/opt/trinity/share/icons/hicolor/16x16/apps/ksokoban.png
+/opt/trinity/games/ksokoban
+/opt/trinity/share/doc/tde/HTML/en/ksokoban/*
+/opt/trinity/share/man/man6/ksokoban.6
+../icons/ksokoban.xpm /opt/trinity/share/pixmaps
+../icons/ksokoban-16.xpm /opt/trinity/share/pixmaps

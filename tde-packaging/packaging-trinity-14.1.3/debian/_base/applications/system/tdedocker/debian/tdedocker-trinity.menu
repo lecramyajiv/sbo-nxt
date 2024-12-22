@@ -1,0 +1,6 @@
+?package(tdedocker-trinity):needs="X11"\
+ section="Applications/System/Monitoring"\
+ title="TDEDocker"\
+ command="/opt/trinity/bin/tdedocker"\
+ hints="TDE"\
+ icon="/opt/trinity/share/apps/tdedocker/icons/tdedocker.xpm"

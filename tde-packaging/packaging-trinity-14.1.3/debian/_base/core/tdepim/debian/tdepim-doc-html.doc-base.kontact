@@ -1,0 +1,9 @@
+Document: tdepim-doc-html-kontact
+Title: The Kontact Handbook
+Author: Cornelius Schumacher
+Abstract: Kontact is a command line interface to TDE calendars.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kontact/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kontact/*.html

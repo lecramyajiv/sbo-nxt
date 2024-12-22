@@ -1,0 +1,5 @@
+/usr/include/*.h
+/usr/include/kgame
+/usr/lib/*/libtdegames.so
+/usr/lib/*/libtdegames.la
+/usr/lib/*/pkgconfig/libtdegames.pc

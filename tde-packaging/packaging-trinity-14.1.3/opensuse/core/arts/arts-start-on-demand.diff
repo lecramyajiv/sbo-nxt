@@ -1,0 +1,25 @@
+Index: mcop/objectmanager.cc
+===================================================================
+--- mcop/objectmanager.cc.orig
++++ mcop/objectmanager.cc
+@@ -28,6 +28,7 @@
+ #include "extensionloader.h"
+ #include "debug.h"
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <iostream>
+ 
+@@ -267,6 +268,12 @@ bool ObjectManager::addGlobalReference(O
+ 
+ string ObjectManager::getGlobalReference(const string& name)
+ {
++	static bool started_arts = false;
++	if (!started_arts)
++	{
++		system("arts-start");
++		started_arts = true;
++	}
+ 	return Dispatcher::the()->globalComm().get(name);
+ }
+ 

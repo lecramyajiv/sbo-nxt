@@ -1,0 +1,7 @@
+tdmtheme for Debian
+-------------------
+
+tdmtheme is a Trinity Control Module (KCM). To run it, open Trinity Control Center and
+go to System Administration to find TDM Theme Manager.
+
+ -- Fathi Boudra <fabo@debian.org>, Mon, 31 Jul 2006 18:33:26 +0200

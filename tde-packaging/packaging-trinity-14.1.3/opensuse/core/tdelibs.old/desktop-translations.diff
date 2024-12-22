@@ -1,0 +1,209 @@
+Index: kdecore/kconfigbase.h
+===================================================================
+--- kdecore/kconfigbase.h.orig
++++ kdecore/kconfigbase.h
+@@ -1985,6 +1985,7 @@ public:
+ 
+ protected:
+   QCString readEntryUtf8( const char *pKey) const;
++  bool hasTranslatedKey( const char *pKey ) const;
+ 
+   /**
+    * The currently selected group. */
+Index: kdecore/kconfigbase.cpp
+===================================================================
+--- kdecore/kconfigbase.cpp.orig
++++ kdecore/kconfigbase.cpp
+@@ -131,6 +131,24 @@ bool KConfigBase::hasKey(const char *pKe
+   return !entry.mValue.isNull();
+ }
+ 
++bool KConfigBase::hasTranslatedKey(const char* pKey) const
++{
++  KEntryKey aEntryKey(mGroup, 0);
++  aEntryKey.c_key = pKey;
++  aEntryKey.bDefault = readDefaults();
++
++  if (!locale().isNull()) {
++    // try the localized key first
++    aEntryKey.bLocal = true;
++    KEntry entry = lookupData(aEntryKey);
++    if (!entry.mValue.isNull())
++       return true;
++    aEntryKey.bLocal = false;
++  }
++
++  return false;
++}
++
+ bool KConfigBase::hasGroup(const QString &group) const
+ {
+   return internalHasGroup( group.utf8());
+Index: kdecore/kdesktopfile.h
+===================================================================
+--- kdecore/kdesktopfile.h.orig
++++ kdecore/kdesktopfile.h
+@@ -236,6 +236,8 @@ private:
+ 
+ private:
+ 
++  QString translatedEntry(const char*) const;
++
+   // copy-construction and assignment are not allowed
+   KDesktopFile( const KDesktopFile& );
+   KDesktopFile& operator= ( const KDesktopFile& );
+Index: kdecore/kdesktopfile.cpp
+===================================================================
+--- kdecore/kdesktopfile.cpp.orig
++++ kdecore/kdesktopfile.cpp
+@@ -34,6 +34,8 @@
+ #include "kapplication.h"
+ #include "kstandarddirs.h"
+ #include "kmountpoint.h"
++#include "kcatalogue.h"
++#include "klocale.h"
+ 
+ #include "kdesktopfile.h"
+ #include "kdesktopfile.moc"
+@@ -145,6 +147,27 @@ bool KDesktopFile::isAuthorizedDesktopFi
+   return false;
+ }
+ 
++QString KDesktopFile::translatedEntry(const char* key) const
++{
++  if (hasTranslatedKey(key))
++    return readEntry(key);
++
++  if (hasKey(key)) {
++    QString value = readEntryUntranslated(key);
++    QString fName = fileName();
++    fName = fName.mid(fName.findRev('/')+1);
++    QString po_lookup_key = QString::fromLatin1(key) + "(" + fName + "): " + value;
++    QString po_value = KGlobal::locale()->translate(po_lookup_key.utf8().data());
++
++    if (po_value == po_lookup_key)
++      return value;
++
++    return po_value;
++  }
++
++  return QString::null;
++} 
++
+ QString KDesktopFile::readType() const
+ {
+   return readEntry("Type");
+@@ -157,17 +180,17 @@ QString KDesktopFile::readIcon() const
+ 
+ QString KDesktopFile::readName() const
+ {
+-  return readEntry("Name");
++  return translatedEntry("Name");
+ }
+ 
+ QString KDesktopFile::readComment() const
+ {
+-  return readEntry("Comment");
++  return translatedEntry("Comment");
+ }
+ 
+ QString KDesktopFile::readGenericName() const
+ {
+-  return readEntry("GenericName");
++  return translatedEntry("GenericName");
+ }
+ 
+ QString KDesktopFile::readPath() const
+@@ -342,5 +365,3 @@ KDesktopFile* KDesktopFile::copyTo(const
+   config->setDesktopGroup();
+   return config;
+ }
+-
+-
+Index: kio/kio/kservice.cpp
+===================================================================
+--- kio/kio/kservice.cpp.orig
++++ kio/kio/kservice.cpp
+@@ -114,7 +114,7 @@ KService::init( KDesktopFile *config )
+     return;
+   }
+ 
+-  m_strName = config->readEntry( "Name" );
++  m_strName = config->readName();
+   entryMap.remove("Name");
+   if ( m_strName.isEmpty() )
+   {
+@@ -134,7 +134,7 @@ KService::init( KDesktopFile *config )
+        m_strName = m_strName.left(i);
+   }
+ 
+-  m_strType = config->readEntry( "Type" );
++  m_strType = config->readType();
+   entryMap.remove("Type");
+   if ( m_strType.isEmpty() )
+   {
+@@ -204,11 +204,11 @@ KService::init( KDesktopFile *config )
+   entryMap.remove("Terminal");
+   m_strTerminalOptions = config->readEntry( "TerminalOptions" ); // should be a property IMHO
+   entryMap.remove("TerminalOptions");
+-  m_strPath = config->readPathEntry( "Path" );
++  m_strPath = config->readPath();
+   entryMap.remove("Path");
+-  m_strComment = config->readEntry( "Comment" );
++  m_strComment = config->readComment();
+   entryMap.remove("Comment");
+-  m_strGenName = config->readEntry( "GenericName" );
++  m_strGenName = config->readGenericName();
+   entryMap.remove("GenericName");
+   QString untranslatedGenericName = config->readEntryUntranslated( "GenericName" );
+   if (!untranslatedGenericName.isEmpty())
+Index: kio/kio/kservicegroup.cpp
+===================================================================
+--- kio/kio/kservicegroup.cpp.orig
++++ kio/kio/kservicegroup.cpp
+@@ -66,13 +66,11 @@ KServiceGroup::KServiceGroup( const QStr
+ 
+   d->directoryEntryPath = cfg;
+ 
+-  KConfig config( cfg, true, false, "apps" );
++  KDesktopFile config( cfg, true, "apps" );
+ 
+-  config.setDesktopGroup();
+-
+-  m_strCaption = config.readEntry( "Name" );
+-  m_strIcon = config.readEntry( "Icon" );
+-  m_strComment = config.readEntry( "Comment" );
++  m_strCaption = config.readName();
++  m_strIcon = config.readIcon();
++  m_strComment = config.readComment();
+   m_bDeleted = config.readBoolEntry( "Hidden", false );
+   d->m_bNoDisplay = config.readBoolEntry( "NoDisplay", false );
+   if (d->directoryEntryPath.startsWith(QDir::homeDirPath()))
+Index: kio/kio/kmimetype.cpp
+===================================================================
+--- kio/kio/kmimetype.cpp.orig
++++ kio/kio/kmimetype.cpp
+@@ -677,9 +677,8 @@ QString KFolderType::comment( const KURL
+   KURL u( _url );
+   u.addPath( ".directory" );
+ 
+-  KSimpleConfig cfg( u.path(), true );
+-  cfg.setDesktopGroup();
+-  QString comment = cfg.readEntry( "Comment" );
++  KDesktopFile cfg( u.path(), true );
++  QString comment = cfg.readComment();
+   if ( comment.isEmpty() )
+     return KMimeType::comment( _url, _is_local );
+ 
+@@ -772,9 +771,8 @@ QString KDEDesktopMimeType::comment( con
+   if ( !_is_local )
+     return KMimeType::comment( _url, _is_local );
+ 
+-  KSimpleConfig cfg( _url.path(), true );
+-  cfg.setDesktopGroup();
+-  QString comment = cfg.readEntry( "Comment" );
++  KDesktopFile cfg( _url.path(), true );
++  QString comment = cfg.readComment();
+   if ( comment.isEmpty() )
+     return KMimeType::comment( _url, _is_local );
+ 

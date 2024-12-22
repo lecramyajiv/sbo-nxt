@@ -1,0 +1,11 @@
+?package(khexedit-trinity):\
+	needs="X11"\
+	section="Apps/Tools"\
+	hints="TDE"\
+	title="KHexEdit"\
+	icon32x32="/opt/trinity/share/pixmaps/khexedit.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/khexedit-16.xpm"\
+	command="/opt/trinity/bin/khexedit"
+
+# Icon 32x32 khexedit/cr32-app-khexedit.png khexedit.xpm
+# Icon 16x16 khexedit/cr16-app-khexedit.png khexedit-16.xpm

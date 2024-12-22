@@ -1,0 +1,6 @@
+opt/trinity/bin/showfoto
+/opt/trinity/share/apps/showfoto
+/opt/trinity/share/applications/tde/showfoto.desktop
+/opt/trinity/share/icons/hicolor/*/apps/showfoto.png
+debian/xpm.d/showfoto.xpm /opt/trinity/share/pixmaps/
+debian/xpm.d/showfoto-16.xpm /opt/trinity/share/pixmaps/

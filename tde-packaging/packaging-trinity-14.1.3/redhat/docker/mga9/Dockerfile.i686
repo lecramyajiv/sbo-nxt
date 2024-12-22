@@ -1,0 +1,45 @@
+FROM mageia32:9
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=i686
+
+# Reset URPMI repositories to default
+# Enable more URPMI repositories
+# Enable english locales
+# Update distribution
+# Install Trinity build dependencies
+COPY packages.${ARCH} /packages
+RUN set -x \
+ && urpmi.removemedia -a \
+ && urpmi.addmedia --distrib http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/i586/ \
+ && sed -i "/etc/urpmi/urpmi.cfg" -e "/Tainted\\\ Release  {/{p;N;d}" -e "/Tainted\\\ Updates  {/{p;N;d}" \
+ && urpmi.update -a \
+ && urpmi --replacepkgs glibc \
+ && localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || : \
+ && urpmi --auto-select --auto \
+ && urpmi --auto $(</packages)
+
+# Enable ccache
+# Fix utempter detection
+# Fix poppler support
+RUN sed -i "/etc/sysconfig/ccache" -e "s|USE_CCACHE_DEFAULT=.*|USE_CCACHE_DEFAULT=\"yes\"|" \
+ && chmod a+r /usr/libexec/utempter/utempter \
+ && sed -i "/usr/include/poppler/poppler-config.h" -e "/define HAVE_SPLASH/ s|^|//|"
+
+# Add non-root user to build packages
+RUN rm -rf /home/trinity \
+ && useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>"/etc/sudoers" \
+ && echo "export QA_RPATHS=\$(( 0x0001|0x0002 ))" >>/home/trinity/.bashrc
+
+# Configure user trinity
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+# Add rpmbuild repositories
+RUN mkdir -p ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} \
+ && genhdlist2 --allow-empty-media --clean ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} \
+ && sudo urpmi.addmedia rpmbuild.${ARCH} ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} \
+ && mkdir -p ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch \
+ && genhdlist2 --allow-empty-media --clean ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch \
+ && sudo urpmi.addmedia rpmbuild.noarch ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch

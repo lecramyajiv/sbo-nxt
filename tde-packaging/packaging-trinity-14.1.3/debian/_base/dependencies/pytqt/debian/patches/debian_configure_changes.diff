@@ -1,0 +1,95 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_configure.dpatch by Torsten Marek <shlomme@debian.org>
+##
+## DP: Add object directory build support to configure.py
+
+@DPATCH@
+Index: python-qt3-3.18.1/configure.py
+===================================================================
+--- python-qt3-3.18.1.orig/configure.py	2010-01-27 22:24:38.555856708 +0100
++++ python-qt3-3.18.1/configure.py	2010-01-27 22:41:45.876854625 +0100
+@@ -30,6 +30,7 @@
+ 
+ import sipconfig
+ 
++src_dir = os.path.dirname(os.path.abspath(__file__))
+ 
+ # Initialise the globals.
+ pyqt_version = 0x031201
+@@ -299,7 +300,7 @@
+ 
+             makefile = sipconfig.ProgramMakefile(
+                 configuration=sipcfg,
+-                build_file=buildfile,
++                build_file=os.path.join(src_dir, "pyuic3", buildfile),
+                 dir="pyuic3",
+                 install_dir=opt_pyqtbindir,
+                 console=1,
+@@ -315,7 +316,8 @@
+ 
+             if qt_version < 0x030100:
+                 makefile.extra_include_dirs.append(qt_dir + "/src/3rdparty/zlib")
+-
++            makefile.extra_include_dirs.append(os.path.join(src_dir, "pyuic3"))
++            
+             makefile.generate()
+             tool_dirs.append("pyuic3")
+ 
+@@ -330,7 +332,7 @@
+ 
+             makefile = sipconfig.ProgramMakefile(
+                 configuration=sipcfg,
+-                build_file=buildfile,
++                build_file=os.path.join(src_dir, "pylupdate3", buildfile),
+                 dir="pylupdate3",
+                 install_dir=opt_pyqtbindir,
+                 console=1,
+@@ -343,6 +345,8 @@
+             if prof or "qtxml" not in pyqt_modules:
+                 makefile.extra_defines.append("QT_MODULE_XML")
+ 
++            makefile.extra_include_dirs.append(os.path.join(src_dir, "pylupdate3"))
++
+             makefile.generate()
+             tool_dirs.append("pylupdate3")
+         elif qt_version >= 0x020000:
+@@ -606,7 +610,7 @@
+     opengl is set if the application uses OpenGL.
+     """
+     # Check the module's main .sip file exists.
+-    if os.access(os.path.join("sip", mname, mname + "mod.sip"), os.F_OK):
++    if os.access(os.path.join(src_dir, "sip", mname, mname + "mod.sip"), os.F_OK):
+         sipconfig.inform("Checking to see if the %s module should be built..." % mname)
+ 
+         if check_class(incfile, ctor, define, include_dir, lib_dir, lib, opengl):
+@@ -908,10 +912,10 @@
+     argv.append(buildfile)
+ 
+     argv.append("-I")
+-    argv.append("sip")
++    argv.append(os.path.join(src_dir, "sip"))
+ 
+     # SIP assumes POSIX style path separators.
+-    argv.append(string.join(["sip", mname, mname + "mod.sip"], "/"))
++    argv.append(string.join([src_dir, "sip", mname, mname + "mod.sip"], "/"))
+ 
+     os.system(string.join(argv))
+ 
+@@ -926,7 +930,7 @@
+     sipfiles = []
+ 
+     for s in glob.glob("sip/" + mname + "/*.sip"):
+-        sipfiles.append(os.path.join("..", "sip", mname, os.path.basename(s)))
++        sipfiles.append(os.path.join(src_dir, "sip", mname, os.path.basename(s)))
+ 
+     installs.append([sipfiles, os.path.join(pyqt.sip_dir(), mname)])
+ 
+@@ -1433,7 +1437,7 @@
+     ).generate()
+ 
+     # Install the configuration module.
+-    create_config("pyqtconfig.py", "pyqtconfig.py.in", macros)
++    create_config("pyqtconfig.py", os.path.join(src_dir, "pyqtconfig.py.in"), macros)
+ 
+ 
+ ###############################################################################

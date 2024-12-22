@@ -1,0 +1,240 @@
+Index: tdemultimedia/mpeglib/lib/util/audio/audioIO_SunOS.cpp
+===================================================================
+--- tdemultimedia.orig/mpeglib/lib/util/audio/audioIO_SunOS.cpp
++++ tdemultimedia/mpeglib/lib/util/audio/audioIO_SunOS.cpp
+@@ -14,7 +14,7 @@
+ #include <stdio.h>
+ #include <sys/audioio.h>
+ #include "audioIO.h"
+-#include <iostream.h>
++#include <iostream>
+ 
+ /* declare these static to effectively isolate the audio device */
+ 
+Index: tdemultimedia/xine_artsplugin/tools/thumbnail/videoscaler.cpp
+===================================================================
+--- tdemultimedia.orig/xine_artsplugin/tools/thumbnail/videoscaler.cpp
++++ tdemultimedia/xine_artsplugin/tools/thumbnail/videoscaler.cpp
+@@ -16,6 +16,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <pthread.h>
++#include <alloca.h>
+ 
+ #include <config.h>
+ 
+Index: tdemultimedia/kscd/libwm/plat_sun_cdda.c
+===================================================================
+--- tdemultimedia.orig/kscd/libwm/plat_sun_cdda.c
++++ tdemultimedia/kscd/libwm/plat_sun_cdda.c
+@@ -39,6 +39,8 @@
+ #include <sys/ioctl.h>
+ #include <malloc.h>
+ #include <errno.h>
++#include <fcntl.h>
++#include <unistd.h>
+ 
+ #define WM_MSG_CLASS WM_MSG_CLASS_PLATFORM
+ 
+@@ -94,7 +96,7 @@ static long wmcdda_normalize(struct cdda
+  * need to exit right away so the UI doesn't show the user any CDDA controls.
+  */
+ int
+-wmcdda_init(struct cdda_device* pdev, struct cdda_block *block)
++wmcdda_init(struct cdda_device* pdev)
+ {
+   struct cdrom_cdda	cdda;
+   int i;
+@@ -123,14 +125,14 @@ wmcdda_init(struct cdda_device* pdev, st
+ 
+ 		if (ioctl(pdev->fd, CDROMCDDA, &cdda) < 0)
+ 		{
+-			block->status = WM_CDM_STOPPED;
++			pdev->status = WM_CDM_STOPPED;
+ 			return -1;
+ 		} else {
+-		  block->status = WM_CDM_STOPPED;
++		  pdev->status = WM_CDM_STOPPED;
+ 		  return 0;
+ 		}
+ 	} else {
+-            block->status = WM_CDM_EJECTED;
++            pdev->status = WM_CDM_EJECTED;
+             return -1;
+ 	}
+ }
+@@ -189,10 +191,12 @@ wmcdda_read(struct cdda_device* pdev, st
+     struct cdrom_cdda	cdda;
+     int			blk;
+     unsigned char	*q;
++#ifndef	__dilos__
+     extern int		speed;
++#endif	/* __dilos__ */
+     unsigned char*      rawbuf = block->buf;
+ 
+-    if(pdev->fd < 0 && (wmcdda_init(pdev, block) < 0)) {
++    if(pdev->fd < 0 && (wmcdda_init(pdev) < 0)) {
+         return -1;
+     }
+ 
+@@ -237,6 +241,7 @@ wmcdda_read(struct cdda_device* pdev, st
+         }
+     }
+ 
++#ifndef	__dilos__
+     if (speed > 148)
+     {
+         /*
+@@ -247,6 +252,7 @@ wmcdda_read(struct cdda_device* pdev, st
+             (cdda.cdda_length * direction * (speed - 112)) / 36;
+     }
+     else
++#endif	/* __dilos__ */
+         current_position = current_position + cdda.cdda_length * direction;
+ 
+     for (blk = 0; blk < numblocks; blk++)
+Index: tdemultimedia/kscd/libwm/plat_sun.c
+===================================================================
+--- tdemultimedia.orig/kscd/libwm/plat_sun.c
++++ tdemultimedia/kscd/libwm/plat_sun.c
+@@ -88,6 +88,9 @@ void sigthawinit(void) __attribute__ ((c
+ #pragma init(sigthawinit)
+ #endif /* GNUC */
+ 
++static void    do_nothing(int);
++static int     kick_codec(void);
++
+ static int last_left, last_right;
+ static struct wm_drive *thecd = NULL;
+ 
+@@ -235,12 +238,12 @@ wmcd_open( struct wm_drive *d )
+   /*
+    * See if we can do digital audio.
+    */
+-#if defined(BUILD_CDDA)
++#if defined(BUILD_CDDA) && !defined(__dilos__)
+   if(d->cdda) {
+     if (!gen_cdda_init(d))
+       /* WARNING: Old GUI call. How could this survive? */
+       enable_cdda_controls(1);
+-    else {
++    } else {
+       wm_lib_message(WM_MSG_LEVEL_DEBUG|WM_MSG_CLASS, "wmcd_open(): failed in gen_cdda_init\n");
+       gen_close(d);
+       return -1;
+@@ -341,7 +344,7 @@ gen_close( struct wm_drive *d )
+ }
+ 
+ /* Alarm signal handler. */
+-static void do_nothing( int x ) { x++; }
++void do_nothing( int x ) { (void)x; }
+ 
+ /*
+  * Get the current status of the drive: the current play mode, the absolute
+@@ -608,7 +611,7 @@ gen_eject( struct wm_drive *d )
+     return (-2);
+   
+   /* Is this a mounted filesystem? */
+-  if (fstatfs(d->fd, &sfsbuf) == 0)
++  if (fstatvfs(d->fd, &sfsbuf) == 0)
+     return (-3);
+   
+   IFCDDA(d) {
+@@ -628,7 +631,9 @@ gen_eject( struct wm_drive *d )
+       if (d->cdda_slave > -1)
+ 	{
+ 	  write(d->cdda_slave, "E", 1);
++#ifndef	__dilos__
+ 	  cdda_get_ack(d->cdda_slave);
++#endif	/* __dilos__ */
+ 	}
+     }
+   
+@@ -699,7 +704,7 @@ gen_get_volume( struct wm_drive *d, int
+   return (wm_scsi2_get_volume(d, left, right));
+ } /* gen_get_volume() */
+ 
+-#ifdef BUILD_CDDA
++#if	defined(BUILD_CDDA) && !defined(__dilos__)
+ 
+ /*
+  * Try to initialize the CDDA slave.  Returns 0 on success.
+@@ -743,17 +748,19 @@ gen_cdda_init( struct wm_drive *d )
+   close(slavefds[1]);
+   d->cdda_slave = slavefds[0];
+   
++#ifndef	__dilos__
+   if (!cdda_get_ack(d->cdda_slave))
+     {
+       d->cdda_slave = -1;
+       codec_start();
+       return (-3);
+     }
++#endif	/* __dilos__ */
+   
+   return (0);
+ }
+   
+-#endif /* BUILD_CDDA */
++#endif /* BUILD_CDDA && !__dilos__ */
+ 
+ /*
+  * The following code activates the internal CD audio passthrough on
+@@ -790,9 +797,9 @@ typedef int audio_device_t;
+  * Also, don't do anything real if it's not Solaris.
+  */
+ #if !defined(AUDIO_ENCODING_LINEAR) || !defined(CODEC) || !defined(SYSV) /* { */
+-codec_init() { return 0; }
+-codec_start() { return 0; }
+-codec_stop() { return 0; }
++int codec_init() { return 0; }
++int codec_start() { return 0; }
++int codec_stop() { return 0; }
+ #else
+ 
+ #ifndef AUDIO_INTERNAL_CD_IN
+@@ -805,6 +812,7 @@ static int ctl_fd = -1;
+ static int port = AUDIO_LINE_IN;
+ int internal_audio = 1;
+ 
++int
+ codec_init( void )
+ {
+   int i;
+@@ -873,9 +881,9 @@ codec_init( void )
+   foo.record.port = port;
+   foo.record.balance = foo.play.balance = AUDIO_MID_BALANCE;
+ #ifdef BUILD_CDDA
+-  if (d->cdda_slave > -1)
++/*  if (d->cdda_slave > -1)
+     foo.monitor_gain = 0;
+-  else
++  else*/
+ #endif
+     foo.monitor_gain = AUDIO_MAX_GAIN;
+   /*
+@@ -893,7 +901,7 @@ codec_init( void )
+   return 0;
+ }
+ 
+-static int
++int
+ kick_codec( void ) 
+ {
+   audio_info_t foo;
+@@ -928,6 +936,7 @@ kick_codec( void )
+   return retval;
+ } /* kick_codec() */
+ 
++int
+ codec_start( void )
+ {
+   audio_info_t foo;
+@@ -954,6 +963,7 @@ codec_start( void )
+   return 0;
+ } /* codec_start() */
+ 
++int
+ codec_stop( void ) { return 0; }
+ 
+ #endif /* CODEC } */

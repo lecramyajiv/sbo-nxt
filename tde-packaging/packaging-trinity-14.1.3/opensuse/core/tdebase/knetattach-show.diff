@@ -1,0 +1,7 @@
+--- knetattach/knetattach.desktop	2008/12/02 13:49:00	1.1
++++ knetattach/knetattach.desktop	2008/12/02 14:06:16
+@@ -80,3 +80,4 @@
+ X-KDE-StartupNotify=true
+ Categories=Qt;KDE;Network;
+ DocPath=knetattach/index.html
++OnlyShowIn=KDE;

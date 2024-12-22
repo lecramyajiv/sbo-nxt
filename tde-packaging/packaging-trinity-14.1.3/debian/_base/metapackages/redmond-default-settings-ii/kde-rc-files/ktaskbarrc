@@ -1,0 +1,7 @@
+[General]
+GroupTasks=GroupNever
+ShowAllWindows=false
+ShowCurrentScreenOnly=true
+
+[Appearance]
+DrawButtons=true

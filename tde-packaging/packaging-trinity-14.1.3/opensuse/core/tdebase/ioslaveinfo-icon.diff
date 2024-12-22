@@ -1,0 +1,13 @@
+Index: kcontrol/ioslaveinfo/ioslaveinfo.desktop
+===================================================================
+--- kcontrol/ioslaveinfo/ioslaveinfo.desktop.orig
++++ kcontrol/ioslaveinfo/ioslaveinfo.desktop
+@@ -79,7 +79,7 @@ Comment[zh_TW]=可用協定的資訊
+ Comment[zu]=Ulwazi mayelana nemithetho elandelwayo ekhona
+ DocPath=kinfocenter/protocols/index.html
+ Exec=kcmshell ioslaveinfo
+-Icon=history
++Icon=enhanced_browsing
+ Keywords=Protocol,IO slaves,Slaves,Network,Information,Timeout
+ Keywords[ar]=الميفاق,IO Slaves,Slaves,الشبكة,معلومات نفاذ الوقت
+ Keywords[az]=Protokol, IO Kölələri, Kölələr, Şəbəkə,Mə'lumat, Vaxt Dolması

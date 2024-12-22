@@ -1,0 +1,63 @@
+Index: kcontrol/kcontrol/modules.cpp
+===================================================================
+--- kcontrol/kcontrol/modules.cpp.orig
++++ kcontrol/kcontrol/modules.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include <unistd.h>
+ #include <sys/types.h>
++#include <stdlib.h>
+ 
+ 
+ #include <qlabel.h>
+@@ -59,6 +60,10 @@ ConfigModule::~ConfigModule()
+ 
+ ProxyWidget *ConfigModule::module()
+ {
++  KDesktopFile kd(service()->desktopEntryPath());
++  if ( !kd.readEntry("X-SuSE-YaST-Call").isEmpty() )
++      setenv("KCMYAST2_CALL", kd.readEntry("X-SuSE-YaST-Call").latin1(), 1 );
++
+   if (_module)
+     return _module;
+ 
+@@ -168,6 +173,7 @@ void ConfigModule::runAsRoot()
+   // prepare the process to run the kcmshell
+   QString cmd = service()->exec().stripWhiteSpace();
+   bool kdeshell = false;
++  bool proxy = false;
+   if (cmd.left(5) == "kdesu")
+     {
+       cmd = cmd.remove(0,5).stripWhiteSpace();
+@@ -185,6 +191,15 @@ void ConfigModule::runAsRoot()
+       kdeshell = true;
+     }
+ 
++    KDesktopFile kd(service()->desktopEntryPath());
++    if ( !kd.readEntry("X-SuSE-YaST-Call").isEmpty() ){
++      kdeshell = true;
++      proxy = true;
++      cmd=service()->desktopEntryPath();
++
++      setenv("KCMYAST2_CALL", kd.readEntry("X-SuSE-YaST-Call").latin1(), 1 );
++    }
++
+   // run the process
+   QString kdesu = KStandardDirs::findExe("kdesu");
+   if (!kdesu.isEmpty())
+@@ -196,12 +211,12 @@ void ConfigModule::runAsRoot()
+       // in that case the modules is started through kdesud and kdesu
+       // returns before the module is running and that doesn't work.
+       // We also don't have a way to close the module in that case.
+-      *_rootProcess << "--n"; // Don't keep password.
++      *_rootProcess << "--n" << "-t"; // Don't keep password.
+       if (kdeshell) {
+-         *_rootProcess << QString("%1 %2 --embed %3 --lang %4").arg(locate("exe", "kcmshell")).arg(cmd).arg(_embedWidget->winId()).arg(KGlobal::locale()->language());
++         *_rootProcess << QString("%1 %2 %3 %4 --lang %5").arg(locate("exe", "kcmshell")).arg(cmd).arg(proxy?"--embed-proxy":"--embed").arg(_embedWidget->winId()).arg(KGlobal::locale()->language());
+       }
+       else {
+-         *_rootProcess << QString("%1 --embed %2 --lang %3").arg(cmd).arg(_embedWidget->winId()).arg( KGlobal::locale()->language() );
++         *_rootProcess << QString("%1 %2 %3 --lang %4").arg(cmd).arg(proxy?"--embed-proxy":"--embed").arg(_embedWidget->winId()).arg( KGlobal::locale()->language() );
+       }
+ 
+       connect(_rootProcess, SIGNAL(processExited(KProcess*)), this, SLOT(rootExited(KProcess*)));

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_DATA_DIRS=/usr/share
+
+${0}.real "$@"

@@ -1,0 +1,107 @@
+tastymenu-trinity (1.0.8-0debian7.0.0+0) wheezy; urgency=low
+
+  * Initial Release for TDE
+
+ -- Slávek Banko <slavek.banko@axis.cz>  Sun, 10 Apr 2016 03:32:32 +0200
+
+tastymenu (1.0.7) unstable; urgency=low
+
+   *Fixed a typo in the config dialog
+
+ -- Marco Martin <notmart@gmail.com>  Wed, 6 Feb 2008 12:53:00 +0100
+
+tastymenu (1.0.6) unstable; urgency=low
+
+   *Now all the applications should be displayed again
+   *Brazillian portoguese translation by Ewerton de A. Dutra
+
+ -- Marco Martin <notmart@gmail.com>  Thu, 13 Dec 2007 17:30:00 +0100
+
+tastymenu (1.0.5) unstable; urgency=low
+
+   *fixed the about box
+   *some fixes in packaging
+   *now it's installed in the right directory (for example in /usr/lib/kde3 instead of /usr/lib)
+
+ -- Marco Martin <notmart@gmail.com>  Thu, 22 Nov 2007 15:40:00 +0100
+
+tastymenu (1.0.4) unstable; urgency=low
+
+  *updated French translation
+  *updated Slovenian translation
+  *fixed a crash on lright mouse button click on search field
+  *the old memory leak should be somewhat mitigated
+
+ -- Marco Martin <notmart@gmail.com>  Sat, 17 Nov 2007 13:30:00 +0100
+
+tastymenu (1.0.3) unstable; urgency=low
+
+  * Fixed a bug that occurred when clicking on the search result if the menu mode was "recent/most used applications"
+  * Polish translation by Tomasz Argasiński
+  * Some fixes in the Slovenian translation
+  * description text shouldn't become too little
+
+ -- Marco Martin <notmart@gmail.com>  Wed, 24 Oct 2007 14:00:00 +0100
+
+tastymenu (1.0.2) unstable; urgency=low
+
+  * Slovenian translation by Matija Šuklje
+  * Fixed a little build problem
+
+ -- Marco Martin <notmart@gmail.com>  Wed, 17 Oct 2007 21:00:00 +0100
+
+tastymenu (1.0.1) unstable; urgency=low
+
+  * Menu and tooltip no longer steals mouse and keyboard input
+  * Better management of the tooltip
+  * No separators when the list is in alphabetical order
+  * Finnish translations by Tommi Nieminen
+
+ -- Marco Martin <notmart@gmail.com>  Thu, 11 Oct 2007 17:25:00 +0100
+
+tastymenu (1.0) unstable; urgency=low
+
+  * Not having particular problems, released it as 1.0
+  * French translation by Laurent Hilsz
+
+ -- Marco Martin <notmart@gmail.com>  Wed, 19 Sep 2007 15:16:00 +0100
+
+tastymenu (1.0rc2) unstable; urgency=low
+
+  * Rearranging the items of the left column by drag and drop works again
+  * The layout should be a little bit more polished
+  * Updated Ukrainian translation
+
+ -- Marco Martin <notmart@gmail.com>  Sun, 09 Sep 2007 17:04:00 +0100
+
+tastymenu (1.0rc1) unstable; urgency=low
+
+  * Search field should be a lot faster
+  * Only strings with at least three characters are being searched (necessary for the speedup)
+  * Corrected a bug that prevented to search into application descriptions
+
+ -- Marco Martin <notmart@gmail.com>  Wed, 22 Aug 2007 12:40:00 +0100
+
+tastymenu (0.9.1) unstable; urgency=low
+
+  * Ukrainian translation by Motsyo Vitaliy
+
+ -- Marco Martin <notmart@gmail.com>  Tue, 21 Aug 2007 19:58:00 +0100
+
+tastymenu (0.9) unstable; urgency=low
+
+  * Add to desktop option in menuitems
+  * Drag and drop from menu to desktop
+  * Option to set different icons sizes in the three columns
+  * the button text label should always be of a visible color
+  * most used/recently used applications list updates in realtime
+  * clear most used/recently used applications list
+  * updated russian and german translations
+
+ -- Marco Martin <notmart@gmail.com>  Sat, 04 Aug 2007 14:00:00 +0100
+
+tastymenu (0.8.2) unstable; urgency=low
+
+  * First Debian Release
+
+ -- Marco Martin <notmart@gmail.com>  Sun, 20 May 2007 18:35:00 +0100

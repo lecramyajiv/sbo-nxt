@@ -1,0 +1,15 @@
+opt/trinity/bin/kiten
+opt/trinity/bin/kitengen
+/opt/trinity/share/applications/tde/kiten.desktop
+/opt/trinity/share/doc/tde/HTML/en/kiten/common
+/opt/trinity/share/doc/tde/HTML/en/kiten/index.cache.bz2
+/opt/trinity/share/doc/tde/HTML/en/kiten/*.docbook
+/opt/trinity/share/doc/tde/HTML/en/kiten/*.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kiten.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kiten.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kiten.png
+/opt/trinity/share/icons/hicolor/128x128/apps/kiten.png
+/opt/trinity/share/icons/hicolor/scalable/apps/kiten.svgz
+/opt/trinity/share/man/man1/kiten.1
+/opt/trinity/share/man/man1/kitengen.1
+../icons/kiten.xpm /opt/trinity/share/pixmaps

@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-ktron
+Title: The KTron Handbook
+Author: Fabian Dal Santo
+Abstract: KTron is a simple Tron close for TDE, which you can play
+ alone or against a friend.
+Section: Games/Arcade
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/ktron/index.html
+Files: /usr/share/doc/tde/HTML/en/ktron/*.html

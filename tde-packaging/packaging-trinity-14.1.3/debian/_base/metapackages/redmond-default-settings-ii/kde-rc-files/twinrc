@@ -1,0 +1,93 @@
+[Desktops]
+Name_1=
+Name_2=
+Name_3=
+Name_4=
+Number=4
+
+[MouseBindings]
+CommandActiveTitlebar1=Raise
+CommandActiveTitlebar2=Lower
+CommandActiveTitlebar3=Operations menu
+CommandAll1=Move
+CommandAll2=Toggle raise and lower
+CommandAll3=Resize
+CommandAllKey=Alt
+CommandAllWheel=Nothing
+CommandInactiveTitlebar1=Activate and raise
+CommandInactiveTitlebar2=Activate and lower
+CommandInactiveTitlebar3=Operations menu
+CommandTitlebarWheel=Nothing
+CommandWindow1=Activate, raise and pass click
+CommandWindow2=Activate and pass click
+CommandWindow3=Activate and pass click
+
+[PopupInfo]
+ShowPopup=false
+
+[Style]
+BorderSize=1
+ButtonsOnLeft=MS
+ButtonsOnRight=HIAX
+CustomButtonPositions=false
+PluginLib=twin3_redmond
+ShowToolTips=true
+
+[TabBox]
+TraverseAll=false
+
+[Notification Messages]
+UseTranslucency=true
+
+[Translucency]
+ActiveWindowOpacity=100
+ActiveWindowShadowSize=150
+DockOpacity=80
+DockShadowSize=50
+InactiveWindowOpacity=75
+InactiveWindowShadowSize=50
+MenuShadowSize=50
+MovingWindowOpacity=25
+OnlyDecoTranslucent=false
+RemoveShadowsOnMove=false
+RemoveShadowsOnResize=false
+ResetKompmgr=false
+TranslucentActiveWindows=false
+TranslucentDocks=false
+TranslucentInactiveWindows=false
+TranslucentMovingWindows=false
+TreatKeepAboveAsActive=true
+
+[Windows]
+ActiveMouseScreen=false
+AltTabStyle=KDE
+AnimateMinimize=true
+AnimateMinimizeSpeed=5
+AnimateShade=true
+AutoRaise=off
+AutoRaiseInterval=750
+BorderSnapZone=10
+ClickRaise=on
+DelayFocus=off
+DelayFocusInterval=750
+ElectricBorderDelay=150
+ElectricBorders=0
+FocusPolicy=ClickToFocus
+FocusStealingPreventionLevel=1
+GeometryTip=false
+HideUtilityWindowsForInactive=true
+IgnoreFocusStealingClasses=tdeio_uiserver
+MaximizeButtonLeftClickCommand=Maximize
+MaximizeButtonMiddleClickCommand=Maximize (vertical only)
+MaximizeButtonRightClickCommand=Maximize (horizontal only)
+MoveMode=Opaque
+MoveResizeMaximizedWindows=false
+Placement=Smart
+ResizeMode=Opaque
+RollOverDesktops=true
+SeparateScreenFocus=false
+ShadeHover=on
+ShadeHoverInterval=250
+SnapOnlyWhenOverlapping=false
+TitlebarDoubleClickCommand=Maximize
+WindowSnapZone=10

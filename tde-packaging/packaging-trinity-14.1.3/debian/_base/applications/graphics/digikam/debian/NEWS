@@ -1,0 +1,8 @@
+digikam (2:0.9.2~beta1-2) unstable; urgency=low
+ 
+  * Upstream have merged the digikamimageplugins with digikam
+  and all are provided in the one application package, digikam.
+  Don't be concerned that this version of digikam Conflicts:/
+  Replaces: digikamimageplugins
+
+ -- Mark Purcell <msp@debian.org>  Sun, 20 May 2007 08:35:22 +0100

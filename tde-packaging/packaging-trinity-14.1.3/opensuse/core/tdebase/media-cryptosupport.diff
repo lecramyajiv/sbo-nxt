@@ -1,0 +1,31 @@
+Index: kioslave/media/mediamanager/halbackend.cpp
+===================================================================
+--- kioslave/media/mediamanager/halbackend.cpp.orig
++++ kioslave/media/mediamanager/halbackend.cpp
+@@ -214,10 +214,26 @@ void HALBackend::AddDevice(const char *u
+     {
+         /* We only list volume that have a filesystem or volume that have an audio track*/
+         if ( libhal_device_get_property_QString(m_halContext, udi, "volume.fsusage") != "filesystem" &&
++	 	 	  libhal_device_get_property_QString(m_halContext, udi, "volume.fsusage") != "crypto" &&
+              !libhal_device_get_property_bool(m_halContext, udi, "volume.disc.has_audio", NULL) &&
+              !libhal_device_get_property_bool(m_halContext, udi, "volume.disc.is_blank", NULL) )
+             return;
+ 
++		/* For crypto_LUKS devices check its dm-device, if it is already mounted*/
++		if ( libhal_device_get_property_QString(m_halContext, udi, "volume.fstype") == "crypto_LUKS" &&
++	 	 	 !libhal_device_get_property_bool(m_halContext, udi, "volume.ignore", NULL) ) {
++			int num;
++			char **dm_uuid = libhal_manager_find_device_string_match(m_halContext, "volume.crypto_luks.clear.backing_volume",udi,&num,NULL);
++			/* if a dm device is found the volume is already decrypted */
++			if (num == 0) {
++				// TODO: Check for kryptomedia binary.
++				KProcess proc;
++				proc << "kryptomedia" << udi;
++				proc.start(KProcess::DontCare);
++				return;
++			}
++		}   
++
+         /* Query drive udi */
+         QString driveUdi = libhal_device_get_property_QString(m_halContext, udi, "block.storage_device");
+         if ( driveUdi.isNull() ) // no storage - no fun

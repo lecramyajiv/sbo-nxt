@@ -1,0 +1,226 @@
+#! /usr/bin/make -f
+
+# Set LD_LIBRARY_PATH to the installed library directory to allow dh_shlibdeps to function
+# Also include the main Trinity path
+ifeq ("$(LD_LIBRARY_PATH)", "")
+LD_LIBRARY_PATH=/usr/lib:debian/tmp/usr/lib
+else
+LD_LIBRARY_PATH += :/usr/lib:debian/tmp/usr/lib
+endif
+export LD_LIBRARY_PATH
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_TIME64_API		= $(shell echo | cc $(dpkg-buildflags --get CPPFLAGS) -dM -E -x c++ - | grep -q "_TIME_BITS 64" && echo true || false)
+ifeq ($(DEB_TIME64_API),true)
+DEB_TIME64_SUFFIX	= t64
+else
+DEB_TIME64_SUFFIX	=
+endif
+
+
+DEB_KDE_APIDOX := yes
+
+version=Debian Package $(DEB_VERSION)
+DEB_OPT_FLAG += -DDEBIAN_VERSION=$(DEB_VERSION)
+
+export CPPFLAGS+= -D__dilos__ -D__EXTENSIONS__ -DUSE_SOLARIS -D_XPG4_2
+LD_LIBRARY_PATH=/usr/lib/$(DEB_HOST_MULTIARCH)/libfakeroot:$(PWD)/$(DEB_BUILDDIR)/dcop:$(PWD)/$(DEB_BUILDDIR)/tdeio:$(PWD)/$(DEB_BUILDDIR)/tdeui:$(PWD)/$(DEB_BUILDDIR)/tdefx:$(PWD)/$(DEB_BUILDDIR)/tdesu:$(PWD)/$(DEB_BUILDDIR)/tdewallet/client:$(PWD)/$(DEB_BUILDDIR)/tdecore
+export LD_LIBRARY_PATH
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)" \
+ -DCMAKE_INSTALL_PREFIX="/usr" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DCMAKE_LIBRARY_PATH="/usr/lib" \
+ -DCMAKE_INCLUDE_PATH="/usr/include" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="ON" \
+ -DWITH_GCC_VISIBILITY="ON" \
+ -DWITH_LIBART="ON" \
+ -DWITH_LIBIDN="ON" \
+ -DWITH_TIFF="ON" \
+ -DWITH_WEBP="ON" \
+ -DWITH_JASPER="ON" \
+ -DWITH_OPENEXR="ON" \
+ -DWITH_AVAHI="ON" \
+ -DWITH_ISPELL="ON" \
+ -DWITH_ASPELL="ON" \
+ -DWITH_HSPELL="ON" \
+ -DDEFAULT_SPELL_CHECKER="ASPELL" \
+ -DWITH_ELFICON="OFF" \
+ -DWITH_TDEHWLIB="OFF" \
+ -DWITH_TDEHWLIB_DAEMONS="OFF" \
+ -DWITH_LOGINDPOWER="ON" \
+ -DWITH_UPOWER="ON" \
+ -DWITH_UDISKS="ON" \
+ -DWITH_UDISKS2="ON" \
+ -DWITH_UDEVIL="ON" \
+ -DWITH_CONSOLEKIT="ON" \
+ -DWITH_NETWORK_MANAGER_BACKEND="ON" \
+ -DWITH_LZMA="ON" \
+ -DWITH_XRANDR="ON" \
+ -DWITH_XCOMPOSITE="ON" \
+ -DWITH_MITSHM="ON" \
+ -DWITH_PCSC="ON" \
+ -DWITH_PKCS="ON" \
+ -DWITH_CRYPTSETUP="OFF" \
+ -DWITH_IMAGETOPS_BINARY="ON" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_C_COMPILER=gcc \
+ -DWITH_ALSA="OFF"
+
+DEB_MAKE_CHECK_TARGET = check
+
+DEB_FIXPERMS_EXCLUDE := \
+	usr/bin/fileshareset	\
+	usr/bin/kgrantpty	\
+	usr/bin/kpac_dhcp_helper \
+	usr/bin/start_tdeinit
+
+# ctfconvert does not work with C++ objects, skip them all
+DEB_DH_STRIP_ARGS  := --dbg-package=tdelibs-trinity-dbg \
+-Xlibtdentlm.so.0.0.0 -Xlibtdednssd.so.1.0.0 -Xlibkjs.so.1.2.0 \
+-Xlibtdesu.so.14.0.0 -Xlibtdeinit_tdelauncher.so \
+-Xlibkatepartinterfaces.so.0.0.0 -Xlibtdeprint.so.14.0.0 \
+-Xlibtdescript.so.0.0.0 -Xlibtdeabc_file.so.1.0.0 -Xlibtdeui.so.14.0.0 \
+-Xlibtdesasl.so.1.2.0 -Xlibnetworkstatus.so.0.0.0 -Xlibtdeinit_kded.so \
+-Xlibtdeinit_cupsdconf.so -Xlibtdemdi2.so.1.0.0 -Xlibtdeinit_tdeio_uiserver.so \
+-Xlibtdeabc_net.so.1.0.0 -Xlibtdecore.so.14.0.0 -Xlibtdemdi.so.1.0.0 \
+-Xlibtdeprint_management.so.14.0.0 -Xlibconnectionmanager.so.0.0.0 \
+-XlibDCOP.so.14.0.0 -Xlibtdetexteditor.so.0.0.0 -Xlibtdeutils.so.1.2.0 \
+-Xlibtdescreensaver.so.14.0.0 -Xlibtdeinit_dcopserver.so \
+-Xlibtdeabc_ldaptdeio.so.1.0.0 -Xlibtdehtml.so.14.0.0 \
+-Xlibtdewalletclient.so.1.0.1 -Xlibtdeinit_kaddprinterwizard.so \
+-Xlibartskde.so.1.2.0 -Xlibtdeparts.so.2.1.0 -Xlibtdeabc.so.1.2.0 \
+-Xlibtdemid.so.0.0.95 -Xlibkjava.so.1.0.0 -Xlibtdemediaplayer.so.0.0.0 \
+-Xlibvcard.so.0.0.0 -Xlibtdenewstuff.so.1.0.0 -Xlibtdeinit_tdeconf_update.so \
+-Xlibtderesources.so.1.2.0 -Xlibtdeunittest.so.1.0.0 -Xlibtdersync.so.0.0.1 \
+-Xlibtdeabc_dir.so.1.0.0 -Xlibtdeio.so.14.0.0 -Xlibtdeinit_tdecmshell.so \
+-Xlibtdeinit_tdebuildsycoca.so -Xlibtderandr.so.0.0.95 \
+-Xlibtdeinit_tdeio_http_cache_cleaner.so -Xlibtdespell.so.14.0.0 \
+-Xlibtdespell2.so.1.0.0 -Xlibtdewalletbackend.so.1.0.0 -Xlibtdefx.so.14.0.0 \
+-Xlibtdeimproxy.so.0.0.0 -Xlibtdeinit_kcookiejar.so -Xlibtdefakes.so.14.0.0 \
+-Xtrinity/tdetexteditor_docwordcompletion.so -Xtrinity/kded_kcookiejar.so \
+-Xtrinity/tdeio_iso.so -Xtrinity/libkatepart.so -Xtrinity/libtdehtmlpart.so \
+-Xtrinity/kimg_tga.so -Xtrinity/tdeio_help.so -Xtrinity/tdeprint_rlpr.so \
+-Xtrinity/tdespell_hspell.so -Xtrinity/kbzip2filter.so -Xtrinity/kimg_tiff.so \
+-Xtrinity/libtdeprint_management_module.so -Xtrinity/tdetexteditor_isearch.so \
+-Xtrinity/tdeio_uiserver.so -Xtrinity/tdeprint_lpr.so -Xtrinity/kimg_psd.so \
+-Xtrinity/kimg_ico.so -Xtrinity/tdefileaudiopreview.so -Xtrinity/kimg_pcx.so \
+-Xtrinity/tdetexteditor_insertfile.so -Xtrinity/tdehtmlimagepart.so \
+-Xtrinity/kded_kpasswdserver.so -Xtrinity/tdeprint_lpdunix.so \
+-Xtrinity/tdeio_file.so -Xtrinity/tdeio_ftp.so -Xtrinity/cupsdconf.so \
+-Xtrinity/tdeabc_ldaptdeio.so -Xtrinity/tdeprint_ext.so \
+-Xtrinity/tdeio_http_cache_cleaner.so -Xtrinity/kxzfilter.so \
+-Xtrinity/kjavaappletviewer.so -Xtrinity/tdespell_ispell.so \
+-Xtrinity/tdespell_aspell.so -Xtrinity/tdecmshell.so -Xtrinity/kimg_xcf.so \
+-Xtrinity/kded_kssld.so -Xtrinity/tdeabcformat_binary.so \
+-Xtrinity/kded_proxyscout.so -Xtrinity/tdetexteditor_kdatatool.so \
+-Xtrinity/knotify.so -Xtrinity/tdeprint_cups.so -Xtrinity/kimg_exr.so \
+-Xtrinity/tdeio_ghelp.so -Xtrinity/kcookiejar.so -Xtrinity/kded_tdeprintd.so \
+-Xtrinity/kcm_tderesources.so -Xtrinity/kded_tdewalletd.so -Xtrinity/kded.so \
+-Xtrinity/libtdemultipart.so -Xtrinity/tdeconf_update.so \
+-Xtrinity/libshellscript.so -Xtrinity/kimg_jp2.so \
+-Xtrinity/kded_kdetrayproxy.so -Xtrinity/tdeabc_dir.so -Xtrinity/tdeio_http.so \
+-Xtrinity/tdelauncher.so -Xtrinity/libtdecertpart.so -Xtrinity/kimg_dds.so \
+-Xtrinity/kimg_xview.so -Xtrinity/tdeabc_net.so -Xtrinity/tdeio_metainfo.so \
+-Xtrinity/dcopserver.so -Xtrinity/tdestyle_plastik_config.so \
+-Xtrinity/kaddprinterwizard.so -Xtrinity/kimg_eps.so \
+-Xtrinity/tdebuildsycoca.so -Xtrinity/tdeprint_tool_escputil.so \
+-Xtrinity/tdestyle_highcontrast_config.so -Xtrinity/kimg_hdr.so \
+-Xtrinity/kimg_rgb.so -Xtrinity/kgzipfilter.so -Xtrinity/tdeabc_file.so \
+-Xtrinity/plugins/styles/light.so -Xtrinity/plugins/styles/highcontrast.so \
+-Xtrinity/plugins/styles/kthemestyle.so -Xtrinity/plugins/styles/plastik.so \
+-Xtrinity/plugins/styles/highcolor.so -Xtrinity/plugins/styles/asteroid.so \
+-Xtrinity/plugins/styles/keramik.so -Xtrinity/plugins/designer/tdewidgets.so \
+-Xdcop -Xtdeab2tdeabc -Xkpac_dhcp_helper -Xtdeconf_update -Xartsmessage \
+-Xkcookiejar -Xstart_tdeinit -Xtdeio_uiserver -Xkgrantpty -Xdcopobject \
+-Xtdebuildsycoca -Xkinstalltheme -Xtdetradertest -Xcupsdoprint \
+-Xtdeinit_wrapper -Xmake_driver_db_cups -Xtdeioexec -Xtdedostartupconfig \
+-Xtdemailservice -Xtdehotnewstuff -Xkaddprinterwizard -Xtdestartupconfig \
+-Xkdetcompmgr -Xtdeioslave -Xtde-config -Xtdetelnetservice -Xkshell -Xmeinproc \
+-Xdcopserver -Xtdefile -Xtdeiso_info -Xtde-menu -Xdcopclient -Xlnusertemp \
+-Xdcopstart -Xdcopref -Xkwrapper -Xtdelauncher -Xkdontchangethehostname \
+-Xcupsdconf -Xkded -Xtdesendbugmail -Xtdecmshell.real -Xtdeinit -Xtdesu_stub \
+-Xtdeinit_shutdown -Xtdeio_http_cache_cleaner -Xstart_tdeinit_wrapper \
+-Xdcopfind -Xmake_driver_db_lpr -Xdcopquit -Xdcopserver_shutdown \
+-Xtdeconfig_compiler -Xmaketdewidgets -Xksvgtopng -Xdcopidl2cpp \
+-Xtdeunittestmodrunner -Xdcopidl
+
+binary-install/tdelibs-data-trinity::
+	install -p -D -m644 kded/tde-applications.menu debian/tdelibs-data-trinity/usr/etc/xdg/menus/tde-applications.menu
+#	install -p -D -m644 debian/trinitylibs.conf debian/tdelibs-data-trinity/etc/ld.so.conf.d/trinitylibs.conf
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/apps/tdeui/pics/abouttde.png debian/icons/abouttde-kubuntu.png.uu
+
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/16x16/devices/computer.png debian/icons/cr16-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/22x22/devices/computer.png debian/icons/cr22-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/32x32/devices/computer.png debian/icons/cr32-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/48x48/devices/computer.png debian/icons/cr48-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/64x64/devices/computer.png debian/icons/cr64-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/128x128/devices/computer.png debian/icons/cr128-device-computer.png.uu
+#	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/scalable/devices/computer.svgz debian/icons/crsc-device-computer.svgz.uu
+
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/16x16/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/22x22/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/32x32/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/48x48/actions/hibernate.png debian/icons/cr16-action-hibernate.png.uu
+
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/16x16/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/22x22/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/32x32/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+	uudecode -o debian/tdelibs-data-trinity/usr/share/icons/crystalsvg/48x48/actions/suspend.png debian/icons/cr16-action-suspend.png.uu
+
+### 
+
+DEB_HOST_ARCH_OS ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+
+binary-predeb/tdelibs14-trinity-dev::
+ifeq (linux,$(DEB_HOST_ARCH_OS))
+	echo "libasound2-trinity-dev=libasound2-trinity-dev" >> debian/tdelibs14-trinity-dev.substvars
+endif
+
+binary-install/tdelibs14-trinity::
+	mv debian/tmp/usr/bin/tdecmshell debian/tmp/usr/bin/tdecmshell.real
+	install -p -D -m755 debian/tmp/usr/bin/tdecmshell.real debian/tdelibs14-trinity/usr/bin/tdecmshell.real
+	install -p -D -m755 debian/tdecmshell debian/tdelibs14-trinity/usr/bin/tdecmshell
+
+post-patches::
+	dh_testdir
+ifeq ($(DEB_TIME64_API),true)
+	# update library package name for TIME64 ABI
+	ls -d debian/* | \
+	grep -E "/tdelibs14-trinity\." | \
+	grep -v "\.t64$$" | \
+	while read a; do \
+	    [ -d $$a ] || [ -f $$a.t64 ] || \
+	    (cp -a $$a debian/tdelibs14$(DEB_TIME64_SUFFIX)-trinity.$${a##*.} && mv $$a $$a.t64); \
+	done
+	[ -f debian/control.t64 ] || \
+	sed -i.t64 \
+	    -e "s/^\\(Package: tdelibs14\\)-trinity$$/\\1$(DEB_TIME64_SUFFIX)-trinity/" \
+	    -e "s/^\\(Replaces\\|Breaks\\):\\(.*\\)\\(tdelibs\\)4c2a-trinity\\( \|$$\)/\\1:\\2\\34c2a-trinity, \\314-trinity\\4/" \
+	    -e "s/\\(tdelibs14\\)-trinity (=/\\1$(DEB_TIME64_SUFFIX)-trinity (=/" \
+	    debian/control
+endif
+
+clean::
+	dh_testdir
+	dh_clean
+
+ifeq ($(DEB_TIME64_API),true)
+	# revert library package name for TIME64 ABI
+	ls -d debian/* | \
+	grep -E "\.t64$$" | \
+	while read a; do \
+	    mv $$a $${a%.t64}; \
+	done
+	ls -d debian/* | \
+	grep -E "/tdelibs14$(DEB_TIME64_SUFFIX)-trinity\." | \
+	xargs -r rm
+	[ ! -f debian/control.t64 ] || \
+	mv debian/control.t64 debian/control
+endif

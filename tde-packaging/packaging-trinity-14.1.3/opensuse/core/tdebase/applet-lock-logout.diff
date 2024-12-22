@@ -1,0 +1,122 @@
+Index: kicker/applets/lockout/lockout.cpp
+===================================================================
+--- kicker/applets/lockout/lockout.cpp.orig
++++ kicker/applets/lockout/lockout.cpp
+@@ -31,6 +31,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ #include <qtoolbutton.h>
+ #include <qstyle.h>
+ #include <qtooltip.h>
++#include <qobjectlist.h>
+ 
+ #include <dcopclient.h>
+ 
+@@ -54,7 +55,7 @@ extern "C"
+ }
+ 
+ Lockout::Lockout( const QString& configFile, QWidget *parent, const char *name)
+-    : KPanelApplet( configFile, KPanelApplet::Normal, 0, parent, name ), bTransparent( false )
++    : KPanelApplet( configFile, KPanelApplet::Normal, 0, parent, name ), bTransparent( false ), bAlternateButtonOrder( false )
+ {
+     KConfig *conf = config();
+     conf->setGroup("lockout");
+@@ -71,8 +72,16 @@ Lockout::Lockout( const QString& configF
+     layout->setMargin( 0 );
+     layout->setSpacing( 0 );
+ 
+-    lockButton = new SimpleButton( this, "lock");
+-    logoutButton = new SimpleButton( this, "logout");
++    bAlternateButtonOrder = !conf->readBoolEntry( "OriginalLayout",true );
++
++    if (bAlternateButtonOrder) {
++        lockButton = new SimpleButton( this, "lock");
++        logoutButton = new SimpleButton( this, "logout");
++    }
++    else {
++        logoutButton = new SimpleButton( this, "logout");
++        lockButton = new SimpleButton( this, "lock");
++    }
+ 
+     QToolTip::add( lockButton, i18n("Lock the session") );
+     QToolTip::add( logoutButton, i18n("Log out") );
+@@ -204,12 +213,15 @@ bool Lockout::eventFilter( QObject *o, Q
+                                    this, SLOT( lock() ) );
+                 popup->insertSeparator();
+                 
++                popup->insertItem( i18n( "&Alternate Button Order" ), 90 );
+                 i18n("&Transparent");
+                 //popup->insertItem( i18n( "&Transparent" ), 100 );
+                 popup->insertItem( SmallIcon( "configure" ),
+                                    i18n( "&Configure Screen Saver..." ),
+                                    this, SLOT( slotLockPrefs() ) );
+ 
++                popup->setItemChecked( 90, bAlternateButtonOrder );
++                popup->connectItem(90, this, SLOT( slotButtonOrder() ) );
+                 //popup->setItemChecked( 100, bTransparent );
+                 //popup->connectItem(100, this, SLOT( slotTransparent() ) );
+                 //if (conf->entryIsImmutable( "Transparent" ))
+@@ -226,6 +238,7 @@ bool Lockout::eventFilter( QObject *o, Q
+                 popup->insertItem( SmallIcon( "exit" ), i18n("&Log Out..."),
+                                    this, SLOT( logout() ) );
+                 popup->insertSeparator();
++                popup->insertItem( i18n( "&Alternate Button Order" ), 90 );
+                 //popup->insertItem( i18n( "&Transparent" ), 100 );
+                 popup->insertItem( SmallIcon( "configure" ),
+                                    i18n( "&Configure Session Manager..." ),
+@@ -235,6 +248,9 @@ bool Lockout::eventFilter( QObject *o, Q
+                 //popup->connectItem(100, this, SLOT( slotTransparent() ) );
+                 //if (conf->entryIsImmutable( "Transparent" ))
+                 //    popup->setItemEnabled( 100, false );
++                popup->setItemChecked( 90, bAlternateButtonOrder );
++                popup->connectItem(90, this, SLOT( slotButtonOrder() ) );
++
+                 popup->exec( me->globalPos() );
+                 delete popup;
+ 
+@@ -263,6 +279,27 @@ void Lockout::slotTransparent()
+     conf->sync();
+ }
+ 
++void Lockout::slotButtonOrder()
++{
++    QObject* child = children()->getFirst();
++
++    if (bAlternateButtonOrder)
++      child = lockButton;
++    else
++      child = logoutButton;
++
++    removeChild(child);
++    insertChild(child);
++    update();
++
++    bAlternateButtonOrder = !bAlternateButtonOrder;
++
++    KConfig* conf = config();
++    conf->setGroup("lockout");
++    conf->writeEntry( "OriginalLayout", !bAlternateButtonOrder );
++    conf->sync();
++}
++
+ void Lockout::slotLogoutPrefs()
+ {
+     // Run the logout settings.
+Index: kicker/applets/lockout/lockout.h
+===================================================================
+--- kicker/applets/lockout/lockout.h.orig
++++ kicker/applets/lockout/lockout.h
+@@ -36,6 +36,7 @@ private slots:
+ 
+     void slotLockPrefs();
+     void slotLogoutPrefs();
++    void slotButtonOrder();
+     void slotTransparent();
+     void slotIconChanged();
+ 
+@@ -47,6 +48,7 @@ private:
+     QBoxLayout *layout;
+ 
+     bool bTransparent;
++    bool bAlternateButtonOrder;
+ };
+ 
+ #endif // LOCKOUT_H

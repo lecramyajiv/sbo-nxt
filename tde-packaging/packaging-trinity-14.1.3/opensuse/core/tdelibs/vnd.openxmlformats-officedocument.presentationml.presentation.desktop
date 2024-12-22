@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=MimeType
+MimeType=application/vnd.openxmlformats-officedocument.presentationml.presentation
+Patterns=*.pptx;*.PPTX
+Icon=presentation
+Comment=Open XML Presentation Document
+[Property::X-KDE-NativeExtension]
+Type=QString
+Value=.pptx

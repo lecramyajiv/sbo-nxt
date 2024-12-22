@@ -1,0 +1,46 @@
+Index: kdecore/eventsrc
+===================================================================
+--- kdecore/eventsrc.orig
++++ kdecore/eventsrc
+@@ -2572,7 +2572,7 @@ Comment[wa]=On messaedje critike est hå
+ Comment[zh_CN]=正在显示关键消息
+ Comment[zh_HK]=顯示嚴重警告訊息
+ Comment[zh_TW]=嚴重的警告訊息已顯示
+-default_sound=KDE_Glass_Break.ogg
++default_sound=KDE_Error_1.ogg
+ default_presentation=65
+ nopresentation=18
+ level=4
+Index: mimetypes/application/x-bittorrent.desktop
+===================================================================
+--- mimetypes/application/x-bittorrent.desktop.orig
++++ mimetypes/application/x-bittorrent.desktop
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Icon=torrent
+ Comment=BitTorrent Download
+ Comment[af]=BitTorrent Aflaai
+ Comment[ar]=ملف تنزيل BitTorrent
+Index: mimetypes/application/x-msdos-program.desktop
+===================================================================
+--- mimetypes/application/x-msdos-program.desktop.orig
++++ mimetypes/application/x-msdos-program.desktop
+@@ -85,5 +85,5 @@ MimeType=application/x-msdos-program
+ X-KDE-IsAlso=application/x-executable
+ [Property::X-KDE-NativeExtension]
+ Type=QString
+-Value=.exe
++Value=.exe;.EXE;
+ 
+Index: kresources/kresources.desktop
+===================================================================
+--- kresources/kresources.desktop.orig
++++ kresources/kresources.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Exec=kcmshell kresources
+-Icon=date
++Icon=about_kde
+ Type=Application
+ Terminal=false
+ 

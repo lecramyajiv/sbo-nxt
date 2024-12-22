@@ -1,0 +1,43 @@
+#!/bin/sh -e
+
+if [ "${BASEDIR:=/}" = "/" ]; then
+	BASEDIR=""
+fi
+
+case "$1" in
+
+    upgrade)
+	# rename kdelogo => tdelogo
+	grep -rl "kdelogo" /etc/trinity/tdm/tdm*rc | tr "\n" "\0" | \
+	xargs -r0 sed -i -e "s|kdelogo|tdelogo|g"
+
+	rm -f /etc/trinity/debian/tdm-update-menu.sh
+	rm -f /etc/trinity/debian/tdm.options
+	rm -f /etc/trinity/tdm/pixmaps/XFree86bw.xpm
+	rm -f /etc/trinity/tdm/pixmaps/XFree86.xpm
+	rm -f /etc/trinity/tdm/Xresources
+	rm -f /etc/menu-methods/tdm
+
+#	if [ -f /etc/init.d/tdm-trinity ]; then
+#	    if [ -x "`which update-rc.d 2>/dev/null`" ]; then
+#	        update-rc.d tdm-trinity remove >/dev/null
+#	    fi
+#	fi
+    ;;
+
+    install)
+    ;;
+
+    abort-upgrade)
+    ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,20 @@
+debian/tmp/opt/trinity/bin/rbqtsh
+debian/tmp/opt/trinity/bin/rbqtapi
+debian/tmp/opt/trinity/bin/rbuic
+debian/tmp/opt/trinity/bin/qtrubyinit
+
+debian/tmp/opt/trinity/lib/ruby/*/Qt/qtruby.rb
+debian/tmp/opt/trinity/lib/ruby/*/Qt.rb
+
+debian/tmp/opt/trinity/lib/*/*/*/qtruby.so*
+debian/tmp/opt/trinity/lib/*/*/*/qtruby.la
+
+debian/tmp/opt/trinity/lib/*/*/*/tqui.so*
+debian/tmp/opt/trinity/lib/*/*/*/tqui.la
+
+debian/tmp/opt/trinity/share/man/man1/qtrubyinit.1
+debian/tmp/opt/trinity/share/man/man1/rbqtsh.1
+debian/tmp/opt/trinity/share/man/man1/rbqtapi.1
+debian/tmp/opt/trinity/share/man/man1/rbuic.1
+
+qtruby/ChangeLog /opt/trinity/share/doc/libqt0-ruby

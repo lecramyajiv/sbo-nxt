@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/lib/trinity/plugins/styles
+debian/tmp/opt/trinity/lib/trinity/tdestyle_phase_config.la
+debian/tmp/opt/trinity/lib/trinity/tdestyle_phase_config.so
+debian/tmp/opt/trinity/share/apps/tdestyle

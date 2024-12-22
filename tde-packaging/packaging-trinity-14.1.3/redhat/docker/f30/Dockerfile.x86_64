@@ -1,0 +1,29 @@
+FROM fedora:30
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+RUN echo "proxy=http://proxy:3128" >>"/etc/dnf.conf"
+
+# Fix DNF database corruption
+RUN dnf -y install dnf-plugin-ovl findutils
+
+# Add RPMFUSION repository
+RUN dnf -y --enableplugin=ovl install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-30.noarch.rpm
+
+# Install Trinity build dependencies
+RUN dnf -y --enableplugin=ovl update
+ADD packages /packages
+RUN dnf -y --enableplugin=ovl install $(</packages)
+
+# Add YUM repository for locally built packages
+ADD rpmbuild.repo /etc/yum.repos.d/rpmbuild.repo
+RUN sed -i "/etc/yum.repos.d/rpmbuild.repo" -e "s|\${ARCH}|${ARCH}|g" -e "s|\${TDE_VERSION}|${TDE_VERSION}|g"
+
+# Fix utempter detection
+RUN chmod a+r /usr/libexec/utempter/utempter
+
+# Add non-root user to build packages
+RUN useradd -m -s /bin/bash -u 1000 trinity
+RUN echo "trinity ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+ADD rpmmacros /home/trinity/.rpmmacros

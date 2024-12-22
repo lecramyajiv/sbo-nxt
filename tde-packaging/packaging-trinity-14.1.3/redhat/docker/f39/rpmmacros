@@ -1,0 +1,11 @@
+%dist .fc39
+%_smp_mflags -j8
+%jobs 8
+%__brp_remove_la_files %nil
+%__cmake_builddir %nil
+%__cmake_in_source_build 1
+%_debugsource_packages %nil
+%_debugsource_template %nil
+%source_date_epoch_from_changelog 0
+%python python3
+%__python /usr/bin/python3

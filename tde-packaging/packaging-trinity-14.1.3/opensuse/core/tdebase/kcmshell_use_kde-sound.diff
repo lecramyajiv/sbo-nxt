@@ -1,0 +1,11 @@
+Index: kcontrol/info/sound.desktop
+===================================================================
+--- kcontrol/info/sound.desktop.orig
++++ kcontrol/info/sound.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Exec=kcmshell sound
++Exec=kcmshell kde-sound
+ Icon=kcmsound
+ Type=Application
+ DocPath=kinfocenter/sound/index.html

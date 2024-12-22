@@ -1,0 +1,24 @@
+Source: kmyfirewall-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://kmyfirewall.sourceforge.net/
+
+Package: kmyfirewall-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: kmyfirewall-trinity (<< 4:14.0.0~)
+Breaks: kmyfirewall-trinity (<< 4:14.0.0~)
+Description: iptables based firewall configuration tool for TDE [Trinity]
+ KMyFirewall attempts to make it easier to setup iptables based firewalls on
+ Linux systems. It will be the right tool if you like to have a so called
+ "Personal Firewall" running on your Linux box, but don't have the time and/or
+ the interest to spend hours in front of the iptables manual just to setup a 
+ Firewall that keeps the "bad" people out.
+ .
+ There is also the possibility to save entire rule sets, so you only have to
+ configure your rule set one time and then you can use it on several computers
+ giving each of them a similar configuration (p.e. school networks, office,
+ university etc.)

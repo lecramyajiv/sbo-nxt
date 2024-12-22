@@ -1,0 +1,7 @@
+kjsembed/docs/*.css
+kjsembed/docs/*.html
+kjsembed/docs/examples
+kjsembed/docs/classdocs
+kjsembed/docs/jsref
+kjsembed/docs/tutorial
+

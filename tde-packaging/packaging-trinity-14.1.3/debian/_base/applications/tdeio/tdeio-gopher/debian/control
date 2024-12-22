@@ -1,0 +1,19 @@
+Source: tdeio-gopher-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Albert Astals Cid <aacid@kde.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: tdeio-gopher-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: kio-gopher-trinity (<< 4:14.0.0~)
+Breaks: kio-gopher-trinity (<< 4:14.0.0~)
+Conflicts: kdebase-kio-plugins-trinity (<< 4:14.0.11~), tdebase-tdeio-plugins-trinity (<< 4:14.0.11~)
+Description: tdeio-slave for the gopher protocol [Trinity]
+ Adds support for the "gopher:" protocol
+ to Konqueror and other TDE applications.
+ .
+ This enables you to perform gopher searches in Konqueror.

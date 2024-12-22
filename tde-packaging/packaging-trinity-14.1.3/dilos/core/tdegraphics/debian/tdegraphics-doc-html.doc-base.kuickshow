@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kuickshow
+Title: KuickShow Handbook
+Author: Carsten Pfeiffer 
+Abstract: KuickShow is a comfortable image browser/viewer.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kuickshow/index.html
+Files: /usr/share/doc/tde/HTML/en/kuickshow/*.html
+

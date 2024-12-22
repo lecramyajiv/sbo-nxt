@@ -1,0 +1,10 @@
+[Desktop Entry]
+TryExec=assistant
+Exec=assistant-qt3
+Name=Qt Assistant 3
+Comment=Tool for online help doc
+MapNotify=true
+MimeType=application/x-assistant;
+Terminal=false
+Icon=assistant
+Type=Application

@@ -1,0 +1,11 @@
+debian/tmp/usr/bin/ksig
+debian/tmp/usr/share/applications/tde/ksig.desktop
+debian/tmp/usr/share/apps/ksig/ksigui.rc
+debian/tmp/usr/share/icons/hicolor/16x16/apps/ksig.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/ksig.png
+debian/icons/ksig.xpm /usr/share/pixmaps
+debian/tmp/usr/share/doc/tde/HTML/en/ksig/common
+debian/tmp/usr/share/doc/tde/HTML/en/ksig/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/ksig/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/ksig/screenshot.png
+debian/tmp/usr/share/man/man1/ksig.1

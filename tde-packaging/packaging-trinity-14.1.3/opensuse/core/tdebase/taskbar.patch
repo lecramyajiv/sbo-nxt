@@ -1,0 +1,29 @@
+--- kicker/taskbar/taskcontainer.cpp.orig	2011-02-12 00:40:57.060389620 +0300
++++ kicker/taskbar/taskcontainer.cpp	2011-02-12 02:03:08.345389684 +0300
+@@ -576,9 +576,9 @@
+     // draw button background
+     if (drawButton)
+     {
+-        style().drawPrimitive(QStyle::PE_HeaderSection, p,
+-                              QRect(0, 0, width(), height()),
+-                              colors);
++        style().drawPrimitive(QStyle::PE_HeaderSection, p,
++                              QRect(1, 1, width()-2, height()-2),
++                              colors, sunken ? QStyle::Style_Down : QStyle::Style_Raised);
+     }
+ 
+     // shift button label on sunken buttons
+@@ -674,11 +674,11 @@
+             }
+             else
+             {
+-                textPen = p->pen();
++                textPen = QPen(colors.buttonText()); //textPen = p->pen();
+             }
+         }
+ 
+-        int availableWidth = width() - (br.x() * 2) - textPos;
++        int availableWidth = width() - (br.x() * 2) - textPos - 4;
+         if (m_filteredTasks.count() > 1)
+         {
+             availableWidth -= 8;

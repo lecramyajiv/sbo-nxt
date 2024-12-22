@@ -1,0 +1,21 @@
+Index: kdesu/kdesud/kdesud.cpp
+===================================================================
+--- kdesu/kdesud/kdesud.cpp.orig
++++ kdesu/kdesud/kdesud.cpp
+@@ -45,6 +45,7 @@
+ #include <pwd.h>
+ #include <errno.h>
+ 
++#include <sys/prctl.h>
+ #include <sys/time.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+@@ -248,6 +249,8 @@ int create_socket()
+ 
+ int main(int argc, char *argv[])
+ {
++    prctl(PR_SET_DUMPABLE, 0);
++
+     KAboutData aboutData("kdesud", I18N_NOOP("KDE su daemon"),
+             Version, I18N_NOOP("Daemon used by kdesu"),
+             KAboutData::License_Artistic,

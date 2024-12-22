@@ -1,0 +1,10 @@
+Document: tdenetwork-doc-html-kopete
+Title: Kopete Handbook
+Author: Will Stephenson, Matt Rogers
+Abstract: Kopete is TDE's is multi-protocol instant messenger client.
+Section: Apps/Web
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kopete/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kopete/*.html
+

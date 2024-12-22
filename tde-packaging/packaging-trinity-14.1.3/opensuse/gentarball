@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# BEGIN VERSIONS
+VERSION=R13.99
+QT_VERSION=3.4.0
+#ARTS_VERSION=1.5.10
+#DBUS_TQT_VERSION=0.62
+#DBUS_1_TQT_VERSION=0.8.1
+# END VERSIONS
+
+createTarball()
+{
+cp -r $NAME $NAME-$VERSION
+tar cjf $NAME-$VERSION.tar.bz2 $NAME-$VERSION
+rm -rf $NAME-$VERSION
+}
+
+grab()
+{
+#svn export svn://anonsvn.kde.org/home/kde/branches/trinity/$NAME
+git clone http://scm.trinitydesktop.org/scm/git/$NAME $NAME
+cd $NAME
+if [[ -e .gitmodules ]]; then
+	sed -i 's/system@//g' .gitmodules
+	git submodule update --init
+fi
+cd ..
+createTarball
+rm -rf $NAME
+echo "done"
+}
+
+if [ "$1" != "" ]; then
+NAME=$1
+grab
+exit 0
+fi
+
+clear
+echo "I need to know what you want to generate a tarball for."
+echo ""
+echo "Version defaults to $VERSION. If you want to change it,"
+echo "please pass it as a parameter to this script. There may"
+echo "be other versions used, see the \"versions\" file."
+echo ""
+echo "Let's start off by dependencies, main, or apps."
+echo "Which one?"
+echo ""
+echo "(1) dependencies"
+echo "(2) main"
+echo "(3) applications"
+echo -e "> "
+read SELECTION
+
+if [ "$SELECTION" = "1" ]; then
+	clear
+	echo "Dependencies: Select what you want us to generate."
+	echo "(1) qt3"
+	echo "(2) tqt3";
+	echo "(3) libtqt4"
+	echo "(4) avahi-tqt"
+	echo "(5) python-tqt"
+	echo "(6) sip4-tqt";
+	echo "(7) libdbus-tqt-1-0"
+	echo "(8) libdbus-1-tqt0"
+	echo "(9) arts"
+	read CHOICE
+	
+	if [ "$CHOICE" == "1" ]; then NAME='qt3' && VERSION=$QT_VERSION;
+	elif [ "$CHOICE" == "2" ]; then NAME='tqt3' && VERSION=$QT_VERSION;
+	elif [ "$CHOICE" == "3" ]; then NAME='tqtinterface';
+	elif [ "$CHOICE" == "4" ]; then NAME='avahi-tqt';
+	elif [ "$CHOICE" == "5" ]; then NAME='python-tqt';
+	elif [ "$CHOICE" == "6" ]; then NAME='sip4-tqt';
+	elif [ "$CHOICE" == "7" ]; then NAME='dbus-tqt';
+	elif [ "$CHOICE" == "8" ]; then NAME='dbus-1-tqt';
+	elif [ "$CHOICE" == "9" ]; then NAME='arts';
+	else
+	echo "Invalid, bye." && exit 1
+	fi
+elif [ "$SELECTION" = "2" ]; then
+	clear
+	echo "Main: Select what you want us to generate."
+	echo "(1) tdelibs"
+	echo "(2) tdebase"
+	read CHOICE
+	
+	if [ "$CHOICE" = "1" ]; then NAME='tdelibs';
+	elif [ "$CHOICE" = "2" ]; then NAME='tdebase';
+	else
+	echo "Invalid, bye." && exit 1
+	fi
+else
+	echo "Invalid, bye." && exit 1
+fi
+grab
+

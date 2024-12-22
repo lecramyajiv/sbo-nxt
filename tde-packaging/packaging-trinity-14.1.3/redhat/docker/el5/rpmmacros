@@ -1,0 +1,6 @@
+%dist .el5
+%rhel 5
+%_smp_mflags -j8
+%jobs 8
+%_topdir /home/trinity/rpmbuild
+%_gpg_name Trinity

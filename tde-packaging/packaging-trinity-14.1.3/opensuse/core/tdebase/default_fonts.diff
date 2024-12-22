@@ -1,0 +1,25 @@
+Index: kcontrol/fonts/fonts.cpp
+===================================================================
+--- kcontrol/fonts/fonts.cpp.orig
++++ kcontrol/fonts/fonts.cpp
+@@ -1,3 +1,4 @@
++
+ // KDE Display fonts setup tab
+ //
+ // Copyright (c)  Mark Donohoe 1997
+@@ -524,11 +525,11 @@ KFonts::KFonts(QWidget *parent, const ch
+ 
+   // Keep in sync with kdelibs/kdecore/kglobalsettings.cpp
+ 
+-  QFont f0("Sans Serif", 10);
+-  QFont f1("Monospace", 10);
++  QFont f0("Sans Serif", 12);
++  QFont f1("courier", 12);
+   QFont f2("Sans Serif", 10);
+-  QFont f3("Sans Serif", 9, QFont::Bold);
+-  QFont f4("Sans Serif", 10);
++  QFont f3("Sans Serif", 12, QFont::Bold);
++  QFont f4("Sans Serif", 11);
+ 
+   f0.setPointSize(10);
+   f1.setPointSize(10);

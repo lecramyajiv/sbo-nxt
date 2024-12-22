@@ -1,0 +1,41 @@
+?package(tdepim-wizards-trinity):\
+	needs="X11"\
+	section="Applications/Network/Communication"\
+	hints="TDE"\
+	title="EGroupware Setup Wizard"\
+	command="/opt/trinity/bin/egroupwarewizard"
+
+?package(tdepim-wizards-trinity):\
+	needs="X11"\
+	section="Applications/Network/Communication"\
+	hints="TDE"\
+	title="MS Exchange Setup Wizard"\
+	command="/opt/trinity/bin/exchangewizard"
+
+?package(tdepim-wizards-trinity):\
+	needs="X11"\
+	section="Applications/Network/Communication"\
+	hints="TDE"\
+	title="TDE Groupware Wizard"\
+	command="/opt/trinity/bin/groupwarewizard"
+
+?package(tdepim-wizards-trinity):\
+	needs="X11"\
+	section="Applications/Network/Communication"\
+	hints="TDE"\
+	title="Novell GroupWise Setup Wizard"\
+	command="/opt/trinity/bin/groupwisewizard"
+
+?package(tdepim-wizards-trinity):\
+	needs="X11"\
+	section="Applications/Network/Communication"\
+	hints="TDE"\
+	title="KOLab Setup Wizard"\
+	command="/opt/trinity/bin/kolabwizard"
+
+?package(tdepim-wizards-trinity):\
+	needs="X11"\
+	section="Applications/Network/Communication"\
+	hints="TDE"\
+	title="Openexchange Setup Wizard"\
+	command="/opt/trinity/bin/sloxwizard"

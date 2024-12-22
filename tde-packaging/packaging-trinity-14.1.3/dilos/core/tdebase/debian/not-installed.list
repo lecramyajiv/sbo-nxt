@@ -1,0 +1,59 @@
+The following files are not installed in any binary package.
+This is deliberate.
+
+/usr/share/apps/tdm/sessions/*.desktop
+ - many .desktop files are not included since they either do not have Debian
+   packages, or their Debian packages include their own .desktop session
+   files for gdm/tdm, or they're not intended to be stand-alone window
+   managers. Eventually, these should ALL be dropped, since they aren't
+   really maintained upstream, and tdm isn't the correct place to ship these
+   anyway. Here's the current list of those dropped:
+
+   aewm++
+   afterstep
+   amiwm
+   blackbox
+   cde
+   cwwm
+   enlightenment
+   fluxbox
+   fvwm95
+   fvwm
+   gnome
+   golem
+   icewm
+   ion
+   kde
+   larswm
+   metacity
+   openbox
+   phluid
+   qvwm
+   ratpoison
+   sapphire
+   sawfish
+   w9wm
+   waimea
+   wmaker
+   xfce4
+   xfce
+
+/etc/trinity/tdm/README
+ - useless comments, not intended for the end user.
+
+/usr/share/fonts/override/fonts.dir
+ - cruft, as tdebase no longer installs any system fonts.
+
+/usr/share/apps/kappfinder/apps/Office/lyx.desktop
+ - a lyx.desktop that works in TDE is provided by lyx-qt, so this just
+   confuses users.
+
+/usr/share/apps/kcmview1394/oui.db
+ - this file is installed, but manually, in debian/rules, since the
+   TDE build system can't be relied on to do it itself on !Linux.
+
+/usr/share/apps/kcontrol/pics/energybig.png
+/usr/share/apps/kcontrol/pics/lo-energy.png
+ - It is not clear if this use is permitted under EPA's trademark 
+   guidelines. See bug #441269.
+

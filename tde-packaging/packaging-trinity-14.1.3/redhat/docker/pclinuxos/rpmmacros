@@ -1,0 +1,10 @@
+%dist .pclos2024
+%_smp_mflags -j8
+%jobs 8
+%pclinuxos 2024
+%configure %configure2_5x
+%python python3
+%__python /usr/bin/python3
+%_vpath_builddir .
+%python_sitearch %python3_sitearch
+%python_sitelib %python3_sitelib

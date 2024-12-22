@@ -1,0 +1,59 @@
+Index: kcontrol/kthememanager/ktheme.cpp
+===================================================================
+--- kcontrol/kthememanager/ktheme.cpp.orig
++++ kcontrol/kthememanager/ktheme.cpp
+@@ -188,11 +188,11 @@ QString KTheme::createYourself( bool pac
+     globalConf->setGroup( "Icons" );
+     QDomElement iconElem = m_dom.createElement( "icons" );
+     iconElem.setAttribute( "name", globalConf->readEntry( "Theme",KIconTheme::current() ) );
+-    createIconElems( "DesktopIcons", "desktop", iconElem, globalConf );
+-    createIconElems( "MainToolbarIcons", "mainToolbar", iconElem, globalConf );
+-    createIconElems( "PanelIcons", "panel", iconElem, globalConf );
+-    createIconElems( "SmallIcons", "small", iconElem, globalConf );
+-    createIconElems( "ToolbarIcons", "toolbar", iconElem, globalConf );
++    createIconElems( "DesktopIcons", "desktop", 32, iconElem, globalConf );
++    createIconElems( "MainToolbarIcons", "mainToolbar", 22, iconElem, globalConf );
++    createIconElems( "PanelIcons", "panel", 32, iconElem, globalConf );
++    createIconElems( "SmallIcons", "small", 16, iconElem, globalConf );
++    createIconElems( "ToolbarIcons", "toolbar", 22, iconElem, globalConf );
+     m_root.appendChild( iconElem );
+ 
+     // 4. Sounds
+@@ -726,7 +726,7 @@ QString KTheme::getProperty( QDomElement
+ }
+ 
+ void KTheme::createIconElems( const QString & group, const QString & object,
+-                              QDomElement parent, KConfig * cfg )
++                              int defsize, QDomElement parent, KConfig * cfg )
+ {
+     cfg->setGroup( group );
+     QStringList elemNames;
+@@ -745,7 +745,9 @@ void KTheme::createIconElems( const QStr
+             QDomElement tmpCol = m_dom.createElement( *it );
+             tmpCol.setAttribute( "object", object );
+ 
+-            if ( (*it).contains( "Value" ) || *it == "Size" )
++            if ( *it == "Size" )
++                tmpCol.setAttribute( "value", cfg->readNumEntry( *it, defsize ) );
++            else if ( (*it).contains( "Value" ))
+                 tmpCol.setAttribute( "value", cfg->readNumEntry( *it, 1 ) );
+             else if ( (*it).contains( "DisabledEffect" ) )
+                 tmpCol.setAttribute( "name", cfg->readEntry( *it, "togray" ) );
+Index: kcontrol/kthememanager/ktheme.h
+===================================================================
+--- kcontrol/kthememanager/ktheme.h.orig
++++ kcontrol/kthememanager/ktheme.h
+@@ -155,11 +155,12 @@ private:
+      * Creates a list of "icon" elements based on:
+      * @param group The group in the KConfig object @p cfg
+      * @param object Specifier (similiar, but not identical to @p group)
++     * @param defsize default icon size
+      * @param parent Parent element to append to
+      * @param cfg The KConfig object to work with
+      */
+     void createIconElems( const QString & group, const QString & object,
+-                          QDomElement parent, KConfig * cfg );
++                          int defsize, QDomElement parent, KConfig * cfg );
+ 
+     /**
+      * Creates a color DOM element @p name, with a specifier @p object,

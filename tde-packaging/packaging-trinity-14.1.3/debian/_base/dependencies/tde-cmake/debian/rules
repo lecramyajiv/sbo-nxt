@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+common-binary-indep::
+	( set -e; \
+	tmpf=`mktemp debian/cmake-versions.XXXXXX`; \
+	perl debian/cdbs/cmake-versions.pl >$$tmpf; \
+	for p in $(DEB_INDEP_PACKAGES); do \
+	    cat $$tmpf >>debian/$$p.substvars; \
+	done; \
+	rm -f $$tmpf )

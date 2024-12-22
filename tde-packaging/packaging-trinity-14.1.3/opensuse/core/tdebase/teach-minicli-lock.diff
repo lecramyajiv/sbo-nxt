@@ -1,0 +1,30 @@
+Index: kdesktop/minicli.cpp
+===================================================================
+--- kdesktop/minicli.cpp.orig
++++ kdesktop/minicli.cpp
+@@ -265,7 +265,9 @@ void Minicli::accept()
+   }
+ 
+   bool logout = (cmd == "logout");
+-  if( !logout && runCommand() == 1 )
++  bool lock = (cmd == "lock");
++
++  if( !logout && !lock && runCommand() == 1 )
+      return;
+ 
+   m_dlg->cbCommand->addToHistory( m_dlg->cbCommand->currentText().stripWhiteSpace() );
+@@ -278,6 +280,14 @@ void Minicli::accept()
+      kapp->propagateSessionManager();
+      kapp->requestShutDown();
+   }
++  if ( lock )
++  {
++     QCString appname( "kdesktop" );
++     int kicker_screen_number = qt_xscreen();
++     if ( kicker_screen_number )
++         appname.sprintf("kdesktop-screen-%d", kicker_screen_number);
++     kapp->dcopClient()->send(appname, "KScreensaverIface", "lock()", "");
++  }
+ }
+ 
+ void Minicli::reject()

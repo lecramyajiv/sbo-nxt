@@ -1,0 +1,11 @@
+[rpmbuild.${ARCH}]
+name=rpmbuild.${ARCH}
+baseurl=file:///home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH}
+enabled=1
+gpgcheck=0
+
+[rpmbuild.noarch]
+name=rpmbuild.noarch
+baseurl=file:///home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch
+enabled=1
+gpgcheck=0

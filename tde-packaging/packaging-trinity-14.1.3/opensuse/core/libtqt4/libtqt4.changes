@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Feb  2 03:06:14 UTC 2012 - robxu9@gmail.com
+
+- Update to version R13.99 with Qt3 3.4.0 compat
+- Fix group of libtqt4-devel
+
+-------------------------------------------------------------------
+Sat Aug 20 22:47:41 UTC 2011 - rxu@lincomlinux.org
+
+- remove the tqtinterface subpackage: it belongs in -devel
+- add a shebang to convert_qt_tqt1
+
+-------------------------------------------------------------------
+Thu Aug 11 02:59:00 UTC 2011 - rxu@lincomlinux.org
+
+- initial creation libtqt4
+

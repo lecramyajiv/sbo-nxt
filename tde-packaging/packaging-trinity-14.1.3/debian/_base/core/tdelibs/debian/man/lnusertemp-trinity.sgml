@@ -1,0 +1,168 @@
+<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+
+<!-- Process this file with docbook-to-man to generate an nroff manual
+     page: `docbook-to-man manpage.sgml > manpage.1'.  You may view
+     the manual page with: `docbook-to-man manpage.sgml | nroff -man |
+     less'.  A typical entry in a Makefile or Makefile.am is:
+
+manpage.1: manpage.sgml
+	docbook-to-man $< > $@
+
+    
+	The docbook-to-man binary is found in the docbook-to-man package.
+	Please remember that if you create the nroff version in one of the
+	debian/rules file targets (such as build), you will need to include
+	docbook-to-man in your Build-Depends control field.
+
+  -->
+
+  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
+  <!ENTITY dhfirstname "<firstname>Javier</firstname>">
+  <!ENTITY dhsurname   "<surname>Fernandez-Sanguino</surname>">
+  <!-- Please adjust the date whenever revising the manpage. -->
+  <!ENTITY dhdate      "<date>25 January, 2005</date>">
+  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
+  <!ENTITY dhemail     "<email>jfs@debian.org</email>">
+  <!ENTITY dhusername  "Javier Fernandez-Sanguino">
+  <!ENTITY dhucpackage "<refentrytitle>LNUSERTEMP</refentrytitle>">
+  <!ENTITY dhpackage   "lnusertemp">
+
+  <!ENTITY debian      "<productname>Debian</productname>">
+  <!ENTITY gnu         "<acronym>GNU</acronym>">
+]>
+
+<refentry>
+  <refentryinfo>
+    <address>
+      &dhemail;
+    </address>
+    <author>
+      &dhfirstname;
+      &dhsurname;
+    </author>
+    <copyright>
+      <year>2005</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    &dhdate;
+  </refentryinfo>
+  <refmeta>
+    &dhucpackage;
+
+    &dhsection;
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+
+    <refpurpose>tool to create TDE resources and symlinks to them</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+
+      <arg><option><replaceable>tmp|socket|cache</replaceable></option></arg>
+
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1>
+    <title>DESCRIPTION</title>
+
+    <para>This manual page documents briefly the
+      <command>&dhpackage;</command> command.</para>
+
+    <para><command>&dhpackage;</command> is used to create TDE
+    resources in temporary directories and symlinks to them in
+    <envar>TDEHOME</envar>. The resource that needs to be created is
+    given as an argument and can be anyone of:</para>
+
+    <itemizedlist>
+
+    <listitem><para><emphasis>tmp</emphasis>: for the directory used
+    for storing temporary files. This directory should be preferably
+    on a local filesystem (available in KDE 2.x)</para> </listitem>
+
+    <listitem><para><emphasis>socket</emphasis>: for the directory
+    that holds temporary sockets. This directory needs to be on the
+    local filesystem (available in KDE 2.x)</para> </listitem>
+
+    <listitem><para><emphasis>cache</emphasis>: for the directory that
+    stores cached information such as the HTTP cache and favicons
+    (available since KDE 3.0)</para> </listitem>
+
+    </itemizedlist>
+
+    <para><command>&dhpackage;</command> will create the first two
+    resources in directories under <filename>/tmp</filename> (or
+    <envar>TDETMP</envar> if defined in the environment) and will use
+    <filename>/var/tmp</filename> (or <envar>TDEVARTMP</envar> if
+    defined in the environment) for the <emphasis>cache</emphasis>
+    resource (in order to survive system reboots). The temporary
+    directories created for resources are usually of the form
+    <filename>RESOURCE-USERNAME</filename>. The name might vary if
+    those filenames already exist and do not belong to the user for
+    which <command>&dhpackage;</command> is run, a temporary (unique)
+    name will be used if possible to prevent temporary symlink
+    attacks.  </para>
+
+    <para><command>&dhpackage;</command> is usually called by the
+    <command>starttde</command> script.</para>
+
+  </refsect1>
+  <refsect1>
+    <title>EXIT VALUES</title>
+
+    <para><command>&dhpackage;</command> will return 0 if it can
+    create the resource and symlink to it, or if the resource already
+    exists and is properly symlinked it will return 1 if it cannot
+    create the link or if the symlink is pointing to an incorrect
+    location.</para>
+
+  </refsect1>
+  <refsect1>
+    <title>SEE ALSO</title>
+
+    <para>You can find more information on the TDE's usage of
+    temporary files in the Chapter <ulink
+    url="http://i18n.kde.org/doc/admin/temp-files.html"><citetitle>Temporary
+    and Other Files KDE Uses</citetitle></ulink> of the <ulink
+    url="http://i18n.kde.org/doc/admin/"><citetitle>The KDE
+    Administrators Guide</citetitle></ulink>.  </para>
+
+  </refsect1>
+
+  <refsect1>
+
+    <title>AUTHOR</title>
+
+    <para>This manual page was written by &dhusername;
+      &lt;&dhemail;&gt; for the &debian; system (but may be used by
+      others).  Permission is granted to copy, distribute and/or
+      modify this document under the terms of the &gnu; General Public
+      License, Version 2 or any later version published by the Free
+      Software Foundation.  </para>
+
+    <para>
+          On Debian systems, the complete text of the GNU General
+          Public License can be found in
+          /usr/share/common-licenses/GPL. 
+    </para>
+
+  </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:2
+sgml-indent-data:t
+sgml-parent-document:nil
+sgml-default-dtd-file:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

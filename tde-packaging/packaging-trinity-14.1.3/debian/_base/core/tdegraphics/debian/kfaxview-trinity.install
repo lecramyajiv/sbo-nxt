@@ -1,0 +1,18 @@
+debian/tmp/opt/trinity/bin/kfaxview
+debian/tmp/opt/trinity/lib/trinity/kfaxviewpart.so
+debian/tmp/opt/trinity/lib/trinity/kfaxviewpart.la
+debian/tmp/opt/trinity/lib/libkfaximage.so
+debian/tmp/opt/trinity/lib/libkfaximage.la
+debian/tmp/opt/trinity/share/applications/tde/kfaxview.desktop
+debian/tmp/opt/trinity/share/apps/kfaxview/kviewshell.rc
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kfaxview.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kfaxview.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kfaxview.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kfaxview.png
+debian/tmp/opt/trinity/share/icons/hicolor/scalable/apps/kfaxview.svgz
+debian/tmp/opt/trinity/share/man/man1/kfaxview.1
+debian/tmp/opt/trinity/share/services/kfaxmultipage.desktop
+debian/tmp/opt/trinity/share/services/kfaxmultipage_tiff.desktop
+
+debian/icons/kfaxview.xpm           /opt/trinity/share/pixmaps
+debian/icons/kfaxview-16.xpm        /opt/trinity/share/pixmaps

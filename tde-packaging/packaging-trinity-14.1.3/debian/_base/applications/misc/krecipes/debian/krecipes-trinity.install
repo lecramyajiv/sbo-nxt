@@ -1,0 +1,3 @@
+debian/tmp/opt/trinity/bin
+
+debian/tmp/opt/trinity/share/applnk/Utilities/krecipes.desktop opt/trinity/share/applications/

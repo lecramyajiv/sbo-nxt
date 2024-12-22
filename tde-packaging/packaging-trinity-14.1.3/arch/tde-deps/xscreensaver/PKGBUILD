@@ -1,0 +1,55 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
+#
+# Note: Build for archlinuxpower with both gtk2 and gtk3 and without gdm
+
+pkgname=xscreensaver
+pkgver=6.05.1
+pkgrel=2
+pkgdesc='Screen saver and locker for the X Window System'
+url='https://www.jwz.org/xscreensaver/'
+arch=('powerpc64le')
+license=('BSD')
+depends=(
+  'gtk2' 'gtk3' 'glu' 'xorg-appres' 'libglvnd' 'libjpeg-turbo' 'libjpeg.so'
+  'libsystemd.so' 'libx11' 'libxcrypt' 'libcrypt.so' 'libxext' 'libxft' 'libxi'
+  'libxinerama' 'libxmu' 'libxrandr' 'libxt' 'libxxf86vm' 'perl-libwww' 'pam'
+  'libpam.so' 'glibc' 'glib2' 'gdk-pixbuf2' 'gdk-pixbuf-xlib'
+)
+makedepends=('bc' 'intltool' 'libxpm' 'systemd' 'systemd-libs')
+optdepends=('gdm: for login manager support')
+backup=('etc/pam.d/xscreensaver')
+source=(https://www.jwz.org/xscreensaver/${pkgname}-${pkgver}.tar.gz
+        LICENSE)
+sha512sums=('c659a769ff71020b9f96b7e707bd1bcc667eb304179305d56b1be45eed095d650a8aa019890a0c5d444672f9dd68516c99c53b0df94cd96196d7f30a24b987e3'
+            '863c699479b2ec2775a0d1cba22e615929194a14af164b3513e46a0c04229da6547255a4da8f7f1bbb40906898c124ed3c9ec2436b76b62affcb62385af9783e')
+b2sums=('97c16c9f0b2a0b4d00ddccd711b921ca683bd233bc3d07ecad38b68ff94b149a20512246dd6bae052323f00b1b433f56469c5638a031cbc65b61c2b84a0180e3'
+        'cacb6ba39d6ecb8703ef5f5a7dc74de0ca805cce73b43a8b9b6b4c255c909aa9b5e692de76c2fbd4da26ce6efb5f2a46138c43b1b37f53cee6d20fd6ed41f4a9')
+
+build() {
+  cd ${pkgname}-${pkgver%.*}
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib \
+    --without-setuid-hacks \
+    --with-pam \
+    --with-login-manager \
+    --with-gtk \
+    --with-gl \
+    --without-gle \
+    --with-pixbuf \
+    --with-jpeg
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver%.*}
+  install -d "${pkgdir}/etc/pam.d"
+  make install_prefix="${pkgdir}" install
+  install -Dm 644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  echo "NotShowIn=KDE;GNOME;" >> "${pkgdir}/usr/share/applications/xscreensaver-settings.desktop"
+}
+
+# vim: ts=2 sw=2 et:

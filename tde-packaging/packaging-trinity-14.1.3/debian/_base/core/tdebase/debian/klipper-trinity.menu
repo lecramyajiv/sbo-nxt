@@ -1,0 +1,11 @@
+?package(klipper-trinity):\
+	needs="X11"\
+	section="Applications/Editors"\
+	hints="TDE"\
+	title="Klipper"\
+	icon32x32="/opt/trinity/share/pixmaps/klipper.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/klipper-16.xpm"\
+	command="/opt/trinity/bin/klipper"
+
+# Icon 32x32 klipper/cr32-app-klipper.png klipper.xpm
+# Icon 16x16 klipper/cr16-app-klipper.png klipper-16.xpm

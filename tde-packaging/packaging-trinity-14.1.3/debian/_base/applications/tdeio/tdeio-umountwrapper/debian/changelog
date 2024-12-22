@@ -1,0 +1,71 @@
+tdeio-umountwrapper-trinity (0.2-1ubuntu3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+tdeio-umountwrapper-trinity (0.2-1ubuntu2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 05 March 2009 29:52:00 -0600
+
+tdeio-umountwrapper-trinity (0.2-0ubuntu3) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 31 Dec 2008 14:46:00 -0600
+
+kio-umountwrapper (0.2-0ubuntu6.2) hardy-proposed; urgency=low
+
+  * Fix syntax in postrm
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 27 Aug 2008 00:00:03 +0100
+
+kio-umountwrapper (0.2-0ubuntu6.1) hardy-proposed; urgency=low
+
+  * debian/preinst, debian/postrm: make sure than the directories used by
+    dpkg-divert exist
+
+ -- Gauvain Pocentek <gauvain@ulteo.com>  Sun, 29 Jun 2008 11:06:10 +0200
+
+kio-umountwrapper (0.2-0ubuntu6) hardy; urgency=low
+
+  * Update from Jan Klötzke to also support encrypted removable drives
+    correctly, closes LP: #186841
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 06 Feb 2008 16:04:46 +0000
+
+kio-umountwrapper (0.2-0ubuntu5) hardy; urgency=low
+
+  * Do not try to divert /usr/../dolphin/../media_safelyremove.desktop,
+    since dolphin doesn't install that anymore. (LP: #183292)
+
+ -- Timo Aaltonen <tepsipakki@ubuntu.com>  Mon, 28 Jan 2008 13:28:39 +0200
+
+kio-umountwrapper (0.2-0ubuntu4) hardy; urgency=low
+
+  * Fix build failure with g++-4.3.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Jan 2008 09:44:46 +0000
+
+kio-umountwrapper (0.2-0ubuntu3) gutsy; urgency=low
+
+  * Add kdepot patch for translations.
+  * Change maintainer to Ubuntu Core Dev.
+
+ -- Frode M. DÃ¸ving <frode@ubuntu.com>  Mon, 23 Jul 2007 00:00:21 +0200
+
+kio-umountwrapper (0.2-0ubuntu2) gutsy; urgency=low
+
+  * Add d3lphin support, as the dolphin package in gutsy is actually patched
+    to become d3lphin. 
+
+ -- Frode M. Døving <frode@ubuntu.com>  Sun, 22 Jul 2007 22:40:54 +0200
+
+kio-umountwrapper (0.2-0ubuntu1) gutsy; urgency=low
+
+  * Initial release.
+
+ -- Frode M. Døving <frode@ubuntu.com>  Thu, 31 May 2007 14:05:33 +0200

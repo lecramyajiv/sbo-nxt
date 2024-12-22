@@ -1,0 +1,106 @@
+Source: arts-trinity
+Section: libs
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Qt/TDE Maintainers <debian-qt-tde@lists.debian.org>
+Priority: optional
+Uploaders: Adeodato Sim <dato@net.com.org.es>, Ana Beatriz Guerrero Lopez <ana@debian.org>, Fathi Boudra <fabo@debian.org>, Modestas Vainius <modestas@vainius.eu>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build,
+ docbook-to-man, texinfo,
+ libasound2-dev [!kfreebsd-i386 !kfreebsd-amd64 !hurd-i386 !solaris-any],
+ libaudio-dev, libaudiofile-dev, libglib2.0-dev, libmad0-dev,
+ libogg-dev, libtqtinterface-dev,
+ libvorbis-dev, libltdl-dev
+Build-Conflicts: libmas-dev
+Standards-Version: 3.8.4
+
+Package: arts-trinity
+Architecture: all
+Section: sound
+Replaces: arts-trinity (<< 4:14.0.0~)
+Breaks: arts-trinity (<< 4:14.0.0~)
+Depends: libartsc0-trinity (>= ${source:Version}), libarts1c2a-trinity (>= ${source:Version}) | libarts1t64-trinity (>= ${source:Version})
+Description: sound system from the official TDE release
+ TDE (the Trinity Desktop Environment) is a powerful Open Source graphical
+ desktop environment for Unix workstations. It combines ease of use,
+ contemporary functionality, and outstanding graphical design with the
+ technological superiority of the Unix operating system.
+ .
+ This metapackage includes the complete aRts sound system, without
+ development packages. aRts is the core sound system for Trinity.
+
+Package: libarts1c2a-trinity
+Architecture: any
+Section: libs
+Replaces: libarts1c2a-trinity (<< 4:14.0.0~)
+Breaks: libarts1c2a-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: libarts1-akode-trinity
+Multi-Arch: same
+Description: aRts sound system core components
+ aRts is a short form for "analog realtime synthesizer". aRts is highly
+ modular, creating and processing sound using small modules performing
+ specific tasks. These may create a waveform (oscillators), play samples,
+ filter data, add signals, perform effects like delay/flanger/chorus, or
+ output the data to the soundcard.
+ .
+ This package contains the aRts sound system, its libraries and binaries,
+ including the aRts daemon, artsd.
+ .
+ The 'akode' package adds several plug-ins to arts that can dramatically
+ improve performance and help maintain uninterrupted playback. Its use
+ with aRts is recommended.
+ .
+ This package is part of TDE, and a component of the TDE aRts module.
+ See the 'tde-trinity' and 'arts-trinity' packages for more information.
+
+Package: libarts1-trinity-dev
+Architecture: any
+Section: libdevel
+Replaces: libarts1-trinity-dev (<< 4:14.0.0~)
+Breaks: libarts1-trinity-dev (<< 4:14.0.0~)
+Depends: libarts1c2a-trinity (= ${binary:Version}), libartsc0-trinity-dev (= ${binary:Version}), ${libasound2-dev}, libaudio-dev, libaudiofile-dev, libglib2.0-dev, libogg-dev, libvorbis-dev, libmad0-dev, libtqtinterface-dev
+Description: development files for the aRts sound system core components
+ This package contains the header files needed to build applications that
+ use the aRts sound system.
+ .
+ This package is part of TDE, and a component of the TDE aRts module.
+ See the 'tde-trinity' and 'arts-trinity' packages for more information.
+
+Package: libartsc0-trinity
+Architecture: any
+Section: libs
+Replaces: libartsc0-trinity (<< 4:14.0.0~)
+Breaks: libartsc0-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Multi-Arch: same
+Description: aRts sound system C support library
+ This package contains the C bindings for the aRts sound daemon.
+ .
+ This package is part of TDE, and a component of the TDE aRts module.
+ See the 'tde-trinity' and 'arts-trinity' packages for more information.
+
+Package: libartsc0-trinity-dev
+Architecture: any
+Section: libdevel
+Replaces: libartsc0-trinity-dev (<< 4:14.0.0~)
+Breaks: libartsc0-trinity-dev (<< 4:14.0.0~)
+Depends: libartsc0-trinity (= ${binary:Version}), libglib2.0-dev
+Description: development files for the aRts sound system C support library
+ This package contains the header files needed to build applications that
+ use the aRts sound daemon's C bindings.
+ .
+ This package is part of TDE, and a component of the TDE aRts module.
+ See the 'tde-trinity' and 'arts-trinity' packages for more information.
+
+Package: arts-trinity-dbg
+Section: libdevel
+Architecture: linux-any
+Replaces: arts-trinity-dbg (<< 4:14.0.0~)
+Breaks: arts-trinity-dbg (<< 4:14.0.0~)
+Priority: extra
+Depends: libarts1c2a-trinity (= ${binary:Version})
+Multi-Arch: same
+Description: debugging symbols for arts
+ This package contains the debugging symbols associated with arts.
+ They will automatically be used by gdb for debugging arts-related
+ issues.

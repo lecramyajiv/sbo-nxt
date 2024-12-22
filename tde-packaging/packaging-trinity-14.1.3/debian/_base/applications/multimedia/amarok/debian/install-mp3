@@ -1,0 +1,40 @@
+check_mp3() {
+
+   INSTALLED=`dpkg --get-selections libxine1-ffmpeg | grep install`
+
+   if [ -z "$INSTALLED" ]; then
+     if [ -x /opt/trinity/bin/kdialog ]; then
+       kdialog --msgbox "There was an error installing MP3 support. You need to install the package \"libxine1-ffmpeg\" manually." --icon amarok
+     elif [ -x /usr/bin/zenity ]; then
+       zenity --info --text "There was an error installing MP3 support. You need to install the package \"libxine1-ffmpeg\" manually."
+     else
+       Xdialog --msgbox "There was an error installing MP3 support.\nYou need to install the package \"libxine1-ffmpeg\" manually." 10 60
+     fi
+     exit 1
+   else
+     if [ -x /opt/trinity/bin/kdialog ]; then
+       kdialog --msgbox "MP3 support now installed, you will need to restart Amarok." --icon amarok
+     elif [ -x /usr/bin/zenity ]; then
+       zenity --info --text "MP3 support now installed, you will need to restart Amarok."
+     else
+       Xdialog --msgbox "MP3 support now installed, you will need to restart Amarok." 5 60
+     fi
+     exit 0
+   fi
+}
+
+INSTALLED=`dpkg --get-selections libxine1-ffmpeg | grep install`
+
+#is available, not installed
+if [ -z "$INSTALLED" ]; then
+  if [ -x /opt/trinity/bin/tdesu ] && [ -x /usr/bin/install-package ]; then
+    /opt/trinity/bin/tdesu -d "install-package --icon amarok --install libxine1-ffmpeg"
+  elif [ -x /usr/bin/gksudo ] && [ -x /usr/sbin/synaptic ]; then
+    gksudo "sh -c 'echo \"libxine1-ffmpeg i\"|synaptic --non-interactive --set-selections'"
+  else
+    xterm -e 'sudo apt-get install libxine1-ffmpeg'
+  fi
+  check_mp3
+fi
+
+exit 0

@@ -1,0 +1,7 @@
+?package(kalzium-trinity):needs="X11"\
+  section="Apps/Science/Chemistry"\
+  hints="TDE"\
+  title="Kalzium"\
+  longtitle="Kalzium (Periodic Table of Elements)"\
+  command="/opt/trinity/bin/kalzium"\
+  icon="/opt/trinity/share/pixmaps/kalzium.xpm"

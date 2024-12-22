@@ -1,0 +1,9 @@
+?package(kmines-trinity):\
+	needs="x11"\
+	section="Games/Puzzles"\
+	hints="TDE,Mines"\
+	title="Kmines"\
+	icon32x32="/usr/share/pixmaps/kmines.xpm"\
+	icon16x16="/usr/share/pixmaps/kmines-16.xpm"\
+	command="/usr/games/kmines"
+

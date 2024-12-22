@@ -1,0 +1,16 @@
+This package was debianized for TDE by:
+    Michele Calgaro <michele.calgaro@yahoo.it> Fri, 22 Mar 2024 18:03:00 +0900.
+
+This package was originally debianized by:
+    Michael Biebl <biebl@teco.edu> on Fri, 11 Nov 2005 17:13:08 +0100.
+
+Original authors: 
+    Marco Martin <notmart@gmail.com>
+    
+    Window decoration:
+    based on Smootblend by
+    Ryan Nickell <p0z3r@users.sourceforge.net>
+    
+    Widget style:
+    based on Plastik by
+    Sandro Giessl <ceebx@users.sourceforge.net>

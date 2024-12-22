@@ -1,0 +1,3 @@
+version=3
+http://sf.net/kipi/libkdcraw-(.*)\.tar\.bz2 debian svn-upgrade
+

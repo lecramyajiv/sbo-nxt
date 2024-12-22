@@ -1,0 +1,2 @@
+kformula-trinity: no-shlibs-control-file opt/trinity/lib/libtdeinit_kformula.so
+kformula-trinity: package-name-doesnt-match-sonames libtdeinit-kformula

@@ -1,0 +1,17 @@
+?package(kugar-trinity):\
+	needs="x11"\
+	section="Applications/Office"\
+	hints="TDE"\
+	title="Kugar"\
+	longtitle="Kugar (Report Generator)"\
+	icon="/opt/trinity/share/pixmaps/kugar.xpm"\
+	command="/opt/trinity/bin/kugar"
+
+?package(kugar-trinity):\
+	needs="x11"\
+	section="Applications/Office"\
+	hints="TDE"\
+	title="Kugar Designer"\
+	longtitle="Kugar Designer (Report Template Designer)"\
+	command="/opt/trinity/bin/kudesigner"
+

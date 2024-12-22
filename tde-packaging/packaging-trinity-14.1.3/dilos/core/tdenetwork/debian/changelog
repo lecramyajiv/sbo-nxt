@@ -1,0 +1,2080 @@
+tdenetwork-trinity (4:3.5.10-0ubuntu3) karmic; urgency=low
+
+  * Repaired pushpin in krdc
+  * Changed krdc icon sizes down a step to reduce screen clutter
+  * Repaired krfb bpp calculations (KDE bug #162493)
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 12 Dec 2009 16:14:00 -0600
+
+tdenetwork-trinity (4:3.5.10-0ubuntu2) karmic; urgency=low
+
+  * Added fullscreen option to krdc in RDP mode
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 11 July 2009 18:01:00 -0600
+
+tdenetwork-trinity (4:3.5.10-0ubuntu1) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 July 2009 16:08:00 -0600
+
+tdenetwork-trinity (4:3.5.10-0ubuntu1~intrepid6) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 03 March 2009 18:24:00 -0600
+
+tdenetwork-trinity (4:3.5.10-0ubuntu1~intrepid2) intrepid; urgency=low
+
+  * Fixed -dev package
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue, 30 Dec 2008 12:53:00 -0600
+
+tdenetwork-trinity (4:3.5.10-0ubuntu1~intrepid1) intrepid; urgency=low
+
+  * Import from SVN
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 30 Nov 2008 21:22:00 -0600
+
+tdenetwork (4:3.5.10-0ubuntu1~hardy2) hardy-backports; urgency=low
+
+  * Corrected FTBFS on lpia
+
+ -- Michael Casadevall <sonicmctails@gmail.com>  Wed, 10 Sep 2008 20:24:51 -0400
+
+tdenetwork (4:3.5.10-0ubuntu1~hardy1) hardy-backports; urgency=low
+
+  * New upstream bugfix release (LP: #261366)
+    - Bump version of build-dep on tdelibs4-dev to 3.5.10 
+
+ -- Scott Kitterman <scott@kitterman.com>  Tue, 26 Aug 2008 00:47:36 -0400
+
+tdenetwork (4:3.5.9-0ubuntu1.1) hardy-proposed; urgency=low
+
+  * Added patch kubuntu_12_fix_latexconvert_dash.diff to fix
+    latexconvert dash incompatibility.  Patch backported from
+    upstream 4.0 branch.  (LP: #183989)
+
+ -- Yuriy Kozlov <yuriy-kozlov@kubuntu.org>  Mon, 14 Jul 2008 16:28:33 -0400
+
+tdenetwork (4:3.5.9-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 14 Feb 2008 12:27:07 +0000
+
+tdenetwork (4:3.5.8-1ubuntu4) hardy; urgency=low
+
+  * Added patch kubuntu_11_samba_idmap_config.diff. Fixes smb.conf
+    breaking when some idmap config settings have upper chars
+
+ -- Anthony Mercatante <tonio@kubuntu>  Mon, 14 Jan 2008 15:38:11 +0100
+
+tdenetwork (4:3.5.8-1ubuntu3) hardy; urgency=low
+
+  * Do not install sms files
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 12:51:52 +0000
+
+tdenetwork (4:3.5.8-1ubuntu2) hardy; urgency=low
+
+  * Remove duplicate patch kubuntu_06_kppp_nozomi.diff
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 10:00:38 +0000
+
+tdenetwork (4:3.5.8-1ubuntu1) hardy; urgency=low
+
+  * Merge with Debian, remaining changes:
+   - Uncomment noauth in debian/kppp-options
+   - Don't build-dep on libgsmme-dev, failed main inclusion
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 14 Nov 2007 17:25:40 +0000
+
+tdenetwork (4:3.5.8-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #444716, #369345)
+  * Resync patches. Applied upstream: 01_branch_673108-673109_kopete_webcam_fix 
+    01_branch_673117-673118_kopete_toolbar_fix.diff
+  * Redo buildprep and bump build-dependencies to 3.5.8.
+  * Add patch 23_ksirc_allow-colon-password.diff: ksirc allow colons in servers
+    password. Thanks to Frans Pop. (Closes: #438796)
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Thu, 11 Oct 2007 19:38:03 +0200
+
+tdenetwork (4:3.5.7-4) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+
+  * We actually need to set DEB_HOST_ARCH_OS and DEB_HOST_ARCH before using
+    them. Make packages built correctly on archs where sudo is used instead of
+    fakeroot.
+  * Remove traces of xmms - it seems to be slowly removed in debian.
+  * Regenerate uploaders.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon, 13 Aug 2007 11:17:43 +0200
+
+tdenetwork (4:3.5.7-3) unstable; urgency=low
+
+  +++ Changes by Sarah Hobbs:
+
+  * Pull patch from upstream to make krfb work. (Closes KDE #124529)
+  * Pull patch from Ubuntu to support nozomi devices.
+    Thanks to Stephan Hermann <sh@sourcecode.de> for this patch.
+
+  +++ Changes by Sune Vuorela:
+  
+  * Update uploaders.
+  * Change tdenetwork meta package to arch: any. FIXME: Hackish. Basically a
+    workaround that Depends: foo [!s390] doesn't work unless arch any. As this
+    is just a empty metapackage, it doesn't hurt that bad.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 21 Jul 2007 01:33:19 +0200
+
+tdenetwork (4:3.5.8-0ubuntu2) gutsy; urgency=low
+
+  * Added kubuntu_10_hide_share_entries_in_kmenu.diff, hides share
+    entries in Kmenu
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 15 Oct 2007 12:07:20 +0200
+
+tdenetwork (4:3.5.8-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 09 Oct 2007 11:41:23 +0100
+
+tdenetwork (4:3.5.7-2ubuntu2) gutsy; urgency=low
+
+  * Added 01_branch_kopete-groupchat-history.patch (LP: #94022)
+  * Moved rdesktop from suggests to recommends of krdc.  (LP: #51766)
+  * Added kubuntu_09_fix_translation_plugin.diff.  Thanks to Francesco Rossi
+  <redsh@email.it> for this patch
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Fri, 14 Sep 2007 01:35:01 +1000
+
+tdenetwork (4:3.5.7-2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian Unstable
+  * Added XS-Vcs-Bzr: https://code.launchpad.net/~kubuntu-
+    members/tdenetwork/debian
+  * Added 21_fix_krfb_crash.diff. (Closes LP: #52888, 
+    KDE Bug #124529)
+  * Added 01_branch_673108-673109_kopete_webcam_fix.diff (LP: #89606)
+  * Added 01_branch_673117-673118_kopete_toolbar_fix.diff (LP: #92845)
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Sat, 21 Jul 2007 00:55:12 +1000
+
+tdenetwork (4:3.5.7-2) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+
+  * Add lsb info to lisa init script.
+  * Don't do anything if lisa is already running. (Closes: #407892)
+  * Pull patch from upstream to fix issue with format toolbar. (Closes: #392019)
+  * Pull patch from upstream to fix webcam issues. (Closes: #414424)
+  * Remove libnss-mdns from tdednssd-depends. (Closes: 412084)
+  * Increase maximum count of lines in ksirc (Closes: 291968)
+  * Don't build kwifimanager on s390 - they don't have wifi hardware.
+  * Don't build kwifimanager and tdednssd on !linux archs - tt doesn't built there.
+  * Patch to fix builds on kfreebsd archs. (Closes: 398909)
+  * Make ktalkd depend on update-inetd - we use it in maint scripts.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 07 Jul 2007 02:10:57 +0200
+
+tdenetwork (4:3.5.7-1ubuntu2) gutsy; urgency=low
+
+  * Add kubuntu_08_emoticons_editor.diff patch for Kopete emoticons manager LP: 106586
+    http://www.kde-look.org/content/show.php/Kopete+Emoticons+Manager?content=54968
+
+ -- Breuil Cyril <cyrilbport@gmail.com>  Mon, 21 May 2007 20:06:40 +0200
+
+tdenetwork (4:3.5.7-1ubuntu1) gutsy; urgency=low
+
+  * New Upstream Version
+  * Modify Maintainer value to match Debian-Maintainer-Field Spec
+  * Removed kubuntu_05_kopete_style_clear_activate_variant.diff, applied
+    upstream
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Wed, 23 May 2007 15:07:24 +1000
+
+tdenetwork (4:3.5.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove patch 21_krfb_httpd_mac_to_unix_endl.diff, merged upstream.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Tue, 15 May 2007 21:53:51 +0200
+
+tdenetwork (4:3.5.6-2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 30 Apr 2007 17:35:18 +0100
+
+tdenetwork (4:3.5.6-2) unstable; urgency=low
+
+  +++ Changes Modestas Vainius:
+
+  * Add 21_krfb_httpd_mac_to_unix_endl.diff patch:
+    Convert "end of line" symbols from Mac to Unix style in krfb_httpd
+    script. This should resolve problems with krfb_httpd eating 100% CPU
+    while running in the background (Closes: #401018).
+
+  +++ Ana Beatriz Guerrero Lopez:
+  
+  * Upload to unstable after Etch release.
+
+  +++ Changes by Sune Vuorela:
+
+  * Guard the call to update-inetd in ktalkd postinst. We have no guarantee
+    that it is there.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 18 Apr 2007 15:54:39 +0100
+
+tdenetwork (4:3.5.6-1) experimental; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Modestas Vainius:
+
+  * Remove patches 18, 19, 20. Applied upstream.
+  * Update debian/knetwork-filesharing.install, samba kcm module was renamed.
+  * Add myself to Uploaders.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 16 Jan 2007 20:07:30 +0100 
+
+tdenetwork (4:3.5.5-4) unstable; urgency=high
+
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+
+  * Update Uploaders.
+  * Add patch 20_ksirc_405828.diff to fix buffer overflow that allows remote 
+    attackers to execute arbitrary code via a long PRIVMSG string when 
+    connecting to an IRC server. CVE-2006-6811. (Closes: #405828)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue,  9 Jan 2007 07:26:45 +0100
+
+tdenetwork (4:3.5.5-3) unstable; urgency=low
+
+  +++ Changes by Sune Vuorela:
+
+  * Fixed servers for oftc irc. It is oftc.net instead of oftc.org.
+  * Updated icq patch from upstream svn.
+  * Added tdelibs-dbg to tdenetwork-dbg depends, it is needed to get valid
+    backtraces.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 21 Nov 2006 07:16:12 +0100
+
+tdenetwork (4:3.5.6-0ubuntu9) feisty; urgency=low
+
+  * Add kubuntu_07_fileshare.diff:
+    - adds dialog when neither SMB nore NFS is detected.
+    - closes Malone #47312
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 03 Apr 2007 15:25:21 +0100
+
+tdenetwork (4:3.5.6-0ubuntu8) feisty; urgency=low
+
+  * Removed kubuntu_04_kopete_style_contacts.diff, closes Malone #90020
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 15 Mar 2007 12:13:41 +0100
+
+tdenetwork (4:3.5.6-0ubuntu7) feisty; urgency=low
+
+  * Add kubuntu_06_kppp_nozomi.diff from Stephan Hermann <sh@sourcecode.de>
+    adds support for nozomi devices
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon,  5 Mar 2007 10:56:59 +0000
+
+tdenetwork (4:3.5.6-0ubuntu6) feisty; urgency=low
+
+  * Add kubuntu_05_kopete_style_clear_activate_variant.diff, activate
+    variants for the kopete theme Clear. Patch from KDE svn.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Wed, 21 Jan 2007 00:49:28 +0100
+
+tdenetwork (4:3.5.6-0ubuntu5) feisty; urgency=low
+
+  * Remove sms pluing files, they are not compiled
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 31 Jan 2007 11:05:34 +0000
+
+tdenetwork (4:3.5.6-0ubuntu4) feisty; urgency=low
+
+  * Made tdenetwork-dev replace kopete-dev (<= 4:3.5.3). Closes #82222
+  * Added various build-deps/deps that were lost from kopete --> tdenetwork
+    transition
+  * Added 12_kopete_strings.diff to fix various spelling errors.  Closes
+    #65966
+  * Added 15_kopete_latexconvert_uses_bash.diff.  Closes #71665
+  * Bumped standards version to 3.7.2.2.  No changes required
+  * Removed 18_kopete_icq_fix.diff - this has been fixed another way by
+    upstream.
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Wed, 31 Jan 2007 00:00:00 +1100
+
+tdenetwork (4:3.5.6-0ubuntu3) feisty; urgency=low
+
+  * Make kopete replace and conflict with kopete-meanwhile
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 30 Jan 2007 01:19:04 +0000
+
+tdenetwork (4:3.5.6-0ubuntu2) feisty; urgency=low
+
+  * Add kubuntu_04_kopete_style.diff, adds ability to theme
+    kopete's contact list.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 26 Jan 2007 02:47:32 +0100
+
+tdenetwork (4:3.5.6-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+  * Remove kubuntu_04_ksirc_vulnerability.diff, applied upstream
+  * Build kopete from tdenetwork again
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 17 Jan 2007 11:22:29 +0000
+
+tdenetwork (4:3.5.5-2ubuntu4) feisty; urgency=low
+
+  * Remove build-dep on libgsmme-dev, failed main inclusion review
+  * SECURITY UPDATE: ksirc denial of service vulnerability
+  * ksirc/iocontroller.cpp: An exploit in ksirc can trigger an assertion 
+    and results in a NULL pointer dereference (crash) for non-debug builds.
+  * Add kubuntu_04_ksirc_vulnerability.diff
+  * References:
+    CVE-2006-6811
+    http://www.kde.org/info/security/advisory-20070109-1.txt
+    http://www.milw0rm.com/exploits/3023
+    http://www.securityfocus.com/bid/21790
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 15 Jan 2007 10:59:50 +0000
+
+tdenetwork (4:3.5.5-2ubuntu3) feisty; urgency=low
+
+  * Change netbase dependency for ktalkd to update-inetd since it's now in
+    its own package.
+
+ -- Tollef Fog Heen <tfheen@ubuntu.com>  Thu, 14 Dec 2006 11:30:22 +0100
+
+tdenetwork (4:3.5.5-2ubuntu2) feisty; urgency=low
+
+  * rebuild with --enable-gcc-hidden-visibility
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 16 Nov 2006 19:39:17 +0000
+
+tdenetwork (4:3.5.5-2ubuntu1) feisty; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 15 Nov 2006 22:39:42 +0000
+
+tdenetwork (4:3.5.5-2) unstable; urgency=medium
+
+  * Add a kwifimanager manpage, thanks to Chris Bier. (Closes: #392878)
+
+  * Change "Suggests: zeroconf" to "Suggests: avahi-autoipd | zeroconf", since
+    avahi-autoipd is a better, less intrusive implementation of zeroconf.
+    (Closes: #394328)
+
+  * Add 18_kopete_icq_fix patch: fix connection to icq network introduced by
+    kopete 0.12.3. KDE SVN commit 600778. (Closes: #396391, #396398)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  2 Nov 2006 18:01:55 -0500
+
+tdenetwork (4:3.5.5-1) unstable; urgency=low
+
+  * New upstream release. Notable updates include Kopete 0.12.2.
+    + Fixes kopete: no irc /ignore command. (Closes: #239918)
+    + Fixes kopete: Jabber disconnects constantly with "unknown" error.
+      (Closes: #356073)
+    + Fixes krdc: segfault connecting to ultravnc. (Closes: #378402)
+    + Irrepdroducible random kopete system-locking behaviour reported
+      by a few users seems to have disappeared in 0.12.2.
+      (Closes: #384106)
+
+  +++ Changes by Christopher Martin:
+
+  * Fix KGet package description (it's not KGET). (Closes: #384592)
+
+  +++ Changes by Modestas Vainius:
+
+  * Do not enable Jabber Jingle voice support for now. The reasons are:
+    - 1. It is a very experimental feature.
+    - 2. Internal libjingle does not compile.
+    - 3. It needs to be ported to use the external libjingle that is
+         available in Debian.
+
+  +++ Changes by Adeodato Simó:
+
+  * Pass --with-external-libgadu to configure, so that build fails if
+    detection of the /usr library fails.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed,  4 Oct 2006 20:05:23 -0400
+
+tdenetwork (4:3.5.4-2) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * KDE_3_5_BRANCH update (up to r568672).
+    + Picks up an ICQ compatibility fix for Kopete, made necessary by a recent
+      change in the protocol. (Closes: #380740)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue,  1 Aug 2006 18:04:24 -0400
+
+tdenetwork (4:3.5.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * KDE_3_5_BRANCH update (up to r567759).
+
+  +++ Changes by Christopher Martin:
+
+  * Add kget and kdict manpages, thanks to Holger Hartmann.
+    (Closes: #370280, #372634)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 29 Jul 2006 21:15:35 -0400
+
+tdenetwork (4:3.5.5-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+  * 16_kopete_green_folder.diff removed, merged upstream
+	
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  3 Oct 2006 10:56:05 +0000
+
+tdenetwork (4:3.5.4-0ubuntu3) edgy; urgency=low
+
+  * Removed a bunch of files from debian/tdenetwork-dev.install as we have
+    split the kopete packages, including kopete-dev from tdenetwork
+  * Adjusted debian/control tdenetwork-dev description accordingly.
+  * Closes malone 58320
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Mon, 11 Sep 2006 21:39:43 -0500
+
+tdenetwork (4:3.5.4-0ubuntu2) edgy; urgency=low
+
+  [ Jonathan Riddell ]
+  * Rebuild with latest cdbs to add gettext domain to .desktop files for
+    langpacks-desktopfiles-kde, no source changes
+
+  [ Sarah Hobbs ]
+  * Make tdenetwork-dev depend on unversioned kopete-dev
+
+ -- Sarah Hobbs <hobbsee@kubuntu.org>  Tue,  5 Sep 2006 22:53:11 +0000
+
+tdenetwork (4:3.5.4-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 25 Jul 2006 10:12:19 +0000
+
+tdenetwork (4:3.5.3-1ubuntu6) edgy; urgency=low
+
+  * Uncomment noauth in debian/kppp-options
+  * Don't create Kopete package, now a separate release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 24 Jul 2006 16:46:20 +0100
+
+tdenetwork (4:3.5.3-1ubuntu5) edgy; urgency=low
+
+  * Fix path for additional zeroconf files.
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Thu, 20 Jul 2006 17:03:26 +0200
+
+tdenetwork (4:3.5.3-1ubuntu4) edgy; urgency=low
+
+  * Add debian/kubuntu_zeroconf/_{fish,sftp}._tcp to add FISH and sFTP support
+    to tdednssd (Closes: Malone 33034).
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Thu, 20 Jul 2006 12:13:01 +0200
+
+tdenetwork (4:3.5.3-1ubuntu3) edgy; urgency=low
+
+  * Remove 12_kopete_meanwhile.diff, meanwhile support is in
+    kopete-meanwhile in universe.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  4 Jul 2006 10:33:01 +0000
+
+tdenetwork (4:3.5.3-1ubuntu2) edgy; urgency=low
+
+  * Remove debian/patches/18_meanwhile_gsize.diff, 
+    debian/patches/19_meanwhile_gcc41.diff,
+    keep meanwhile support separate in kopete-meanwhile
+  * Build-dep on latest tdelibs, fix Qt binary compatibility break
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 28 Jun 2006 16:44:01 +0000
+
+tdenetwork (4:3.5.3-1ubuntu1) edgy; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 27 Jun 2006 17:10:54 +0000
+
+tdenetwork (4:3.5.3-1) unstable; urgency=low
+
+  * New upstream release.
+    + fixes a crash in kopete configuration dialog (Closes: #361449)
+
+  +++ Changes by Christopher Martin:
+
+  * Weaken krdc's recommends on rdesktop to a suggests. (Closes: #357417)
+
+  +++ Changes by Pierre Habouzit:
+
+  * Add a kopete presubj (kopete is responsible for 50% of the tdenetwork bug
+    reports) explaining how to get useful backtraces.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  1 Jun 2006 22:34:44 +0200
+
+tdenetwork (4:3.5.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * KDE_3_5_BRANCH update (up to r524074).
+
+  +++ Changes by Christopher Martin:
+
+  * Add a gcc-4.1 build fix for the meanwhile patch from Martin Michlmayr.
+    Thanks. (Closes: #356893)
+
+  * Add wireless-tools to kwifimanager's dependencies.
+ 
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 29 Mar 2006 13:20:49 -0500
+
+tdenetwork (4:3.5.1-2) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * KDE_3_5_BRANCH update (up to r504660).
+
+  * Add a patch (to the last upload's meanwhile patch) which should resolve a
+    FTBFS on architectures where "gsize" isn't the same size as "int".
+    (Closes: #350872)
+
+  * Upload to unstable.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed,  1 Feb 2006 16:31:46 -0500
+
+tdenetwork (4:3.5.1-1) unstable; urgency=low
+
+  +++ Changes by Isaac Clerencia:
+
+  * Put zeroconf tdeioslave and other tdednssd stuff in a new package, tdednssd.
+
+  +++ Changes by Christopher Martin:
+
+  * Change kopete's Suggests: gpg to gnupg. (Closes: #347969)
+
+  * Take a diff of the meanwhile plugin from the next Kopete version
+    development branch, and apply it to KDE 3.5. This includes a number of
+    fixes, and allows us to build against a more up-to-date meanwhile.
+
+  * Bump libmeanwhile-dev build-depends, ensuring that kopete links with
+    libmeanwhile1, needed to go with the updated meanwhile plugin.
+    (Closes: #348958)
+
+  * Upload to unstable.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu, 26 Jan 2006 20:55:37 -0500
+
+tdenetwork (4:3.5.0-3) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * Upload to unstable.
+
+  * KDE_3_5_BRANCH update (up to r495340).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat,  7 Jan 2006 16:51:25 -0500
+
+tdenetwork (4:3.5.0-2) experimental; urgency=low
+
+  * Upload to experimental.
+
+  * KDE_3_5_BRANCH update (up to r488948).
+
+  +++ Changes by Christopher Martin:
+
+  * Add lisa and reslisa manpages from François Wendling. Thanks!
+    (Closes: #343211, #343214)
+
+  * No longer build with gcc-3.4 on any architectures, since gcc-4.0 should
+    be fixed. (Closes: #342986)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 16 Dec 2005 10:35:13 -0500
+
+tdenetwork (4:3.5.0-1) alioth; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Christopher Martin:
+
+  * Sametime support in Kopete is now enabled.
+
+  * Pull in build fixes from the 3.5 branch.
+
+  * Bump DH_COMPAT to 5. No changes.
+
+  * Add tdenetwork-dbg, to help track down problems.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 30 Nov 2005 00:03:47 -0500
+
+tdenetwork (4:3.4.3-3) unstable; urgency=low
+
+  * Upload to unstable, rebuilding against tdelibs4c2a.
+
+  * KDE_3_4_BRANCH update (up to r483894).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Mon, 28 Nov 2005 17:20:04 +0100
+
+tdenetwork (4:3.5.2-0ubuntu6) dapper; urgency=low
+
+  * debian/cdbs/kde.mk:
+    - added dh_iconcache.
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Sun, 21 May 2006 16:38:08 +0200
+
+tdenetwork (4:3.5.2-0ubuntu5) dapper; urgency=low
+
+  * Move libnss-mdns and avahi-daemon to Recommends since we don't want avahi
+    installed by default.
+  * Add sftp, fish and ipp protocols to tdednssd in debian/zeroconf/.
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Thu, 11 May 2006 19:09:40 +0200
+
+tdenetwork (4:3.5.2-0ubuntu4) dapper; urgency=low
+
+  * Add libnss-mdns and avahi-daemon to dependencies for tdednssd package.
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Thu, 11 May 2006 18:52:54 +0200
+
+tdenetwork (4:3.5.2-0ubuntu3) dapper; urgency=low
+
+  * Add kubuntu_04_kopete_devices.diff to fix devices tab in kopete 
+    (Closes: Malone #36800)
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Sat, 22 Apr 2006 10:27:04 +0200
+
+tdenetwork (4:3.5.2-0ubuntu2) dapper; urgency=low
+
+  * Edit debian/cdbs/kde.mk to mark .po files as UTF-8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 21 Apr 2006 19:14:30 +0100
+
+tdenetwork (4:3.5.2-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Remove kubuntu_02_kopete_msn_file_transfer.diff, now upstream
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 20 Mar 2006 12:06:31 +0000
+
+tdenetwork (4:3.5.1-0ubuntu3) dapper; urgency=low
+
+  * Add kubuntu_03_ktalk_no_utmp_check.diff to remove utmp check
+    utmp is no longer on ubuntu dapper buildds
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 24 Mar 2006 18:51:45 +0000
+
+tdenetwork (4:3.5.1-0ubuntu2) dapper; urgency=low
+
+  * Add kubuntu_02_kopete_msn_file_transfer to fix MSN file transfer in Kopete 
+    (Closes: KDE Bug #113525)
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Mon,  6 Mar 2006 20:09:30 +0100
+
+tdenetwork (4:3.5.1-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 23 Jan 2006 14:26:07 +0000
+
+tdenetwork (4:3.5.0-0ubuntu6) dapper; urgency=low
+
+  * Install kopete/kopeteversion.h in tdenetwork-dev
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 13 Jan 2006 13:34:42 +0000
+
+tdenetwork (4:3.5.0-0ubuntu5) dapper; urgency=low
+
+  * Tighten build-dep on tdelibs to 4:3.5.0-0ubuntu9
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 12 Jan 2006 18:23:00 +0000
+
+tdenetwork (4:3.5.0-0ubuntu4) dapper; urgency=low
+
+  * Tighten build-dep on tdelibs to 4:3.5.0-0ubuntu8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 12 Jan 2006 15:35:02 +0000
+
+tdenetwork (4:3.5.0-0ubuntu3) dapper; urgency=low
+
+  * Add tdednssd to tdenetwork meta package
+  * Remove libtdednssd dependency from tdednssd (now in tdelibs)
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 12 Jan 2006 09:51:13 +0000
+
+tdenetwork (4:3.5.0-0ubuntu2) dapper; urgency=low
+
+  * Add package tdednssd with zeroconf:/ ioslave
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 11 Jan 2006 02:22:49 +0000
+
+tdenetwork (4:3.5.0-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Remove GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  6 Dec 2005 12:28:33 +0000
+
+tdenetwork (4:3.5-rc2-0ubuntu1) dapper; urgency=low
+
+  * New upstream pre-release
+  * Generate .pot files
+  * Sync with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 21 Nov 2005 21:10:41 +0000
+
+tdenetwork (4:3.5-rc1-0ubuntu1) dapper; urgency=low
+
+  * New upstream pre-release
+  * Update 11_dlopen-xmms.diff
+  * Update 17_kppp_devices.diff
+  * Remove 18_kopete_icq_fix.diff, merged upstream
+  * Remove kubuntu_02_new_iwlib.diff, merged upstream
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 12 Nov 2005 19:25:52 +0000
+
+tdenetwork (4:3.4.3-2) experimental; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * Clean up the old comments in lisa's init script from its original
+    template. (Closes: #334844)
+
+  * Steal a fix from KDE_3_5_BRANCH that fixes crashes in Kopete with ICQ.
+    Thanks to Josh Metzler for isolating the problem. (Closes: #334889)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 21 Oct 2005 08:38:26 -0400
+
+tdenetwork (4:3.4.3-1) experimental; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Christopher Martin:
+
+  * Add a patch which expands the device nodes that KPPP accepts by default.
+    This should reduce the number of symlinks to /dev/modem which users need
+    to create.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun, 16 Oct 2005 13:30:52 -0400
+
+tdenetwork (4:3.4.2-3) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * Add a patch which ensures that KPPP users who encounter connection errors
+    are pointed to the package's README.Debian, if KPPP has no other
+    suggestions. (Closes: #324867)
+
+  * Improve and expand the kppp.README.Debian.
+
+  +++ Changes by Adeodato Simó:
+
+  * This upload triggers a kwifimanager recompilation that copes with libiw28
+    having dropped _GLOBAL_OFFSET_TABLE_; kwifimanager applet no longer
+    crashes, thus this upload closes: #327843, #329708.
+
+  +++ Changes by Luk Claes:
+  
+  * Add patch to add missing entry for Hungarian to fix menu (Closes: #291009)
+
+  * Add patch to use user's color for budy groups icon (Closes: #293035).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 24 Sep 2005 17:45:23 +0200
+
+tdenetwork (4:3.4.2-2) unstable; urgency=low
+
+  +++ Changes by Luk Claes:
+
+  * Updated FSF address.
+   
+  * Build with g++-3.4 on arm, m68k and hppa; tdenetwork also makes gcc 4.0 ICE
+    as described in #323133.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  1 Sep 2005 10:46:08 +0200
+
+tdenetwork (4:3.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * This upload:
+
+    - happily builds with gcc4. (Closes: #300536)
+    - has a kwifimanager from the 3.4 series does not depend on removed
+      libiw27. (Closes: #318180)
+
+  +++ Changes by Christopher Martin:
+
+  * Remove 07_xlibs-static-pic.diff and the xlibs-static-pic build-dependency,
+    and add a build-dependency on libxxf86vm-dev, for the X.Org transition.
+
+  * Add a dependency on perl-suid for tdenetwork-filesharing, since it really
+    does need it to be useful, and tdelibs had its perl-suid dependency
+    weakened for reasons of security. Similarly, change the tdenetwork
+    metapackage's dependency on tdenetwork-filesharing to a Recommends,
+    where it joins lisa and ktald, languishing in ignominious obscurity.
+    (Closes: #323064)
+
+  * Remove lisa's unnecessary dependency on debconf.
+
+  * tdenetwork-dev: Add a Conflicts with librss1-dev (in addition to the
+    Replaces) to eliminate potential problems.
+
+  * kdict: Add a missing Replaces for tdebase-data.
+  
+  +++ Changes by Luk Claes:
+  
+  * Added me to uploaders
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 30 Aug 2005 16:40:41 +0200
+
+tdenetwork (4:3.4.91-0ubuntu1) breezy; urgency=low
+
+  * KDE 3.5 beta1
+
+ -- Bart Verwilst <bart@verwilst.be>  Sun,  9 Oct 2005 13:18:37 +0000
+
+tdenetwork (4:3.4.3-0ubuntu1) breezy; urgency=low
+
+  * New upstream release
+  * Build with GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  7 Oct 2005 18:14:17 +0000
+
+tdenetwork (4:3.4.2-0ubuntu3) breezy; urgency=low
+
+  * Add kubuntu_03_gadu_offline.diff fixes http://bugs.kde.org/105131
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 19 Sep 2005 16:32:56 +0100
+
+tdenetwork (4:3.4.2-0ubuntu2) breezy; urgency=low
+
+  * Add missing build-depend on unsermake
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 26 Jul 2005 23:19:33 +0000
+
+tdenetwork (4:3.4.2-0ubuntu1) breezy; urgency=low
+
+  * New upstream release.
+  * Build using unsermake
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 26 Jul 2005 13:19:02 +0000
+
+tdenetwork (4:3.4.1-0ubuntu4) breezy; urgency=low
+
+  * Add build-depends on libxfixes-dev
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 21 Jul 2005 12:55:05 +0000
+
+tdenetwork (4:3.4.1-0ubuntu3) breezy; urgency=low
+
+  * Rebuild for new libiw
+  * Add explicit include to /usr/X11R6/include for Xmu
+  * Add kubuntu_02_new_iwlib.diff for updated iwlib
+  * Not affected by CAN-2005-1852 because we use an external libgadu3
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 20 Jul 2005 23:31:50 +0000
+
+tdenetwork (4:3.4.1-0ubuntu2) breezy; urgency=low
+
+  * Remove build-dep on xmms
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu,  2 Jun 2005 02:35:10 +0000
+
+tdenetwork (4:3.4.1-0ubuntu1) breezy; urgency=low
+
+  * Update version number following KDE 3.4.1 release
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed,  1 Jun 2005 00:47:48 +0000
+
+tdenetwork (4:3.4.1-0pre1ubuntu1) breezy; urgency=low
+
+  * Sync with Debian
+
+ -- Jonathan Riddell <jr@jriddell.org>  Sat, 28 May 2005 23:23:38 +0000
+
+tdenetwork (4:3.4.1-1) experimental; urgency=low
+
+  * New upstream release 
+
+  +++ Changes by Christopher Martin:
+
+  * Merge librss1-dev and currently unused kopete headers into a general
+    tdenetwork-dev package.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 31 May 2005 15:43:52 -0400
+
+tdenetwork (4:3.4.0-0ubuntu2) hoary; urgency=low
+
+  * Fix kubuntu_01_kmenu_changes.diff
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu, 17 Mar 2005 02:49:27 +0000
+
+tdenetwork (4:3.4.0-0ubuntu1) hoary; urgency=low
+
+  * Remove kdict, ksirc from tdenetwork meta-package depends.
+  * Add kubuntu_01_kmenu_changes.diff patch to tidy up menus.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 16 Mar 2005 22:45:45 +0000
+
+tdenetwork (4:3.4.0-0pre1ubuntu2) hoary; urgency=low
+
+  * Add dependency on tdenetwork-tdefile-plugins to tdenetwork meta-package.
+
+ -- Jonathan Riddell <jr@jriddell.org>  Tue,  8 Mar 2005 13:09:19 +0000
+
+tdenetwork (4:3.4.0-0pre1ubuntu1) hoary; urgency=low
+
+  * Sync with Debian
+
+ -- Jonathan Riddell <jr@jriddell.org>  Mon,  7 Mar 2005 00:17:04 +0000
+
+tdenetwork (4:3.4.0-0pre2) alioth; urgency=low
+
+  * New upstream release.
+
+  * Bugs reported in the Debian BTS fixed by this release:
+    - kopete does not crash upon ignoring a /query. (Closes: #285906)
+    - kwifimanager properly saves its settings now. (Closes: #296428)
+    - kopete does not crash when using the /help command. (Closes: #297721)
+
+  +++ Changes by Isaac Clerencia:
+
+  * Switch to CDBS for packaging.
+
+  * Added new package tdenetwork-tdefile-plugins.
+
+  * ksirc now recommends libio-socket-ssl-perl, needed for SSL IRC servers
+   (Closes: #294331)
+
+  +++ Changes by Christopher Martin:
+
+  * Change kopete's section to kde. (Closes: #292398)
+
+  * New tdenetwork-doc-html package, containing doc-base registered HTML
+    versions of application handbooks, for users without Konqueror or
+    KHelpCenter.
+
+  +++ Changes by Adeodato Simó:
+
+  * Created XPM icons for packages having a menu file. Install them in
+    /opt/trinity/share/pixmaps and update the menu entries to use them.
+
+  +++ Changes by Riku Voipio:
+
+  * Provide better descriptions for applications (Closes: #287185)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun, 22 May 2005 18:45:20 +0200
+
+tdenetwork (4:3.3.2-6) unstable; urgency=high
+
+  +++ Changes by Adeodato Simó:
+
+  * Do not depend on the disappeared libjack0.80.0-0. Achieve so by updating
+    the libtool used to build, so that it prunes unnecessary dependencies. The
+    Depends lines are incredibly shorter now.
+
+  * The above libtool update removes the kwifimanager dependency on libmad0,
+    so closes: #311712 ("does not have a versioned dependency on libmad0").
+
+  * This upload will get built against the latest libiw-dev, so the dependency
+    on the disappeared libiw27 will get updated to libiw28. Closes: #315892,
+    thanks to Noèl Köthe for the heads-up.
+
+    Also, libiw28 renames iw_pr_ether() to iw_saether_ntop(), so added a patch
+    from upstream SVN to cope with the change. Bump build-dependency on libiw-dev
+    to (>> 27+28pre8), more for documentation purposes than for real need.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 01 Jul 2005 21:34:40 +0200
+
+tdenetwork (4:3.3.2-5) unstable; urgency=high
+
+  * High-urgency upload for sarge targetted RC bugfix.
+
+  +++ Changes by Adeodato Simó:
+
+  * Make kopete not link against a local copy of libgadu3 (closes: #310279).
+    Teached kopete/protocols/configure.in.in to behave well if the format used
+    by gg_libgadu_version() is "YYYYMMDD" instead of "MAJOR.MINOR.YYYYMMDD".
+    See Bug#310276 for reference.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 24 May 2005 02:25:01 +0200
+
+tdenetwork (4:3.3.2-4) unstable; urgency=high
+
+  * Urgency high for sarge targetted fixes of bugs at severity important.
+
+  +++ Changes by Adeodato Simó:
+
+  * Kopete is now able again to log into MSN Messenger accounts, after the
+    latest change in the Microsoft servers yesterday. (Closes: #309745)
+    Backported patch from upstream 3.4 SVN branch that introduces a new login
+    handler stolen from KMess. Enabled nofinal for kopete/protocols/msn, since
+    otherwise it won't compile.
+
+  * As a result of the above new login handler, Kopete is now able to log into
+    MSN Messenger accounts with Hotmail or MSN addresses that have a non-.com
+    TLD (e.g., hotmail.co.uk), which closes: #306845. (The patch at upstream
+    bug #96304 is now obsolete.)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 20 May 2005 00:55:54 +0200
+
+tdenetwork (4:3.3.2-3) unstable; urgency=high
+
+  * Urgency high because we fix a recently discovered FTBFS that prevents the
+    previous medium-urgency upload to migrate to testing. Only debian/control
+    is changed in this upload.
+
+  +++ Changes by Adeodato Simó:
+
+  * xmms-dev has recently moved from depending on xlibs-dev to specifying the
+    exact list of development libraries needed (see Bug#302059), which makes
+    tdenetwork fail to build from source now, Add libxtst-dev to Build-Depends.
+    (Closes: #305942)
+
+  * Make ksirc recommend libio-socket-ssl-perl, so that SSL connections work.
+    Mention this in the package description. (Closes: #294331)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 23 Apr 2005 04:51:30 +0200
+
+tdenetwork (4:3.3.2-2) unstable; urgency=medium
+
+  +++ Changes by Christopher Martin:
+
+  * KDE_3_3_BRANCH update. Kopete loses rich-text support in ICQ, but works
+    around an exploitable crash when contacted by icq5 clients. Bump urgency
+    to medium since these fixes are RC. (Closes: #295265, #297861)
+
+  * Change kopete's section to kde. (Closes: #292398)
+
+  * Include the GFDL in debian/copyright, since the Handbooks are licensed
+    under it.
+
+  * Daniel Stone has kindly relicensed man pages written by him from
+    GDFL to GPL, update copyright notice in kopete.1.
+
+  +++ Changes by Adeodato Simó:
+
+  * kopete no longer depends on XMMS, which it did simply because the Now
+    Listening plugin was linked against libxmms. Added a patch to dlopen
+    libxmms at runtime and use it if present, so that the plugin remains
+    functional even if XMMS is not installed.
+    (Closes: #238368, #276586, #292963, #293191)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 30 Mar 2005 11:49:58 +0200
+
+tdenetwork (4:3.3.2-1ubuntu1) hoary; urgency=low
+
+  * New upstream release.
+  * Remove patches: 02_autotools_update, 05_pedantic-errors,
+    06_xlibs-static-pic
+
+ -- Chris Halls <chris.halls@credativ.co.uk>  Sun, 12 Dec 2004 21:04:59 +0000
+	
+tdenetwork (4:3.3.2-1) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * KDE_3_3_BRANCH update.
+
+  * Fix kopete's irc.protocol alternative to only be removed when
+    the package is removed - should avoid unnecessary resets of
+    the sysadmin's preferences.
+
+  * Fix debian/copyright to refer to License rather than to Copyright
+    when discussing KDE's licenses.
+
+  +++ Changes by Isaac Clerencia:
+
+  * Added myself to uploaders
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 26 Jan 2005 14:18:56 +0100
+
+tdenetwork (4:3.3.2-0pre1) experimental; urgency=low
+
+  * New upstream release.
+
+  * KDE_3_3_BRANCH update.
+
+  * debian/control:
+    - removed build-dependency on automake1.9.
+
+  * debian/patches:
+    - dropped 11_kget.diff, fix included upstream.
+    - added 11_kpf-non-ascii-too.diff, to make kpf produce valid links to
+      files with non-ascii chars. (Trivial) Patch backported from CVS HEAD.
+      (Closes: #285883)
+
+  +++ Changes by Christopher Martin:
+
+  * kppp overhaul: replace utterly broken 10_pppdargs.diff patch
+    with 10_kppp_options.diff. kppp now SUID. To connect with kppp,
+    users must now uncomment #noauth in /etc/ppp/peers/kppp-options,
+    and be part of the dip group. No editing of ppp config files,
+    pap/chap-secrets, etc. required. Updated the kppp
+    README.Debian to explain these changes and their security
+    implications. (Closes: #126406, #203318)
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Tue, 21 Dec 2004 00:13:56 +0100
+
+tdenetwork (4:3.3.1-2) unstable; urgency=low
+
+  * reapply kget patch, Closes: #280616
+
+ -- Riku Voipio <riku.voipio@iki.fi>  Fri, 12 Nov 2004 19:41:32 +0000
+
+tdenetwork (4:3.3.1-1) unstable; urgency=low
+
+  * New upstream version
+  * krdc now recommends rdesktop. Closes: #271889
+
+ -- Riku Voipio <riku.voipio@iki.fi>  Sat,  6 Nov 2004 09:47:50 +0000
+
+tdenetwork (4:3.3.0-2) unstable; urgency=low
+
+  * New tdenetwork Release Manager
+  * krdc: Conflict with older rdesktop (Closes: #267434)
+  * kget: Apply patch from upstream to prevent crashing (Closes: #266553)
+  * kopete: Recommend qca-tls (Closes: #266597)
+  * kopete: Manage /usr/share/services/irc.protocol with update-alternatives
+    (Closes: #266600) (Thanks, Nathan)
+
+ -- Riku Voipio <riku.voipio@iki.fi>  Sat, 28 Aug 2004 17:21:30 +0000
+
+tdenetwork (4:3.3.0-1) unstable; urgency=high
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sat, 14 Aug 2004 18:00:00 -0500
+
+tdenetwork (4:3.2.3-1) unstable; urgency=high
+
+  * New upstream release.
+  * Build-Depends: xlibs-static-pic. (Closes: #260748)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Tue,  3 Aug 2004 21:00:00 -0500
+
+tdenetwork (4:3.2.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/*.menu: remove the obsolete kderemove tag.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Fri, 16 Apr 2004 04:00:00 -0500
+
+tdenetwork (4:3.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sat,  6 Mar 2004 14:00:00 -0600
+
+tdenetwork (4:3.2.0-0pre1v1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Thu, 19 Feb 2004 20:00:00 -0600
+
+tdenetwork (4:3.1.95-1) unstable; urgency=low
+
+  * New upstream release.
+  * Build-Conflict with libiw-dev since kwifimanager fails to compile.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Tue, 27 Jan 2004 20:00:00 -0600
+
+tdenetwork (4:3.1.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added libtool arm patch.
+  * Added patch to enable noauth in kppp automatically.
+  * Added periods to package descriptions. (Closes: #129219)
+  * kdict Provides dict-client. (Closes: #139712)
+  * Updated ksirc Description. (Closes: #157758)
+  * Updated kdict Description. (Closes: #172061)
+  * Corrected lisa init.d script. (Closes: #178554, #215573)
+  * Moved lisarc config file to /etc. (Closes: #201401)
+  * knewsticker Depends kicker. (Closes: #226281)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Tue, 13 Jan 2004 21:00:00 -0600
+
+tdenetwork (4:3.1.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added patch to update autotools files.
+  * Added patch to remove pedantic-errors from KDE_CHECK_FUNC_EXT since it
+    causes configure checks to fail due to #line numbers being > 32767.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sat, 18 Oct 2003 01:00:00 -0500
+
+tdenetwork (4:3.1.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sat,  2 Aug 2003 20:00:00 -0500
+
+tdenetwork (4:3.1.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Change ktalkd user to run as nobody. (Closes: #147762)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sun, 25 May 2003 23:00:00 -0500
+
+tdenetwork (4:3.1.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Wed, 12 Mar 2003 15:00:00 -0600
+
+tdenetwork (4:3.1.0-1) unstable; urgency=low
+
+  * New upstream.
+  * Redo debian dir.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Tue, 04 Feb 2003 12:00:00 -0600
+
+tdenetwork (4:2.2.2-14.6) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team
+  * Applied upstream patches to fix several potential vulnerabilities.
+    http://www.kde.org/info/security/advisory-20021220-1.txt
+
+ -- Martin Schulze <joey@infodrom.org>  Mon,  6 Jan 2003 09:11:27 +0100
+
+tdenetwork (4:2.2.2-14.5) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team
+  * Rebuilt since the buildd network decided to not build the packages
+    after satie burnt down.
+
+ -- Martin Schulze <joey@infodrom.org>  Thu, 12 Dec 2002 09:32:49 +0100
+
+tdenetwork (4:2.2.2-14.4) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team
+  * Applied a snipped from upstream's securty patch that wasn't covered
+    by iDEFENSE and our patch, to fix another potential overflow
+
+ -- Martin Schulze <joey@infodrom.org>  Sun, 10 Nov 2002 22:15:17 +0100
+
+tdenetwork (4:2.2.2-14.3) unstable; urgency=high
+
+  * Rebuilt for sid
+
+ -- Martin Schulze <joey@infodrom.org>  Mon,  4 Nov 2002 22:13:08 +0100
+
+tdenetwork (4:2.2.2-14.2) stable-security; urgency=high
+
+  * Non-maintainer upload by the Security Team
+  * Applied patch from Alexander Neundorf to fix a local root
+    vulnerability in reslisa.  Thanks to iDEFENSE for the information.
+  * Add special detection routine for big/little endianess on MIPS since
+    the line "byteorder  : {big|little} endian" from /proc/cpuinfo was
+    removed as of Linux 2.4.20, resulting in the mipsel buildd being
+    unable to build this package.
+  * Unfortunately the reslisa program needs to stay setuid since it needs
+    to send PING packets
+
+ -- Martin Schulze <joey@infodrom.org>  Fri,  1 Nov 2002 18:06:11 +0100
+
+tdenetwork (4:2.2.2-14.1) testing-security; urgency=high
+
+  * Non-maintainer upload by security team
+  * Upload to unstable as well
+
+ -- Wichert Akkerman <wakkerma@debian.org>  Fri, 12 Jul 2002 22:45:24 +0200
+
+tdenetwork (4:2.2.2-14.0woody1) testing-security; urgency=high
+
+  * NMU by the security team.
+    - Fix format string bug (Closes: #147762).
+
+ -- Daniel Jacobowitz <dan@debian.org>  Sun,  7 Jul 2002 14:12:03 -0400
+
+tdenetwork (4:2.2.2-14) unstable; urgency=HIGH
+
+  * My last upload as Maintainer. *sniff*
+  * Urgency high since this fixes an RC.
+  * Changing Maintainer over to Chris, adding myself to Uploaders as
+    previously agreed between us.
+  * Fix signed char stupidness on gcc3. (closes: #127869)
+  * Fix PowerPC b0rkage.
+
+ -- Daniel Stone <daniel@sfarc.net>  Wed, 27 Feb 2002 17:02:50 +1100
+
+tdenetwork (4:2.2.2-13) unstable; urgency=low
+
+  * debian/control:
+    - Build with libpng2. (closes: #127592, #127902)
+
+ -- Daniel Stone <daniel@sfarc.net>  Thu, 10 Jan 2002 21:04:59 +1100
+
+tdenetwork (4:2.2.2-12) unstable; urgency=low
+
+  * debian/control:
+    - Build with libpng3. 
+
+ -- Daniel Stone <daniel@sfarc.net>  Wed,  2 Jan 2002 21:22:22 -0500
+
+tdenetwork (4:2.2.2-11) unstable; urgency=low
+
+  * Another version! Yay! Thanks to Chris "danish" Danis for lending me his
+    machine to do a great number of builds on.
+  * debian/control:
+    - Make klisa Replaces: and Conflicts: keystone. (closes: a potential bug)
+  * debian/mail.local.sgml:
+    - Remove spurious </var>.
+
+ -- Daniel Stone <daniel@sfarc.net>  Sun, 30 Dec 2001 07:52:43 -0500
+
+tdenetwork (4:2.2.2-10) unstable; urgency=low
+
+  * kmail/kmmsgbase.cpp, knode/knmime.cpp:
+    - Change 'char' to 'signed char' to keep gcc on platforms where char is
+      unsigned by default. (closes: #126860)
+
+ -- Daniel Stone <daniel@sfarc.net>  Sat, 29 Dec 2001 05:07:56 -0500
+
+tdenetwork (4:2.2.2-9) unstable; urgency=low
+
+  * debian/control:
+    - Fix build dependencies. (closes: #126100)
+  * debian/rules:
+    - Build with a separate builddir, just to bring it into sync with
+      tdegraphics; according to Eray, it's happier this way, anyway.
+
+ -- Daniel Stone <daniel@sfarc.net>  Sun, 23 Dec 2001 11:09:58 -0500
+
+tdenetwork (4:2.2.2-8) unstable; urgency=low
+
+  * Apologies, *really* install the manpages now. I just pushed -7 then
+    because SIGILLs are really, really, important, and manpages are trivial. 
+
+ -- Daniel Stone <daniel@sfarc.net>  Thu, 20 Dec 2001 15:44:04 +1100
+
+tdenetwork (4:2.2.2-7) unstable; urgency=medium
+
+  * Build on a different machine. (closes: #123337)
+  * Medium severity because this badly broke every package in tdenetwork.
+  * debian/control:
+    - Fix spelling, etc. (closes: #124842, #124846)
+  * debian/rules:
+    - Add "-rm -f *-stamp" to debian-clean, as it was annoying the crap out of
+      me. Also, clean up some other crap in debian-clean.
+    - Change dh_installman -a to dh_installman.
+
+ -- Daniel Stone <daniel@sfarc.net>  Tue, 18 Dec 2001 12:29:50 +1100
+
+tdenetwork (4:2.2.2-6) unstable; urgency=medium
+
+  * debian/klisa.postinst:
+    - Fix problem where it wouldn't work if klisa wasn't started.
+      I really need to get out^W^Wtest more; get out less ;)
+      (closes: #123385, #123386)
+  * Medium severity because those bugs should've been of a much higher
+    severity themselves, and this will break for a great deal of people.
+
+ -- Daniel Stone <daniel@sfarc.net>  Wed, 12 Dec 2001 15:34:30 +1100
+
+tdenetwork (4:2.2.2-5) unstable; urgency=low
+
+  * debian/control:
+    - Conflicts:, Replaces: keystone as it is no longer in the archive,
+      and just causes conflicts. (closes: #122120)
+  * debian/klisa.{postinst,prerm}:
+    - Kill debconf initscript crap, use invoke-rc.d. (closes: #113277)
+      This means overriding debhelper's automatically installed stuff. Ugh.
+  * debian/control:
+    - Declare versioned depend on sysvinit for klisa.
+  * korn/kornbutt.cpp:
+    - Applied patch from KDE bug #28071. (closes: #103071)
+  * debian/*.menu:
+    - Change command=/foo/bar/baz, to, command="/foo/bar/baz", thanks Chris
+      Danis.
+
+ -- Daniel Stone <daniel@sfarc.net>  Sun,  9 Dec 2001 01:02:42 +1100
+
+tdenetwork (4:2.2.2-4) unstable; urgency=low
+
+  * New maintainer. (closes: #114103)
+  * debian/control:
+    - Make kmail depend on procmail for /usr/sbin/lockfile. (closes: #118946)
+  * debian/klisa.postinst, debian/ksirc.postinst:
+    - Explicitly call ldconfig, because debhelper is on crack and doesn't
+      pick it up its own damn self. ksirc's postinst is just a cheap rip-off
+      of klisa's, because I'm doing this over lagged SSH.
+  * debian/{kotalkd,ktalkd,ktalkdlg,mail.local,dsirc,ksirc,ksticker,kppp,
+    kppplogview,knode,kmail,kmailcvt,klisa,reslisa,kit,kdict}.sgml:
+    - New manpages. You'd think I'd get sick of writing them, but no.
+    - Obviously this affects a lot of .manpages files, but oh well.
+  * Yes, I know kppp{,logview} is in section 1, I go by the method of
+    "/usr/bin maketh section 1, /usr/sbin maketh section 8"; hopefully I'll
+    never maintain anything as important as to expand that into /bin and
+    /sbin. ;)
+  * debian/control:
+    - Build-Dep on docbook-to-man.
+  * debian/rules:
+    - Build and install said new manpages.
+
+ -- Daniel Stone <daniel@sfarc.net>  Fri, 30 Nov 2001 21:41:29 +1100
+
+tdenetwork (4:2.2.2-3) unstable; urgency=low
+
+  * Fix klisa again and properly
+  * Add -ffunction-sections to CXXFLAGS for hppa builds
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 30 Nov 2001 01:01:00 -0700
+
+tdenetwork (4:2.2.2-2) unstable; urgency=low
+
+  * Sync with upstream
+  * Fix build bits, deps, etc for freeze
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 29 Nov 2001 04:06:00 -0700
+
+tdenetwork (4:2.2.2-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 07 Nov 2001 23:00:00 -0700
+
+tdenetwork (4:2.2.1-1.6) unstable; urgency=low
+
+  * More upstream fixes
+  * Build with newer binutils
+  * fix klisa init.d script
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 31 Oct 2001 23:00:00 -0700
+
+tdenetwork (4:2.2.1-1.5) unstable; urgency=low
+
+  * More upstream fixes
+  * remove automake hacks
+  * Remove bs overrides
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 26 Oct 2001 13:15:00 -0700
+
+tdenetwork (4:2.2.1-1.4) unstable; urgency=low
+
+  * Dont' check for auto* as it hoses things
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 08 Oct 2001 19:34:00 -0700
+
+tdenetwork (4:2.2.1-1.3) unstable; urgency=low
+
+  * Fix configure
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 05 Oct 2001 09:42:00 -0700
+
+tdenetwork (4:2.2.1-1.2) unstable; urgency=low
+
+  * Don't worry about automake 1.5
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 03 Oct 2001 09:42:00 -0700
+
+tdenetwork (4:2.2.1-1.1) unstable; urgency=low
+
+  * Bunch of upstream fixes for kmail and klisa
+  * hardcode sendmail instead of mail.local (Closes: #113749)
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 28 Sep 2001 04:55:00 -0700
+
+tdenetwork (4:2.2.1-1) unstable; urgency=low
+ 
+  * New upstream version 2.2.1
+  * Change maintainer
+  * Lintian cleanup
+  * SIGSEGV went away (Closes: #110001)
+  * Add undocumented link (Closes: #101927)
+  * Fixes /dev/console issues (Closes: #97643)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 07 Sep 2001 14:46:00 -0700
+
+tdenetwork (4:2.2.0-final-1) unstable; urgency=low
+ 
+  * New upstream version 2.2
+  * Add suggests for knewsticker-scripts
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 30 Jul 2001 00:01:00 -0700
+
+tdenetwork (4:2.2.0-0beta1-3) unstable; urgency=low
+ 
+  * Sync with upstream
+  * More alpha build fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 07 Jul 2001 03:39:00 -0700
+
+tdenetwork (4:2.2.0-0beta1-2) unstable; urgency=low
+ 
+  * Sync with upstream
+  * Spanish Templates (Closes: #103231)
+  * Autobuild for alpha now
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 02 Jul 2001 01:43:00 -0700
+
+tdenetwork (4:2.2.0-0beta1-1) unstable; urgency=low
+ 
+  * Fix overwrites (Closes: #102858, #102860)
+  * sync with upstream
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 30 Jun 2001 01:43:00 -0700
+
+tdenetwork (4:2.2-cvs20010622-1) unstable; urgency=low
+ 
+  * New upstream CVS pull
+  * 2.2 beta1
+  * Adding in Enhances: tags
+  * Adding in new hint (Closes: #98042)
+  * set $HOME in init.d script so that /root/.kde/share/apps/config/lisarc
+    is read during bootup if it exists.
+  * 2 new packages kdict and libtdenetwork1
+  * Fixes these problems: 
+       korn run command (Closes: #77627)
+  * New translations for klisa (Closes: #101016)
+  * No more keystone...
+  * libmimelib is now here
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 18 Jun 2001 14:39:00 -0700
+
+tdenetwork (4:2.1.1-5) unstable; urgency=low
+ 
+  * Update menu bits to include new kde menu removal tag
+  * more Upstream fixes
+  * Update build-depends to recognize real | virtual
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 08 Apr 2001 17:40:00 -0700
+
+tdenetwork (4:2.1.1-4) unstable; urgency=low
+ 
+  * Use tcpwrappers (Closes: #92761)
+  * Turn off nmblookup in lisarc by default..this way samba-client isn't
+    required out of the box and the nasty error messages won't show up.
+  * Change samba-common dep from recommend to suggest
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 03 Apr 2001 13:42:00 -0700
+
+tdenetwork (4:2.1.1-3) unstable; urgency=low
+ 
+  * Change user for ktalkd.tty to root instead of nobody.tty
+  * Fix talk problem when specifying tty (Closes: #92646)
+  * Add in a postrm to actually remove ktalk inetd lines during removal
+  * Add recommends for samba-common to klisa
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 03 Apr 2001 09:56:00 -0700
+
+tdenetwork (4:2.1.1-2) unstable; urgency=low
+ 
+  * Rebuild with older libc
+  * Adding in documentation about kppp and noauth
+  * Fixing suid bit for kppplogview
+  * Rename lisa binary and package to klisa to avoid conflict with lisa 
+    screensaver. 
+  * Fix klisa so it works out of the box which means:
+    mv klisa binary to /usr/sbin
+    add a init.d script for klisa to start/stop it properly
+    add a lisarc config file
+    add setuid bit to reslisa as it must be run as root (but drops privialges
+       immediatly)
+    adding debconf warning about this
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 26 Mar 2001 17:17:00 -0700
+
+tdenetwork (4:2.1.1-1) unstable; urgency=low
+ 
+  * New upstream version
+  * Add conflict for lisa with xscreensaver (Closes: #90781)
+  * Fix run command properly for korn (Closes #77627)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Mar 2001 05:27:00 -0700
+
+tdenetwork (4:2.1.0-1) unstable; urgency=low
+ 
+   * New upstream CVS pull
+   * Updating shlibs
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 10 Mar 2001 05:27:00 -0700
+
+tdenetwork (4:2.1-final-1) unstable; urgency=low
+ 
+   * New upstream version
+   * Upping standards version
+   * Adding in conflicts for talkd - ktalkd
+   * Adding in update-inetd bits - ktalkd
+   * move ktalkd and kotalkd from /usr/bin to /usr/sbin - ktalkd
+   * Adding in provides for talkd - ktalkd
+   * Adding in depends for talk | ytalk - ktalkd
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Feb 2001 02:31:00 -0700
+
+tdenetwork (4:2.1-beta2-0128-1) unstable; urgency=low
+ 
+   * More upstream fixes
+     Fixes length issues with ksirc
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 28 Jan 2001 20:00:00 -0700
+
+tdenetwork (4:2.1-beta2-1) unstable; urgency=low
+ 
+   * New upstream beta
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 22 Jan 2001 01:45:00 -0700
+
+tdenetwork (4:2.1-20010118-1) unstable; urgency=low
+ 
+   * More upstream fixes
+   * Fixing knewsticker's section
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 19 Jan 2001 23:30:00 -0700
+
+tdenetwork (4:2.1-20010115-1) unstable; urgency=low
+ 
+   * More upstream fixes
+   * New knewsticker package
+   * Moving away from dh_suidregister
+   * Fixing typos in control file
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 15 Jan 2001 01:30:00 -0700
+
+tdenetwork (4:2.1-20010106-1) unstable; urgency=low
+ 
+   * More upstream fixes
+   * Upstream fix for kppp (Closes: #80484)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 06 Jan 2001 23:10:00 -0700
+
+tdenetwork (4:2.1-20010101-1) unstable; urgency=low
+ 
+   * More upstream fixes
+   * Lets actually set the proper perms for kppp (Closes: #80484)
+     kppp is now root.dip and 04754 to match pppd for Debian
+      
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 01 Jan 2001 04:01:00 -0700
+
+tdenetwork (4:2.1-20001219-1) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Adding new hints (Closes: #80031, #80071)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 18 Dec 2000 23:30:00 -0700
+                                                                                
+tdenetwork (4:2.1-20001216-1) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Adding in missing conflicts for tdenetwork
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 16 Dec 2000 23:50:00 -0700
+
+tdenetwork (4:2.1-20001213-1) unstable; urgency=low
+ 
+  * New upstream CVS version
+  * Build with new libmimelib (Closes: #79595)
+  * Closes these old bugs and wishlist items (Closes: #78885, #76785, #78885, #79568)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 13 Dec 2000 15:00:00 -0700
+
+tdenetwork (4:2.0-final-8) unstable; urgency=low
+ 
+  * Fixing file conflicts (Closes: #77851)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 23 Nov 2000 16:04:00 -0700
+
+tdenetwork (4:2.0-final-7) unstable; urgency=low
+ 
+  * Documentation cleanup along with proper upstream changelogs
+  * Fixing up build-depends for non x4 ports
+  * Adding in lintian overrides
+  * Cleaning up build rules
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 21 Nov 2000 02:30:00 -0700
+
+tdenetwork (4:2.0-final-6) unstable; urgency=low
+ 
+  * More upstream kmail fixes (Closes: #77340)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 18 Nov 2000 08:45:00 -0700
+
+tdenetwork (4:2.0-final-5) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 15 Nov 2000 04:45:00 -0700
+
+tdenetwork (4:2.0-final-4.2) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Adding in provides for mail and news readers and vnc viewers
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 10 Nov 2000 15:30:00 -0700
+
+tdenetwork (4:2.0-final-4.1) unstable; urgency=low
+ 
+  * More upstream fixes
+  * adding in menu hints
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 09 Nov 2000 22:45:00 -0700
+
+tdenetwork (4:2.0-final-4) unstable; urgency=low
+ 
+  * More i18n work
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 08 Nov 2000 17:30:00 -0700
+                                                                                
+tdenetwork (4:2.0-final-3.1) unstable; urgency=low
+ 
+  * Applying ksirc i18n patch
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 05 Nov 2000 23:00:00 -0700
+
+tdenetwork (4:2.0-final-3) unstable; urgency=low
+ 
+  * more upstream fixes
+  * build against new xlibs
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 04 Nov 2000 23:00:00 -0700
+                                                                                
+tdenetwork (4:2.0-final-2) unstable; urgency=low
+
+  * more upstream fixes
+  * fixing up dependencies (adding depends for tdebase-libs)
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 02 Nov 2000 18:00:00 -0700
+
+tdenetwork (4:2.0-final-0) unstable; urgency=low
+ 
+  * KDE 2.0
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 23 Oct 2000 00:00:00 -0700
+                                                                                
+tdenetwork (4:2.0-20001016-2) unstable; urgency=low
+ 
+  * Applying i18n patch for knode
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 17 Oct 2000 21:00:00 -0700
+                                                                                
+tdenetwork (4:2.0-20001016-0) unstable; urgency=low
+
+  * more upstream fixes
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 16 Oct 2000 15:00:00 -0700
+
+tdenetwork (4:2.0-20001013-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Adding in dependency for tdebase-libs
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 14 Oct 2000 02:00:00 -0700
+
+tdenetwork (4:2.0-20001011-0) unstable; urgency=low
+ 
+  * KDE 2.0 RC2
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 12 Oct 2000 06:00:00 -0700
+                                                                                
+tdenetwork (4:2.0-20001006-2) unstable; urgency=low
+ 
+  * Fixing dependency on libmime1 for kmail (Closes: #74304)
+  * Applying tdenetwork-1.94-kmail-i18n-20000924.diff
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 08 Oct 2000 03:00:00 -0700
+                                                                                
+tdenetwork (4:2.0-20001006-0) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 06 Oct 2000 18:00:00 -0700
+                                                                                
+tdenetwork (4:2.0-20001005-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Compiling against non-versioned tdelibs once again
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 05 Oct 2000 15:00:00 -0700
+                                                                                
+tdenetwork (4:2.0-20001002-0) unstable; urgency=low
+ 
+  * KDE 2.0 RC1
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 02 Oct 2000 01:30:00 -0700
+                                                                                
+tdenetwork (4:2.0-20000925-2) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 27 Sep 2000 22:00:00 -0700
+
+tdenetwork (4:2.0-20000925-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Build-depends fixes
+  * Fixing tdenetwork-dev depends (Closes: #72328)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 25 Sep 2000 15:30:00 -0700
+
+tdenetwork (4:2.0-20000920-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * compiling with a --without-ssl for US release
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 20 Sep 2000 20:30:00 -0700
+
+tdenetwork (4:2.0-20000918-0) unstable; urgency=low
+ 
+  * more upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 18 Sep 2000 18:30:00 -0700      
+
+tdenetwork (4:2.0-20000912-0) unstable; urgency=low
+ 
+  * more upstream fixes
+  * breaking package into parts
+  * Fixing up menu items
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 12 Sep 2000 22:30:00 -0700
+
+tdenetwork (4:2.0-20000909-0) unstable; urgency=low
+
+  * more upstream fixes
+  * Fixing up sections a bit more
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 09 Sep 2000 22:30:00 -0700
+
+tdenetwork (4:2.0-20000827-0) experimental; urgency=low
+ 
+  * Build fixes
+  * more upstream fixes
+  * merging package fixes with upstream cvs
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 27 Aug 2000 19:30:00 -0700     
+
+tdenetwork (4:2.0-20000825-0) experimental; urgency=low
+ 
+  * Build fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 25 Aug 2000 22:30:00 -0700
+                                                                                
+tdenetwork (4:2.0-20000823-1.0) experimental; urgency=low
+ 
+  * KDE 2.0 beta 4
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 23 Aug 2000 16:30:00 -0700
+                                                                               
+tdenetwork (4:2.0-20000820-1.0) experimental; urgency=low
+ 
+  * New upstream beta version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 20 Aug 2000 09:45:00 -0700
+
+tdenetwork-cvs (4:2.0-20000521-1.0) experimental; urgency=low
+ 
+  * New upstream CVS version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 21 May 2000 02:15:00 -0700
+
+tdenetwork-cvs (4:2.0-20000512-1.2) experimental; urgency=low
+ 
+  * New upstream CVS version
+  * Turning on debugging
+  * Adding in man pages
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 12 May 2000 22:00:00 -0700
+
+tdenetwork-cvs (4:2.0-20000308-1.0) experimental; urgency=low
+ 
+  * New upstream CVS version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 08 Mar 2000 22:00:00 -0700
+
+tdenetwork-cvs (4:2.0-20000302-1.0) experimental; urgency=low
+
+  * New upstream CVS version
+  * Adding in build-depends
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 29 Feb 2000 22:00:00 -0700
+
+tdenetwork-cvs (4:2.0-19991201-1.0) experimental; urgency=low
+
+  * New upstream CVS version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 01 Dec 1999 00:10:48 -0400
+
+tdenetwork-cvs (4:2.0-19991004-1) experimental; urgency=low
+
+  * New upstream CVS version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 04 Oct 1999 08:10:48 -0400
+
+tdenetwork-cvs (4:2.0-19991001-1) experimental; urgency=low
+
+  * New upstream CVS version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 01 Oct 1999 08:10:48 -0400
+
+tdenetwork-cvs (4:2.0-19990822-1) experimental; urgency=low
+
+  * New upstream CVS version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 22 Aug 1999 09:30:48 -0400
+
+tdenetwork-cvs (4:2.0-19990719-1) experimental; urgency=low
+
+  * New upstream CVS version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Jul 1999 20:30:48 -0400
+
+tdenetwork-cvs (4:2.0-19990626-2) experimental; urgency=low
+
+  * Seperating out the development files into a -dev pacakge
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 28 Jun 1999 20:30:48 -0400
+
+tdenetwork-cvs (4:2.0-19990626-1) experimental; urgency=low
+
+  * new version
+
+ -- Stephan Kulow <coolo@kde.org>  Sun, 27 Jun 1999 21:14:48 +0200
+
+tdenetwork-cvs (4:2.0-19990524-1) experimental; urgency=low
+
+  * new upstream CVS version 
+  * migrating out of /opt to /
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 24 May 1999 07:30:09 -0400
+
+tdenetwork (4:1.1-19990222-1) unstable; urgency=low
+
+  * new upstream version with fixed pws 
+
+ -- Patricia Jung <trish@freiburg.linux.de>  Mon, 22 Feb 1999 23:25:49 +0100 
+
+tdenetwork (4:1.1-19990217-1) unstable; urgency=low
+
+  * new upstream version
+
+ -- Stephan Kulow <coolo@kde.org>  Wed, 17 Feb 1999 19:09:42 +0100
+
+tdenetwork (4:1.1-19990211-2) unstable; urgency=low
+
+  * fixed line numbers in po/hr/kppp.po
+
+ -- Patricia Jung <trish@freiburg.linux.de>  Wed, 17 Feb 1999 22:53:57 +0100 
+
+tdenetwork (4:1.1-19990211) unstable; urgency=low
+
+  * adding ksirc back into the distribution after fixing some weired
+    things in it
+
+ -- Stephan Kulow <coolo@kde.org>  Thu, 11 Feb 1999 22:35:00 +0100
+
+tdenetwork (4:1.1-19990207-2) unstable; urgency=low
+
+  * fixed a bug with the wrong libjpeg version
+
+ -- Stephan Kulow <coolo@kde.org>  Tue,  9 Feb 1999 10:43:43 +0100
+
+tdenetwork (4:1.1-19990207-1) unstable; urgency=low
+
+  * new upstream version 1.1 and new epoche
+
+ -- Stephan Kulow <coolo@kde.org>  Sun,  7 Feb 1999 12:12:59 +0100
+
+tdenetwork (2:980710-1.0-1) unstable; urgency=low
+
+  * new upstream version 1.0
+
+ -- Stephan Kulow <coolo@kde.org>  Sun, 12 Jul 1998 10:12:19 +0200
+
+tdenetwork (2:980419-b4-1) unstable; urgency=low
+
+  * new upstream version Beta4
+
+ -- Stephan Kulow <coolo@kde.org>  Sun, 19 Apr 1998 17:43:01 +0200
+
+tdenetwork (2:980328-2) frozen; urgency=low
+
+  * added undocumented man page for all binaries
+  * new compile with fixed tdelibs (should be the last time)
+
+ -- Stephan Kulow <coolo@kde.org>  Sat, 28 Mar 1998 21:33:55 +0100    
+
+tdenetwork (2:980328-1) frozen; urgency=low 
+
+  * new upstream version with bug fixes
+
+ -- Stephan Kulow <coolo@kde.org>  Sat, 28 Mar 1998 21:33:55 +0100
+
+tdenetwork (2:980311-2) frozen; urgency=low
+
+  * new compile cycle with qt-1.33 and libstc++-2.8
+
+ -- Stephan Kulow <coolo@kde.org>  Tue, 24 Mar 1998 19:59:56 +0100
+
+tdenetwork (2:980311-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Stephan Kulow <coolo@kde.org>  Thu, 12 Mar 1998 23:21:40 +0100
+
+tdenetwork (980228-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Stephan Kulow <coolo@kde.org>  Sat, 28 Feb 1998 22:17:39 +0100
+
+tdenetwork (980227-1) experimental; urgency=low
+
+  * changed maintainer field
+  * New upstream release
+
+ -- Stephan Kulow <coolo@kde.org>  Sat, 28 Feb 1998 02:28:33 +0100
+
+tdenetwork (1:Beta2-2.1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Fri,  5 Dec 1997 21:17:07 +0100
+
+tdenetwork (1:Beta2-2) unstable; urgency=low
+
+  * changed kmail to use umask(077) ! mailfolders should not be world
+    readable ...
+  * fixed debstd call in debian/rules
+  * removed virtual package names.
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun, 30 Nov 1997 17:08:07 +0100
+
+tdenetwork (1:Beta2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun, 23 Nov 1997 16:07:21 +0100
+
+tdenetwork (1:Beta1.2-2) unstable; urgency=low
+
+  * new compile cycle with bugfixes.
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun,  9 Nov 1997 19:42:58 +0100
+
+tdenetwork (1:Beta1.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Mon, 27 Oct 1997 11:44:46 +0100
+
+tdenetwork (1:Beta1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Mon, 20 Oct 1997 11:15:00 +0200
+
+tdenetwork (971019-1) unstable; urgency=low
+
+  * Initial Release (my old version disapeared from my hard disk ?)
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun, 19 Oct 1997 17:59:43 +0200

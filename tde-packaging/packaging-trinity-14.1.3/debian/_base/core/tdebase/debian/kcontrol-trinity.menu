@@ -1,0 +1,11 @@
+?package(kcontrol-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="KControl"\
+	icon32x32="/opt/trinity/share/pixmaps/kcontrol.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kcontrol-16.xpm"\
+	command="/opt/trinity/bin/kcontrol"
+
+# Icon 32x32 kcontrol/kcontrol/cr32-app-kcontrol.png kcontrol.xpm
+# Icon 16x16 kcontrol/kcontrol/cr16-app-kcontrol.png kcontrol-16.xpm

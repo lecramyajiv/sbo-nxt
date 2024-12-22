@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Archive ARC
+Hidden=false
+Patterns=*.arc;*.ARC
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

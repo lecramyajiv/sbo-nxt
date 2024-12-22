@@ -1,0 +1,7 @@
+debian/tmp/opt/trinity/bin/*
+debian/tmp/usr/share/menu/tork-trinity
+debian/tmp/opt/trinity/share/pixmaps/tork.xpm
+debian/tmp/opt/trinity/share/man/*
+debian/tmp/opt/trinity/share/icons/*
+debian/tmp/opt/trinity/share/applications/*
+debian/tmp/opt/trinity/share/apps/konqueror/*

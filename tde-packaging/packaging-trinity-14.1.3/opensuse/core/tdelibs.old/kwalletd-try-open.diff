@@ -1,0 +1,81 @@
+Index: kio/misc/kwalletd/kwalletd.cpp
+===================================================================
+--- kio/misc/kwalletd/kwalletd.cpp.orig
++++ kio/misc/kwalletd/kwalletd.cpp
+@@ -355,6 +355,44 @@ int KWalletD::doTransactionOpen(const QC
+ 	return rc;
+ }
+ 
++int KWalletD::tryOpen(const QString& wallet, const QCString& password)
++{
++    if (isOpen(wallet))
++        return 0;
++
++    if (_tryOpenBlocked.isActive()) {
++        kdDebug() << "tryOpen is active.." << endl;
++        return -1;
++    }
++
++    if (!KWallet::Backend::exists(wallet))
++        return -2;
++
++    KWallet::Backend *b = new KWallet::Backend(wallet, false /*isPath*/);
++    int rc = b->open(QByteArray().duplicate(password, strlen(password)));
++    if (rc == 0) {
++        _wallets.insert(rc = generateHandle(), b);
++        _passwords[wallet] = password;
++        b->ref();
++        _tryOpenBlocked.stop();
++        QByteArray data;
++        QDataStream ds(data, IO_WriteOnly);
++        ds << wallet;
++        emitDCOPSignal("walletOpened(QString)", data);
++    }
++    else {
++        delete b;
++        // make sure that we're not bombed with a dictionary attack
++        _tryOpenBlocked.start (30 * 1000, true /*single shot*/);
++        if (++_failed > 5) {
++            _failed = 0;
++            QTimer::singleShot(0, this, SLOT(notifyFailures()));
++        }
++
++        rc = -1;
++    }
++    return rc;
++}
+ 
+ int KWalletD::internalOpen(const QCString& appid, const QString& wallet, bool isPath, WId w, bool modal) {
+ 	int rc = -1;
+Index: kio/misc/kwalletd/kwalletd.h
+===================================================================
+--- kio/misc/kwalletd/kwalletd.h.orig
++++ kio/misc/kwalletd/kwalletd.h
+@@ -26,6 +26,7 @@
+ #include <qintdict.h>
+ #include <qstring.h>
+ #include <qwidget.h>
++#include <qtimer.h>
+ #include <qguardedptr.h>
+ #include "kwalletbackend.h"
+ 
+@@ -51,8 +52,10 @@ class KWalletD : public KDEDModule {
+ 
+ 		// Open and unlock the wallet
+ 		virtual int open(const QString& wallet, uint wId);
+-
++		// Open and unlock the wallet
++		virtual int tryOpen(const QString& wallet, const QCString& passwd);
+ 		// Open and unlock the wallet with this path
++
+ 		virtual int openPath(const QString& path, uint wId);
+ 
+ 		// Asynchronous open - must give the object to return the handle
+@@ -186,6 +189,7 @@ class KWalletD : public KDEDModule {
+ 		int _idleTime;
+ 		QMap<QString,QStringList> _implicitAllowMap, _implicitDenyMap;
+ 		KTimeout *_timeouts;
++		QTimer _tryOpenBlocked;
+ 
+ 		QPtrList<KWalletTransaction> _transactions;
+ 		QGuardedPtr< QWidget > activeDialog;

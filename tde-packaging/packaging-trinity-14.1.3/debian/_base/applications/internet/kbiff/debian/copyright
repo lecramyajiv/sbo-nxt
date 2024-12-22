@@ -1,0 +1,45 @@
+This package was debianized by Jean-Michel Kelbert <kelbert@debian.org> on
+Sun, 11 Apr 2004 23:19:15 +0200.
+
+It was downloaded from http://www.granroth.org/kbiff/
+
+Upstream Author: Kurt Granroth <granroth@kde.org> 
+
+Copyright:
+
+  This package is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation; version 2 dated June, 1991.
+
+  This package is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  this package; if not, write to the Free Software Foundation, Inc., 
+  51 Franklin Street, Fifth Floor, Boston, MA 02111-1301, USA.
+
+On Debian GNU/Linux systems, the complete text of the GNU General Public
+License can be found in `/usr/share/common-licenses/GPL-2'.
+
+========================================================================
+
+The kbiff manpage is distributed under the terms of the 
+GNU Free Documentation License, with not Front-Covers Texts and no 
+Back-Covers Texts. The full text of the license follows.
+
+________________________________________________________________________
+
+		GNU Free Documentation License
+		  Version 1.2, November 2002
+
+
+ Copyright (C) 2000,2001,2002  Free Software Foundation, Inc.
+     51 Franklin Street, Fifth Floor, Boston, MA  02111-1301  USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+
+On Debian GNU/Linux systems, the complete text of the GNU General Public
+License can be found in `/usr/share/common-licenses/GFDL-1.2'.

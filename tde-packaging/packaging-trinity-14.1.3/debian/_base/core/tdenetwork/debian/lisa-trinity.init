@@ -1,0 +1,114 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          lisa-trinity
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+### END INIT INFO
+
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/opt/trinity/sbin/lisa
+NAME=lisa-trinity
+PIDFILE=/var/run/$NAME.pid
+DESC="LAN Information Server"
+
+test -f $DAEMON || exit 0
+
+set -e
+
+is_running ()
+{
+	if [ -e "$PIDFILE" ]
+	then
+		#checking if program is running
+		if [ -L /proc/`cat $PIDFILE`/exe ]
+		then
+		#checking for stale pidfile
+			if grep -q $DAEMON /proc/`cat $PIDFILE`/cmdline 
+			then
+				#program is running and is called lisa
+				return 0
+			fi
+		fi
+		rm -f $PIDFILE
+	fi
+	#program is not running
+	return 1
+}
+
+case "$1" in
+  start)
+  	if is_running
+	then
+		echo "$DESC is already running. Not doing anything"
+		exit 0
+	fi
+	echo -n "Starting $DESC: "
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON \
+		> /dev/null
+	echo $(pidof lisa) > $PIDFILE
+	echo "$NAME."
+	;;
+  stop)
+  	if ! is_running
+	then
+		echo "$DESC is not running. Not doing anything"
+		exit 0
+	fi
+	echo -n "Stopping $DESC: "
+	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE \
+		--exec $DAEMON
+	rm -f $PIDFILE
+	echo "$NAME."
+	;;
+  reload|force-reload)
+	echo "Reloading $DESC configuration files."
+	start-stop-daemon --stop --quiet --signal 1 --pidfile $PIDFILE \
+		--exec $DAEMON
+	;;
+  status)
+	echo -n "$DESC is "
+	if ! is_running
+	then 
+		echo -n "not "
+	fi
+	echo "running."
+
+  	;;
+  restart)
+	echo -n "Restarting $DESC: "
+	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE \
+		--exec $DAEMON
+	rm -f $PIDFILE
+	sleep 1
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON \
+		> /dev/null
+	echo $(pidof lisa) > $PIDFILE
+	echo "$NAME."
+	;;
+  cond-restart)
+  	if ! is_running
+	then
+		echo "$DESC is not running. Not doing anything"
+		exit 0
+	fi
+	echo -n "Restarting $DESC: "
+	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE \
+		--exec $DAEMON
+	rm -f $PIDFILE
+	sleep 1
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON \
+		> /dev/null
+	echo $(pidof lisa) > $PIDFILE
+	echo "$NAME."
+	;;
+  *)
+	N=/etc/init.d/$NAME
+	echo "Usage: $N {start|stop|restart|cond-restart|status|reload|force-reload}" >&2
+	exit 1
+	;;
+esac
+
+exit 0

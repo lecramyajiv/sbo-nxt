@@ -1,0 +1,15 @@
+debian/tmp/usr/bin/tdefilereplace
+debian/tmp/usr/lib/*/trinity/libtdefilereplacepart.la
+debian/tmp/usr/lib/*/trinity/libtdefilereplacepart.so
+debian/tmp/usr/share/applications/tde/tdefilereplace.desktop
+debian/tmp/usr/share/apps/tdefilereplace/tdefilereplaceui.rc
+debian/tmp/usr/share/apps/tdefilereplacepart
+debian/tmp/usr/share/doc/tde/HTML/en/tdefilereplace/*.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/tdefilereplace/common
+debian/tmp/usr/share/doc/tde/HTML/en/tdefilereplace/*.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/tdefilereplace/*.png
+debian/tmp/usr/share/icons/hicolor/22x22/apps/tdefilereplace.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/tdefilereplace.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/tdefilereplace.png
+debian/tmp/usr/share/man/man1/tdefilereplace.1
+debian/tmp/usr/share/services/tdefilereplacepart.desktop

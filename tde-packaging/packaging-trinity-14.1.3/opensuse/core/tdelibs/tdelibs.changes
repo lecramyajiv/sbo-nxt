@@ -1,0 +1,4301 @@
+-------------------------------------------------------------------
+Sat Aug 13 21:19:53 UTC 2011 - rxu@lincomlinux.org
+
+- initial conversion to Trinity
+
+-------------------------------------------------------------------
+Fri Jun 17 09:55:54 UTC 2011 - aj@suse.de
+
+- Add /etc/ld.so.conf.d/kdelibs3.conf (bnc#671725).
+
+-------------------------------------------------------------------
+Sat May  7 19:49:45 UTC 2011 - anixx@opensuse.org
+
+- added patch for scrollbars in light style v2 to prevent appearance of garbage
+
+-------------------------------------------------------------------
+Mon Feb 21 10:37:20 UTC 2011 - aj@suse.de
+
+- Use /proc/<pid>/oom_score_adj if available as new interface.
+
+-------------------------------------------------------------------
+Mon Apr 19 18:49:44 UTC 2010 - tittiatcoke@gmail.com
+
+- apply patch to enable build with openssl 1.0
+
+-------------------------------------------------------------------
+Sun Feb 21 09:50:18 UTC 2010 - coolo@novell.com
+
+- apply patch from fedora to support autoconf >= 2.64
+
+-------------------------------------------------------------------
+Wed Jan 13 16:04:24 CET 2010 - dmueller@suse.de
+
+- fix build against gcc 4.5
+
+-------------------------------------------------------------------
+Sun Jan 10 14:50:34 CET 2010 - ro@suse.de
+
+- include cstring in fakes.c to fix build 
+
+-------------------------------------------------------------------
+Thu Dec 24 12:58:07 UTC 2009 - aj@suse.de
+
+- Only remove file from catalog if it disappeared.
+
+- Do not use release numbers for catalog, they're not needed anymore.
+
+-------------------------------------------------------------------
+Fri Dec 18 22:59:57 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri Dec 11 15:32:20 UTC 2009 - llunak@novell.com
+
+- fix XMLHttpRequest vulnerability (bnc#550618)
+
+-------------------------------------------------------------------
+Mon Nov 23 15:51:20 CET 2009 - llunak@novell.com
+
+- fix array overrun (CVE-2009-0689) (bnc#557126)
+
+-------------------------------------------------------------------
+Sat Nov  7 07:03:01 UTC 2009 - beineri@opensuse.org
+
+- ignore inline attribute in applications.menu (bnc#529057)
+
+-------------------------------------------------------------------
+Fri Nov  6 14:43:13 CET 2009 - dmueller@suse.de
+
+- fix buildrequires
+
+-------------------------------------------------------------------
+Sun Aug 30 09:28:35 CEST 2009 - llunak@novell.com
+
+- fix macmenu
+
+-------------------------------------------------------------------
+Thu Aug 20 10:55:42 CEST 2009 - beineri@opensuse.org
+
+- own files previously ghosted by desktop-file-utils (bnc#531122)
+
+-------------------------------------------------------------------
+Mon Jun 15 10:23:45 CEST 2009 - coolo@novell.com
+
+- do take all autotool versions
+
+-------------------------------------------------------------------
+Fri May 29 13:18:23 CEST 2009 - llunak@suse.cz
+
+- build with gcc 4.4
+
+-------------------------------------------------------------------
+Sat Apr  4 17:28:09 CEST 2009 - coolo@suse.de
+
+- refresh all patches to fix build
+
+-------------------------------------------------------------------
+Fri Feb 13 18:33:23 CET 2009 - coolo@suse.de
+
+- move sr@Latn away in kde_post_install
+
+-------------------------------------------------------------------
+Mon Feb  9 14:57:47 CET 2009 - coolo@suse.de
+
+- only take the first part of the release into kdeversion
+
+-------------------------------------------------------------------
+Sat Feb  7 20:39:18 CET 2009 - coolo@suse.de
+
+- skip the build counter in the kdeversion.h
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Nov 17 10:28:56 CET 2008 - stbinner@suse.de
+
+- Fix crash when fixed-layout tables specify all % width as 0 
+  (affects new ebay myebay version) (bnc#437318)
+
+-------------------------------------------------------------------
+Thu Nov  6 21:22:53 CET 2008 - dmueller@suse.de
+
+- fix desktop translations after update-translations changes
+
+-------------------------------------------------------------------
+Sun Nov  2 19:05:31 CET 2008 - coolo@suse.de
+
+- pass a --project to suse_desktop_files (quite a hack as we can't
+  use rpm macros in here)
+
+-------------------------------------------------------------------
+Fri Oct 17 12:56:14 CEST 2008 - stbinner@suse.de
+
+- make a png non-executable (bnc#433749)
+
+-------------------------------------------------------------------
+Wed Sep 24 20:45:39 CEST 2008 - wstephenson@suse.de
+
+- Fix vcard encoding issue (bnc#382959)
+
+-------------------------------------------------------------------
+Wed Sep 10 13:02:23 CEST 2008 - dmueller@suse.de
+
+- fix m4 macro nesting
+- fix build of inotify stuff for SLE10
+
+-------------------------------------------------------------------
+Tue Sep  9 11:52:53 CEST 2008 - dmueller@suse.de
+
+- update admin tarball for python 2.6 support
+
+-------------------------------------------------------------------
+Mon Sep  8 22:34:30 CEST 2008 - dmueller@suse.de
+
+- fix inotify support with 2.6.27 (fixes build)
+
+-------------------------------------------------------------------
+Wed Aug 20 18:43:12 CEST 2008 - coolo@suse.de
+
+- update to KDE 3.5.10
+  * translation updates
+  * bugfixes
+  * desktop files validate
+  * removed patches upstreamed
+
+-------------------------------------------------------------------
+Mon Jul 28 17:20:28 CEST 2008 - llunak@suse.cz
+
+- return kdesu password timeout back to 2 hours (bnc#404521)
+
+-------------------------------------------------------------------
+Thu Jul  3 07:14:37 CEST 2008 - dmueller@suse.de
+
+- fix ftp protocol overwriting existing files during rename (bnc#399296)
+
+-------------------------------------------------------------------
+Tue Jun  3 14:46:25 CEST 2008 - stbinner@suse.de
+
+- fix Desktop and Network icons missing in kcontrol (bnc#396153)
+
+-------------------------------------------------------------------
+Tue May 27 10:42:55 CEST 2008 - llunak@suse.cz
+
+- fix kdesu not defaulting to sudo anymore (bnc#216796)
+
+-------------------------------------------------------------------
+Tue May 20 18:00:29 CEST 2008 - llunak@suse.cz
+
+- do not always default to kdesu remembering password (bnc#386531)
+
+-------------------------------------------------------------------
+Mon May 19 21:21:40 CEST 2008 - llunak@suse.cz
+
+- fix useless and potentionally even harmful usage of kde3 wrapper
+
+-------------------------------------------------------------------
+Fri May  9 10:35:21 CEST 2008 - dmueller@suse.de
+
+- 3_5_BRANCH.diff update:
+  * translation fixes
+  * fix kdesu -t splitting lines (bnc#335507)
+
+-------------------------------------------------------------------
+Sat Apr 26 02:07:41 CEST 2008 - dmueller@suse.de
+
+- fix start_kdeinit vulnerability (CVE-2008-1671, bnc#382618) 
+
+-------------------------------------------------------------------
+Fri Apr 25 18:00:19 CEST 2008 - llunak@suse.cz
+
+- change kdesu defaults to keeping a password for 5min (bnc#216796)
+
+-------------------------------------------------------------------
+Wed Apr 23 13:40:22 CEST 2008 - llunak@suse.cz
+
+- 3_5_BRANCH.diff update to remove fsync() causing bad I/O
+  performance
+
+-------------------------------------------------------------------
+Thu Apr 10 16:22:10 CEST 2008 - stbinner@suse.de
+
+- don't dump mime types of KDE4 apps but give it only low priority
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Apr  7 14:24:56 CEST 2008 - dmueller@suse.de
+
+- remove ispell_dictionary as it breaks locale selection (bnc#204734)
+
+-------------------------------------------------------------------
+Wed Mar 12 15:07:19 CET 2008 - dmueller@suse.de
+
+- 3_5_BRANCH.diff update to fix media manager autostart in KDE4
+
+-------------------------------------------------------------------
+Wed Feb 13 19:52:59 CET 2008 - dmueller@suse.de
+
+- update to 3.5.9:
+  * 9th bugfix release of KDE 3.5
+  * remove patches that are already upstream
+
+-------------------------------------------------------------------
+Fri Feb  8 22:18:23 CET 2008 - stbinner@suse.de
+
+- prevent autostarted application crashes under KDE4 (bnc#359800)
+
+-------------------------------------------------------------------
+Thu Jan 10 14:11:25 CET 2008 - dmueller@suse.de
+
+- branch update (#334277, #348088)
+
+-------------------------------------------------------------------
+Wed Jan  2 08:32:09 CET 2008 - stbinner@suse.de
+
+- update 3_5_BRANCH.diff to pick up some qxembed fixes
+
+-------------------------------------------------------------------
+Wed Nov 14 13:08:53 CET 2007 - dmueller@suse.de
+
+- add 3_5_BRANCH.diff to fix the latest gcc 4.3 build
+  problem of the day
+
+-------------------------------------------------------------------
+Mon Nov  5 15:50:12 CET 2007 - dmueller@suse.de
+
+- remove nosource tag from kdelib3-devel-doc 
+
+-------------------------------------------------------------------
+Tue Oct  9 10:53:35 CEST 2007 - stbinner@suse.de
+
+- update to KDE 3.5.8:
+   * small performance improvements in core libs
+   * bugfixes in core libs, http ioslave, khtml and kjs
+- fix problem with focus when mailing link from Konqueror (#333386)
+- fix non-KDE X-KDE-SubstituteUID apps not starting (#325633)
+- fix WINE menu entries not being shown in the menu (#331598)
+
+-------------------------------------------------------------------
+Mon Oct  1 14:00:49 CEST 2007 - stbinner@suse.de
+
+- SVN commit 717341: Revert r707381 which broke http-headers, and 
+  add a bit more buffer to handle long http-headers like X-JSON
+
+-------------------------------------------------------------------
+Thu Sep 27 15:31:48 CEST 2007 - dmueller@suse.de
+
+- drop -Bdirect 
+
+-------------------------------------------------------------------
+Mon Sep 17 13:59:30 CEST 2007 - stbinner@suse.de
+
+- fix build for < 10.3
+- fix bug 301648: Cannot select "remote charset" in Konqueror
+
+-------------------------------------------------------------------
+Fri Sep 14 16:48:24 CEST 2007 - dmueller@suse.de
+
+- fix crash in kded on shutdown (#304640)
+- fix addressbook ressource saving refcount bug
+- fix konqueror slowdown on Qt API documentation
+- fix cross domain cookie injection (kde bug #134421)
+- http kioslave fixes to make it work with big and chunked
+  http response headers 
+- fix addressbar spoofing (#298707, #298736, CVE-2007-4224, 
+  CVE-2007-4225, CVE-2007-3820)
+
+-------------------------------------------------------------------
+Tue Sep 11 18:31:27 CEST 2007 - stbinner@suse.de
+
+- add mime-type definitions for Open XML docx, pptx & xlsx (#307159)
+
+-------------------------------------------------------------------
+Tue Sep 11 14:59:41 CEST 2007 - stbinner@suse.de
+
+- fix kde4 application may get started instead of user substituded 
+  kde3 application (#309044)
+
+-------------------------------------------------------------------
+Tue Sep 11 13:45:02 CEST 2007 - tpatzig@suse.de
+
+- fix kded destructor to delete all loaded modules (#228865)
+
+-------------------------------------------------------------------
+Tue Sep 11 10:51:13 CEST 2007 - stbinner@suse.de
+
+- only check for mime type starting with ""Shockwave Flash" (#304999)
+
+-------------------------------------------------------------------
+Mon Sep 10 14:14:18 CEST 2007 - dmueller@suse.de
+
+- apply susetranslations in kbuildsycoca (#196855) 
+
+-------------------------------------------------------------------
+Mon Sep  3 15:08:18 CEST 2007 - stbinner@suse.de
+
+- search for locale and help also in /opt/kde3/share/locale-bundle,
+  /opt/kde3/share/doc-bundle & /usr/share/gnome/help-bundle (#302270)
+
+-------------------------------------------------------------------
+Thu Aug 30 17:36:31 CEST 2007 - dmueller@suse.de
+
+- fix kdebug assertions on suppressed output 
+
+-------------------------------------------------------------------
+Wed Aug 29 14:27:01 CEST 2007 - stbinner@suse.de
+
+- get a missing Flash plugin not from Adobe but non-oss (#304999)
+
+-------------------------------------------------------------------
+Fri Aug 24 18:28:42 CEST 2007 - dmueller@suse.de
+
+- disable kdDebug by default (#304173)
+
+-------------------------------------------------------------------
+Fri Aug 10 18:56:56 CEST 2007 - dmueller@suse.de
+
+- add workaround for kernel garbling environ in kdeinit (#298943)
+
+-------------------------------------------------------------------
+Sat Aug  4 18:38:32 CEST 2007 - stbinner@suse.de
+
+- update 3_5_BRANCH.diff:
+   * make KAcceleratorManager automanage popups
+   * fix kiconloader to scale if possible rather than return unknown
+
+-------------------------------------------------------------------
+Fri Aug  3 13:16:55 CEST 2007 - stbinner@suse.de
+
+- split off libkdefx and Plastik into default-style sub-package
+
+-------------------------------------------------------------------
+Sun Jul 22 07:27:46 CEST 2007 - coolo@suse.de
+
+- remove patch that conflicts with the 3.5 update because
+  it went upstream too
+
+-------------------------------------------------------------------
+Fri Jul 20 14:57:35 CEST 2007 - llunak@suse.cz
+
+- update 3_5_BRANCH.diff to include bugfixes (#293424)
+
+-------------------------------------------------------------------
+Mon Jul 16 13:46:19 CEST 2007 - stbinner@suse.de
+
+- ensure that correct kcmshell is called (#277292)
+
+-------------------------------------------------------------------
+Fri Jul 13 11:41:55 CEST 2007 - stbinner@suse.de
+
+- add text completion editor to khtml forms and KHistoryCombo
+
+-------------------------------------------------------------------
+Mon Jul  9 13:29:02 CEST 2007 - dmueller@suse.de
+
+- add patch for being able to open kwallet via DCOP
+
+-------------------------------------------------------------------
+Thu Jun 28 15:03:28 CEST 2007 - wstephenson@suse.de
+
+- allow http to contact localhost when in offline mode
+
+-------------------------------------------------------------------
+Tue Jun 19 23:58:03 CEST 2007 - dmueller@suse.de
+
+- update 3_5_BRANCH.diff to fix various 3.5.7 regressions
+
+-------------------------------------------------------------------
+Sun Jun 10 13:38:14 CEST 2007 - stbinner@suse.de
+
+- brand default user agent like done in Firefox
+
+-------------------------------------------------------------------
+Fri Jun  8 12:05:40 CEST 2007 - dmueller@suse.de
+
+- fix quoting in desktop-translations hook
+
+-------------------------------------------------------------------
+Tue Jun  5 09:28:56 CEST 2007 - stbinner@suse.de
+
+- add Provides: kdepim3-networkstatus
+- restore binary compatibility in network status patch (#279884)
+- update common_options_legacy from common_options
+
+-------------------------------------------------------------------
+Fri Jun  1 17:33:17 CEST 2007 - dmueller@suse.de
+
+- update to current 3_5_BRANCH:
+  * removes patches that went upstream
+  * adds kinit wrapper for OOM protection
+
+-------------------------------------------------------------------
+Wed May 30 18:45:10 CEST 2007 - wstephenson@suse.de
+
+- Update Obsoletes: as networkstatus was moved into libs
+
+-------------------------------------------------------------------
+Tue May 29 19:44:47 CEST 2007 - dmueller@suse.de
+
+- fix kde_post_install to also find desktop files in
+  other subdirectories under /opt/kde3/share
+- use kde_post_install
+- drop obsolete patch
+
+-------------------------------------------------------------------
+Thu May 24 21:26:16 CEST 2007 - wstephenson@suse.de
+
+- Revised offline mode infrastructure (#237274)
+
+-------------------------------------------------------------------
+Wed May 23 13:55:04 CEST 2007 - stbinner@suse.de
+
+- use %fdupes
+- add missing ldconfig calls
+
+-------------------------------------------------------------------
+Mon May 14 22:10:06 CEST 2007 - stbinner@suse.de
+
+- update to 3.5.7
+   * several bugfixes in khtml, kjs and katepart
+- add khtml patch to fix Google Mail
+
+-------------------------------------------------------------------
+Mon May  7 15:36:45 CEST 2007 - stbinner@suse.de
+
+- X-KDE-AutoEmbed=false for Java applications (#210967)
+
+-------------------------------------------------------------------
+Thu Apr 26 14:55:36 CEST 2007 - dmueller@suse.de
+
+- fix avahi daemon detection (#264233)
+
+-------------------------------------------------------------------
+Mon Apr 23 16:45:29 CEST 2007 - stbinner@suse.de
+
+- don't start randomly KDE4 when a KDE3 app exists via mini-cli
+- interpret OnlyShowIn=KDE of KDE4 applications as NotShowIn
+
+-------------------------------------------------------------------
+Fri Apr 20 16:43:44 CEST 2007 - stbinner@suse.de
+
+- ignore mime types of kde4 applications and mark them in menus
+
+-------------------------------------------------------------------
+Fri Apr 20 10:14:20 CEST 2007 - nadvornik@suse.cz
+
+- adjusted BuildRequires for libjasper-devel
+
+-------------------------------------------------------------------
+Mon Apr 16 17:59:08 CEST 2007 - dmueller@suse.de
+
+- add unzip to buildrequires for the java checker
+
+-------------------------------------------------------------------
+Thu Apr 12 13:37:13 CEST 2007 - stbinner@suse.de
+
+- default to UTF-8 encoding for spellchecking (#261217)
+
+-------------------------------------------------------------------
+Tue Apr  3 22:56:10 CEST 2007 - stbinner@suse.de
+
+- update 3_5_BRANCH diff to fix build of kde3-i18n
+- fix compiler options for gcc on < 10.3
+
+-------------------------------------------------------------------
+Mon Apr  2 18:13:42 CEST 2007 - dmueller@suse.de
+
+- update 3_5_BRANCH diff to include fix for
+  * possible utf8 overlong decoding issue in kjs (#259187)
+  * crash during ftp PASV scanning (#257045)
+  * possible XSS in title tags (#238377)
+
+-------------------------------------------------------------------
+Mon Mar 26 22:31:33 CEST 2007 - dmueller@suse.de
+
+- add libbz2-devel build requires 
+
+-------------------------------------------------------------------
+Thu Mar 22 19:36:19 CET 2007 - stbinner@suse.de
+
+- adapt lpoptions config file position for CUPS 1.2 (#252947)
+
+-------------------------------------------------------------------
+Tue Mar 20 18:26:03 CET 2007 - dmueller@suse.de
+
+- fix typo in xauth localhostname patch which inverts the logic
+
+-------------------------------------------------------------------
+Mon Mar 19 13:35:16 CET 2007 - dmueller@suse.de
+
+- update 3_5_BRANCH.diff (#255753)
+
+-------------------------------------------------------------------
+Mon Mar 12 11:04:05 CET 2007 - stbinner@suse.de
+
+- update 3_5_BRANCH.diff to fix katepart selection problems
+
+-------------------------------------------------------------------
+Fri Mar  9 16:30:35 CET 2007 - dmueller@suse.de
+
+- apply 3_5_BRANCH.diff to fix build with Qt 3.3.8
+
+-------------------------------------------------------------------
+Fri Mar  9 14:19:43 CET 2007 - stbinner@suse.de
+
+- install kttds icon to hicolor/apps/ instead of crystalsvg/apps/
+
+-------------------------------------------------------------------
+Thu Mar  8 11:45:07 CET 2007 - stbinner@suse.de
+
+- adapt fix-gnome-help-support.diff to GNOME prefix move (#247434)
+
+-------------------------------------------------------------------
+Thu Feb 22 13:38:59 CET 2007 - stbinner@suse.de
+
+- make previous changes block only active for > 10.2
+
+-------------------------------------------------------------------
+Wed Feb 21 16:57:10 CET 2007 - dobey@suse.de
+
+- Remove hicolor scalable sizes patch
+  Remove the kdelibs installed hicolor index.theme
+  Require hicolor-icon-theme
+  Fixes https://bugzilla.novell.com/show_bug.cgi?id=247278
+
+-------------------------------------------------------------------
+Tue Feb  6 17:49:52 CET 2007 - dmueller@suse.de
+
+- update 3_5_BRANCH to include latest fixes
+
+-------------------------------------------------------------------
+Fri Feb  2 17:59:42 CET 2007 - stbinner@suse.de
+
+- fix changes file not incremental
+
+-------------------------------------------------------------------
+Wed Jan 24 11:45:53 CET 2007 - stbinner@suse.de
+
+- update to fixed 3.5.6 tarball (bubble notification problem)
+
+-------------------------------------------------------------------
+Mon Jan 22 10:57:54 CET 2007 - stbinner@suse.de
+
+- update to 3.5.6 release:
+   * khtml: 
+      - implement CSS3 extension text-overflow: ellipsis.
+      - implement overflow-x/y as many websites use it now.
+      - several incorrect painting and crash bug fixes
+   * katepart:
+      - add actionscript highlighting.
+      - add some pseudo-elements that khtml supports, but FireFox doesn't. 
+   * kdefx: change asterisks on passwords to bullets. 
+   * several bugfixes within kdeprint, kio and kjs
+
+-------------------------------------------------------------------
+Sun Jan 21 19:48:03 CET 2007 - dmueller@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sat Jan 20 09:13:18 CET 2007 - aj@suse.de
+
+- Use avahi.
+
+-------------------------------------------------------------------
+Wed Jan  3 19:51:47 CET 2007 - stbinner@suse.de
+
+- fix kickoff-drop-shadow.diff to not show drop shadows for all
+  widgets of application after the first where it really should
+  
+-------------------------------------------------------------------
+Mon Dec 11 16:19:56 CET 2006 - dmueller@suse.de
+
+- fix print dialog size in nondefault configuration (#227465)
+
+-------------------------------------------------------------------
+Fri Nov 24 11:39:22 CET 2006 - dmueller@suse.de
+
+- fix ktip icon hack breaking translations (#221177)
+
+-------------------------------------------------------------------
+Thu Nov 23 16:01:43 CET 2006 - dmueller@suse.de
+
+- fix cups only accepting localhost as ipp:// hostname (#222938)
+- fix samba sharing dialog accessible even though samba not running
+  (#159223)
+
+-------------------------------------------------------------------
+Wed Nov 22 20:53:12 CET 2006 - stbinner@suse.de
+
+- fix kdesu resets locale (#222728)
+
+-------------------------------------------------------------------
+Mon Nov 20 17:18:52 CET 2006 - dmueller@suse.de
+
+- workaround gdb issue with backtraces in drkonqi (#211982)
+
+-------------------------------------------------------------------
+Sat Nov 18 18:35:12 CET 2006 - stbinner@suse.de
+
+- fix branch kjs crash regression (kde #137518 & #137358), r602712
+
+-------------------------------------------------------------------
+Wed Nov 15 23:03:23 CET 2006 - dmueller@suse.de
+
+- run permissions in %post (#221138)
+
+-------------------------------------------------------------------
+Wed Nov  8 16:47:11 CET 2006 - stbinner@suse.de
+
+- remove historic "Provides:" (#218798)
+
+-------------------------------------------------------------------
+Mon Nov  6 20:53:48 CET 2006 - dmueller@suse.de
+
+- add patch for drop shadows in kickoff
+
+-------------------------------------------------------------------
+Sun Nov  5 01:22:15 CET 2006 - stbinner@suse.de
+
+- fix dnd-utf8-fix.diff
+
+-------------------------------------------------------------------
+Sat Nov  4 19:26:38 CET 2006 - stbinner@suse.de
+
+- fix drag & drop print with utf-8 name (#194400)
+
+-------------------------------------------------------------------
+Fri Nov  3 15:32:59 CET 2006 - stbinner@suse.de
+
+- also search $XDG_DATA_DIRS/pixmaps for icons for now (#209385)
+
+-------------------------------------------------------------------
+Tue Oct 31 16:52:52 CET 2006 - coolo@suse.de
+
+- update 3_5_BRANCH.diff 
+   - even more KHTML fixes
+
+-------------------------------------------------------------------
+Fri Oct 27 09:24:47 CEST 2006 - coolo@suse.de
+
+- update 3_5_BRANCH diff:
+   * fix severe kde bug 127662, which made working with KDE so much
+    less fun
+
+-------------------------------------------------------------------
+Fri Oct 20 14:05:57 CEST 2006 - stbinner@suse.de
+
+- don't show progress when stating kio_beagle for beagle status
+
+-------------------------------------------------------------------
+Thu Oct 19 12:20:58 CEST 2006 - dmueller@suse.de
+
+- update admin tarball
+
+-------------------------------------------------------------------
+Tue Oct 17 11:05:20 CEST 2006 - dmueller@suse.de
+
+- update to 3_5_BRANCH.diff to add workaround
+  for gdb being unable to produce a valid backtrace
+
+-------------------------------------------------------------------
+Mon Oct 16 00:55:23 CEST 2006 - schwab@suse.de
+
+- Make sure config.rpath is present.
+- Update automake version test.
+
+-------------------------------------------------------------------
+Wed Oct 11 22:47:10 CEST 2006 - stbinner@suse.de
+
+- update 3_5_BRANCH diff:
+   * fix crash when scheduling job for an invalid URL (#211541)
+   * fix cstyle indenter regression in Kate
+
+-------------------------------------------------------------------
+Tue Oct 10 14:42:44 CEST 2006 - dmueller@suse.de
+
+- update 3_5_BRANCH to fix cups connect timeout (#210260)
+
+-------------------------------------------------------------------
+Sat Oct  7 19:48:38 CEST 2006 - stbinner@suse.de
+
+- update to the next 3.5.5 release tarball
+   - fixes a crash in Kate when selecting or undoing
+   - some safe khtml crash fixes
+
+-------------------------------------------------------------------
+Fri Oct  6 14:17:49 CEST 2006 - coolo@suse.de
+
+- update to the next 3.5.5 release tarball
+   - fixes for the kdesu show stopper bug
+
+-------------------------------------------------------------------
+Tue Oct  3 21:03:03 CEST 2006 - dmueller@suse.de
+
+- update admin tarball (fixes kdelibs3-devel-doc)
+- fix rejects in testkhtml (fixes testkhtml build)
+- update 3_5_BRANCH to include kdesu fixes (#208272)
+
+-------------------------------------------------------------------
+Tue Oct  3 10:08:35 CEST 2006 - stbinner@suse.de
+
+- update to 3.5.5 release tarball (no crypto changes)
+
+-------------------------------------------------------------------
+Sun Oct  1 18:38:22 CEST 2006 - stbinner@suse.de
+
+- update 3.5 branch diff:
+   fixes in knewstuff, khtml and kjs (date object), kio, kate,
+   kdecore (iconloader, viewport) and kdeprint (cups)
+
+-------------------------------------------------------------------
+Wed Sep 27 12:41:40 CEST 2006 - dmueller@suse.de
+
+- move ktradertest to kdelibs3 subpackage
+
+-------------------------------------------------------------------
+Tue Sep 26 13:04:08 CEST 2006 - dmueller@suse.de
+
+- require sudo for 10.2 (#207884)
+
+-------------------------------------------------------------------
+Wed Sep 20 19:23:05 CEST 2006 - dmueller@suse.de
+
+- add patch for CUPS 1.2.x support (#204453)
+- add Viewport support to KWinModule
+
+-------------------------------------------------------------------
+Tue Sep 19 22:53:21 CEST 2006 - dmueller@suse.de
+
+- add workaround for Xvfb bug in Xorg 7.1 in testkhtml
+- fix kdelibs3-devel-doc build
+- use sudo for kdesu authentication
+
+-------------------------------------------------------------------
+Thu Sep 14 14:03:31 CEST 2006 - coolo@suse.de
+
+- update admin tar ball for python 2.5
+- update 3.5 branch diff:
+   - khtml, kjs fixes
+   - QXIMInputContext crash workaround
+   - cups 1.2: also support unix sockets and IPv6
+   - protect urls in kdeprint interface
+
+-------------------------------------------------------------------
+Wed Sep 13 11:29:09 CEST 2006 - stbinner@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Mon Sep 11 16:28:48 CEST 2006 - ltinkl@suse.cz
+
+- fix #187601 - Swedish characters doesn't display right using fish in Konqueror
+  to access another computer over the network
+- fix #204734 - recommend ispell, ispell_dictionary and enscript in kdelibs3
+
+-------------------------------------------------------------------
+Thu Sep  7 18:23:20 CEST 2006 - coolo@suse.de
+
+- update to 3_5_BRANCH to get latest API additions
+- remove meaningless "level a" from the version to report and
+  use the kdelibs3 release number
+
+-------------------------------------------------------------------
+Sun Sep  3 08:49:51 CEST 2006 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Fri Sep  1 17:24:04 CEST 2006 - llunak@suse.cz
+
+- Add patches with Xinerama improvements
+- show Beagle kfile sidebar entry only if daemon is running
+
+-------------------------------------------------------------------
+Fri Sep  1 14:12:38 CEST 2006 - coolo@suse.de
+
+- dropped unused patch (which required a suseconfig script anyway)
+- updated 3_5_BRANCH to pickup random fixes (kate, khtml)
+
+-------------------------------------------------------------------
+Fri Aug 25 00:40:12 CEST 2006 - dmueller@suse.de
+
+- build
+
+-------------------------------------------------------------------
+Thu Aug 24 17:40:51 CEST 2006 - llunak@suse.cz
+
+- Search also $XDG_DATA_DIRS for icons (#192460).
+
+-------------------------------------------------------------------
+Wed Aug 23 10:48:23 CEST 2006 - stbinner@suse.de
+
+- update 3_5_BRANCH (kate, khtml and translation improvements)
+
+-------------------------------------------------------------------
+Mon Aug 14 11:12:09 CEST 2006 - coolo@suse.de
+
+- update 3_5_BRANCH.diff to fix "kcmshell background" if both GNOME
+  and KDE are installed
+
+-------------------------------------------------------------------
+Fri Aug 11 15:54:40 CEST 2006 - dmueller@suse.de
+
+- update 3_5_BRANCH.diff to include fix for SSL issues
+
+-------------------------------------------------------------------
+Mon Aug  7 16:34:42 CEST 2006 - coolo@suse.de
+
+- update 3_5_BRANCH.diff to include favicon drawing fix
+
+-------------------------------------------------------------------
+Fri Aug  4 15:19:31 CEST 2006 - stbinner@suse.de
+
+- #define KDELIBS_SUSE in kdeversion.h
+- patch kfile for better beagle:/ support
+- fix new X.org font paths for testkhtml
+
+-------------------------------------------------------------------
+Sun Jul 23 21:31:55 CEST 2006 - coolo@suse.de
+
+- update to KDE 3.5.4:
+   * several katepart, khtml and kjs fixes
+   * increased usability of KIO KSSL dialog
+   * allow KLineEdit show a hint message when empy and not focussed
+   * update the whitelist of IDNs: add gr, is and org
+   * kprocess/kcrash: add safety checks for set*uid return values
+   * kdirwatch: fix crashes caused by inotify code
+
+-------------------------------------------------------------------
+Mon Jul 10 08:45:00 CEST 2006 - stbinner@suse.de
+
+- fix kdelibs3-devel-doc build
+
+-------------------------------------------------------------------
+Sun Jul  9 21:29:14 CEST 2006 - stbinner@suse.de
+
+- fix duplicate parameter name in kdemm (#189860)
+
+-------------------------------------------------------------------
+Fri Jun 30 11:32:36 CEST 2006 - dmueller@suse.de
+
+- update 3_5_BRANCH.diff to include KSSL changes for testing 
+
+-------------------------------------------------------------------
+Wed Jun 28 21:38:15 CEST 2006 - dmueller@suse.de
+
+- update admin tarball for autoconf 2.60 support 
+
+-------------------------------------------------------------------
+Tue Jun 27 11:29:39 CEST 2006 - stbinner@suse.de
+
+- update 3_5_BRANCH.diff for KDirWatch fixes (#188527)
+
+-------------------------------------------------------------------
+Mon Jun 19 11:32:35 CEST 2006 - stbinner@suse.de
+
+- update 3_5_BRANCH.diff for KLineEdit::setClickMessage(QString)
+
+-------------------------------------------------------------------
+Mon Jun 19 07:57:13 CEST 2006 - coolo@suse.de
+
+- fix 3.5.3 regression: show football news on spiegel.de
+  again (KDE #128944)
+
+-------------------------------------------------------------------
+Fri Jun 16 09:02:59 CEST 2006 - coolo@suse.de
+
+- fix requires for older distributions (#185403)
+
+-------------------------------------------------------------------
+Mon Jun 12 15:39:14 CEST 2006 - stbinner@suse.de
+
+- Add 3_5_BRANCH.diff update to fix openEXR configure check
+
+-------------------------------------------------------------------
+Mon Jun 12 11:06:33 CEST 2006 - dmueller@suse.de
+
+- Update admin tarball from SVN
+
+-------------------------------------------------------------------
+Fri Jun  9 17:03:58 CEST 2006 - dmueller@suse.de
+
+- reenable -Wl,as-needed 
+
+-------------------------------------------------------------------
+Fri Jun  2 03:45:05 CEST 2006 - dmueller@suse.de
+
+- disable -Wl,as-needed as long as binutils are not fixed 
+
+-------------------------------------------------------------------
+Mon May 29 09:38:58 CEST 2006 - stbinner@suse.de
+
+- fix build of kdelibs3-devel-doc
+
+-------------------------------------------------------------------
+Wed May 24 09:50:37 CEST 2006 - stbinner@suse.de
+
+- update to KDE 3.5.3
+   * several fixes to khtml, kio, kdeprint, kdeui and io-slaves
+ 
+-------------------------------------------------------------------
+Tue May 23 14:51:11 CEST 2006 - ltinkl@suse.cz
+
+- integrate print preview patch (#133246)
+
+-------------------------------------------------------------------
+Sat May 20 15:11:26 CEST 2006 - adrian@suse.de
+
+- do not require libdrm-devel for < 10.1
+
+-------------------------------------------------------------------
+Fri May 19 10:57:01 CEST 2006 - stbinner@suse.de
+
+- make khtml smooth scrolling acceptable (#175741)
+
+-------------------------------------------------------------------
+Wed May 17 17:31:40 CEST 2006 - dmueller@suse.de
+
+- fix kerberos handling in kprinter (#154334)
+
+-------------------------------------------------------------------
+Mon May 15 16:49:14 CEST 2006 - stbinner@suse.de
+
+- update to KDE 3.5.2 and 3_5_BRANCH.diff
+  * fixes to Kate
+  * khtml: fixes and performance improvements
+  * kjs: fixes and performance improvements
+
+-------------------------------------------------------------------
+Mon May 15 11:17:39 CEST 2006 - stbinner@suse.de
+
+- complete OpenDocument mime type icons (#166917)
+
+-------------------------------------------------------------------
+Tue May  2 10:19:34 CEST 2006 - coolo@suse.de
+
+- only show kresources in KDE (#170681)
+
+-------------------------------------------------------------------
+Thu Apr 13 16:09:03 CEST 2006 - dmueller@suse.de
+
+- add dbus-1-qt3-devel to kdelibs3-devel dependencies 
+
+-------------------------------------------------------------------
+Thu Apr 13 14:35:49 CEST 2006 - dmueller@suse.de
+
+- implement mediamanager/hal-unmount support in KIO (#160654) 
+
+-------------------------------------------------------------------
+Wed Apr 12 20:42:37 CEST 2006 - dobey@suse.de
+
+- Add patch to improve default svg sizes in hicolor index.theme
+  Partial fix of https://bugzilla.novell.com/show_bug.cgi?id=162222
+  If kdelibs3 is installed as well and the user uses gnome, this is
+  needed to prevent breaking the sizes in upstream hicolor which is
+  included in the gnome-icon-theme package
+
+-------------------------------------------------------------------
+Fri Apr  7 14:57:03 CEST 2006 - dmueller@suse.de
+
+- fix media:/ urls in kfiledialog
+- fix kdirwatch inducted memory corruption, often seen
+  as kate crashing during save. 
+
+-------------------------------------------------------------------
+Mon Apr  3 12:10:17 CEST 2006 - dmueller@suse.de
+
+- don't package xx locale 
+
+-------------------------------------------------------------------
+Tue Mar 28 16:49:08 CEST 2006 - dmueller@suse.de
+
+- fix xauth being garbled during hostname changes (#147691)
+- fix tar extraction error for certain archives (#161312)
+
+-------------------------------------------------------------------
+Tue Mar 28 16:44:52 CEST 2006 - ro@suse.de
+
+- kdelibs3-devel req: replace mDNSResponder by mDNSResponder-devel
+
+-------------------------------------------------------------------
+Tue Mar 28 10:30:43 CEST 2006 - stbinner@suse.de
+
+- fix kdesu maybe not working with non-C locale (#152077)
+
+-------------------------------------------------------------------
+Tue Mar 28 01:19:28 CEST 2006 - ro@suse.de
+
+- fix last patch to apply 
+
+-------------------------------------------------------------------
+Mon Mar 27 19:13:24 CEST 2006 - dmueller@suse.de
+
+- don't rely on KApplication still being there for KMessagebox (#160396) 
+
+-------------------------------------------------------------------
+Mon Mar 27 15:34:43 CEST 2006 - coolo@suse.de
+
+- only assume all KIO protocols if the desktop file specifies KDE
+  category (#160777)
+
+-------------------------------------------------------------------
+Fri Mar 24 13:38:24 CET 2006 - dmueller@suse.de
+
+- reduce BuildRequires 
+- fix pasting of files with name collissions (#160581)
+
+-------------------------------------------------------------------
+Tue Mar 21 17:05:55 CET 2006 - stbinner@suse.de
+
+- add support for login part of fdo autostart spec draft (#159395)
+
+-------------------------------------------------------------------
+Tue Mar 21 14:49:14 CET 2006 - dmueller@suse.de
+
+- fix window titles in non-utf8 locale (#131287)
+- drop gcc 4.1 miscompile workaround patch
+
+-------------------------------------------------------------------
+Tue Mar 21 11:18:27 CET 2006 - dmueller@suse.de
+
+- fix pixmap leak in khtml 
+
+-------------------------------------------------------------------
+Mon Mar 13 18:59:51 CET 2006 - wstephenson@suse.de
+
+- add offline mode for http
+
+-------------------------------------------------------------------
+Mon Mar 13 13:01:33 CET 2006 - dmueller@suse.de
+
+- reduce KDirWatch noiselevel (#157523) 
+
+-------------------------------------------------------------------
+Sun Mar 12 13:54:52 CET 2006 - coolo@suse.de
+
+- fix execution of desktop files without urls (#157130)
+
+-------------------------------------------------------------------
+Tue Mar  7 11:43:24 CET 2006 - wstephenson@suse.de
+
+- Make sure that if a filesystem is not mounted with acl support, but the
+  acl support is compiled in, the metadata for acl setting is not set,
+  thus preventing and error on save, and as a result of that failure to
+  set permissions for all but the first file (in the multiple files case).
+
+-------------------------------------------------------------------
+Tue Mar  7 09:40:50 CET 2006 - coolo@suse.de
+
+- pass windows in KRun (#155355)
+
+-------------------------------------------------------------------
+Sat Mar  4 21:04:29 CET 2006 - coolo@suse.de
+
+- fix application themed icons (k3b toolbar)
+
+-------------------------------------------------------------------
+Wed Mar  1 09:01:33 CET 2006 - coolo@suse.de
+
+- let kdelibs3-arts recommend kdemultimedia3-arts as it avoids crashes
+  (#115245)
+
+-------------------------------------------------------------------
+Tue Feb 28 16:59:40 CET 2006 - coolo@suse.de
+
+- let crystalsvg inherit suseadds, so that we take the gnome and yast
+  icons in account (#154062)
+
+-------------------------------------------------------------------
+Tue Feb 28 11:52:28 CET 2006 - stbinner@suse.de
+
+- degrade (untranslatable) kimproxy messagebox to warning
+
+-------------------------------------------------------------------
+Tue Feb 21 12:11:49 CET 2006 - dmueller@suse.de
+
+- -fPIE is needed for s390x 
+
+-------------------------------------------------------------------
+Fri Feb 17 11:53:43 CET 2006 - coolo@suse.de
+
+- avoid breaking translations (show-distribution.diff)
+
+-------------------------------------------------------------------
+Thu Feb 16 20:06:27 CET 2006 - coolo@suse.de
+
+- fix encoding problems with kprinter (mangled UTF-8)
+
+-------------------------------------------------------------------
+Wed Feb 15 16:33:37 CET 2006 - ltinkl@suse.cz
+
+- fix #148215 - kde colorchooser won't save user defined colors
+- fix #143263 - [gtk-qt] GTK+ scrollbars have several rendering issues
+
+-------------------------------------------------------------------
+Tue Feb  7 16:02:33 CET 2006 - stbinner@suse.de
+
+- use XAUTHLOCALHOSTNAME as host name, patch by Lubos (#147691)
+
+-------------------------------------------------------------------
+Mon Feb  6 22:43:23 CET 2006 - dmueller@suse.de
+
+- lookup desktop translations in desktop_translations catalogue 
+
+-------------------------------------------------------------------
+Mon Feb  6 13:27:32 CET 2006 - stbinner@suse.de
+
+- don't require libdrm-devel for older than SUSE Linux 10.1
+
+-------------------------------------------------------------------
+Fri Feb  3 13:57:49 CET 2006 - coolo@suse.de
+
+- add patch to fix KLocale warnings (#146525)
+
+-------------------------------------------------------------------
+Fri Feb  3 12:05:20 CET 2006 - coolo@suse.de
+
+- update clever menu patch to fix #74524 (by Lubos)
+
+-------------------------------------------------------------------
+Fri Feb  3 12:03:17 CET 2006 - coolo@suse.de
+
+- replace our own kdontchangethehostname with upstream fix
+- debug output corrections
+
+-------------------------------------------------------------------
+Thu Feb  2 09:37:18 CET 2006 - coolo@suse.de
+
+- fix requires for older distributions 
+- remove %ifs for < 920
+
+-------------------------------------------------------------------
+Wed Feb  1 16:36:38 CET 2006 - coolo@suse.de
+
+- translate servicemenus as they are used now for the medianotifier
+  (most of them will already have upstream translations)
+
+-------------------------------------------------------------------
+Wed Feb  1 15:10:57 CET 2006 - stbinner@suse.de
+
+- fix tiny clickable areas of status icons in Konqueror (#146500)
+
+-------------------------------------------------------------------
+Mon Jan 30 11:35:14 CET 2006 - stbinner@suse.de
+
+- update to 3.5 branch (changes to kprocess, khtml and kate)
+
+-------------------------------------------------------------------
+Sat Jan 28 15:24:20 CET 2006 - coolo@suse.de
+
+- look for wallpapers into /usr/share/wallpapers
+
+-------------------------------------------------------------------
+Fri Jan 27 20:23:49 CET 2006 - dmueller@suse.de
+
+- workaround gcc 4.1 miscompile 
+
+-------------------------------------------------------------------
+Fri Jan 27 09:29:19 CET 2006 - coolo@suse.de
+
+- fix patch conflict
+
+-------------------------------------------------------------------
+Fri Jan 27 01:55:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 08:23:55 CET 2006 - coolo@suse.de
+
+- update to 3.5 branch for inotify fixes
+- fix the kde_post_install translations
+
+-------------------------------------------------------------------
+Mon Jan 23 16:10:12 CET 2006 - coolo@suse.de
+
+- translate more files in kde_post_install
+- some khtml fixes for 3.5 branch
+- disable preview for media:/ content
+
+-------------------------------------------------------------------
+Sat Jan 21 20:23:19 CET 2006 - coolo@suse.de
+
+- update to KDE 3.5.1
+
+-------------------------------------------------------------------
+Thu Jan 19 17:35:48 CET 2006 - dmueller@suse.de
+
+- disable dnotify, we want inotify 
+
+-------------------------------------------------------------------
+Wed Jan 11 22:55:02 CET 2006 - stbinner@suse.de
+
+- update to 3_5_BRANCH (kdirwatch and kio_thumbnail fixes)
+
+-------------------------------------------------------------------
+Mon Jan  9 15:45:42 CET 2006 - mls@suse.de
+
+- add kde3-devel-packages to devel package, obsoletes macro
+
+-------------------------------------------------------------------
+Sun Jan  8 21:26:58 CET 2006 - stbinner@suse.de
+
+- update to 3_5_BRANCH (disable inotify on old broken kernels)
+
+-------------------------------------------------------------------
+Thu Jan  5 15:16:40 CET 2006 - llunak@suse.cz
+
+- update performance patches, use same names like in kdebase-SuSE
+
+-------------------------------------------------------------------
+Tue Dec 20 13:57:48 CET 2005 - dmueller@suse.de
+
+- add doc/HTML/* to filelist 
+
+-------------------------------------------------------------------
+Mon Dec 19 18:34:10 CET 2005 - dmueller@suse.de
+
+- add locale directories to the file list 
+
+-------------------------------------------------------------------
+Mon Dec 19 12:11:20 CET 2005 - coolo@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Thu Dec 15 11:54:41 CET 2005 - coolo@suse.de
+
+- update to 3_5_BRANCH for strict aliasing fixes
+
+-------------------------------------------------------------------
+Sun Dec 11 17:11:01 CET 2005 - stbinner@suse.de
+
+- update to 3_5_BRANCH (KDE #116156 and others)
+
+-------------------------------------------------------------------
+Thu Dec  8 13:05:18 CET 2005 - coolo@suse.de
+
+- remove work around as binutils were fixed
+
+-------------------------------------------------------------------
+Mon Dec  5 21:59:29 CET 2005 - coolo@suse.de
+
+- update to 3.5 branch
+- add work around for better -Bdirect support
+
+-------------------------------------------------------------------
+Sat Dec  3 15:07:43 CET 2005 - coolo@suse.de
+
+- build with -Bdirect if available
+
+-------------------------------------------------------------------
+Fri Dec  2 15:00:57 CET 2005 - dmueller@suse.de
+
+- remove inotify patch, upstream now 
+
+-------------------------------------------------------------------
+Fri Dec  2 11:08:51 CET 2005 - dmueller@suse.de
+
+- create locolor icon dirs as well 
+
+-------------------------------------------------------------------
+Thu Dec  1 10:33:17 CET 2005 - dmueller@suse.de
+
+- create hicolor icon dirs and add them to the file list 
+
+-------------------------------------------------------------------
+Wed Nov 30 12:20:10 CET 2005 - coolo@suse.de
+
+- update to 3.5 branch 
+- update startup improvement patches
+- remove the -O1 LDFLAGS for now
+
+-------------------------------------------------------------------
+Sat Nov 26 10:10:03 CET 2005 - coolo@suse.de
+
+- update to 3.5.0
+
+-------------------------------------------------------------------
+Wed Nov 23 18:37:07 CET 2005 - coolo@suse.de
+
+- update to 3.5 branch
+
+-------------------------------------------------------------------
+Tue Nov 22 08:46:49 CET 2005 - stbinner@suse.de
+
+- fix testkhtml build
+
+-------------------------------------------------------------------
+Mon Nov 21 15:04:22 CET 2005 - stbinner@suse.de
+
+- update to 3.5 RC 2
+
+-------------------------------------------------------------------
+Wed Nov 16 17:41:03 CET 2005 - stbinner@suse.de
+
+- fix iconloader to not load icons from wrong inherited icon set
+
+-------------------------------------------------------------------
+Wed Nov 16 11:49:43 CET 2005 - uli@suse.de
+
+- fixed to build on ARM (don't understand why it didn't fail
+  on other archs, though)
+
+-------------------------------------------------------------------
+Sat Nov 12 11:45:13 CET 2005 - stbinner@suse.de
+
+- updated admin.tar.bz2
+- no dependency on kdelibs3-arts on older distributions
+
+-------------------------------------------------------------------
+Sat Nov 12 01:33:22 CET 2005 - dmueller@suse.de
+
+- link with -O1
+
+-------------------------------------------------------------------
+Thu Nov 10 11:50:37 CET 2005 - stbinner@suse.de
+
+- update to 3.5 RC 1
+
+-------------------------------------------------------------------
+Thu Nov 10 00:22:48 CET 2005 - dmueller@suse.de
+
+- update inotify patch to current branch
+
+-------------------------------------------------------------------
+Fri Nov  4 16:43:20 CET 2005 - coolo@suse.de
+
+- adding patch to rework autostart handling
+
+-------------------------------------------------------------------
+Tue Oct 18 13:12:42 CEST 2005 - dmueller@suse.de
+
+- don't filter include hints for BETA 
+- update 3_5_BRANCH
+
+-------------------------------------------------------------------
+Mon Oct 17 18:08:08 CEST 2005 - dmueller@suse.de
+
+- reduce debug output in kdelibs-inotify patch 
+
+-------------------------------------------------------------------
+Mon Oct 17 14:29:39 CEST 2005 - ke@suse.de
+
+- Fix xml encoding in contributor entities.
+
+-------------------------------------------------------------------
+Mon Oct 17 11:06:42 CEST 2005 - dmueller@suse.de
+
+- update admin tarball to fix version number of packages 
+
+-------------------------------------------------------------------
+Fri Oct 14 19:06:23 CEST 2005 - dmueller@suse.de
+
+- add inotify support patch (experimental) 
+
+-------------------------------------------------------------------
+Wed Oct 12 11:07:53 CEST 2005 - stbinner@suse.de
+
+- update to version 3.4.92 (3.5 Beta 2)
+
+-------------------------------------------------------------------
+Mon Oct 10 11:31:20 CEST 2005 - dmueller@suse.de
+
+- remove includehints from .ui files to fix Qt 3.3.5-caused build
+  failures 
+
+-------------------------------------------------------------------
+Thu Oct  6 12:38:46 CEST 2005 - stbinner@suse.de
+
+- added flac and flac-devel to neededforbuild (required by the new
+  libsndfile)
+
+-------------------------------------------------------------------
+Wed Oct  5 18:31:30 CEST 2005 - stbinner@suse.de
+
+- adapt patches after update to 3.5 branch
+
+-------------------------------------------------------------------
+Wed Oct  5 10:44:54 CEST 2005 - coolo@suse.de
+
+- update to 3.5 branch for various fixes
+- adding inotify support to kdirwatch (kde4 backport)
+
+-------------------------------------------------------------------
+Sat Oct  1 16:43:36 CEST 2005 - coolo@suse.de
+
+- fix VERBOSE=1
+
+-------------------------------------------------------------------
+Fri Sep 30 16:08:08 CEST 2005 - coolo@suse.de
+
+- fix start without sycoca
+
+-------------------------------------------------------------------
+Thu Sep 29 09:01:45 CEST 2005 - dmueller@suse.de
+
+- ACL support only if > 10.0 
+
+-------------------------------------------------------------------
+Thu Sep 29 01:41:21 CEST 2005 - dmueller@suse.de
+
+- fix kde_post_install to be robust against errors 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:55:46 CEST 2005 - dmueller@suse.de
+
+- build with ACL support
+- use unsermake with VERBOSE=1 to have useful logs
+
+-------------------------------------------------------------------
+Tue Sep 27 16:22:13 CEST 2005 - stbinner@suse.de
+
+- add patch to allow and use no icon fallback if an icon is missing
+- add upstream patch fixing common khtml crash (KDE #112905)
+
+-------------------------------------------------------------------
+Tue Sep 27 14:50:08 CEST 2005 - dmueller@suse.de
+
+- fix kde_post_install to not abort when no icon is there
+
+-------------------------------------------------------------------
+Tue Sep 27 09:10:19 CEST 2005 - adrian@suse.de
+
+- do not require mDNSResponder for 9.2 and before
+
+-------------------------------------------------------------------
+Thu Sep 22 14:18:50 CEST 2005 - dmueller@suse.de
+
+- fix autobuild 
+
+-------------------------------------------------------------------
+Wed Sep 21 23:01:32 CEST 2005 - ke@suse.de
+
+- Add KDE docbook customizations to the SGML resp. XML catalog system [#
+  113080].
+
+-------------------------------------------------------------------
+Wed Sep 21 09:37:16 CEST 2005 - coolo@suse.de
+
+- fix file file
+- fix --no-unsermake support
+
+-------------------------------------------------------------------
+Mon Sep 19 16:38:53 CEST 2005 - stbinner@suse.de
+
+- update to version 3.4.91 (3.5 Beta)
+
+-------------------------------------------------------------------
+Mon Sep 12 11:01:52 CEST 2005 - stbinner@suse.de
+
+- fix missing images in ktip (#115954)
+
+-------------------------------------------------------------------
+Fri Sep  9 16:36:53 CEST 2005 - dmueller@suse.de
+
+- split -devel-docs into a separate noarch package 
+
+-------------------------------------------------------------------
+Thu Sep  8 13:05:04 CEST 2005 - bg@suse.de
+
+- disable --as-needed for hppa (does not build with that option)
+
+-------------------------------------------------------------------
+Thu Sep  8 08:04:42 CEST 2005 - coolo@suse.de
+
+- let the icon loader find the suse specials independent on the theme
+  (#115139 and others)
+
+-------------------------------------------------------------------
+Wed Sep  7 21:37:08 CEST 2005 - dmueller@suse.de
+
+- fix kwallet wizard being 3000px in size (#114954) 
+
+-------------------------------------------------------------------
+Wed Sep  7 19:52:20 CEST 2005 - dmueller@suse.de
+
+- fix kpdf embedding crashes (#114724)
+- add forgotten patch for mozilla/dragonegg integration 
+
+-------------------------------------------------------------------
+Wed Sep  7 16:05:58 CEST 2005 - dmueller@suse.de
+
+- improve TIFF detection (#114319) 
+
+-------------------------------------------------------------------
+Tue Sep  6 19:53:03 CEST 2005 - dmueller@suse.de
+
+- fix JPEG2000 support in KImgio (#115324) 
+
+-------------------------------------------------------------------
+Tue Aug 23 15:35:24 CEST 2005 - coolo@suse.de
+
+- add mimetype for OOo base (#72285)
+
+-------------------------------------------------------------------
+Tue Aug 23 13:26:36 CEST 2005 - coolo@suse.de
+
+- don't play around with xauth when the host name changes
+  (#98627)
+
+-------------------------------------------------------------------
+Tue Aug 23 03:54:04 CEST 2005 - dmueller@suse.de
+
+- fix novell.com language selector (#106008) 
+
+-------------------------------------------------------------------
+Mon Aug 22 14:20:42 CEST 2005 - coolo@suse.de
+
+- don't put libkdeinit_*.so in -devel
+
+-------------------------------------------------------------------
+Sun Aug 21 11:42:34 CEST 2005 - coolo@suse.de
+
+- update from 3.4 branch to fix endless kio_http loop
+- fix DPMS check in admin (broke with --enable-new-ldflags)
+
+-------------------------------------------------------------------
+Sat Aug 20 16:06:01 CEST 2005 - coolo@suse.de
+
+- update from 3.4 branch
+- pleasing the libtool check
+
+-------------------------------------------------------------------
+Fri Aug 19 14:12:41 CEST 2005 - adrian@suse.de
+
+- fix endless loop, if no KDEMM backend can get found (#105772)
+
+-------------------------------------------------------------------
+Fri Aug 19 10:22:14 CEST 2005 - llunak@suse.cz
+
+- Fix QXEmbed to have focus working properly in yast+kcontrol
+  (#46495).
+
+-------------------------------------------------------------------
+Thu Aug 18 17:15:40 CEST 2005 - adrian@suse.de
+
+- do not use KLIRRRRR sound on popular request ...
+
+-------------------------------------------------------------------
+Thu Aug 18 10:18:54 CEST 2005 - coolo@suse.de
+
+- extend kde_post_install of common_options
+
+-------------------------------------------------------------------
+Wed Aug 17 16:20:44 CEST 2005 - adrian@suse.de
+
+- move arts dependency to -arts package
+- clean up really all SimplePlayers in knotify, might cause a crash
+  which needs to be debugged
+
+-------------------------------------------------------------------
+Mon Aug 15 04:25:38 CEST 2005 - dmueller@suse.de
+
+- fix horizontal scrolling in KHTML broken by the smooth scrolling
+  patch (#76565). 
+
+-------------------------------------------------------------------
+Sat Aug 13 16:03:17 CEST 2005 - adrian@suse.de
+
+- fix memory/handle leak in knotify while playing sound via kdemm
+  knotify can still hang, if all alsa channels are used. (#97588)
+- install icons for BitTorrent MimeType
+
+-------------------------------------------------------------------
+Thu Aug 11 15:58:43 CEST 2005 - coolo@suse.de
+
+- removing all of the extraicons patch, it doesn't work at all anymore
+  so we need a new solution (also #85839 I guess)
+- updated 3.4 branch to get a fix for a crashing dcopserver and 
+  hanging mounts (#102564)
+
+-------------------------------------------------------------------
+Thu Aug  4 13:33:12 CEST 2005 - sbrabec@suse.cz
+
+- Removed share/pixmaps links from crystalsvg (#85839).
+
+-------------------------------------------------------------------
+Mon Aug  1 18:37:53 CEST 2005 - coolo@suse.de
+
+- 3.4 update replacing custom patches
+
+-------------------------------------------------------------------
+Fri Jul 29 17:31:21 CEST 2005 - dmueller@suse.de
+
+- Update admin tarball to include -Wno-non-virtual-dtor flag
+- Fix PIE detection (#98889)
+- Fix visibility support 
+
+-------------------------------------------------------------------
+Tue Jul 26 11:45:19 CEST 2005 - llunak@suse.cz
+
+- Fix #96594 (knotify logout timeout)
+
+-------------------------------------------------------------------
+Fri Jul 22 10:51:28 CEST 2005 - coolo@suse.de
+
+- update to version 3.4.2
+
+-------------------------------------------------------------------
+Mon May 30 16:19:20 CEST 2005 - adrian@suse.de
+
+- fix build for released distributions
+
+-------------------------------------------------------------------
+Tue May 24 11:54:02 CEST 2005 - adrian@suse.de
+
+- update to version 3.4.1
+- set level back to "a"
+
+-------------------------------------------------------------------
+Fri May 13 21:49:46 CEST 2005 - coolo@suse.de
+
+- init variable
+
+-------------------------------------------------------------------
+Tue Apr 19 10:21:55 CEST 2005 - coolo@suse.de
+
+- update admin for gcc4
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Apr 14 12:07:18 CEST 2005 - adrian@suse.de
+
+- update to current 3_4_BRANCH
+  * parallel build order fix
+- do not export kdemm video player api, it will not get any 
+  implementation in this way
+
+-------------------------------------------------------------------
+Wed Apr 13 11:34:45 CEST 2005 - adrian@suse.de
+
+- update to current 3_4_BRANCH
+- increase patch Level to "c"
+- export kdemm mixer interface
+
+-------------------------------------------------------------------
+Fri Apr  8 11:46:38 CEST 2005 - adrian@suse.de
+
+- port kfilepreview to kdemm
+- extra arts subpackages, aRts is optional now !
+- add DNS resolver fix from 3_4_BRANCH
+
+-------------------------------------------------------------------
+Mon Apr  4 14:42:49 CEST 2005 - adrian@suse.de
+
+- add missing #include to fix compile of kdemm players
+
+-------------------------------------------------------------------
+Mon Apr  4 11:01:08 CEST 2005 - coolo@suse.de
+
+- enable features for new ld
+
+-------------------------------------------------------------------
+Fri Apr  1 11:54:56 CEST 2005 - adrian@suse.de
+
+- fix build with gcc 4, exporting kdemm classes
+
+-------------------------------------------------------------------
+Thu Mar 31 13:46:09 CEST 2005 - adrian@suse.de
+
+- first steps to make arts optional:
+  * add experimental kdemm support for post 9.3
+  * use kdemm instead of arts in knotify
+  * TODO: port kfileaudiopreview to kdemm
+- do not overrule CFLAGS from spec files
+
+-------------------------------------------------------------------
+Wed Mar 30 16:10:39 CEST 2005 - coolo@suse.de
+
+- disable visibility when compiled with debug (for testkhtml)
+
+-------------------------------------------------------------------
+Mon Mar 28 18:46:22 CEST 2005 - schwab@suse.de
+
+- common_options: also set CFLAGS.
+
+-------------------------------------------------------------------
+Sat Mar 19 14:54:24 CET 2005 - aj@suse.de
+
+- Integrate patch from Waldo Bastian for #71888 to fix
+  accessing of Netscape bookmarks in konqueror.
+
+-------------------------------------------------------------------
+Fri Mar 18 13:40:41 CET 2005 - adrian@suse.de
+
+- fix aspell support
+- fixes from 3_4_BRANCH
+  * toolbar configuration fix (#73662)
+  * IPv6 blacklist io-slave fix
+  * a khtml crash fix with innerweb
+  * redirection fix to uppercase written top level domains
+
+-------------------------------------------------------------------
+Tue Mar 15 13:30:48 CET 2005 - adrian@suse.de
+
+- fix kspell recursion, visible in kbabel (#72773 by Waldo)
+
+-------------------------------------------------------------------
+Mon Mar 14 15:32:48 CET 2005 - coolo@suse.de
+
+- take susetranslations.mo into account for translations
+
+-------------------------------------------------------------------
+Mon Mar 14 14:01:15 CET 2005 - coolo@suse.de
+
+- fix smoothscrolling patch (Lubos)
+- adding some more kate fixes from branch
+
+-------------------------------------------------------------------
+Fri Mar 11 14:55:14 CET 2005 - coolo@suse.de
+
+- some more fixes from 3_4_BRANCH
+
+-------------------------------------------------------------------
+Tue Mar  8 13:47:31 CET 2005 - adrian@suse.de
+
+- various updates from cvs
+  * missing kate initialising (Lubos)
+  * kcmmodule crash fixed (Waldo)
+  * khtml fixes
+
+-------------------------------------------------------------------
+Mon Mar  7 16:55:17 CET 2005 - adrian@suse.de
+
+- fix progress bar (from KDE cvs)
+
+-------------------------------------------------------------------
+Mon Mar  7 14:32:27 CET 2005 - coolo@suse.de
+
+- add fix for broken webdav URLs (#59203)
+
+-------------------------------------------------------------------
+Sat Mar  5 10:19:48 CET 2005 - adrian@suse.de
+
+- fixes from KDE cvs:
+  * support Netware based ftp servers in kio_ftp
+  * fix proxy socks support
+
+-------------------------------------------------------------------
+Sat Mar  5 09:22:49 CET 2005 - adrian@suse.de
+
+- update to version 3.4 final (not final try)
+
+-------------------------------------------------------------------
+Wed Mar  2 10:01:46 CET 2005 - adrian@suse.de
+
+- update scrollview patch to BC version
+- move Requires: kdelibs3_doc to kdebase3
+
+-------------------------------------------------------------------
+Sat Feb 26 10:34:21 CET 2005 - adrian@suse.de
+
+- update to 3.4.0 RC1
+
+-------------------------------------------------------------------
+Thu Feb 24 13:16:10 CET 2005 - adrian@suse.de
+
+- update to version 3.4.0 RC1 try 1
+
+-------------------------------------------------------------------
+Tue Feb 22 16:51:01 CET 2005 - adrian@suse.de
+
+- update to current CVS
+- add soft scrolling patch from Allan Sandfeld
+
+-------------------------------------------------------------------
+Tue Feb 22 10:47:34 CET 2005 - adrian@suse.de
+
+- remove secure ICE patch again, it is part of CVS now
+
+-------------------------------------------------------------------
+Mon Feb 21 11:26:34 CET 2005 - adrian@suse.de
+
+- update to current CVS
+
+-------------------------------------------------------------------
+Fri Feb 18 11:18:03 CET 2005 - adrian@suse.de
+
+- update to current CVS
+
+-------------------------------------------------------------------
+Wed Feb 16 17:53:31 CET 2005 - adrian@suse.de
+
+- remove floppy:/ from file dialog again, media:/ is enough
+
+-------------------------------------------------------------------
+Mon Feb 14 14:41:13 CET 2005 - adrian@suse.de
+
+- update from CVS
+- add rubberband patch from Andre Moreira Magalhaes, disabled by
+  default
+
+-------------------------------------------------------------------
+Mon Feb 14 11:49:33 CET 2005 - adrian@suse.de
+
+- make it possible to disable IDN support via KDE_NO_IDN enviroment
+  variable
+
+-------------------------------------------------------------------
+Sun Feb 13 10:26:22 CET 2005 - coolo@suse.de
+
+- fix do_make -j15
+
+-------------------------------------------------------------------
+Fri Feb 11 10:29:44 CET 2005 - adrian@suse.de
+
+- update from CVS
+
+-------------------------------------------------------------------
+Wed Feb  9 15:57:01 CET 2005 - adrian@suse.de
+
+- apply patch from Waldo to set ICE sockets to 0700 permissions
+
+-------------------------------------------------------------------
+Mon Feb  7 11:28:36 CET 2005 - adrian@suse.de
+
+- update to beta 2
+
+-------------------------------------------------------------------
+Sat Jan 29 10:59:09 CET 2005 - coolo@suse.de
+
+- fix --no-unsermake
+
+-------------------------------------------------------------------
+Fri Jan 28 16:53:21 CET 2005 - meissner@suse.de
+
+- removed setuid root binary kgrantpty which is not needed
+  since 8.1...
+
+-------------------------------------------------------------------
+Fri Jan 28 15:11:47 CET 2005 - adrian@suse.de
+
+- update to current snapshot
+- use external unsermake now
+
+-------------------------------------------------------------------
+Tue Jan 25 15:41:07 CET 2005 - adrian@suse.de
+
+- adapt file dialog for media slave and remove floppy icon
+
+-------------------------------------------------------------------
+Mon Jan 24 21:05:47 CET 2005 - coolo@suse.de
+
+- update to current snapshot (for testkhtml)
+
+-------------------------------------------------------------------
+Thu Jan 20 16:53:31 CET 2005 - adrian@suse.de
+
+- update to current snapshot
+
+-------------------------------------------------------------------
+Sat Jan 15 21:05:52 CET 2005 - schwab@suse.de
+
+- Use <owner>:<group> in permissions file.
+
+-------------------------------------------------------------------
+Fri Jan 14 14:58:39 CET 2005 - adrian@suse.de
+
+- update to current HEAD
+- disable limit-image-size patch, since it got also disabled in qt
+
+-------------------------------------------------------------------
+Thu Jan 13 15:05:49 CET 2005 - coolo@suse.de
+
+- update to HEAD to get kdebase HEAD compiled
+
+-------------------------------------------------------------------
+Mon Jan 10 11:56:08 CET 2005 - adrian@suse.de
+
+- fix kprinter.h header, this fixes the build of kdebindings
+
+-------------------------------------------------------------------
+Mon Jan 10 09:37:17 CET 2005 - coolo@suse.de
+
+- fix permissions of do_make
+
+-------------------------------------------------------------------
+Sun Jan  9 10:01:53 CET 2005 - adrian@suse.de
+
+- final 3.4 beta 1
+
+-------------------------------------------------------------------
+Tue Jan  4 11:49:56 CET 2005 - coolo@suse.de
+
+- update to 3.4 beta 1 (first snapshot)
+
+-------------------------------------------------------------------
+Fri Dec 17 09:24:58 CET 2004 - coolo@suse.de
+
+- let -Wl, pass in $LDFLAGS 
+- fix quoting in make wrapper
+
+-------------------------------------------------------------------
+Thu Dec 16 21:32:19 CET 2004 - hvogel@suse.de
+
+- change icon to about_kde. go comes from another package and 
+  we dont want kdelibs require kdebase 
+
+-------------------------------------------------------------------
+Wed Dec 15 12:44:48 CET 2004 - coolo@suse.de
+
+- make the unsermake/automake switch more clever
+
+-------------------------------------------------------------------
+Tue Dec 14 11:11:05 CET 2004 - coolo@suse.de
+
+- fix unsermake $PATH for packages that build several sources
+
+-------------------------------------------------------------------
+Mon Dec 13 14:56:19 CET 2004 - coolo@suse.de
+
+- remove debug flag from configure
+- replaced unsermake with latest greatest
+
+-------------------------------------------------------------------
+Wed Dec  8 13:25:36 CET 2004 - adrian@suse.de
+
+- update to official 3.4 alpha 1
+
+-------------------------------------------------------------------
+Mon Dec  6 15:17:54 CET 2004 - adrian@suse.de
+
+- update to KDE head snapshot
+
+-------------------------------------------------------------------
+Fri Dec  3 15:19:22 CET 2004 - adrian@suse.de
+
+- update to the final tar bal of 3.3.2
+
+-------------------------------------------------------------------
+Mon Nov 29 20:29:55 CET 2004 - adrian@suse.de
+
+- update to version 3.3.2
+
+-------------------------------------------------------------------
+Fri Nov 26 15:57:47 CET 2004 - adrian@suse.de
+
+- extend KDE_VERSION_STRING with extra Level information to tell
+  information about applied patches
+- extend distribution string with distribution version
+- show distribution version in about dialog
+
+-------------------------------------------------------------------
+Thu Nov 25 11:44:39 CET 2004 - adrian@suse.de
+
+- correct gnome icon path to hicolor
+
+-------------------------------------------------------------------
+Wed Nov 24 13:49:09 CET 2004 - adrian@suse.de
+
+- accept also Python 2.4 in configure checks
+
+-------------------------------------------------------------------
+Thu Nov 18 15:38:38 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages
+
+-------------------------------------------------------------------
+Mon Nov 15 15:37:37 CET 2004 - adrian@suse.de
+
+- include /opt/kde3/share/icons/crystalsvg/22x22/apps path
+
+-------------------------------------------------------------------
+Wed Nov 10 12:52:20 CET 2004 - ro@suse.de
+
+- permission handling fixes
+
+-------------------------------------------------------------------
+Wed Nov 10 11:14:50 CET 2004 - coolo@suse.de
+
+- moving khtml 3.3 diff in a seperate diff (now that the 3.3 branch
+  contains a lot of updates for it)
+
+-------------------------------------------------------------------
+Mon Nov  8 16:33:07 CET 2004 - coolo@suse.de
+
+- renable patch to limit image size (#43841)
+
+-------------------------------------------------------------------
+Wed Nov  3 15:19:43 CET 2004 - coolo@suse.de
+
+- updated khtml again to fix compilation problem with gcc 4
+
+-------------------------------------------------------------------
+Wed Nov  3 11:12:57 CET 2004 - coolo@suse.de
+
+- use HTML rendering engine from CVS head (preparing backport for
+  3.3.2)
+
+-------------------------------------------------------------------
+Tue Oct 12 11:25:02 CEST 2004 - adrian@suse.de
+
+- update to version 3.3.1
+
+-------------------------------------------------------------------
+Wed Oct  6 14:30:24 CEST 2004 - adrian@suse.de
+
+- fix crash in libkabc, when importing an ldif file (#46882)
+
+-------------------------------------------------------------------
+Tue Oct  5 10:17:05 CEST 2004 - adrian@suse.de
+
+- do also find gnome pages when using "en_*" locale, instead of
+  "C" or "en" (#45480)
+
+-------------------------------------------------------------------
+Sat Oct  2 08:40:00 CEST 2004 - adrian@suse.de
+
+- try to avoid klauncher registration with a wrong dcop name.
+  this can happen, if two KDE application gets started at the
+  same time, without having running kdeinit before.
+  patch by Waldo and solves problems in Gnome hopefully (#46355)
+- khtml rendering fix for nvidia.com
+
+-------------------------------------------------------------------
+Fri Oct  1 16:58:11 CEST 2004 - adrian@suse.de
+
+- fix html frame parent problem, fixes www.map24.de (#44156)
+
+-------------------------------------------------------------------
+Thu Sep 30 09:09:07 CEST 2004 - adrian@suse.de
+
+- fix nasty error startup messages
+- fix two minor javascript bugs
+- fix Netscape bookmarks wrapping (by Waldo, #45917)
+
+-------------------------------------------------------------------
+Sun Sep 26 18:04:31 CEST 2004 - adrian@suse.de
+
+- update to current 3_3_BRANCH
+  * translation updates
+  * kpart handling fixes
+
+-------------------------------------------------------------------
+Mon Sep 20 10:07:28 CEST 2004 - adrian@suse.de
+
+- update to current 3_3_BRANCH
+- add fix for KDE file dialog on 64bit 
+  (crash when called by 32bit application, by Waldo #44995)
+
+-------------------------------------------------------------------
+Thu Sep 16 17:11:22 CEST 2004 - adrian@suse.de
+
+- use kwallet fix from Arvin 
+  (update external hash keys immediatly #43973)
+
+-------------------------------------------------------------------
+Wed Sep 15 17:18:45 CEST 2004 - adrian@suse.de
+
+- disable kwallet fix, it is known to create a memory leak
+
+-------------------------------------------------------------------
+Tue Sep 14 15:23:11 CEST 2004 - adrian@suse.de
+
+- update to current branch
+  * khtml fixes
+
+-------------------------------------------------------------------
+Fri Sep 10 13:47:48 CEST 2004 - adrian@suse.de
+
+- update to current branch
+- apply fix for kwallet from HEAD, needed for kinternet
+
+-------------------------------------------------------------------
+Tue Sep  7 11:28:30 CEST 2004 - adrian@suse.de
+
+- update to current BRANCH
+- more silence during kbuildsycoca run
+- disable default unsermake in beta
+- remove mad from nfb
+
+-------------------------------------------------------------------
+Fri Sep  3 17:29:22 CEST 2004 - coolo@suse.de
+
+- fixing the fix ;(
+
+-------------------------------------------------------------------
+Fri Sep  3 14:20:15 CEST 2004 - coolo@suse.de
+
+- unsermake: do not remove the .deps file before regenerating it to
+  avoid make races
+
+-------------------------------------------------------------------
+Mon Aug 30 08:36:57 CEST 2004 - adrian@suse.de
+
+- compile with explicit --disable-debug to get rid off asserts
+
+-------------------------------------------------------------------
+Sat Aug 28 08:22:23 CEST 2004 - adrian@suse.de
+
+- update to current BRANCH
+- add gnome help page support for khelpcenter(by clahey, #44061)
+
+-------------------------------------------------------------------
+Mon Aug 23 16:31:13 CEST 2004 - adrian@suse.de
+
+- disable patch to limit image sizes in khtml, it causes crashes
+  atm
+
+-------------------------------------------------------------------
+Fri Aug 20 13:02:26 CEST 2004 - adrian@suse.de
+
+- update to current 3_3_BRANCH
+- add patch from clahey to support gnome help pages better in khelpcenter
+
+-------------------------------------------------------------------
+Wed Aug 18 12:15:58 CEST 2004 - adrian@suse.de
+
+- move debug mode switch to common_options
+
+-------------------------------------------------------------------
+Tue Aug 17 08:12:49 CEST 2004 - adrian@suse.de
+
+- add patch from Waldo to make it possible to limit the max image
+  size within QImage. (#43841)
+
+-------------------------------------------------------------------
+Mon Aug 16 15:32:44 CEST 2004 - adrian@suse.de
+
+- update to version 3.3.0 final
+
+-------------------------------------------------------------------
+Mon Aug 16 15:32:44 CEST 2004 - adrian@suse.de
+
+- update to version 3.3.0 final
+- use "make compile"
+
+-------------------------------------------------------------------
+Fri Aug 13 10:37:43 CEST 2004 - coolo@suse.de
+
+- removed 3_2_BRANCH.diff
+- build with unsermake
+
+-------------------------------------------------------------------
+Tue Aug 10 08:58:24 CEST 2004 - adrian@suse.de
+
+- update to version 3.3.0 RC2
+- split doc tools into subpackage to make it possible to use
+  a different theming for special products
+
+-------------------------------------------------------------------
+Mon Aug  2 09:21:16 CEST 2004 - adrian@suse.de
+
+- accept automake 1.9
+
+-------------------------------------------------------------------
+Mon Jul 19 10:35:33 CEST 2004 - adrian@suse.de
+
+- update to version 3.2.92 (KDE 3.3 beta 2)
+
+-------------------------------------------------------------------
+Tue Jun 29 12:01:28 CEST 2004 - adrian@suse.de
+
+- do not remove .cpp/.h files, if they are not really generated
+  by uic
+
+-------------------------------------------------------------------
+Mon Jun 28 22:32:49 CEST 2004 - adrian@suse.de
+
+- enable OpenEXR support
+
+-------------------------------------------------------------------
+Mon Jun 28 09:30:57 CEST 2004 - adrian@suse.de
+
+- update to version 3.3 beta 1
+  * usual patch cleanup
+
+-------------------------------------------------------------------
+Mon May 31 20:29:40 CEST 2004 - adrian@suse.de
+
+- update to version 3.2.3
+  * remove obsolete patches
+
+-------------------------------------------------------------------
+Wed May 12 09:21:00 CEST 2004 - adrian@suse.de
+
+- update user_profile patch
+- add 3.3 button layout patch
+
+-------------------------------------------------------------------
+Thu Apr 29 08:59:13 CEST 2004 - coolo@suse.de
+
+- let unsermake rewrite install rules with $DESTDIR
+- use unsermake for kdelibs and parallel build
+
+-------------------------------------------------------------------
+Sat Apr 24 18:17:07 CEST 2004 - sndirsch@suse.de
+
+- use xorg-x11 packages
+
+-------------------------------------------------------------------
+Tue Apr 20 14:12:35 CEST 2004 - adrian@suse.de
+
+- use admin tar ball from HEAD
+- extend kde-config to export library suffix and check for it in
+  configure
+- add user profiles patch from Waldo
+
+-------------------------------------------------------------------
+Sun Apr 18 14:56:17 CEST 2004 - coolo@suse.de
+
+- updated unsermake
+
+-------------------------------------------------------------------
+Wed Apr 14 11:16:33 CEST 2004 - adrian@suse.de
+
+- update to version 3.2.2
+
+-------------------------------------------------------------------
+Tue Apr 13 17:16:34 CEST 2004 - adrian@suse.de
+
+- adding utempter to neededforbuild. (#38833)
+  (this does not lead into a new runtime requirement)
+
+-------------------------------------------------------------------
+Sun Apr  4 21:08:43 CEST 2004 - adrian@suse.de
+
+- do only show important items in file dialog (#38269)
+
+-------------------------------------------------------------------
+Thu Apr  1 10:39:59 CEST 2004 - coolo@suse.de
+
+- replacing brute force shut up with a real log file in kconf_update
+  (Waldo)
+
+-------------------------------------------------------------------
+Wed Mar 31 16:40:14 CEST 2004 - adrian@suse.de
+
+- fix 3_2_BRANCH patch
+
+-------------------------------------------------------------------
+Tue Mar 30 17:43:16 CEST 2004 - adrian@suse.de
+
+- enable incremental sycoca creation again
+
+-------------------------------------------------------------------
+Tue Mar 30 10:45:07 CEST 2004 - coolo@suse.de
+
+- fix desktop icon renaming (Waldo)
+- fixing kconf_update for kwin (Waldo,#36682)
+
+-------------------------------------------------------------------
+Mon Mar 29 10:19:55 CEST 2004 - coolo@suse.de
+
+- handle cups printers that insist on being different (#37011)
+
+-------------------------------------------------------------------
+Sat Mar 27 09:53:52 CET 2004 - adrian@suse.de
+
+- fix regression in khtml parser with latest update (by coolo)
+
+-------------------------------------------------------------------
+Fri Mar 26 16:47:48 CET 2004 - adrian@suse.de
+
+- more silence (Waldo, Dirk and Adrian)
+- apply fix for possible hanging library unloading (Lubos)
+- fix regression in khtml parser with latest update (coolo)
+- fix for hidden cookie windows below main windows (Lubos)
+- fix icons in kcontrol
+
+-------------------------------------------------------------------
+Tue Mar 23 08:06:52 CET 2004 - adrian@suse.de
+
+- update to current 3_2_BRANCH
+  * khtml fixes
+    o recursion protection
+    o official patch for kio urls
+    o crash fix (happened with Quanta)
+    o urls with trailing / are handled as directories
+    o fix for some flash enabled sites (#36656)
+- fix fileshare.diff, make us compatible to KDE again
+- call %run_permissions
+- apply fix for utf8 localisation problem in kdehelp (coolo, #36681)
+- adjust yast icon path to the new location
+- fix missing include in fontconfig-reverse-lookup patch
+- remove special settings for s390 and alpha
+  (leaded into new problems like implicit declarations of functions)
+
+-------------------------------------------------------------------
+Mon Mar 22 13:22:57 CET 2004 - adrian@suse.de
+
+- update to current 3_2_BRANCH
+  * fixes security leak in kdeprint (#36663)
+- add patch from Waldo to disallow kio urls in khtml
+
+-------------------------------------------------------------------
+Sun Mar 21 21:32:47 CET 2004 - adrian@suse.de
+
+- do not trigger mount with konq view of /media/ (by Lubos)
+
+-------------------------------------------------------------------
+Sun Mar 21 11:08:11 CET 2004 - adrian@suse.de
+
+- update to current 3_2_BRANCH 
+  * fixed linebreak patch
+- fix deactivated patches and remove obsolete ones
+- suppress sycoca warnings about missing mimetypes
+
+-------------------------------------------------------------------
+Mon Mar 15 16:46:24 CET 2004 - coolo@suse.de
+
+- another update to 3_2_BRANCH (kdeprint layout fixes and kate repaint problems)
+
+-------------------------------------------------------------------
+Sat Mar 13 12:50:59 CET 2004 - coolo@suse.de
+
+- adding patch to force line breaks in translation of desktop files
+  (Arbeits-\nplatz)
+
+-------------------------------------------------------------------
+Wed Mar 10 23:28:21 CET 2004 - coolo@suse.de
+
+- kill dcopserver explicitly
+
+-------------------------------------------------------------------
+Wed Mar 10 10:39:42 CET 2004 - coolo@suse.de
+
+- use current 3_2_BRANCH (#35070)
+
+-------------------------------------------------------------------
+Mon Mar  8 11:20:24 CET 2004 - adrian@suse.de
+
+- use current 3_2_BRANCH
+- disable debug mode
+- find YaST icons
+
+-------------------------------------------------------------------
+Sun Mar  7 13:06:48 CET 2004 - coolo@suse.de
+
+- fixing pnome -> gnome typo
+- adding libidn-devel as requirement for devel subpackage
+
+-------------------------------------------------------------------
+Sat Mar  6 12:46:33 CET 2004 - coolo@suse.de
+
+- older distributions have different layouts for gnome. Avoid
+  dangling symlinks 
+
+-------------------------------------------------------------------
+Fri Mar  5 16:35:39 CET 2004 - coolo@suse.de
+
+- fixing build
+
+-------------------------------------------------------------------
+Fri Mar  5 14:53:16 CET 2004 - coolo@suse.de
+
+- restart cups through rcscripts instead of kill magic (#32787)
+- final update for 3.2.1 
+
+-------------------------------------------------------------------
+Thu Mar  4 14:45:52 CET 2004 - coolo@suse.de
+
+- require libidn hard to avoid problems e.g. on lib64
+
+-------------------------------------------------------------------
+Wed Mar  3 18:26:46 CET 2004 - adrian@suse.de
+
+- removed gnome packages from neededforbuild
+
+-------------------------------------------------------------------
+Tue Mar  2 10:25:48 CET 2004 - coolo@suse.de
+
+- update tarball again for khtml regression fixes
+
+-------------------------------------------------------------------
+Tue Mar  2 10:23:33 CET 2004 - coolo@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Mar  1 10:34:30 CET 2004 - coolo@suse.de
+
+- update to version 3.2.1
+- reworked build process
+
+-------------------------------------------------------------------
+Mon Mar  1 10:34:30 CET 2004 - coolo@suse.de
+
+- update to version 3.2.1
+
+-------------------------------------------------------------------
+Wed Feb 25 22:01:46 CET 2004 - adrian@suse.de
+
+- update to current 3_2_BRANCH
+- add -g as compiler option for beta test
+
+-------------------------------------------------------------------
+Wed Feb 25 20:42:15 CET 2004 - adrian@suse.de
+
+- do not build on slow architectures
+
+-------------------------------------------------------------------
+Mon Feb 23 15:40:21 CET 2004 - adrian@suse.de
+
+- do not use DNotify or FAM on /media
+- long poll intervall for /media
+- include GnomeCrystal icons and general pixmaps path
+
+-------------------------------------------------------------------
+Mon Feb 23 08:05:47 CET 2004 - coolo@suse.de
+
+- initial package
+
+-------------------------------------------------------------------
+Mon Feb 23 08:05:26 CET 2004 - coolo@suse.de
+
+- update 3_2_BRANCH
+- update HEAD khtml
+- adding testkhtml.spec
+
+-------------------------------------------------------------------
+Sat Feb 21 18:35:28 CET 2004 - adrian@suse.de
+
+- add gnome and default icon pathes
+- fix ssh.protcol installation
+- fix syntax error in common_options
+
+-------------------------------------------------------------------
+Fri Feb 20 09:29:56 CET 2004 - coolo@suse.de
+
+- use khtml from HEAD (to be backported)
+- update admin tar ball
+- take out testing khtml from the main page
+
+-------------------------------------------------------------------
+Wed Feb 18 17:40:33 CET 2004 - adrian@suse.de
+
+- update to current 3_2_BRANCH
+  * ssh support to ktelnetservice
+- remove pcsc-lite from neededforbuild
+- disable test_regression for now
+
+-------------------------------------------------------------------
+Wed Feb 11 08:50:03 CET 2004 - coolo@suse.de
+
+- fixing build on s390
+
+-------------------------------------------------------------------
+Wed Feb 11 08:06:07 CET 2004 - adrian@suse.de
+
+- update to current 3_2_BRANCH
+
+-------------------------------------------------------------------
+Thu Jan 29 14:06:43 CET 2004 - adrian@suse.de
+
+- apply fix for printing with QT 3.3
+
+-------------------------------------------------------------------
+Mon Jan 26 23:25:56 CET 2004 - adrian@suse.de
+
+- update to version 3.2.0 final
+
+-------------------------------------------------------------------
+Fri Jan 23 18:44:08 CET 2004 - adrian@suse.de
+
+- update to current 3_2_BRANCH
+
+-------------------------------------------------------------------
+Wed Jan 21 17:28:14 CET 2004 - adrian@suse.de
+
+- disable sse and mmx usage on 9.0 (compiler bug)
+- remove autom4te.cache during update_admin 
+  (automake 2.8 can run into error with <2.8 cache data)
+
+-------------------------------------------------------------------
+Wed Jan 21 12:14:49 CET 2004 - adrian@suse.de
+
+- update to current BRANCH to get various khtml fixes
+
+-------------------------------------------------------------------
+Sun Jan 18 21:43:52 CET 2004 - adrian@suse.de
+
+- update to version 3.1.95 ( KDE 3.2 RC1 )
+
+-------------------------------------------------------------------
+Fri Jan 16 17:10:30 CET 2004 - adrian@suse.de
+
+- implement short menus again
+
+-------------------------------------------------------------------
+Tue Jan 13 13:32:16 CET 2004 - adrian@suse.de
+
+- update to snapshot 2004011309
+- disable debug
+
+-------------------------------------------------------------------
+Tue Jan  6 19:20:55 CET 2004 - adrian@suse.de
+
+- update to snapshot 2004010618
+- add kde_post_install function to common_options
+- remove pregenerated files from uic during update_admin
+
+-------------------------------------------------------------------
+Thu Dec 18 14:12:16 CET 2003 - adrian@suse.de
+
+- update to snapshot 2003121718
+
+-------------------------------------------------------------------
+Mon Dec 15 14:18:36 CET 2003 - adrian@suse.de
+
+- update to snapshot 2003121511
+- accept automake 1.8
+
+-------------------------------------------------------------------
+Wed Dec 10 14:30:45 CET 2003 - adrian@suse.de
+
+- update to snapshot 2003121013
+
+-------------------------------------------------------------------
+Tue Dec  9 13:40:37 CET 2003 - adrian@suse.de
+
+- package test_regression for testing in khtmltest package
+
+-------------------------------------------------------------------
+Tue Dec  2 11:10:27 CET 2003 - adrian@suse.de
+
+- use beta2, take two tar ball
+
+-------------------------------------------------------------------
+Mon Dec  1 22:00:31 CET 2003 - adrian@suse.de
+
+- update to 3.1.94 ( KDE 3.2 beta 2 )
+
+-------------------------------------------------------------------
+Sun Nov 23 20:44:24 CET 2003 - adrian@suse.de
+
+- update to snapshot 2003112315
+  * build again with alsa 1.0
+
+-------------------------------------------------------------------
+Thu Nov 13 23:14:30 CET 2003 - adrian@suse.de
+
+- update to new snapshot from 2003102409
+- add jasper (JPEG2000) support
+
+-------------------------------------------------------------------
+Wed Oct 29 09:59:01 CET 2003 - adrian@suse.de
+
+- update to KDE 3.2 beta1
+
+-------------------------------------------------------------------
+Tue Oct 21 09:34:51 CEST 2003 - adrian@suse.de
+
+- update to snapshot 2003102008
+
+-------------------------------------------------------------------
+Sun Oct  5 14:31:09 CEST 2003 - adrian@suse.de
+
+- update to snapshot 2003100510
+
+-------------------------------------------------------------------
+Wed Oct  1 09:59:21 CEST 2003 - adrian@suse.de
+
+- update to snapshot 3.1.92_2003093021
+  * should fix building of KDE 2.2 documents in other packages
+
+-------------------------------------------------------------------
+Mon Sep 29 15:59:09 CEST 2003 - adrian@suse.de
+
+- update to version 1.1.92 (KDE 3.2 alpha 2)
+
+-------------------------------------------------------------------
+Tue Sep 23 09:42:45 CEST 2003 - adrian@suse.de
+
+- apply crash fix (happens in kdesktop) from Marcus Meissner
+  happened with a (most likely broken) Windows Driver CD (#31568)
+
+-------------------------------------------------------------------
+Tue Sep 16 11:40:25 CEST 2003 - adrian@suse.de
+
+- fix application/x-ogg icon
+
+-------------------------------------------------------------------
+Sat Sep 13 10:37:36 CEST 2003 - adrian@suse.de
+
+- fix Unimportant routines really finaly
+- Require pcre-devel only for > 8.2
+- make menu sorting a routine which can be called from kicker
+- hide Documents folder entry in kfiledialog for > 8.2
+
+-------------------------------------------------------------------
+Fri Sep 12 13:51:12 CEST 2003 - coolo@suse.de
+
+- add requirement on pcre-devel as libkhtml.la contains a reference
+  to /usr/lib/libpcreposix.la
+
+-------------------------------------------------------------------
+Thu Sep 11 15:50:09 CEST 2003 - coolo@suse.de
+
+- give a more correct error message (as good as we can get it out 
+  of cups) for forbidden actions (#29225)
+
+-------------------------------------------------------------------
+Thu Sep 11 09:20:07 CEST 2003 - adrian@suse.de
+
+- use updated 3.1.4 tar ball
+  * certifcate dialog will reappear after typing wrong password
+- add BRANCH patch to fix kdesktop icon name renaming and a crash fix
+- honor caching in KServiceGroup::SuSEchildCount()
+
+-------------------------------------------------------------------
+Tue Sep  9 02:59:23 CEST 2003 - adrian@suse.de
+
+- add YaST icon path
+
+-------------------------------------------------------------------
+Tue Sep  9 00:14:46 CEST 2003 - adrian@suse.de
+
+- update to version 3.1.4
+
+-------------------------------------------------------------------
+Mon Sep  8 15:27:08 CEST 2003 - adrian@suse.de
+
+- implement KServiceGroup::SuSEchildCount() to ignore 
+  X-SuSE-Unimportant entries
+
+-------------------------------------------------------------------
+Fri Sep  5 12:10:12 CEST 2003 - adrian@suse.de
+
+- add check for SuSE-Unimportant also in kservicegroup class
+- add support for X-SuSE-GeneralDescription and ShortMenu
+- update 3_1_BRANCH
+- add kmimelist application for debugging
+- add optioninal X-KDE-InitialPreference Tag, if we want 
+  different settings in Gnome
+
+-------------------------------------------------------------------
+Wed Sep  3 17:44:28 CEST 2003 - adrian@suse.de
+
+- update xdg patch from Waldo to get compatible with 3.2 again
+- update 3_1_BRANCH to get klistview fixes
+
+-------------------------------------------------------------------
+Tue Sep  2 12:52:02 CEST 2003 - adrian@suse.de
+
+- include default pixmaps path
+- drop broken styles, which will also disappear in KDE 3.2
+- add shut up patch from coolo
+
+-------------------------------------------------------------------
+Mon Sep  1 14:38:52 CEST 2003 - adrian@suse.de
+
+- update to current 3_1_BRANCH
+- implement X-SuSE-Unimportant support 
+
+-------------------------------------------------------------------
+Fri Aug 29 17:24:16 CEST 2003 - adrian@suse.de
+
+- update to current 3_1_BRANCH for qt 3.2.1 fixes
+
+-------------------------------------------------------------------
+Tue Aug 26 08:16:04 CEST 2003 - adrian@suse.de
+
+- apply fix from Lubos for maximised windows of GTK apps
+
+-------------------------------------------------------------------
+Sun Aug 24 23:06:19 CEST 2003 - adrian@suse.de
+
+- redo last fix in a more often working way.
+  but maybe we try to fix support for broken svg's atm ...
+
+-------------------------------------------------------------------
+Sun Aug 24 12:14:29 CEST 2003 - adrian@suse.de
+
+- fix svgicon engine to render karbon svg's.
+- install ksvgiconengine with header(internal) to get used by 
+  svg thumbnail generator 
+
+-------------------------------------------------------------------
+Sat Aug 23 22:34:40 CEST 2003 - adrian@suse.de
+
+- update to 3_1_BRANCH
+
+-------------------------------------------------------------------
+Wed Aug 20 17:19:57 CEST 2003 - schwab@suse.de
+
+- Fix weird character in common_options script.
+
+-------------------------------------------------------------------
+Wed Aug 20 15:56:59 CEST 2003 - adrian@suse.de
+
+- small bugfix from Waldo for XDG
+
+-------------------------------------------------------------------
+Tue Aug 19 12:15:18 CEST 2003 - adrian@suse.de
+
+- fix compile with gcc 3.3.1
+
+-------------------------------------------------------------------
+Wed Aug 13 11:34:11 CEST 2003 - adrian@suse.de
+
+- fix lib64 plugin support
+- use current 3_1_BRANCH
+- clean up spec file
+- package /opt/kde3/include in main package
+
+-------------------------------------------------------------------
+Tue Aug 12 13:25:32 CEST 2003 - adrian@suse.de
+
+- update XDG patch (yep, popup's are still disabled ;)
+
+-------------------------------------------------------------------
+Fri Aug  8 21:58:06 CEST 2003 - adrian@suse.de
+
+- disable popup in kbuildsycoca run again
+
+-------------------------------------------------------------------
+Thu Aug  7 15:25:02 CEST 2003 - adrian@suse.de
+
+- new XDG code from Waldo to support kmenuedit
+
+-------------------------------------------------------------------
+Tue Aug  5 08:25:26 CEST 2003 - adrian@suse.de
+
+- disable popup in kbuildsycoca run
+
+-------------------------------------------------------------------
+Fri Aug  1 16:54:16 CEST 2003 - adrian@suse.de
+
+- disable shadow patch at all again
+- update 3_1_BRANCH diff
+  * first fixes for Qt 3.2
+- update kdelibs-menus stuff
+  * Waldo: Less buggy, with prefix support and with a working
+           <OnlyUnallocated/>
+
+-------------------------------------------------------------------
+Wed Jul 30 17:52:37 CEST 2003 - adrian@suse.de
+
+- update kdelibs-menus-kded tar ball to new version from Waldo,
+  to get the kbuildsycoca --menutest function
+- merge kdelibs3-cups back to kdelibs3
+
+-------------------------------------------------------------------
+Mon Jul 28 15:11:15 CEST 2003 - adrian@suse.de
+
+- update to current 3_1_BRANCH
+
+-------------------------------------------------------------------
+Wed Jul 23 08:55:42 CEST 2003 - adrian@suse.de
+
+- use another new 3.1.3 tar ball with further security fix
+  (cookie handling)
+- add needed files for XDG support
+
+-------------------------------------------------------------------
+Tue Jul 22 13:12:02 CEST 2003 - coolo@suse.de
+
+- remove CVS conflict files from admin
+- make common_options a %config (for consistency)
+
+-------------------------------------------------------------------
+Mon Jul 21 12:00:42 CEST 2003 - adrian@suse.de
+
+- fix build for 7.x distributions
+
+-------------------------------------------------------------------
+Fri Jul 18 17:02:43 CEST 2003 - adrian@suse.de
+
+- third version of 3.1.3 tar ball
+  (security fix for cookie handling)
+- add backported patch from 3.2 for shadow text on icons.
+  (written by Laur Ivan <laurivan@eircom.net>)
+- accept Qt 3.2 also, when "#MIN_CONFIG(3)" is used
+- fix build for lib64
+
+-------------------------------------------------------------------
+Fri Jul 18 10:01:44 CEST 2003 - adrian@suse.de
+
+- fix owner ship of files
+- add XDG support from Waldo from KDE 3.2
+
+-------------------------------------------------------------------
+Wed Jul 16 12:14:55 CEST 2003 - adrian@suse.de
+
+- use new 3.1.3 tar ball
+
+-------------------------------------------------------------------
+Wed Jul 16 01:11:51 CEST 2003 - adrian@suse.de
+
+- update to 3.1.3
+
+-------------------------------------------------------------------
+Tue Jun 24 10:52:19 CEST 2003 - coolo@suse.de
+
+- update 3.1 branch (heading 3.1.3)
+
+-------------------------------------------------------------------
+Wed Jun 11 11:54:55 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Sat Jun  7 22:10:12 CEST 2003 - coolo@suse.de
+
+- remove libtool update code completly
+- don't create stale symlinks for < 820
+- create the gnome icons symlink only for < 829
+  (moved to gnome packages, where they can't dangle)
+
+-------------------------------------------------------------------
+Fri May 30 14:55:49 CEST 2003 - adrian@suse.de
+
+- fix file conflict and disable libtool update again
+
+-------------------------------------------------------------------
+Thu May 29 10:51:54 CEST 2003 - adrian@suse.de
+
+- tune some minor bits of coolo's changes
+  (a minor side effect is that we are able to build KDE packages again)
+
+-------------------------------------------------------------------
+Wed May 28 15:05:30 CEST 2003 - coolo@suse.de
+
+- put the configure work around in update_admin too
+
+-------------------------------------------------------------------
+Tue May 27 14:08:45 CEST 2003 - coolo@suse.de
+
+- updating 3_1_BRANCH.diff (to get it working without --enable-final)
+- build --enable-final in beta too
+- update libtool files from system (experimental)
+
+-------------------------------------------------------------------
+Mon May 26 15:03:34 CEST 2003 - adrian@suse.de
+
+- define and use $INSTALL_TARGET in common_options
+- set to "install" (not "install-strip") for now
+
+-------------------------------------------------------------------
+Mon May 19 09:41:44 CEST 2003 - adrian@suse.de
+
+- apply 3_1_BRANCH.diff (fix build for Qt 3.2b1)
+
+-------------------------------------------------------------------
+Fri May 16 13:34:52 CEST 2003 - coolo@suse.de
+
+- remove the right CVS subdir
+
+-------------------------------------------------------------------
+Fri May 16 07:54:36 CEST 2003 - coolo@suse.de
+
+- remove CVS subdir
+
+-------------------------------------------------------------------
+Thu May  8 09:05:49 CEST 2003 - adrian@suse.de
+
+- new 3.1.2 tar ball (try2)
+
+-------------------------------------------------------------------
+Wed May  7 08:58:28 CEST 2003 - adrian@suse.de
+
+- update to version 3.1.2
+- cleanup/drop patches
+- update admin tar ball and apply changes via a patch
+- require correct arts version (1.1 at least)
+
+-------------------------------------------------------------------
+Fri Apr 18 15:02:41 CEST 2003 - adrian@suse.de
+
+- merge 8.2 changes with 8.3
+- remove libaps from neededforbuild
+
+-------------------------------------------------------------------
+Mon Apr  7 15:49:35 CEST 2003 - adrian@suse.de
+
+- security fix from 3.0.5b
+  * run ghostscript in safe mode
+- add patch from Uwe Gansert to support the new fileshare tool
+- add crash fix from 3_1_BRANCH for khtml on www.w3.org/QA/
+- do reverse font lookup in kfontcombobox and kaction for 
+  fontconfig based distributions (#25725)
+
+-------------------------------------------------------------------
+Thu Apr  3 18:26:13 CEST 2003 - adrian@suse.de
+
+- fix possible crash in kprinter on cups server misbehaviour
+- add gnome help pages support for khelpcenter.
+
+-------------------------------------------------------------------
+Fri Mar 21 12:56:36 CET 2003 - adrian@suse.de
+
+- apply fix https over proxy
+
+-------------------------------------------------------------------
+Sat Mar 15 21:40:57 CET 2003 - adrian@suse.de
+
+- fix kmid crash in libkmid (#24820)
+- .exe files have a correct icon now
+- remove unused mimelnk tar ball
+
+-------------------------------------------------------------------
+Wed Mar 12 09:49:01 CET 2003 - adrian@suse.de
+
+- disable kbuildsycoca speed up patch from last check-in again
+
+-------------------------------------------------------------------
+Tue Mar 11 11:47:19 CET 2003 - adrian@suse.de
+
+- update to 3.1.1 tar ball, second try
+  * memory leak in dcopclient
+  * kate crash and syntax highlighting fixes
+  * do not let two running kbuildsycoca conflict
+  * keramik pixmapCache conflict fix
+  * some session management fixes
+- add patch from Lubos to fix further session management problems
+  with preloaded konq
+- fix api documentation
+- remove SuSEconfig.susewm-kbuildsycoca again
+  (initial created by susewm now)
+
+-------------------------------------------------------------------
+Thu Mar  6 10:34:33 CET 2003 - coolo@suse.de
+
+- updating the admin tar ball to 3.1.1 too
+
+-------------------------------------------------------------------
+Mon Mar  3 11:36:11 CET 2003 - adrian@suse.de
+
+- update to version 3.1.1
+  * fixed alphablended background images in khtml
+  * crash fix after destructed documents
+  * additional syntax highlight descriptions for kate
+- xrandr fixes from Lubos to initialize the display correct on login
+
+-------------------------------------------------------------------
+Thu Feb 27 23:50:42 CET 2003 - adrian@suse.de
+
+- update 3_1_BRANCH
+- remove wrong Obsoletes again
+- drop preload.desktop in autostart and use improved patch from
+  Lubos instead
+- comment out some noise in .xsession-errors
+
+-------------------------------------------------------------------
+Wed Feb 26 21:49:06 CET 2003 - adrian@suse.de
+
+- fixing kded startup with DNOTIFY enabled and lots of files
+
+-------------------------------------------------------------------
+Wed Feb 26 10:35:49 CET 2003 - adrian@suse.de
+
+- update 3_1_BRANCH
+- add ksycoca-global patch from Waldo
+- add SuSEconfig.susewm-kbuildsycoca
+- add Obsolete and Conflict tags with kde2 packages
+
+-------------------------------------------------------------------
+Mon Feb 24 18:42:15 CET 2003 - adrian@suse.de
+
+- update 3_1_BRANCH
+- enable-dnotify
+
+-------------------------------------------------------------------
+Mon Feb 24 09:10:42 CET 2003 - coolo@suse.de
+
+- fixing kups (#24084)
+
+-------------------------------------------------------------------
+Fri Feb 14 12:04:25 CET 2003 - adrian@suse.de
+
+- update 3_1_BRANCH
+- allow setgid for man
+- add gnome icon path
+
+-------------------------------------------------------------------
+Wed Feb 12 22:46:37 CET 2003 - adrian@suse.de
+
+- update 3_1_BRANCH
+- add preloaded konq patches from Lubos
+- move kde-config back to main package
+
+-------------------------------------------------------------------
+Wed Feb  5 02:26:15 CET 2003 - adrian@suse.de
+
+- update 3_1_BRANCH again for more aliasing fixes from Dirk
+- remove fallback patch and implement a real media detection instead 
+  of that
+
+-------------------------------------------------------------------
+Tue Feb  4 10:06:14 CET 2003 - coolo@suse.de
+
+- updating to newer 3_1_BRANCH that is gcc 3.3 compliant
+
+-------------------------------------------------------------------
+Mon Feb  3 16:57:38 CET 2003 - adrian@suse.de
+
+- add -fno-cse-follow-jumps -fno-cse-skip-blocks to work around 
+  compiler bug
+
+-------------------------------------------------------------------
+Mon Feb  3 11:52:53 CET 2003 - adrian@suse.de
+
+- update 3_1_BRANCH patch
+- use --enable-final again 
+
+-------------------------------------------------------------------
+Sat Feb  1 16:38:48 CET 2003 - adrian@suse.de
+
+- remove ppc64 special compile options
+
+-------------------------------------------------------------------
+Tue Jan 28 17:46:03 CET 2003 - adrian@suse.de
+
+- follow changed QDesktopWidget::resized API
+
+-------------------------------------------------------------------
+Tue Jan 28 00:31:12 CET 2003 - adrian@suse.de
+
+- add BRANCH patches
+- add libart_lgpl-devel to Requires from -devel package
+
+-------------------------------------------------------------------
+Fri Jan 24 12:16:47 CET 2003 - adrian@suse.de
+
+- apply fix for resized desktop for menubar from Seli
+
+-------------------------------------------------------------------
+Thu Jan 23 09:58:07 CET 2003 - adrian@suse.de
+
+- ha ! RC7-try5, security relevant again
+
+-------------------------------------------------------------------
+Wed Jan 22 07:17:29 CET 2003 - adrian@suse.de
+
+- RC7-try4. last one ?
+
+-------------------------------------------------------------------
+Tue Jan 21 12:59:35 CET 2003 - adrian@suse.de
+
+- RC7-try3. last one.
+
+-------------------------------------------------------------------
+Fri Jan 17 14:36:40 CET 2003 - adrian@suse.de
+
+- use RC7-try2 tar balls
+
+-------------------------------------------------------------------
+Wed Jan 15 16:10:17 CET 2003 - adrian@suse.de
+
+- use cyrus-sasl2
+
+-------------------------------------------------------------------
+Tue Jan 14 17:26:02 CET 2003 - adrian@suse.de
+
+- update to version RC7.
+- kdelibs3-devel requires now fam-devel on > 8.1
+
+-------------------------------------------------------------------
+Wed Jan  8 12:50:01 CET 2003 - adrian@suse.de
+
+- add fam-devel to neededforbuild
+
+-------------------------------------------------------------------
+Wed Jan  8 11:12:50 CET 2003 - adrian@suse.de
+
+- fix build with new alsa. works hopefully also with old versions
+
+-------------------------------------------------------------------
+Tue Jan  7 15:08:32 CET 2003 - adrian@suse.de
+
+- update to RC6 (newer than the last 3.1 final try ;)
+
+-------------------------------------------------------------------
+Wed Dec 18 11:39:30 CET 2002 - coolo@suse.de
+
+- updating the admin tar ball to find out about possible problems
+
+-------------------------------------------------------------------
+Mon Dec 16 14:28:39 CET 2002 - coolo@suse.de
+
+- updating to latest branch. 
+
+-------------------------------------------------------------------
+Tue Dec 10 14:55:41 CET 2002 - coolo@suse.de
+
+- adding a check to kdeinit that checks for KDE_IS_PRELINKED and
+  is not using dlopen then
+
+-------------------------------------------------------------------
+Tue Dec  3 09:57:31 CET 2002 - coolo@suse.de
+
+- trying to fix SSL check for lib64
+
+-------------------------------------------------------------------
+Sat Nov 30 21:48:04 CET 2002 - adrian@suse.de
+
+- next try of RC5 tar ball. BRANCH fixes are again disabled
+
+-------------------------------------------------------------------
+Thu Nov 28 13:01:54 CET 2002 - adrian@suse.de
+
+- apply 3_1_BRANCH fixes
+- fix build for lib64
+
+-------------------------------------------------------------------
+Mon Nov 25 10:46:04 CET 2002 - adrian@suse.de
+
+- update to RC5.
+- do not use --enable-final on beta (gcc 3.3)
+
+-------------------------------------------------------------------
+Mon Nov 25 01:03:39 CET 2002 - ro@suse.de
+
+- added openldap2-client to neededforbuild 
+
+-------------------------------------------------------------------
+Sat Nov 23 16:24:50 CET 2002 - adrian@suse.de
+
+- enable openldap support
+- clean up #neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov 20 15:02:54 CET 2002 - coolo@suse.de
+
+- adding fix for admin dir which should unbreak packages having problems
+  with autoconf 2.56
+
+-------------------------------------------------------------------
+Wed Nov 20 13:00:30 CET 2002 - adrian@suse.de
+
+- disable hotfix again (it is inside the new tar ball)
+
+-------------------------------------------------------------------
+Wed Nov 20 11:13:49 CET 2002 - adrian@suse.de
+
+- update to version 3.1-RC4 (final ?)
+
+-------------------------------------------------------------------
+Tue Nov 12 17:00:38 CET 2002 - coolo@suse.de
+
+- another snapshot with even more last minute fixes ;(
+
+-------------------------------------------------------------------
+Tue Nov 12 09:14:09 CET 2002 - coolo@suse.de
+
+- apply the lib64 patch correctly (in updating to a source without
+  the patch pre-applied)
+
+-------------------------------------------------------------------
+Mon Nov 11 16:14:44 CET 2002 - coolo@suse.de
+
+- update to newer snapshot and sort out patches
+
+-------------------------------------------------------------------
+Wed Nov  6 17:35:47 CET 2002 - adrian@suse.de
+
+- update to snapshot 3.0.8.20021106 (fix file conflicts)
+
+-------------------------------------------------------------------
+Sun Nov  3 13:16:21 CET 2002 - adrian@suse.de
+
+- update to version 1.1.0.20021030 ~= RC1
+
+-------------------------------------------------------------------
+Tue Oct  8 21:19:44 CEST 2002 - adrian@suse.de
+
+- update to version 3.0.4
+- disable topMenu patch again
+
+-------------------------------------------------------------------
+Tue Sep 24 09:05:13 CEST 2002 - froh@suse.de
+
+- %-ifarch'ed Requires: alsa-devel for all but s390 and s390x (#18647)
+
+-------------------------------------------------------------------
+Sun Sep  8 19:48:06 CEST 2002 - adrian@suse.de
+
+- cross side scripting check fix from Dirk Mueller
+
+-------------------------------------------------------------------
+Sun Sep  8 15:53:37 CEST 2002 - adrian@suse.de
+
+- .exe files are handled now as files for wine and not direct executable
+
+-------------------------------------------------------------------
+Thu Sep  5 14:11:22 CEST 2002 - adrian@suse.de
+
+- add fix from mana for libkmid, to get alsa sequenzer working again
+
+-------------------------------------------------------------------
+Wed Sep  4 13:16:24 MEST 2002 - coolo@suse.de
+
+- fix the PNM mimetypes, so that digital cameras work
+
+-------------------------------------------------------------------
+Sat Aug 31 23:49:25 CEST 2002 - adrian@suse.de
+
+- default to lib64 pathes in admin/* on lib64 systems.
+  (fix link error, when lib32 enviroment is installed)
+
+-------------------------------------------------------------------
+Fri Aug 30 12:07:35 CEST 2002 - adrian@suse.de
+
+- use most current 3_0_BRANCH patches
+  * fix for crash in khtml with enabled java from Seli
+  * layout fix in kcombobox from gis
+  * kcombobox fix from dfaure for oversized box in koffice
+  * kjs date fixes from dfaure
+  * ksycoca, illegal object fix from Waldo
+  * kcompletion box fix for Xinerama setup, reviewed by gis
+  * do not loop on unexpected EOF in kio_khtml from Waldo
+  * newline handling fix in khtml from dirk
+  * disable tiff write support, since it is not implemented (coolo)
+  * translations
+
+-------------------------------------------------------------------
+Mon Aug 26 14:55:32 CEST 2002 - adrian@suse.de
+
+- install plugins on lib64 into /opt/kde3/lib. so we do not need
+  different plugin path definitions
+- add missing dependencies to -devel packages
+- add some selected fix from 3_0_BRANCH
+
+-------------------------------------------------------------------
+Tue Aug 20 10:28:25 CEST 2002 - adrian@suse.de
+
+- fix build for lib64 really :(
+
+-------------------------------------------------------------------
+Tue Aug 20 08:51:21 CEST 2002 - adrian@suse.de
+
+- fix build for lib64
+- move designer plugins into -devel package
+
+-------------------------------------------------------------------
+Tue Aug 20 00:41:40 CEST 2002 - adrian@suse.de
+
+- follow change qt plugin path patch (using implicit subdir on lib64)
+
+-------------------------------------------------------------------
+Fri Aug 16 12:12:54 CEST 2002 - adrian@suse.de
+
+- update to current 3_0_BRANCH
+  * include dirk's khtml glitch fix
+
+-------------------------------------------------------------------
+Wed Aug 14 16:08:17 CEST 2002 - coolo@suse.de
+
+- don't strip on debug-i386
+- fixing lib64 path for plugins
+
+-------------------------------------------------------------------
+Tue Aug 13 15:29:12 CEST 2002 - coolo@suse.de
+
+- prefer settings in /etc/opt/kde3 over /opt/kde, so that UL
+  settings can overwrite standard KDE settings
+
+-------------------------------------------------------------------
+Tue Aug 13 12:42:46 CEST 2002 - adrian@suse.de
+
+- update to 3.0.3 tar ball, second try
+  (includes security fix for KSSL)
+
+-------------------------------------------------------------------
+Tue Aug 13 10:30:30 CEST 2002 - coolo@suse.de
+
+- alsadev -> alsa-devel
+
+-------------------------------------------------------------------
+Mon Aug 12 17:08:37 CEST 2002 - coolo@suse.de
+
+- the x86_64 bug is fixed now
+
+-------------------------------------------------------------------
+Sun Aug 11 12:54:06 CEST 2002 - coolo@suse.de
+
+- changing admin.tar.bz2 to work around automake crap not beeing
+  able to get kdemultimedia compiled
+- update 3.0 branch patch again
+
+-------------------------------------------------------------------
+Thu Aug  8 00:44:30 CEST 2002 - adrian@suse.de
+
+- update to 3.0.3
+- add 3_0_BRANCH fix for ksycoca recreation by Waldo
+
+-------------------------------------------------------------------
+Mon Aug  5 10:43:16 CEST 2002 - adrian@suse.de
+
+- update 3_0_BRANCH.dif
+- add some mimetypes
+- apply patch to support a fallback on mounting devices
+- fix PreRequires
+- update admin.tar 
+
+-------------------------------------------------------------------
+Sun Aug  4 22:35:24 CEST 2002 - adrian@suse.de
+
+- finaly fix build for hammer
+  (yes, even tested this time)
+
+-------------------------------------------------------------------
+Sun Aug  4 11:33:29 CEST 2002 - adrian@suse.de
+
+- fix the second typo in one line :(
+
+-------------------------------------------------------------------
+Fri Aug  2 15:56:03 CEST 2002 - coolo@suse.de
+
+- adding a patch that hopefully fixes the very large tip of the konsole
+  window
+
+-------------------------------------------------------------------
+Thu Aug  1 15:58:11 CEST 2002 - adrian@suse.de
+
+- and fix the typo in last patch
+
+-------------------------------------------------------------------
+Thu Aug  1 15:47:00 CEST 2002 - adrian@suse.de
+
+- add workaround for x86_64 compiler bug
+
+-------------------------------------------------------------------
+Thu Aug  1 09:24:45 CEST 2002 - coolo@suse.de
+
+- updating the branch patch for a possible fix to kukuk's
+  bugzilla crash :)
+
+-------------------------------------------------------------------
+Wed Jul 31 15:58:12 CEST 2002 - adrian@suse.de
+
+- add missing directorys applnk/*
+
+-------------------------------------------------------------------
+Tue Jul 30 12:00:25 CEST 2002 - coolo@suse.de
+
+- don't use SuSEconfig for the KDE api, but a dedicated script
+  in %post
+- don't install a susehelp config file anymore, but let susehelp
+  handle it itself
+- handle the new location for api docu
+
+-------------------------------------------------------------------
+Fri Jul 26 20:37:03 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Fri Jul 26 19:44:39 CEST 2002 - adrian@suse.de
+
+- disable fast-malloc, since it is in qt now
+
+-------------------------------------------------------------------
+Tue Jul 23 16:02:01 CEST 2002 - coolo@suse.de
+
+- also install the qt.tag file
+- remove configure option removed long ago
+
+-------------------------------------------------------------------
+Tue Jul 23 09:05:40 CEST 2002 - coolo@suse.de
+
+- don't let the Makefile guess the package name. it will guess the
+  wrong thing
+
+-------------------------------------------------------------------
+Fri Jul 19 10:57:12 CEST 2002 - adrian@suse.de
+
+- use the kpart for rpm mimetype (if installed)
+
+-------------------------------------------------------------------
+Thu Jul 18 16:53:37 CEST 2002 - coolo@suse.de
+
+- use doxygen for docu
+- backport admin fixes from HEAD branch
+- removed neededforbuilds that look like stuff not needed for build
+  (since KDE 2.1)
+- moved API docu (back) into /opt/kde3
+- updated 3.0 branch diff
+
+-------------------------------------------------------------------
+Fri Jul 12 17:12:27 CEST 2002 - adrian@suse.de
+
+- add topMenu definition
+
+-------------------------------------------------------------------
+Fri Jul 12 14:21:11 CEST 2002 - adrian@suse.de
+
+- use current 3_0_BRANCH
+  * includes the fix for the famous CSS/JS segfault in konqueror
+
+-------------------------------------------------------------------
+Thu Jul 11 13:10:17 CEST 2002 - adrian@suse.de
+
+- fix build for lib64
+- use patch from coolo to disable g3 file support (libtiff is broken)
+
+-------------------------------------------------------------------
+Mon Jul  8 13:04:10 CEST 2002 - adrian@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Fri Jul  5 14:00:14 CEST 2002 - adrian@suse.de
+
+- add missing icon directorys
+- split cups support into own package for 8.1
+- s,i386,%ix86,
+
+-------------------------------------------------------------------
+Thu Jun 27 21:57:40 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig in %post
+- use --disable-final on ppc64
+- disable more debug messages
+
+-------------------------------------------------------------------
+Wed Jun 26 10:55:26 CEST 2002 - adrian@suse.de
+
+- update to the second try of 3.0.2 tar ball
+
+-------------------------------------------------------------------
+Mon Jun 24 22:29:07 CEST 2002 - adrian@suse.de
+
+- udpate to version 3.0.2
+
+-------------------------------------------------------------------
+Wed Jun 19 18:12:46 CEST 2002 - uli@suse.de
+
+- disable-final on ARM
+
+-------------------------------------------------------------------
+Wed Jun 12 10:44:09 CEST 2002 - adrian@suse.de
+
+- update to current 3_0_BRANCH (large kjs updates)
+- clean #neededforbuild
+- do only warn on missing admin directory in update_admin
+- remove old common_compile_options file
+
+-------------------------------------------------------------------
+Fri Jun  7 13:55:25 CEST 2002 - adrian@suse.de
+
+- using fixed libtool for -m32/-m64 in admin (fixed by matz)
+- replace admin with the content from admin.tar.bz2
+
+-------------------------------------------------------------------
+Thu Jun  6 15:45:24 CEST 2002 - adrian@suse.de
+
+- export kde_styledir and kde_widgetdir to follow the plugins* 
+  directory name from Qt.
+
+-------------------------------------------------------------------
+Wed Jun  5 15:59:29 CEST 2002 - adrian@suse.de
+
+- go back to 1.316 for am_edit
+  (no unsermake support, but generates moc files with --enable-final)
+
+-------------------------------------------------------------------
+Tue Jun  4 10:39:02 CEST 2002 - coolo@suse.de
+
+- adding /sbin:/usr/sbin to the PATH if kdesu is used to become root.
+  Work around for flaws in setup tools (#11362)
+
+-------------------------------------------------------------------
+Mon Jun  3 15:03:11 CEST 2002 - coolo@suse.de
+
+- removing test programs that cause problems with automake 1.6.1
+
+-------------------------------------------------------------------
+Mon Jun  3 12:34:41 CEST 2002 - adrian@suse.de
+
+- update to inofficial version 3.0.1a
+  * include bug/security fix for file uploads
+- fix for broken png's in khtml in some cases
+
+-------------------------------------------------------------------
+Mon May 27 12:02:26 CEST 2002 - adrian@suse.de
+
+- fix for 7.0 distribution
+
+-------------------------------------------------------------------
+Thu May 23 18:35:17 CEST 2002 - ro@suse.de
+
+- fix admin extraction 
+
+-------------------------------------------------------------------
+Thu May 23 16:43:13 CEST 2002 - adrian@suse.de
+
+- Obsolete/provide kups and add start script
+
+-------------------------------------------------------------------
+Thu May 23 14:48:35 CEST 2002 - coolo@suse.de
+
+- adding a update_admin snippet here too, so we can fix kde 3
+  apps the same way as kde 2 apps
+
+-------------------------------------------------------------------
+Wed May 22 01:18:18 CEST 2002 - adrian@suse.de
+
+- use coolo's famous common_options config file format
+  old common_compile_options file is not disabled for now
+- use explicit --enable-debug=full if RPM_OPT_FLAGS~=-g
+
+-------------------------------------------------------------------
+Tue May 21 16:28:23 CEST 2002 - adrian@suse.de
+
+- use Dirk's official post-3.0.1 patch and disable our former ones
+  * includes a security fix for khtml, known as "Opera exploit"
+  * fix "arts not starting realtime" problem (typo in reading config
+variable).
+  * fix crashing kbuildsycoca when it hits an unreadable directory
+  * fix a text selection problem for KMail.
+  * fix a problem where (i)frame's accidently were not resized correctly.
+  * fix mime-detection of koffice post v1.1 documents
+  * urgent fixes in kfiledialog
+
+-------------------------------------------------------------------
+Fri May 17 15:09:31 CEST 2002 - adrian@suse.de
+
+- fix dieing kio slave on https connections
+
+-------------------------------------------------------------------
+Fri May 17 14:09:44 CEST 2002 - adrian@suse.de
+
+- reduce noise on stdout from khtml (extend shut_up.dif)
+
+-------------------------------------------------------------------
+Tue May 14 11:42:25 CEST 2002 - adrian@suse.de
+
+- use updated 3.0.1 tar ball include crash fixes (esp. for kmail)
+
+-------------------------------------------------------------------
+Mon May 13 14:46:46 CEST 2002 - adrian@suse.de
+
+- set requirement back to qt-3.0.3 version
+
+-------------------------------------------------------------------
+Fri May 10 16:11:58 CEST 2002 - adrian@suse.de
+
+- workaround rpm parse bug for old distributions
+
+-------------------------------------------------------------------
+Fri May 10 13:29:58 CEST 2002 - adrian@suse.de
+
+- update to version 3.0.1 and remove obsolete patches
+
+-------------------------------------------------------------------
+Tue May  7 12:49:37 CEST 2002 - meissner@suse.de
+
+- %_lib fixes inside the .cpp files (should now find SSL libraries)
+
+-------------------------------------------------------------------
+Mon May  6 16:33:47 CEST 2002 - meissner@suse.de
+
+- %_lib fixes
+
+-------------------------------------------------------------------
+Tue Apr 16 14:58:17 CEST 2002 - adrian@suse.de
+
+- Require spell (either ispell or aspell) > 8.0 only
+- use --disable-final and -O0 on mips
+
+-------------------------------------------------------------------
+Fri Apr 12 15:53:49 MEST 2002 - adrian@suse.de
+
+- set --enable-mt. Not needed for kdelibs3, but it should be
+  in the common compiler flags for some other applications with
+  older admin folder
+
+-------------------------------------------------------------------
+Tue Apr  9 14:12:43 CEST 2002 - adrian@suse.de
+
+- fix kde api generation for 7.1, 7.2 and 7.3 based distributions
+
+-------------------------------------------------------------------
+Tue Mar 26 00:14:11 CET 2002 - adrian@suse.de
+
+- update to new 3.0 final version. the last one. sure.
+- comment out last harmless warning message from kdelibs
+
+-------------------------------------------------------------------
+Mon Mar 25 20:31:47 CET 2002 - adrian@suse.de
+
+- update 3.0 final tar ball
+- 2 urgent fixes ( kdirlister )
+
+-------------------------------------------------------------------
+Mon Mar 25 10:45:55 CET 2002 - adrian@suse.de
+
+- update to 3.0 final (everything is wonderfull version)
+- switch from /etc/X11/kde3 to /etc/opt/kde3 to be FHS compliant
+- add /etc/kde3rc with prefix, so we do not need $KDEDIRS anymore
+
+-------------------------------------------------------------------
+Thu Mar 21 19:05:29 CET 2002 - adrian@suse.de
+
+- use kdoc to generate api-documentation again
+  (makes the class browser of kdevelop happy)
+
+-------------------------------------------------------------------
+Thu Mar 21 16:55:43 CET 2002 - adrian@suse.de
+
+- update to 3.0rc3
+
+-------------------------------------------------------------------
+Sun Mar 10 17:03:38 CET 2002 - adrian@suse.de
+
+- update to 3.0rc2
+
+-------------------------------------------------------------------
+Mon Mar  4 17:31:55 CET 2002 - adrian@suse.de
+
+- update to 3.0rc1
+
+-------------------------------------------------------------------
+Mon Feb 25 19:09:57 CET 2002 - adrian@suse.de
+
+- update to snapshot 2.92.2002022512
+
+-------------------------------------------------------------------
+Mon Feb 18 20:55:08 CET 2002 - adrian@suse.de
+
+- update to snapshot 2.92.2002021810
+
+-------------------------------------------------------------------
+Thu Feb 14 23:26:36 CET 2002 - adrian@suse.de
+
+- update to snapshot 2.92.2002021421
+- split kdelibs3-artsd package into arts and arts-devel
+- add Doug Lea's fast threaded malloc function from glibc 2.3
+  * prepared by Lubos Lunak
+  * integrated into libkdecore
+  * add dummy library to make it configurable via libKmalloc.so link
+  * disabled by default
+
+-------------------------------------------------------------------
+Mon Feb 11 15:07:20 CET 2002 - adrian@suse.de
+
+- update to snapshot 2.92.2002021111
+
+-------------------------------------------------------------------
+Mon Feb  4 23:51:35 CET 2002 - adrian@suse.de
+
+- update to 2.92 (KDE 3.0 beta 2)
+- create common_compile_flags file
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Jan 28 14:49:00 CET 2002 - adrian@suse.de
+
+- update to snapshot from 2.91.2002012811
+
+-------------------------------------------------------------------
+Wed Jan 23 01:50:51 CET 2002 - adrian@suse.de
+
+- add missing header files
+
+-------------------------------------------------------------------
+Wed Jan 23 00:31:21 CET 2002 - adrian@suse.de
+
+- update to snapshot 2.91.2002012221
+
+-------------------------------------------------------------------
+Tue Jan 15 18:24:51 CET 2002 - adrian@suse.de
+
+- update to snapshot 2.91.2002011511
+
+-------------------------------------------------------------------
+Sat Jan  5 18:28:06 CET 2002 - adrian@suse.de
+
+- update to recent/todays snapshot
+- disable rpath for SuSE > 7.3 
+  (/opt/kde3/lib is in ld.so.conf)
+- add Requires: line for at least Qt 3.0.1
+
+-------------------------------------------------------------------
+Mon Dec 17 15:58:49 CET 2001 - adrian@suse.de
+
+- fix compile on s390
+- add fix for khtml seg fault
+- do not build documentation for <7.3 distributions until kdoc
+  is fixed
+
+-------------------------------------------------------------------
+Wed Dec 12 17:02:34 CET 2001 - adrian@suse.de
+
+- update to KDE 3.0 Beta 1
+
+-------------------------------------------------------------------
+Tue Dec  4 20:13:20 CET 2001 - adrian@suse.de
+
+- use current CVS snapshot
+
+-------------------------------------------------------------------
+Fri Nov  2 12:30:45 CET 2001 - adrian@suse.de
+
+- using cvs snapshot from 01 Nov 2001
+
+-------------------------------------------------------------------
+Sat Oct 20 17:57:21 CEST 2001 - adrian@suse.de
+
+- using newer cvs-snapshot
+  (compiles again with qt 3 final)
+
+-------------------------------------------------------------------
+Tue Oct  9 11:55:41 CEST 2001 - adrian@suse.de
+
+- branch to first kdelibs 3 (alpha 1)
+
+-------------------------------------------------------------------
+Mon Sep 24 01:40:05 CEST 2001 - adrian@suse.de
+
+- add security fix for peer-ssl from Dirk
+- add fix to make it possible to allow JS from local pages
+
+-------------------------------------------------------------------
+Fri Sep 21 22:51:53 CEST 2001 - adrian@suse.de
+
+- add fix for kbuildsycoca --incremental from Waldo
+  (changed files (due to updated packages or a SuSEconfig run for
+   example) do not lead anymore to an incorrect ksycoca database.
+
+-------------------------------------------------------------------
+Tue Sep 18 08:55:26 CEST 2001 - adrian@suse.de
+
+- add symbolic link to /opt/kde2/doc/HTML/en/kdeapi
+- #neededforbuild cups -> cups-libs
+
+-------------------------------------------------------------------
+Sat Sep 15 19:13:06 CEST 2001 - adrian@suse.de
+
+- add klineedit fix 
+- add warning that kdDebug function is disabled (except for ppc)
+- fix kdelibs-2.2.1.dif (do not apply patch for ppc-only global)
+
+-------------------------------------------------------------------
+Thu Sep 13 09:36:06 CEST 2001 - adrian@suse.de
+
+- add fix for kjs (octal parsing)
+- add fix icondialog (custom icon directorys)
+- fix ia64 patch
+
+-------------------------------------------------------------------
+Tue Sep 11 10:54:21 CEST 2001 - adrian@suse.de
+
+- add security fixes for kssl (do not save keys on disk)
+- add Qt API to the API index page
+
+-------------------------------------------------------------------
+Mon Sep 10 14:41:23 CEST 2001 - adrian@suse.de
+
+- update to to second try of kdelibs 2.2.1 tar ball
+  * JavaScript fixes
+- fix ia64 workarounds to build on older distris
+
+-------------------------------------------------------------------
+Sun Sep  9 17:57:01 CEST 2001 - schwab@suse.de
+
+- Fix specfile for ia64 workarounds.
+
+-------------------------------------------------------------------
+Sat Sep  8 20:40:27 CEST 2001 - adrian@suse.de
+
+- updating to final 2.2.1 tar ball
+
+-------------------------------------------------------------------
+Sun Sep  2 09:59:21 CEST 2001 - adrian@suse.de
+
+- update to KDE_2_2_BRANCH from 02.09.2001
+  * compile fixes
+  * KFile crash fix
+  * KDockWidget crash fix, caused crash in quanta
+  * fix login with chars in password >127
+  * load charsets file on demand
+  * kxmlgui fixed to read really the complete xml file.
+- drop -cups package, the cups libs are now splitted from the cups
+  package.
+- add kmimetype hack to get a fallback application for device icons
+- make KDE quiet by default (kdDebug default value is 4 now)
+
+-------------------------------------------------------------------
+Tue Aug 28 15:53:23 CEST 2001 - adrian@suse.de
+
+- update to KDE_2_2_BRANCH from 28.08.2001
+  * fix kspell for iso 13 languages
+  * fix $PATH for kdesu
+  * check the preview action in setPreviewWidget()
+  * check for aborted save
+  * official patch for kbuildsycoca
+  * kfile fixes
+  * crash fixes in userstylesheets
+  * large file system support fix
+  * crash fix in kbugreport
+- removed patches for kbuildsycoca and large file support
+
+-------------------------------------------------------------------
+Sat Aug 25 09:49:21 CEST 2001 - adrian@suse.de
+
+- update to KDE_2_2_BRANCH from 25.08.2001
+  * khtml supports <META http-equiv="Cache-Control" content="no-cache">
+  * kded updates
+  * translation updates
+- kbuildsycoca speed optimisation 
+  (original patch from Lubos Lunak, reworked to be BC)
+
+-------------------------------------------------------------------
+Tue Aug 21 12:25:49 CEST 2001 - adrian@suse.de
+
+- using KDE_2_2_BRANCH from 21.08.2001
+  * html parser fixes
+  * artsd fixes
+  * ...
+- disable FAM by default, it can be enabled with
+  export USE_FAM=1
+- disable and obsolete -i686 package, until the number of problems
+  are solved
+
+-------------------------------------------------------------------
+Mon Aug  6 23:55:17 CEST 2001 - adrian@suse.de
+
+- add assert into khtml/misc/loader.cpp as recomended by Dirk
+- switch on SSE support in i386 architecture
+  (arts has a runtime checking)
+- clean up file list
+- ia64 workarounds
+
+-------------------------------------------------------------------
+Mon Aug  6 10:59:49 CEST 2001 - adrian@suse.de
+
+- update to final 2.2
+
+-------------------------------------------------------------------
+Wed Aug  1 15:57:30 CEST 2001 - adrian@suse.de
+
+- update to 2.2rc1
+
+-------------------------------------------------------------------
+Fri Jul  6 11:53:42 CEST 2001 - adrian@suse.de
+
+- generate API documentation
+  (no need to install kdevelop for api docu anymore)
+
+-------------------------------------------------------------------
+Fri Jun 29 15:39:12 CEST 2001 - adrian@suse.de
+
+- 2.2beta1
+
+-------------------------------------------------------------------
+Mon May 28 10:39:18 CEST 2001 - adrian@suse.de
+
+- 2.2alpha2
+
+-------------------------------------------------------------------
+Mon Apr 16 22:02:33 CEST 2001 - adrian@suse.de
+
+- 2.2alpha1 
+
+-------------------------------------------------------------------
+Fri Apr 13 12:54:18 CEST 2001 - adrian@suse.de
+
+- add currency symbol to KFontDialog preview for testing purposes
+
+-------------------------------------------------------------------
+Tue Apr 10 20:49:07 CEST 2001 - adrian@suse.de
+
+- revert also kdeinit changes (compile fix)
+- add fixes for javascript from CVS
+- add fixes for font name mapping from CVS
+- add kdeinit_shutdown patch from Waldo
+
+-------------------------------------------------------------------
+Tue Apr 10 01:01:16 MEST 2001 - adrian@suse.de
+
+- minor fix, but hopefully fix linker problems on all P-II systems
+
+-------------------------------------------------------------------
+Mon Apr  9 11:24:07 CEST 2001 - adrian@suse.de
+
+- disable alsa for 7.0-ppc
+
+-------------------------------------------------------------------
+Fri Apr  6 11:01:59 CEST 2001 - adrian@suse.de
+
+- drop the -nostdlib flag during linking. this causes problems
+  (since not all need libs are used) on some architectures
+- -O2 for axp   
+
+-------------------------------------------------------------------
+Thu Apr  5 08:56:33 CEST 2001 - adrian@suse.de
+
+- update to 2_1_BRANCH.
+  this fixes the proxy server authentication problem
+
+-------------------------------------------------------------------
+Wed Mar 28 18:28:29 CEST 2001 - adrian@suse.de
+
+- disable ssl support for 7.0-ppc
+  (problems with the compiler and linker, which can not be fixed
+   without to loss the BC)
+
+-------------------------------------------------------------------
+Tue Mar 27 12:08:53 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <docbkdsl> to <docbook-dsssl-stylesheets>
+
+-------------------------------------------------------------------
+Tue Mar 20 21:58:31 CET 2001 - adrian@suse.de
+
+- enable -O2 for ppc
+  using inline gcc bug workaround for ia64
+
+-------------------------------------------------------------------
+Tue Mar 20 18:53:42 CET 2001 - adrian@suse.de
+
+- update to 2.1.1 (official tar ball)
+
+-------------------------------------------------------------------
+Mon Mar 19 22:03:49 CET 2001 - adrian@suse.de
+
+- update to current 2_1_BRANCH
+  we have kde-config as executable binary back 
+  (lots of configure scripts test this)
+
+-------------------------------------------------------------------
+Mon Mar 19 15:39:26 CET 2001 - adrian@suse.de
+
+- add cyrus-sassl to #neededforbuild
+
+-------------------------------------------------------------------
+Sat Mar 17 21:38:50 CET 2001 - adrian@suse.de
+
+- added missing packages in #neededforbuild
+
+-------------------------------------------------------------------
+Sat Mar 17 13:32:29 CET 2001 - adrian@suse.de
+
+- fix CATALOG for distributions <7.2
+  update to current 2_1_0_TAG
+
+-------------------------------------------------------------------
+Tue Mar 13 14:29:16 CET 2001 - ro@suse.de
+
+- added CATALOG for docbook_3 
+
+-------------------------------------------------------------------
+Tue Mar 13 01:12:30 CET 2001 - ro@suse.de
+
+- changed neededforbuild <docbk30> to <docbook_3>
+
+-------------------------------------------------------------------
+Thu Feb 22 19:22:17 CET 2001 - adrian@suse.de
+
+- the final final 2.1.0 tar ball ...
+
+-------------------------------------------------------------------
+Wed Feb 21 22:42:47 CET 2001 - adrian@suse.de
+
+- use the right KDE BRANCH (not my fault ;-)
+
+-------------------------------------------------------------------
+Wed Feb 21 17:16:51 CET 2001 - adrian@suse.de
+
+- update to final 2.1.0
+
+-------------------------------------------------------------------
+Wed Feb 14 17:04:08 CET 2001 - adrian@suse.de
+
+- update to 2.1 post beta 2
+
+-------------------------------------------------------------------
+Mon Jan 22 14:44:41 CET 2001 - stepan@suse.de
+
+- alpha axp compile fixes for gcc 2.95.2
+
+-------------------------------------------------------------------
+Tue Jan 16 12:05:26 CET 2001 - adrian@suse.de
+
+- add a check of return value in kprocess. 
+  Hopefully no crashes anymore.
+
+-------------------------------------------------------------------
+Mon Jan 15 22:13:16 CET 2001 - adrian@suse.de
+
+- disable --enable-final until the glibc/compiler problem in 
+  kprocess is fixed
+
+-------------------------------------------------------------------
+Mon Jan 15 14:01:38 CET 2001 - adrian@suse.de
+
+- fix index.desktop for distris <7.1
+
+-------------------------------------------------------------------
+Sat Jan 13 18:49:40 CET 2001 - adrian@suse.de
+
+- fix local support in kicker. native language again in menus
+  this fix does not work for chinese people
+  fix index.desktop in highcolor, 22x22 actions icons can be loaded
+  again
+
+-------------------------------------------------------------------
+Fri Jan 12 00:02:33 CET 2001 - adrian@suse.de
+
+- create some links to see the konqueror gear again
+  fix hicolor index file
+
+-------------------------------------------------------------------
+Tue Jan  9 22:07:19 CET 2001 - adrian@suse.de
+
+- added security fix for kdesu from Waldo
+
+-------------------------------------------------------------------
+Mon Jan  8 15:43:09 CET 2001 - adrian@suse.de
+
+- fix SuSE icon description
+
+-------------------------------------------------------------------
+Sun Jan  7 15:56:58 CET 2001 - adrian@suse.de
+
+- use additional pathes, to not conflict with older pathes
+
+-------------------------------------------------------------------
+Sun Jan  7 14:24:01 CET 2001 - adrian@suse.de
+
+- new icon handling. much more clean now and the
+  dependencie to icons is not needed anymore
+
+-------------------------------------------------------------------
+Sat Jan  6 17:15:51 CET 2001 - adrian@suse.de
+
+- fix locale support. 
+  LANG=de_DE or LANG=de_DE.utf-8 is working now.
+
+-------------------------------------------------------------------
+Tue Jan  2 21:51:19 CET 2001 - adrian@suse.de
+
+- added a fix for font handling, if antialising is used
+  (Thanks Kurt)
+
+-------------------------------------------------------------------
+Mon Jan  1 22:16:48 CET 2001 - adrian@suse.de
+
+- remove charset for german. this confuses the font handling
+  added fix for stalled, but broken connections; thanks waldo
+
+-------------------------------------------------------------------
+Sat Dec 30 21:22:21 CET 2000 - adrian@suse.de
+
+- extend rpm mimelnk for *.spm files
+  disabled threading
+
+-------------------------------------------------------------------
+Wed Dec 27 18:33:15 CET 2000 - adrian@suse.de
+
+- drop message in kdeinit, which produce a lot of invalid bugzilla entrys
+
+-------------------------------------------------------------------
+Wed Dec 20 10:38:25 CET 2000 - adrian@suse.de
+
+- added openssl-devel for #neededforbuild
+
+-------------------------------------------------------------------
+Sun Dec 17 15:55:15 CET 2000 - adrian@suse.de
+
+- moved icon links back to kdelibs :-(
+
+-------------------------------------------------------------------
+Sun Dec 17 12:54:19 CET 2000 - adrian@suse.de
+
+- moved icon links from this package to kdebase
+
+-------------------------------------------------------------------
+Fri Dec 15 14:35:38 CET 2000 - adrian@suse.de
+
+- brown paper bag fix ... I spend Rudi a beer ...
+
+-------------------------------------------------------------------
+Fri Dec 15 12:02:02 CET 2000 - adrian@suse.de
+
+- added icon packages to #neededforbuild
+
+-------------------------------------------------------------------
+Thu Dec 14 12:38:23 CET 2000 - adrian@suse.de
+
+- fixed specfile
+
+-------------------------------------------------------------------
+Wed Dec 13 19:22:39 CET 2000 - adrian@suse.de
+
+- fixed icon links
+
+-------------------------------------------------------------------
+Wed Dec 13 16:52:23 CET 2000 - adrian@suse.de
+
+- update to current 2_0_BRANCH
+
+-------------------------------------------------------------------
+Wed Nov 29 14:25:31 CET 2000 - adrian@suse.de
+
+- update to 2.0.1 
+
+-------------------------------------------------------------------
+Wed Nov 22 02:01:26 CET 2000 - ro@suse.de
+
+- remove penguin.png (in kdebase) 
+
+-------------------------------------------------------------------
+Tue Nov 21 15:07:15 CET 2000 - adrian@suse.de
+
+- fixed /etc/kderc
+
+-------------------------------------------------------------------
+Tue Nov 21 00:08:08 CET 2000 - adrian@suse.de
+
+- added icon support for non kde icons
+  added /etc/kderc
+  ~/Desktop -> ~/KDesktop
+
+-------------------------------------------------------------------
+Thu Nov 16 15:46:49 CET 2000 - adrian@suse.de
+
+- update to newer snapshot from KDE_2_0_BRANCH
+  fixed sgml catalog file for our sgml enviroment
+
+-------------------------------------------------------------------
+Fri Nov  3 08:45:45 CET 2000 - adrian@suse.de
+
+- fixed needed for build
+
+-------------------------------------------------------------------
+Thu Nov  2 20:35:30 CET 2000 - adrian@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Tue Oct 17 04:52:05 CEST 2000 - adrian@suse.de
+
+- update to 2.0.0
+- changed default for ~/.kde to ~/.kde2
+- dropped klibs2i and klibs2cr again
+- splitted package in
+  * kdelibs
+  * kdelibs-devel
+
+-------------------------------------------------------------------
+Wed Sep 20 11:29:35 CEST 2000 - adrian@suse.de
+
+- the last fix :-(
+
+-------------------------------------------------------------------
+Sun Sep 17 00:27:08 CEST 2000 - adrian@suse.de
+
+- splited klibs2 into klibs2, klibs2i (international version
+  without crypt support) and klibs2cr (crypt version)
+
+-------------------------------------------------------------------
+Sat Sep 16 15:17:06 CEST 2000 - adrian@suse.de
+
+- removed ssl/ssh support
+  added big endian fix in KPixmap
+
+-------------------------------------------------------------------
+Tue Sep 12 11:49:35 MEST 2000 - adrian@suse.de
+
+- changed to -O0 for ppc and alpha
+
+-------------------------------------------------------------------
+Tue Sep 12 08:56:11 CEST 2000 - adrian@suse.de
+
+- update to RC 1 
+
+-------------------------------------------------------------------
+Mon Aug 21 14:04:31 CEST 2000 - adrian@suse.de
+
+- update to beta 4
+
+-------------------------------------------------------------------
+Mon Jul 24 17:46:04 CEST 2000 - adrian@suse.de
+
+- update to second version of beta 3
+
+-------------------------------------------------------------------
+Fri Jul 21 22:39:53 CEST 2000 - adrian@suse.de
+
+- update to beta 3
+
+-------------------------------------------------------------------
+Mon Jul 17 19:24:01 CEST 2000 - adrian@suse.de
+
+- update to snapshot from 17.07.2000
+
+-------------------------------------------------------------------
+Thu Jul  6 19:48:47 CEST 2000 - adrian@suse.de
+
+- Spec file created from kdelibs-1.91.20000706.tar.gz by autospec
+
+
+-------------------------------------------------------------------
+Fri Jun  9 17:15:52 CEST 2000 - adrian@suse.de
+
+- correct neededforbuild and updated khtml 
+
+-------------------------------------------------------------------
+Fri Jun  9 02:35:16 CEST 2000 - adrian@suse.de
+
+- update to 1.91; beta 2
+
+-------------------------------------------------------------------
+Tue Jun  6 01:29:47 CEST 2000 - adrian@suse.de
+
+- snapshot from 06.06.2000
+
+-------------------------------------------------------------------
+Sun May 28 09:22:23 CEST 2000 - adrian@suse.de
+
+- snapshot from 28.05.2000
+  new type of spec file
+
+-------------------------------------------------------------------
+Fri May 12 13:29:41 CEST 2000 - adrian@suse.de
+
+- update to KDE 1.90
+
+-------------------------------------------------------------------
+Thu Apr 27 17:45:45 CEST 2000 - adrian@suse.de
+
+- snapshot from 25.04.2000  
+
+-------------------------------------------------------------------
+Thu Apr 20 14:27:28 CEST 2000 - adrian@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Wed Apr 19 17:17:42 CEST 2000 - adrian@suse.de
+
+- snapshot from 17.04.2000
+
+-------------------------------------------------------------------
+Thu Apr  6 19:21:15 CEST 2000 - adrian@suse.de
+
+- snapshot from 06.04.2000
+
+-------------------------------------------------------------------
+Thu Mar 30 18:44:11 CEST 2000 - adrian@suse.de
+
+- first KDE libs 2 package. PRE 1.90 Version
+

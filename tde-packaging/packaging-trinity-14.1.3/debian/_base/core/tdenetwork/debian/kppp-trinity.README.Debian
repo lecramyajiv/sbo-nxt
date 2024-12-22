@@ -1,0 +1,40 @@
+Configuring and Running KPPP
+============================
+
+In order to use KPPP, you must first be a member of the "dip" group.
+Membership in this group is a prerequisite for any and all use of ppp in
+Debian. If you are not a member of this group, you will not be able to run
+the ppp daemon (pppd) or make a dialup connection. Since KPPP's backend
+runs SUID root, membership in the "dialout" group is not needed to access
+device nodes.
+
+KPPP also requires that the ppp daemon be run with the "noauth" option.
+However, pppd's default setting, in /etc/ppp/options, is "auth", and for
+security reasons it should remain so. To work around this problem, uncomment
+"noauth" in /etc/ppp/peers/kppp-options. You should then be able to connect.
+
+Note that if "noauth" is uncommented, a setting of "noauth" in
+/etc/ppp/options will conflict with KPPP. Note also that uncommenting
+"noauth" opens the possibility that other malicious members of the "dip"
+group might potentially abuse the ppp daemon.
+
+Finally, if you are uncertain as to which device node represents your modem,
+you can try to find out by running "dmesg | grep tty". The output of this
+command will sometimes provide the needed hint.
+
+If the answer seems to be that your modem is on a node, such as ttyS28, that
+KPPP does not accept as a configuration option, then you should create a
+symlink from that node to /dev/modem (by running, as root,
+"ln -s /dev/ttyS28 /dev/modem", where ttyS28 is replaced by whatever node your
+modem is on). Then simply configure KPPP to use /dev/modem. Further modems
+with non-standard device nodes can likewise be symlinked to /dev/modem[0-3].
+
+If you use udev, then symlinks in /dev will not be preserved
+across reboots. In this case, you should edit, as root, /etc/udev/links.conf,
+adding a line that resembles "L modem    /dev/ttyS28". You must then either
+reboot, or run "/etc/init.d/udev restart", for the link to be created.
+
+If you believe that your modem node should be included in KPPP's default list,
+and you are using a common type of hardware, you can always file a wishlist
+bug against the kppp package, although the package maintainers maintain the
+right to judge your device node too esoteric for inclusion.

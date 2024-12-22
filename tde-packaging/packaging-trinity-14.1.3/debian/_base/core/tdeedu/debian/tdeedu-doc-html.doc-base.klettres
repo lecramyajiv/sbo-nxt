@@ -1,0 +1,12 @@
+Document: klettres
+Title: KLettres Handbook
+Author: Anne-Marie Mahfouf <annma@kde.org>
+Abstract: KLettres is an application specially designed to help the user
+ to learn an alphabet in a new language and then to learn to read simple
+ syllables.  The user can be a young child aged from two and a half or
+ an adult that wants to learn the basics of a foreign language.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/klettres/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/klettres/*.html

@@ -1,0 +1,22 @@
+Source: filelight-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Ral Snchez Siles <rasasi78@gmail.com>
+Standards-Version: 3.8.4
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, xutils
+Homepage: http://www.methylblue.com/filelight/
+
+Package: filelight-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: filelight-trinity (<< 4:14.0.0~)
+Breaks: filelight-trinity (<< 4:14.0.0~)
+Description: show where your diskspace is being used [Trinity]
+ Filelight allows you to understand your disk usage by graphically
+ representing your filesystem as a set of concentric, segmented rings.
+ .
+ It is like a pie-chart, but the segments nest, allowing you to see both
+ which directories take up all your space, and which directories
+ and files inside those directories are the real culprits.

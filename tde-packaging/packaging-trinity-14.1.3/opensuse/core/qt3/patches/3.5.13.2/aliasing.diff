@@ -1,0 +1,11 @@
+--- src/qt.pro
++++ src/qt.pro
+@@ -41,6 +41,8 @@
+ XML_CPP	        = xml
+ STYLES_CPP	= styles
+ EMBEDDED_CPP	= embedded
++QMAKE_CFLAGS += -fno-strict-aliasing
++QMAKE_CFLAGS_MT += -fno-strict-aliasing
+ 
+ win32 {
+ 	contains(QT_PRODUCT,qt-internal) {

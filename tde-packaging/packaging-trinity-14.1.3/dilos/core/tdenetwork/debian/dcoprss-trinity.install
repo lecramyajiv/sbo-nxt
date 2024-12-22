@@ -1,0 +1,4 @@
+debian/tmp/usr/bin/feedbrowser
+debian/tmp/usr/bin/rssclient
+debian/tmp/usr/bin/rssservice
+debian/tmp/usr/share/services/rssservice.desktop

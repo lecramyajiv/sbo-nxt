@@ -1,0 +1,24 @@
+debian/tmp/etc/trinity/klipperrc
+debian/tmp/opt/trinity/bin/klipper
+debian/tmp/opt/trinity/lib/trinity/klipper.la
+debian/tmp/opt/trinity/lib/trinity/klipper_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/klipper_panelapplet.so
+debian/tmp/opt/trinity/lib/trinity/klipper.so
+debian/tmp/opt/trinity/lib/libtdeinit_klipper.so
+debian/tmp/opt/trinity/share/applications/tde/klipper.desktop
+debian/tmp/opt/trinity/share/apps/konqueror/servicemenus/copy-full-path.desktop
+debian/tmp/opt/trinity/share/apps/tdeconf_update/klipper-1-2.pl
+debian/tmp/opt/trinity/share/apps/tdeconf_update/klipper-trinity1.sh
+debian/tmp/opt/trinity/share/apps/tdeconf_update/klipperrc.upd
+debian/tmp/opt/trinity/share/apps/tdeconf_update/klippershortcuts.upd
+debian/tmp/opt/trinity/share/apps/kicker/applets/klipper.desktop
+debian/tmp/opt/trinity/share/autostart/klipper.desktop
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/klipper/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/klipper/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/klipper/index.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/klipper/screenshot.png
+debian/tmp/opt/trinity/share/icons/hicolor/*/apps/klipper.png
+debian/tmp/opt/trinity/share/icons/hicolor/scalable/apps/klipper.svgz
+
+debian/icons/klipper.xpm		/opt/trinity/share/pixmaps
+debian/icons/klipper-16.xpm		/opt/trinity/share/pixmaps

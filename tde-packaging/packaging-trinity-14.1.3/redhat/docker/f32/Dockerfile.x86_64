@@ -1,0 +1,32 @@
+FROM fedora:32
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+RUN echo "proxy=http://proxy:3128" >>"/etc/dnf.conf"
+
+# Fix DNF database corruption
+RUN dnf -y install dnf-plugin-ovl findutils
+
+# Add RPMFUSION repository
+RUN dnf -y --enableplugin=ovl install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-32.noarch.rpm
+
+# Install Trinity build dependencies
+RUN dnf -y --enableplugin=ovl update
+ADD packages /packages
+RUN dnf -y --enableplugin=ovl install $(</packages)
+
+# Add YUM repository for locally built packages
+ADD rpmbuild.repo /etc/yum.repos.d/rpmbuild.repo
+RUN sed -i "/etc/yum.repos.d/rpmbuild.repo" -e "s|\${ARCH}|${ARCH}|g" -e "s|\${TDE_VERSION}|${TDE_VERSION}|g"
+
+# Fix utempter detection
+RUN chmod a+r /usr/libexec/utempter/utempter
+
+# Add non-root user to build packages
+RUN useradd -m -s /bin/bash -u 1000 trinity && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+COPY rpmmacros /home/trinity/.rpmmacros
+
+RUN rpm -i http://ftp.free.fr/mirrors/fedora.redhat.com/fedora/linux/releases/32/Everything/source/tree/Packages/p/python-exif-2.2.0-5.fc32.src.rpm \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/python-exif.spec --define "py2 1" \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/noarch/python2-exif-*

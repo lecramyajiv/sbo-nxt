@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    remove)
+        update-alternatives --quiet --remove irc.protocol \
+            /opt/trinity/share/kvirc/3.4/services/irc.protocol
+        update-alternatives --quiet --remove irc6.protocol \
+            /opt/trinity/share/kvirc/3.4/services/irc6.protocol
+    ;;
+
+    upgrade|deconfigure)
+    ;;
+
+    failed-upgrade)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 0
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

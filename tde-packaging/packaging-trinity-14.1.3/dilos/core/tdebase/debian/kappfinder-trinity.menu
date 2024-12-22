@@ -1,0 +1,11 @@
+?package(kappfinder-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="kAppfinder"\
+	icon32x32="/usr/share/pixmaps/kappfinder.xpm"\
+	icon16x16="/usr/share/pixmaps/kappfinder-16.xpm"\
+	command="/usr/bin/kappfinder"
+
+# Icon 32x32 kappfinder/cr32-app-kappfinder.png kappfinder.xpm
+# Icon 16x16 kappfinder/cr16-app-kappfinder.png kappfinder-16.xpm

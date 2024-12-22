@@ -1,0 +1,6 @@
+debian/tmp/opt/trinity/lib/trinity/tdefile_deb.la
+debian/tmp/opt/trinity/lib/trinity/tdefile_deb.so
+debian/tmp/opt/trinity/lib/trinity/tdefile_rpm.la
+debian/tmp/opt/trinity/lib/trinity/tdefile_rpm.so
+debian/tmp/opt/trinity/share/services/tdefile_deb.desktop
+debian/tmp/opt/trinity/share/services/tdefile_rpm.desktop

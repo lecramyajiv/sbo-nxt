@@ -1,0 +1,46 @@
+This package was debianized by Mike O'Connor <stew@vireo.org> on 
+Thu, 16 Feb 2006 02:44:01 +0500.
+
+It had originally been debianized by Enrique Robledo Arnuncio <era@debian.org>
+on Sat, 26 Jan 2002 00:00:36 +0100.
+
+This package was originally downloaded from:
+
+http://prdownloads.sourceforge.net/rosegarden/rosegarden-4-1.2.3.tar.bz2?download
+
+You can find the home page of the Rosegarden project at:
+
+  http://www.rosegardenmusic.com/
+
+Copyright:
+----------
+    This program is Copyright 2000-2006
+        Guillaume Laurent   <glaurent@telegraph-road.org>,
+        Chris Cannam        <cannam@all-day-breakfast.com>,
+        Richard Bown        <bownie@bownie.com>
+
+Upstream Authors:
+-----------------
+
+Lead developers :
+
+Chris Cannam <cannam@all-day-breakfast.com>
+Richard Bown <bownie@bownie.com>
+Guillaume Laurent <glaurent@telegraph-road.org>
+
+Adjunct developers:
+
+D. Michael McIntyre <dmmcintyr@users.sourceforge.net>
+
+See the AUTHORS file for a list of contributors.
+
+License:
+----------
+
+Rosegarden is covered by the GNU General Public License. Individual
+files from the TDE build system are covered by the GNU Library General
+Public License and by a MIT license shown below.
+
+On Debian GNU/Linux systems, the complete texts of the GNU General
+Public License and the GNU Library General Public License are
+available at /usr/share/common-licenses/{GPL,LGPL}.

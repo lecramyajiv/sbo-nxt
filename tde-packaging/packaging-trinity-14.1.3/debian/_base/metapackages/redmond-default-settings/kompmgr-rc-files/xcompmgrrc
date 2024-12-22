@@ -1,0 +1,17 @@
+[xcompmgr]
+Compmode=
+DisableARGB=false
+FadeInStep=0.07
+FadeMenuWindows=true
+FadeOutStep=0.07
+FadeToolTipWindows=true
+FadeTrans=false
+FadeWindows=false
+ShadowColor=0x000000
+ShadowOffsetX=0
+ShadowOffsetY=0
+ShadowRadius=4
+ShadowsOnMenuWindows=true
+ShadowsOnToolTipWindows=true
+blurBackground=false
+useOpenGL=false

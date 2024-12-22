@@ -1,0 +1,37 @@
+debian/tmp/opt/trinity/bin/kdf
+debian/tmp/opt/trinity/bin/kwikdisk
+debian/tmp/opt/trinity/lib/trinity/kcm_kdf.la
+debian/tmp/opt/trinity/lib/trinity/kcm_kdf.so
+debian/tmp/opt/trinity/share/applications/tde/kcmdf.desktop
+debian/tmp/opt/trinity/share/applications/tde/kdf.desktop
+debian/tmp/opt/trinity/share/applications/tde/kwikdisk.desktop
+debian/tmp/opt/trinity/share/apps/kdf/kdfui.rc
+debian/tmp/opt/trinity/share/apps/kdf/pics/delete.png
+debian/tmp/opt/trinity/share/apps/kdf/pics/tick.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdf/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdf/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdf/index.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdf/kdf.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdf/kdf_config.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcontrol/storagedevices/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcontrol/storagedevices/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcontrol/storagedevices/index.docbook
+debian/tmp/opt/trinity/share/icons/hicolor/128x128/apps/kdf.png
+debian/tmp/opt/trinity/share/icons/hicolor/128x128/apps/kwikdisk.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kdf.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kwikdisk.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kdf.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kwikdisk.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kdf.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kwikdisk.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kdf.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kwikdisk.png
+debian/tmp/opt/trinity/share/icons/hicolor/64x64/apps/kdf.png
+debian/tmp/opt/trinity/share/icons/hicolor/64x64/apps/kwikdisk.png
+debian/tmp/opt/trinity/share/man/man1/kdf.1
+debian/tmp/opt/trinity/share/man/man1/kwikdisk.1
+
+debian/icons/kdf.xpm		/opt/trinity/share/pixmaps
+debian/icons/kdf-16.xpm		/opt/trinity/share/pixmaps
+debian/icons/kwikdisk.xpm	/opt/trinity/share/pixmaps
+debian/icons/kwikdisk-16.xpm	/opt/trinity/share/pixmaps

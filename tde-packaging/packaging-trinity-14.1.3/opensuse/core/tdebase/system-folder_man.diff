@@ -1,0 +1,13 @@
+Index: kioslave/system/entries/documents.desktop
+===================================================================
+--- kioslave/system/entries/documents.desktop.orig
++++ kioslave/system/entries/documents.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Link
+ Path[$e]=$( kio_system_documenthelper )
+-Icon=folder_important
++Icon=folder_man
+ Name=Documents Folder
+ Name[af]=Dokument Gids
+ Name[ar]=مستنداتي

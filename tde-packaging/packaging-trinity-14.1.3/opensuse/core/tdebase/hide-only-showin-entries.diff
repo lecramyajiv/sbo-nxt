@@ -1,0 +1,14 @@
+Index: konqueror/konq_mainwindow.cc
+===================================================================
+--- konqueror/konq_mainwindow.cc.orig
++++ konqueror/konq_mainwindow.cc
+@@ -4926,6 +4926,9 @@ void KonqMainWindow::updateOpenWithActio
+   KTrader::OfferList::ConstIterator end = services.end();
+   for (; it != end; ++it )
+   {
++    if ( (*it)->noDisplay() )
++	continue;
++
+     KAction *action = new KAction( i18n( "Open with %1" ).arg( (*it)->name() ), 0, 0, (*it)->desktopEntryName().latin1() );
+     action->setIcon( (*it)->icon() );
+ 

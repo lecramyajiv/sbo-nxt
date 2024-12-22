@@ -1,0 +1,18 @@
+Index: kioslave/media/mediaimpl.cpp
+===================================================================
+--- kioslave/media/mediaimpl.cpp.orig
++++ kioslave/media/mediaimpl.cpp
+@@ -274,6 +274,13 @@ bool MediaImpl::ensureMediumMounted(Medi
+ 		return m_lastErrorCode==0;
+ 	}
+ 
++	if (medium.id().isEmpty())
++	{
++		m_lastErrorCode = KIO::ERR_COULD_NOT_MOUNT;
++		m_lastErrorMessage = i18n("No such medium.");
++		return false;
++	}
++
+ 	return true;
+ }
+ 

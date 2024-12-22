@@ -1,0 +1,34 @@
+a "make it compile " patch from Stephan Binner
+
+--- kicker/kicker/plugins/beaglesearch.cpp
++++ kicker/kicker/plugins/beaglesearch.cpp
+@@ -291,11 +291,11 @@
+     beagle_query_set_max_hits (beagle_query, max_hits_per_source); // this is per source!
+ 
+     kdDebug () << "Creating query from \"" << query_str << "\"" << endl;
+-    for ( QStringList::Iterator it = sources_menu.begin(); it != sources_menu.end(); ++it )
++ /*   for ( QStringList::Iterator it = sources_menu.begin(); it != sources_menu.end(); ++it )
+         beagle_query_add_source (beagle_query, g_strdup ((*it).utf8 ()));
+ 
+     for ( QStringList::Iterator it = types_menu.begin(); it != types_menu.end(); ++it )
+-        beagle_query_add_hit_type (beagle_query, g_strdup ((*it).utf8 ()));
++        beagle_query_add_hit_type (beagle_query, g_strdup ((*it).utf8 ()));*/
+ 
+     QStringList query_terms;
+     QString start_date, end_date;
+@@ -307,13 +307,13 @@
+         else if (key_value_pair.count () == 2) {
+             QString key = key_value_pair [0].lower ();
+             QString value = key_value_pair [1];
+-            if (key == "mime")
++            if /*(key == "mime")
+                 beagle_query_add_mime_type (beagle_query, g_strdup (value.utf8 ()));
+             else if (key == "type")
+                 beagle_query_add_hit_type (beagle_query, g_strdup (value.utf8 ()));
+             else if (key == "source")
+                 beagle_query_add_source (beagle_query, g_strdup (value.utf8 ()));
+-            else if (key == "start")
++            else if */ (key == "start")
+                 start_date = value;
+             else if (key == "end")
+                 end_date = value;

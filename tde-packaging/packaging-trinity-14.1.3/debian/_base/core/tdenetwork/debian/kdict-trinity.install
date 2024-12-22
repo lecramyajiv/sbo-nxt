@@ -1,0 +1,30 @@
+debian/tmp/opt/trinity/bin/kdict
+debian/tmp/opt/trinity/lib/trinity/kdict.la
+debian/tmp/opt/trinity/lib/trinity/kdict.so
+debian/tmp/opt/trinity/lib/trinity/kdict_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/kdict_panelapplet.so
+debian/tmp/opt/trinity/lib/libtdeinit_kdict.so
+debian/tmp/opt/trinity/share/applications/tde/kdict.desktop
+debian/tmp/opt/trinity/share/apps/kdict/icons/crystalsvg/16x16/actions/define_clip.png
+debian/tmp/opt/trinity/share/apps/kdict/icons/crystalsvg/16x16/actions/query_erase.png
+debian/tmp/opt/trinity/share/apps/kdict/icons/crystalsvg/22x22/actions/define_clip.png
+debian/tmp/opt/trinity/share/apps/kdict/icons/crystalsvg/32x32/actions/define_clip.png
+debian/tmp/opt/trinity/share/apps/kdict/kdictui.rc
+debian/tmp/opt/trinity/share/apps/kicker/applets/kdictapplet.desktop
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdict/applet.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdict/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdict/conf.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdict/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdict/index.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdict/mainwin.png
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kdict/seteditor.png
+debian/tmp/opt/trinity/share/icons/hicolor/128x128/apps/kdict.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kdict.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kdict.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kdict.png
+debian/tmp/opt/trinity/share/icons/hicolor/64x64/apps/kdict.png
+debian/tmp/opt/trinity/share/icons/hicolor/scalable/apps/kdict.svgz
+debian/tmp/opt/trinity/share/man/man1/kdict.1
+
+debian/icons/kdict-16.xpm	/opt/trinity/share/pixmaps
+debian/icons/kdict.xpm		/opt/trinity/share/pixmaps

@@ -1,0 +1,24 @@
+debian/docrc/*.docrc        /opt/trinity/share/apps/quanta/doc
+debian/icons/quanta.xpm	/opt/trinity/share/pixmaps
+
+debian/tmp/opt/trinity/bin/quanta
+debian/tmp/opt/trinity/lib/trinity/quantadebuggerdbgp.la
+debian/tmp/opt/trinity/lib/trinity/quantadebuggerdbgp.so
+debian/tmp/opt/trinity/lib/trinity/quantadebuggergubed.la
+debian/tmp/opt/trinity/lib/trinity/quantadebuggergubed.so
+debian/tmp/opt/trinity/share/applications/tde/quanta.desktop
+debian/tmp/opt/trinity/share/apps/kafkapart
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/quanta/*.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/quanta/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/quanta/*.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/quanta/*.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/quanta.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/quanta.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/quanta.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/quanta.png
+debian/tmp/opt/trinity/share/man/man1/quanta.1
+debian/tmp/opt/trinity/share/mimelnk/application/x-webprj.desktop
+debian/tmp/opt/trinity/share/services/quantadebuggerdbgp.desktop
+debian/tmp/opt/trinity/share/services/quantadebuggergubed.desktop
+debian/tmp/opt/trinity/share/services/quanta_preview_config.desktop
+debian/tmp/opt/trinity/share/servicetypes/quantadebugger.desktop

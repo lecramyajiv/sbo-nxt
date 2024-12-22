@@ -1,0 +1,11 @@
+?package(kfind-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="KFind"\
+	icon32x32="/opt/trinity/share/pixmaps/kfind.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kfind-16.xpm"\
+	command="/opt/trinity/bin/kfind"
+
+# Icon 32x32 kfind/cr32-app-kfind.png kfind.xpm
+# Icon 16x16 kfind/cr16-app-kfind.png kfind-16.xpm

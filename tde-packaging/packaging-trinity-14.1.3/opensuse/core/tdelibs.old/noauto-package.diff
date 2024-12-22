@@ -1,0 +1,13 @@
+Index: configure.in.in
+===================================================================
+--- configure.in.in.orig
++++ configure.in.in
+@@ -17,7 +17,7 @@ AC_CANONICAL_SYSTEM
+ AC_ARG_PROGRAM
+ 
+ dnl Automake doc recommends to do this only here. (Janos)
+-AM_INIT_AUTOMAKE(@MODULENAME@, @VERSION@) dnl searches for some needed programs
++AM_INIT_AUTOMAKE("kdelibs", @VERSION@) dnl searches for some needed programs
+ 
+ AC_PROG_INSTALL
+ 

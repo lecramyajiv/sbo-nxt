@@ -1,0 +1,5 @@
+?package(kompose-trinity):needs="X11"\
+  section="Apps/System"\
+  hints="TDE,kompose"\
+  title="kompose"\
+  command="/opt/trinity/bin/kompose"

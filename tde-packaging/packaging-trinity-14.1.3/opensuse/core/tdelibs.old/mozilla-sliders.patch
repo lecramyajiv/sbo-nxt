@@ -1,0 +1,19 @@
+Index: kdefx/kstyle.cpp
+===================================================================
+--- kdefx/kstyle.cpp.orig
++++ kdefx/kstyle.cpp
+@@ -2210,6 +2210,14 @@ void TransparencyHandler::XRenderBlendTo
+ void KStyle::virtual_hook( int, void* )
+ { /*BASE::virtual_hook( id, data );*/ }
+ 
++// HACK for gtk-qt-engine
++
++KDE_EXPORT extern "C"
++void kde_kstyle_set_scrollbar_type_windows( void* style )
++{
++    ((KStyle*)style)->setScrollBarType( KStyle::WindowsStyleScrollBar );
++}
++
+ // vim: set noet ts=4 sw=4:
+ // kate: indent-width 4; replace-tabs off; tab-width 4; space-indent off;
+ 

@@ -1,0 +1,51 @@
+Source: avahi-tqt
+Section: net
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt,
+               tde-cmake, ninja-build,
+               gcc,
+               pkg-config,
+               libtqtinterface-dev,
+               libavahi-common-dev,
+               libavahi-client-dev
+Standards-Version: 3.9.1
+
+Package: libavahi-tqt-1
+Section: libs
+Architecture: any
+Replaces: libavahi-tqt-1 (<< 4:14.0.0~)
+Breaks: libavahi-tqt-1 (<< 4:14.0.0~)
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Description: Avahi TQt integration library
+ Avahi is a fully LGPL framework for Multicast DNS Service Discovery.
+ It allows programs to publish and discover services and hosts
+ running on a local network with no specific configuration. For
+ example you can plug into a network and instantly find printers to
+ print to, files to look at and people to talk to.
+ .
+ This library contains the interface to integrate the Avahi libraries
+ into a TQt main loop application.
+
+Package: libavahi-tqt-dev
+Section: libdevel
+Architecture: any
+Replaces: libavahi-tqt-dev (<< 4:14.0.0~)
+Breaks: libavahi-tqt-dev (<< 4:14.0.0~)
+Depends: libavahi-tqt-1 (= ${binary:Version}),
+         ${misc:Depends},
+         libtqtinterface-dev,
+         libavahi-common-dev
+Description: Development headers for the Avahi TQt integration library
+ Avahi is a fully LGPL framework for Multicast DNS Service Discovery.
+ It allows programs to publish and discover services and hosts
+ running on a local network with no specific configuration. For
+ example you can plug into a network and instantly find printers to
+ print to, files to look at and people to talk to.
+ .
+ This package contains the development headers for the interface
+ to integrate the Avahi libraries  into a TQt main loop application.

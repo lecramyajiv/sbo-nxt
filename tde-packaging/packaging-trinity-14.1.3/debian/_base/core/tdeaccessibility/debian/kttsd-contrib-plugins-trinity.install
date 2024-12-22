@@ -1,0 +1,7 @@
+debian/tmp/opt/trinity/lib/trinity/libkttsd_freettsplugin.la
+debian/tmp/opt/trinity/lib/trinity/libkttsd_freettsplugin.so
+debian/tmp/opt/trinity/lib/trinity/libkttsd_hadifixplugin.la
+debian/tmp/opt/trinity/lib/trinity/libkttsd_hadifixplugin.so
+debian/tmp/opt/trinity/share/apps/kttsd/hadifix/xslt/SSMLtoTxt2pho.xsl
+debian/tmp/opt/trinity/share/services/kttsd_freettsplugin.desktop
+debian/tmp/opt/trinity/share/services/kttsd_hadifixplugin.desktop

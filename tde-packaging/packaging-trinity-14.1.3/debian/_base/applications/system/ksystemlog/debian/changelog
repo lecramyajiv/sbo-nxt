@@ -1,0 +1,78 @@
+ksystemlog-trinity (0.3.2-2ubuntu0) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+ksystemlog-trinity (0.3.2-1ubuntu3) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 06 March 2009 01:35:00 -0600
+
+ksystemlog-trinity (0.3.2-1ubuntu2) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 03 Dec 2008 21:18:00 -0600
+
+ksystemlog (0.3.2-1ubuntu2) hardy; urgency=low
+
+  * Rebuild with recent g++ compiler version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 03 Apr 2008 11:24:43 +0000
+
+ksystemlog (0.3.2-1ubuntu1) gutsy; urgency=low
+
+  * Manually merge from Debian unstable.
+  * Remaining Ubuntu changes:
+    - Add kubuntu_01_kdepot.diff and alter debian/rules to be able to
+      generate .pot file
+    - Add kubuntu_01_logfiles.diff to use Debian's default log locations
+  * Munge Maintainer field as per spec.
+
+ -- Steve Kowalik <stevenk@ubuntu.com>  Wed, 30 May 2007 23:58:09 +1000
+
+ksystemlog (0.3.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #381050)
+
+ -- Fathi Boudra <fboudra@free.fr>  Thu, 13 Jul 2006 13:55:15 +0200
+
+ksystemlog (0.3.2-0ubuntu5) edgy; urgency=low
+
+  * Rebuild to lose gamin dependency
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  4 Oct 2006 12:18:04 +0100
+
+ksystemlog (0.3.2-0ubuntu4) dapper; urgency=low
+
+  * Rebuild to use dh_iconcache. 
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Thu, 18 May 2006 15:09:39 +0200
+
+ksystemlog (0.3.2-0ubuntu3) dapper; urgency=low
+
+  * Rebuild for libstdc++ transition
+  * Do not compile with GCC 3.4 on hppa
+  * Add kubuntu_01_kdepot.diff and alter debian/rules
+    to be able to generate .pot file
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  7 Dec 2005 17:54:34 +0000
+
+ksystemlog (0.3.2-0ubuntu2) dapper; urgency=low
+
+  * Build with GCC 3.4 on arches where GCC 4.0 fails
+    See http://lists.debian.org/debian-devel/2005/09/msg00020.html
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 28 Oct 2005 04:00:27 +0000
+
+ksystemlog (0.3.2-0ubuntu1) breezy; urgency=low
+
+  * Initial Release.
+  * Use XDG .desktop file and do not start as root
+  * Add kubuntu_01_logfiles.diff to use Debian's default log locations
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  7 Jul 2005 16:00:00 +0000
+

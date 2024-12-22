@@ -1,0 +1,11 @@
+%dist %nil
+%_smp_mflags -j8
+%jobs 8
+%dont_remove_libtool_files 1
+%_disable_rebuild_configure 1
+%_program_prefix ""
+%_debugsource_packages %nil
+%_debugsource_template %nil
+%_vpath_builddir .
+%python python3
+%__python /usr/bin/python3

@@ -1,0 +1,345 @@
+Index: khotkeys/data/multimedia_keys.khotkeys
+===================================================================
+--- /dev/null
++++ khotkeys/data/multimedia_keys.khotkeys
+@@ -0,0 +1,311 @@
++[Data]
++DataCount=1
++
++[Data_1]
++Comment=This group contains actions that are set up by default.\n
++DataCount=8
++Enabled=true
++Name=Preset Actions
++SystemGroup=0
++Type=ACTION_DATA_GROUP
++AllowMerge=true
++
++[Data_1Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_1]
++Comment=Opens the My Computer window when the multimedia My Computer key is pressed.\n
++Enabled=true
++Name=My Computer
++Type=COMMAND_URL_SHORTCUT_ACTION_DATA
++
++[Data_1_1Actions]
++ActionsCount=1
++
++[Data_1_1Actions0]
++CommandURL=sysinfo:/
++Type=COMMAND_URL
++
++[Data_1_1Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_1Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_1_1Triggers0]
++Key=XF86MyComputer
++Type=SHORTCUT
++
++[Data_1_2]
++Comment=Launch or activate Amarok when the multimedia Media key is pressed.\n
++Enabled=true
++Name=Media
++Type=COMMAND_URL_SHORTCUT_ACTION_DATA
++
++[Data_1_2Actions]
++ActionsCount=1
++
++[Data_1_2Actions0]
++CommandURL=amarok
++Type=COMMAND_URL
++
++[Data_1_2Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_2Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_1_2Triggers0]
++Key=XF86AudioMedia
++Type=SHORTCUT
++
++[Data_1_3]
++Comment=When the multimedia Calculator key is pressed, KCalc is either launched or activated if it is already running.\n
++DataCount=2
++Enabled=true
++Name=Calculator
++SystemGroup=0
++Type=ACTION_DATA_GROUP
++
++[Data_1_3Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_3_1]
++Comment=Runs KCalc if it is not already running.\n
++Enabled=true
++Name=Run KCalc
++Type=GENERIC_ACTION_DATA
++
++[Data_1_3_1Actions]
++ActionsCount=1
++
++[Data_1_3_1Actions0]
++CommandURL=kcalc
++Type=COMMAND_URL
++
++[Data_1_3_1Conditions]
++Comment=
++ConditionsCount=1
++
++[Data_1_3_1Conditions0]
++ConditionsCount=1
++Type=NOT
++
++[Data_1_3_1Conditions00]
++Type=EXISTING_WINDOW
++
++[Data_1_3_1Conditions00Window]
++Comment=kcalc
++WindowsCount=1
++
++[Data_1_3_1Conditions00Window0]
++Class=kcalc Kcalc
++ClassType=2
++Comment=kcalc
++Role=kcalc-mainwindow#1
++RoleType=0
++Title=KCalc
++TitleType=0
++Type=SIMPLE
++WindowTypes=1
++
++[Data_1_3_1Triggers]
++Comment=
++TriggersCount=1
++
++[Data_1_3_1Triggers0]
++Key=XF86Calculator
++Type=SHORTCUT
++
++[Data_1_3_2]
++Comment=Activates KCalc window if it is already running.\n
++Enabled=true
++Name=Activate KCalc
++Type=GENERIC_ACTION_DATA
++
++[Data_1_3_2Actions]
++ActionsCount=1
++
++[Data_1_3_2Actions0]
++Type=ACTIVATE_WINDOW
++
++[Data_1_3_2Actions0Window]
++Comment=kcalc
++WindowsCount=1
++
++[Data_1_3_2Actions0Window0]
++Class=kcalc Kcalc
++ClassType=2
++Comment=kcalc
++Role=kcalc-mainwindow#1
++RoleType=0
++Title=KCalc
++TitleType=0
++Type=SIMPLE
++WindowTypes=1
++
++[Data_1_3_2Conditions]
++Comment=
++ConditionsCount=1
++
++[Data_1_3_2Conditions0]
++Type=EXISTING_WINDOW
++
++[Data_1_3_2Conditions0Window]
++Comment=kcalc
++WindowsCount=1
++
++[Data_1_3_2Conditions0Window0]
++Class=kcalc Kcalc
++ClassType=2
++Comment=kcalc
++Role=kcalc-mainwindow#1
++RoleType=0
++Title=KCalc
++TitleType=0
++Type=SIMPLE
++WindowTypes=1
++
++[Data_1_3_2Triggers]
++Comment=
++TriggersCount=1
++
++[Data_1_3_2Triggers0]
++Key=XF86Calculator
++Type=SHORTCUT
++
++[Data_1_4]
++Comment=Launches the default terminal application when the multimedia Terminal key is pressed.\n
++Enabled=true
++Name=Terminal
++Type=COMMAND_URL_SHORTCUT_ACTION_DATA
++
++[Data_1_4Actions]
++ActionsCount=1
++
++[Data_1_4Actions0]
++CommandURL=KHOTKEYS_TERMINAL
++Type=COMMAND_URL
++
++[Data_1_4Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_4Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_1_4Triggers0]
++Key=XF86Terminal
++Type=SHORTCUT
++
++[Data_1_5]
++Comment=Opens the default browser when the multimedia WWW key is pressed.\n
++Enabled=true
++Name=Browser (HomePage)
++Type=COMMAND_URL_SHORTCUT_ACTION_DATA
++
++[Data_1_5Actions]
++ActionsCount=1
++
++[Data_1_5Actions0]
++CommandURL=KHOTKEYS_BROWSER
++Type=COMMAND_URL
++
++[Data_1_5Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_5Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_1_5Triggers0]
++Key=XF86WWW
++Type=SHORTCUT
++
++[Data_1_6]
++Comment=Ejecting when the multimedia Eject key is pressed.\n
++Enabled=true
++Name=Eject
++Type=COMMAND_URL_SHORTCUT_ACTION_DATA
++
++[Data_1_6Actions]
++ActionsCount=1
++
++[Data_1_6Actions0]
++CommandURL=kdeeject ""
++Type=COMMAND_URL
++
++[Data_1_6Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_6Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_1_6Triggers0]
++Key=XF86Eject
++Type=SHORTCUT
++
++[Data_1_7]
++Comment=Launches KFind when the multimedia Search key is pressed.\n
++Enabled=true
++Name=Search
++Type=COMMAND_URL_SHORTCUT_ACTION_DATA
++
++[Data_1_7Actions]
++ActionsCount=1
++
++[Data_1_7Actions0]
++CommandURL=kfind
++Type=COMMAND_URL
++
++[Data_1_7Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_7Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_1_7Triggers0]
++Key=XF86Search
++Type=SHORTCUT
++
++[Data_1_8]
++Comment=Opens a new mail composer window when the multimedia Mail key is pressed.\n
++Enabled=true
++Name=Launch Mail
++Type=COMMAND_URL_SHORTCUT_ACTION_DATA
++
++[Data_1_8Actions]
++ActionsCount=1
++
++[Data_1_8Actions0]
++CommandURL=mailto:?
++Type=COMMAND_URL
++
++[Data_1_8Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_1_8Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_1_8Triggers0]
++Key=XF86Mail
++Type=SHORTCUT
++
++[Main]
++Version=2
++ImportId=multimedia_keys
++
+Index: khotkeys/data/Makefile.am
+===================================================================
+--- khotkeys/data/Makefile.am.orig
++++ khotkeys/data/Makefile.am
+@@ -1,7 +1,9 @@
+-khotkeys_data_DATA = kde32b1.khotkeys konqueror_gestures_kde321.khotkeys printscreen.khotkeys
++khotkeys_data_DATA = kde32b1.khotkeys konqueror_gestures_kde321.khotkeys printscreen.khotkeys \
++        multimedia_keys.khotkeys
+ khotkeys_datadir = $(kde_datadir)/khotkeys
+ 
+-khotkeys_update_DATA = khotkeys_32b1_update.upd konqueror_gestures_kde321_update.upd khotkeys_printscreen.upd
++khotkeys_update_DATA = khotkeys_32b1_update.upd konqueror_gestures_kde321_update.upd khotkeys_printscreen.upd \
++        khotkeys_multimedia_keys.upd
+ khotkeys_updatedir = $(kde_datadir)/kconf_update
+ 
+ EXTRA_DIST = $(khotkeys_data_DATA) $(khotkeys_update_DATA)
+Index: khotkeys/data/khotkeys_multimedia_keys.upd
+===================================================================
+--- /dev/null
++++ khotkeys/data/khotkeys_multimedia_keys.upd
+@@ -0,0 +1,8 @@
++Id=multimedia_keys
++# the file is intentionally a dummy, as the binary will update khotkeysrc,
++# the khotkeys_update will just remember it has been done
++File=khotkeys_update
++Group=Dummy
++Options=overwrite
++ScriptArguments=--id multimedia_keys
++Script=khotkeys_update

@@ -1,0 +1,52 @@
+This package was debianized by Ricardo Javier Cardenes Medina <rcardenes@debian.org> on
+Tue,  7 May 2002 04:02:33 +0100
+
+It was downloaded from http://www.riverbankcomputing.co.uk
+
+Upstream Author: Phil Thompson (phil@river-bank.demon.co.uk)
+
+Terms and Conditions
+
+Copyright (c) 1998, 1999, 2000, 2001
+	Phil Thompson <phil@river-bank.demon.co.uk>
+Copyright (c) 2002
+	Riverbank Computing Limited <info@riverbankcomputing.co.uk>
+
+pylupdate is Copyright (c) 2002
+	Detlev Offenbach <detlev@die-offenbachs.de>
+
+Both PyQt and its utils, and pylupdate are free software; you may
+redistribute them and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation; either
+version 2, or (at your option) any later version.
+
+A copy of the GNU General Public License is available as
+/usr/share/common-licenses/GPL in the Debian GNU/Linux distribution
+or on the World Wide Web at http://www.gnu.org/copyleft/gpl.html.
+You can also obtain it by writing to the Free Software Foundation, Inc.,
+51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+
+parts of the code are Copyright (c) 2000 Trolltech AS, under the following
+license:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Except as contained in this notice, the name of the copyright holder shall not
+be used in advertising or otherwise to promote the sale, use or other dealings
+in this Software without prior written authorization from the copyright holder.

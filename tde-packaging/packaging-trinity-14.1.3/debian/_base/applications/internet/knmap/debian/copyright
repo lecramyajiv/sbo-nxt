@@ -1,0 +1,31 @@
+This package was debianized by Raphaël Pinson <raphink@raphink.net> on
+Sun, 13 Nov 2005 16:44:13 +0100.
+
+It was downloaded from http://sourceforge.net/projects/knmap
+
+Upstream Author : Kevin Gilbert <kev.gilbert@cdu.edu.au>
+
+License:
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    On Debian GNU/Linux systems, the complete text of the GNU General
+    Public License can be found in `/usr/share/common-licenses/GPL'.
+
+Copyright
+
+All the software:
+
+    (C) 2005, 2006 by Kevin Gilbert <kev.gilbert@cdu.edu.au>
+
+debian/knmap.1.docbook:
+
+    Copyright (C) 2005, 2006 by Raphaël Pinson <raphink@raphink.net>

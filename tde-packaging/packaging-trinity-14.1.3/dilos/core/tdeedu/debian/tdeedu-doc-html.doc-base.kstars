@@ -1,0 +1,12 @@
+Document: kstars
+Title: KStars Handbook
+Author: Jason Harris <kstars@30doradus.org>
+Abstract: KStars is a graphical desktop planetarium for TDE.  It depicts an
+ accurate simulation of the night sky, including stars, constellations,
+ star clusters, nebulae, galaxies, all planets, the Sun, the Moon,
+ comets and asteroids.
+Section: Apps/Science
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kstars/index.html
+Files: /usr/share/doc/tde/HTML/en/kstars/*.html

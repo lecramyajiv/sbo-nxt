@@ -1,0 +1,44 @@
+Index: khtml/rendering/render_frames.cpp
+===================================================================
+--- khtml/rendering/render_frames.cpp.orig
++++ khtml/rendering/render_frames.cpp
+@@ -940,14 +940,33 @@ void RenderPartObject::slotPartLoadingEr
+             // Prepare the URL to show in the question (host only if http, to make it short)
+             KURL pluginPageURL( embed->pluginPage );
+             QString shortURL = pluginPageURL.protocol() == "http" ? pluginPageURL.host() : pluginPageURL.prettyURL();
+-            int res = KMessageBox::questionYesNo( m_view,
+-                                                  i18n("No plugin found for '%1'.\nDo you want to download one from %2?").arg(mimeName).arg(shortURL),
++
++            int res;
++            if (mimeName.startsWith("Shockwave Flash",false))
++            {
++		 res = KMessageBox::questionYesNo( m_view,
++                                                  i18n("No plugin found for '%1'.\nDo you want to download one from %2?").arg(mimeName).arg("openSUSE"),
+                                                   i18n("Missing Plugin"), i18n("Download"), i18n("Do Not Download"), QString("plugin-")+serviceType);
+-            if ( res == KMessageBox::Yes )
++
++		if ( res == KMessageBox::Yes )
++            	{
++                	// Open YMP file
++			KURL ymp_flash ("http://download.opensuse.org/YaST/flash-player.ymp");
++                	ext->openURLRequest( ymp_flash );
++                	return;
++            	}
++            }
++            else
+             {
+-                // Display vendor download page
+-                ext->createNewWindow( pluginPageURL );
+-                return;
++		res = KMessageBox::questionYesNo( m_view,
++                                                  i18n("No plugin found for '%1'.\nDo you want to download one from %2?").arg(mimeName).arg(shortURL),
++                                                  i18n("Missing Plugin"), i18n("Download"), i18n("Do Not Download"), QString("plugin-")+serviceType);
++		if ( res == KMessageBox::Yes )
++            	{
++                	// Display vendor download page
++                	ext->createNewWindow( pluginPageURL );
++                	return;
++            	}
+             }
+         }
+     }

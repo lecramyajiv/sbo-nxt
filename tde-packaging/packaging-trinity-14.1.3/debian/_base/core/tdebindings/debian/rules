@@ -1,0 +1,133 @@
+#! /usr/bin/make -f
+
+DEB_QUILT_PATCHDIR_LINK :=
+export QUILT_PATCHES=debian/patches
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+override DEB_BUILDDIR := $(DEB_SRCDIR)
+include debian/cdbs/debian-tde.mk
+DEB_BUILDDIR := $(DEB_SRCDIR)
+
+DEB_CONFIGURE_INCLUDEDIR := /opt/trinity/include/tde
+DEB_CONFIGURE_MANDIR := /opt/trinity/share/man
+DEB_CONFIGURE_PREFIX := /opt/trinity
+DEB_CONFIGURE_INFODIR := /opt/trinity/share/info
+
+cdbs_configure_flags := --with-qt-dir=/usr/share/qt3 --disable-rpath --with-xinerama $(cdbs_kde_enable_final) $(cdbs_kde_enable_debug)
+
+###
+
+ifneq (,$(shell dh_listpackages -s | grep libqt3-jni-trinity))
+    WITH_JAVA := --with-java=/usr/lib/jvm/default-java
+else
+    WITH_JAVA    := --without-java
+    WITHOUT_JAVA := 1
+endif
+
+###
+
+DEB_CONFIGURE_EXTRA_FLAGS = $(WITH_JAVA) --prefix=/opt/trinity  \
+		  	    DO_NOT_COMPILE='dcopc dcopperl kalyptus qtsharp xparts python'
+
+DEB_COMPRESS_EXCLUDE_ALL += .java .ui .js .rb .map .wav .bmp .cpp .sk
+
+# These are not all the packages with libraries, but only those that
+# need to be in DEB_SHLIBDEPS_INCLUDE...
+PACKAGES_WITH_LIBS = libqt3-jni-trinity libsmoketqt1-trinity libsmoketde1-trinity libkjsembed1-trinity
+
+###
+
+clean::
+	rm -f kjsembed/docs/embedding/simple-embed/Makefile
+	rm -f debian/stamp-install-dcopjava
+	[ ! -f Makefile ] || $(MAKE) -C dcopjava distclean
+	find . -name 'Makefile' -exec rm {} \;
+	# Just in case
+	rm -f $(DEB_SRCDIR)/dcopjava/dcopidl2java/dcopidl2java
+	rm -f $(DEB_SRCDIR)/dcopjava/dcopidl2java/dcopidl2java.all_cpp.o
+	rm -f $(DEB_SRCDIR)/dcopjava/binding/org/trinitydesktop/DCOP/*.class
+	rm -rf $(DEB_SRCDIR)/dcopjava/binding/.libs
+	rm -f dcopjava/binding/client.lo
+	rm -f dcopjava/binding/libjavadcop.la
+	rm -f dcopjava/binding/org_trinitydesktop_DCOP_Client.h
+	rm -f dcopjava/dcopidl2java/dcopidl2java.all_cpp.cpp
+	rm -f smoke/tde/qtdefines
+	rm -f smoke/tde/smokedata.cpp.diff
+	rm -f smoke/tqt/qtdefines
+	rm -f smoke/tqt/smokedata.cpp.diff
+
+
+common-build-indep:: stamp-build-dcopjava
+stamp-build-dcopjava:
+ifndef WITHOUT_JAVA
+	# build dcopjava even though it's disabled upstream.
+	cd $(DEB_BUILDDIR) && \
+	$(MAKE) -C dcopjava 
+endif
+	touch debian/$@
+
+stamp-install-dcopjava:
+ifndef WITHOUT_JAVA
+	cd $(DEB_BUILDDIR) && \
+	$(MAKE) -C dcopjava install DESTDIR=$(CURDIR)/debian/tmp
+endif
+	touch debian/$@
+
+upstream_version=$(shell head -1 $(CURDIR)/debian/changelog | sed -e "s,.*:\([^-]*\).*,\1,")
+
+common-install-arch::
+	# Move the python and ruby bindings to the correct directory
+	cp -Rp debian/tmp/usr/lib/* debian/tmp/opt/trinity/lib/
+	rm -rf debian/tmp/usr/lib/*
+
+common-install-indep:: stamp-install-dcopjava
+	dh_link -i
+ifndef WITHOUT_JAVA
+	# Fix up the Java packages so they conform to policy
+	mkdir -p debian/tmp/opt/trinity/share/java
+	(cd debian/tmp/opt/trinity/lib/java ; jar cvf ../../share/java/dcopjava-$(upstream_version).jar org/ )
+	cd debian/tmp/opt/trinity/lib/java; rm -rf org
+	ln -s dcopjava-$(upstream_version).jar debian/tmp/opt/trinity/share/java/dcopjava.jar
+
+	mv debian/tmp/opt/trinity/lib/java/qtjava.jar debian/tmp/opt/trinity/share/java/qtjava-$(upstream_version).jar
+	ln -s qtjava-$(upstream_version).jar debian/tmp/opt/trinity/share/java/qtjava.jar
+
+	mv debian/tmp/opt/trinity/lib/java/koala.jar debian/tmp/opt/trinity/share/java/koala-$(upstream_version).jar
+	ln -s koala-$(upstream_version).jar debian/tmp/opt/trinity/share/java/koala.jar
+endif
+
+common-install-arch:: stamp-install-dcopjava
+	dh_link -s
+	
+	# Provide a Makefile for the example
+	$(if $(call cdbs_streq,$(DEB_BUILDDIR),$(DEB_SRCDIR)),,\
+	    cp $(DEB_BUILDDIR)/kjsembed/docs/embedding/simple-embed/Makefile kjsembed/docs/embedding/simple-embed)
+
+###
+
+binary-install/juic-trinity::
+	sed -i "s|UIXSLDIR=/usr|UIXSLDIR=/opt/trinity|" debian/$(cdbs_curpkg)/opt/trinity/bin/juic
+
+binary-install/python3-dcop-trinity::
+	dh_python3 -p$(cdbs_curpkg)
+
+###
+
+common-binary-post-install-arch::
+	for p in $(PACKAGES_WITH_USD_SYMLINK); do \
+	  rm -f debian/$$p/opt/trinity/share/doc/$$p/copyright; \
+	  rm -f debian/$$p/opt/trinity/share/doc/$$p/changelog.Debian; \
+	  rm -f debian/$$p/opt/trinity/share/doc/$$p/changelog; \
+	done
+
+common-binary-post-install-indep::
+	for p in $(PACKAGES_WITH_USD_SYMLINK); do \
+	  rm -f debian/$$p/opt/trinity/share/doc/$$p/copyright; \
+	  rm -f debian/$$p/opt/trinity/share/doc/$$p/changelog.Debian; \
+	  rm -f debian/$$p/opt/trinity/share/doc/$$p/changelog; \
+	done
+
+PACKAGES_WITH_USD_SYMLINK = tdebindings-java-trinity libtrinity-java-trinity libqt3-java-trinity \
+			    libdcop3-java-trinity-dev libdcop3-java-trinity \
+			    libsmoketde-trinity-dev libsmoketqt-trinity-dev \
+			    kjscmd-trinity libkjsembed-trinity-dev

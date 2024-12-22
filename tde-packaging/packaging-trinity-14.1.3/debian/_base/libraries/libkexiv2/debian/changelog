@@ -1,0 +1,73 @@
+libkexiv2-trinity (0.1.7-0ubuntu4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+libkexiv2-trinity (0.1.7-0ubuntu2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 05 March 2009 01:11:00 -0600
+
+libkexiv2-trinity (0.1.7-0ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 17 Dec 2008 15:46:00 -0600
+
+libkexiv2 (0.1.7-1ubuntu1) intrepid; urgency=low
+
+  * Rename libkexiv2-dev to libkexiv2-3-dev (new libkexiv2-dev is KDE 4 version)
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 11 Sep 2008 13:42:39 +0100
+
+libkexiv2 (0.1.7-1) unstable; urgency=low
+
+  * New upstream release
+    - digikam: digikam aborts: MakerTagInfo registry full (Closes:
+    #465495)
+
+ -- Mark Purcell <msp@debian.org>  Tue, 22 Apr 2008 22:04:16 +1000
+
+libkexiv2 (0.1.6-1) unstable; urgency=low
+
+  * New upstream release
+  * lintian cleanup:
+    - use ${binary:Version}  substvar-source-version-is-deprecated libkexiv2-dev
+    - Bump soname: package-name-doesnt-match-sonames libkexiv2-3
+
+ -- Mark Purcell <msp@debian.org>  Fri, 28 Sep 2007 17:19:19 +0100
+
+libkexiv2 (0.1.5-1) unstable; urgency=low
+
+  * New upstream release
+
+  [Achim Bohnet]
+  * adapt packaging according to the API bump: libkexiv2.so.0 ->
+    libkexiv2.so.1
+  * libkexiv2-dev: depend on pkg-config because it contains a .pc file
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Fri, 11 May 2007 06:33:46 +0100
+
+libkexiv2 (0.1.1-1) unstable; urgency=low
+
+  * new upstream bugfix release
+
+  [ Achim Bohnet ]
+  * fix encoding of README.Debian: 8859-1 -> utf8. Thx to J. Riddell for
+    noticing.
+  * Update debian/copyright: Gilles email changed
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sat, 24 Feb 2007 22:24:50 +0100
+
+libkexiv2 (0.1.0-1) unstable; urgency=low
+
+  [ Achim Bohnet ]
+  * Initial upload (Closes: #408758)
+
+  [ Mark Purcell ]
+  * Provide more robust debian/rules get-orig-source 
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sun, 18 Feb 2007 19:03:10 +0000

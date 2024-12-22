@@ -1,0 +1,11 @@
+?package(ktimer-trinity):\
+	needs="X11"\
+	section="Apps/Tools"\
+	hints="TDE"\
+	title="KTimer"\
+	icon32x32="/opt/trinity/share/pixmaps/ktimer.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/ktimer-16.xpm"\
+	command="/opt/trinity/bin/ktimer"
+
+# Icon 32x32 ktimer/cr32-app-ktimer.png ktimer.xpm
+# Icon 16x16 ktimer/cr16-app-ktimer.png ktimer-16.xpm

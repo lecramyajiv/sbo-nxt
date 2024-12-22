@@ -1,0 +1,267 @@
+Index: khtml/khtmlview.cpp
+===================================================================
+--- khtml/khtmlview.cpp.orig
++++ khtml/khtmlview.cpp
+@@ -151,6 +151,9 @@ public:
+ 
+     KHTMLViewPrivate()
+         : underMouse( 0 ), underMouseNonShared( 0 ), visibleWidgets( 107 )
++#ifndef NO_SMOOTH_SCROLL_HACK
++          , dx(0), dy(0), ddx(0), ddy(0), rdx(0), rdy(0), scrolling(false)
++#endif
+     {
+ #ifndef KHTML_NO_CARET
+ 	m_caretViewContext = 0;
+@@ -396,6 +399,17 @@ public:
+     short m_mouseScroll_byY;
+     QTimer *m_mouseScrollTimer;
+     QWidget *m_mouseScrollIndicator;
++#ifndef NO_SMOOTH_SCROLL_HACK
++    QTimer timer2;
++    int dx;
++    int dy;
++    // Step size * 16 and residual to avoid huge difference between 1px/step and 2px/step
++    int ddx;
++    int ddy;
++    int rdx;
++    int rdy;
++    bool scrolling;
++#endif
+ };
+ 
+ #ifndef QT_NO_TOOLTIP
+@@ -504,6 +518,11 @@ KHTMLView::KHTMLView( KHTMLPart *part, Q
+     init();
+ 
+     viewport()->show();
++#ifndef NO_SMOOTH_SCROLL_HACK
++#define timer timer2
++    connect(&d->timer, SIGNAL(timeout()), this, SLOT(scrollTick()));
++#undef timer
++#endif
+ }
+ 
+ KHTMLView::~KHTMLView()
+@@ -1544,7 +1563,7 @@ void KHTMLView::keyPressEvent( QKeyEvent
+         case Key_Down:
+         case Key_J:
+             if (!d->scrollTimerId || d->scrollSuspended)
+-                scrollBy( 0, 10 );
++                scrollBy( 0, 10 * _ke->count() );
+             if (d->scrollTimerId)
+                 d->newScrollTimer(this, 0);
+             break;
+@@ -1559,7 +1578,7 @@ void KHTMLView::keyPressEvent( QKeyEvent
+         case Key_Up:
+         case Key_K:
+             if (!d->scrollTimerId || d->scrollSuspended)
+-                scrollBy( 0, -10 );
++                scrollBy( 0, -10 * _ke->count());
+             if (d->scrollTimerId)
+                 d->newScrollTimer(this, 0);
+             break;
+@@ -1572,14 +1591,14 @@ void KHTMLView::keyPressEvent( QKeyEvent
+         case Key_Right:
+         case Key_L:
+             if (!d->scrollTimerId || d->scrollSuspended)
+-                scrollBy( 10, 0 );
++                scrollBy( 10 * _ke->count(), 0 );
+             if (d->scrollTimerId)
+                 d->newScrollTimer(this, 0);
+             break;
+         case Key_Left:
+         case Key_H:
+             if (!d->scrollTimerId || d->scrollSuspended)
+-                scrollBy( -10, 0 );
++                scrollBy( -10 * _ke->count(), 0 );
+             if (d->scrollTimerId)
+                 d->newScrollTimer(this, 0);
+             break;
+@@ -1712,8 +1731,16 @@ void KHTMLView::keyReleaseEvent(QKeyEven
+         d->scrollSuspendPreActivate = false;
+     if( _ke->key() == Key_Shift && d->scrollSuspendPreActivate && _ke->state() == Qt::ShiftButton
+         && !(KApplication::keyboardMouseState() & Qt::ShiftButton))
++    {
+         if (d->scrollTimerId)
+-                d->scrollSuspended = !d->scrollSuspended;
++        {
++            d->scrollSuspended = !d->scrollSuspended;
++#ifndef NO_SMOOTH_SCROLL_HACK
++            if( d->scrollSuspended )
++                stopScrolling();
++#endif
++        }
++    }
+ 
+     if (d->accessKeysEnabled)
+     {
+@@ -3259,7 +3286,11 @@ void KHTMLView::viewportWheelEvent(QWhee
+     else
+     {
+         d->scrollBarMoved = true;
++#ifndef NO_SMOOTH_SCROLL_HACK
++        scrollViewWheelEvent( e );
++#else
+         QScrollView::viewportWheelEvent( e );
++#endif
+ 
+         QMouseEvent *tempEvent = new QMouseEvent( QEvent::MouseMove, QPoint(-1,-1), QPoint(-1,-1), Qt::NoButton, e->state() );
+         emit viewportMouseMoveEvent ( tempEvent );
+@@ -4462,4 +4493,117 @@ void KHTMLView::moveCaretToLineEnd()
+ 
+ #endif // KHTML_NO_CARET
+ 
++#ifndef NO_SMOOTH_SCROLL_HACK
++#define timer timer2
++
++// All scrolls must be completed within 240ms of last keypress
++static const int SCROLL_TIME = 240;
++// Each step is 20 ms == 50 frames/second
++static const int SCROLL_TICK = 20;
++
++void KHTMLView::scrollBy(int dx, int dy)
++{
++    KConfigGroup cfg( KGlobal::config(), "KDE" );
++    if( !cfg.readBoolEntry( "SmoothScrolling", true )) {
++        QScrollView::scrollBy( dx, dy );
++        return;
++    }
++    // scrolling destination
++    int full_dx = d->dx + dx;
++    int full_dy = d->dy + dy;
++
++    // scrolling speed
++    int ddx = 0;
++    int ddy = 0;
++
++    int steps = SCROLL_TIME/SCROLL_TICK;
++
++    ddx = (full_dx*16)/steps;
++    ddy = (full_dy*16)/steps;
++
++    // don't go under 1px/step
++    if (ddx > 0 && ddx < 16) ddx = 16;
++    if (ddy > 0 && ddy < 16) ddy = 16;
++    if (ddx < 0 && ddx > -16) ddx = -16;
++    if (ddy < 0 && ddy > -16) ddy = -16;
++
++    d->dx = full_dx;
++    d->dy = full_dy;
++    d->ddx = ddx;
++    d->ddy = ddy;
++
++    if (!d->scrolling) {
++        scrollTick();
++        startScrolling();
++    }
++}
++
++void KHTMLView::scrollTick() {
++    if (d->dx == 0 && d->dy == 0) {
++        stopScrolling();
++        return;
++    }
++
++    int tddx = d->ddx + d->rdx;
++    int tddy = d->ddy + d->rdy;
++
++    int ddx = tddx / 16;
++    int ddy = tddy / 16;
++    d->rdx = tddx % 16;
++    d->rdy = tddy % 16;
++
++    if (d->dx > 0 && ddx > d->dx) ddx = d->dx;
++    else
++    if (d->dx < 0 && ddx < d->dx) ddx = d->dx;
++
++    if (d->dy > 0 && ddy > d->dy) ddy = d->dy;
++    else
++    if (d->dy < 0 && ddy < d->dy) ddy = d->dy;
++
++    d->dx -= ddx;
++    d->dy -= ddy;
++
++//    QScrollView::setContentsPos( contentsX() + ddx, contentsY() + ddy);
++    kapp->syncX();
++    QScrollView::scrollBy(ddx, ddy);
++// Unaccelerated X can get seriously overloaded by scrolling and for some reason
++// will send KeyPress events only infrequently. This should help to reduce
++// the load.
++    kapp->syncX();
++}
++
++void KHTMLView::startScrolling()
++{
++    d->scrolling = true;
++    d->timer.start(SCROLL_TICK, false);
++}
++
++void KHTMLView::stopScrolling()
++{
++    d->timer.stop();
++    d->dx = d->dy = 0;
++    d->scrolling = false;
++}
++
++// Overloaded from QScrollView and QScrollBar
++void KHTMLView::scrollViewWheelEvent( QWheelEvent *e )
++{
++    int pageStep = verticalScrollBar()->pageStep();
++    int lineStep = verticalScrollBar()->lineStep();
++    int step = QMIN( QApplication::wheelScrollLines()*lineStep, pageStep );
++    if ( ( e->state() & ControlButton ) || ( e->state() & ShiftButton ) )
++        step = pageStep;
++
++    if(e->orientation() == Horizontal)
++        scrollBy(-((e->delta()*step)/120), 0);
++    else if(e->orientation() == Vertical)
++        scrollBy(0,-((e->delta()*step)/120));
++
++    e->accept();
++}
++
++#undef timer
++
++#endif // NO_SMOOTH_SCROLL_HACK
++
+ #undef DEBUG_CARETMODE
+Index: khtml/khtmlview.h
+===================================================================
+--- khtml/khtmlview.h.orig
++++ khtml/khtmlview.h
+@@ -181,6 +181,11 @@ signals:
+     void hideAccessKeys();
+     void repaintAccessKeys();
+     void findAheadActive( bool );
++//#define NO_SMOOTH_SCROLL_HACK
++#ifndef NO_SMOOTH_SCROLL_HACK
++public slots:
++    void scrollBy(int dx, int dy);
++#endif
+ 
+ protected:
+     void clear();
+@@ -211,9 +216,23 @@ protected:
+     void contentsContextMenuEvent ( QContextMenuEvent *_ce );
+     void doAutoScroll();
+     void timerEvent ( QTimerEvent * );
++
++#ifndef NO_SMOOTH_SCROLL_HACK
++    void startScrolling();
++    void stopScrolling();
++#ifndef QT_NO_WHEELEVENT
++    void scrollViewWheelEvent( QWheelEvent* e );
++#endif
++#endif
++
+ protected slots:
+     void slotPaletteChanged();
+     void slotScrollBarMoved();
++#ifndef NO_SMOOTH_SCROLL_HACK
++    void scrollTick();
++#else
++    void scrollTick() {}; // moc cannot handle #if
++#endif
+ 
+ private slots:
+     void tripleClickTimeout();

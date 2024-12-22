@@ -1,0 +1,330 @@
+Source: tdemultimedia-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Ana Beatriz Guerrero Lopez <ana@debian.org>, Christopher Martin <chrsmrtn@debian.org>, Fathi Boudra <fboudra@free.fr>, Sune Vuorela <debian@pusling.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, cdparanoia, libcdparanoia0-dev, libflac-dev (>= 1.1.4-1), libgstreamer-plugins-base1.0-dev | libgstreamer-plugins-base0.10-dev, libsamplerate0-dev, libspeex-dev (>> 1.1.5), libtag1-dev (>> 1.3.1), libtheora-dev, libxine2-dev | libxine-dev, libxxf86dga-dev, libxv-dev, libxxf86vm-dev, libakode-dev, libogg-dev
+Standards-Version: 3.8.4
+
+Package: tdemultimedia-trinity
+Section: tde
+Architecture: all
+Replaces: kdemultimedia-trinity (<< 4:14.0.0~)
+Breaks: kdemultimedia-trinity (<< 4:14.0.0~)
+Depends: artsbuilder-trinity (>= ${source:Version}), juk-trinity (>= ${source:Version}), kaboodle-trinity (>= ${source:Version}), kaudiocreator-trinity (>= ${source:Version}), tdemultimedia-kappfinder-data-trinity (>= ${source:Version}), tdemultimedia-tdefile-plugins-trinity (>= ${source:Version}), tdemultimedia-tdeio-plugins-trinity (>= ${source:Version}), tdemid-trinity (>= ${source:Version}), kmix-trinity (>= ${source:Version}), krec-trinity (>= ${source:Version}), kscd-trinity (>= ${source:Version}), libarts1-akode-trinity (>= ${source:Version}), libarts1-audiofile-trinity (>= ${source:Version}), libarts1-mpeglib-trinity (>= ${source:Version}), libarts1-xine-trinity (>= ${source:Version}), mpeglib-trinity (>= ${source:Version}), noatun-trinity (>= ${source:Version})
+Suggests: tdemultimedia-trinity-doc-html (>= ${source:Version})
+Description: multimedia apps from the official Trinity release 
+ TDE (the Trinity Desktop Environment) is a powerful Open Source graphical
+ desktop environment for Unix workstations. It combines ease of use,
+ contemporary functionality, and outstanding graphical design with the
+ technological superiority of the Unix operating system.
+ .
+ This metapackage includes a collection of multimedia applications
+ (such as sound and movie player, mixers and plugins) provided with
+ the official release of TDE.
+ .
+ Homepage: http://www.kde.org/areas/multimedia
+
+Package: tdemultimedia-trinity-dev
+Section: devel
+Architecture: any
+Replaces: kdemultimedia-trinity-dev (<< 4:14.0.0~)
+Breaks: kdemultimedia-trinity-dev (<< 4:14.0.0~)
+Depends: tdelibs14-trinity-dev, artsbuilder-trinity (= ${source:Version}), tdemultimedia-tdeio-plugins-trinity (= ${source:Version}), tdemid-trinity (= ${source:Version}), kmix-trinity (= ${source:Version}), krec-trinity (= ${source:Version}), kscd-trinity (= ${source:Version}), libarts1-akode-trinity (= ${source:Version}), libarts1-mpeglib-trinity (= ${source:Version}), libkcddb1-trinity (= ${source:Version}), mpeglib-trinity (= ${source:Version}), noatun-trinity (= ${source:Version})
+Conflicts: libmpeg-trinity-dev
+Description: development files for the Trinity multimedia module
+ Development files and headers for the Trinity multimedia module.
+ .
+ This package is part of TDE, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: tdemultimedia-trinity-doc-html
+Architecture: all
+Section: doc
+Replaces: kdemultimedia-trinity-doc-html (<< 4:14.0.0~)
+Breaks: kdemultimedia-trinity-doc-html (<< 4:14.0.0~)
+Suggests: konqueror-trinity | www-browser, tdebase-trinity
+Description: Trinity multimedia documentation in HTML format
+ By default the modules provided by TDE only provide their documentation
+ in TDE docbook format, which can only be read by Konqueror or KHelpCenter.
+ This package provides all of the TDE multimedia documentation converted to
+ HTML format so it can be read with any web browser.
+ .
+ The documentation will be installed into the usual directories
+ /usr/share/doc/tde/HTML/<language>/<app>/, for instance
+ /usr/share/doc/tde/HTML/en/juk/. Documentation is provided for most
+ TDE multimedia packages.
+ .
+ This package is part of Trinity, and a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: artsbuilder-trinity
+Section: sound
+Architecture: any
+Replaces: artsbuilder-trinity (<< 4:14.0.0~)
+Breaks: artsbuilder-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Description: synthesizer designer for aRts
+ This is the analog Realtime synthesizer's graphical design tool.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: juk-trinity
+Section: tde
+Architecture: any
+Replaces: juk-trinity (<< 4:14.0.0~)
+Breaks: juk-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Description: music organizer and player for Trinity
+ JuK (pronounced "jook") is a jukebox and music manager for the TDE
+ desktop similar to jukebox software on other platforms such as
+ iTunes or RealOne.
+ .
+ Some of JuK's features include:
+  * Support for Ogg Vorbis and MP3 formats
+  * Tag editing support for both formats, including ID3v2 for MP3 files.
+    Multitagging or editing a selection of multiple files at once is also
+    supported
+  * Output to either the aRts, default TDE sound system, or GStreamer
+  * Management of your "collection" and multiple playlists
+  * Import and export to m3u playlists
+  * Binary caching of audio meta-data and playlist information for faster
+    load times (starting with the second time you run JuK)
+  * Integration into TDE that allows drag-and-drop and clipboard usage
+    with other TDE and X apps
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: kaboodle-trinity
+Section: sound
+Architecture: any
+Replaces: kaboodle-trinity (<< 4:14.0.0~)
+Breaks: kaboodle-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Recommends: libarts1-xine-trinity
+Suggests: khelpcenter-trinity
+Description: light, embedded media player for Trinity
+ Kaboodle is a light, embedded media player, supporting both video and audio,
+ for TDE. It uses the aRts framework for playing media files.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: kaudiocreator-trinity
+Section: sound
+Architecture: any
+Replaces: kaudiocreator-trinity (<< 4:14.0.0~)
+Breaks: kaudiocreator-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, tdemultimedia-tdeio-plugins-trinity (= ${source:Version})
+Recommends: vorbis-tools, flac
+Suggests: lame
+Description: CD ripper and audio encoder frontend for Trinity
+ KAudioCreator is a tool for audio extraction (ripping) and encoding. It can
+ keep your WAV files, or convert them to Ogg/Vorbis, MP3, or FLAC. It also
+ searches CDDB to retrieve the information of the disk.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: tdemultimedia-tdefile-plugins-trinity
+Section: tde
+Architecture: any
+Replaces: kdemultimedia-kfile-plugins-trinity (<< 4:14.0.0~)
+Breaks: kdemultimedia-kfile-plugins-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: au/avi/m3u/mp3/ogg/wav plugins for tdefile
+ au/avi/m3u/mp3/ogg/wav file metainformation plugins for Trinity.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: tdemultimedia-kappfinder-data-trinity
+Section: tde
+Architecture: any
+Replaces: kdemultimedia-kappfinder-data-trinity (<< 4:14.0.0~)
+Breaks: kdemultimedia-kappfinder-data-trinity (<< 4:14.0.0~)
+Depends: kappfinder-trinity
+Description: multimedia data for kappfinder-trinity
+ This package provides data on multimedia applications for kappfinder-trinity.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: tdemultimedia-tdeio-plugins-trinity
+Section: tde
+Architecture: any
+Replaces: kdemultimedia-kio-plugins-trinity (<< 4:14.0.0~)
+Breaks: kdemultimedia-kio-plugins-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: lame
+Description: enables the browsing of audio CDs under Konqueror
+ This package allow audio CDs to be browsed like a file system using
+ Konqueror and the audiocd:/ URL.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: tdemid-trinity
+Section: sound
+Architecture: any
+Replaces: kmid-trinity (<< 4:14.0.0~)
+Breaks: kmid-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Description: MIDI/karaoke player for Trinity
+ This package provides a MIDI and karaoke player for TDE.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: kmix-trinity
+Section: sound
+Architecture: any
+Replaces: kmix-trinity (<< 4:14.0.0~)
+Breaks: kmix-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Provides: x-audio-mixer
+Description: sound mixer applet for Trinity
+ This package includes TDE's dockable sound mixer applet.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: krec-trinity
+Section: sound
+Architecture: any
+Replaces: krec-trinity (<< 4:14.0.0~)
+Breaks: krec-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Description: sound recorder utility for Trinity
+ This is a sound recording utility for Trinity.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: kscd-trinity
+Section: sound
+Architecture: any
+Replaces: kscd-trinity (<< 4:14.0.0~)
+Breaks: kscd-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter
+Description: audio CD player for Trinity
+ This is Trinity's audio CD player.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: libarts1-akode-trinity
+Section: libs
+Architecture: any
+Replaces: libarts1-akode-trinity (<< 4:14.0.0~)
+Breaks: libarts1-akode-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: akode plugin for aRts
+ This package contains akode plugins for aRts.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information
+
+Package: libarts1-audiofile-trinity
+Section: libs
+Architecture: any
+Replaces: libarts1-audiofile-trinity (<< 4:14.0.0~)
+Breaks: libarts1-audiofile-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: audiofile plugin for aRts
+ This package contains audiofile plugins for aRts.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: libarts1-mpeglib-trinity
+Section: libs
+Architecture: any
+Replaces: libarts1-mpeglib-trinity (<< 4:14.0.0~)
+Breaks: libarts1-mpeglib-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: mpeglib plugin for aRts, supporting mp3 and mpeg audio/video
+ This package contains the mpeglib aRts plugin, supporting mp3 and mpeg
+ audio and video.
+ .
+ This is the arts (TDE Sound daemon) plugin.
+ .
+ This package is part of TDE, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: libarts1-xine-trinity
+Section: libs
+Architecture: any
+Replaces: libarts1-xine-trinity (<< 4:14.0.0~)
+Breaks: libarts1-xine-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, libxine2-x | libxine1-x (<< 1.1.20) | libxine1 (<< 1.1.8-2)
+Description: aRts plugin enabling xine support
+ This package contains aRts' xine plugin, allowing the use of the xine
+ multimedia engine though aRts.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: libkcddb1-trinity
+Section: libs
+Architecture: any
+Replaces: libkcddb1-trinity (<< 4:14.0.0~)
+Breaks: libkcddb1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: CDDB library for Trinity
+ The Trinity native CDDB (CD Data Base) library, providing easy access to Audio
+ CD meta-information (track titles, artist information, etc.) from on-line
+ databases, for TDE applications.
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: mpeglib-trinity
+Section: libs
+Architecture: any
+Replaces: mpeglib-trinity (<< 4:14.0.0~)
+Breaks: mpeglib-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Recommends: libarts1-mpeglib-trinity (= ${source:Version})
+Description: MP3 and MPEG-1 audio and video library
+ mpeglib is a MPEG-1 and MP3 audio and video library. It supports
+ MPEG-1 audio (layers 1, 2, 3), MPEG-1 video, MPEG-1 system layer,
+ and WAV playback
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: noatun-trinity
+Section: sound
+Architecture: any
+Replaces: noatun-trinity (<< 4:14.0.0~)
+Breaks: noatun-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity, noatun-plugins-trinity
+Description: media player for Trinity
+ Noatun is an aRts-based audio and video player for Trinity. It supports all
+ formats supported by your installation of aRts (including aRts plugins).
+ .
+ This package is part of Trinity, as a component of the TDE multimedia module.
+ See the 'tde-trinity' and 'tdemultimedia-trinity' packages for more information.
+
+Package: tdemultimedia-trinity-dbg
+Section: libdevel
+Architecture: linux-any
+Replaces: kdemultimedia-trinity-dbg (<< 4:14.0.0~)
+Breaks: kdemultimedia-trinity-dbg (<< 4:14.0.0~)
+Priority: extra
+Depends: tdelibs-trinity-dbg, libkcddb1-trinity (= ${source:Version})
+Description: debugging symbols for tdemultimedia
+ This package contains the debugging symbols associated with tdemultimedia-trinity.
+ They will automatically be used by gdb for debugging tdemultimedia-related
+ issues.

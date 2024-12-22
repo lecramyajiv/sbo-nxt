@@ -1,0 +1,52 @@
+Index: src/kernel/qapplication.cpp
+===================================================================
+--- src/kernel/qapplication.cpp.orig
++++ src/kernel/qapplication.cpp
+@@ -320,6 +320,7 @@ void tqt_init( int *, char **, TQApplica
+ void tqt_cleanup();
+ #if defined(Q_WS_X11)
+ void tqt_init( Display* dpy, TQt::HANDLE, TQt::HANDLE );
++void tqt_init( int *, char **, Display* dpy, TQt::HANDLE, TQt::HANDLE );
+ #endif
+ Q_EXPORT bool tqt_tryModalHelper( TQWidget *widget, TQWidget **rettop );
+ 
+@@ -909,6 +910,7 @@ TQApplication::TQApplication(Display *dp
+ 	tqt_init( &argc, argv, GuiClient );
+     } else {
+ 	tqt_init(dpy, visual, colormap);
++	tqt_init(&argc, argv, dpy, visual, colormap);
+     }
+ 
+     process_cmdline( &argc, argv );
+Index: src/kernel/qapplication_x11.cpp
+===================================================================
+--- src/kernel/qapplication_x11.cpp.orig
++++ src/kernel/qapplication_x11.cpp
+@@ -201,6 +201,7 @@ static bool	mwIconic	= FALSE;	// main wi
+ static Display *appDpy		= 0;		// X11 application display
+ static char    *appDpyName	= 0;		// X11 display name
+ static bool	appForeignDpy	= FALSE;        // we didn't create display
++Q_EXPORT bool qt_no_foreign_hack = FALSE;
+ static bool	appSync		= FALSE;	// X11 synchronization
+ #if defined(QT_DEBUG)
+ static bool	appNoGrab	= FALSE;	// X11 grabbing enabled
+@@ -1652,7 +1653,7 @@ void tqt_init_internal( int *argcptr, ch
+     }
+ #endif
+ 
+-    if ( display ) {
++    if ( display && ! qt_no_foreign_hack ) {
+ 	// TQt part of other application
+ 
+ 	appForeignDpy = TRUE;
+@@ -2465,6 +2466,10 @@ void tqt_init( Display *display, TQt::HA
+     tqt_init_internal( 0, 0, display, visual, colormap );
+ }
+ 
++void tqt_init( int *argcptr, char **argv, Display *display, TQt::HANDLE visual, TQt::HANDLE colormap )
++{
++    tqt_init_internal( argcptr, argv, display, visual, colormap );
++}
+ 
+ /*****************************************************************************
+   tqt_cleanup() - cleans up when the application is finished

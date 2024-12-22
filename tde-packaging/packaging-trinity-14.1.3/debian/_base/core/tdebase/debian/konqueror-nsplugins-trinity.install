@@ -1,0 +1,8 @@
+debian/tmp/opt/trinity/bin/nspluginscan
+debian/tmp/opt/trinity/bin/nspluginviewer
+debian/tmp/opt/trinity/lib/trinity/kcm_nsplugins.la
+debian/tmp/opt/trinity/lib/trinity/kcm_nsplugins.so
+debian/tmp/opt/trinity/lib/trinity/libnsplugin.la
+debian/tmp/opt/trinity/lib/trinity/libnsplugin.so
+debian/tmp/opt/trinity/share/applications/tde/tdehtml_plugins.desktop
+debian/tmp/opt/trinity/share/apps/plugin/nspluginpart.rc

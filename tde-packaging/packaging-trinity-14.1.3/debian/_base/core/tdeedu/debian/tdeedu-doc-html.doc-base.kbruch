@@ -1,0 +1,11 @@
+Document: kbruch
+Title: KBruch Handbook
+Author: Sebastian Stein <seb.kde@hpfsc.de>
+Abstract: KBruch is a small program to practice calculating with fractions.
+ Different exercises are provided for this purpose.  The program checks the
+ user's input and gives feedback.
+Section: Apps/Math
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kbruch/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kbruch/*.html

@@ -1,0 +1,11 @@
+Document: tdegames-doc-html-kgoldrunner
+Title: The KGoldrunner Handbook
+Author: Ian Wadham, Marco Krueger
+Abstract: KGoldrunner, a game of action and puzzle solving.  Run through
+ the maze, dodge your enemies, collect all the gold and climb up to the
+ next level.
+Section: Games/Arcade
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kgoldrunner/index.html
+Files: /usr/share/doc/tde/HTML/en/kgoldrunner/*.html

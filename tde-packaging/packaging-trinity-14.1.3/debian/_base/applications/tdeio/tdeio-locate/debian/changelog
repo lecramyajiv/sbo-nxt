@@ -1,0 +1,189 @@
+tdeio-locate-trinity (0.4.5-1ubuntu4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+tdeio-locate-trinity (0.4.5-1ubuntu2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 05 March 2009 29:52:00 -0600
+
+tdeio-locate-trinity (0.4.5-1ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 04 Dec 2008 00:35:00 -0600
+
+kio-locate (0.4.5-0ubuntu3) hardy; urgency=low
+
+  * Rebuild with recent g++ compiler version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 03 Apr 2008 11:24:38 +0000
+
+kio-locate (0.4.5-0ubuntu2) feisty; urgency=low
+
+  * debian/control: Update maintainer fields according to debian-
+    maintainer-field spec.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Mon, 26 Feb 2007 08:49:35 +0000
+
+kio-locate (0.4.5-0ubuntu1) edgy; urgency=low
+
+  * Sync with upstream.
+  * Added an entry in debian/rules to work arround a build issue.
+  * Switched to debhelper 5
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sun, 24 Jul 2006 23:30:58 +0200
+
+kio-locate (0.4.5-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Sun, 05 Feb 2006 17:02:09 +0100
+
+kio-locate (0.4.4-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Wed, 19 Oct 2005 18:01:59 +0200
+
+kio-locate (0.4.3-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Thu, 15 Sep 2005 09:12:38 +0200
+
+kio-locate (0.4.2tvo0.2) breezy; urgency=low
+
+  * New release of kio-locate.
+
+ -- Tobi Vollebregt <tobivollebregt@gmail.com>  Sun, 21 Aug 2005 14:31:16 +0200
+
+kio-locate (0.4.2tvo0.1) breezy; urgency=low
+
+  * New release of kio-locate.
+  * Minor changes for ubuntu.
+  * Add bzip2 and python to build-deps.
+  * Fix the clean rule.
+
+ -- Tobi Vollebregt <tobivollebregt@gmail.com>  Thu, 14 Jul 2005 23:14:16 +0200
+
+kio-locate (0.4.2-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Sun, 22 May 2005 09:55:57 +0200
+
+kio-locate (0.4.1-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Sat, 21 May 2005 16:21:19 +0200
+
+kio-locate (0.4.0-1) unstable; urgency=low
+
+  * New release of kio-locate.
+  * Adapted to the usage of scons.
+
+ -- Armin Straub <linux@arminstraub.de>  Sun, 10 Apr 2005 13:12:28 +0200
+
+kio-locate (0.3.4-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Sat, 22 Jan 2005 16:13:54 +0100
+
+kio-locate (0.3.3-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Fri, 21 Jan 2005 10:23:13 +0100
+
+kio-locate (0.3.2-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Mon, 17 Jan 2005 16:38:47 +0100
+
+kio-locate (0.3.1-1) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Fri, 10 Dec 2004 10:24:34 +0100
+
+kio-locate (0.3.0) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Mon, 01 Nov 2004 08:41:55 +0100
+
+kio-locate (0.2.4-2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Reupload with orig.tar.gz named correctly.
+
+ -- Christoffer Sawicki <qerub@home.se>  Sat, 30 Oct 2004 19:33:56 +0200
+
+kio-locate (0.2.4-1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * This is a non-native package and should be treated as such.
+  * Switched to CDBS.
+
+ -- Christoffer Sawicki <qerub@home.se>  Sat, 30 Oct 2004 19:03:23 +0200
+
+kio-locate (0.2.4) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Tue, 26 Oct 2004 18:08:05 +0200
+
+kio-locate (0.2.3) unstable; urgency=low
+
+  * New release of kio-locate.
+
+ -- Armin Straub <linux@arminstraub.de>  Mon, 25 Oct 2004 19:49:52 +0200
+
+kio-locate (0.2.2) unstable; urgency=low
+
+  * New release of kio-locate.
+  * Adjusted the control file to the new release.
+
+ -- Armin Straub <linux@arminstraub.de>  Sun, 24 Oct 2004 13:29:05 +0200
+
+kio-locate (0.2.1) unstable; urgency=low
+
+  * New release of kio-locate.
+  * Using kde as the section instead of utils.
+
+ -- Armin Straub <linux@arminstraub.de>  Fri, 22 Oct 2004 10:31:37 +0200
+
+kio-locate (0.2.0) unstable; urgency=low
+
+  * Complete rewrite.
+  * Works with KDE 3.3.
+
+ -- Armin Straub <linux@arminstraub.de>  Fri, 15 Oct 2004 08:20:36 +0200
+
+kio-locate (0.1.1-1) unstable; urgency=low
+
+  * Corrected URL prefix ("file:" instead of "file:/").
+  * Update admin dir.
+
+ -- Michael Schuerig <michael@schuerig.de>  Sun,  7 Mar 2004 13:10:35 +0100
+
+kio-locate (0.1-2) unstable; urgency=low
+
+  * Rebuild for KDE 3.1.
+
+ -- Michael Schuerig <schuerig@acm.org>  Mon, 24 Feb 2003 09:07:34 +0100
+
+kio-locate (0.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Michael Schuerig <schuerig@acm.org>  Sat, 14 Dec 2002 01:24:28 +0100
+

@@ -1,0 +1,10 @@
+debian/tmp/opt/trinity/bin/dprof2calltree
+debian/tmp/opt/trinity/bin/hotshot2calltree
+debian/tmp/opt/trinity/bin/memprof2calltree
+debian/tmp/opt/trinity/bin/op2calltree
+debian/tmp/opt/trinity/bin/pprof2calltree
+debian/tmp/opt/trinity/share/man/man1/dprof2calltree.1
+debian/tmp/opt/trinity/share/man/man1/hotshot2calltree.1
+debian/tmp/opt/trinity/share/man/man1/memprof2calltree.1
+debian/tmp/opt/trinity/share/man/man1/op2calltree.1
+debian/tmp/opt/trinity/share/man/man1/pprof2calltree.1

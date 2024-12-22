@@ -1,0 +1,7 @@
+debian/tmp/usr/bin/tdeunittestmod
+debian/tmp/usr/bin/tdeunittestguimodrunner
+debian/tmp/usr/lib/*/libtdeunittestgui.la
+debian/tmp/usr/lib/*/libtdeunittestgui.so
+debian/tmp/usr/lib/*/libtdeunittestgui.so.0
+debian/tmp/usr/lib/*/libtdeunittestgui.so.0.0.0
+debian/tmp/usr/include/tdeunittest/runnergui.h

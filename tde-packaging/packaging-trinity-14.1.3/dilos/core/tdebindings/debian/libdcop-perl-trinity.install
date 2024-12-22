@@ -1,0 +1,4 @@
+debian/tmp/usr/lib/perl5/auto/DCOP/*
+debian/tmp/usr/lib/perl5/DCOP.pm
+debian/tmp/usr/lib/perl5/DCOP/*
+debian/tmp/usr/share/man/man3/DCOP.3pm

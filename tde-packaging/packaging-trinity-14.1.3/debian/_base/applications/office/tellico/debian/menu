@@ -1,0 +1,5 @@
+?package(tellico-trinity):needs="X11"\
+  section="Applications/Office"\
+  title="Tellico"\
+  icon="/opt/trinity/share/pixmaps/tellico.xpm"\
+  command="/opt/trinity/bin/tellico"

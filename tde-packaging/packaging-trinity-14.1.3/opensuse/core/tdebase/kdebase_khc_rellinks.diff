@@ -1,0 +1,606 @@
+Index: khelpcenter/khelpcenterui.rc
+===================================================================
+--- khelpcenter/khelpcenterui.rc.orig
++++ khelpcenter/khelpcenterui.rc
+@@ -1,5 +1,5 @@
+ <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+-<kpartgui name="khelpcenter" version="14">
++<kpartgui name="khelpcenter" version="15">
+ <MenuBar>
+  <Menu name="file" noMerge="1">
+     <text>&amp;File</text>
+@@ -23,8 +23,8 @@
+  </Menu>
+  <Menu name="go_web">
+   <text>&amp;Go</text>
+-  <Action name="prevPage" />
+-  <Action name="nextPage" />
++  <Action name="rellinks_previous" />
++  <Action name="rellinks_next" />
+   <Separator />
+   <Action name="back" />
+   <Action name="forward" />
+@@ -41,13 +41,19 @@
+  <Action name="go_home" />
+  <Action name="back" />
+  <Action name="forward" />
+- <Separator />
++  <Separator />
+  <Action name="printFrame" />
+  <Separator /> 
+  <Action name="copy_text" />
+  <Action name="find" /> 
+- <Separator />
+  <Action name="incFontSizes" />
+  <Action name="decFontSizes" />
++ <Separator />
++ <Action name="rellinks_top" />
++ <Action name="rellinks_up" />
++ <Action name="rellinks_first" />
++ <Action name="rellinks_previous" />
++ <Action name="rellinks_next" />
++ <Action name="rellinks_last" />
+ </ToolBar>
+ </kpartgui>
+Index: khelpcenter/mainwindow.cpp
+===================================================================
+--- khelpcenter/mainwindow.cpp.orig
++++ khelpcenter/mainwindow.cpp
+@@ -41,6 +41,7 @@
+ #include <kstatusbar.h>
+ #include <kstdaccel.h>
+ #include <kdialogbase.h>
++#include <kpopupmenu.h>
+ 
+ #include <qsplitter.h>
+ #include <qtextedit.h>
+@@ -106,6 +107,8 @@ MainWindow::MainWindow()
+ 
+     connect( mDoc, SIGNAL( selectionChanged() ),
+              SLOT( enableCopyTextAction() ) );
++    connect( mDoc, SIGNAL( completed() ),
++             SLOT( updateLinkActions() ) );
+ 
+     statusBar()->insertItem(i18n("Preparing Index"), 0, 1);
+     statusBar()->setItemAlignment(0, AlignLeft | AlignVCenter);
+@@ -250,6 +253,8 @@ void MainWindow::setupActions()
+     new KAction( i18n( "Configure Fonts..." ), KShortcut(), this, SLOT( slotConfigureFonts() ), actionCollection(), "configure_fonts" );
+     new KAction( i18n( "Increase Font Sizes" ), "viewmag+", KShortcut(), this, SLOT( slotIncFontSizes() ), actionCollection(), "incFontSizes" );
+     new KAction( i18n( "Decrease Font Sizes" ), "viewmag-", KShortcut(), this, SLOT( slotDecFontSizes() ), actionCollection(), "decFontSizes" );
++    
++    initActions();
+ }
+ 
+ void MainWindow::slotCopySelectedText()
+@@ -462,6 +467,418 @@ void MainWindow::slotConfigureFonts()
+     mDoc->slotReload();
+ }
+ 
++void MainWindow::initActions()
++{
++  kdDebug() << k_funcinfo << endl;
++  
++    // ------------- Navigation links --------------
++  kaction_map["home"] =  new KAction( i18n("&Top"), "2uparrow", KShortcut("Ctrl+Alt+T"), this, SLOT(goHome()), actionCollection(), "rellinks_top" );
++  kaction_map["home"]->setWhatsThis( i18n("<p>This link references a home page or the top of some hierarchy.</p>") );
++
++  kaction_map["up"] =  new KAction( i18n("&Up"), "1uparrow", KShortcut("Ctrl+Alt+U"), this, SLOT(goUp()), actionCollection(), "rellinks_up" );
++  kaction_map["up"]->setWhatsThis( i18n("<p>This link references the immediate parent of the current document.</p>") );
++
++  bool isRTL = QApplication::reverseLayout();
++
++  kaction_map["begin"] =  new KAction( i18n("&First"), isRTL ? "2rightarrow" : "2leftarrow", KShortcut("Ctrl+Alt+F"), this,  SLOT(goFirst()), actionCollection(), "rellinks_first" );
++  kaction_map["begin"]->setWhatsThis( i18n("<p>This link type tells search engines which document is considered by the author to be the starting point of the collection.</p>") );
++
++  kaction_map["prev"] =  new KAction( i18n("&Previous"), isRTL ? "1rightarrow" : "1leftarrow", KShortcut("Ctrl+Alt+P"), this,  SLOT(goPrevious()), actionCollection(), "rellinks_previous" );
++  kaction_map["prev"]->setWhatsThis( i18n("<p>This link references the previous document in an ordered series of documents.</p>") );
++
++  kaction_map["next"] =  new KAction( i18n("&Next"), isRTL ? "1leftarrow" : "1rightarrow", KShortcut("Ctrl+Alt+N"), this,  SLOT(goNext()), actionCollection(), "rellinks_next" );
++  kaction_map["next"]->setWhatsThis( i18n("<p>This link references the next document in an ordered series of documents.</p>") );
++
++  kaction_map["last"] =  new KAction( i18n("&Last"), isRTL ? "2leftarrow" : "2rightarrow", KShortcut("Ctrl+Alt+L"), this,  SLOT(goLast()), actionCollection(), "rellinks_last" );
++  kaction_map["last"]->setWhatsThis( i18n("<p>This link references the end of a sequence of documents.</p>") );
++
++    // ------------ special items --------------------------
++  kaction_map["search"]  = new KAction( i18n("&Search"), "filefind", KShortcut("Ctrl+Alt+S"), this, SLOT(goSearch()), actionCollection(), "rellinks_search" );
++  kaction_map["search"]->setWhatsThis( i18n("<p>This link references the search.</p>") );
++
++    // ------------ Document structure links ---------------
++  m_document = new KActionMenu( i18n("Document"),  "contents", actionCollection(), "rellinks_document" );
++  m_document->setWhatsThis( i18n("<p>This menu contains the links referring the document information.</p>") );
++  m_document->setDelayed(false);
++
++  kaction_map["contents"] = new KAction( i18n("Table of &Contents"), "contents", KShortcut("Ctrl+Alt+C"),  this,  SLOT(goContents()), actionCollection(), "rellinks_toc" );
++  m_document->insert(kaction_map["contents"]);
++  kaction_map["contents"]->setWhatsThis( i18n("<p>This link references the table of contents.</p>") );
++
++  kactionmenu_map["chapter"] = new KActionMenu( i18n("Chapters"), "fileopen", actionCollection(), "rellinks_chapters" );
++  m_document->insert(kactionmenu_map["chapter"]);
++  connect( kactionmenu_map["chapter"]->popupMenu(), SIGNAL( activated( int ) ), this, SLOT(goChapter(int)));
++  kactionmenu_map["chapter"]->setWhatsThis( i18n("<p>This menu references the chapters of the document.</p>") );
++  kactionmenu_map["chapter"]->setDelayed(false);
++
++  kactionmenu_map["section"] = new KActionMenu( i18n("Sections"), "fileopen", actionCollection(), "rellinks_sections" );
++  m_document->insert(kactionmenu_map["section"]);
++  connect( kactionmenu_map["section"]->popupMenu(), SIGNAL( activated( int ) ), this, SLOT( goSection( int ) ) );
++  kactionmenu_map["section"]->setWhatsThis( i18n("<p>This menu references the sections of the document.</p>") );
++  kactionmenu_map["section"]->setDelayed(false);
++
++  kactionmenu_map["subsection"] = new KActionMenu( i18n("Subsections"), "fileopen", actionCollection(), "rellinks_subsections" );
++  m_document->insert(kactionmenu_map["subsection"]);
++  connect( kactionmenu_map["subsection"]->popupMenu(), SIGNAL( activated( int ) ), this, SLOT( goSubsection( int ) ) );
++  kactionmenu_map["subsection"]->setWhatsThis( i18n("<p>This menu references the subsections of the document.</p>") );
++  kactionmenu_map["subsection"]->setDelayed(false);
++
++  kactionmenu_map["appendix"] = new KActionMenu( i18n("Appendix"), "edit", actionCollection(), "rellinks_appendix" );
++  m_document->insert(kactionmenu_map["appendix"]);
++  connect( kactionmenu_map["appendix"]->popupMenu(), SIGNAL( activated( int ) ), this, SLOT( goAppendix( int ) ) );
++  kactionmenu_map["appendix"]->setWhatsThis( i18n("<p>This link references the appendix.</p>") );
++  kactionmenu_map["appendix"]->setDelayed(false);
++
++  kaction_map["glossary"] = new KAction( i18n("&Glossary"), "flag", KShortcut("Ctrl+Alt+G"), this, SLOT(goGlossary()), actionCollection(), "rellinks_glossary" );
++  m_document->insert(kaction_map["glossary"]);
++  kaction_map["glossary"]->setWhatsThis( i18n("<p>This link references the glossary.</p>") );
++
++  kaction_map["index"] = new KAction( i18n("&Index"), "info", KShortcut("Ctrl+Alt+I"), this, SLOT(goIndex()), actionCollection(), "rellinks_index" );
++  m_document->insert(kaction_map["index"]);
++  kaction_map["index"]->setWhatsThis( i18n("<p>This link references the index.</p>") );
++
++    // Other links
++  m_more  = new KActionMenu( i18n("More"), "misc", actionCollection(), "rellinks_more" );
++  m_more->setWhatsThis( i18n("<p>This menu contains other important links.</p>") );
++  m_more->setDelayed(false);
++
++  kaction_map["help"] = new KAction( i18n("&Help"), "help", KShortcut("Ctrl+Alt+H"), this, SLOT(goHelp()), actionCollection(), "rellinks_help" );
++  m_more->insert(kaction_map["help"]);
++  kaction_map["help"]->setWhatsThis( i18n("<p>This link references the help.</p>") );
++
++  kaction_map["author"]  = new KAction( i18n("&Authors"), "mail_new", KShortcut("Ctrl+Alt+A"), this, SLOT(goAuthor()), actionCollection(), "rellinks_authors" );
++  m_more->insert(kaction_map["author"]);
++  kaction_map["author"]->setWhatsThis( i18n("<p>This link references the author.</p>") );
++
++  kaction_map["copyright"]   = new KAction( i18n("Copy&right"), "signature", KShortcut("Ctrl+Alt+R"), this, SLOT(goCopyright()), actionCollection(), "rellinks_copyright" );
++  m_more->insert(kaction_map["copyright"]);
++  kaction_map["copyright"]->setWhatsThis( i18n("<p>This link references the copyright.</p>") );
++
++  kactionmenu_map["bookmark"] = new KActionMenu( i18n("Bookmarks"), "bookmark_folder", actionCollection(), "rellinks_bookmarks" );
++  m_more->insert(kactionmenu_map["bookmark"]);
++  kactionmenu_map["bookmark"]->setWhatsThis( i18n("<p>This menu references the bookmarks.</p>") );
++  connect( kactionmenu_map["bookmark"]->popupMenu(), SIGNAL( activated( int ) ), this, SLOT( goBookmark( int ) ) );
++  kactionmenu_map["bookmark"]->setDelayed(false);
++
++  kactionmenu_map["alternate"] = new KActionMenu( i18n("Other Versions"), "attach", actionCollection(), "rellinks_other_versions" );
++  m_more->insert(kactionmenu_map["alternate"]);
++  kactionmenu_map["alternate"]->setWhatsThis( i18n("<p>This link references the alternate versions of this document.</p>") );
++  connect( kactionmenu_map["alternate"]->popupMenu(), SIGNAL( activated( int ) ), this, SLOT( goAlternate( int ) ) );
++  kactionmenu_map["alternate"]->setDelayed(false);
++
++    // Unclassified menu
++  m_links = new KActionMenu( i18n("Miscellaneous"), "rellinks", actionCollection(), "rellinks_links" );
++  kactionmenu_map["unclassified"] = m_links;
++  kactionmenu_map["unclassified"]->setWhatsThis( i18n("<p>Miscellaneous links.</p>") );
++  connect( kactionmenu_map["unclassified"]->popupMenu(), SIGNAL( activated( int ) ), this, SLOT( goAllElements( int ) ) );
++  kactionmenu_map["unclassified"]->setDelayed(false);
++
++    // We unactivate all the possible actions
++  disableAll();
++}
++
++/* Code from plugin_rellinks  
++ *   Copyright (C) 2002, Anders Lund <anders@alweb.dk>                     *
++ *   Copyright (C) 2003, 2004, Franck Qu�ain <shift@free.fr>              *
++ *   Copyright (C) 2004, Kevin Krammer <kevin.krammer@gmx.at>              *
++ *   Copyright (C) 2004, 2005, Oliviet Goffart <ogoffart @ kde.org>     
++*/
++void MainWindow::updateLinkActions()
++{
++    // We disable all
++  disableAll();
++
++    // get a list of LINK nodes in document
++  DOM::NodeList linkNodes =  mDoc->document().getElementsByTagName( "link" );
++
++  kdDebug() << "HELP Rellinks: Link nodes =" << linkNodes.length() << endl;
++
++  unsigned long nodeLength = linkNodes.length();
++
++  for ( unsigned int i=0; i < nodeLength; i++ ) {
++        // create a entry for each one
++    DOM::Element e( linkNodes.item( i ) );
++
++
++        // --- Retrieve of the relation type --
++
++    QString rel = e.getAttribute( "rel" ).string();
++    rel = rel.simplifyWhiteSpace();
++    if (rel.isEmpty()) {
++            // If the "rel" attribut is null then use the "rev" attribute...
++      QString rev = e.getAttribute( "rev" ).string();
++      rev = rev.simplifyWhiteSpace();
++      if (rev.isEmpty()) {
++                // if "rev" attribut is also empty => ignore
++        continue;
++      }
++            // Determine the "rel" equivalent of "rev" type
++      rel =  transformRevToRel(rev);
++    }
++        // Determin the name used internally
++    QString lrel = getLinkType(rel.lower());
++        // relation to ignore
++    if (lrel.isEmpty()) continue;
++    kdDebug() << "lrel=" << lrel << endl;
++
++        // -- Retrieve of other usefull informations --
++
++    QString href = e.getAttribute( "href" ).string();
++        // if nowhere to go, ignore the link
++    if (href.isEmpty()) continue;
++    QString title = e.getAttribute( "title" ).string();
++    QString hreflang = e.getAttribute( "hreflang" ).string();
++
++    KURL ref( mDoc->url(), href );
++    if ( title.isEmpty() )
++      title = ref.prettyURL();
++
++        // escape ampersand before settings as action title, otherwise the menu entry will interpret it as an
++        // accelerator
++    title.replace('&', "&&");
++
++        // -- Menus activation --
++
++        // Activation of "Document" menu ?
++    if (lrel == "contents" || lrel == "glossary" || lrel == "index" || lrel == "appendix") {
++      m_document->setEnabled(true);
++    }
++        // Activation of "More" menu ?
++    if (lrel == "help" || lrel == "author" || lrel == "copyright" ) {
++      m_more->setEnabled(true);
++    }
++
++        // -- Buttons or menu items activation / creation --
++    if (lrel == "bookmark" || lrel == "alternate") {
++      int id = kactionmenu_map[lrel]->popupMenu()->insertItem( title );
++      m_more->setEnabled(true);
++      kactionmenu_map[lrel]->setEnabled(true);
++      element_map[lrel][id] = e;
++
++    } else if (lrel == "appendix" || lrel == "chapter" || lrel == "section" || lrel == "subsection") {
++      int id = kactionmenu_map[lrel]->popupMenu()->insertItem( title );
++      m_document->setEnabled(true);
++      kactionmenu_map[lrel]->setEnabled(true);
++      element_map[lrel][id] = e;
++
++    } else {
++            // It is a unique action
++      element_map[lrel][0] = e;
++      if (kaction_map[lrel]) {
++        kaction_map[lrel]->setEnabled(true);
++                // Tooltip
++        if (hreflang.isEmpty()) {
++          kaction_map[lrel]->setToolTip( title );
++        } else {
++          kaction_map[lrel]->setToolTip( title + " [" + hreflang + "]");
++        }
++      } else {
++                // For the moment all the elements are reference in a separated menu
++                // TODO : reference the unknown ?
++        int id = kactionmenu_map["unclassified"]->popupMenu()->insertItem( lrel + " : " + title );
++        kactionmenu_map["unclassified"]->setEnabled(true);
++        element_map["unclassified"][id] = e;
++      }
++
++    }
++
++  }
++}
++
++void MainWindow::disableAll() {
++  element_map.clear();
++
++    // Clear actions
++  KActionMap::Iterator it;
++  for ( it = kaction_map.begin(); it != kaction_map.end(); ++it ) {
++        // If I don't test it crash :(
++    if (it.data()) {
++      it.data()->setEnabled(false);
++      it.data()->setToolTip(it.data()->text().remove('&'));
++    }
++  }
++
++    // Clear actions
++  KActionMenuMap::Iterator itmenu;
++  for ( itmenu = kactionmenu_map.begin(); itmenu != kactionmenu_map.end(); ++itmenu ) {
++        // If I don't test it crash :(
++    if (itmenu.data()) {
++      itmenu.data()->popupMenu()->clear();
++      itmenu.data()->setEnabled(false);
++      itmenu.data()->setToolTip(itmenu.data()->text().remove('&'));
++    }
++  }
++
++    // Unactivate menus
++  m_more->setEnabled(false);
++  m_document->setEnabled(false);
++
++}
++
++QString MainWindow::getLinkType(const QString &lrel) {
++    // Relations to ignore...
++  if (lrel.contains("stylesheet")
++      || lrel == "script"
++      || lrel == "icon"
++      || lrel == "shortcut icon"
++      || lrel == "prefetch" )
++    return QString::null;
++
++    // ...known relations...
++  if (lrel == "top" || lrel == "origin" || lrel == "start")
++    return "home";
++  if (lrel == "parent")
++    return "up";
++  if (lrel == "first")
++    return "begin";
++  if (lrel == "previous")
++    return "prev";
++  if (lrel == "child")
++    return "next";
++  if (lrel == "end")
++    return "last";
++  if (lrel == "toc")
++    return "contents";
++  if (lrel == "find")
++    return "search";
++  if (lrel == "alternative stylesheet")
++    return "alternate stylesheet";
++  if (lrel == "authors")
++    return "author";
++  if (lrel == "toc")
++    return "contents";
++
++    //...unknown relations or name that don't need to change
++  return lrel;
++}
++
++QString MainWindow::transformRevToRel(const QString &rev) {
++  QString altRev = getLinkType(rev);
++
++    // Known relations
++  if (altRev == "prev")
++    return getLinkType("next");
++  if (altRev == "next")
++    return getLinkType("prev");
++  if (altRev == "made")
++    return getLinkType("author");
++  if (altRev == "up")
++    return getLinkType("child");
++  if (altRev == "sibling")
++    return getLinkType("sibling");
++
++    //...unknown inverse relation => ignore for the moment
++  return QString::null;
++}
++
++void MainWindow::goHome() {
++  goToLink("home");
++}
++
++void MainWindow::goUp() {
++  goToLink("up");
++}
++
++void MainWindow::goFirst() {
++  goToLink("begin");
++}
++
++void MainWindow::goPrevious() {
++  goToLink("prev");
++}
++
++void MainWindow::goNext() {
++  goToLink("next");
++}
++
++void MainWindow::goLast() {
++  goToLink("last");
++}
++
++void MainWindow::goContents() {
++  goToLink("contents");
++}
++
++void MainWindow::goIndex() {
++  goToLink("index");
++}
++
++void MainWindow::goGlossary() {
++  goToLink("glossary");
++}
++
++void MainWindow::goHelp() {
++  goToLink("help");
++}
++
++void MainWindow::goSearch() {
++  goToLink("search");
++}
++
++void MainWindow::goAuthor() {
++  goToLink("author");
++}
++
++
++void MainWindow::goCopyright() {
++  goToLink("copyright");
++}
++
++void MainWindow::goBookmark(int id) {
++  goToLink("bookmark", id);
++}
++
++void MainWindow::goChapter(int id) {
++  goToLink("chapter", id);
++}
++
++void MainWindow::goSection(int id) {
++  goToLink("section", id);
++}
++
++void MainWindow::goSubsection(int id) {
++  goToLink("subsection", id);
++}
++
++void MainWindow::goAppendix(int id) {
++  goToLink("appendix", id);
++}
++
++void MainWindow::goAlternate(int id) {
++  goToLink("alternate", id);
++}
++
++void MainWindow::goAllElements(int id) {
++  goToLink("unclassified", id);
++}
++
++/** Menu links */
++void MainWindow::goToLink(const QString & rel, int id) {
++    // have the KHTML part open it
++  if (!mDoc)
++    return;
++
++  DOM::Element e = element_map[rel][id];
++  QString href = e.getAttribute("href").string();
++  KURL url( mDoc->url(), href );
++  QString target = e.getAttribute("target").string();
++
++    // URL arguments
++  KParts::URLArgs args;
++  args.frameName = target;
++
++    // Add base url if not valid
++  if (url.isValid()) {
++    mDoc->browserExtension()->openURLRequest(url, args);
++  } else {
++    KURL baseURL = mDoc->baseURL();
++    QString endURL = url.prettyURL();
++    KURL realURL = KURL(baseURL, endURL);
++    mDoc->browserExtension()->openURLRequest(realURL, args);
++  }
++
++}
++
+ #include "mainwindow.moc"
+ 
+ // vim:ts=2:sw=2:et
+Index: khelpcenter/mainwindow.h
+===================================================================
+--- khelpcenter/mainwindow.h.orig
++++ khelpcenter/mainwindow.h
+@@ -13,6 +13,15 @@
+ #include "navigator.h"
+ #include "glossary.h"
+ 
++#include <dom/dom_element.h>
++
++class KAction;
++class KActionMenu;
++// type definitions
++typedef QMap<int,DOM::Element> DOMElementMap;
++typedef QMap<QString, KAction*> KActionMap;
++typedef QMap<QString, KActionMenu*> KActionMenuMap;
++
+ class KHTMLPart;
+ class QSplitter;
+ 
+@@ -68,11 +77,43 @@ class MainWindow : public KMainWindow, p
+     void writeConfig();
+ 
+   protected slots:
++    void updateLinkActions();
+     void enableLastSearchAction();
+     void enableCopyTextAction();
+ 
+   private:
+     void stop();
++    /**
++     * initialise all KActions
++     */
++    void initActions();
++    /**
++     * Function used to disable all the item of the toolbar (c) rellinks
++     */
++    void disableAll();
++    /**
++     * Function used to get link type of a relation.
++     * For example "prev" is of type "previous" and "toc" is of type "contents"
++     * If the relation must be ignored return NULL.
++     * If the relation is unknow return the input relation type.
++     * @param lrel Previous relation name
++     * @return New relation name
++     */
++    QString getLinkType(const QString &lrel);
++    /**
++     * Function used to return the "rel" equivalent of "rev" link type
++     * If the equivalent is not found return NULL
++     * @param rev Inverse relation name
++     * @return Equivalent relation name
++     */
++    QString transformRevToRel(const QString &rev) ;
++
++    /**
++     * Go to the link (c) rellinks
++     * @param rel Relation name
++     * @param id Identifier of the menu item
++     */
++    void goToLink(const QString & rel, int id=0);
+ 
+   private slots:
+     void slotGlossSelected(const GlossaryEntry &entry);
+@@ -90,7 +131,29 @@ class MainWindow : public KMainWindow, p
+     void slotConfigureFonts();
+     void slotCopySelectedText();
+ 
+-private:
++    void goHome();
++    void goUp();
++    void goFirst();
++    void goPrevious();
++    void goNext();
++    void goLast();
++    void goContents();
++    void goIndex();
++    void goGlossary();
++    void goHelp();
++    void goSearch();
++    void goCopyright();
++    void goAuthor();
++
++    void goBookmark(int id);
++    void goChapter(int id);
++    void goSection(int id);
++    void goSubsection(int id);
++    void goAppendix(int id);
++    void goAlternate(int id);
++    void goAllElements(int id);
++ 
++  private:
+     void updateZoomActions();
+ 
+     QSplitter *mSplitter;
+@@ -100,6 +163,17 @@ private:
+     KAction *mLastSearchAction;
+     KAction *mCopyText;
+     LogDialog *mLogDialog;
++    //(c) rellinks
++    /** Map of KAction */
++    KActionMap kaction_map;
++    /** Map of KActionMenu */
++    KActionMenuMap kactionmenu_map;
++    /** Map of all the link element which can be managed by rellinks */
++    QMap<QString,DOMElementMap> element_map;
++    KActionMenu *m_document;
++    KActionMenu *m_more;
++    KActionMenu *m_links;
++
+ };
+ 
+ }

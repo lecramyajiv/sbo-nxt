@@ -1,0 +1,11 @@
+?package(kgpg-trinity):\
+	needs="X11"\
+	section="Apps/Tools"\
+	hints="TDE"\
+	title="Kgpg"\
+	icon32x32="/usr/share/pixmaps/kgpg.xpm"\
+	icon16x16="/usr/share/pixmaps/kgpg-16.xpm"\
+	command="/usr/bin/kgpg"
+
+# Icon 32x32 kgpg/cr32-app-kgpg.png kgpg.xpm
+# Icon 16x16 kgpg/cr16-app-kgpg.png kgpg-16.xpm

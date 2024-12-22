@@ -1,0 +1,23 @@
+Source: tdenetworkmanager-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt,
+ tde-cmake, ninja-build,
+ tdelibs14-trinity-dev,
+ libiw-dev,
+ libnl-3-dev | libnl-dev (>= 1.1)
+Standards-Version: 3.8.4
+Homepage: http://www.trinitydesktop.org/
+
+Package: network-manager-tde
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, network-manager (>= 0.7.0)
+Replaces: network-manager-kde-trinity (<< 4:14.0.0~)
+Breaks: network-manager-kde-trinity (<< 4:14.0.0~)
+Recommends: tdewalletmanager-trinity
+Provides: tdenetworkmanager-trinity
+Description: TDE systray applet for controlling networking [Trinity]
+ Systray applet for controlling network connections managed by 
+ a TDE network backend. It is mainly written for Trinity but also works for 
+ other desktop environments like GNOME or Xfce.

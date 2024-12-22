@@ -1,0 +1,23 @@
+?package(kdf-trinity):\
+	needs="X11"\
+	section="Apps/System"\
+	hints="TDE"\
+	title="KDiskFree"\
+	icon32x32="/opt/trinity/share/pixmaps/kdf.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kdf-16.xpm"\
+	command="/opt/trinity/bin/kdf"
+
+?package(kdf-trinity):\
+	needs="X11"\
+	section="Apps/System"\
+	hints="TDE"\
+	title="kwikdisk"\
+	icon32x32="/opt/trinity/share/pixmaps/kwikdisk.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kwikdisk-16.xpm"\
+	command="/opt/trinity/bin/kwikdisk"
+
+# Icon 32x32 kdf/pics/cr32-app-kdf.png kdf.xpm
+# Icon 16x16 kdf/pics/cr16-app-kdf.png kdf-16.xpm
+
+# Icon 32x32 kdf/pics/cr32-app-kwikdisk.png kwikdisk.xpm
+# Icon 16x16 kdf/pics/cr16-app-kwikdisk.png kwikdisk-16.xpm

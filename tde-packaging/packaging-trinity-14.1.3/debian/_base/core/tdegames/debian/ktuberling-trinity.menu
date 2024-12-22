@@ -1,0 +1,9 @@
+?package(ktuberling-trinity):\
+	needs="x11"\
+	section="Games/Toys"\
+	hints="TDE"\
+	title="TDE Potato Guy"\
+	icon32x32="/opt/trinity/share/pixmaps/ktuberling.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/ktuberling-16.xpm"\
+	command="/opt/trinity/games/ktuberling"
+

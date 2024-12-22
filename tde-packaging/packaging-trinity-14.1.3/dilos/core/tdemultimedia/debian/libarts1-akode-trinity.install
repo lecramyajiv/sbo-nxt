@@ -1,0 +1,11 @@
+debian/tmp/usr/lib/*/libarts_akode.la
+debian/tmp/usr/lib/*/libarts_akode.so
+debian/tmp/usr/lib/*/libarts_akode.so.0
+debian/tmp/usr/lib/*/libarts_akode.so.0.0.0
+debian/tmp/usr/lib/*/mcop/akodearts.mcoptype
+debian/tmp/usr/lib/*/mcop/akodearts.mcopclass
+debian/tmp/usr/lib/*/mcop/akodeMPCPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/akodePlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/akodeSpeexStreamPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/akodeVorbisStreamPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/akodeXiphPlayObject.mcopclass

@@ -1,0 +1,156 @@
+export prefix="/opt/kde3"
+export includedir="$prefix/include"
+
+export kde_prefix="$prefix"
+export kde_confdir="$prefix/share/config"
+
+export kde_bindir="$kde_prefix/bin"
+export kde_libdir="$kde_prefix/@_lib@"
+export kde_includes="$kde_prefix/include"
+export kde_includedir="$kde_prefix/include"
+
+export kde_htmldir="$kde_prefix/share/doc/HTML"
+export kde_icondir="$kde_prefix/share/icons"
+export kde_sounddir="$kde_prefix/share/sounds"
+export kde_datadir="$kde_prefix/share/apps"
+export kde_locale="$kde_prefix/share/locale"
+export kde_mimedir="$kde_prefix/share/mimelnk"
+export kde_wallpaperdir="$kde_prefix/share/wallpapers"
+
+export kde_appsdir="$kde_prefix/share/applnk"
+export kde_servicesdir="$kde_prefix/share/services"
+export kde_servicetypesdir="$kde_prefix/share/servicetypes"
+
+export kde_styledir="$kde_libdir/kde3/plugins/styles"
+export kde_widgetdir="$kde_libdir/kde3/plugins/designer"
+
+export PATH=$PWD/admin/:$PATH
+if test -x $PWD/admin/do_make; then
+alias make=do_make
+else
+alias make=/opt/kde3/share/apps/kdelibs/admin/do_make
+fi
+
+export configkde="@configkde@"
+
+unset KDEDIR || :
+unset KDEDIRS || :
+unset QTDIR || :
+
+#export INSTALL_TARGET=install-strip
+export INSTALL_TARGET=install
+
+Debug=0
+if test "$Debug" = 1; then
+  export configkde="$configkde --enable-debug=full"
+  export NO_BRP_STRIP_DEBUG=true
+else
+  export configkde="$configkde --disable-debug"
+fi
+
+CFLAGS="$CFLAGS $RPM_OPT_FLAGS"
+CXXFLAGS="$CXXFLAGS $RPM_OPT_FLAGS"
+LDFLAGS=
+if ld -Bsymbolic-functions -v &> /dev/null; then
+  LDFLAGS="$LDFLAGS -Wl,-Bsymbolic-functions"
+fi
+export CFLAGS CXXFLAGS LDFLAGS
+
+update_admin()
+{
+	set +x
+	if [ ! -d /opt/kde3/share/apps/kdelibs/admin ]; then
+		echo "ERROR: kde2-compat-devel isn't installed."
+		exit 1
+	fi
+	if [ ! -d admin ]; then
+		echo "WARNING: there is no admin directory."
+	fi
+	rm -rf admin autom4te.cache
+	cp -a /opt/kde3/share/apps/kdelibs/admin .
+	arg=$1
+#        if [ "$arg" != "--no-unsermake" ] && \
+#            [ -f /.buildenv ] && grep -q BUILD_BASENAME=beta- /.buildenv; then
+#	    arg="--unsermake"
+#        fi
+	if [ "$arg" = "--no-unsermake" ]; then
+	    touch $RPM_BUILD_DIR/.no_unsermake
+	else
+	    export UNSERMAKE=yes
+        fi
+	
+	make -f admin/Makefile.common cvs
+
+        test -f /.buildenv && . /.buildenv
+
+	find . -name \*.ui | while read i; do
+             for j in ${i%.ui}.cpp ${i%.ui}.h ${i%.ui}.moc;do
+		if [ -e "$j" ] && grep -q "by: The User Interface Compiler" "$j"; then
+		   echo WARNING: pregenerated files from $i exist, deleting ...
+		   rm -f "$j"
+		fi
+	     done
+             if [ "${BUILD_BASENAME:0:4}" != "beta" ]; then 
+               if grep -q "<includehints>" "$i"; then
+                 echo WARNING: removing include hints from $i
+                 sed -i -e 's,<includehint>.*</includehint>,,' "$i"
+               fi
+             fi
+	done
+}
+
+kde_post_install()
+{
+	# remove not needed development files
+	rm -f $RPM_BUILD_ROOT/opt/kde3/@_lib@/libkdeinit_*.la
+	
+	# not worth the hassle
+	rm -rf $RPM_BUILD_ROOT/opt/kde3/share/icons/locolor
+
+	# move icons in one theme - prefering hicolor
+	d="$RPM_BUILD_ROOT/opt/kde3/share/icons/crystalsvg"
+        if [ -d "$d" -a ! -e "$d/index.theme" ]; then
+		find "$d" -type f | while read src; do
+		  dest="${src/\/crystalsvg\///hicolor/}"
+		  dir="${dest%/*}"
+		  mkdir -p "$dir"
+		  mv "$src" "$dest"
+		done
+	fi
+	# we do this 3 times as there is a 3 fold hierarchy
+        if [ -d  $RPM_BUILD_ROOT/opt/kde3/share/icons ]; then
+  	    for i in `seq 1 3`; do 
+    	        find $RPM_BUILD_ROOT/opt/kde3/share/icons -type d -exec rmdir -v --ignore-fail-on-non-empty -- {} \; || true
+  	    done
+	fi
+
+	if [ -d $RPM_BUILD_ROOT/opt/kde3/share/locale/sr@Latn ]; then
+             mv $RPM_BUILD_ROOT/opt/kde3/share/locale/sr@Latn $RPM_BUILD_ROOT/opt/kde3/share/locale/sr@latin
+        fi
+
+        if test -e /usr/lib/rpm/suse_update_desktop_file.sh; then
+		distribution=''
+		if test -f $HOME/.rpmmacros && test -d /usr/src/packages/SRPMS; then
+			distribution=`grep ^%distribution $HOME/.rpmmacros | cut '-d ' -f2`
+		fi
+
+		find $RPM_BUILD_ROOT/opt/kde3/share \
+			-name '*.desktop' 2> /dev/null | while read file; do
+			test -r "$file" || continue
+			grep -q "^X-SuSE-translate=" "$file" && continue
+			case "$file" in
+				*/.hidden/*)
+					/usr/lib/rpm/suse_update_desktop_file.sh -n "$file"
+					;;
+				 *)
+					if test -n "$distribution"; then
+						/usr/lib/rpm/suse_update_desktop_file.sh --project "$distribution" --basedir /usr/src/packages/SRPMS "$file"
+					else
+						/usr/lib/rpm/suse_update_desktop_file.sh "$file"
+					fi
+					;;
+			esac
+		done
+	fi
+}
+

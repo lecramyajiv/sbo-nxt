@@ -1,0 +1,10 @@
+Document: tdeadmin-doc-html-ksysv
+Title: KSysV Handbook
+Author: Peter Putzer 
+Abstract: KSysV is a graphical editor for the SysV style init configuration.
+Section: Admin
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/ksysv/index.html
+Files: /usr/share/doc/tde/HTML/en/ksysv/*.html
+

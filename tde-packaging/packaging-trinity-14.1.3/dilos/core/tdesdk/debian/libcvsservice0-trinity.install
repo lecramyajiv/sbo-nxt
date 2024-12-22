@@ -1,0 +1,13 @@
+debian/tmp/usr/bin/cvsaskpass
+debian/tmp/usr/bin/cvsservice
+debian/tmp/usr/lib/*/libcvsservice.so.0
+debian/tmp/usr/lib/*/libcvsservice.so.0.0.1
+debian/tmp/usr/lib/*/libtdeinit_cvsaskpass.so
+debian/tmp/usr/lib/*/libtdeinit_cvsservice.so
+debian/tmp/usr/lib/*/trinity/cvsaskpass.la
+debian/tmp/usr/lib/*/trinity/cvsaskpass.so
+debian/tmp/usr/lib/*/trinity/cvsservice.la
+debian/tmp/usr/lib/*/trinity/cvsservice.so
+debian/tmp/usr/share/man/man1/cvsaskpass.1
+debian/tmp/usr/share/man/man1/cvsservice.1
+debian/tmp/usr/share/services/cvsservice.desktop

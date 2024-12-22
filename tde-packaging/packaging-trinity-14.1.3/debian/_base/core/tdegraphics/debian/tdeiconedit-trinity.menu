@@ -1,0 +1,11 @@
+?package(tdeiconedit-trinity):\
+	needs="X11"\
+	section="Applications/Graphics"\
+	hints="TDE"\
+	title="TDEIconEdit"\
+	icon32x32="/opt/trinity/share/pixmaps/tdeiconedit.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/tdeiconedit-16.xpm"\
+	command="/opt/trinity/bin/tdeiconedit"
+
+# Icon 32x32 tdeiconedit/pics/cr32-app-tdeiconedit.png tdeiconedit.xpm
+# Icon 16x16 tdeiconedit/pics/cr16-app-tdeiconedit.png tdeiconedit-16.xpm

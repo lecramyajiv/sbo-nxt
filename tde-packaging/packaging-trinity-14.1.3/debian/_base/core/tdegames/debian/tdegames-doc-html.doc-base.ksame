@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-ksame
+Title: The KSame Handbook
+Author: Nicholas Robbins
+Abstract: KSame is a nice little program meant to amuse you for
+ anywhere from 3 minutes to 6 days(straight).
+Section: Games/Puzzles
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/ksame/index.html
+Files: /usr/share/doc/tde/HTML/en/ksame/*.html

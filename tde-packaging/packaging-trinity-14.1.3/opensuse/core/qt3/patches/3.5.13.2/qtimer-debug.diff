@@ -1,0 +1,48 @@
+--- src/kernel/qeventloop_unix.cpp
++++ src/kernel/qeventloop_unix.cpp
+@@ -517,6 +531,17 @@
+     return (tm->tv_sec*1000) + (tm->tv_usec/1000);
+ }
+ 
++static QString fullName(QObject* obj)
++{
++    QString oname;
++    if (obj && obj->name())
++        oname = QString(obj->name()) + "(" + QString(obj->className()) + ")";
++
++    if (obj && obj->parent())
++        return fullName(obj->parent()) + "/" + oname;
++    return oname;
++}
++
+ int QEventLoop::activateTimers()
+ {
+     if ( !timerList || !timerList->count() )	// no timers
+@@ -552,9 +577,27 @@
+ 	t->timeout += t->interval;
+ 	if ( t->timeout < currentTime )
+ 	    t->timeout = currentTime + t->interval;
++        // prefer system clock ticks for low resolution timers
++        // to save cpu power
++        if (t->interval.tv_sec * 1000 + t->interval.tv_usec / 1000 >= 1000) {
++            timeval drift;
++            drift.tv_sec = 0;
++            drift.tv_usec = (t->interval.tv_usec / 8) + (t->interval.tv_sec % 8) * 1000 * 1000 / 8;
++            timeval synced = t->timeout + drift;
++            if (synced.tv_usec < 2 * drift.tv_usec)
++                synced.tv_usec = 0;
++            t->timeout = synced;
++        }
+ 	insertTimer( t );			// relink timer
+ 	if ( t->interval.tv_usec > 0 || t->interval.tv_sec > 0 )
+ 	    n_act++;
++
++        if (t->obj && getenv("QT_DEBUG_TIMER"))
++            qDebug("qtimer: %ld/%s %d ms for %p/%s %s",
++                    getpid(), qApp && qApp->name() ? qApp->name() : "", 
++                    t->interval.tv_sec * 1000 + t->interval.tv_usec / 1000,
++                    t->obj, fullName(t->obj).latin1(), t->obj->className());
++
+ 	QTimerEvent e( t->id );
+ 	QApplication::sendEvent( t->obj, &e );	// send event
+ 	if ( timerList->findRef( begin ) == -1 )

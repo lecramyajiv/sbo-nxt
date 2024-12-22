@@ -1,0 +1,21 @@
+etc/trinity/khangmanrc
+usr/bin/khangman
+/usr/share/applications/tde/khangman.desktop
+/usr/share/apps/khangman/data
+/usr/share/apps/khangman/khangmanui.rc
+/usr/share/apps/khangman/pics
+/usr/share/apps/khangman/sounds
+/usr/share/config.kcfg/khangman.kcfg
+/usr/share/doc/tde/HTML/en/khangman/common
+/usr/share/doc/tde/HTML/en/khangman/index.cache.bz2
+/usr/share/doc/tde/HTML/en/khangman/*.docbook
+/usr/share/doc/tde/HTML/en/khangman/*.png
+/usr/share/icons/hicolor/16x16/apps/khangman.png
+/usr/share/icons/hicolor/22x22/apps/khangman.png
+/usr/share/icons/hicolor/32x32/apps/khangman.png
+/usr/share/icons/hicolor/48x48/apps/khangman.png
+/usr/share/icons/hicolor/64x64/apps/khangman.png
+/usr/share/icons/hicolor/128x128/apps/khangman.png
+/usr/share/icons/hicolor/scalable/apps/khangman.svgz
+/usr/share/man/man1/khangman.1
+../icons/khangman.xpm /usr/share/pixmaps

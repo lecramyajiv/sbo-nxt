@@ -1,0 +1,12 @@
+--- a/admin/acinclude.m4.in
++++ b/admin/acinclude.m4.in
+@@ -2144,9 +2144,6 @@
+ save_CXXFLAGS="$CXXFLAGS"
+ kde_safe_LIBS="$LIBS"
+ LIBS="$LIBS $X_EXTRA_LIBS"
+-if test "$GXX" = "yes"; then
+-CXXFLAGS="$CXXFLAGS -pedantic-errors"
+-fi
+ AC_TRY_COMPILE([
+ $2
+ ],

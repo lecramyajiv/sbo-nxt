@@ -1,0 +1,11 @@
+Document: tdeaddons-doc-html_konq-plugins
+Title: Konqueror Plugins Handbook
+Author: Lauri Watts <lauri@kde.org> and others
+Abstract: This is the handbook for the additional plugins for Konqueror, the
+ TDE file manager and web browser.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/konq-plugins/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/konq-plugins/*.html
+

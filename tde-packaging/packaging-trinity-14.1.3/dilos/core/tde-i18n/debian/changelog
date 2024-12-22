@@ -1,0 +1,669 @@
+tde-i18n-trinity (4:3.5.10-4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+tde-i18n (4:3.5.10-2) unstable; urgency=high
+
+  * Update copyright file. (Closes: #497290).
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Sun, 28 Sep 2008 23:01:47 +0200
+
+tde-i18n (4:3.5.10-1) unstable; urgency=low
+
+  * New upstream release:
+    - New language: uz@cyrillic (Cyrillic Uzbek).
+  * Remove Noèl from Uploaders, thank you!.
+  * Remove debian/patches/ru.diff. It seems fixed now.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Sat, 23 Aug 2008 10:50:32 +0200
+
+tde-i18n (4:3.5.9-2) unstable; urgency=low
+
+  +++ Changes by Modestas Vainius:
+
+  * Completely rewrite debian/rules. The main rationale for the rewrite was
+    that previous implementation had not been able to detect language build
+    errors at all which could have led to broken uploads (like #469683).
+    - New implementation uses stamps and make targets instead of shell 'for'
+      loops. Therefore, resuming interrupted build is possible.
+    - A very basic patching mechanism is provided. There can be a single patch
+      per language which must be named as debian/patches/${language_code}.diff
+      The patch must apply with -p1 parameter from the respective language
+      directory.
+  * Drop Build-Depend on automake. It's useless as it does not fix build
+    failures if there are problems with autotools (e.g. #469683).
+  * There seems to be a problem with the ru tarball. It does not build due to
+    wrong time-stamp of a Makefile.am. Rebuild affected Makefile.in
+    (debian/patches/ru.diff) (Closes: #469683)
+  * Use debhelper 5.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri, 14 Mar 2008 21:28:00 +0200
+
+tde-i18n (4:3.5.9-1) unstable; urgency=low
+
+  * New upstream release:
+    - New language: be.
+  * Update to Standards-Version 3.7.3.
+  * Update from automake1.9 to automake1.10.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Tue, 22 Jan 2008 01:52:51 +0100
+
+tde-i18n (4:3.5.8-1) unstable; urgency=low
+
+  * New upstream release.
+    - New languages: te, wa.
+    - New languages from previous releases: csb, kk, th, vi.
+  * The package is now maintained by the Debian Qt/KDE Maintainers team.
+    Thanks for all your work Noèl!
+  * Update debhelper compatibility to 5 and moved it into a file.
+  * Little tweaking of the rules.
+  * Update the deps of the packages to tdelibs4c2a (>= 4:3.5.8-1) to avoid
+    translations migrate to testing before tdelibs.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Sat, 20 Oct 2007 02:35:57 +0200
+
+tde-i18n (4:3.5.7-1) unstable; urgency=low
+
+  * new upstream release 3.5.7
+
+ -- Noèl Köthe <noel@debian.org>  Fri, 15 Jun 2007 21:55:57 +0200
+
+tde-i18n (4:3.5.6-1) unstable; urgency=low
+
+  * new upstream release 3.5.6
+    (closes: Bug#410786)
+  * updated Standards-Version
+
+ -- Noèl Köthe <noel@debian.org>  Sat, 24 Feb 2007 12:38:52 +0100
+
+tde-i18n (4:3.5.5-1) unstable; urgency=low
+
+  * new upstream release 3.5.5
+  * updated Standards-Version
+
+ -- Noèl Köthe <noel@debian.org>  Tue, 03 Oct 2006 14:31:11 +0200
+
+tde-i18n (4:3.5.4-1) unstable; urgency=low
+
+  * new upstream release 3.5.4
+
+ -- Noèl Köthe <noel@debian.org>  Sat, 16 Sep 2006 14:53:48 +0200
+
+tde-i18n (4:3.5.3-1) unstable; urgency=low
+
+  * new upstream release 3.5.3
+
+ -- Noèl Köthe <noel@debian.org>  Mon, 12 Jun 2006 21:17:14 +0200
+
+tde-i18n (4:3.5.2-1) unstable; urgency=low
+
+  * new upstream release 3.5.2
+  * he: fixed kmail typo (closes: Bug#269845)
+  * conflicting against akregator-i18n (closes: Bug#353319)
+
+ -- Noèl Köthe <noel@debian.org>  Fri, 31 Mar 2006 21:01:31 +0200
+
+tde-i18n (4:3.5.1-1) unstable; urgency=low
+
+  * new upstream release 3.5.1
+
+ -- Noèl Köthe <noel@debian.org>  Sun, 05 Feb 2006 13:59:33 +0100
+
+tde-i18n (4:3.5.0-3) unstable; urgency=low
+
+  * upload tde-i18n 3.5 to unstable
+
+ -- Noèl Köthe <noel@debian.org>  Sun, 08 Jan 2006 13:34:33 +0100
+
+tde-i18n (4:3.5.0-2) experimental; urgency=low
+
+  * upload tde-i18n 3.5 to experimental
+
+ -- Noèl Köthe <noel@debian.org>  Sun, 18 Dec 2005 20:56:46 +0100
+
+tde-i18n (4:3.5.0-1) alioth; urgency=low
+
+  * new upstream version
+  * added new languages
+    - az (Azerbaijani)
+    - fa (Farsi (Persian))
+    - gl (Galician)
+    - hr (Croatian)
+    - km (Khmer)
+    - ko (Korean)
+    - lv (Latvian)
+    - mn (Mongolian)
+    - ms (Malay)
+    - rw (Kinyarwanda)
+    - ss (Swati)
+    - uz (Uzbek)
+    - zh_TW (Chinese Traditional)
+  * removed langauge
+    - hsb (Upper Sorbian)
+  * corrected dependency to tdelibs4c2a
+
+ -- Noèl Köthe <noel@debian.org>  Wed, 07 Dec 2005 17:42:26 +0100
+
+tde-i18n (4:3.4.3-1) unstable; urgency=low
+
+  * new upstream version
+
+ -- Noèl Köthe <noel@debian.org>  Sun, 09 Oct 2005 20:41:22 +0200
+
+tde-i18n (4:3.4.2-4) unstable; urgency=low
+
+  * added versioned replace against kturtle (de, fr, nl, sr, sv)
+    (closes: Bug#327332)
+  * added versioned replace against khangman (ca, cs, da, de, es,
+    fi, fr, hu, nb, pt, sl, sl@Latn, sv, tg)
+    (closes: Bug#326610)
+  * corrected path of non 2 letter languages where /usr/ was missing
+    (closes: Bug#327353)
+
+ -- Noèl Köthe <noel@debian.org>  Tue, 13 Sep 2005 19:56:27 +0200
+
+tde-i18n (4:3.4.2-3) unstable; urgency=low
+
+  * added missing bzip2 build-dependency
+    (closes: Bug#326006)
+
+ -- Noèl Köthe <noel@debian.org>  Thu, 01 Sep 2005 07:56:18 +0200
+
+tde-i18n (4:3.4.2-2) unstable; urgency=low
+
+  * correct dependency from tdelibs4 to tdelibs4c2
+    (closes: Bug#325792)
+
+ -- Noèl Köthe <noel@debian.org>  Wed, 31 Aug 2005 08:17:21 +0200
+
+tde-i18n (4:3.4.2-1) unstable; urgency=low
+
+  * new upstream release
+  * fixed broken build process which results in missing translations
+    - fr (closes: Bug#318665)
+    - da (closes: Bug#318821)
+    - ru (closes: Bug#319164)
+  * "Abgeschlosseng" typo in -de is fixed
+    (closes: Bug#292940)
+  * quanta -de typos fixed
+    (closes: Bug#299106)
+  * added af and el again
+
+ -- Noèl Köthe <noel@debian.org>  Mon, 29 Aug 2005 18:35:01 +0200
+
+tde-i18n (4:3.4.1-1) experimental; urgency=low
+
+  * new upstream release (svn revision 432479)
+  * updated Standards-Version
+  * changed build-dependency from automake1.6 to automake1.9
+  * fixed de: "Abgeschlosseng"
+    (closes: Bug#292940)
+  * fixed de: "Standart" -> "Standard"
+    (closes: Bug#299106)
+
+ -- Noèl Köthe <noel@debian.org>  Tue, 12 Jul 2005 23:36:42 +0200
+
+tde-i18n (4:3.4.0-1) unstable; urgency=low
+
+  * new upstream release
+  * languages added:
+    + br (Breton)
+    + fy (Frisian)
+    + ga (Irish Gaelic)
+    + lt (Lithuanian)
+    + mk (Macedonian)
+    + se (Northern Sami)
+  * languages removed
+    - af (Afrikaans)
+    - el (Greek)
+    - fa (Farsi)
+    - gl (Galician)
+    - hr (Croatian)
+    - mn (Mongolian)
+    - ms (Malay)
+    - uz (Uzbek)
+    - zh_TW (Chinese Traditional)
+  * de upstream fixed minor spelling error
+    (closes: Bug#292940)
+
+ -- Noèl Köthe <noel@debian.org>  Wed, 16 Mar 2005 13:36:39 +0100
+
+tde-i18n (4:3.3.2-1) unstable; urgency=low
+
+  * new upstream release
+  * languages added: af (Afrikaans) and gl (Galician)
+  * de: german Graphik is now everywhere instead of
+    the old Grafik/Graphik mix
+    (closes: Bug#272403)
+  * fr: translation in Action menu corrected
+    (closes: Bug#275958)
+  * added missing khangman data files to the packages
+  * added missing klettres .ogg files to the packages
+
+ -- Noèl Köthe <noel@debian.org>  Sun, 05 Dec 2004 00:14:41 +0100
+
+tde-i18n (4:3.3.1-1) unstable; urgency=low
+
+  * new upstream release
+  * 3.3.1 has updated japanese translations
+    (closes: Bug#274481)
+
+ -- Noèl Köthe <noel@debian.org>  Mon, 04 Oct 2004 22:24:10 +0200
+
+tde-i18n (4:3.3.0-1) unstable; urgency=medium
+
+  * new upstream release
+  * urgency=medium to get 3.3 into sarge if release
+    team accepts it
+  * upstream fixed a pl translation
+    (closes: Bug#255886)
+  * upstream removed:
+     - az Azerbaijani
+     - gl Galician
+     - lt Lithuanian
+  * upstream added:
+     - eo Esperanto
+     - pa Punjabi
+
+ -- Noèl Köthe <noel@debian.org>  Sun, 15 Aug 2004 11:20:27 +0200
+
+tde-i18n (4:3.2.3-2) unstable; urgency=low
+
+  * fixed long string in KLaptop in de (upstream: #83648)
+    (closes: Bug#251403)
+  * fixed zhcn and zhtw packages
+    (closes: Bug#255181)
+
+ -- Noèl Köthe <noel@debian.org>  Sat, 19 Jun 2004 14:41:39 +0200
+
+tde-i18n (4:3.2.3-1) unstable; urgency=low
+
+  * new upstream release
+  * added ar (Arabic), hr (Croatian), hsb (Upper Sorbian)
+  * removed se (Northern Sami)
+
+ -- Noèl Köthe <noel@debian.org>  Sun, 06 Jun 2004 23:28:30 +0200
+
+tde-i18n (4:3.2.2-3) unstable; urgency=low
+
+  * removed tdevelop-data conflict because maintainer removed
+    i18n files from the package
+    (closes: Bug#248507)
+    (closes: Bug#246703)
+  * adding Provide lines to -nb and - nn to correct upgrade
+    from older names (-no and -nony)
+    (closes: Bug#244848)
+
+ -- Noèl Köthe <noel@debian.org>  Mon, 17 May 2004 23:49:50 +0200
+
+tde-i18n (4:3.2.2-2) unstable; urgency=low
+
+  * corrected juk and tdecachegrind conflict to <<4:3.2.1-1
+  * conflicting with tdevelop-data (tdevelop version 2)
+    because tdevelop version 3 translations are included in
+    tde-i18n
+    (closes: Bug#243372)
+
+ -- Noèl Köthe <noel@debian.org>  Thu, 15 Apr 2004 23:51:41 +0200
+
+tde-i18n (4:3.2.2-1) unstable; urgency=low
+
+  * new upstream from 2004-04-04
+  * conflicting with koffice (<< 1.3.0-2) because of kdgantt.mo
+    (closes: Bug#235694)
+  * conflicting with juk (<=4:3.2.1-1) because of juk.mo
+    (closes: Bug#240924)
+
+ -- Noèl Köthe <noel@debian.org>  Fri, 09 Apr 2004 15:00:28 +0200
+
+tde-i18n (4:3.2.1-1) unstable; urgency=low
+
+  * new upstream:
+    (closes: Bug#237045)
+  * german translation fixed
+    (closes: Bug#205005)
+  * spanish translation fixed
+    (closes: Bug#210943)
+
+ -- Noèl Köthe <noel@debian.org>  Mon, 23 Feb 2004 16:52:45 +0100
+
+tde-i18n (4:3.1.5-1) unstable; urgency=low
+
+  * new upstream release
+  * de upstream fixed "move" translation
+    (closes: Bug#201763)
+
+ -- Noèl Köthe <noel@debian.org>  Wed, 14 Jan 2004 19:07:00 +0100
+
+tde-i18n (4:3.1.4-2) unstable; urgency=low
+
+  * changed dependency from tdebase to tdelibs4
+    (closes: Bug#213245)
+  * updated Standards-Version
+
+ -- Noèl Köthe <noel@debian.org>  Fri, 14 Nov 2003 23:07:00 +0100
+
+tde-i18n (4:3.1.4-1) unstable; urgency=low
+
+  * new upstream from 2003-09-17
+  * added version dependency so tde-i18n will
+    not move to sarge without the other kde stuff
+    (closes: Bug#200928)
+    (closes: Bug#211239)
+    (closes: Bug#211446)
+
+ -- Noèl Köthe <noel@debian.org>  Fri, 19 Sep 2003 10:22:00 +0200
+
+tde-i18n (4:3.1.3-1) unstable; urgency=low
+
+  * new upstream from 2003-07-29
+  * updated Standards-Version
+  * corrected section to kde
+
+ -- Noel Koethe <noel@debian.org>  Tue, 29 Jul 2003 23:46:00 +0200
+
+tde-i18n (4:3.1.2-1) unstable; urgency=low
+
+  * added the 4 new languages supported by 3.1.1
+    (hr, is, se, ss)
+  * updated Standards-Version
+  * corrected wrong .nl translation
+    (closes: Bug#190561)
+
+ -- Noel Koethe <noel@debian.org>  Mon, 19 May 2003 11:48:00 +0100
+
+tde-i18n (4:3.1.1-1) unstable; urgency=low
+
+  * new upstream verion 3.1.1 from 2003-03-20
+
+ -- Noel Koethe <noel@debian.org>  Thu, 20 Mar 2003 15:45:00 +0100
+
+tde-i18n (4:3.1-2) unstable; urgency=low
+
+  * corrected application spelling in all descriptions
+    (closes: Bug#180646)
+    (closes: Bug#183615)
+    (closes: Bug#183376)
+  * corrected dependency to tdebase (>= 4:3.1.0-1)
+    (closes: Bug#181794)
+    (closes: Bug#181625)
+  * s/i18n/internationalized (i18n) in description so it
+    may be understandable for people not knowing i18n
+    (closes: Bug#182190)
+
+ -- Noel Koethe <noel@debian.org>  Sat,  8 Mar 2003 21:42:00 +0100
+
+tde-i18n (4:3.1-1) unstable; urgency=low
+
+  * KDE 3.1 release version.
+  * NY and no_NY are now corrected to nb and nn
+    (closes: Bug#87729)
+  * konqueror start page corrected in french
+    (closes: Bug#122277)
+  * build problem is corrected with this version
+    (closes: Bug#162565)
+  * conflicting shortcut fixed (Adresse is now alt+a)
+    (closes: Bug#137610)
+  * lv corrected
+    (closes: Bug#172383)
+  * default charset is now utf-8
+    (closes: Bug#172361)
+  * tdm in localized for pt_BR
+    (closes: Bug#116046)
+
+ -- Noel Koethe <noel@debian.org>  Mon,  3 Feb 2003 20:42:00 +0100
+
+tde-i18n (4:2.2.2-3) unstable; urgency=low
+
+  * took package from QA
+    (closes: Bug#114126)
+  * added dependency of xfonts-intl-european for -he
+    (closes: Bug#157175)
+  * esti -> estonia in description
+    (closes: Bug#145320)
+
+ -- Noel Koethe <noel@debian.org>  Thu,  3 Oct 2002 11:46:00 +0200
+
+tde-i18n (4:2.2.2-2) unstable; urgency=low
+
+  * QA upload.
+  * Don't install any files related to krayon (closes: #129285).
+  * Fix spelling errors in package descriptions (closes: #124785, #124786,
+    #124787, #124788, #124789, #124790, #124791, #124792, #124793, #124794,
+    #124795, #124796, #124797, #124798, #124799, #124800, #124801, #124802,
+    #124803, #124804, #124805, #124806, #124807, #124808, #124809, #124810,
+    #124811, #124812, #124813, #124814, #124815, #124816, #124817, #124818,
+    #124819, #124820, #124821, #124822).
+
+ -- Colin Watson <cjwatson@debian.org>  Sat, 16 Mar 2002 13:23:15 +0000
+
+tde-i18n (4:2.2.2-1) unstable; urgency=low
+
+  * Sync with upstream
+  * Fix -nl description (Closes: #118980)
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 10 Nov 2001 12:51:00 -0700
+
+tde-i18n (4:2.2.1.0-1) unstable; urgency=low
+
+  * Sync with upstream
+  * Fix -no description
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 26 Oct 2001 12:51:00 -0700
+
+tde-i18n (4:2.2.1-3) unstable; urgency=low
+
+  * Include tdevelop and kdbg translations again (Closes: #113892)
+  * Change maintainer
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 30 Sep 2001 01:08:00 -0700
+
+tde-i18n (4:2.2.1-2) unstable; urgency=low
+
+  * post 2.2.1 updates
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 26 Sep 2001 08:38:00 -0700
+
+tde-i18n (4:2.2.1-1) unstable; urgency=low
+ 
+  * New upstream version 2.2.1
+  * Fixes crashes (Closes: #106791, #108158, #104416
+  * More build cleanup
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 17 Sep 2001 14:00:00 -0700
+
+tde-i18n (4:2.2-0.3beta1-1) unstable; urgency=low
+ 
+  * Sync with upstream
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 27 Jul 2001 01:49:00 -0700
+
+tde-i18n (4:2.2-0.2beta1-1) unstable; urgency=low
+ 
+  * Sync with upstream
+  * Expand descriptions (Closes: #102938)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 05 Jul 2001 22:39:00 -0700
+
+tde-i18n (4:2.2.0-final-1) unstable; urgency=low
+ 
+  * New upstream version 2.2
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 30 Jul 2001 00:01:00 -0700
+
+tde-i18n (4:2.2-0.3beta1-1) unstable; urgency=low
+ 
+  * Sync with upstream
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 27 Jul 2001 01:49:00 -0700
+
+tde-i18n (4:2.2-0.2beta1-1) unstable; urgency=low
+ 
+  * Sync with upstream
+  * Expand descriptions (Closes: #102938)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 05 Jul 2001 22:39:00 -0700
+
+tde-i18n (4:2.2-0.1beta1-1) unstable; urgency=low
+ 
+  * New upstream version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 27 Jun 2001 19:13:00 -0700
+
+tde-i18n (4:2.1-final-1) unstable; urgency=low
+ 
+  * New upstream version
+  * Remove tdevelop files as tdevelop seems to keep them all...let that package
+    be authoritative
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 19 Feb 2001 02:31:00 -0700
+
+tde-i18n (4:2.1-20010115-1) unstable; urgency=low
+ 
+  * New upstream cvs version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 15 Jan 2001 01:00:00 -0700
+
+tde-i18n (4:2.1-20010109-1) unstable; urgency=low
+ 
+  * New upstream cvs version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 09 Jan 2001 10:35:00 -0700
+
+tde-i18n (4:2.1-20010101-1) unstable; urgency=low
+ 
+  * New upstream cvs version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 01 Jan 2001 15:00:00 -0700
+
+tde-i18n (4:2.0.1-1) unstable; urgency=low
+ 
+  * New upstream version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 27 Nov 2000 18:00:00 -0700
+
+tde-i18n (4:2.0-final-4) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 27 Nov 2000 05:00:00 -0700
+
+tde-i18n (4:2.0-final-3) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 25 Nov 2000 05:00:00 -0700
+
+tde-i18n (4:2.0-final-2) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 13 Nov 2000 09:11:00 -0700
+
+tde-i18n (4:2.0-final-1) unstable; urgency=low
+ 
+  * More upstream fixes
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 02 Nov 2000 18:00:00 -0700
+
+tde-i18n (4:2.0-final-0) unstable; urgency=low
+
+  * KDE 2.0
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 23 Oct 2000 00:00:00 -0700
+
+tde-i18n (4:2.0-20001013-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Going back to multi-packages
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 13 Oct 2000 18:45:00 -0700
+                                                                                
+tde-i18n (4:2.0-20001011-0) unstable; urgency=low
+ 
+  * KDE 2.0 RC2
+  * Migrating back into 1 package (Closes: #71548)
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 12 Oct 2000 08:45:00 -0700
+                                                                                
+tde-i18n (4:2.0-20001004-0) unstable; urgency=low
+ 
+  * KDE 2.0 RC1
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 04 Oct 2000 22:45:00 -0700
+                                                                                
+tde-i18n (4:2.0-20000925-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * Fixing up build-depends
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 25 Sep 2000 15:30:00 -0700
+                                                                                
+tde-i18n (4:2.0-20000909-0) unstable; urgency=low
+
+  * Adding in a cleaner doc linker
+  * More upstream fixes
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 09 Sep 2000 20:00:00 -0700
+
+tde-i18n (4:2.0-20000907-0) unstable; urgency=low
+ 
+  * More upstream fixes
+  * migrating in packging fixes into cvs
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 07 Sep 2000 04:00:00 -0700
+                                                                                
+tde-i18n (4:2.0-20000823-1.0) experimental; urgency=low
+ 
+  * KDE 2.0 beta 4
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 23 Aug 2000 16:30:00 -0700
+                                                                                
+tde-i18n (4:2.0-20000816-1.0) experimental; urgency=low
+
+  * New upstream beta version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 16 Aug 2000 22:30:00 -0700
+
+tde-i18n (4:2.0-20000308-1.0) experimental; urgency=low
+ 
+  * New upstream CVS version
+ 
+ -- Ivan E. Moore II <rkrusty@debian.org>  Wed, 08 Mar 2000 22:00:00 -0700
+
+tde-i18n (4:2.0-20000302-1.0) experimental; urgency=low
+
+  * New upstream CVS version
+  * Adding in build-depends
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 29 Feb 2000 22:00:00 -0700
+
+tde-i18n (4:2.0-19991001-1) unstable; urgency=low
+
+  * New upstream CVS version
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Fri, 01 Oct 1999 04:00:41 -0400
+
+tde-i18n (4:2.0-19990916-1) unstable; urgency=low
+
+  * New upstream CVS version
+  * Committing changes to the rules script from the last build I made yet
+    forgot to commit them then. :)
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Thu, 16 Sep 1999 21:00:41 -0400
+
+tde-i18n (4:2.0-19990824-1) unstable; urgency=low
+
+  * Trying out case's instead of my if then's for building seperate packages
+  * New upstream CVS changes
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Tue, 24 Aug 1999 13:00:41 -0400
+
+tde-i18n (4:2.0-19990822-1) unstable; urgency=low
+
+  * New upstream version
+  * First time packaging
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sun, 22 Aug 1999 01:30:41 -0400

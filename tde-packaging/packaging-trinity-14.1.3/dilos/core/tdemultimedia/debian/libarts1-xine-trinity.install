@@ -1,0 +1,12 @@
+debian/tmp/usr/lib/*/trinity/videothumbnail.la
+debian/tmp/usr/lib/*/trinity/videothumbnail.so
+debian/tmp/usr/lib/*/libarts_xine.la
+debian/tmp/usr/lib/*/libarts_xine.so
+debian/tmp/usr/lib/*/libarts_xine.so.0
+debian/tmp/usr/lib/*/libarts_xine.so.0.0.0
+debian/tmp/usr/lib/*/mcop/xineAudioPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/xineVideoPlayObject.mcopclass
+debian/tmp/usr/share/apps/videothumbnail/sprocket-large.png
+debian/tmp/usr/share/apps/videothumbnail/sprocket-medium.png
+debian/tmp/usr/share/apps/videothumbnail/sprocket-small.png
+debian/tmp/usr/share/services/videothumbnail.desktop

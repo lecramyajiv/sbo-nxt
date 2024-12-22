@@ -1,0 +1,10 @@
+Document: tdemultimedia-doc-html-artsbuilder
+Title: Artsbuilder Handbook
+Author: Stefan Westerfeld, Jeff Tranter 
+Abstract: This handbook describes aRts, the Analog Real-time Synthesizer.
+Section: Apps/Sound
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/artsbuilder/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/artsbuilder/*.html
+

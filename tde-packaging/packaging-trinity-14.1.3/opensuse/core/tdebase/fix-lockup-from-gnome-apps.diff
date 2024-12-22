@@ -1,0 +1,20 @@
+Index: khelpcenter/navigator.cpp
+===================================================================
+--- khelpcenter/navigator.cpp.orig
++++ khelpcenter/navigator.cpp
+@@ -333,9 +333,14 @@ void Navigator::selectItem( const KURL &
+   // First, populate the NavigatorAppItems if we don't want the home page
+   if ( url != homeURL() ) {
+     for ( QListViewItem *item = mContentsTree->firstChild(); item;
+-          item = item->nextSibling() ) {
++	  item = item->nextSibling() ) {
+       NavigatorAppItem *appItem = dynamic_cast<NavigatorAppItem *>( item );
+       if ( appItem ) appItem->populate( true /* recursive */ );
++      for ( QListViewItem *subitem = item->firstChild(); subitem;
++	    subitem = subitem->nextSibling() ) {
++	appItem = dynamic_cast<NavigatorAppItem *>( subitem );
++	if ( appItem ) appItem->populate( true /* recursive */ );
++      }
+     }
+   }
+ 

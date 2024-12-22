@@ -1,0 +1,13 @@
+Index: kdecore/kdeversion.h
+===================================================================
+--- kdecore/kdeversion.h.orig
++++ kdecore/kdeversion.h
+@@ -33,6 +33,8 @@
+ 
+ #define KDE_IS_VERSION(a,b,c) ( KDE_VERSION >= KDE_MAKE_VERSION(a,b,c) )
+ 
++#define KDELIBS_SUSE
++
+ /**
+  * Namespace for general KDE functions.
+  */

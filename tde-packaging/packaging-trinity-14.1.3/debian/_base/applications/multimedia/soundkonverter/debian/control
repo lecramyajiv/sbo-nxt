@@ -1,0 +1,43 @@
+Source: soundkonverter-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>, Michael Meskes <meskes@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libcdparanoia0-dev, libtag1-dev
+Standards-Version: 3.8.4
+Homepage: http://www.kde-apps.org/content/show.php?content=29024
+
+Package: soundkonverter-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: soundkonverter-trinity (<< 4:14.0.0~)
+Breaks: soundkonverter-trinity (<< 4:14.0.0~)
+Recommends: cdparanoia, faad, libav-tools | ffmpeg, flac, tdemultimedia-tdeio-plugins-trinity, mp3gain, mplayer, mppenc, speex, vorbis-tools, vorbisgain, wavpack
+Suggests: soundkonverter-amarok-trinity, timidity
+Description: audio converter frontend for Trinity
+ soundKonverter is a frontend to various audio converters.
+ .
+ The key features are:
+  - Audio conversion
+  - Replay Gain calculation
+  - CD ripping
+ .
+ soundKonverter supports reading and writing tags for many formats, so the tags
+ are preserved when converting files.
+ .
+ It comes with an Amarok script.
+ .
+ See 'soundkonverter-amarok' package for more informations.
+ .
+ See README.Debian for more informations on supported formats.
+
+Package: soundkonverter-amarok-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, soundkonverter-trinity, amarok-trinity, ruby, libqt0-ruby-trinity
+Replaces: soundkonverter-amarok-trinity (<< 4:14.0.0~)
+Breaks: soundkonverter-amarok-trinity (<< 4:14.0.0~)
+Description: audio converter frontend for Trinity (Amarok script)
+ Amarok script for soundKonverter. It allows you to easily transcode files when
+ transferring them to your media device.
+ .
+ See the 'soundkonverter-trinity' package for more information.

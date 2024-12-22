@@ -1,0 +1,47 @@
+--- src/tools/qsettings.cpp
++++ src/tools/qsettings.cpp
+@@ -39,6 +39,7 @@
+ **********************************************************************/
+ 
+ #include "qplatformdefs.h"
++#include <stdlib.h>
+ 
+ // POSIX Large File Support redefines open -> open64
+ static inline int qt_open( const char *pathname, int flags, mode_t mode )
+@@ -468,8 +469,18 @@
+     Q_UNUSED( format );
+ #endif
+ 
+-    QString appSettings(QDir::homeDirPath() + "/.qt/");
+-    QString defPath;
++    QString home;
++    home = getenv("QT_HOME_DIR");
++    if ( !home.isEmpty() ){
++       home += "/";
++       QFileInfo i( home + "qtrc" );
++       if ( !i.isReadable() )
++         home = QDir::homeDirPath() + "/.qt/";
++    }else
++       home = QDir::homeDirPath() + "/.qt/";
++    QString appSettings(home);
++
++    QString defPath("/etc/X11/");
+ #ifdef Q_WS_WIN
+ #ifdef Q_OS_TEMP
+ 	TCHAR path[MAX_PATH];
+@@ -517,6 +528,15 @@
+ 
+     if ( !!defPath )
+ 	searchPaths.append(defPath);
++
++    QString system;
++    system = getenv("QT_SYSTEM_DIR");
++    if ( !system.isEmpty() && system[0] == '/') {
++       QFileInfo i( system + "/qtrc" );
++       if ( i.isReadable() )
++           searchPaths.append(system);
++    }
++
+     searchPaths.append(dir.path());
+ }
+ 

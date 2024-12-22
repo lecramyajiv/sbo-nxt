@@ -1,0 +1,20 @@
+Index: src/kernel/qfontdatabase.cpp
+===================================================================
+--- src/kernel/qfontdatabase.cpp.orig
++++ src/kernel/qfontdatabase.cpp
+@@ -2476,11 +2476,14 @@ void TQFontDatabase::parseFontName(const
+ 	int i = name.find('[');
+ 	int li = name.findRev(']');
+ 
+-	if (i < li) {
++	if (i > 0 && i + 1 < li) {
+ 	    foundry = name.mid(i + 1, li - i - 1);
+ 	    if (name[i - 1] == ' ')
+ 		i--;
+ 	    family = name.left(i);
++	} else {
++	    foundry = TQString::null;
++	    family = name;
+ 	}
+     } else {
+ 	foundry = TQString::null;

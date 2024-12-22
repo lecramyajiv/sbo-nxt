@@ -1,0 +1,8 @@
+?package(ksysv-trinity):\
+	needs="X11"\
+	section="Applications/Editors"\
+	hints="TDE"\
+	title="TDE SysV-Init Editor"\
+	icon32x32="/usr/share/pixmaps/ksysv.xpm"\
+	icon16x16="/usr/share/pixmaps/ksysv-16.xpm"\
+	command="/usr/bin/ksysv"

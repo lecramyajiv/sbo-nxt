@@ -1,0 +1,66 @@
+Index: kio/kio/kfileshare.cpp
+===================================================================
+--- kio/kio/kfileshare.cpp.orig
++++ kio/kio/kfileshare.cpp
+@@ -291,4 +291,24 @@ bool KFileShare::setShared( const QStrin
+     return ok;
+ }
+ 
++bool KFileShare::sambaActive()
++{
++    // rcsmb is not executable by users, try ourselves
++    int status = system( "/sbin/checkproc -p /var/run/samba/smbd.pid /usr/sbin/smbd" );
++    return status != -1 && WIFEXITED( status ) && WEXITSTATUS( status ) == 0;
++}
++
++bool KFileShare::nfsActive()
++{
++    // rcnfsserver is not executable by users, try ourselves
++    int status = system( "/sbin/checkproc /usr/sbin/rpc.mountd" );
++    if( status != -1 && WIFEXITED( status ) && WEXITSTATUS( status ) == 0 )
++    {
++        status = system( "/sbin/checkproc -n nfsd" );
++        if( status != -1 && WIFEXITED( status ) && WEXITSTATUS( status ) == 0 )
++            return true;
++    }
++    return false;
++}
++
+ #include "kfileshare.moc"
+Index: kio/kio/kfileshare.h
+===================================================================
+--- kio/kio/kfileshare.h.orig
++++ kio/kio/kfileshare.h
+@@ -131,6 +131,18 @@ public:
+      * Returns whether NFS is enabled
+      */
+     static bool nfsEnabled();
++    
++    /**
++     * Returns whether Samba is active (service is running)
++     * @internal
++     */
++    static bool sambaActive();
++
++    /**
++     * Returns whether NFS is active (service is running)
++     * @internal
++     */
++    static bool nfsActive();
+ 
+ private:
+     static Authorization s_authorization;
+Index: kio/kfile/kfilesharedlg.cpp
+===================================================================
+--- kio/kfile/kfilesharedlg.cpp.orig
++++ kio/kfile/kfilesharedlg.cpp
+@@ -167,6 +167,9 @@ void KFileSharePropsPlugin::init()
+ 	    vbox->addWidget( m_pbConfig, 0, Qt::AlignHCenter );
+ 
+             vbox->addStretch( 10 );
++            
++            if( !KFileShare::sambaActive() && !KFileShare::nfsActive())
++                m_widget->setEnabled( false );
+         }
+     }
+     break;

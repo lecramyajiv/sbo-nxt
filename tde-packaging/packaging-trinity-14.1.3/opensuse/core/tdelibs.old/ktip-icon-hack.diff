@@ -1,0 +1,56 @@
+Index: kdeui/ktip.cpp
+===================================================================
+--- kdeui/ktip.cpp.orig
++++ kdeui/ktip.cpp
+@@ -367,24 +367,47 @@ void KTipDialog::showMultiTip(QWidget *p
+       mInstance->raise();
+   }
+ 
++static QString fixTip(QString tip)
++{
++    QRegExp iconRegExp("<img src=\"(.*)\">");
++    iconRegExp.setMinimal(true);
++    if (iconRegExp.search(tip)>-1) {
++      QString iconName = iconRegExp.cap(1);
++      if (!iconName.isEmpty())
++         if (KGlobal::dirs()->findResource("icon", iconName).isEmpty())
++           tip.replace("crystalsvg","hicolor");
++    }
++
++    return tip;
++}
++
+   void KTipDialog::prevTip()
+   {
+       mDatabase->prevTip();
+-      mTipText->setText(QString::fromLatin1(
++      QString currentTip = QString::fromLatin1(
+      "<qt text=\"%1\" bgcolor=\"%2\">%3</qt>")
+      .arg(mTextColor.name())
+      .arg(mBaseColor.name())
+-     .arg(i18n(mDatabase->tip().utf8())));
++     .arg(i18n(mDatabase->tip().utf8()));
++
++
++      currentTip = fixTip(currentTip);
++      mTipText->setText(currentTip);
+       mTipText->setContentsPos(0, 0);
+   }
+ 
+   void KTipDialog::nextTip()
+   {
+       mDatabase->nextTip();
+-      mTipText->setText(QString::fromLatin1("<qt text=\"%1\" bgcolor=\"%2\">%3</qt>")
++      QString currentTip = QString::fromLatin1(
++        "<qt text=\"%1\" bgcolor=\"%2\">%3</qt>")
+         .arg(mTextColor.name())
+         .arg(mBaseColor.name())
+-        .arg(i18n(mDatabase->tip().utf8())));
++        .arg(i18n(mDatabase->tip().utf8()));
++
++
++      currentTip = fixTip(currentTip);
++      mTipText->setText(currentTip);
+       mTipText->setContentsPos(0, 0);
+   }
+ 

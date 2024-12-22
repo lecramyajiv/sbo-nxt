@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/share/services/amarok_xine-engine.desktop
+debian/tmp/opt/trinity/share/config.kcfg/xinecfg.kcfg
+debian/tmp/opt/trinity/lib/trinity/libamarok_xine-engine.so
+debian/tmp/opt/trinity/lib/trinity/libamarok_xine-engine.la

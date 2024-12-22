@@ -1,0 +1,64 @@
+--- src/iconview/qiconview.cpp	2009-06-10 17:50:47.000000000 +0200
++++ src/iconview/qiconview.cpp.new	2009-06-10 17:56:38.000000000 +0200
+@@ -261,6 +261,7 @@
+     uint dragging		:1;
+     uint drawActiveSelection	:1;
+     uint inMenuMode		:1;
++    uint controlPressed         :1;
+ 
+     QIconViewToolTip *toolTip;
+     QPixmapCache maskCache;
+@@ -2758,6 +2759,7 @@
+     d->lastItem = 0;
+     d->count = 0;
+     d->mousePressed = FALSE;
++    d->controlPressed = FALSE;
+     d->selectionMode = Single;
+     d->currentItem = 0;
+     d->highlightedItem = 0;
+@@ -3325,7 +3327,18 @@
+ 	    for ( ; item; item = c->items.next() ) {
+ 		if ( d->selectedItems.find( item ) )
+ 		    continue;
+-		if ( !item->intersects( nr ) ) {
++                if ( d->selectedItems.find( item ) ) {
++                    if ( item->intersects( nr ) && item->isSelected() && d->controlPressed ) {
++                        item->setSelected( FALSE );
++                        changed = TRUE;
++                        rr = rr.unite( item->rect() );
++                    } else if ( !item->intersects( nr ) && !item->isSelected() && d->controlPressed ) {
++                        item->setSelected( TRUE, TRUE );
++                        changed = TRUE;
++                        rr = rr.unite( item->rect() );
++                    } else
++                        continue;
++                } else if ( !item->intersects( nr ) ) {
+ 		    if ( item->isSelected() ) {
+ 			item->setSelected( FALSE );
+ 			changed = TRUE;
+@@ -4551,7 +4564,7 @@
+ 	    }
+ 	}
+     } else if ( ( d->selectionMode != Single || e->button() == RightButton )
+-		&& !( e->state() & ControlButton ) )
++		&& !( e->state() & ControlButton ) && !( e->state() & ShiftButton ) )
+ 	selectAll( FALSE );
+ 
+     setCurrentItem( item );
+@@ -4567,7 +4580,7 @@
+ 	    d->rubber = 0;
+ 	    d->rubber = new QRect( e->x(), e->y(), 0, 0 );
+ 	    d->selectedItems.clear();
+-	    if ( ( e->state() & ControlButton ) == ControlButton ) {
++	    if ( ( e->state() & ControlButton ) == ControlButton || ( e->state() & ShiftButton ) == ShiftButton ) {
+ 		for ( QIconViewItem *i = firstItem(); i; i = i->nextItem() )
+ 		    if ( i->isSelected() )
+ 			d->selectedItems.insert( i, i );
+@@ -4575,6 +4588,7 @@
+ 	}
+ 
+ 	d->mousePressed = TRUE;
++	d->controlPressed = ( ( e->state() & ControlButton ) == ControlButton );
+     }
+ 
+  emit_signals:

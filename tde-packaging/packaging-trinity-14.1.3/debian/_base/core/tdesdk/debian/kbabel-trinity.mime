@@ -1,0 +1,1 @@
+application/x-gettext; kbabel %s;test=test "$DISPLAY" != ""; priority=5

@@ -1,0 +1,15 @@
+--- konqueror/konq_mainwindow.cc
++++ konqueror/konq_mainwindow.cc	2003/05/30 13:19:04
+@@ -4550,9 +4550,9 @@
+     int usage_sum = 0;
+ #if defined(KDE_MALLINFO_STDLIB) || defined(KDE_MALLINFO_MALLOC)
+     // ugly hack for kdecore/malloc
+-    extern int kde_malloc_is_used;
+-    free( calloc( 4, 4 )); // trigger setting kde_malloc_is_used
+-    if( kde_malloc_is_used )
++//    extern int kde_malloc_is_used;
++//    free( calloc( 4, 4 )); // trigger setting kde_malloc_is_used
++    if( 0 )
+     {
+ 	struct mallinfo m = mallinfo();
+ 	usage_sum = m.hblkhd + m.uordblks;

@@ -1,0 +1,20 @@
+#! /usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+ifdef DEB_HOST_MULTIARCH
+  CMAKE_INSTALL_LIBDIR = lib/$(DEB_HOST_MULTIARCH)
+else
+  CMAKE_INSTALL_LIBDIR = lib
+endif
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_INSTALL_LIBDIR=$(CMAKE_INSTALL_LIBDIR) \
+ -DBUILD_ALL="ON" \
+ -DWITH_ALL_OPTIONS="ON"

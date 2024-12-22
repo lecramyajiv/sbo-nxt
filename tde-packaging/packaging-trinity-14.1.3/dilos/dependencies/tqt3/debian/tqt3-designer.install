@@ -1,0 +1,9 @@
+usr/bin/tqdesigner
+usr/bin/tqtcreatecw
+usr/bin/tqtconv2ui
+usr/share/applications/tqdesigner.desktop
+usr/share/pixmaps/tqdesigner.png
+usr/share/tqt3/templates/*
+usr/share/tqt3/doc/html/designer*html
+usr/share/tqt3/doc/html/designer*dcf
+usr/share/tqt3/doc/html/designer*jpg

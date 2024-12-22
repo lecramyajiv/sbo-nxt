@@ -1,0 +1,18 @@
+--- kded/vfolder_menu.cpp	2009/11/07 07:01:12	1.1
++++ kded/vfolder_menu.cpp	2009/11/07 07:01:42
+@@ -1496,6 +1496,7 @@
+         else
+             kdDebug()<<" Error in parsing show_empty attribute :"<<str<<endl;
+     }
++#if 0
+     if ( e.hasAttribute( "inline" ) )
+     {
+         QString str = e.attribute( "inline" );
+@@ -1534,6 +1535,7 @@
+         else
+             kdDebug()<<" Error in parsing inline_alias attribute :"<<str<<endl;
+     }
++#endif
+     if( !option.isEmpty())
+     {
+         option = option.prepend(":O");

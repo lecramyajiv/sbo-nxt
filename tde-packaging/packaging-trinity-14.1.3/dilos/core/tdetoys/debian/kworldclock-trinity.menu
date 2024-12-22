@@ -1,0 +1,8 @@
+?package(kworldclock-trinity):\
+	needs="x11"\
+	section="Games/Toys"\
+	hints="TDE"\
+	title="KWorldClock"\
+	icon="/usr/share/pixmaps/kworldclock.xpm"\
+	command="/usr/bin/kworldclock"
+

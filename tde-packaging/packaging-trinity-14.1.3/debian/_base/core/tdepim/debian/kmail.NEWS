@@ -1,0 +1,29 @@
+tdepim (4:3.5.5.dfsg.1-4) unstable; urgency=high
+
+  * KMail's handling of IMAP namespaces changed in KDE 3.5.  You used to be
+    able to set a prefix for your mailboxes (most commonly INBOX. for
+    courier-imap and cyrus-imapd servers) that would tell KMail where to look
+    for mail folders.  In KDE 3.5, KMail now handles both personal and shared
+    namespaces.  It no longer strips the namespace from the beginning of the
+    folder path, though, so some users will see that all of their folders are
+    now subfolders of the inbox.
+
+    Due to this change, KMail may get confused when it starts after upgrading
+    and crash.  We don't have a solution to the bug at this time, but there is
+    a workaround that doesn't result in any dataloss.
+
+    The folder $HOME/.trinity/share/apps/kmail/imap/ holds cached copies of all
+    the mail headers in your imap account.  Deleting everything in this folder
+    (rm -rf ~/.trinity/share/apps/kmail/imap/*) allows KMail to startup.  KMail
+    will need to redownload all the mail headers, but it would need to do so
+    anyway since it thinks the mail folders appearing under the inbox are
+    different folders.
+
+    In some cases even this workaround has not been enough.  If KMail still
+    behaves strangely for you after doing this, you may need to move KMail's
+    configuration file out of the way in addition to removing its IMAP cache.
+    To do this, "mv ~/.trinity/share/config/kmailrc
+    ~/.trinity/share/config/kmailrc.bak".  After doing this, KMail should behave
+    better, but you will need to reconfigure all of your accounts.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 16 Dec 2006 13:48:33 -0500

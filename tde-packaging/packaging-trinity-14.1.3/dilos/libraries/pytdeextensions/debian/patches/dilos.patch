@@ -1,0 +1,40 @@
+Index: pytdeextensions/setup.py
+===================================================================
+--- pytdeextensions.orig/setup.py
++++ pytdeextensions/setup.py
+@@ -126,7 +126,7 @@ class BuildLibpythonize(Command):
+                 
+             # Find the C library (libgcc, libgcc_s or some other variation).
+             if self.clib is None:
+-                canidatepaths = ["/usr/"+tdedistutils.get_libdir_name(), "/usr/local/"+tdedistutils.get_libdir_name(), "/usr/lib" ]
++                canidatepaths = ["/usr/"+tdedistutils.get_libdir_name(), "/usr/local/"+tdedistutils.get_libdir_name(), "/usr/lib", os.environ["GCCLIBDIR"] ]
+                 self.clib = tdedistutils.FindFileInPaths("libgcc*.so",canidatepaths)
+                 if self.clib!=None:
+                     self.clib = glob.glob(os.path.join(self.clib,'libgcc*.so'))[0]
+@@ -156,7 +156,7 @@ class BuildLibpythonize(Command):
+         
+         cppfile = "src/pythonize.cpp"
+         # Compile the library.
+-        cmdlist = ['libtool']
++        cmdlist = ['debian/dilos/libtool']
+ 
+         # Couldn't get it to pass without this ...
+         cmdlist.append("--mode=compile")
+@@ -205,7 +205,7 @@ class BuildLibpythonize(Command):
+         print
+         
+         # Link the resulting object file to create a shared library.
+-        cmdlist = ['libtool']
++        cmdlist = ['debian/dilos/libtool']
+         cmdlist.append("--mode=link")
+         cmdlist.append("--tag=LD")
+         
+@@ -291,7 +291,7 @@ class InstallLibpythonize(Command):
+         self.outfiles.extend(self.mkpath(self.install_dir))
+         
+         # Install the library.
+-        cmdlist = ['libtool']
++        cmdlist = ['debian/dilos/libtool']
+         cmdlist.append("--mode=install")
+         cmdlist.append(self.install_cmd)
+         cmdlist.append("-c")

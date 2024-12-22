@@ -1,0 +1,35 @@
+Index: kioslave/fish/fish.protocol
+===================================================================
+--- kioslave/fish/fish.protocol.orig
++++ kioslave/fish/fish.protocol
+@@ -10,7 +10,7 @@ makedir=true
+ deleting=true
+ linking=true
+ moving=true
+-Icon=remote
++Icon=folder_html
+ Description=A kioslave for the FISH protocol
+ Description[af]='n Kioslave vir die FISH protokol
+ Description[be]=Kioslave для пратакола FISH
+Index: kioslave/floppy/floppy.protocol
+===================================================================
+--- kioslave/floppy/floppy.protocol.orig
++++ kioslave/floppy/floppy.protocol
+@@ -9,6 +9,6 @@ writing=true
+ makedir=true
+ deleting=true
+ moving=true
+-Icon=3floppy_mount
++Icon=3floppy_unmount
+ DocPath=kioslave/floppy.html
+ Class=:local
+Index: kioslave/nfs/nfs.protocol
+===================================================================
+--- kioslave/nfs/nfs.protocol.orig
++++ kioslave/nfs/nfs.protocol
+@@ -11,4 +11,4 @@ deleting=true
+ linking=true
+ moving=true
+ DocPath=kioslave/nfs.html
+-Icon=nfs_mount
++Icon=nfs_unmount

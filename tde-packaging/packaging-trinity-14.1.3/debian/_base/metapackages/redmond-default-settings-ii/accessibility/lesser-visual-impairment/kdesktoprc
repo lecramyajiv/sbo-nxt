@@ -1,0 +1,15 @@
+[Background Common]
+CommonDesktop=true
+DeskNum=0
+
+[Desktop0]
+BlendBalance=-50
+BlendMode=FlatBlending
+Color1=255,255,204
+Color2=255,255,204
+Pattern=
+Wallpaper=/usr/share/wallpapers/
+WallpaperMode=NoWallpaper
+
+[FMSettings]
+StandardFont=DejaVu Sans,12,-1,5,25,0,0,0,0,0

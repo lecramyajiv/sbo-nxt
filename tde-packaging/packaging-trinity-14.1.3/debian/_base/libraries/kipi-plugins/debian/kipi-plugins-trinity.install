@@ -1,0 +1,7 @@
+debian/tmp/opt/trinity/share/services/kipiplugin*
+debian/tmp/opt/trinity/share/apps/kipi*
+debian/tmp/opt/trinity/share/config.kcfg/htmlexportconfig.kcfg
+debian/tmp/opt/trinity/share/locale/*
+debian/tmp/opt/trinity/lib/trinity/kipiplugin*
+debian/tmp/opt/trinity/lib/libkipiplugins.*
+debian/tmp/opt/trinity/bin/*

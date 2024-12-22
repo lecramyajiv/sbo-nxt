@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-kspaceduel
+Title: The KSpaceduel Handbook
+Author: Andreas Zehender
+Abstract: KSpaceduel is a space arcade game. Two ships fly around the
+ sun and try to shoot each other.
+Section: Games/Arcade
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kspaceduel/index.html
+Files: /usr/share/doc/tde/HTML/en/kspaceduel/*.html

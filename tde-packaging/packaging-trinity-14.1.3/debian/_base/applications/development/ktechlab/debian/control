@@ -1,0 +1,18 @@
+Source: ktechlab-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, imagemagick, tdelibs14-trinity-dev, gpsim-dev (>= 0.21.11-2)
+Standards-Version: 3.8.4
+
+Package: ktechlab-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: ktechlab-trinity (<< 4:14.0.0~)
+Breaks: ktechlab-trinity (<< 4:14.0.0~)
+Recommends: gputils
+Description: circuit simulator for microcontrollers and electronics [Trinity]
+ KTechlab is a circuit simulator with a nice, clickable and discoverable
+ interface. It supports many discrete components, logic circuits as well
+ as PIC programming in its own Basic dialect and some form of assembler. 
+Homepage: http://ktechlab.org/

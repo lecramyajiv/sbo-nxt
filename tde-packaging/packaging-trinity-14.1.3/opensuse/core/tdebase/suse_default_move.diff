@@ -1,0 +1,83 @@
+Index: empty/Makefile.am
+===================================================================
+--- /dev/null
++++ empty/Makefile.am
+@@ -0,0 +1,17 @@
++# set the include path for X, qt and KDE
++INCLUDES= $(all_includes)
++
++# you can add here more. This one gets installed
++bin_PROGRAMS = 	default_desktop_aligning
++
++# Which sources should be compiled
++default_desktop_aligning_SOURCES = moving.cpp KDesktopIface.stub
++
++# the library search path.
++default_desktop_aligning_LDFLAGS = $(all_libraries) $(KDE_RPATH)
++
++# the libraries to link against. Be aware of the order. First the libraries,
++# that depend on the following ones.
++default_desktop_aligning_LDADD   = $(LIB_KDEUI)
++
++KDesktopIface_DIR = $(srcdir)/../kdesktop
+Index: empty/moving.cpp
+===================================================================
+--- /dev/null
++++ empty/moving.cpp
+@@ -0,0 +1,56 @@
++#include <kstandarddirs.h>
++#include <kglobalsettings.h>
++#include <kapplication.h>
++#include "KDesktopIface_stub.h"
++#include <kdebugclasses.h>
++#include <kcmdlineargs.h>
++#include <kconfig.h>
++#include <unistd.h>
++#include <stdlib.h>
++#include <qfileinfo.h>
++
++int main(int argc, char **argv)
++{
++    KCmdLineArgs::init(argc, argv, "default_desktop_moving",
++                          "move the icons on the correct place on initial boot",
++                          "0.1");
++    KApplication app;
++    QStringList icons = KGlobal::dirs()->findAllResources("data", "default_desktop/*.desktop");
++    char buffer[PATH_MAX];
++    strcpy(buffer, "/tmp/suse_desktop_XXXXXX");
++    mkdtemp(buffer);
++    QString tname = QString::fromLatin1(buffer);
++
++    icons.sort();
++
++    KDesktopIface_stub stub("kdesktop", "KDesktopIface");
++    KConfig c( "kdesktoprc" );
++    c.setGroup( "General" );
++
++    if ( c.readBoolEntry( "CopyDesktopLinks", true ) )
++    for (QStringList::ConstIterator it = icons.begin(); it != icons.end(); ++it)
++    {
++        QString name = *it;
++        QPoint t;
++        bool col = (name.mid(name.findRev('/') + 1, 4) == "COL_");
++        name = name.mid(name.findRev('/') + 5, name.length());
++        int index = name.find('_');
++        int num = name.left(index).toInt();
++
++        if (col)
++            t = stub.findPlaceForIcon(num, -1);
++        else
++            t = stub.findPlaceForIcon(-1, num);
++        QFileInfo f(*it);
++
++        name = name.mid(name.find('_', index + 1) + 1, name.length());
++
++	 if ( 0 == system(QString("mv '%1' '%1'").arg(*it).arg(tname + "/" + name).local8Bit()) )
++        	stub.addIcon( tname + "/" + name, t.x(), t.y());
++	
++        sleep(2); // only need to make sure kdesktop goes back in event loop
++    }
++    stub.lineupIcons();
++    system(QString("rm -f %1/moving_desktop.desktop").arg(KGlobalSettings::autostartPath()).latin1());
++    system(QString("rm -rf '%1'").arg(tname).local8Bit());
++}

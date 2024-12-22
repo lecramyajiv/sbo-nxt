@@ -1,0 +1,66 @@
+Index: kcontrol/access/kcmaccess.cpp
+===================================================================
+--- kcontrol/access/kcmaccess.cpp.orig
++++ kcontrol/access/kcmaccess.cpp
+@@ -103,10 +103,57 @@ void ExtendedIntNumInput::slotSliderValu
+ 
+ static bool needToRunKAccessDaemon( KConfig *config )
+ {
+-	// We always start the KAccess Daemon, if it is not needed,
+-	// it will terminate itself after configuring the AccessX
+-	// features.
+-	return true;
++     KConfigGroup bell( config, "Bell" );
++     
++     if (!bell.readBoolEntry("SystemBell", true))
++         return true;
++     if (bell.readBoolEntry("ArtsBell", false))
++         return true;
++     if (bell.readBoolEntry("VisibleBell", false))
++         return true;
++     
++   KConfigGroup keyboard( config, "Keyboard" );
++ 
++   if (keyboard.readBoolEntry("StickyKeys", false))
++         return true;
++   if (keyboard.readBoolEntry("SlowKeys", false))
++         return true;
++   if (keyboard.readBoolEntry("BounceKeys", false))
++         return true;
++   if (keyboard.readBoolEntry("Gestures", true))
++         return true;
++   // Find out whether the gestures are activated by default in the X configuration or not.
++   int major = XkbMajorVersion;
++   int minor = XkbMinorVersion;
++   if (XkbLibraryVersion(&major, &minor))
++     {
++     int opcode_rtrn;
++     int error_rtrn;
++     int xkb_opcode;
++     if (XkbQueryExtension(qt_xdisplay(), &opcode_rtrn, &xkb_opcode, &error_rtrn,
++ 			 &major, &minor))
++       {
++       if(XkbDescPtr xkbdesc = XkbGetMap(qt_xdisplay(), 0, XkbUseCoreKbd))
++         {
++         if(XkbGetControls(qt_xdisplay(), XkbAllControlsMask/*XkbAccessXKeysMask*/, xkbdesc ) == Success )
++           {
++           if(xkbdesc->ctrls->enabled_ctrls & XkbAccessXKeysMask)
++             {
++             XkbFreeClientMap(xkbdesc,0,True);
++             return true;
++             }
++           }
++         XkbFreeClientMap(xkbdesc,0,True);
++         }
++       }
++     }
++ 
++   KConfigGroup mouse( config, "Mouse" );
++   
++   if (mouse.readBoolEntry("MouseKeys", false))
++         return true;
++ 
++     return false; // don't need it
+ }
+ 
+ QString mouseKeysShortcut (Display *display) {

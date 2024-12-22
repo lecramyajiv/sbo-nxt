@@ -1,0 +1,8 @@
+?package(kuser-trinity):\
+	needs="X11"\
+	section="Applications/System/Administration"\
+	hints="TDE"\
+	title="TDE User Manager"\
+	icon32x32="/opt/trinity/share/pixmaps/kuser.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kuser-16.xpm"\
+	command="/opt/trinity/bin/kuser"

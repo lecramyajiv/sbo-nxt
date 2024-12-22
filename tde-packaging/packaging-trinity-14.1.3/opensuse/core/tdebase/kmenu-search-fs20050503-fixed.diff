@@ -1,0 +1,342 @@
+Index: kicker/kicker/ui/k_mnu.cpp
+===================================================================
+--- kicker/kicker/ui/k_mnu.cpp.orig
++++ kicker/kicker/ui/k_mnu.cpp
+@@ -26,9 +26,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ #include <unistd.h>
+ #include <dmctl.h>
+ 
++#include <qhbox.h>
+ #include <qimage.h>
++#include <qlabel.h>
+ #include <qpainter.h>
+ #include <qstyle.h>
++#include <qtimer.h>
++#include <qtooltip.h>
+ 
+ #include <dcopclient.h>
+ #include <kapplication.h>
+@@ -40,9 +44,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ #include <kglobal.h>
+ #include <kglobalsettings.h>
+ #include <kiconloader.h>
++#include <klineedit.h>
+ #include <klocale.h>
+ #include <kmessagebox.h>
+ #include <kstandarddirs.h>
++#include <ktoolbarbutton.h>
+ #include <kwin.h>
+ 
+ #include "client_mnu.h"
+@@ -58,9 +64,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ #include "quickbrowser_mnu.h"
+ #include "recentapps.h"
+ 
++
+ #include "k_mnu.h"
+ #include "k_mnu.moc"
+ 
++const int PanelKMenu::searchLineID(23140 /*whatever*/);
++
+ PanelKMenu::PanelKMenu()
+   : PanelServiceMenu(QString::null, QString::null, 0, "KMenu")
+   , bookmarkMenu(0)
+@@ -165,6 +174,26 @@ void PanelKMenu::paletteChanged()
+     }
+ }
+ 
++
++/* A MenuHBox is supposed to be inserted into a menu.
++ * You can set a special widget in the hbox which will
++ * get the focus if the user moves up or down with the 
++ * cursor keys
++ */ 
++class MenuHBox : public QHBox {
++public:
++    MenuHBox(PanelKMenu* parent) : QHBox(parent)
++    {
++    }
++    
++    virtual void keyPressEvent(QKeyEvent *e)
++    {
++        
++    }
++private:
++    PanelKMenu *parent;
++};
++
+ void PanelKMenu::initialize()
+ {
+ //    kdDebug(1210) << "PanelKMenu::initialize()" << endl;
+@@ -191,13 +220,29 @@ void PanelKMenu::initialize()
+     // add services
+     PanelServiceMenu::initialize();
+ 
++    // Insert search field
++    QHBox* hbox = new QHBox( this );
++    KToolBarButton *clearButton = new KToolBarButton( "locationbar_erase", 0, hbox );
++    searchEdit = new KLineEdit(hbox); searchEdit->setClickMessage(" "+i18n("Press '/' to search..."));
++    hbox->setFocusPolicy(QWidget::StrongFocus);
++    hbox->setFocusProxy(searchEdit);
++    hbox->setSpacing( 3 );
++    connect(clearButton, SIGNAL(clicked()), searchEdit, SLOT(clear()));
++    connect(this, SIGNAL(aboutToHide()), this, SLOT(slotClearSearch())); 
++    connect(searchEdit, SIGNAL(textChanged(const QString&)),
++        this, SLOT( slotUpdateSearch( const QString&)));
++    insertItem(hbox, searchLineID, 0);
++
++    //QToolTip::add(clearButton, i18n("Clear Search"));
++    //QToolTip::add(searchEdit, i18n("Enter the name of an application"));
++
+     if (KickerSettings::showMenuTitles())
+     {
+         int id;
+         id = insertItem(new PopupMenuTitle(i18n("All Applications"), font()), -1 /* id */, 0);
+-        setItemEnabled( id, false );
++        setItemEnabled(id, false);
+         id = insertItem(new PopupMenuTitle(i18n("Actions"), font()), -1 /* id */, -1);
+-        setItemEnabled( id, false );
++        setItemEnabled(id, false);
+     }
+ 
+     // create recent menu section
+@@ -737,3 +782,43 @@ void PanelKMenu::clearRecentMenuItems()
+ }
+ 
+ 
++void PanelKMenu::slotUpdateSearch(const QString& searchString)
++{
++    kdDebug() << "Searching for " << searchString << endl;
++    setSearchString(searchString);
++}
++
++void PanelKMenu::slotClearSearch()
++{
++    if (searchEdit && searchEdit->text().isEmpty() == false) {
++        QTimer::singleShot(0, searchEdit, SLOT(clear()));
++    }
++}
++
++void PanelKMenu::keyPressEvent(QKeyEvent* e)
++{
++    // We move the focus to the search field if the
++    // user presses '/'. This is the same shortcut as
++    // konqueror is using, and afaik it's hardcoded both
++    // here and there. This sucks badly for many non-us
++    // keyboard layouts, but for the sake of consistency
++    // we follow konqueror.
++    if (!searchEdit) return KPanelMenu::keyPressEvent(e);
++
++    if (e->key() == Qt::Key_Slash && !searchEdit->hasFocus()) {
++        if (indexOf(searchLineID) >=0 ) {
++            setActiveItem(indexOf(searchLineID));
++        }
++    }
++    else if (e->key() == Qt::Key_Escape && searchEdit->text().isEmpty() == false) {
++        searchEdit->clear();
++    }
++    else if (e->key() == Qt::Key_Delete && !searchEdit->hasFocus() && 
++        searchEdit->text().isEmpty() == false)
++    {
++        searchEdit->clear();
++    }
++    else {
++        KPanelMenu::keyPressEvent(e);
++    }
++}
+Index: kicker/kicker/ui/k_mnu.h
+===================================================================
+--- kicker/kicker/ui/k_mnu.h.orig
++++ kicker/kicker/ui/k_mnu.h
+@@ -73,6 +73,8 @@ protected slots:
+     void slotSaveSession();
+     void slotRunCommand();
+     void slotEditUserContact();
++    void slotUpdateSearch(const QString &searchtext);
++    void slotClearSearch();
+     void paletteChanged();
+     virtual void configChanged();
+     void updateRecent();
+@@ -89,6 +91,8 @@ protected:
+     void doNewSession(bool lock);
+     void createRecentMenuItems();
+     virtual void clearSubmenus();
++    void filterMenu(PanelServiceMenu* menu, const QString &searchString);
++    void keyPressEvent(QKeyEvent* e);
+ 
+ private:
+     QPopupMenu                 *sessionsMenu;
+@@ -101,6 +105,8 @@ private:
+     KActionCollection          *actionCollection;
+     KBookmarkOwner             *bookmarkOwner;
+     PopupMenuList               dynamicSubMenus;
++    KLineEdit                  *searchEdit;
++    static const int            searchLineID;
+ };
+ 
+ #endif
+Index: kicker/kicker/ui/service_mnu.cpp
+===================================================================
+--- kicker/kicker/ui/service_mnu.cpp.orig
++++ kicker/kicker/ui/service_mnu.cpp
+@@ -26,6 +26,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ #include <qbitmap.h>
+ #include <qpixmap.h>
+ #include <qimage.h>
++#include <qmap.h>
+ 
+ #include <dcopclient.h>
+ #include <kapplication.h>
+@@ -100,6 +101,8 @@ void PanelServiceMenu::initialize()
+     clear();
+ 
+     clearSubmenus();
++    searchSubMenuIDs.clear();
++    searchMenuItems.clear();
+     doInitialize();
+ }
+ 
+@@ -296,6 +299,10 @@ void PanelServiceMenu::fillMenu(KService
+ 
+             int newId = insertItem(iconset, groupCaption, m, id++);
+             entryMap_.insert(newId, static_cast<KSycocaEntry*>(g));
++            // This submenu will be searched when applying a search string
++            searchSubMenuIDs[m] = newId;
++            // Also search the submenu name itself
++            searchMenuItems.insert(newId);
+             // We have to delete the sub menu our selves! (See Qt docs.)
+             subMenus.append(m);
+         }
+@@ -308,6 +315,7 @@ void PanelServiceMenu::fillMenu(KService
+             }
+ 
+             KService::Ptr s(static_cast<KService *>(e));
++	    searchMenuItems.insert(id);
+             insertMenuItem(s, id++, -1, &suppressGenericNames, QString::null, specialTitle[s->name()], categoryIcon[s->name()] );
+         }
+         else if (e->isType(KST_KServiceSeparator))
+@@ -900,6 +908,8 @@ void PanelServiceMenu::slotClear()
+         delete *it;
+     }
+     subMenus.clear();
++    searchSubMenuIDs.clear();
++    searchMenuItems.clear();
+ }
+ 
+ void PanelServiceMenu::selectFirstItem()
+@@ -924,3 +934,72 @@ void PanelServiceMenu::updateRecentlyUse
+     RecentlyLaunchedApps::the().m_bNeedToUpdate = true;
+ }
+ 
++void PanelServiceMenu::setSearchString(const QString &searchString)
++{
++    // We must initialize the menu, because it might have not been opened before
++    initialize();
++
++    bool foundSomething = false;
++    std::set<int> nonemptyMenus;
++    std::set<int>::const_iterator menuItemIt(searchMenuItems.begin());
++    // Apply the filter on this menu
++    for (; menuItemIt != searchMenuItems.end(); ++menuItemIt) {
++        int id = *menuItemIt;
++        KService* s = dynamic_cast< KService* >( static_cast< KSycocaEntry* >( entryMap_[ id ]));
++        QString menuText = text(id);
++        if (menuText.contains(searchString, false) > 0
++            || ( s != NULL && ( s->name().contains(searchString, false) > 0
++                               || s->exec().contains(searchString, false) > 0
++                               || s->comment().contains(searchString, false) > 0
++                               || s->genericName().contains(searchString, false) > 0
++                               || s->exec().contains(searchString, false) > 0 )
++                )) {
++            setItemEnabled(id, true);
++            foundSomething = true;
++            nonemptyMenus.insert(id);
++        }
++        else {
++            setItemEnabled(id, false);
++        }
++    }
++    // Apply the filter on this menu
++    /*for (int i=count()-1; i>=0; --i) {
++        int id = idAt(i);
++        QString menuText = text(id);
++        if (menuText.contains(searchString, false) > 0) {
++            setItemEnabled(id, true);
++            foundSomething = true;
++            nonemptyMenus.insert(id);
++        }
++        else {
++            setItemEnabled(id, false);
++        }
++    }*/
++
++    PanelServiceMenuMap::iterator it(searchSubMenuIDs.begin());
++    // Apply the search filter on submenus
++    for (; it != searchSubMenuIDs.end(); ++it) {
++        it.key()->setSearchString(searchString);
++        if (nonemptyMenus.find(it.data()) != nonemptyMenus.end()) {
++            // if the current menu is a match already, we don't
++            // block access to the contained items
++            setItemEnabled(it.data(), true);
++            it.key()->setSearchString(QString());
++            foundSomething = true;
++        }
++        else if (it.key()->hasSearchResults()) {
++            setItemEnabled(it.data(), true);
++            foundSomething = true;
++        }
++        else {
++            setItemEnabled(it.data(), false);
++        }
++    }
++
++    hasSearchResults_ = foundSomething;
++}
++
++bool PanelServiceMenu::hasSearchResults()
++{
++    return hasSearchResults_;
++}
+Index: kicker/kicker/ui/service_mnu.h
+===================================================================
+--- kicker/kicker/ui/service_mnu.h.orig
++++ kicker/kicker/ui/service_mnu.h
+@@ -26,6 +26,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ 
+ #include <qmap.h>
+ #include <qvaluevector.h>
++#include <set>
+ 
+ #include <ksycocaentry.h>
+ #include <kservice.h>
+@@ -41,8 +42,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+  * @author Rik Hemsley <rik@kde.org>
+  */
+ 
++class KLineEdit;
+ typedef QMap<int, KSycocaEntry::Ptr> EntryMap;
+ typedef QValueVector<QPopupMenu*> PopupMenuList;
++class PanelServiceMenu;
++typedef QMap<PanelServiceMenu*,int> PanelServiceMenuMap;
+ 
+ class KDE_EXPORT PanelServiceMenu : public KPanelMenu
+ {
+@@ -63,6 +67,8 @@ public:
+     virtual void showMenu();
+     bool highlightMenuItem( const QString &menuId );
+     void selectFirstItem();
++    void setSearchString(const QString& searchString);
++    bool hasSearchResults();
+ 
+ private:
+     void fillMenu( KServiceGroup::Ptr &_root, KServiceGroup::List &_list,
+@@ -115,6 +121,9 @@ protected:
+     bool addmenumode_;
+     QPoint startPos_;
+     PopupMenuList subMenus;
++    PanelServiceMenuMap searchSubMenuIDs;
++    bool hasSearchResults_;
++    std::set<int> searchMenuItems;
+ 
+ private slots:
+     void slotContextMenu(int);

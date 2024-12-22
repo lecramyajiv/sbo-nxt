@@ -1,0 +1,10 @@
+debian/tmp/usr/lib/*/trinity/tdefile_cpp.so
+debian/tmp/usr/lib/*/trinity/tdefile_cpp.la
+debian/tmp/usr/lib/*/trinity/tdefile_diff.so
+debian/tmp/usr/lib/*/trinity/tdefile_diff.la
+debian/tmp/usr/lib/*/trinity/tdefile_ts.so
+debian/tmp/usr/lib/*/trinity/tdefile_ts.la
+debian/tmp/usr/share/services/tdefile_cpp.desktop
+debian/tmp/usr/share/services/tdefile_diff.desktop
+debian/tmp/usr/share/services/tdefile_h.desktop
+debian/tmp/usr/share/services/tdefile_ts.desktop

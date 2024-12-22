@@ -1,0 +1,6 @@
+debian/tmp/usr/lib/*/trinity/kcm_lilo.la
+debian/tmp/usr/lib/*/trinity/kcm_lilo.so
+debian/tmp/usr/share/applications/tde/lilo.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/lilo-config/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/lilo-config/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/lilo-config/common

@@ -1,0 +1,250 @@
+Index: kcontrol/componentchooser/componentchooser.desktop
+===================================================================
+--- kcontrol/componentchooser/componentchooser.desktop.orig
++++ kcontrol/componentchooser/componentchooser.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Exec=kcmshell componentchooser
+-Icon=misc
++Icon=kcmcomponentchooser
+ Type=Application
+ 
+ 
+Index: kcontrol/taskbar/kcmtaskbar.desktop
+===================================================================
+--- kcontrol/taskbar/kcmtaskbar.desktop.orig
++++ kcontrol/taskbar/kcmtaskbar.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=kmenu
++Icon=kcmtaskbar
+ Type=Application
+ DocPath=kcontrol/kcmtaskbar/index.html
+ Exec=kcmshell kcmtaskbar
+Index: kcontrol/nics/nic.desktop
+===================================================================
+--- kcontrol/nics/nic.desktop.orig
++++ kcontrol/nics/nic.desktop
+@@ -2,7 +2,7 @@
+ Exec=kcmshell nic
+ Type=Application
+ DocPath=kinfocenter/nics/index.html
+-Icon=network
++Icon=kcmnic
+ 
+ 
+ X-KDE-Library=nic
+Index: kcontrol/input/mouse.desktop
+===================================================================
+--- kcontrol/input/mouse.desktop.orig
++++ kcontrol/input/mouse.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Exec=kcmshell mouse
+-Icon=mouse
++Icon=kcmmouse
+ Type=Application
+ DocPath=kcontrol/mouse/index.html
+ 
+Index: kcontrol/smserver/kcmsmserver.desktop
+===================================================================
+--- kcontrol/smserver/kcmsmserver.desktop.orig
++++ kcontrol/smserver/kcmsmserver.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=exit
++Icon=kcmsmserver
+ Type=Application
+ DocPath=kcontrol/kcmsmserver/index.html
+ Exec=kcmshell kcmsmserver
+Index: kcontrol/kded/kcmkded.desktop
+===================================================================
+--- kcontrol/kded/kcmkded.desktop.orig
++++ kcontrol/kded/kcmkded.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Exec=kcmshell kcmkded
+-Icon=services
++Icon=kcmkded
+ Type=Application
+ 
+ 
+Index: kcontrol/konq/desktop.desktop
+===================================================================
+--- kcontrol/konq/desktop.desktop.orig
++++ kcontrol/konq/desktop.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ DocPath=kcontrol/desktop/index.html#desktop-number
+-Icon=desktop
++Icon=kcmdesktop
+ Exec=kcmshell desktop
+ 
+ 
+Index: kcontrol/konq/desktopbehavior.desktop
+===================================================================
+--- kcontrol/konq/desktopbehavior.desktop.orig
++++ kcontrol/konq/desktopbehavior.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ DocPath=kcontrol/desktopbehavior/index.html
+-Icon=desktop
++Icon=kcmdesktopbehavior
+ Exec=kcmshell desktopbehavior
+ 
+ 
+Index: kcontrol/privacy/privacy.desktop
+===================================================================
+--- kcontrol/privacy/privacy.desktop.orig
++++ kcontrol/privacy/privacy.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=trashcan_empty
++Icon=kcmprivacy
+ Comment=Privacy - a kcontrol module to clean unwanted traces the user leaves on the system
+ Comment[af]=Privaatheid - 'n Beheer module wat voetspore wat deur gebruikers op die stelsel gelaat word skoon maak
+ Comment[ar]=الخصوصية - وحدة kcontrol لتنظيف الآثار غير المرغوب بها التي يتركها المستخدم على النظام
+Index: kcontrol/crypto/crypto.desktop
+===================================================================
+--- kcontrol/crypto/crypto.desktop.orig
++++ kcontrol/crypto/crypto.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=encrypted
++Icon=kcmcrypto
+ Type=Application
+ Exec=kcmshell crypto
+ DocPath=kcontrol/crypto/index.html
+Index: kcontrol/kio/netpref.desktop
+===================================================================
+--- kcontrol/kio/netpref.desktop.orig
++++ kcontrol/kio/netpref.desktop
+@@ -76,7 +76,7 @@ Comment[zh_CN]=配置通用网络首选�
+ Comment[zh_TW]=設定一般網路喜好設定，例如逾時值
+ Comment[zu]=Hlanganisela okuncanyelwa uwonkewonke koxhumano olusazekile, njengamanani esikhathi sokuphuma
+ Exec=kcmshell netpref
+-Icon=network
++Icon=kcmnetpref
+ Keywords=timeout,iopref,netpref,network preferences,ftp
+ Keywords[be]=Тэрмін чакання,Уласцівасці сеткі,timeout,iopref,netpref,network preferences,ftp
+ Keywords[bg]=просрочка, време, времето, пауза, прекъсване, връзка, timeout, iopref, netpref, network preferences, ftp
+Index: kcontrol/konqhtml/khtml_filter.desktop
+===================================================================
+--- kcontrol/konqhtml/khtml_filter.desktop.orig
++++ kcontrol/konqhtml/khtml_filter.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ DocPath=kcontrol/khtml/index.html#khtml-adblock
+-Icon=filter
++Icon=kcmkhtml_filter
+ Exec=kcmshell khtml_filter
+ 
+ X-KDE-Library=konqhtml
+Index: kcontrol/joystick/joystick.desktop
+===================================================================
+--- kcontrol/joystick/joystick.desktop.orig
++++ kcontrol/joystick/joystick.desktop
+@@ -173,5 +173,5 @@ Type=Application
+ X-KDE-FactoryName=kcm_joystick
+ X-KDE-Library=joystick
+ X-KDE-Test-Module=true
+-Icon=joystick
++Icon=kcmjoystick
+ Categories=Qt;KDE;X-KDE-settings-hardware;
+Index: kcontrol/colors/colors.desktop
+===================================================================
+--- kcontrol/colors/colors.desktop.orig
++++ kcontrol/colors/colors.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Exec=kcmshell colors
+-Icon=colorscm
++Icon=kcmcolors
+ Type=Application
+ DocPath=kcontrol/colors/index.html
+ 
+Index: kcontrol/performance/kcmperformance.desktop
+===================================================================
+--- kcontrol/performance/kcmperformance.desktop.orig
++++ kcontrol/performance/kcmperformance.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=launch
++Icon=kcmperformance
+ Type=Application
+ Exec=kcmshell kcmperformance
+ 
+Index: kcontrol/launch/kcmlaunch.desktop
+===================================================================
+--- kcontrol/launch/kcmlaunch.desktop.orig
++++ kcontrol/launch/kcmlaunch.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=launch
++Icon=kcmlaunch
+ Type=Application
+ DocPath=kcontrol/kcmlaunch/index.html
+ Exec=kcmshell kcmlaunch
+Index: kcontrol/dnssd/kcm_kdnssd.desktop
+===================================================================
+--- kcontrol/dnssd/kcm_kdnssd.desktop.orig
++++ kcontrol/dnssd/kcm_kdnssd.desktop
+@@ -70,7 +70,7 @@ Comment[zh_TW]=設定服務偵測
+ Exec=kcmshell kcm_kdnssd
+ GenericName=
+ GenericName[ko]=일반
+-Icon=blockdevice
++Icon=kcmkdnssd
+ MimeType=
+ Name=Service Discovery
+ Name[af]=Dienste ontdekker
+Index: kcontrol/spellchecking/spellchecking.desktop
+===================================================================
+--- kcontrol/spellchecking/spellchecking.desktop.orig
++++ kcontrol/spellchecking/spellchecking.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Exec=kcmshell spellchecking
+-Icon=spellcheck
++Icon=kcmspellchecking
+ Type=Application
+ DocPath=kcontrol/spellchecking/index.html
+ 
+Index: konqueror/sidebar/trees/history_module/kcmhistory.desktop
+===================================================================
+--- konqueror/sidebar/trees/history_module/kcmhistory.desktop.orig
++++ konqueror/sidebar/trees/history_module/kcmhistory.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=history
++Icon=kcmhistory
+ Type=Application
+ Exec=kcmshell kcmhistory
+ 
+Index: kioslave/cgi/kcmcgi/kcmcgi.desktop
+===================================================================
+--- kioslave/cgi/kcmcgi/kcmcgi.desktop.orig
++++ kioslave/cgi/kcmcgi/kcmcgi.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Icon=run
++Icon=kcmcgi
+ Type=Application
+ Exec=kcmshell kcmcgi
+ DocPath=
+Index: kioslave/media/kcmodule/media.desktop
+===================================================================
+--- kioslave/media/kcmodule/media.desktop.orig
++++ kioslave/media/kcmodule/media.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ #DocPath=
+-Icon=system
++Icon=kcmmedia
+ Exec=kcmshell media
+ 
+ 

@@ -1,0 +1,27 @@
+Source: trinity-keyring
+Section: misc
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: debhelper (>= 10~), cdbs, gnupg
+Standards-Version: 3.8.4
+
+Package: trinity-keyring
+Priority: important
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: GnuPG keys of the Trinity Desktop Environment repository
+ The Trinity repository digitally signs its Release files. This package
+ contains the repository key used for that.
+
+Package: trinity-keyring-udeb
+Package-Type: udeb
+Priority: important
+Architecture: all
+Section: debian-installer
+Depends: ${misc:Depends}
+Recommends: gpgv-udeb
+Description: GnuPG keys of the Trinity Desktop Environment repository
+ The Trinity repository digitally signs its Release files. This package
+ contains the repository key used for that, in a minimal form for use
+ in the installer.

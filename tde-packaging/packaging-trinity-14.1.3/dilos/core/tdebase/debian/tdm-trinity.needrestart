@@ -1,0 +1,4 @@
+
+# Override default selection for Trinity Display Manager
+$nrconf{override_rc}{ q(^tdm) } = 0;
+

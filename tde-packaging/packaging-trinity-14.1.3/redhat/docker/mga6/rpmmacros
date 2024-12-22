@@ -1,0 +1,4 @@
+%dist .mga6
+%_smp_mflags -j8
+%jobs 8
+%_program_prefix ""

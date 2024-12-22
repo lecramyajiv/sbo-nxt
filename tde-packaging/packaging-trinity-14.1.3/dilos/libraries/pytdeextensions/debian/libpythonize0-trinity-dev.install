@@ -1,0 +1,4 @@
+usr/include/pythonize.h
+usr/lib/*/libpythonize.a
+usr/lib/*/libpythonize.la
+usr/lib/*/libpythonize.so

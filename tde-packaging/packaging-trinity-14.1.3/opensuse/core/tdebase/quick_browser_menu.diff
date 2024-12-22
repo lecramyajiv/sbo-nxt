@@ -1,0 +1,30 @@
+Index: kicker/kicker/ui/browser_mnu.cpp
+===================================================================
+--- kicker/kicker/ui/browser_mnu.cpp.orig
++++ kicker/kicker/ui/browser_mnu.cpp
+@@ -31,6 +31,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ #include <kfileitem.h>
+ #include <kglobal.h>
+ #include <kglobalsettings.h>
++#include <kconfig.h>
+ #include <kiconloader.h>
+ #include <kio/global.h>
+ #include <klocale.h>
+@@ -148,12 +149,14 @@ void PanelBrowserMenu::initialize()
+     // only the first part menu got them
+     if(_startid == 0 && !_filesOnly) {
+        insertTitle(path());
++       KConfig *c = KGlobal::config();
++       c->setGroup("menus");
+        insertItem(CICON("kfm"), i18n("Open in File Manager"), this, SLOT(slotOpenFileManager()));
+-        if (kapp->authorize("shell_access"))
+-            insertItem(CICON("terminal"), i18n("Open in Terminal"), this, SLOT(slotOpenTerminal()));
++	if (kapp->authorize("shell_access") && c->readBoolEntry("kickerOpenInTerminalIsVisible",false)) 
++	    insertItem(CICON("terminal"), i18n("Open in Terminal"), this, SLOT(slotOpenTerminal()));
++    	insertSeparator();
+     }
+ 
+-
+     bool first_entry = true;
+     bool dirfile_separator = false;
+     unsigned int item_count = 0;

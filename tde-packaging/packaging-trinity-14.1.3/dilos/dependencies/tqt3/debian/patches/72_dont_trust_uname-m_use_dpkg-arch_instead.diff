@@ -1,0 +1,50 @@
+author: Sune Vuorela <debian@pusling.com>
+
+--- a/configure
++++ b/configure
+@@ -34,7 +34,44 @@ SUPPORTED=
+ #-------------------------------------------------------------------------------
+ 
+ # need that throughout the script
+-UNAME_MACHINE=`(uname -m) 2>/dev/null` || UNAME_MACHINE=unknown
++DPKG_ARCH=`(dpkg-architecture -qDEB_HOST_ARCH) 2>/dev/null` || UNAME_MACHINE=unknown
++case $DPKG_ARCH in 
++	amd64)
++		UNAME_MACHINE="x86_64"
++	;;
++	arm)
++		UNAME_MACHINE="armv4l"
++	;;
++	armel)
++		UNAME_MACHINE="armv5tel"
++	;;
++	hppa)
++		UNAME_MACHINE="parisc64"
++	;;
++	hurd-i386)
++		UNAME_MACHINE="i686-AT386"
++	;;
++	i386)
++		UNAME_MACHINE="i686"
++	;;
++	kfreebsd-amd64)
++		UNAME_MACHINE="x86_64"
++	;;
++	kfreebsd-i386)
++		UNAME_MACHINE="i586"
++	;;
++	mipsel)
++		UNAME_MACHINE="mips"
++	;;
++	powerpc)
++		UNAME_MACHINE="ppc"
++	;;
++	*)
++		UNAME_MACHINE="$DPKG_ARCH"
++	;;
++
++
++esac
+ UNAME_RELEASE=`(uname -r) 2>/dev/null` || UNAME_RELEASE=unknown
+ UNAME_SYSTEM=`(uname -s) 2>/dev/null`  || UNAME_SYSTEM=unknown
+ UNAME_VERSION=`(uname -v) 2>/dev/null` || UNAME_VERSION=unknown

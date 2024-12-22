@@ -1,0 +1,16 @@
+debian/tmp/usr/bin/kfloppy
+debian/tmp/usr/share/applications/tde/KFloppy.desktop
+debian/tmp/usr/share/apps/konqueror/servicemenus/floppy_format.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/kfloppy/common
+debian/tmp/usr/share/doc/tde/HTML/en/kfloppy/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kfloppy/index.docbook
+debian/tmp/usr/share/icons/hicolor/128x128/apps/kfloppy.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kfloppy.png
+debian/tmp/usr/share/icons/hicolor/22x22/apps/kfloppy.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kfloppy.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kfloppy.png
+debian/tmp/usr/share/icons/hicolor/64x64/apps/kfloppy.png
+debian/tmp/usr/share/man/man1/kfloppy.1
+
+debian/icons/kfloppy.xpm		/usr/share/pixmaps
+debian/icons/kfloppy-16.xpm		/usr/share/pixmaps

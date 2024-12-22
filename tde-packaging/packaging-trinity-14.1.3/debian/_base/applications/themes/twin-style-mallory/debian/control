@@ -1,0 +1,13 @@
+Source: twin-style-mallory-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Remi Villatel <maxilys@tele2.fr>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs-trinity-dev, tdebase-trinity-dev
+Standards-Version: 3.6.2
+
+Package: twin-style-mallory-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A twin window decoration based on the original
+ KDE Alloyon windec theme

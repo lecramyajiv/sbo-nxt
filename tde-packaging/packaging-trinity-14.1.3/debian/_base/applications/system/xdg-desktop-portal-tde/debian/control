@@ -1,0 +1,15 @@
+Source: xdg-desktop-portal-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+
+Package: xdg-desktop-portal-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, xdg-desktop-portal
+Conflicts: xdg-desktop-portals-trinity
+Provides: xdg-desktop-portals-trinity
+Replaces: xdg-desktop-portals-trinity
+Description: An implementation of the FreeDesktop Portals API for TDE
+ Exposes TDE APIs to applications which use the Portals API.
+ As a result, these applications can transparently use native TDE APIs and dialogs.

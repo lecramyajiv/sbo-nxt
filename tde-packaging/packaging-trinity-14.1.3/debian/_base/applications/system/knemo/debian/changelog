@@ -1,0 +1,272 @@
+knemo-trinity (0.4.8-3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+knemo-trinity (0.4.8-2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 06 March 2009 01:35:00 -0600
+
+knemo-trinity (0.4.8-1) intrepid; urgency=low
+
+  * Added -trinity prefix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue, 02 Dec 2008 09:37:00 -0600
+
+knemo (0.4.8-1) unstable; urgency=low
+
+  * New upstream release
+    - fixed high CPU load when the default gateway is missing (sysbackend)
+    - spawns many processes even when disabled (Closes: #411013)
+    - CPU usage way too high (Closes: #411146)
+    - New upstream 0.4.8 (Closes: #432835)
+
+ -- Mark Purcell <msp@debian.org>  Thu, 19 Jul 2007 21:48:50 +0100
+
+knemo (0.4.6-2) unstable; urgency=high
+
+  [ Mark Purcell ]
+  * Urgency high as this fixes multiple RC bugs
+  * fd-leakage patch from Matthias Dellweg
+    - (Closes:  Bug#409707: knemo: fd-leakage in sys backend)
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue,  6 Feb 2007 11:05:03 +0000
+
+knemo (0.4.6-1) unstable; urgency=low
+
+  * new upstream release
+
+  [ Achim Bohnet ]
+  * Add libiw-dev to build-deps. Now used by sys backend.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sun,  8 Oct 2006 23:31:03 +0200
+
+knemo (0.4.5-1) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * New upstream release
+  * Remove 12_tdesvn572745.diff as applied upstream
+  * Remove 13_fix_essid_regexp_for_not_quoted_strings.diff as applied
+    upstream
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Mon, 28 Aug 2006 21:31:40 +0100
+
+knemo (0.4.4-2) unstable; urgency=low
+
+  [ Achim Bohnet ]
+  * control: remove Depends: tdelibs-bin.  tdelibs-bin was merged into
+    tdelibs4c2a (4:3.5.3-1). tdelibs4c2a is added via ${shlibs:Depends}.
+    Thx Hobbsee for reminding me (again and again :).
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue, 22 Aug 2006 17:11:42 +0200
+
+knemo (0.4.4-1) unstable; urgency=low
+
+  * new upstream release
+
+  [ Achim Bohnet ]
+  * added debian/patches/12_tdesvn572745.diff: Pull from KDE SVN:
+    Fixed counting of transmitted data
+  * added debian/patches/11_revert_load_on_demand.diff:
+    With load on demand, knemo does not start on login.
+    So reverting to 0.4.2 behaviour.  This patch
+    reverts Dirk Muellers change from 6-Aug-2006
+    trunk/extragear/network/knemo/knemod/knemod.desktop #570450:570451
+    See also: http://bugs.kde.org/show_bug.cgi?id=132218
+  * added debian/patches/13_fix_essid_regexp_for_not_quoted_strings.diff
+    Fixes broken ESSID extraction from iwconfig output for the case that
+    the ESSID value is not quoted.
+  * debian/copyright: update list of translators
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue, 15 Aug 2006 00:29:24 +0200
+
+knemo (0.4.3-1) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * New upstream release
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sun,  6 Aug 2006 22:40:42 +0100
+
+knemo (0.4.2-1) unstable; urgency=low
+
+  [ Achim Bohnet ]
+  * New upstream release:
+    - fixed crash when opening status dialog or tooltips
+  * check copyrights and update debian/copyright
+
+  [ Debian KDE Extras Team ]
+  * random crashes (Closes: #374391)
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Fri, 30 Jun 2006 23:13:53 +0100
+
+knemo (0.4.1-1) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * New upstream release
+    - Fixes: encoding error in desktop file (Closes: #343290)
+    - Fixes: link quality of a wireless interface is not shown (Closes: #350393)
+  * knemo - lists mailing list as uploader in changelog (Closes: #340845)
+     - No consensus reached on debian-devel
+     - Report 200 days old
+     - Other packages have closed their uploader 'bugs'
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue, 13 Jun 2006 13:07:37 +0100
+
+knemo (0.4.0-2) unstable; urgency=low
+
+  [Achim Bohnet]
+  * Remove unsermake from build-dep. Closes #366932: knemo - FTBFS: Build
+    depends against unavailable package: unsermake
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Thu, 11 May 2006 22:46:08 +0100
+
+knemo (0.4.0-1) unstable; urgency=low
+
+  * New upstream release
+    - Fixes: FTBFS with G++ 4.1: extra qualification (Closes: #357359)
+    - Fixes: Description improvement (Closes: #341298)
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sun,  2 Apr 2006 14:54:32 +0100
+
+knemo (0.3.1-5) unstable; urgency=low
+
+  [ Achim Bohnet ]
+  * short description: replace "KDEs systray" with "KDE's systray"
+    (Closes: 341298)
+  * patches/11_tdesvn_505129_add_kcm_desktop_keywords.diff:  added
+    keywords to knemo's kcontrol desktop file.  Knemo configuration
+    can now be found via 'Search:' (suggested by gbrinkmann on kde-apps)
+    This also fixes, well removes, the non UTF-8 encoding in comment[de],
+    about update-desktop-database complained.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Thu,  1 Dec 2005 00:52:03 +0100
+
+knemo (0.3.1-4) unstable; urgency=low
+
+  +++ Changes by Achim Bohnet:
+
+  * Initial release (Closes: #259245)
+  * Installed kcm_knemo.desktop in /usr/share/application/kde not the
+    old /usr/share/applnk dir.
+  * build-dep: add autotools-dev so recent config.guess config.sub are
+    used (Thx Michael Biebl)
+  * Use bugs.kde.org, not Percys email as addressee for bugs (stolen from
+    KDE SVN commit 461692)
+  * debian/copyright: update FSF address
+  
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Mon, 14 Nov 2005 21:05:38 +0100
+
+knemo (0.3.1-3) unstable; urgency=low
+
+  * debian/copyright: mention explicitely that knemo as a whole
+    is distributed under the GPL
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue,  7 Jun 2005 01:04:33 +0200
+
+knemo (0.3.1-2) unstable; urgency=low
+
+  * long description: mention that usage of ifconfig, route and
+    iwconfig for polling the inferface status once per second.
+  * debian/copyright: finished license and copyright review
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Wed, 27 Apr 2005 00:57:07 +0200
+
+knemo (0.3.1-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Fri,  1 Oct 2004 22:50:12 +0200
+
+knemo (0.3.0-1) unstable; urgency=low
+
+  * new upstream release
+  * updated list of translators in copyright
+  * add traffic plotter to long description
+  * removed now empty debian/TODO ;)
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue, 14 Sep 2004 22:10:30 +0200
+
+knemo (0.2.3-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue, 24 Aug 2004 22:17:41 +0200
+
+knemo (0.2.1-1) unstable; urgency=low
+
+  * initial upload (closes: #259245)
+  * new upstream (maintenance) release
+  * wireless-tools: recommend them instead of depend on
+    (still build-dep on them)
+  * bit better short description (important part first)
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Fri, 13 Aug 2004 14:19:12 +0200
+
+knemo (0.2.0-2) unstable; urgency=low
+
+  * builds with pbuilder build
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Thu, 12 Aug 2004 00:12:05 +0200
+
+knemo (0.2.0-1) unstable; urgency=low
+
+  * new upstream release
+  * rename TODO.for.me to TODO so it gets installed
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Thu,  5 Aug 2004 19:15:44 +0200
+
+knemo (0.1.10-2) unstable; urgency=low
+
+  * debian/rules: don't install empty (line) NEWS file.
+  * update TODO
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Wed, 21 Jul 2004 19:20:33 +0200
+
+knemo (0.1.10-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Mon, 12 Jul 2004 19:19:49 +0200
+
+knemo (0.1.9-1) unstable; urgency=low
+
+  * new upstream release
+  * copyright: added Translators Jurado Maqueda (es) and Malin Malinov (bg)
+  * add net-tools, wireless-tools to build-dep. Configure now checks
+    for i[fw]config (instead of hardcoded path in *.cpp files)
+  * added home page on kde-apps to control
+  * Add to depends: tdelibs-bin (contains kded), kicker
+  * Add to recommends: kcontrol  (contains tdecmshell, kcontrol)
+  * fixed version in VERSION file s/0.1.8/0.1.9/
+  * README: s/&lt;/</
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Sun, 11 Jul 2004 11:25:07 +0200
+
+knemo (0.1.8-2) unstable; urgency=low
+
+  * interfaceupdater.cpp:150 s/"inet"/"inet "/ to prevent match with inet6
+  * disable build of handbook via doc/configure.in.in.
+    		DO_NOT_COMPILE="$DO_NOT_COMPILE doc"
+    handbook is just an empty template.
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue, 29 Jun 2004 23:41:30 +0200
+
+knemo (0.1.8-1) unstable; urgency=low
+
+  * new upstream release.
+  * use /sbin/iwconfig path in .h, .cpp and .ui files
+  * add dependency on net-tools for ifconfig and wireless-tools
+    for iwconfig.
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue, 29 Jun 2004 00:30:25 +0200
+
+knemo (0.1.5-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Michael Harlaut <mike@harlaut.net>  Sun, 30 May 2004 22:27:54 +0200
+

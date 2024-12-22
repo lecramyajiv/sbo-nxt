@@ -1,0 +1,8 @@
+Cervisia for Debian
+-------------------
+
+This application provides documentation in a docbook format that the TDE
+Help Centre can display.  For HTML documentation that can be read in any
+web browser, see the package tdesdk-doc-html.
+
+ -- Ben Burton <bab@debian.org>, Mon, 12 May 2003 12:29:39 +1000

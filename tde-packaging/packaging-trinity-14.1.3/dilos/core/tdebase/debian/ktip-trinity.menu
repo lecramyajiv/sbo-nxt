@@ -1,0 +1,11 @@
+?package(ktip-trinity):\
+	needs="X11"\
+	section="Help"\
+	hints="TDE"\
+	title="KTip"\
+	icon32x32="/usr/share/pixmaps/ktip.xpm"\
+	icon16x16="/usr/share/pixmaps/ktip-16.xpm"\
+	command="/usr/bin/ktip"
+
+# Icon 32x32 ktip/cr32-app-ktip.png ktip.xpm
+# Icon 16x16 ktip/cr16-app-ktip.png ktip-16.xpm

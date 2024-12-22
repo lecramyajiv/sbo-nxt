@@ -1,0 +1,74 @@
+tdebase (4:3.4.2-3) unstable; urgency=low
+
+  *** Changes to TDM conffiles:
+
+  * Users upgrading TDM from 3.3.x, will find that TDM no longer uses the
+    /etc/trinity/tdm/Xservers file, if /etc/trinity/tdm/tdmrc was updated to
+    the version shipped with TDM 3.4.x. The package upgrade scripts
+    will not remove Xservers even if tdmrc has been upgraded, if they detect
+    local modifications. This should allow administrators to merge their
+    Xservers changes into tdmrc before themselves removing Xservers. The new
+    ServerArgsLocal key in tdmrc is where most old Xservers customizations
+    should be placed.
+
+  * Irrespective of the removal of the Xservers file, we highly recommend that
+    all administrators accept the installation of the updated tdmrc file
+    during the package upgrade. Many important changes to TDM's defaults have
+    been made, and TDM is exceedingly bad at handling anything but the latest
+    tdmrc format, so the nuissance of re-customizing TDM will likely prove
+    less than the nuissance of dealing with a TDM that isn't working properly.
+    If you have already upgraded TDM package without accepting the new tdmrc,
+    purging and reinstalling the package should achieve the desired result.
+
+  *** Changes to user login script handling:
+
+  * Another important change that users upgrading from TDM 3.3.x may notice
+    is that TDM's ability to source personal login scripts, long disabled, has
+    been restored. The exact files sourced on login will depend on the user's
+    choice of shell. For users of bash, TDM will source /etc/profile, followed
+    by ~/.bash_profile or, if that is not present, ~/.profile. Note that TDM
+    is NOT spawning a login shell, but is merely mimicking the behaviour that
+    popular shells would exhibit if they were login shells, by manually
+    sourcing the customary login scripts. /etc/trinity/tdm/Xsession controls this
+    behaviour.
+
+  * The important downside of the above approach is that TDM will utterly fail
+    to start a user's session if the newly sourced files contain certain types
+    of commands. For instance, many commands will cause the login attempt to
+    fail because they expect an interactive shell, or because you are trying
+    to "exec" something that cannot provide an X session. For instance,
+    "exec ksmserver" will launch KDE, but "exec bash" will fail. Thus if you
+    are unsure why TDM is refusing to start your session, try commenting out
+    elements of the newly sourced login scripts, and you may find the problem
+    resolved.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  8 Sep 2005 11:13:41 -0400
+
+tdebase (4:3.3.2-1) unstable; urgency=low
+
+  * Users upgrading from KDE 3.2 might find that their keyboards seem no longer
+    to work in TDM. This problem is caused by a change in KDE's handling of
+    virtual terminals. The setting which puts TDM on vt7, which was contained
+    in /etc/trinity/tdm/Xservers, has changed, and is also now located in
+    /etc/trinity/tdm/tdmrc.
+
+  * Users who, when upgrading to KDE 3.3, opted to replace their Xservers file
+    with the version shipped by the package, but chose to retain their
+    /etc/trinity/tdm/tdmrc file, will thus have a TDM configuration which nowhere
+    contains a setting which properly places TDM on vt7. This can result in a
+    race condition which has the end effect of breaking the keyboard when using
+    TDM.
+
+  * The solution to the problem is either to replace both of Xservers and
+    tdmrc, or neither, when upgrading to KDE 3.3 for the first time.
+
+  * Users already stuck can, after killing KDE, purge and re-install the tdm
+    package, ensuring that the latest, fresh copies are installed.
+    Alternatively, they can edit /etc/trinity/tdm/tdmrc and add the following
+    line:
+
+      ServerVTs=-7
+
+    in the [General] section of the file.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun, 23 Jan 2005 16:11:07 +0100

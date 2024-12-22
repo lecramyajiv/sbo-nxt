@@ -1,0 +1,8 @@
+?package(amarok-trinity):\
+	needs="X11"\
+	section="Applications/Sound"\
+	hints="TDE"\
+	title="Amarok"\
+	icon32x32="/opt/trinity/share/pixmaps/amarok.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/amarok-16.xpm"\
+	command="/opt/trinity/bin/amarok"

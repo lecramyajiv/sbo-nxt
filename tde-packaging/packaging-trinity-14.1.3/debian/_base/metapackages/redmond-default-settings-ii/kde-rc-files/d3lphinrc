@@ -1,0 +1,28 @@
+[D3lphin Toolbar style]
+IconText=IconTextBottom
+
+[General]
+Default View Mode=2
+
+[Icons Mode]
+Grid Height=72
+Grid Spacing=20
+Grid Width=120
+Icon Size=48
+Number of Textlines=2
+Preview Size=48
+
+[MainWindow Toolbar mainToolBar]
+IconText=IconTextBottom
+
+[Previews Mode]
+Grid Height=96
+Grid Width=96
+Icon Size=64
+Preview Size=64
+Number of Textlines=2
+Preview Size=64
+
+[rightSidebar]
+Selected Page=Information
+Visible=true

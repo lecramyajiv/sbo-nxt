@@ -1,0 +1,9 @@
+sip4-tqt (4.10.5-0ubuntu1) maverick; urgency=low
+
+  * New upstream release
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue, 22 Nov 2011 03:03:00 -0600
+
+Local variables:
+mode: debian-changelog
+End:

@@ -1,0 +1,12 @@
+tdebluez-trinity (4:14.1.0-0debian10.1.1+eko1) unstable; urgency=low
+
+  * Build for buster. 
+
+ -- Emanoil Kotsev <deloptes@gmail.com>  Sat, 02 Nov 2019 22:00:00 +0100
+
+tdebluez (4:14.1.0-0debian9.0.5+eko1) unstable; urgency=low
+
+  * Rework of Dbus interface to Bluez5 for TDE 14.1. 
+
+ -- Emanoil Kotsev <deloptes@gmail.com>  Sat, 29 Sep 2018 22:00:00 +0100
+

@@ -1,0 +1,9 @@
+Document: kmplot
+Title: KmPlot Handbook
+Author: Klaus-Dieter Moeller <kd.moeller@t-online.de> and Philip Rodrigues <phil.rod@ntlworld.com>
+Abstract: KmPlot is a mathematical function plotter for the Trinity Desktop.
+Section: Apps/Math
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kmplot/index.html
+Files: /usr/share/doc/tde/HTML/en/kmplot/*.html

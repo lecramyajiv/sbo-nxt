@@ -1,0 +1,11 @@
+--- qt-x11-free-3.2.3/src/dialogs/qprintdialog.cpp--	2004-04-28 14:29:11.943776549 +0200
++++ qt-x11-free-3.2.3/src/dialogs/qprintdialog.cpp	2004-04-28 14:30:22.202024626 +0200
+@@ -779,7 +779,7 @@ static char * parseCupsOutput( QListView
+     cups_dest_t * d;
+     QLibrary lib( "cups" );
+     typedef int (*CupsGetDests)(cups_dest_t **dests);
+-    CupsGetDests _cupsGetDests = (CupsGetDests)lib.resolve( "cupsGetDests" );
++    CupsGetDests _cupsGetDests = (CupsGetDests)QLibrary::resolve( "libcups.so.2", "cupsGetDests" );
+     if ( _cupsGetDests ) {
+ 	nd = _cupsGetDests( &d );
+ 	if ( nd < 1 )

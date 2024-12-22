@@ -1,0 +1,11 @@
+?package(krec-trinity):\
+	needs="X11"\
+	section="Apps/Sound"\
+	hints="TDE"\
+	title="KRec"\
+	icon32x32="/usr/share/pixmaps/krec.xpm"\
+	icon16x16="/usr/share/pixmaps/krec-16.xpm"\
+	command="/usr/bin/krec"
+
+# Icon 32x32 krec/cr32-app-krec.png krec.xpm
+# Icon 16x16 krec/cr16-app-krec.png krec-16.xpm

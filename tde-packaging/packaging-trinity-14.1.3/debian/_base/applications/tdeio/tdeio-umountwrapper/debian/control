@@ -1,0 +1,17 @@
+Source: tdeio-umountwrapper-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: tdeio-umountwrapper-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: kio-umountwrapper-trinity (<< 4:14.0.0~)
+Breaks: kio-umountwrapper-trinity (<< 4:14.0.0~)
+Description: progress dialog for safely removing devices in Trinity.
+ Wrapper around tdeio_media_mountwrapper.
+ Provides a progress dialog for Safely Removing of devices in Trinity.
+ .
+  Homepage: http://frode.kde.no/misc/tdeio_umountwrapper/

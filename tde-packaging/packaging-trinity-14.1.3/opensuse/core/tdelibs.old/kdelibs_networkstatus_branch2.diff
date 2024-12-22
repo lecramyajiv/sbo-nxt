@@ -1,0 +1,69 @@
+Index: kioslave/http/http.cc
+===================================================================
+--- kioslave/http/http.cc.orig
++++ kioslave/http/http.cc
+@@ -1804,9 +1804,11 @@ bool HTTPProtocol::isOffline(const KURL
+   QByteArray reply;
+ 
+   QDataStream stream(params, IO_WriteOnly);
+-  stream << url.url();
+ 
+-  if ( dcopClient()->call( "kded", "networkstatus", "status(QString)",
++  if ( url.host() == QString::fromLatin1("localhost") || url.host() == QString::fromLatin1("127.0.0.1") || url.host() == QString::fromLatin1("::") ) {
++      return false;
++  }
++  if ( dcopClient()->call( "kded", "networkstatus", "status()",
+                            params, replyType, reply ) && (replyType == "int") )
+   {
+      int result;
+@@ -2210,6 +2212,11 @@ bool HTTPProtocol::httpOpen()
+         // Conditional cache hit. (Validate)
+      }
+ 
++     if (bCacheOnly && bOffline)
++     {
++        error( ERR_OFFLINE_MODE, m_request.url.url() );
++        return false;
++     }
+      if (bCacheOnly)
+      {
+         error( ERR_DOES_NOT_EXIST, m_request.url.url() );
+@@ -2217,7 +2224,7 @@ bool HTTPProtocol::httpOpen()
+      }
+      if (bOffline)
+      {
+-        error( ERR_COULD_NOT_CONNECT, m_request.url.url() );
++        error( ERR_OFFLINE_MODE, m_request.url.url() );
+         return false;
+      }
+   }
+Index: kio/kio/global.cpp
+===================================================================
+--- kio/kio/global.cpp.orig
++++ kio/kio/global.cpp
+@@ -408,6 +408,9 @@ KIO_EXPORT QString KIO::buildErrorString
+     case KIO::ERR_POST_DENIED:
+       result = i18n( "Access to restricted port in POST denied.");
+       break;
++    case KIO::ERR_OFFLINE_MODE:
++      result = i18n( "Could not access %1.\nOffline mode active.").arg( errorText ); 
++      break;
+     default:
+       result = i18n( "Unknown error code %1\n%2\nPlease send a full bug report at http://bugs.kde.org." ).arg( errorCode ).arg( errorText );
+       break;
+Index: kio/kio/global.h
+===================================================================
+--- kio/kio/global.h.orig
++++ kio/kio/global.h
+@@ -244,8 +244,10 @@ namespace KIO
+     ERR_UPGRADE_REQUIRED = 64, // A transport upgrade is required to access this
+                                // object.  For instance, TLS is demanded by
+                                // the server in order to continue.
+-    ERR_POST_DENIED = 65    // Issued when trying to POST data to a certain Ports
++    ERR_POST_DENIED = 65,      // Issued when trying to POST data to a certain Ports
+                                // see job.cpp
++    ERR_OFFLINE_MODE = 66      // Used when an app is in offline mode and a 
++                               // requested document is unavailable.
+   };
+ 
+   /**

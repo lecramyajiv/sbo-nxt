@@ -1,0 +1,71 @@
+FROM openmandriva:5.0
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+COPY packages /packages
+RUN set -x \
+ && echo "proxy=http://proxy:3128" >>"/etc/dnf/dnf.conf" \
+ && dnf -y update \
+ && dnf -y install --skip-broken $(</packages)
+
+# Fix utempter detection
+RUN set -x \
+ && chmod a+r /usr/libexec/utempter/utempter
+
+# Add non-root user to build packages
+RUN set -x \
+ && rm -rf /home/trinity \
+ && useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>"/etc/sudoers" \
+ && echo "export QA_RPATHS=\$(( 0x0001|0x0002 ))" >>/home/trinity/.bashrc \
+ && chown -R trinity /home/trinity
+
+# Configure user trinity
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+RUN set -x \
+ && rpm -ivh http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/rdesktop-1.9.0-6.mga9.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/rdesktop.spec -e "s|%{_rpmconfigdir}/%{_real_vendor}|/usr/share/libtool/config|" \
+ && rpmbuild -bb ${HOME}/rpmbuild/SPECS/rdesktop.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/rdesktop-1*.rpm
+
+RUN set -x \
+ && rpm -ivh http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/cauldron/SRPMS/core/release/sword-1.9.0-11.mga10.src.rpm \
+ && rpmbuild -bb ${HOME}/rpmbuild/SPECS/sword.spec --define "cmake_build %__make %{?_smp_mflags}" --define "cmake_install %__make -C build install DESTDIR=%{?buildroot}" --define "__cc /usr/bin/gcc" --define "__cxx /usr/bin/g++" --define "_disable_ld_no_undefined 1" --define "mkrel %nil" --define "python3_ext_suffix .cpython-311-x86_64-linux-gnu.so" --nodeps \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/{lib64sword{1.9,-devel},sword}-1.9.0-*.rpm
+
+RUN set -x \
+ && rpmbuild --rebuild http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/yaz-5.34.0-1.mga9.src.rpm --nodeps \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/{lib64yaz{5,-devel},yaz}-5*.rpm
+
+RUN set -x \
+ && rpm -ivh http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/rdiff-backup-2.2.2-1.mga9.src.rpm \
+ && rpmbuild -bb ${HOME}/rpmbuild/SPECS/rdiff-backup.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/rdiff-backup-2*.rpm
+
+RUN set -x \
+ && rpmbuild --rebuild http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/cscope-15.9-3.mga9.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/cscope-15*.rpm
+
+RUN set -x \
+ && rpm -ivh http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/perl-Getopt-ArgvFile-1.110.0-10.mga9.src.rpm \
+ && rpmbuild -bb ${HOME}/rpmbuild/SPECS/perl-Getopt-ArgvFile.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-Getopt-ArgvFile-1*.rpm
+
+RUN set -x \
+ && rpm -ivh http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/perl-PAR-1.18.0-1.mga9.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/perl-PAR.spec -e "s/MYMETA.yml//" \
+ && rpmbuild -bb ${HOME}/rpmbuild/SPECS/perl-PAR.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-PAR-1*.rpm
+
+RUN set -x \
+ && rpm -ivh http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/perl-PAR-Packer-1.57.0-1.mga9.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/perl-PAR-Packer.spec -e "s/MYMETA.yml//" \
+ && rpmbuild -bb ${HOME}/rpmbuild/SPECS/perl-PAR-Packer.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-PAR-Packer-1*.rpm
+
+RUN set -x \
+ && rpmbuild --rebuild http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/wireless-tools-30-0.pre9.14.mga9.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/lib64iw{30,-devel}-30*.rpm

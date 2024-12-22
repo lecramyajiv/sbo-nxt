@@ -1,0 +1,10 @@
+#!/bin/sh 
+
+set -e
+
+update-alternatives --install \
+	/usr/bin/linguist linguist "/usr/bin/tqlinguist" "45" \
+	--slave /usr/share/man/man1/linguist.1.gz linguist.1.gz \
+	"/usr/share/man/man1/tqlinguist.1.gz"
+
+#DEBHELPER#

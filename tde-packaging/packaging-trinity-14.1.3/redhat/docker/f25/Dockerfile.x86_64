@@ -1,0 +1,21 @@
+FROM fedora:25
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+# Add RPMFUSION repository
+RUN rpm -Uvh https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-25.noarch.rpm
+
+# Install Trinity build dependencies
+ADD packages /etc/yum.repos.d/packages
+RUN dnf update -y
+RUN dnf install -y $(</etc/yum.repos.d/packages)
+
+# Add YUM repository for locally built packages
+ADD rpmbuild.repo /etc/yum.repos.d/rpmbuild.repo
+RUN sed -i "/etc/yum.repos.d/rpmbuild.repo" -e "s|\${ARCH}|${ARCH}|g" -e "s|\${TDE_VERSION}|${TDE_VERSION}|g"
+
+# Add non-root user to build packages
+RUN useradd -m -s /bin/bash -u 1000 trinity
+RUN echo "trinity ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+ADD rpmmacros /home/trinity/.rpmmacros

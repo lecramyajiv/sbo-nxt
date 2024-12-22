@@ -1,0 +1,153 @@
+diff -wruN kdebase-3.5.10.orig/kioslave/media/mediamanager/fstabbackend.cpp kdebase-3.5.10/kioslave/media/mediamanager/fstabbackend.cpp
+--- kdebase-3.5.10.orig/kioslave/media/mediamanager/fstabbackend.cpp	2006-10-01 21:31:54.000000000 +0400
++++ kdebase-3.5.10/kioslave/media/mediamanager/fstabbackend.cpp	2011-08-17 14:51:34.697199962 +0400
+@@ -50,7 +50,7 @@
+ #define MTAB "/etc/mnttab"
+ #else
+ #define FSTAB "/etc/fstab"
+-#define MTAB "/etc/mtab"
++#define MTAB "/proc/self/mounts"
+ #endif
+ 
+ 
+@@ -58,7 +58,7 @@
+ FstabBackend::FstabBackend(MediaList &list, bool networkSharesOnly)
+ 	: QObject(), BackendBase(list), m_networkSharesOnly(networkSharesOnly)
+ {
+-	KDirWatch::self()->addFile(MTAB);
++	KDirWatch::self()->addDir("/media",0);
+ 	KDirWatch::self()->addFile(FSTAB);
+ 
+ 	connect( KDirWatch::self(), SIGNAL( dirty(const QString&) ),
+@@ -94,7 +94,7 @@
+ 		m_mediaList.removeMedium(*it, false);
+ 	}
+         KDirWatch::self()->removeFile(FSTAB);
+-        KDirWatch::self()->removeFile(MTAB);
++        KDirWatch::self()->removeDir("/media");
+ }
+ 
+ QString FstabBackend::mount( const QString &_udi )
+@@ -119,8 +119,9 @@
+ 
+ void FstabBackend::slotDirty(const QString &path)
+ {
+-	if (path==MTAB)
++	if (path=="/media")
+ 	{
++		sleep(1);
+ 		handleMtabChange();
+ 	}
+ 	else if (path==FSTAB)
+@@ -136,18 +137,23 @@
+ 	  || mount->mountType() == "sysfs"
+ 	  || mount->mountType() == "fdescfs"
+ 	  || mount->mountType() == "kernfs"
++	  || mount->mountType() == "devtmpfs"
++	  || mount->mountType() == "rootfs"
+ 	  || mount->mountType() == "usbfs"
+ 	  || mount->mountType().contains( "proc" )
++	  || mount->mountType().contains( "gvfs" )
+ 	  || mount->mountType() == "unknown"
+ 	  || mount->mountType() == "none"
+ 	  || mount->mountType() == "sunrpc"
+ 	  || mount->mountedFrom() == "none"
+ 	  || mount->mountedFrom() == "tmpfs"
+ 	  || mount->mountedFrom().find("shm") != -1
+-	  || mount->mountPoint() == "/dev/swap"
++	  || !(mount->mountPoint() == "/" || mount->mountPoint().find("/media") == 0 )
++/*	  || mount->mountPoint() == "/dev/swap"
++	  || mount->mountPoint() == "/dev"
+ 	  || mount->mountPoint() == "/dev/pts"
+ 	  || mount->mountPoint().find("/proc") == 0
+-	  || mount->mountPoint().find("/sys") == 0
++	  || mount->mountPoint().find("/sys") == 0 */
+ 
+ 	  // We might want to display only network shares
+ 	  // since HAL doesn't handle them
+@@ -187,10 +193,12 @@
+ 		   nothing has changed, do not stat the mount point. Avoids
+ 		   hang if network shares are stalling */
+ 		QString mtabEntry = dev + "*" + mp + "*" + fs;
++#if 0
+ 		if(m_mtabEntries.contains(mtabEntry)) {
+ 		        new_mtabIds += m_mtabEntries[mtabEntry];
+ 			continue;
+ 		}
++#endif
+ 
+ 		QString id = generateId(dev, mp);
+ 		new_mtabIds+=id;
+@@ -203,7 +211,6 @@
+ 			m_mediaList.changeMediumState(id, true, false,
+ 			                              mime, icon, label);
+ 		}
+-#if 0
+ 		else if ( !m_mtabIds.contains(id) )
+ 		{
+ 			QString name = generateName(dev, fs);
+@@ -219,9 +226,8 @@
+ 			m->setIconName(icon);
+ 			m->setLabel(label);
+ 
+-			m_mediaList.addMedium(m, notificationAllowed);
++			m_mediaList.addMedium(m, allowNotification);
+ 		}
+-#endif
+ 	}
+ 
+ 	QStringList::iterator it2 = m_mtabIds.begin();
+@@ -247,12 +253,10 @@
+ 			m_mediaList.changeMediumState(*it2, false, false,
+ 			                              mime, icon, label);
+ 		}
+-#if 0
+ 		else if ( !new_mtabIds.contains(*it2) )
+ 		{
+ 			m_mediaList.removeMedium(*it2, allowNotification);
+ 		}
+-#endif
+ 	}
+ 
+ 	m_mtabIds = new_mtabIds;
+diff -wruN kdebase-3.5.10.orig/kioslave/media/mediamanager/removablebackend.cpp kdebase-3.5.10/kioslave/media/mediamanager/removablebackend.cpp
+--- kdebase-3.5.10.orig/kioslave/media/mediamanager/removablebackend.cpp	2006-03-17 13:17:33.000000000 +0300
++++ kdebase-3.5.10/kioslave/media/mediamanager/removablebackend.cpp	2011-08-17 14:51:51.854357476 +0400
+@@ -27,7 +27,7 @@
+ #ifdef _OS_SOLARIS_
+ #define MTAB "/etc/mnttab"
+ #else
+-#define MTAB "/etc/mtab"
++#define MTAB "/proc/self/mounts"
+ #endif
+ 
+ 
+@@ -35,7 +35,7 @@
+ RemovableBackend::RemovableBackend(MediaList &list)
+ 	: QObject(), BackendBase(list)
+ {
+-	KDirWatch::self()->addFile(MTAB);
++	KDirWatch::self()->addDir("/media",0);
+ 
+ 	connect( KDirWatch::self(), SIGNAL( dirty(const QString&) ),
+ 	         this, SLOT( slotDirty(const QString&) ) );
+@@ -52,7 +52,7 @@
+ 		m_mediaList.removeMedium(*it, false);
+ 	}
+ 
+-        KDirWatch::self()->removeFile(MTAB);
++        KDirWatch::self()->removeDir("/media");
+ }
+ 
+ bool RemovableBackend::plug(const QString &devNode, const QString &label)
+@@ -116,8 +116,9 @@
+ 
+ void RemovableBackend::slotDirty(const QString &path)
+ {
+-	if (path==MTAB)
++	if (path=="/media")
+ 	{
++		sleep(1);
+ 		handleMtabChange();
+ 	}
+ }

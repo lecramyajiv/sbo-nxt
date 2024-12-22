@@ -1,0 +1,19 @@
+debian/tmp/opt/trinity/bin/kcolorchooser
+debian/tmp/opt/trinity/bin/kcoloredit
+debian/tmp/opt/trinity/share/applications/tde/kcolorchooser.desktop
+debian/tmp/opt/trinity/share/applications/tde/kcoloredit.desktop
+debian/tmp/opt/trinity/share/apps/kcoloredit/kcoloreditui.rc
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcoloredit/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcoloredit/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kcoloredit/index.docbook
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kcolorchooser.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kcoloredit.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kcolorchooser.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kcoloredit.png
+debian/tmp/opt/trinity/share/man/man1/kcolorchooser.1
+debian/tmp/opt/trinity/share/man/man1/kcoloredit.1
+
+debian/icons/kcolorchooser.xpm		/opt/trinity/share/pixmaps
+debian/icons/kcolorchooser-16.xpm	/opt/trinity/share/pixmaps
+debian/icons/kcoloredit.xpm		/opt/trinity/share/pixmaps
+debian/icons/kcoloredit-16.xpm		/opt/trinity/share/pixmaps

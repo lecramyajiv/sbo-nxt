@@ -1,0 +1,102 @@
+ktechlab-trinity (0.3-9~1ubuntu0) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+ktechlab-trinity (0.3-9~0ubuntu5) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 06 March 2009 01:35:00 -0600
+
+ktechlab-trinity (0.3-9~0ubuntu2) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 19 Dec 2008 12:52:00 -0600
+
+ktechlab (0.3-9) unstable; urgency=low
+
+  * adopted the package ktechlab, with the agreement of Steffen Joeris.
+  * Made a new patch to make the package compilable with g++-4.3:
+    src/electronics/simulation/matrix.cpp: simplified the invokation of
+      new ETMap() to use the default parameters
+    other places: cleaned the calls to std::abs which need either a 
+      float or a double, made a few modifications to include math.h, 
+      define the type uint when necessary.
+    (Closes: #474842)
+  * Made a true Homepage: entry in debian/control
+  * Upgraded Standards-Version to 3.7.3
+  * added a French translation, modified po/Makefile.in to deal with
+    translations.
+  * Raised the DH_COMPAT level to 6.
+  * Added tdesdk-scripts to build-depends to get the extractrc command
+
+ -- Georges Khaznadar <georgesk@ofset.org>  Sat, 07 Jun 2008 05:38:09 +0200
+
+ktechlab (0.3-8) unstable; urgency=medium
+
+  * Add libpopt-dev as build-depends to avoid FTBFS (Closes: #441480)
+  * Remove two rpaths from the binaries and add chrpath to
+    build-depends
+  * Change Apps to Applications in menu file to follow new format
+
+ -- Steffen Joeris <white@debian.org>  Wed, 19 Sep 2007 22:29:06 +1000
+
+ktechlab (0.3-7) unstable; urgency=low
+
+  * Upload to unstable
+
+ -- Steffen Joeris <white@debian.org>  Tue, 08 May 2007 18:02:15 +1000
+
+ktechlab (0.3-6) experimental; urgency=low
+
+  * Expand 30-g++-4.2.dpatch to cover another compiler problem,
+    thanks to Martin Michlmayer (Closes: #394173)
+  * Change my maintainer address
+
+ -- Steffen Joeris <white@debian.org>  Tue,  9 Jan 2007 09:48:19 +0100
+
+ktechlab (0.3-5) unstable; urgency=low
+
+  * Add gpsim-dev to build-depends to get pic support working
+    (Closes: #357691)
+  * Add libgtk2.0-dev and libreadline5-dev to build-depends
+  * Upload sponsored by Petter Reinholdtsen.
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Fri, 29 Sep 2006 17:25:55 +1000
+
+ktechlab (0.3-4) unstable; urgency=low
+
+  * Now recommends gputils for other features
+  * Add 30-g++.dpatch to prevent FTBFS with g++-4.2 (Closes: #362208)
+  * Upload sponsored by Petter Reinholdtsen.
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Sat, 24 Jun 2006 14:03:05 +0200
+
+ktechlab (0.3-3) unstable; urgency=low
+
+  * Include patch to let ktechlab build with g++-4.1
+    Thanks to Martin Michlmayr (Closes: #356611)
+  * Upload sponsored by Petter Reinholdtsen.
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Mon, 13 Mar 2006 00:57:32 +0100
+
+ktechlab (0.3-2) unstable; urgency=low
+
+  * remove include sys/io.h to let the package build
+    on other archs then i386 and amd64 (Closes: #349854)
+  * add dpatch to build-depends
+  * upload sponsored by Petter Reinholdtsen.
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Thu, 26 Jan 2006 00:21:36 +0100
+
+ktechlab (0.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #308551)
+  * Upload sponsored by Petter Reinholdtsen.
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Thu, 12 Jan 2006 00:47:52 +0100
+

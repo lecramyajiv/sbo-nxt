@@ -1,0 +1,30 @@
+Reporting a konqueror crash
+---------------------------
+
+When you report a konqueror crash, it is important to provide:
+ * the exact steps to reproduce the crash (URL of the site, the exact
+   actions you performed...)
+ * a useful backtrace of the crash
+
+To produce a useful backtrace, you must have qt-x11-free-dbg, tdelibs-dbg,
+and tdebase-dbg installed. A backtrace full of "(no debugging symbols
+found)" is useless.
+
+A bug that is not reproducible, or that lacks the necessary backtrace, will
+be discarded.
+
+
+Reporting a rendering bug
+-------------------------
+
+Please provide the URL of the page that doesn't display correctly. Explain
+clearly what you expect, and what you actually get.
+
+Small screenshots of the part that has a problem are of great help and can
+be attached to the bug report. Screenshots of the "correct" behaviour
+(taken on another graphical browser) may also help.
+
+Any bug that states "Site foo is not rendered correctly" with no further
+information will be discarded (even if at the time of the report the defect
+is obvious, with newer versions of TDE it can be hard to see if the defect
+is still present, since the error might have been subtle for all we know).

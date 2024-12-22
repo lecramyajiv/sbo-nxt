@@ -1,0 +1,51 @@
+This package was debianized by Fathi Boudra <fboudra@free.fr> on
+Sat, 13 Oct 2007 14:50:28 +0200.
+
+It was downloaded from http://www.kde-apps.org/content/show.php?content=29024
+
+Upstream Author: Daniel Faust <hessijames@gmail.com>
+
+Copyrights:
+
+    Copyright (C) 2005-2007 Daniel Faust <hessijames@gmail.com>
+    Copyright (C) 2005-2006 Lukas Lalinsky <lalinsky@gmail.com>
+    Copyright (C) 2005-2006 Martin Aumueller <aumuell@reserv.at>
+    Copyright (C) 2005 Andy Leadbetter <andrew.leadbetter@gmail.com>
+    Copyright (C) 2005 Paul Cifarelli <paulc2@optonline.net>
+    Copyright (C) 2004 Allan Sandfeld Jensen <kde@carewolf.org>
+    Copyright (C) 2002-2006 Jochen Issing <jochen.issing@isign-softart.de>
+    Copyright (C) 2002-2006 Christophe Thommeret <hftom@free.fr>
+    Copyright (C) 2002 Scott Wheeler <wheeler@kde.org>
+    Copyright (C) 2002 Mark Kretschmann <markey@web.de>
+    Copyright (C) 2000 Michael Matz <matz@kde.org>
+
+License:
+
+    This package is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This package is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this package; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+The documentations provided with soundkonverter is distributed under
+the GNU Free Documentation License (FDL). They are considered free with
+regards to the Debian Free Software Guidelines (DFSG) because they don't
+contain any unmodifiable parts (invariant sections).
+
+On Debian systems, the complete text of the GNU Free Documentation
+License can be found in `/usr/share/common-licenses/GFDL'.
+
+The Debian packaging is (C) 2007, Fathi Boudra <fboudra@free.fr> and
+is licensed under the GPL, see above.
+

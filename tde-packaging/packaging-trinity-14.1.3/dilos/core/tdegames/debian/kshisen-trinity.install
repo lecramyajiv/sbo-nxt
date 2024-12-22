@@ -1,0 +1,14 @@
+/usr/share/apps/kshisen/*
+/usr/share/config.kcfg/kshisen.kcfg
+/usr/share/icons/hicolor/128x128/apps/kshisen.png
+/usr/share/icons/hicolor/64x64/apps/kshisen.png
+/usr/share/icons/hicolor/48x48/apps/kshisen.png
+/usr/share/icons/hicolor/32x32/apps/kshisen.png
+/usr/share/icons/hicolor/22x22/apps/kshisen.png
+/usr/share/icons/hicolor/16x16/apps/kshisen.png
+/usr/share/applications/tde/kshisen.desktop
+/usr/games/kshisen
+/usr/share/doc/tde/HTML/en/kshisen/*
+/usr/share/man/man6/kshisen.6
+../icons/kshisen.xpm /usr/share/pixmaps
+../icons/kshisen-16.xpm /usr/share/pixmaps

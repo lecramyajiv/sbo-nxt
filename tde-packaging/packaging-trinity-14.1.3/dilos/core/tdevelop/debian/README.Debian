@@ -1,0 +1,21 @@
+TDevelop for Debian
+-------------------
+
+1. Persistent Class Store (code completion)
+-------------------------------------------
+
+The format of the Persistent Class Store (PCS) used by TDevelop for code
+completion changed in TDevelop 3.4.0. If you run into the following message
+
+  Persistent class store will be disabled: you have a wrong version of pcs
+  installed. Remove old pcs files?
+
+say "Yes" and the PCS files will be regenerated.
+
+2. Viewing manpages and documentation in TDevelop
+-------------------------------------------------
+
+If you want to be able to view manpages and documentation within TDevelop,
+you need to install the 'tdebase-tdeio' plugins package.
+
+ -- Jeremy Lainé <jeremy.laine@m4x.org>  Sat, 02 Jun 2007 12:53:31 +0200

@@ -1,0 +1,8 @@
+debian/tmp/usr/bin/atlantikdesigner
+debian/tmp/usr/share/apps/atlantikdesigner
+debian/tmp/usr/share/applications/tde/atlantikdesigner.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/atlantikdesigner
+debian/tmp/usr/share/icons/hicolor/32x32/apps/atlantikdesigner.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/atlantikdesigner.png
+debian/icons/atlantikdesigner.xpm /usr/share/pixmaps
+debian/tmp/usr/share/man/man1/atlantikdesigner.1

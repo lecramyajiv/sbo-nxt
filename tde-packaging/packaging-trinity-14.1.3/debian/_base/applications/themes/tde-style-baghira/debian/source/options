@@ -1,0 +1,6 @@
+# Use xz instead of gzip
+compression = "xz"
+compression-level = 9
+
+# Don't run differences
+diff-ignore = .*

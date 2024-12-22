@@ -1,0 +1,10 @@
+Document: tdeutils-doc-html-ark
+Title: Ark Handbook
+Author: Matt Johnston, Henrique Pinto
+Abstract: Ark is an archive manager for TDE
+Section: Tools
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/ark/index.html
+Files: /usr/share/doc/tde/HTML/en/ark/*.html
+

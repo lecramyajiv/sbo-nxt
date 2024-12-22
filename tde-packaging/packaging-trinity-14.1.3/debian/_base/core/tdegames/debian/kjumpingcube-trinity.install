@@ -1,0 +1,14 @@
+/opt/trinity/games/kjumpingcube
+/opt/trinity/share/icons/hicolor/128x128/apps/kjumpingcube.png
+/opt/trinity/share/icons/hicolor/64x64/apps/kjumpingcube.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kjumpingcube.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kjumpingcube.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kjumpingcube.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kjumpingcube.png
+/opt/trinity/share/apps/kjumpingcube/*
+/opt/trinity/share/applications/tde/kjumpingcube.desktop
+/opt/trinity/share/config.kcfg/kjumpingcube.kcfg
+/opt/trinity/share/doc/tde/HTML/en/kjumpingcube/*
+/opt/trinity/share/man/man6/kjumpingcube.6
+../icons/kjumpingcube.xpm /opt/trinity/share/pixmaps
+../icons/kjumpingcube-16.xpm /opt/trinity/share/pixmaps

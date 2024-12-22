@@ -1,0 +1,24 @@
+Here contains the specfiles for Trinity.
+They are updated here, and built at build.lincomlinux.org (closed to public).
+In addition, there is a home project at home:bravoall1552:trinity
+and the core and apps folders contain applications.
+
+For local building, use the following command:
+osc -A https://api.opensuse.org/ build --local-package --alternative-project openSUSE:Factory standard i586
+
+OR
+
+osc -A https://api.opensuse.org/ build --local-package --alternative-project KDE:KDE3 openSUSE_Factory i586
+
+copyright (c) 2011 the Trinity Project
+
+All modifications and additions to the file contributed by third parties
+remain the property of their copyright owners, unless otherwise agreed
+upon. The license for this file, and modifications and additions to the
+file, is the same license as for the pristine package itself (unless the
+license for the pristine package is not an Open Source License, in which
+case the license is the MIT License). An "Open Source License" is a
+license that conforms to the Open Source Definition (Version 1.9)
+published by the Open Source Initiative.
+ 
+Please submit bugfixes or comments to http://bugs.trinitydesktop.org/

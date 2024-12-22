@@ -1,0 +1,33 @@
+knowit-trinity (0.10-0ubuntu4) karmic; urgency=low
+
+  * Added aRts support
+  * Karmic upload
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 29 Oct 2009 21:23:00 -0600
+
+knowit (0.10-0ubuntu3) jaunty; urgency=low
+
+  * Remove aRts support. (LP: #320915)
+    - debian/rules: Add --without-arts to ./configure line.
+
+ -- Andreas Wenning <awen@awen.dk>  Tue, 24 Mar 2009 19:00:23 +0100
+
+knowit (0.10-0ubuntu2) hardy; urgency=low
+
+  * debian/watch:
+    + Update filename extension from .gz to .bz2 (LP: #180121).
+  * debian/rules:
+    + Modify dh_iconcache to dh_icons.
+  * debian/control:
+    + Bump Standards-Version to 3.7.3 (no changes).
+    + Add Homepage field and remove it from Long Description.
+    + Modify Maintainer value to match the DebianMaintainerField specification.
+
+ -- Marco Rodrigues <gothicx@sapo.pt>  Thu, 03 Jan 2008 17:36:43 +0000
+
+knowit (0.10-0ubuntu1) edgy; urgency=low
+
+  * Initial release
+
+ -- Lorenzo Villani <arbiter@arbiterlab.net>  Thu, 24 Aug 2006 11:06:54 +0200
+

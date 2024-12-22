@@ -1,0 +1,26 @@
+Index: kdeui/ksconfig.cpp
+===================================================================
+--- kdeui/ksconfig.cpp.orig
++++ kdeui/ksconfig.cpp
+@@ -187,7 +187,7 @@ KSpellConfig::readGlobalSettings()
+   setRunTogether   ( kc->readNumEntry("KSpell_RunTogether", 0) );
+   setDictionary    ( kc->readEntry("KSpell_Dictionary") );
+   setDictFromList  ( kc->readNumEntry("KSpell_DictFromList", false) );
+-  setEncoding ( kc->readNumEntry ("KSpell_Encoding", KS_E_ASCII) );
++  setEncoding ( kc->readNumEntry ("KSpell_Encoding", KS_E_UTF8) );
+   setClient ( kc->readNumEntry ("KSpell_Client", KS_CLIENT_ISPELL) );
+ 
+   return true;
+Index: kdeui/ksyntaxhighlighter.cpp
+===================================================================
+--- kdeui/ksyntaxhighlighter.cpp.orig
++++ kdeui/ksyntaxhighlighter.cpp
+@@ -551,7 +551,7 @@ QString KDictSpellingHighlighter::spellK
+     key += '/';
+     key += QString::number( config->readNumEntry( "KSpell_DictFromList", false ));
+     key += '/';
+-    key += QString::number( config->readNumEntry( "KSpell_Encoding", KS_E_ASCII ));
++    key += QString::number( config->readNumEntry( "KSpell_Encoding", KS_E_UTF8 ));
+     key += '/';
+     key += QString::number( config->readNumEntry( "KSpell_Client", KS_CLIENT_ISPELL ));
+     return key;

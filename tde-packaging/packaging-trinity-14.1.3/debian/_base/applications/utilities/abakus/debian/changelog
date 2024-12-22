@@ -1,0 +1,102 @@
+abakus-trinity (0.91-0ubuntu3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+abakus-trinity (0.91-0ubuntu2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 03 March 2009 23:58:00 -0600
+
+abakus-trinity (0.91-0ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 13 Dec 2008 16:32:00 -0600
+
+abakus (0.91-1ubuntu3) hardy; urgency=low
+
+  * Fix FTBFS: Replace previously added dh_iconcache call to use
+    the new dh_icons command which replaced it (LP: #159334).
+
+ -- Siegfried-Angel Gevatter Pujals (RainCT) <rainct@ubuntu.com>  Sun, 02 Mar 2008 20:56:10 +0100
+
+abakus (0.91-1ubuntu2) gutsy; urgency=low
+
+  * Update maintainer fields according to debian-maintainer-field spec.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Fri, 14 Sep 2007 16:43:55 +0200
+
+abakus (0.91-1ubuntu1) edgy; urgency=low
+
+  * Re-merge with Debian
+
+ -- Barry deFreese <bddebian@comcast.net>  Thu, 24 Aug 2006 21:24:20 -0400
+
+abakus (0.91-1) unstable; urgency=low
+
+  * New upstream release
+  * Adjust the clean target
+  * Add build-dependencies against bison and flex
+  * Bump standards version
+  * Upload sponsored by Petter Reinholdtsen
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Mon, 21 Aug 2006 21:15:58 +1000
+
+abakus (0.90-6ubuntu1) dapper; urgency=low
+
+  * debian/rules:
+    + Use dh_iconcache upon package build.
+
+ -- Zak B. Elep <zakame@ubuntu.com>  Thu,  6 Apr 2006 10:14:25 -0400
+
+abakus (0.90-6) unstable; urgency=low
+
+  * Remove special build-depends on gcc-3.4
+    because now gcc-4.0 is fixed and
+    abakus will build on arm, m68k and hppa
+    with gcc-4.0
+  * Change description to make it linda clean
+  * Upload sponsored by Petter Reinholdtsen
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Tue,  6 Dec 2005 19:40:19 +0100
+
+abakus (0.90-5) unstable; urgency=low
+
+  * Fix minor bug in description (Closes: #341064) 
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Tue, 29 Nov 2005 17:11:28 +0100
+
+abakus (0.90-4) unstable; urgency=low
+
+  * Add build-depends on gcc-3.4 for arm m68k hppa
+    to make sure abakus build on them
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Thu, 17 Nov 2005 22:38:43 +0100
+
+abakus (0.90-3) unstable; urgency=low
+
+  * Really add build-depends on debhelper ;(
+     (Closes: #336538)
+  * Upload interim sponsored by Martin Zobel-Helas <zobel@debian.org>
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Mon, 31 Oct 2005 10:49:50 +0100
+
+abakus (0.90-2) unstable; urgency=low
+
+  * Add build-depends on debhelper (>= 4.1.0), to make sure
+    dh_clean is available during build
+  * Upload sponsored by Petter Reinholdtsen
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Sun, 23 Oct 2005 22:50:09 +0200
+
+abakus (0.90-1) unstable; urgency=low
+
+  * Initial release (Closes: #335367)
+  * Upload sponsored by Petter Reinholdtsen
+
+ -- Steffen Joeris <steffen.joeris@skolelinux.de>  Sun, 23 Oct 2005 15:19:58 +0200
+

@@ -1,0 +1,36 @@
+Index: mimetypes/application/x-rpm.desktop
+===================================================================
+--- mimetypes/application/x-rpm.desktop.orig
++++ mimetypes/application/x-rpm.desktop
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++X-KDE-AutoEmbed=true
+ Type=MimeType
+ MimeType=application/x-rpm
+ Icon=rpm
+Index: mimetypes/application/x-ogg.desktop
+===================================================================
+--- mimetypes/application/x-ogg.desktop.orig
++++ mimetypes/application/x-ogg.desktop
+@@ -4,7 +4,7 @@
+ # application/ogg "inherits" from it, so that apps associated with x-ogg can open ogg files.
+ Type=MimeType
+ MimeType=application/x-ogg
+-Icon=multimedia
++Icon=sound
+ Comment=Ogg Multimedia
+ Comment[ar]=وسائط Ogg متعددة
+ Comment[az]=Ogg Multimediya
+Index: mimetypes/application/ogg.desktop
+===================================================================
+--- mimetypes/application/ogg.desktop.orig
++++ mimetypes/application/ogg.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=MimeType
+ MimeType=application/ogg
+-Icon=multimedia
++Icon=sound
+ Patterns=*.ogg;*.OGG;
+ # Previous name of this mimetype
+ X-KDE-IsAlso=application/x-ogg

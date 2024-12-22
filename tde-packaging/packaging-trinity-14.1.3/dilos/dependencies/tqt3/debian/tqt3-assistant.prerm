@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+if [ "${BASEDIR:=/}" = "/" ]; then
+	BASEDIR=""
+fi
+
+case "$1" in
+  upgrade) ;;
+  remove|failed-upgrade|deconfigure)
+    update-alternatives --remove assistant "/usr/bin/tqassistant"
+    ;;
+esac
+
+#DEBHELPER#

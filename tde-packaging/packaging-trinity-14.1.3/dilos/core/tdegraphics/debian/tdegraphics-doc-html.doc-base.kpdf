@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kpdf
+Title: KPDF Handbook
+Author: Albert Astals Cid
+Abstract: KPDF is a TDE PDF viewer based on xpdf code.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kpdf/index.html
+Files: /usr/share/doc/tde/HTML/en/kpdf/*.html
+

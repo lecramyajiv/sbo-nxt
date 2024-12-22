@@ -1,0 +1,17 @@
+usr/bin/kverbos
+/usr/share/applications/tde/kverbos.desktop
+/usr/share/apps/kverbos
+/usr/share/config.kcfg/kverbos.kcfg
+/usr/share/doc/tde/HTML/en/kverbos/common
+/usr/share/doc/tde/HTML/en/kverbos/index.cache.bz2
+/usr/share/doc/tde/HTML/en/kverbos/*.docbook
+/usr/share/doc/tde/HTML/en/kverbos/*.png
+/usr/share/icons/crystalsvg/16x16/actions/kverbosuser.png
+/usr/share/icons/hicolor/16x16/apps/kverbos.png
+/usr/share/icons/hicolor/22x22/apps/kverbos.png
+/usr/share/icons/hicolor/32x32/apps/kverbos.png
+/usr/share/icons/hicolor/48x48/apps/kverbos.png
+/usr/share/icons/hicolor/128x128/apps/kverbos.png
+/usr/share/icons/hicolor/scalable/apps/kverbos.svgz
+/usr/share/man/man1/kverbos.1
+../icons/kverbos.xpm /usr/share/pixmaps

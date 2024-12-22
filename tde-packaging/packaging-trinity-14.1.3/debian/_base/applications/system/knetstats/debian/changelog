@@ -1,0 +1,34 @@
+knetstats-trinity (1.6.1-0ubuntu4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 04 Nov 2009 11:09:00 -0600
+
+knetstats (1.6.1-0ubuntu2) intrepid; urgency=low
+
+  * Remove kicker dependency
+
+ -- Harald Sitter <apachelogger@ubuntu.com>  Sat, 06 Sep 2008 01:37:17 +0200
+
+knetstats (1.6.1-0ubuntu1) hardy; urgency=low
+
+  * New upstream release.
+  * debian/patches/kubuntu_02_clean_desktop_file.patch:
+    - Update to apply again.
+    - Comply with current fd.o standard.
+  * debian/patches/kubuntu_03_autoconf.patch: Drop. Now included upstream.
+  * debian/watch: Add.
+
+ -- William Grant <william.grant@ubuntu.org.au>  Sat, 10 Nov 2007 12:55:46 +1100
+
+knetstats (1.6-0ubuntu1) edgy; urgency=low
+
+  * Initial Release.
+  * Added kubuntu_01_kdepot.patch for pot files extraction
+    to Rosetta
+  * Added kubuntu_02_clean_desktop_file.patch for good GenericNames
+    in desktop file
+  * Added kubuntu_03_autoconf for autoconf/autoheader 2.6
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sun, 27 Sep 2006 14:14:54 +0200
+

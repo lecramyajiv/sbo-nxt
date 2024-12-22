@@ -1,0 +1,13 @@
+debian/tmp/usr/bin/kpager
+debian/tmp/usr/share/applications/tde/kpager.desktop
+debian/tmp/usr/share/applnk/Utilities/kpager.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/kpager/common
+debian/tmp/usr/share/doc/tde/HTML/en/kpager/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kpager/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/kpager/screenshot.png
+debian/tmp/usr/share/doc/tde/HTML/en/kpager/settings.png
+debian/tmp/usr/share/icons/hicolor/*/apps/kpager.png
+debian/tmp/usr/share/man/man1/kpager.1
+
+debian/icons/kpager.xpm		/usr/share/pixmaps
+debian/icons/kpager-16.xpm	/usr/share/pixmaps

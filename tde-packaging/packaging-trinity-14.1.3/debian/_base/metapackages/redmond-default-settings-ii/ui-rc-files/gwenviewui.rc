@@ -1,0 +1,148 @@
+<?xml version = '1.0'?>
+<!DOCTYPE gui SYSTEM "kpartgui.dtd">
+<kpartgui version="20" name="Gwenview" >
+ <MenuBar>
+  <Menu name="file" >
+   <Action name="file_rename" />
+   <Action name="file_copy" />
+   <Action name="file_move" />
+   <Action name="file_delete" />
+   <Separator/>
+   <Action name="file_properties" />
+  </Menu>
+  <Menu name="edit" >
+   <Action name="rotate_left" />
+   <Action name="rotate_right" />
+   <Action name="mirror" />
+   <Action name="flip" />
+  </Menu>
+  <Menu noMerge="1" name="view" >
+   <text>&amp;View</text>
+   <Action name="reload" />
+   <Separator/>
+   <Action name="toggle_browse" />
+   <Action name="fullscreen" />
+   <Action name="slideshow" />
+   <Separator/>
+   <Action name="list_mode" />
+   <Action name="side_thumbnail_mode" />
+   <Action name="bottom_thumbnail_mode" />
+   <Separator/>
+   <Menu name="colors" >
+    <text>&amp;Colors</text>
+    <Action name="increase_gamma" />
+    <Action name="decrease_gamma" />
+    <Action name="increase_brightness" />
+    <Action name="decrease_brightness" />
+    <Action name="increase_contrast" />
+    <Action name="decrease_contrast" />
+   </Menu>
+   <Action name="view_zoom_auto" />
+   <Action name="view_zoom_in" />
+   <Action name="view_zoom_out" />
+   <Action name="view_actual_size" />
+   <Action name="view_zoom_lock" />
+   <Separator/>
+   <Action name="show_dot_files" />
+  </Menu>
+  <Menu noMerge="1" name="go_web" >
+   <text>&amp;Go</text>
+   <Action name="first" />
+   <Action name="previous" />
+   <Action name="next" />
+   <Action name="last" />
+   <Separator/>
+   <Action name="go_back" />
+   <Action name="go_forward" />
+   <Action name="go_home" />
+   <Separator/>
+   <Action name="go_up" />
+   <Action name="first_sub_folder" />
+   <Action name="previous_folder" />
+   <Action name="next_folder" />
+  </Menu>
+  <Action name="bookmarks" />
+  <Menu name="settings" >
+   <Action append="configure_merge" name="configure_tools" />
+  </Menu>
+  <Menu name="plugins" >
+   <text>&amp;Plugins</text>
+   <Menu name="kipi_images" >
+    <text>Images</text>
+    <ActionList name="image_actions" />
+   </Menu>
+   <Menu name="kipi_effects" >
+    <text>Effects</text>
+    <ActionList name="effect_actions" />
+   </Menu>
+   <Menu name="kipi_tools" >
+    <text>Tools</text>
+    <ActionList name="tool_actions" />
+   </Menu>
+   <Menu name="kipi_batch" >
+    <text>Batch Processing</text>
+    <ActionList name="batch_actions" />
+   </Menu>
+   <Menu name="kipi_import" >
+    <text>Import</text>
+    <ActionList name="import_actions" />
+   </Menu>
+   <Menu name="kipi_export" >
+    <text>Export</text>
+    <ActionList name="export_actions" />
+   </Menu>
+   <Menu name="kipi_collections" >
+    <text>Collections</text>
+    <ActionList name="collection_actions" />
+   </Menu>
+  </Menu>
+  <Menu name="window" >
+   <text>&amp;Window</text>
+   <ActionList name="winlist" />
+   <Separator/>
+   <Action name="reset_dock_widgets" />
+  </Menu>
+ </MenuBar>
+ <ToolBar newline="true" noMerge="1" name="mainToolBar" >
+  <text>Main Toolbar</text>
+  <Action name="toggle_browse" />
+  <Action name="fullscreen" />
+  <Action name="slideshow" />
+  <Separator/>
+  <Action name="previous" />
+  <Action name="next" />
+  <Separator/>
+  <Action name="reload" />
+  <Separator/>
+  <Action name="view_zoom_auto" />
+  <Action name="view_zoom_in" />
+  <Action name="view_zoom_out" />
+  <Action name="view_actual_size" />
+  <Separator/>
+  <Action name="rotate_left" />
+  <Action name="rotate_right" />
+  <Action name="mirror" />
+  <Action name="flip" />
+ </ToolBar>
+ <ToolBar newline="true" name="locationToolBar" fullWidth="true" >
+  <text>Location Toolbar</text>
+  <Action name="go_back" />
+  <Action name="go_forward" />
+  <Action name="go_up" />
+  <Action name="go_home" />
+  <Action name="clear_location" />
+  <Action name="location_label" />
+  <Action name="location_url" />
+  <Action name="location_go" />
+ </ToolBar>
+ <StatusBar/>
+ <ActionProperties>
+  <Action shortcut="Backspace;PageUp" name="previous" />
+  <Action shortcut="Space;PageDown" name="next" />
+  <Action shortcut="Ctrl+L;Left" name="rotate_left" />
+  <Action shortcut="Ctrl+Minus;Minus" name="view_zoom_out" />
+  <Action shortcut="Ctrl+Plus;Plus" name="view_zoom_in" />
+  <Action shortcut="Ctrl+R;Right" name="rotate_right" />
+  <Action shortcut="Ctrl+Shift+F;F" name="fullscreen" />
+ </ActionProperties>
+</kpartgui>

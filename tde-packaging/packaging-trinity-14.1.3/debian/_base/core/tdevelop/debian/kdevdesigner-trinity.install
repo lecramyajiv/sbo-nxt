@@ -1,0 +1,3 @@
+debian/tmp/opt/trinity/lib/trinity/libkdevdesignerpart.*
+debian/tmp/opt/trinity/bin/kdevdesigner
+debian/tmp/opt/trinity/share/services/kdevdesigner_part.desktop

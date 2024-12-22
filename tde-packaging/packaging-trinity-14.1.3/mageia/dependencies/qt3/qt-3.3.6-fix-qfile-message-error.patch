@@ -1,0 +1,24 @@
+--- qt-x11-free-3.3.6/src/tools/qfile_unix.cpp--	2006-07-31 09:03:52.000000000 +0200
++++ qt-x11-free-3.3.6/src/tools/qfile_unix.cpp	2006-07-31 09:06:52.000000000 +0200
+@@ -164,8 +164,9 @@
+ bool QFile::open( int m )
+ {
+     if ( isOpen() ) {				// file already open
+-#if defined(QT_CHECK_STATE)
+-	qWarning( "QFile::open: File already open" );
++#if defined(QT_CHECK_STATE) 
++    QString error = QString("QFile::open: File (%1) already open").arg(fn);
++	qWarning( error );
+ #endif
+ 	return FALSE;
+     }
+@@ -179,7 +180,8 @@
+     setMode( m );
+     if ( !(isReadable() || isWritable()) ) {
+ #if defined(QT_CHECK_RANGE)
+-	qWarning( "QFile::open: File access not specified" );
++	QString error = QString("QFile::open: File access (%1) not specified").arg(fn);
++    qWarning( error );
+ #endif
+ 	return FALSE;
+     }

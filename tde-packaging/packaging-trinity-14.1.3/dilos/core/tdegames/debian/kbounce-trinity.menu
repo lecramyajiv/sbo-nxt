@@ -1,0 +1,9 @@
+?package(kbounce-trinity):\
+	needs="x11"\
+	section="Games/Arcade"\
+	hints="TDE"\
+	title="TDE Bounce Ball Game"\
+	icon32x32="/usr/share/pixmaps/kbounce.xpm"\
+	icon16x16="/usr/share/pixmaps/kbounce-16.xpm"\
+	command="/usr/games/kbounce"
+

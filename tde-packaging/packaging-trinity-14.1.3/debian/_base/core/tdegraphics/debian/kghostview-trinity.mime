@@ -1,0 +1,3 @@
+application/pdf;	kghostview %s -caption "PS/PDF Viewer";	nametemplate=%s.pdf;	test=test "$DISPLAY" != "";	priority=5
+application/postscript;	kghostview %s -caption "PS/PDF Viewer";	nametemplate=%s.ps;	test=test "$DISPLAY" != "";	priority=5
+image/x-eps;	kghostview %s -caption "PS/PDF Viewer";	nametemplate=%s.eps;	test=test "$DISPLAY" != "";	priority=5

@@ -1,0 +1,6 @@
+libakode2-mpeg package
+no jack build-dep
+libakode-dev not depend on jack
+libakode2.install dosen't have mpeg or jack files
+Don't depend on libakode2-mpeg from libakode-dev
+remove jack from libakode-dev.install, libakode2.install

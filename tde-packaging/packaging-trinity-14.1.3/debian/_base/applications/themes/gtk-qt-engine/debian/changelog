@@ -1,0 +1,579 @@
+gtk-qt-engine-trinity (1:0.8-1ubuntu3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+gtk-qt-engine-trinity (1:0.8-1ubuntu2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 01 March 2009 23:14:00 -0600
+
+gtk-qt-engine-trinity (1:0.8-1ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 04 Dec 2008 15:18:00 -0600
+
+gtk-qt-engine (1:0.8-1ubuntu2) hardy; urgency=low
+
+  * Added kubuntu_03_xembed_fix_flashplayer.diff:
+    - Part of the global fix to make konqueror work with
+      latest flashplayer
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 29 Jan 2008 11:54:58 +0100
+
+gtk-qt-engine (1:0.8-1ubuntu1) hardy; urgency=low
+
+  * Merge from debian unstable, remaining changes:
+    - Install files in /usr/share instead of /usr/local/share directory.
+    - Switched back to cdbs packaging for simple-patchsys
+    - Included kubuntu_02_clean_kmenu_systemsettings_inclusion.diff
+    - Included kubuntu_01_background_fix.diff
+    - Added gtk2-engines-gtk-qt back in - we need this to do the LTS-->LTS
+      transition
+    - Modify Maintainer value to match Debian-Maintainer-Field Spec
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Sun, 11 Nov 2007 23:11:32 +1100
+
+gtk-qt-engine (1:0.8-1) unstable; urgency=low
+
+  * New Upstream release, changes since the last SVN snapshot are:
+    - Fix corrupt scrollbar ends on Firefox and Eclipse in the Domino style
+    - Make buttons, checkboxes and radio buttons indicate keyboard focus
+    - Fix icon loading code when dealing with multiple inheritance
+    - Map more GTK icons
+    - Setting a font with bold or italic options now works correctly
+    - Fix a bug where menu checkmarks would be displayed as a series of
+      horizontal lines
+
+ -- Bastian Venthur <venthur@debian.org>  Tue, 30 Oct 2007 20:32:01 +0100
+
+gtk-qt-engine (1:0.8~svn-rev36-2ubuntu2) gutsy; urgency=low
+
+  * Added gtk2-engines-gtk-qt back in - we need this to do the LTS-->LTS
+    transition
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Thu, 31 May 2007 00:24:53 -0500
+
+gtk-qt-engine (1:0.8~svn-rev36-2ubuntu1) gutsy; urgency=low
+
+  * Merge from debian unstable, remaining changes:
+    - Install files in /usr/share instead of /usr/local/share directory.
+    - Switched back to cdbs packaging for simple-patchsys
+    - Included kubuntu_02_clean_kmenu_systemsettings_inclusion.diff
+    - Included kubuntu_01_background_fix.diff
+  * Modify Maintainer value to match Debian-Maintainer-Field Spec
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Fri, 18 May 2007 21:31:28 +1000
+
+gtk-qt-engine (1:0.8~svn-rev36-2) unstable; urgency=low
+
+  * Added dh_gtkmodules call to debian/rules (Closes: #419306)
+
+ -- Bastian Venthur <venthur@debian.org>  Tue, 17 Apr 2007 09:37:50 +0200
+
+gtk-qt-engine (1:0.8~svn-rev36-1) unstable; urgency=low
+
+  * New SVN snapshot
+    - Added Turkish translation
+    - Added Bulgarian translation
+    - Added Russian translation
+    - Fix compilation on GCC 4.3 (Closes: #417219), thanks again Martin!
+  * Dropped transitional package gtk2-engines-gtk-qt
+  * Don't ship files in /usr/lib64 on such archs anymore (Closes: #417044)
+  * Bumped gtk dependency (Closes: #419306)
+
+ -- Bastian Venthur <venthur@debian.org>  Sun, 15 Apr 2007 17:06:25 +0200
+
+gtk-qt-engine (1:0.8~svn-rev31-3) unstable; urgency=low
+
+  * Upload to unstable
+    - (Closes: #412279) "unusable with GTK+ 2.10" and many other bugs,
+      already fixed in experimental.
+
+ -- Bastian Venthur <venthur@debian.org>  Tue, 27 Feb 2007 13:17:34 +0100
+
+gtk-qt-engine (1:0.8~svn-rev31-2) experimental; urgency=low
+
+  * Added --as-needed CFLAG in order to reduce the dependencies
+
+ -- Bastian Venthur <venthur@debian.org>  Tue, 27 Feb 2007 12:09:36 +0100
+
+gtk-qt-engine (1:0.8~svn-rev31-1) experimental; urgency=low
+
+  * New SVN snapshot
+    - Added Italian translation
+    - Fix button appearance in the Motif Plus style
+
+ -- Bastian Venthur <venthur@debian.org>  Fri,  9 Feb 2007 13:17:22 +0100
+
+gtk-qt-engine (1:0.8~svn-rev29-1) experimental; urgency=low
+
+  * New SVN snapshot
+    - Merged gtk-qt-engine-small-pixmaps.patch from SuSe.
+    - Highlighted menu item are now always white. 
+
+ -- Bastian Venthur <venthur@debian.org>  Mon, 15 Jan 2007 15:13:01 +0100
+
+gtk-qt-engine (1:0.8~svn-rev27-1) experimental; urgency=low
+
+  * New SVN snapshot
+    - Merged fix-iconpaths.patch from suse. This fixes icon loading issues
+      wit inherited icon themes.
+      
+  * Since gtk-qt-engine 0.8 will use cmake im closing libtoolbug.  
+    (Closes: #342914)
+
+ -- Bastian Venthur <venthur@debian.org>  Thu,  4 Jan 2007 13:29:13 +0100
+
+gtk-qt-engine (1:0.8~svn-rev26-1) experimental; urgency=low
+
+  * New upstream SVN snapshot
+    - My toolbarfix.patch is now officially included, so removing it from
+      debian/patches.
+
+ -- Bastian Venthur <venthur@debian.org>  Fri,  8 Dec 2006 11:11:39 +0100
+
+gtk-qt-engine (1:0.8~svn-rev25-2) experimental; urgency=low
+
+  * Applied toolbarfix.patch in order to respect KDE's toolbar settings. 
+
+ -- Bastian Venthur <venthur@debian.org>  Thu,  7 Dec 2006 12:44:35 +0100
+
+gtk-qt-engine (1:0.8~svn-rev25-1) experimental; urgency=low
+
+  * Snapshot from upstreams SVN, fixes many bugs including:
+    - Switch the buildsystem from autotools to CMake. CMake 2.4 is now 
+      required to build the project.
+    - Fix scrollbar sliders in the Domino widget style
+    - Fix a bug that caused Qt colours not to be applied to GTK applications. 
+      This fixes several graphical problems when  using dark colour schemes. 
+      (Closes: #395127)
+    - Fix a bug that would disable Bonobo support even when the correct 
+      packages were installed
+    - The control center module will now write a configuration file that will
+      only affect applications inside KDE.  Applications running in GNOME can
+      be themed separately using the GNOME tools. (Closes: #296657)
+    - Add a setting for emacs keyboard shortcuts
+    - Draw default buttons properly.
+    - Provide a fallback icon even when one of the right size doesn't exist
+    - Fix invalid CSS comments.
+    - When the Qt theme can't be found, display a dialog allowing the user to
+      modify the search paths.
+    - Respect KDE's "Show icons on buttons" setting
+    
+  * Re-enabled .desktop file (Closes: #398941)
+
+ -- Bastian Venthur <venthur@debian.org>  Wed,  6 Dec 2006 12:07:45 +0100
+
+gtk-qt-engine (1:0.7-4) unstable; urgency=low
+
+  * Removed debian/gtk-qt-engine.dirs since it's not needed anymore
+
+ -- Bastian Venthur <venthur@debian.org>  Thu, 30 Nov 2006 09:08:59 +0100
+
+gtk-qt-engine (1:0.7-3) unstable; urgency=low
+
+  * Added Debian revision to conflics- and replaces-line in order to resolve
+    File conflict (Closes: #397993). Many thanks to Stephen Gran.
+  
+  * Updated upstreams hompage URL
+
+ -- Bastian Venthur <venthur@debian.org>  Sun, 12 Nov 2006 12:30:26 +0100
+
+gtk-qt-engine (1:0.7-2) unstable; urgency=low
+
+  * The please don't kill me release
+  * Renamed the package to gtk-qt-engine
+
+  * Updated maintainer field
+
+ -- Bastian Venthur <venthur@debian.org>  Wed, 18 Oct 2006 19:45:28 +0200
+
+gtk-qt-engine (1:0.7-1) unstable; urgency=low
+
+  * New upstream release (Closes: #378892), most important changes:
+    - Fix toolbar borders in styles other than Keramik
+    - Allow for inverted sliders
+    - Fix menu backgrounds with Baghira
+    - Control Module: i18n support
+    - Fix bug where bottoms of scrollbars wouldn't be displayed
+      (Closes: #315119)
+    - Fix appearance of progress bars in Firefox when using the Alloy style
+    - Fix bug in Firefox where progress bars would "leak" outside their box
+    - Control Module: add utility to fix Firefox scrollbar buttons
+    - Fix bug that would make XFCE 4.2's settings application fail to start
+    - Fix crash bug in gaim's file transfer window
+    - Support coloured buttons
+    - Only respond to KIPC StyleChanged messages 
+    - Cache pixmaps created in setColors() and setMenuBackground().  This fixes
+      a large memory leak, and improves app startup speeds and responsiveness.
+      (Closes: #300261)
+    - Ensure tooltip text is always black
+    - The theme no longer tries to override widget-specific colours set by
+      applications or user RC files
+    - Control Module: fix blank entry in style list
+    - Add a workaround for a bug in OpenOffice where menus and toolbars were
+      drawn incorrectly.
+    
+    - Other bugs dissapeared in the new version:
+      workrave does not crash anymore on micro-breaks (Closes: 354299)
+      GTK apps don't crash anymore on font change (Closes: #295929)
+  
+  * New Maintainer (Closes: #379956) 
+    - introduced epoch to reflect upstreams versioning scheme correctly
+    - switched away from cdbs
+    - bumped standards version
+    - removed superfluous build-depends
+  
+ -- Bastian Venthur <mail@venthur.de>  Thu, 27 Jul 2006 18:39:40 +0200
+
+gtk-qt-engine (0.71~svn20070224-0ubuntu3) feisty; urgency=low
+
+  * Install files in /usr/share instead of /usr/local/share directory.
+    Closes LP: #94353
+
+ -- Luka Renko <lure@ubuntu.com>  Fri, 30 Mar 2007 22:17:03 +0200
+
+gtk-qt-engine (0.71~svn20070224-0ubuntu2) feisty; urgency=low
+
+  * Fixed kubuntu_03_clean_kmenu.diff for systemsettings inclusion
+    Desktop file goes in subdirectory "appearance"instead of the standard
+    "look and feel" directory
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 23 Feb 2007 23:58:21 +0100
+
+gtk-qt-engine (0.71~svn20070224-0ubuntu1) feisty; urgency=low
+
+  * New SVN snapshot. Closes Malone #36256
+  * Removed obsolete kubuntu_02_icon_theme.diff
+  * Fixed kubuntu_03_clean_kmenu.diff for systemsettings inclusion
+    and renamed to kubuntu_02_clean_kmenu_systemsettings_inclusion.diff
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 23 Feb 2007 11:49:01 +0100
+
+gtk-qt-engine (0.70-4ubuntu3) feisty; urgency=low
+
+  * Inclue kubuntu_03_clean_kmenu.diff to hide the kcm entry in K menu
+  * Switched back to cdbs packaging for simple-patchsys
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 06 Jan 2007 02:16:07 +0100
+
+gtk-qt-engine (0.70-4ubuntu2) feisty; urgency=low
+
+  * Include Debian entries in changelog
+  * Remove shlib from depends, to stop it bringing in gtk depends to Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  4 Jan 2007 14:29:07 +0000
+
+gtk-qt-engine (0.70-4ubuntu1) feisty; urgency=low
+
+  * Merge packaging with debian
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 14 Dec 2006 13:51:06 +0100
+
+gtk-qt-engine (1:0.7-4) unstable; urgency=low
+
+  * Removed debian/gtk-qt-engine.dirs since it's not needed anymore
+
+ -- Bastian Venthur <venthur@debian.org>  Thu, 30 Nov 2006 09:08:59 +0100
+
+gtk-qt-engine (1:0.7-3) unstable; urgency=low
+
+  * Added Debian revision to conflics- and replaces-line in order to resolve
+    File conflict (Closes: #397993). Many thanks to Stephen Gran.
+  
+  * Updated upstreams hompage URL
+
+ -- Bastian Venthur <venthur@debian.org>  Sun, 12 Nov 2006 12:30:26 +0100
+
+gtk-qt-engine (1:0.7-2) unstable; urgency=low
+
+  * The please don't kill me release
+  * Renamed the package to gtk-qt-engine
+
+  * Updated maintainer field
+
+ -- Bastian Venthur <venthur@debian.org>  Wed, 18 Oct 2006 19:45:28 +0200
+
+gtk-qt-engine (1:0.7-1) unstable; urgency=low
+
+  * New upstream release (Closes: #378892), most important changes:
+    - Fix toolbar borders in styles other than Keramik
+    - Allow for inverted sliders
+    - Fix menu backgrounds with Baghira
+    - Control Module: i18n support
+    - Fix bug where bottoms of scrollbars wouldn't be displayed
+      (Closes: #315119)
+    - Fix appearance of progress bars in Firefox when using the Alloy style
+    - Fix bug in Firefox where progress bars would "leak" outside their box
+    - Control Module: add utility to fix Firefox scrollbar buttons
+    - Fix bug that would make XFCE 4.2's settings application fail to start
+    - Fix crash bug in gaim's file transfer window
+    - Support coloured buttons
+    - Only respond to KIPC StyleChanged messages 
+    - Cache pixmaps created in setColors() and setMenuBackground().  This fixes
+      a large memory leak, and improves app startup speeds and responsiveness.
+      (Closes: #300261)
+    - Ensure tooltip text is always black
+    - The theme no longer tries to override widget-specific colours set by
+      applications or user RC files
+    - Control Module: fix blank entry in style list
+    - Add a workaround for a bug in OpenOffice where menus and toolbars were
+      drawn incorrectly.
+    
+    - Other bugs dissapeared in the new version:
+      workrave does not crash anymore on micro-breaks (Closes: 354299)
+      GTK apps don't crash anymore on font change (Closes: #295929)
+  
+  * New Maintainer (Closes: #379956) 
+    - introduced epoch to reflect upstreams versioning scheme correctly
+    - switched away from cdbs
+    - bumped standards version
+    - removed superfluous build-depends
+  
+ -- Bastian Venthur <mail@venthur.de>  Thu, 27 Jul 2006 18:39:40 +0200
+
+gtk-qt-engine (0.70-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+  * Switched to debhelper 5
+  * Removed obsolete patches kubuntu_01_colourmapless_pixmap.diff,
+    kubuntu_02_xdg_menu.diff, kubuntu_04_menubg_colormap_fix.diff,
+    kubuntu_06_fix_slider.diff and kubuntu_07_scrollbars.diff
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri,  7 Jul 2006 19:02:06 +0200
+
+gtk-qt-engine (0.60-3) unstable; urgency=low
+
+  * Orphaning this package, changed maintainer to QA Group.
+  * Thanks to Luk Claes for the NMU and FTBFS patch.
+  * Fixed missing commas in RC file (closes: #266521).
+    - Thanks to Jan De Luyck for the patch.
+  * Bumped Standards-Version to 3.6.2 (no changes).
+
+ -- Christoffer Sawicki <qerub@home.se>  Thu, 20 Apr 2006 17:19:00 +0200
+
+gtk-qt-engine (0.60-2.1ubuntu1) edgy; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  7 Jul 2006 10:44:08 +0000
+
+gtk-qt-engine (0.60-2.1) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * Fix FTBFS by touching configure in clean target (Closes: #350141).
+
+ -- Luk Claes <luk@debian.org>  Wed,  1 Mar 2006 09:00:23 +0100
+
+gtk-qt-engine (0.60-2) unstable; urgency=low
+
+  * Thanks to Adeodato for the NMU.
+  * Fix black menu backgrounds (closes: #343658).
+  * Updated FSF's address in debian/copyright.
+  * Updated libtool (closes: #342914).
+    - Added KDE core and Qt to kcm_kcmgtk_la_LIBADD.
+  * Added libqt3-mt-dev to Build-Depends.
+  * Thanks to Kurt Roeckx for helping me out.
+
+ -- Christoffer Sawicki <qerub@home.se>  Mon, 26 Dec 2005 01:01:37 +0100
+
+gtk-qt-engine (0.60-1.1ubuntu7) dapper; urgency=low
+
+  * Don't depend on a hardcoded libc6, since that makes us uninstallable
+    on ia64, and we already depend on other libraries that depend on libc
+    correctly.  This is all just a really hideous hack and should be
+    re-though after the dapper release is safely out the door.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Mon, 29 May 2006 00:43:06 +1000
+
+gtk-qt-engine (0.60-1.1ubuntu6) dapper; urgency=low
+
+  * Don't use shlib depends, stop requiring gtk 
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 25 Apr 2006 21:47:25 +0100
+
+gtk-qt-engine (0.60-1.1ubuntu5) dapper; urgency=low
+
+  * Add kubuntu_06_fix_slider.diff from SuSE
+  * Add kubuntu_07_scrollbars.diff closes Malone #38872
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 24 Apr 2006 17:57:41 +0100
+
+gtk-qt-engine (0.60-1.1ubuntu4) dapper; urgency=low
+
+  * Add kubuntu_05_icon_theme.patch fix KDE icon loading
+  * Patch by Anthony Mercatante <tonio@ubuntu.com>
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 27 Feb 2006 15:15:06 +0000
+
+gtk-qt-engine (0.60-1.1ubuntu3) dapper; urgency=low
+
+  * Rebuild because libXft.la is gone
+
+ -- Stephan Hermann <sh@sourcecode.de>  Sat, 14 Jan 2006 18:00:57 +0100
+
+gtk-qt-engine (0.60-1.1ubuntu2) dapper; urgency=low
+
+  * Rebuild for latest Qt
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 18 Dec 2005 22:45:42 +0000
+
+gtk-qt-engine (0.60-1.1ubuntu1) dapper; urgency=low
+
+  * resyncronize with debian
+  * ubuntu_03_background_fix.patch (from upstream #4082)
+  * ubuntu_04_menubg_colormap_fix.patch (from upstream #4276)
+
+ -- Oliver Grawert <ogra@ubuntu.com>  Wed, 30 Nov 2005 21:00:39 +0100
+
+gtk-qt-engine (0.60-1.1) unstable; urgency=low
+
+  * NMU at maintainer's request.
+  * Rebuild against C++ transitioned tdelibs; no source changes needed.
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Wed, 07 Sep 2005 16:45:32 +0200
+
+gtk-qt-engine (0.60-1ubuntu5) breezy; urgency=low
+
+  * Edit rules to use XDG menu instead of applnk menu
+  * Add kubuntu_02_xdg_menu.diff to fix the XDG .desktop file
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 24 Sep 2005 19:00:39 +0100
+
+gtk-qt-engine (0.60-1ubuntu4) breezy; urgency=low
+
+  * Add kubuntu_01_colourmapless_pixmap.diff fix GTK cairo crashes
+  * Alter debian/rules to use debian/patches
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  9 Sep 2005 23:59:55 +0100
+
+gtk-qt-engine (0.60-1ubuntu3) breezy; urgency=low
+
+  * Use explicit depends instead of shlibs.  Remove gtk dependency.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  6 Jul 2005 17:33:55 +0000
+
+gtk-qt-engine (0.60-1ubuntu2) breezy; urgency=low
+
+  * Rebuild for new C++ ABI
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon,  6 Jun 2005 16:34:57 +0000
+
+gtk-qt-engine (0.60-1ubuntu1) hoary; urgency=low
+
+  * New upstream release
+
+ -- Andreas Mueller <amu@ubuntu.com>  Thu, 10 Mar 2005 10:14:37 +0100
+
+gtk-qt-engine (0.60-1.1) unstable; urgency=low
+
+  * NMU at maintainer's request.
+  * Rebuild against C++ transitioned tdelibs; no source changes needed.
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Wed, 07 Sep 2005 16:45:32 +0200
+
+gtk-qt-engine (0.60-1) unstable; urgency=low
+
+  * New upstream release.
+    - Removes crashes with certain apps (closes: #286436).
+  * Clarified some changelog entries.
+  * Versioned debhelper Build-Depend
+
+ -- Christoffer Sawicki <qerub@home.se>  Sun,  2 Jan 2005 22:24:09 +0100
+
+gtk-qt-engine (0.50+cvs20041221-1) staging; urgency=low
+
+  * Checkout from CVS.
+  * Removed parts of the diff, now upstream.
+
+ -- Christoffer Sawicki <qerub@home.se>  Tue, 21 Dec 2004 23:42:01 +0100
+
+gtk-qt-engine (0.50-3) staging; urgency=low
+
+  * Upload to new Kalyxo archive.
+
+ -- Christoffer Sawicki <qerub@home.se>  Mon,  6 Dec 2004 14:58:13 +0100
+
+gtk-qt-engine (0.50-2) unstable; urgency=low
+
+  * Ran src/gtkrc through dos2unix.
+  * Minor grammatical changes to debian/changelog.
+  * Remove kcmgtk-xdg.desktop from package.
+  * Added note about the KDE dependency to package description.
+  * Cleaned up kcmgtk.desktop.
+
+ -- Christoffer Sawicki <qerub@home.se>  Tue, 17 Aug 2004 21:03:03 +0200
+
+gtk-qt-engine (0.50-1) unstable; urgency=low
+
+  * Added some spaces in the description.
+  * New upstream version.
+
+ -- Christoffer Sawicki <qerub@home.se>  Mon,  2 Aug 2004 17:05:17 +0200
+
+gtk-qt-engine (0.41-3) unstable; urgency=low
+
+  * Improved description.
+  * Removed README.Debian, not needed anymore.
+  * Don't install empty files to /usr/share/doc.
+  * Changed section from x11 to kde.
+
+ -- Christoffer Sawicki <qerub@home.se>  Sat, 19 Jun 2004 22:03:50 +0200
+
+gtk-qt-engine (0.41-2) unstable; urgency=low
+
+  * Rebuilt for unstable. Excuse me.
+  * Added tdelibs4-dev to Build-Depends.
+
+ -- Christoffer Sawicki <qerub@home.se>  Wed, 16 Jun 2004 20:51:15 +0200
+
+gtk-qt-engine (0.41-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christoffer Sawicki <qerub@home.se>  Wed, 16 Jun 2004 17:45:16 +0200
+
+gtk-qt-engine (0.3-1) unstable; urgency=low
+
+  * New versioning policy.
+  * Upload to the new archive.
+
+ -- Christoffer Sawicki <qerub@home.se>  Mon, 26 Apr 2004 19:20:52 +0200
+
+gtk-qt-engine (0.3-0qerub3) workstation-unstable; urgency=low
+
+  * Small cleanups in debian/ files.
+
+ -- Christoffer Sawicki <qerub@home.se>  Wed, 18 Feb 2004 12:30:59 +0100
+
+gtk-qt-engine (0.3-0qerub2) workstation-unstable; urgency=low
+
+  * Added an extra note to README.Debian about segfaulting.
+  * Changed URL in debian/copyright.
+
+ -- Christoffer Sawicki <qerub@home.se>  Wed, 18 Feb 2004 11:38:45 +0100
+
+gtk-qt-engine (0.3-0qerub1) workstation-unstable; urgency=low
+
+  * New upstream release!
+  * Added Build-Depends.
+
+ -- Christoffer Sawicki <qerub@home.se>  Mon, 16 Feb 2004 19:29:20 +0100
+
+gtk-qt-engine (0.2-0qerub2) workstation-unstable; urgency=low
+
+  * Changed target to workstation-unstable (for upload to kde-debian.org).
+
+ -- Christoffer Sawicki <qerub@home.se>  Tue, 27 Jan 2004 21:50:25 +0100
+
+gtk-qt-engine (0.2-0qerub1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Christoffer Sawicki <qerub@home.se>  Wed,  7 Jan 2004 16:28:00 +0100
+

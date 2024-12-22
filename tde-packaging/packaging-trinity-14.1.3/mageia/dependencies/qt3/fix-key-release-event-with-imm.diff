@@ -1,0 +1,17 @@
+--- ./src/kernel/qapplication_x11.cpp	2006-02-17 15:45:55.000000000 -0500
++++ ./src/kernel/qapplication_x11.cpp.orig	2006-02-17 16:05:43.000000000 -0500
+@@ -5217,11 +5217,12 @@
+     } else {
+ 	key = (int)(long)keyDict->find( keycode );
+ 	if ( key )
+-	    if( !willRepeat ) // Take out key of dictionary only if this call.
++	    if( !willRepeat && statefulTranslation ) // Take out key of dictionary only if this call.
+ 		keyDict->take( keycode );
+ 	long s = (long)textDict->find( keycode );
+ 	if ( s ) {
+-	    textDict->take( keycode );
++      if( statefulTranslation )
++         textDict->take( keycode );
+ 	    ascii = (char)(s-256);
+ 	}
+     }

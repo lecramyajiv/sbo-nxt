@@ -1,0 +1,11 @@
+debian/tmp/opt/trinity/lib/libarts_akode.la
+debian/tmp/opt/trinity/lib/libarts_akode.so
+debian/tmp/opt/trinity/lib/libarts_akode.so.0
+debian/tmp/opt/trinity/lib/libarts_akode.so.0.0.0
+debian/tmp/opt/trinity/lib/mcop/akodearts.mcoptype
+debian/tmp/opt/trinity/lib/mcop/akodearts.mcopclass
+debian/tmp/opt/trinity/lib/mcop/akodeMPCPlayObject.mcopclass
+debian/tmp/opt/trinity/lib/mcop/akodePlayObject.mcopclass
+debian/tmp/opt/trinity/lib/mcop/akodeSpeexStreamPlayObject.mcopclass
+debian/tmp/opt/trinity/lib/mcop/akodeVorbisStreamPlayObject.mcopclass
+debian/tmp/opt/trinity/lib/mcop/akodeXiphPlayObject.mcopclass

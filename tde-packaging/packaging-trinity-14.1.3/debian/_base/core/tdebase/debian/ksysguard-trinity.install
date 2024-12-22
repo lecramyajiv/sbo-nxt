@@ -1,0 +1,32 @@
+debian/tmp/opt/trinity/bin/kpm
+debian/tmp/opt/trinity/bin/ksysguard
+debian/tmp/opt/trinity/lib/trinity/sysguard_panelapplet.la
+debian/tmp/opt/trinity/lib/trinity/sysguard_panelapplet.so
+debian/tmp/opt/trinity/lib/libksgrd.so.1
+debian/tmp/opt/trinity/lib/libksgrd.so.1.2.0
+debian/tmp/opt/trinity/share/applications/tde/ksysguard.desktop
+debian/tmp/opt/trinity/share/apps/kicker/applets/ksysguardapplet.desktop
+debian/tmp/opt/trinity/share/apps/ksysguard/eventsrc
+debian/tmp/opt/trinity/share/apps/ksysguard/KSysGuardApplet.xml
+debian/tmp/opt/trinity/share/apps/ksysguard/ksysguardui.rc
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/computer.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/daemon.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/kernel.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/ksysguardd.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/running.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/shell.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/tdeapp.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/tools.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/unknownapp.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/waiting.png
+debian/tmp/opt/trinity/share/apps/ksysguard/pics/X.png
+debian/tmp/opt/trinity/share/apps/ksysguard/ProcessTable.sgrd
+debian/tmp/opt/trinity/share/apps/ksysguard/SystemLoad.sgrd
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/ksysguard/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/ksysguard/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/ksysguard/index.docbook
+debian/tmp/opt/trinity/share/icons/crystalsvg/*/apps/ksysguard.png
+debian/tmp/opt/trinity/share/mimelnk/application/x-ksysguard.desktop
+
+debian/icons/ksysguard.xpm		/opt/trinity/share/pixmaps
+debian/icons/ksysguard-16.xpm		/opt/trinity/share/pixmaps

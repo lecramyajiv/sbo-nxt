@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kamera
+Title: Kamera Handbook
+Author: Not listed
+Abstract: Kamera allows you to view and download images on a digital camera.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kamera/index.html
+Files: /usr/share/doc/tde/HTML/en/kamera/*.html
+

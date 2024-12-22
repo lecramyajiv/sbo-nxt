@@ -1,0 +1,7 @@
+debian/tmp/opt/trinity/bin/*
+debian/tmp/opt/trinity/lib/trinity/tdefile_k3b.so
+debian/tmp/opt/trinity/lib/trinity/tdefile_k3b.la
+debian/tmp/opt/trinity/share/applications/*
+debian/tmp/opt/trinity/share/man/man1/k3b.1
+
+debian/k3b.xpm /opt/trinity/share/pixmaps/

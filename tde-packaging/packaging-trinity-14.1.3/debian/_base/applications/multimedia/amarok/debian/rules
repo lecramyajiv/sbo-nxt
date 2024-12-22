@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DBUILD_ALL="ON" \
+ -DWITH_ALL_OPTIONS="ON" \
+ -DWITH_YAUAP="OFF" \
+ -DWITH_IFP="OFF"
+
+binary-install/amarok-common-trinity::
+	dh_python3 -p $(cdbs_curpkg) --shebang=/usr/bin/python3 \
+		/opt/trinity/share/apps/amarok/scripts/playlist2html
+	dh_python3 -p $(cdbs_curpkg) --shebang=/usr/bin/python3 \
+		/opt/trinity/share/apps/amarok/scripts/webcontrol

@@ -1,0 +1,8 @@
+debian/tmp/opt/trinity/bin/ktux
+debian/tmp/opt/trinity/share/apps/ktux
+debian/tmp/opt/trinity/share/applnk/System/ScreenSavers/ktux.desktop
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/ktux.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/ktux.png
+debian/tmp/opt/trinity/share/man/man1/ktux.1
+
+debian/icons/ktux.xpm	opt/trinity/share/pixmaps

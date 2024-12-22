@@ -1,0 +1,9 @@
+debian/tmp/opt/trinity/bin/yaf-cdda
+debian/tmp/opt/trinity/bin/yaf-mpgplay
+debian/tmp/opt/trinity/bin/yaf-splay
+debian/tmp/opt/trinity/bin/yaf-tplay
+debian/tmp/opt/trinity/bin/yaf-vorbis
+debian/tmp/opt/trinity/bin/yaf-yuv
+debian/tmp/opt/trinity/lib/libmpeg-0.3.0.so
+debian/tmp/opt/trinity/lib/libyafcore.so
+debian/tmp/opt/trinity/lib/libyafxplayer.so

@@ -1,0 +1,30 @@
+Source: trinity-slax
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Standards-Version: 3.8.3
+Build-Depends: cdbs, debhelper (>= 10~)
+
+Package: trinity-slax
+Architecture: all
+Depends:
+ tdebase-trinity,
+ libarts1-akode-trinity,
+ kaffeine-trinity,
+ qalculate-trinity | kcalc-trinity,
+ kedit-trinity,
+ kicker-applets-trinity,
+ kmix-trinity,
+ kpdf-trinity,
+ krdc-trinity,
+ ksnapshot-trinity,
+ kuickshow-trinity,
+ network-manager-tde,
+ rdesktop,
+ udisks2
+Description: Essential selection for Trinity on Slax
+ This package depends on selected packages in the Trinity Desktop Environment
+ .
+ It is safe to remove this package if some of the desktop system packages are
+ not desired.
+

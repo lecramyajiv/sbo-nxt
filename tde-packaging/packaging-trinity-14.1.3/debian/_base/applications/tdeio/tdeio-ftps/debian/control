@@ -1,0 +1,19 @@
+Source: tdeio-ftps-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.3
+
+Package: tdeio-ftps-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: an ftps TDEIO slave for TDE
+ tdeio-ftps-trinity is an ftps TDEIO slave for TDE, based on rfc4217 and
+ build upon the ftp TDEIO-slave sources. tdeio-ftps-trinity should work
+ yet with most server implementations It issues an "AUTH TLS"
+ command after connecting and refuses to continue, when it's
+ not supported.
+ .
+ Homepage: http://kasablanca.berlios.de/kio-ftps/
+

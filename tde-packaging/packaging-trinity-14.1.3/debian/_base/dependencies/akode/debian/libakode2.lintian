@@ -1,0 +1,8 @@
+# These are akode plugins, not regular shared libraries.
+libakode2: shlib-missing-in-control-file libakode_mpc_decoder.so usr/lib/libakode_mpc_decoder.so
+libakode2: shlib-missing-in-control-file libakode_alsa_sink.so usr/lib/libakode_alsa_sink.so
+libakode2: shlib-missing-in-control-file libakode_mpeg_decoder.so usr/lib/libakode_mpeg_decoder.so
+libakode2: shlib-missing-in-control-file libakode_jack_sink.so usr/lib/libakode_jack_sink.so
+libakode2: shlib-missing-in-control-file libakode_xiph_decoder.so usr/lib/libakode_xiph_decoder.so
+libakode2: shlib-missing-in-control-file libakode_oss_sink.so usr/lib/libakode_oss_sink.so
+libakode2: shlib-missing-in-control-file libakode_src_resampler.so usr/lib/libakode_src_resampler.so

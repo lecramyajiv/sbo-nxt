@@ -1,0 +1,50 @@
+Source: dbus-1-tqt
+Section: devel
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, libtqtinterface-dev, libdbus-1-dev (>= 0.90)
+Build-Depends-Indep: doxygen, graphviz
+Standards-Version: 3.8.3
+
+Package: libdbus-1-tqt-dev
+Section: libdevel
+Architecture: any
+Replaces: libdbus-1-tqt-dev (<< 4:14.0.0~)
+Breaks: libdbus-1-tqt-dev (<< 4:14.0.0~)
+Depends: libdbus-1-tqt (= ${binary:Version}), libdbus-1-dev (>= 0.90), libtqtinterface-dev
+Description: dbus bindings for the Trinity TQt interface
+ D-BUS is a message bus, used for sending messages between applications.
+ Conceptually, it fits somewhere in between raw sockets and CORBA in
+ terms of complexity.
+ .
+ This package provides bindings for the Trinity TQt interface.
+ .
+ See the dbus description for more information about D-BUS in general.
+
+Package: libdbus-1-tqt
+Section: libs
+Architecture: any
+Replaces: libdbus-1-tqt (<< 4:14.0.0~)
+Breaks: libdbus-1-tqt (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: dbus bindings for the Trinity TQt interface
+ D-BUS is a message bus, used for sending messages between applications.
+ Conceptually, it fits somewhere in between raw sockets and CORBA in
+ terms of complexity.
+ .
+ This package provides bindings for the Trinity TQt interface.
+ .
+ See the dbus description for more information about D-BUS in general.
+
+Package: libdbus-1-tqt-doc
+Section: doc
+Architecture: all
+Replaces: libdbus-1-tqt-doc (<< 4:14.0.0~)
+Breaks: libdbus-1-tqt-doc (<< 4:14.0.0~)
+Description: developer documentation for the libdbus-1-tqt libraries
+ This package contains documentation for the libdbus-1-tqt libraries, of
+ use more for developers creating applications which use the libdbus-1-tqt libraries, than regular users.
+ .
+ This package is part of the provided bindings for the Trinity TQt interface.
+ .
+ See the dbus description for more information about D-BUS in general.

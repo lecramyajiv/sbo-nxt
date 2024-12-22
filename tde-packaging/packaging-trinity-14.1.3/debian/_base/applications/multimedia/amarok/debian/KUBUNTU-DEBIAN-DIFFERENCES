@@ -1,0 +1,7 @@
+debian/install-mp3			/usr/lib/amarok
+amarok/src/engine/xine/amarok_xine-mp3_install.desktop /usr/share/services
+Depend on amarok-xine | amarok-engine
+install debian/kubuntu-media-amarok and debian/amarok_play_audiocd.desktop in amarok.install
+chmod x debian/amarok/usr/bin/kubuntu-media-amarok in debian/rules in section
+	common-binary-post-install-arch::
+remove amarok-common.lintian, amarok.lintian

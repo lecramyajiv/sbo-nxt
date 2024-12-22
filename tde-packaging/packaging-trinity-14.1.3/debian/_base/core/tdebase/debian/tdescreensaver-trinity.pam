@@ -1,0 +1,7 @@
+#
+# /etc/pam.d/tdescreensaver - specify the PAM behaviour of tdescreensaver
+#
+@include common-auth
+@include common-account
+@include common-password
+@include common-session

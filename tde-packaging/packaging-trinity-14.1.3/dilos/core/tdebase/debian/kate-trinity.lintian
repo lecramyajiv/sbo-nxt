@@ -1,0 +1,2 @@
+kate-trinity: shlib-missing-in-control-file libtdeinit_kwrite.so usr/lib/libtdeinit_kwrite.so
+kate-trinity: shlib-missing-in-control-file libtdeinit_kate.so usr/lib/libtdeinit_kate.so

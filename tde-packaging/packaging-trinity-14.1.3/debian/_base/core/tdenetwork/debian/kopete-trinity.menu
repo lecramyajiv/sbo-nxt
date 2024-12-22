@@ -1,0 +1,8 @@
+?package(kopete-trinity):\
+	needs="X11"\
+	section="Apps/Net"\
+	hints="TDE,IM"\
+	title="Kopete"\
+	icon32x32="/opt/trinity/share/pixmaps/kopete.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kopete-16.xpm"\
+	command="/opt/trinity/bin/kopete"

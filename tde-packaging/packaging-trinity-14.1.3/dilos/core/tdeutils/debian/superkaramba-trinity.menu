@@ -1,0 +1,11 @@
+?package(superkaramba-trinity):\
+	needs="X11"\
+	section="Apps/Tools"\
+	hints="TDE"\
+	title="Superkaramba"\
+	icon32x32="/usr/share/pixmaps/superkaramba.xpm"\
+	icon16x16="/usr/share/pixmaps/superkaramba-16.xpm"\
+	command="/usr/bin/superkaramba"
+
+# Icon 32x32 superkaramba/icons/cr32-app-superkaramba.png superkaramba.xpm
+# Icon 16x16 superkaramba/icons/cr16-app-superkaramba.png superkaramba-16.xpm

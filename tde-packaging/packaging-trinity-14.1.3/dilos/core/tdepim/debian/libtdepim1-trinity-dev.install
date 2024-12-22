@@ -1,0 +1,10 @@
+/usr/include/libemailfunctions/idmapper.h
+/usr/include/libkcal
+/usr/lib/*/libkcal.la
+/usr/lib/*/libkcal.so
+/usr/lib/*/libkcal_resourceremote.la
+/usr/lib/*/libkcal_resourceremote.so
+/usr/lib/*/libkholidays.la
+/usr/lib/*/libkholidays.so
+/usr/lib/*/libtdepim.la
+/usr/lib/*/libtdepim.so

@@ -1,0 +1,35 @@
+This package was debianized by Luis Mayoral <mayoral@linuxadicto.org> on
+Mon, 23 Aug 2004 19:56:57 +0200.
+Maintenance was taken over by Debian KDE Extras Team 
+<pkg-kde-extras@lists.alioth.debian.org> on Fri, 27 Oct 2006 17:55:21 +0200
+
+It was downloaded from http://kompose.berlios.de
+
+Upstream Author: Hans Oischinger <oisch@waidlafragger.de>
+
+Copyright:
+	© 2004-2006, Hans Oischinger <oisch@waidlafragger.de>
+
+License terms:
+
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this package; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+This program is released under the Gnu Public License version 2.
+Fhe full text of the GNU General Public License version 2 is available on
+Debian systems in /usr/share/common-licenses/GPL-2.
+                                                           
+The Debian packaging is under the same license as the program.
+ (C) 2004-2005 Luis Mayoral <mayoral@linuxadicto.org>
+ (C) 2006 Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>

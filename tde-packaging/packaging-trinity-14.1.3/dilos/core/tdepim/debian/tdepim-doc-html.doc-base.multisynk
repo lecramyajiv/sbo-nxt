@@ -1,0 +1,9 @@
+Document: tdepim-doc-html-multisynk
+Title: The MultiSynk Handbook
+Author: Tobias Koenig
+Abstract: TDE synchronization application.
+Section: Apps/Tools
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/multisynk/index.html
+Files: /usr/share/doc/tde/HTML/en/multisynk/*.html

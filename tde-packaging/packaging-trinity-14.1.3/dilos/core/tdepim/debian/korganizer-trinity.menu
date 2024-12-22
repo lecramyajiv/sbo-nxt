@@ -1,0 +1,8 @@
+?package(korganizer-trinity):\
+	needs="X11"\
+	section="Applications/Data Management"\
+	hints="TDE"\
+	title="KOrganizer"\
+	icon32x32="/usr/share/pixmaps/korganizer.xpm"\
+	icon16x16="/usr/share/pixmaps/korganizer-16.xpm"\
+	command="/usr/bin/korganizer"

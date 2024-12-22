@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-kfouleggs
+Title: The KFouleggs Handbook
+Author: Philip Rodrigues
+Abstract: KFouleggs is a clone of the Japanese PuyoPuyo game for
+ the Trinity Desktop Environment.
+Section: Games/Tetris-like
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kfouleggs/index.html
+Files: /usr/share/doc/tde/HTML/en/kfouleggs/*.html

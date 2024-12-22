@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kooka
+Title: Kooka Handbook
+Author: Klaas Freitag, Martin Sommer 
+Abstract: Kooka is a very useful TDE scanning application.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kooka/index.html
+Files: /usr/share/doc/tde/HTML/en/kooka/*.html
+

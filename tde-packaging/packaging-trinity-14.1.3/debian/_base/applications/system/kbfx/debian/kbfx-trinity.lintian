@@ -1,0 +1,5 @@
+# It isn't a library or a development package
+# and no other packages uses libkbfxcommon and libkbfxdata
+kbfx-trinity: no-shlibs-control-file opt/trinity/lib/libkbfxdata.so
+kbfx-trinity: no-shlibs-control-file opt/trinity/lib/libkbfxcommon.so
+kbfx-trinity: package-name-doesnt-match-sonames libkbfxcommon libkbfxdata

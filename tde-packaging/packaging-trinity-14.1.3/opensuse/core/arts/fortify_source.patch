@@ -1,0 +1,13 @@
+Index: flow/gsl/gslloader-oggvorbis.c
+===================================================================
+--- flow/gsl/gslloader-oggvorbis.c.orig
++++ flow/gsl/gslloader-oggvorbis.c
+@@ -25,7 +25,7 @@
+ #include <vorbis/vorbisfile.h>
+ #include <string.h>
+ #include <unistd.h>
+-
++#include <string.h>
+ 
+ /* --- structures --- */
+ typedef struct

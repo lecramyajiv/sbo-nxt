@@ -1,0 +1,17 @@
+#!/bin/sh
+# Support script to properly set environments for Designer to run
+
+LIBSUFFIX="lib"
+
+if [ `uname -m` = "x86_64" ]; then
+   LIBSUFFIX="lib64"
+fi
+   
+export QTDIR=/usr/lib/qt3/
+export LD_LIBRARY_PATH=$QTDIR/$LIBSUFFIX:$LD_LIBRARY_PATH
+export PATH=$QTDIR/bin:$PATH
+
+export MOC=$QTDIR/bin/moc
+export UIC=$QTDIR/bin/uic
+ 
+exec $QTDIR/bin/designer "$@"

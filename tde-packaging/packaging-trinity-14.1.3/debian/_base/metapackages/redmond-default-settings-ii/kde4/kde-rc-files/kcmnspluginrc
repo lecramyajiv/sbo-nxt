@@ -1,0 +1,3 @@
+[Misc]
+starttdeScan=true
+PluginsListFile=/usr/share/redmond-default-settings/tde-profile/default/share/apps/konqueror/konq_plugins.xml

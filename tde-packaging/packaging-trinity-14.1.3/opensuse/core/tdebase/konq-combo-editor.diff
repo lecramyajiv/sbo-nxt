@@ -1,0 +1,42 @@
+Index: konqueror/konq_combo.h
+===================================================================
+--- konqueror/konq_combo.h.orig
++++ konqueror/konq_combo.h
+@@ -87,6 +87,7 @@ signals:
+ 
+ private slots:
+     void slotCleared();
++    void slotRemoved( const QString& item );
+     void slotSetIcon( int index );
+     void slotActivated( const QString& text );
+ 
+Index: konqueror/konq_combo.cc
+===================================================================
+--- konqueror/konq_combo.cc.orig
++++ konqueror/konq_combo.cc
+@@ -128,6 +128,9 @@ KonqCombo::KonqCombo( QWidget *parent, c
+     connect( this, SIGNAL(activated( const QString& )),
+              SLOT(slotActivated( const QString& )) );
+ 
++    setHistoryEditorEnabled( true ); 
++    connect( this, SIGNAL(removed( const QString&) ), SLOT(slotRemoved( const QString& )) );
++
+     if ( !kapp->dcopClient()->isAttached() )
+         kapp->dcopClient()->attach();
+ }
+@@ -506,6 +509,15 @@ void KonqCombo::slotCleared()
+     kapp->dcopClient()->send( "konqueror*", "KonquerorIface", "comboCleared(QCString)", data);
+ }
+ 
++void KonqCombo::slotRemoved( const QString& item )
++{
++    QByteArray data;
++    QDataStream s( data, IO_WriteOnly );
++    s << item << kapp->dcopClient()->defaultObject();
++    kapp->dcopClient()->send( "konqueror*", "KonquerorIface",
++                               "removeFromCombo(QString,QCString)", data);
++}
++
+ void KonqCombo::removeURL( const QString& url )
+ {
+     setUpdatesEnabled( false );

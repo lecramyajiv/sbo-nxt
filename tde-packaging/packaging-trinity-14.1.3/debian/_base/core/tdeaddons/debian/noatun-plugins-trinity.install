@@ -1,0 +1,66 @@
+debian/tmp/opt/trinity/bin/noatunsynaescope.bin
+debian/tmp/opt/trinity/bin/noatuntippecanoe.bin
+debian/tmp/opt/trinity/bin/noatuntyler.bin
+debian/tmp/opt/trinity/lib/trinity/noatunalsaplayer.la
+debian/tmp/opt/trinity/lib/trinity/noatunalsaplayer.so
+debian/tmp/opt/trinity/lib/trinity/noatunblurscope.la
+debian/tmp/opt/trinity/lib/trinity/noatunblurscope.so
+debian/tmp/opt/trinity/lib/trinity/noatuncharlatan.la
+debian/tmp/opt/trinity/lib/trinity/noatuncharlatan.so
+debian/tmp/opt/trinity/lib/trinity/noatundub.la
+debian/tmp/opt/trinity/lib/trinity/noatundub.so
+debian/tmp/opt/trinity/lib/trinity/noatun_ffrs.la
+debian/tmp/opt/trinity/lib/trinity/noatun_ffrs.so
+debian/tmp/opt/trinity/lib/trinity/noatunluckytag.la
+debian/tmp/opt/trinity/lib/trinity/noatunluckytag.so
+debian/tmp/opt/trinity/lib/trinity/noatunlyrics.la
+debian/tmp/opt/trinity/lib/trinity/noatunlyrics.so
+debian/tmp/opt/trinity/lib/trinity/noatunmadness.la
+debian/tmp/opt/trinity/lib/trinity/noatunmadness.so
+debian/tmp/opt/trinity/lib/trinity/noatun_oblique.la
+debian/tmp/opt/trinity/lib/trinity/noatun_oblique.so
+debian/tmp/opt/trinity/lib/trinity/noatunpitchablespeed.la
+debian/tmp/opt/trinity/lib/trinity/noatunpitchablespeed.so
+debian/tmp/opt/trinity/lib/trinity/noatunsynaescope.la
+debian/tmp/opt/trinity/lib/trinity/noatunsynaescope.so
+debian/tmp/opt/trinity/lib/trinity/noatuntippecanoe.la
+debian/tmp/opt/trinity/lib/trinity/noatuntippecanoe.so
+debian/tmp/opt/trinity/lib/trinity/noatuntyler.la
+debian/tmp/opt/trinity/lib/trinity/noatuntyler.so
+debian/tmp/opt/trinity/lib/trinity/noatunwakeup.la
+debian/tmp/opt/trinity/lib/trinity/noatunwakeup.so
+debian/tmp/opt/trinity/lib/trinity/noatunwavecapture.la
+debian/tmp/opt/trinity/lib/trinity/noatunwavecapture.so
+debian/tmp/opt/trinity/share/apps/noatun/alsaplayerui.plugin
+debian/tmp/opt/trinity/share/apps/noatun/blurscope.plugin
+debian/tmp/opt/trinity/share/apps/noatun/charlatanui.plugin
+debian/tmp/opt/trinity/share/apps/noatun/dub.plugin
+debian/tmp/opt/trinity/share/apps/noatun/ffrs.plugin
+debian/tmp/opt/trinity/share/apps/noatun/luckytag.plugin
+debian/tmp/opt/trinity/share/apps/noatun/lyrics.plugin
+debian/tmp/opt/trinity/share/apps/noatun/lyricsui.rc
+debian/tmp/opt/trinity/share/apps/noatun/madness.plugin
+debian/tmp/opt/trinity/share/apps/noatun/obliqueui.rc
+debian/tmp/opt/trinity/share/apps/noatun/oblique.plugin
+debian/tmp/opt/trinity/share/apps/noatun/oblique/schemas/standard
+debian/tmp/opt/trinity/share/apps/noatun/pitchablespeed.plugin
+debian/tmp/opt/trinity/share/apps/noatun/synaescope.plugin
+debian/tmp/opt/trinity/share/apps/noatun/tippecanoe.plugin
+debian/tmp/opt/trinity/share/apps/noatun/tyler.plugin
+debian/tmp/opt/trinity/share/apps/noatun/tylerstates
+debian/tmp/opt/trinity/share/apps/noatun/wakeup.plugin
+debian/tmp/opt/trinity/share/apps/noatun/wavecapture.plugin
+debian/tmp/opt/trinity/share/icons/crystalsvg/16x16/apps/synaescope.png
+debian/tmp/opt/trinity/share/man/man1/noatunsynaescope.bin.1
+debian/tmp/opt/trinity/share/man/man1/noatuntippecanoe.bin.1
+debian/tmp/opt/trinity/share/man/man1/noatuntyler.bin.1
+noatun-plugins/dub/AUTHORS /opt/trinity/share/doc/noatun-plugins/dub
+noatun-plugins/dub/BUGS /opt/trinity/share/doc/noatun-plugins/dub
+noatun-plugins/dub/ChangeLog /opt/trinity/share/doc/noatun-plugins/dub
+noatun-plugins/dub/design.txt /opt/trinity/share/doc/noatun-plugins/dub
+noatun-plugins/dub/NEWS /opt/trinity/share/doc/noatun-plugins/dub
+noatun-plugins/dub/README /opt/trinity/share/doc/noatun-plugins/dub
+noatun-plugins/dub/TODO /opt/trinity/share/doc/noatun-plugins/dub
+noatun-plugins/lyrics/TODO /opt/trinity/share/doc/noatun-plugins/lyrics
+noatun-plugins/tyler/AUTHORS /opt/trinity/share/doc/noatun-plugins/tyler
+noatun-plugins/tyler/README /opt/trinity/share/doc/noatun-plugins/tyler

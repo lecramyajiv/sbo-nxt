@@ -1,0 +1,13 @@
+Index: kdebase-3.5.10/khelpcenter/khelpcenter.desktop
+===================================================================
+--- kdebase-3.5.10.orig/khelpcenter/khelpcenter.desktop
++++ kdebase-3.5.10/khelpcenter/khelpcenter.desktop
+@@ -127,7 +127,7 @@ Icon=khelpcenter
+ DocPath=khelpcenter/index.html
+ Type=Service
+ Terminal=false
+-Exec=khelpcenter %u
++Exec=susehelp %u
+ SwallowExec=
+ SwallowTitle=
+ X-KDE-StartupNotify=true

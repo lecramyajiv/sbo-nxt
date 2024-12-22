@@ -1,0 +1,126 @@
+package: kdelibs-3.5.10.tar.bz2
+kdemod: kdelibs
+Index: BRANCH_STATUS
+===================================================================
+--- /dev/null
++++ BRANCH_STATUS
+@@ -0,0 +1,2 @@
++current HEAD: 859452
++svn di between //tags/KDE/3.5.10/kdelibs and //branches/KDE/3.5/kdelibs
+Index: kinit/start_kdeinit.c
+===================================================================
+--- kinit/start_kdeinit.c.orig
++++ kinit/start_kdeinit.c
+@@ -44,7 +44,7 @@ static int set_protection( pid_t pid, in
+ {
+    char buf[ 1024 ];
+    int procfile;
+-   sprintf( buf, "/proc/%d/oom_adj", pid );
++   sprintf( buf, "/proc/%d/stat", pid );
+    if( !enable ) {
+        /* Be paranoid and check that the pid we got from the pipe
+           belongs to this user. */
+@@ -52,6 +52,7 @@ static int set_protection( pid_t pid, in
+        if( lstat( buf, &st ) < 0 || st.st_uid != getuid())
+            return 0;
+    }
++   sprintf( buf, "/proc/%d/oom_adj", pid );
+    procfile = open( buf, O_WRONLY );
+    if( procfile >= 0 ) {
+       if( enable )
+Index: kio/kio/configure.in.in
+===================================================================
+--- kio/kio/configure.in.in.orig
++++ kio/kio/configure.in.in
+@@ -139,8 +139,30 @@ if test "x$kde_enable_inotify" = "xyes";
+   AC_LANG_RESTORE
+   ])
+ 
+-  if test "$kde_cv_have_inotify" = "yes" ; then
++  AC_CACHE_VAL(kde_cv_have_sys_inotify,
++  [
++  kde_cv_have_sys_inotify=no
++  AC_LANG_SAVE
++  AC_LANG_C
++
++  AC_TRY_COMPILE(
++  [
++#include <sys/inotify.h>
++  ],
++  [
++#ifndef IN_ALL_EVENTS
++#error no inotify notification
++#endif
++  ],kde_cv_have_sys_inotify=yes,kde_cv_have_sys_inotify=no)
++
++  AC_LANG_RESTORE
++  ])
++
++  if test "$kde_cv_have_inotify" = "yes" -o "$kde_cv_have_sys_inotify" = "yes"; then
+     AC_DEFINE_UNQUOTED(HAVE_INOTIFY, 1, [Define if your system has Linux Inode Notification])
++    if test "$kde_cv_have_sys_inotify" = "yes"; then
++      AC_DEFINE_UNQUOTED(HAVE_SYS_INOTIFY, 1, [Define if your system has glibc support for inotify])
++    fi
+     AC_MSG_RESULT(yes)
+   else
+     AC_MSG_RESULT(no)
+Index: kio/kio/kdirwatch.cpp
+===================================================================
+--- kio/kio/kdirwatch.cpp.orig
++++ kio/kio/kdirwatch.cpp
+@@ -64,11 +64,13 @@
+ // debug
+ #include <sys/ioctl.h>
+ 
+-#ifdef HAVE_INOTIFY
++#ifdef HAVE_SYS_INOTIFY
++#include <sys/inotify.h>
++#include <fcntl.h>
++#elif HAVE_INOTIFY
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <sys/syscall.h>
+-#include <linux/types.h>
+ // Linux kernel headers are documented to not compile
+ #define _S390_BITOPS_H
+ #include <linux/inotify.h>
+@@ -87,7 +89,9 @@ static inline int inotify_rm_watch (int
+ {
+   return syscall (__NR_inotify_rm_watch, fd, wd);
+ }
++#endif
+ 
++#ifdef HAVE_INOTIFY
+ #ifndef  IN_ONLYDIR
+ #define  IN_ONLYDIR 0x01000000 
+ #endif
+@@ -99,7 +103,6 @@ static inline int inotify_rm_watch (int
+ #ifndef IN_MOVE_SELF
+ #define IN_MOVE_SELF 0x00000800
+ #endif
+-
+ #endif
+ 
+ #include <sys/utsname.h>
+Index: kdoctools/customization/pt-BR/user.entities
+===================================================================
+--- kdoctools/customization/pt-BR/user.entities.orig
++++ kdoctools/customization/pt-BR/user.entities
+@@ -17,7 +17,7 @@
+ <!ENTITY Esc   "<keycap>Esc</keycap>">
+ <!ENTITY etc     "<abbrev>etc</abbrev>">
+ <!ENTITY ex     "<abbrev>por exemplo</abbrev>">
+-<!ENTITY FAQ     "Perguntas Mais Freqüentes (do inglês <acronym>FAQ</acronym>)">
++<!ENTITY FAQ     "Perguntas mais freqüentes (do inglês <acronym>FAQ</acronym>)">
+ <!ENTITY HTML	'<acronym>HTML</acronym>'>
+ <!ENTITY ie     "isto é">
+ <!ENTITY infocenter	"<application>Centro de Informações</application>">
+@@ -34,7 +34,7 @@
+ <!ENTITY LMB    "botão <mousebutton>esquerdo</mousebutton> do mouse">
+ <!ENTITY MMB    "botão do <mousebutton>meio</mousebutton> do mouse">
+ <!ENTITY OS "<acronym>Sistema Operacional</acronym>">
+-<!ENTITY RMB    "botão <mousebutton>direto</mousebutton> do mouse">
++<!ENTITY RMB    "botão <mousebutton>direito</mousebutton> do mouse">
+ <!ENTITY Shift   "<keycap>Shift</keycap>">
+ <!ENTITY systemtray "<application>bandeja do sistema</application>">
+ <!ENTITY Tab	"<keycap>Tab</keycap>">

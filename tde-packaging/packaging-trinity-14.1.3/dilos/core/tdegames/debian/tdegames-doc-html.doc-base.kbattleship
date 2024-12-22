@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-kbattleship
+Title: The KBattleship Handbook
+Author: Daniel Molkentin, Nikolas Zimmermann
+Abstract: KBattleship is a network-enabled implementation of the
+ famous Battle Ship game for TDE.
+Section: Games/Board
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kbattleship/index.html
+Files: /usr/share/doc/tde/HTML/en/kbattleship/*.html

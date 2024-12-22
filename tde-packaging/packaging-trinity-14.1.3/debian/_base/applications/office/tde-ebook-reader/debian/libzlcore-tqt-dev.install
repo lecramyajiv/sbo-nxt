@@ -1,0 +1,2 @@
+/usr/include/zlibrary-tqt/core
+/usr/lib/$(DEB_HOST_MULTIARCH)/libzlcore-tqt.so

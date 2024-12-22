@@ -1,0 +1,9 @@
+Document: tdepim-doc-html-kaddressbook
+Title: The KAddressBook Handbook
+Author: Tobias Koenig, Steffen Hansen, Don Sanders
+Abstract: KAddressBook is the TDE address book.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kaddressbook/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kaddressbook/*.html

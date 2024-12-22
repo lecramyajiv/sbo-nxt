@@ -1,0 +1,1268 @@
+konversation-trinity (1.1-0ubuntu3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+konversation-trinity (1.1-0ubuntu2) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 06 March 2009 01:35:00 -0600
+
+konversation-trinity (1.1-0ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 14 Dec 2008 14:31:00 -0600
+
+konversation (1.1-0ubuntu2.1) intrepid-proposed; urgency=low
+
+  * Reapply kubuntu_05_default_channels.diff dropped in 1.0.1-6ubuntu1.
+  * Removed 10_debian_channel.diff added in 1.0.1-6ubuntu1.
+  * Re-add missing changelog entries that went into a black hole.
+  * Debian people now go to #kubuntu, not #debian again (LP: #218958), 
+    even without kubuntu-default-settings installed.
+  * This merge should now be correct.
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Tue, 04 Nov 2008 13:53:43 +1100
+
+konversation (1.1-0ubuntu2) intrepid; urgency=low
+
+  * Run buildprep before upload
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 21 Aug 2008 10:08:33 +0100
+
+konversation (1.1-0ubuntu1) intrepid; urgency=low
+
+  * New upstream release (LP: #256733)
+  * Bump Standards-Version up to 3.8.0
+  * Added po/*/konversation.gmo to the build clean target
+
+ -- Jonathan Thomas (The man) <echidnaman@gmail.com>  Sun, 10 Aug 2008 17:19:20 -0400
+
+konversation (1.0.1-6ubuntu1) intrepid; urgency=low
+
+  * Merge with Debian, remaining change just the .orig md5sum, closes LP: #226180
+
+ -- Richard Birnie <Arbyuk@googlemail.com>  Wed, 07 May 2008 13:46:21 +0100
+
+konversation (1.0.1-6) unstable; urgency=low
+
+  [ Modestas Vainius ]
+  * Move Homepage stanza to debian/control source section.
+  * Bump Standards-Version to 3.7.3.0
+  * Add DM-Upload-Allowed: yes to debian/control source section.
+  * Enhance 16_konversation_desktop.diff patch - remove Encoding field from
+    konversation.desktop too.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue, 04 Mar 2008 18:40:56 +0200
+
+konversation (1.0.1-5) unstable; urgency=low
+
+  [ Modestas Vainius ]
+  * Drop hackish docs removal stuff from debian/rules. There is a less
+    hackish way to achieve the same thing (i.e. not to installing upstrem
+    README) which should not cause problems with dash as /bin/sh
+    (Closes: #459159).
+  * New patches from 1.0.1-4ubuntu2:
+    * Add unfuzzed kubuntu_02_serverlist_compiz_workaround.patch as
+      17_serverlist_compiz_workaround.diff. The patch comes from
+      upstream r604746  (KDE Bug #147557).
+    * I'm adding back kubuntu_01_kdepot.diff because it does not hurt and now
+      I understand how it helps for Ubuntu.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Mon, 21 Jan 2008 12:22:36 +0200
+
+konversation (1.0.1-4ubuntu6) hardy; urgency=low
+
+  * Edit 10_debian_channel.diff, renamed to
+    kubuntu_05_default_channels.diff, to default to #kubuntu.  
+    (LP: #218958)
+  * Add this, and previous patch, to debian/patches/series, so they actually
+    apply
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Fri, 18 Apr 2008 16:16:47 +1000
+
+konversation (1.0.1-4ubuntu5) hardy; urgency=low
+
+  * Added kubuntu_04_dcc_crash.diff to prevent Konversation from crashing
+    when a DCC Chat request is sent. (LP: #60898)
+  * Fixed in KDE SVN r605705
+
+ -- Guillaume Martres <smarter@ubuntu.com>  Sat, 12 Apr 2008 23:47:08 +0200
+
+konversation (1.0.1-4ubuntu4) hardy; urgency=low
+
+  * Fixed kubuntu_03_osd_kde4.diff
+    - Closes LP: #209368
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 08 Apr 2008 15:36:00 +0200
+
+konversation (1.0.1-4ubuntu3) hardy; urgency=low
+
+  * Added kubuntu_03_osd_kde4.diff, fixes OSD issue on the KDE4 desktop.
+    Patch from svn.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue, 11 Mar 2008 15:40:59 +0100
+
+konversation (1.0.1-4ubuntu2) gutsy; urgency=low
+
+  * Add kubuntu_02_serverlist_compiz_workaround.patch from upstream.
+    (KDE Bug #147557)
+  * Removed 98_buildprep.diff as we dont tend to use these in ubuntu.
+    Fixes FTBFS
+  * Added build-dep automake1.9 to fix FTBFS
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Mon, 15 Oct 2007 22:08:45 +1000
+
+konversation (1.0.1-4ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian for CVE patch, remaining change:
+    - kubuntu_01_kdepot.diff patch
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 30 Aug 2007 11:17:04 +0100
+
+konversation (1.0.1-4) unstable; urgency=low
+
+  [ Modestas Vainius ]
+  * Add new patches:
+    - 15_CVE-2007-4400.diff to fix CVE-2007-4400 vulnerability.
+    The patch is based on upstream SVN commits #602433 and #602435
+    (Closes: #439837).
+    - 16_konversation_desktop.diff to remove X-SuSE-IRCClient from
+      konversation.desktop Categories to shut lintian up.
+  * Change Debian menu section to Applications/Network/Communication.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Thu, 30 Aug 2007 12:07:06 +0300
+
+konversation (1.0.1-3ubuntu1) gutsy; urgency=low
+
+  [ Jonathan Riddell ]
+  * Drop channel patch, default channel is changed in kubuntu-default-settings
+    and it can fall back to freenode if that's not installed
+
+  [ Frode M. Døving ]
+  * Mergeing from Debian. See changelog entries below.
+    A big thank you goes to the Debian KDE Extras Team, you rock!
+  * Remaining change: kubuntu_01_kdepot.diff
+  * Change maintainer address to ubuntu-core-dev.
+
+ -- Frode M. Døving <frode@ubuntu.com>  Wed, 25 Jul 2007 22:25:27 +0200
+
+konversation (1.0.1-3) unstable; urgency=low
+
+  [ Modestas Vainius ]
+  * Documentation is provided under the terms of GNU GFDL with no Invariant
+    Sections, no Front-Cover Texts, and no Back-Cover Texts. Mention this
+    in debian/copyright.
+  * Update standards version to 3.7.2.2: point to
+    /usr/share/common-licenses/GFDL in debian/copyright.
+  * Use more strict wildcards in konversation.install mostly to track
+    upstream changes and to eliminate empty apidox directory.
+  * New/updated patches:
+    - 10_debian_channel.diff - update to use port 7000 for irc.debian.org
+      by default to prevent possible DCC exploit.
+    - 12_dbug405384_dccsendfile.diff - remember whole URL (including protocol),
+      not just directory for "Send File" dialog (Closes: #405384).
+    - 13_dbug412894_lowercase_nick.diff - don't crash on typing text in
+      reopened query/channel after all channels/queries were left (lowercase
+      nicknames were not affected) (Closes: #412894).
+    - 14_dbug412803_assert_crash.diff - avoid a possible crash on DCOP info.
+      Remove a bogus assert (Closes: #412803).
+  * Add tdelibs-dbg to konversation-dbg Recommends.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue, 24 Jul 2007 01:15:48 +0300
+
+konversation (1.0.1-2) unstable; urgency=low
+
+  * Konversation is now maintained by Debian KDE Extras Team.
+    Modestas Vainius <modestas@vainius.eu> is responsible for the package.
+
+  [Modestas Vainius]
+  * Update debian/copyright based on current copyright information in the
+    source code.
+  * Migrate from simple patch system to quilt.
+  * Patches:
+    - 01 to 04. Usual libtool & autotools update.
+    - 06_fix_relibtoolization.diff - remove a few redundant _LIBADD directives
+      from Makefile.am files to make relibtoolization possible.
+    - 10_debian_channel.diff - add irc://irc.debian.org/#debian to server list
+      by default.
+    - kubuntu_01_kdepot.diff.diff - drop this patch because I don't see why it's
+      needed. Current code leads to the same result.
+    - 11_dbug_autoreplace.diff - add Debian BTS (dbug) auto replace. Thanks to
+      Filipus Klutiero for the idea (Closes: #419897).
+    - 98_buildprep.diff - relibtoolization patch.
+  * Use ${binary:Version} instead of obsolete ${Source-Version} for the -dbg
+    package.
+  * Changes to debian/control:
+    - Drop versioned dependency on g++.
+    - Drop reduntant build dependency on libqt3-mt-dev.
+    - Drop autotools runtime from build dependencies. They are no longer needed.
+    - Build depend on autotools-dev for config.guess and config.sub.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue, 17 Jul 2007 03:24:41 +0300
+
+konversation (1.0.1-1ubuntu2) feisty; urgency=low
+
+  * Changed kubuntu_01_channel.diff to set the default port of the default
+    server to 8001 to prevent the DCC exploit (https://help.ubuntu.com/community/FixDCCExploit)
+
+ -- Martin Meredith <mez@ubuntu.com>  Sat, 27 Jan 2007 06:21:52 +0000
+
+konversation (1.0.1-1ubuntu1) feisty; urgency=low
+
+  * Merge from debian unstable
+  * Remaining changes: kubuntu_01_kdepot.diff and kubuntu_01_channel.diff
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Mon, 30 Oct 2006 12:57:45 +0000
+
+konversation (1.0.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sat,  7 Oct 2006 04:13:14 +0000
+
+konversation (1.0.1-0ubuntu1) edgy; urgency=low
+
+  * New Upstream Bugfix Release ( UVFe approved by mdz )
+  * Closes Malone: #64488
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Thu, 12 Oct 2006 10:03:06 -0500
+
+konversation (1.0-1) unstable; urgency=low
+
+  * New upstream release.  (closes: #387045)
+    + Closes: #365759 (Server tab is blank while reconnecting)
+    + Closes: #356304 (FTBFS with G++ 4.1: extra qualification); patch
+      incorporated upstream; thanks to Martin Michlmayr for the NMU
+
+  * Sync with Ubuntu.
+    + Drop kubuntu_01_channel.diff in favor of updated debian_01_channel.diff.
+
+  * Preseed channel list with #debian at irc.debian.org instead of #debian-kde
+    at irc.freenode.net.  (closes: #371880)
+
+  * Stop shipping outdated and unused cdbs/kde.mk.
+
+  * Change section of konversation-dbg to kde so it matches override file.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed, 13 Sep 2006 14:56:45 -0400
+
+konversation (1.0-0ubuntu6) edgy; urgency=low
+
+  * Set .pot name in debian/rules
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun,  1 Oct 2006 13:00:19 +0100
+
+konversation (1.0-0ubuntu5) edgy; urgency=low
+
+  * Applyed Mez patch again (sorry!) for gnome users.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sat,  9 Sep 2006 08:54:21 +0200
+
+konversation (1.0-0ubuntu4) edgy; urgency=low
+
+  * Back to old kubuntu_01_channel.diff since the settings are
+    overwritten bu kubuntu-default-settings in the first place.
+    Applying the wanted changes to kds.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sat,  9 Sep 2006 08:33:24 +0200
+
+konversation (1.0-0ubuntu3) edgy; urgency=low
+
+  * Modified kubuntu_01_channel.diff to change the default irc server 
+    to irc.ubuntu.com vs irc.freenode.net (Closes Malone: #52690)
+    thanks to Martin Meredith ( mez@ubuntu.com )
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Sat,  9 Sep 2006 02:12:26 -0500
+
+konversation (1.0-0ubuntu2) edgy; urgency=low
+
+  * Add automake and autoconf build-dep
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  1 Sep 2006 21:41:38 +0000
+
+konversation (1.0-0ubuntu1) edgy; urgency=low
+
+  [ Jonathan Riddell ]
+  * Add kubuntu_01_kdepot.diff and use standard kde.mk in debian/rules
+
+  [ Brandon Holtsclaw ]
+  * New Upstream Version ( uvf exception approved by kamoin )
+  * Removed kubuntu_02_serverlist.patch adopted upstream
+  * Removed debian_02_gcc41.diff also adopted upstream
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Thu, 31 Aug 2006 11:39:24 -0500
+
+konversation (0.19-1.1ubuntu2) edgy; urgency=low
+
+  * Added kubuntu_02_serverlist.patch (Closes: #34992)
+
+ -- Stephan Hermann <sh@sourcecode.de>  Fri,  7 Jul 2006 12:49:21 +0200
+
+konversation (0.19-1.1ubuntu1) edgy; urgency=low
+
+  * Merge from debian unstable.
+
+ -- Stephan Hermann <sh@sourcecode.de>  Fri,  7 Jul 2006 08:03:41 +0200
+
+konversation (0.19-1.1) unstable; urgency=low
+
+  * NMU as part of the GCC 4.1 transition.
+  * patches/debian_01_channel.diff: Remove extra qualification from C++
+    header file.  (Closes: #356304)
+
+ -- Martin Michlmayr <tbm@cyrius.com>  Thu, 25 May 2006 21:55:25 +0200
+
+konversation (0.19-1) unstable; urgency=low
+
+  * New upstream release.  (Closes: #350562)
+    Adds many features and fixes many bugs, including:
+    + Middle-Click Paste behaves differently on channel input line and
+      text input line (Closes: #338489)
+
+  * Synchronize with Ubuntu.
+    - However, disable the libtool-related patches, as they cause autoconf to
+      be re-run at build time, and this is not desirable.  I don't have time
+      to investigate this properly now; NMUs that address the issue are
+      welcome.
+
+  * Preseed initial channel list with #debian-kde instead of #kde.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed,  1 Feb 2006 12:46:01 -0500
+
+konversation (0.19-0ubuntu4) dapper; urgency=low
+
+  * debian/cdbs/kde.mk:
+    - added dh_iconcache.
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Sun, 21 May 2006 16:45:52 +0200
+
+konversation (0.19-0ubuntu3) dapper; urgency=low
+
+  * Edit debian/cdbs/kde.mk to generate .pot file
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  9 May 2006 17:26:57 +0300
+
+konversation (0.19-0ubuntu2) dapper; urgency=low
+
+  * Don't use GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 16 Feb 2006 12:04:31 +0000
+
+konversation (0.19-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Relibtooled - makes tighter Depends
+
+ -- Martin Meredith <mez@ubuntu.com>  Mon, 30 Jan 2006 12:49:48 +0000
+
+konversation (0.18-4) unstable; urgency=low
+
+  * Synchronize with Ubuntu.
+
+  * Build with default g++ on all architectures, instead of g++ 3.4 on arm,
+    m68k, and hppa, now that PR c++/21123 (Debian bug #323133) has been fixed.
+    Add temporary build-dependency on g++ (>= 4:4.0.2-2) until all buildds
+    have that version.
+    + Closes: #342996: Package explicitely build-depends on g++-3.4
+
+  * Bump debian/compat to 5 and build-depend on debhelper (>= 5.0).
+
+  * Add konversation-dbg, to help trace problems (and remove my previous,
+    less-elegant method of conditionally including debug symbols).
+
+  * Recommend python; it is used by the media and weather scripts.
+
+  * Remove ancient Conflicts and Provides declarations for konversation-doc
+    and konversation-i18n.  I believe these packages were never uploaded to
+    the official Debian archive, and were definitely removed long before the
+    sarge release.
+
+  * Remove the .svn check in debian/rules in favor of passing -i to
+    dpkg-buildpackage (which simplifies maintenance).
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 15 Dec 2005 08:46:25 -0500
+
+konversation (0.18-3ubuntu2) dapper; urgency=low
+
+  * Rebuild against the latest tdelibs4-dev to make us installable.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Mon, 12 Dec 2005 21:35:14 +1100
+
+konversation (0.18-3ubuntu1) dapper; urgency=low
+
+  * Resynchronise with Debian.
+  * Sponsored upload for Loic Pefferkorn <loic@ubuntu.com>
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 21 Nov 2005 13:14:59 +0100
+
+konversation (0.18-3) unstable; urgency=low
+
+  * Build with g++-3.4 on arm, m68k, and hppa architectures to work around an
+    internal compiler error in g++ 4.0 on those architectures (bug #323133).
+    - debian/{control,rules}
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue,  6 Sep 2005 21:19:00 -0400
+
+konversation (0.18-2) unstable; urgency=low
+
+  * Upload to Debian unstable, now that a C++ transitioned version of tdelibs
+    has been built on all architectures.
+
+  * Use a more descriptive title in the Debian menu entry.
+    - debian/konversation.menu
+
+  * Bump package's Standards-Version to 3.6.2 (no changes needed).
+    - debian/control: update Standards-Version
+
+  * Update build dependencies to require a more recent version of debhelper
+    (>= 4.9) so that dh_installmenu puts the menu file in /usr/share instead
+    of /usr/lib, to comply with the latest menu policy.
+    - debian/control: update Build-Depends
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu,  1 Sep 2005 22:26:21 -0400
+
+konversation (0.18-1ubuntu4) dapper; urgency=low
+
+  * Build with GCC 3.4 on arches where GCC 4.0 fails
+    See http://lists.debian.org/debian-devel/2005/09/msg00020.html
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 28 Oct 2005 03:58:12 +0000
+
+konversation (0.18-1ubuntu3) breezy; urgency=low
+
+  * bumped cdbs build-dep back to 0.4.21 to make backports happy
+    the "dont ask me again for KDE packages, how can a IRC client 
+    be 7MB big ?" release
+
+ -- Oliver Grawert <ogra@ubuntu.com>  Tue, 26 Jul 2005 23:42:24 +0200
+
+konversation (0.18-1ubuntu2) breezy; urgency=low
+
+  * Add libxi-dev build-depends
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri,  8 Jul 2005 09:52:14 +0000
+
+konversation (0.18-1ubuntu1) breezy; urgency=low
+
+  * Merged with Debian
+  * Sponsored upload for Martin Meredith <martin@sourceguru.net>
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sat, 11 Jun 2005 01:58:20 +0100
+
+konversation (0.18-1) unstable; urgency=low
+
+  * New upstream release.
+    (Not uploaded to Debian, due to the C++ transition.)
+
+  * Recommend ruby, as the newly-added qurl script uses it.
+
+  * Update konversation(1) manpage.
+
+  * Update debian/cdbs/kde.mk to revision 1066 from
+    svn://svn.debian.org/pkg-kde/branches/kde-3.4.0/cdbs/kde.mk
+
+  * Update homepage (again); it is now http://konversation.kde.org/
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue,  7 Jun 2005 21:48:59 -0400
+
+konversation (0.17-1ubuntu1) breezy; urgency=low
+
+  * Merge with debian.
+  * Upload for Frode M. Doeving <frode@lnix.net>
+
+ -- Jonathan Riddell <jr@jriddell.org>  Tue, 31 May 2005 16:04:33 +0200
+
+konversation (0.17-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * Use the kde.mk class maintained by the Debian KDE Maintainers, instead of
+    the one shipped with CDBS.  (Copied from
+    svn://svn.debian.org/pkg-kde/people/chrsmrtn/cdbs-experimental/kde.mk
+    revision 856.)
+
+    One benefit is that experimental packages should now be actually be built
+    with debugging symbols.
+
+  * Build-Depends on a more recent cdbs (>= 2.4.27-3), as the updated kde.mk
+    requires some targets that were added recently.
+
+  * Minor packaging cleanups.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed,  6 Apr 2005 17:17:36 -0400
+
+konversation (0.16-1ubuntu2) breezy; urgency=low
+
+  * Rebuild package for new C++ ABI.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 30 May 2005 20:11:41 +0000
+
+konversation (0.16-1ubuntu1) hoary; urgency=low
+
+  * Sync changelog with Debian package
+  * Sponsored upload for İsmail Dönmez <ismail@kde.org.tr>
+
+ -- Jonathan Riddell <jr@jriddell.org>  Thu, 24 Mar 2005 09:31:10 -0500
+
+konversation (0.16-1) unstable; urgency=low
+
+  * New upstream release.
+    + Closes: #275282: Fallback to ISO-8859-1 (or whatever) if an incoming
+      message isn't UTF8
+    + Closes: #303090: docs are installed in wrong place 
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 24 Mar 2005 09:31:10 -0500
+
+konversation (0.15.1-0ubuntu1) hoary; urgency=low
+
+  * New upstream release
+  * SECURITY UPDATE: Fixes multiple security vulnerabilities
+  * Wildcard variable parsing allows server to execute arbitrary IRC commands
+  * Unescaped variables in Perl scripts allow arbitrary commands to be run by local user
+  * Nick and password confused in quick connect dialogue
+  * References:
+    http://lists.netsys.com/pipermail/full-disclosure/2005-January/031033.html
+  * Merge following changes from 0.15-2 Debian package
+  * Added 000-remove-needless-alias.patch from upstream CVS (thanks to SuSE);
+    should fix a build failure on ia64.
+  * Deleted doc-expand-3.3-entities.patch; no longer needed.
+  * The konversation website has moved to http://konversation.berlios.de/;
+    updated references accordingly:
+    - debian/control
+    - debian/copyright
+  * sponored upload for İsmail Dönmez <ismail@kde.org.tr> (upstream itself)   
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 19 Jan 2005 15:23:29 +0200
+
+konversation (0.15+2005.02.17-0) unstable; urgency=low
+
+  * Start building nightly snapshots tarballs with --no18n, as createPackage
+    no longer builds proper i18n trees (KDE upstream removed some required
+    Makefile.am files, and I lack the time to fix it properly right now).
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 17 Feb 2005 11:59:13 -0500
+
+konversation (0.15-3) unstable; urgency=high
+
+  * Security update release.  Applied patches from Wouter Coekaerts (included
+    in upstream 0.15.1) to fix the following issues:
+    + CAN-2005-0129: quick buttons recursive % expansion
+    + CAN-2005-0130: perl script arbitrary command execution
+    + CAN-2005-0131: potential server password leak
+    (Closes: #291503)
+  * Reverted website changes in 0.15-2; the konversation.org website is back.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 21 Jan 2005 13:07:21 -0500
+
+konversation (0.15-2) unstable; urgency=low
+
+  * Added 000-remove-needless-alias.patch from upstream CVS (thanks to SuSE);
+    should fix a build failure on ia64.  (Closes: #289914)
+  * Deleted doc-expand-3.3-entities.patch; no longer needed.
+  * The konversation website has moved to http://konversation.berlios.de/;
+    updated references accordingly:
+    - debian/control
+    - debian/copyright
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed,  5 Jan 2005 18:33:16 -0500
+
+konversation (0.15-1) unstable; urgency=low
+
+  * New upstream release.
+    + Closes: #266126: per-channel setting for character set
+    + Closes: #271045: CPU 100% usage when receiving channel list
+    + Closes: #271046: Channel list received from server is not complete
+    + Closes: #276551: Busy-loops on the IRC socket
+    + tarball layout has changed; packaging updated accordingly:
+      - doc-expand-3.3-entities.patch
+      - debian/rules
+      - debian/docs
+  * Removed 23 identical automatic snapshot entries from debian/changelog.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed,  1 Dec 2004 12:31:51 -0500
+
+konversation (0.15-1ubuntu1) hoary; urgency=low
+
+  * Initial Ubuntu upload
+  * Fixes broken build-depends
+  * sponored upload for İsmail Dönmez (upstream itself)   
+
+ -- Andreas Mueller <amu@canonical.com>  Sun, 9 Jan 2005 13:28:12 +0200
+
+konversation (0.14.0+20041129-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+    + irc.protocol has been renamed konvirc.protocol and no longer needs to be
+      maintained using update-alternatives; postinst and prerm updated
+      accordingly.
+  * Resync doc-expand-3.3-entities.patch:
+    + no longer need to patch ./doc/da/index.docbook
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue, 30 Nov 2004 01:13:17 -0500
+
+konversation (0.14.0+20040902.1-2) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+    + install the icons in the correct place
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu,  2 Sep 2004 22:57:36 -0400
+
+konversation (0.14.0+20040902-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * Do not call update-alternatives --remove when upgrading, as this can
+    effectively reset the administrator's settings.
+    - debian/konversation.prerm
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu,  2 Sep 2004 11:21:08 -0400
+
+konversation (0.14.0+20040831-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * Build with debugging symbols.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue, 31 Aug 2004 13:28:25 -0400
+
+konversation (0.14.0+20040824-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * Manage the irc.protocol file with Debian's alternatives system.
+    - debian/rules, debian/konversation.{postinst,prerm}
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue, 24 Aug 2004 20:15:29 -0400
+
+konversation (0.14.0+20040819-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * doc-expand-3.3-entities.patch: resync
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 19 Aug 2004 11:35:33 -0400
+
+konversation (0.14.0+20040731-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * Added a debian/watch file for the curious.
+  * doc-expand-3.3-entities.patch: expand &Tab; entity in docs as it's not
+    defined for all languages
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun,  1 Aug 2004 13:54:48 -0400
+
+konversation (0.14.0-4) unstable; urgency=low
+
+  * Manage the irc.protocol file with Debian's alternatives system.
+    - debian/rules, debian/konversation.{postinst,prerm} (Closes: #267726)
+  * Removed calls to update-menus; dh_installmenu creates these for us.
+    - debian/konversation.postrm now empty; removed
+  * Added a debian/watch file.
+  * [This changelog entry is in version order, but not chronological order.]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 29 Aug 2004 14:56:46 -0400
+
+konversation (0.14.0-3) unstable; urgency=low
+
+  * After discussion with Riku Voipio and some thought, merged
+    konversation-doc and konversation-i18n back into main konversation
+    package.  Splitting them out is not as beneficial as I had first thought.
+    - debian/*.install: Changed accordingly.
+    - debian/control: Added appropriate Conflicts and Provides.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 16 Jul 2004 23:54:29 -0400
+
+konversation (0.14.0-2) unstable; urgency=low
+
+  * debian/control: Added Riku Voipio <riku.voipio@iki.fi> to Uploaders.
+  * debian/{copyright,control}: Upstream homepage is now
+    http://www.konversation.org/
+  * debian/konversation.1.docbook: Refer to konversationircprotocolhandler(1).
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 12 Jul 2004 16:06:37 -0400
+
+konversation (0.14.0-1) unstable; urgency=low
+
+  * New upstream release 0.14.  (Closes: #257754)
+  * Fix lintian warning 'description-starts-with-leading-spaces'.
+  * Write manpage for konversationircprotocolhandler.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue,  6 Jul 2004 20:29:45 -0400
+
+konversation (0.14cvs20040621-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * All previous patches incorporated upstream.
+  * debian/konversation.menu:  Specify icon in addition to iconNxN.
+  * debian/*.xpm:  Regenerate Debian menu system icons from new upstream icon.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 21 Jun 2004 13:11:14 -0400
+
+konversation (0.14cvs20040614-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+    + much snazzy new stuff
+  * New patches:
+    + 002_configureNotifications_tray.patch - add another item to tray menu
+    + 003_nicklist_hostmask_startup - minor bugfix
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 14 Jun 2004 22:27:31 -0400
+
+konversation (0.14cvs20040611-2) experimental; urgency=low
+
+  * Do not ship .xcf files.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sat, 12 Jun 2004 00:43:06 -0400
+
+konversation (0.14cvs20040611-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * Removed 000_tray_menu_enhance.patch (applied upstream).
+  * Split out 3.6MB of architecture-independent files into separate
+    konversation-doc and konversation-i18n packages.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 11 Jun 2004 22:09:24 -0400
+
+konversation (0.14cvs20040608-2) experimental; urgency=low
+
+  * New patch:
+    + 000_tray_menu_enhance.patch - adds Configure Konversation to tray menu
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed,  9 Jun 2004 00:02:32 -0400
+
+konversation (0.14cvs20040608-1) experimental; urgency=low
+
+  * New upstream CVS snapshot.
+  * Provide both 16x16 and 32x32 sized icons for the Debian menu system, and
+    regenerate them using The Gimp, which produces nicer results than
+    ImageMagick.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue,  8 Jun 2004 03:26:05 -0400
+
+konversation (0.14cvs20040501-1) unstable; urgency=medium
+
+  * New upstream snapshot.
+  * Urgency medium because the build system changes introduced in
+    0.14cvs20040427-1 should fix a build failure (bug #246448).
+  * Deleted debian/patches/00_qwhatsthis.diff (applied upstream).
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sat,  1 May 2004 14:28:12 -0400
+
+konversation (0.14cvs20040427-2) unstable; urgency=low
+
+  * Updated Build-Depends on debhelper to (>= 4.1.0).
+  * debian/copyright:
+    - Added Gary R. Cramblitt (documentation author) to copyright.
+    - Updated section on upstream source to reflect new procedure.
+  * debian/patches/00_qwhatsthis.diff
+    - Added help for the rest of editserverdialog, based on Gary R.
+      Cramblitt's excellent documentation.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed, 28 Apr 2004 07:28:53 -0400
+
+konversation (0.14cvs20040427-1) unstable; urgency=low
+
+  * New CVS snapshot.
+  * Prepare the upstream snapshot tarball using cvs2dist from tdesdk-scripts
+    instead of my own homebrewed script.  This has a number of advantages:
+    - debian/rules and debian/control are simplified a bit.
+    - Documentation is now included in the package.
+    - Translations are now included in the package.
+  * debian/rules:
+    - Cleaned up a bit.
+  * debian/control:
+    - No longer need to Build-Depend on autoconf or automake*.
+    - No longer need to Build-Depend on libqt3-compat-headers.
+    - Put "IRC" into the synopsis so that "apt-cache search" will find it.
+    - Updated long description per best practices.
+  * debian/patches/editserverdialog2ui.diff:
+    - Removed; upstream prefers not to use .ui files.
+  * debian/patches/00_qwhatsthis.diff
+    - Adds QWhatsThis help in some places (replaces editserverdialog2ui.diff).
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue, 27 Apr 2004 20:47:14 -0400
+
+konversation (0.14cvs20040413-3) experimental; urgency=low
+
+  * debian/konversation.xpm: Resize icon so that it is *really* 32 pixels
+    wide, not 33.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 15 Apr 2004 13:50:23 -0400
+
+konversation (0.14cvs20040413-2) experimental; urgency=low
+
+  * Uploading locally to experimental until -1 goes into Debian.
+  * debian/konversation.1.docbook:
+    - Updated SCRIPTING section
+    - Added FILES section
+  * debian/dirs: Not needed; removed.
+  * debian/konversation.{xpm,menu,install}: Added a Debian Menu System icon.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 15 Apr 2004 13:28:19 -0400
+
+konversation (0.14cvs20040413-1) unstable; urgency=low
+
+  * New CVS snapshot.
+  * New maintainer (closes: #222154).
+  * Changed version numbering scheme to match that used by previous
+    maintainer.  (Note that this is still pre-0.14.)
+  * debian/konversation.{menu,postinst,postrm}: Added a Debian menu system
+    entry (from previous package by Dominique Devriese -- thanks!).
+  * debian/control:
+    + Tweaked long description based on description at the kdeextragear site.
+    + Made Build-Depends on cdbs versioned per KDE packaging guidelines.
+    + Build-Depend on automake1.7 instead of automake1.8.
+    + Removed some gratuitous Build-Depends (thanks to the debian-qt-kde team
+      for pointing this out in the latest packaging guidelines).
+  * debian/copyright: rearranged for better clarity
+  * debian/patches/autoconnect-fix.diff: deleted (applied upstream).
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue, 13 Apr 2004 21:33:21 -0400
+
+konversation (0.13+20040326-2) unstable; urgency=low
+
+  * debian/patches/autoconnect-fix.diff: Maintain state of auto connect
+    setting when editing a server item (fixes KDE bug 79182)
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue,  6 Apr 2004 12:11:06 -0400
+
+konversation (0.13+20040326-1) unstable; urgency=low
+
+  * New CVS snapshot:
+    - [abatianni]:
+      + Added support for automatic text on highlight
+      + Fixed DCC Chat crash and logfile bug
+      + Enabled %o and %K placceholders in auto text
+      + Switched tab close buttons off by default [closes kde bug 77340]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 26 Mar 2004 00:21:21 -0500
+
+konversation (0.13+20040323-1) unstable; urgency=low
+
+  * New CVS snapshot.
+    + Fix bug 78108. Make quit action in tray menu work again. [psn]
+  * Changed suite to unstable.
+  * debian/copyright: explain the origin of both stable and snapshot tarballs
+  * debian/control:
+    + remove bash from Recommends; it is an Essential package
+    + add missing Build-Depends (discovered by building in a pbuilder chroot):
+      autoconf, automake1.8
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 25 Mar 2004 04:47:20 -0500
+
+konversation (0.13+20040316-1) experimental; urgency=low
+
+  * New CVS snapshot.
+  * Now properly built as a non-native package.
+  * debian/rules:
+    + no longer copy .desktop files to applnk, as KDE 3.2 is now in sid
+    + various cleanups
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 15 Mar 2004 23:47:03 -0500
+
+konversation (0.13+20040308-3) experimental; urgency=low
+
+  * Nevermind that, the new nick code causes a segfault for me.  I don't have
+    time to debug, so I'll just not define USE_NICKINFO for now.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 11 Mar 2004 07:37:08 -0500
+
+konversation (0.13+20040308-2) experimental; urgency=low
+
+  * Built with USE_NICKINFO defined.
+  * Not uploaded.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 11 Mar 2004 07:11:17 -0500
+
+konversation (0.13+20040308-1) experimental; urgency=low
+
+  * New CVS snapshot.
+  * Built against KDE 3.2.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed, 10 Mar 2004 02:47:36 -0500
+
+konversation (0.13+20040223-1) experimental; urgency=low
+
+  * New CVS snapshot.
+  * Added "What's This?" entries for most things in the "Edit Server" dialog.
+    Replaced hardcoded layout with UI file in the process. 
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 23 Feb 2004 23:51:32 -0500
+
+konversation (0.13+20040131-1) experimental; urgency=low
+
+  * New CVS snapshot.
+  * Use xsltproc instead of xmlto to generate manpage.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sat, 31 Jan 2004 20:57:05 -0500
+
+konversation (0.13+20031226-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    - abatianni:
+      + Dcc panel fixes
+      + Made coloring of nicklist and input widgets an option
+      + konversation/prefspageidentity.cpp: Removed debug output
+      + Are you sure dialog added before deleting identities
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 28 Dec 2003 14:54:19 -0500
+
+konversation (0.13+20031221-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Updated Changelog [abatianni]
+    + Logfile reader can now save and delete logs [abatianni]
+    + Mouse wheel now cycles tabs in the same order as it would scroll a
+      slider [abatianni]
+    + Fix logfile problem [abatianni]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 21 Dec 2003 20:09:19 -0500
+
+konversation (0.13+20031217-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Ok, divider lines are going in the respective ui.rc file [abatianni]
+    + konversation/chatwindow.cpp: Save a crash [cartman]
+    + Removed some ancient code. [abatianni]
+    + More work on logfile reader [abatianni]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed, 17 Dec 2003 23:50:19 -0500
+
+konversation (0.13+20031216-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Restructured the windows menu [abatianni]
+    + Logfiles now have the server group in their name so channels with the
+      same name can be logged in different networks [abatianni]
+    + Bounced build number [abatianni]
+    + Clean up the menus [psn]
+  * debian/patches/osd-plaintext.patch: removed; applied upstream
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed, 17 Dec 2003 03:09:49 -0500
+
+konversation (0.13+20031214.1-2) experimental; urgency=low
+
+  * debian/patches/osd-plaintext.patch: a quick hack to turn any HTML that
+    gets passed to the OSD back into plain text
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 15 Dec 2003 21:21:19 -0500
+
+konversation (0.13+20031214.1-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Add icons to some of the actions [psn]
+  * debian/patches/no-clobber-nonawaynick.patch: deleted (applied upstream)
+  * debian/copyright: reworked per advice of Peter Palfrader and Andrew
+    Suffield on debian-legal
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 15 Dec 2003 08:22:33 -0500
+
+konversation (0.13+20031214-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + konversation/inputfilter.cpp: Switched from Bounce to Support since it
+      reflects todays servers' behaviour more precisely [abatianni]
+    + Changed name of Notify List / Nicks online to something more sensible
+      [abatianni]
+  * debian/patches/no-clobber-nonawaynick.patch: If you are using an Away
+    nickname, doing "/away foo" more than once will cause konvi to forget your
+    regular nickname, and a subsequent "/away" will not restore it.  This
+    patch fixes that.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 14 Dec 2003 12:07:46 -0500
+
+konversation (0.13+20031212-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Added a patch by Thomas Nagy for mouse wheel tab cycling [abatianni]
+    + Fixed a compatibility issue with newer KDE versions that have a
+      different encoding string implementation [abatianni]
+    + Thnx goes to thiago for this one. Get a blockless socket. Reviewed by
+      Eisfuchs. [cartman]
+    + Fix the IRC color chooser to have a sane size. [psn]
+    + Remove the checkbox for bg color and add a 'None' entry to the combo
+      instead [psn]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 12 Dec 2003 22:51:50 -0500
+
+konversation (0.13+20031211-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Fixed crash on open DCC panel when a DCC request comes in [abatianni]
+    + Fix blinking tabs [psn]
+    + Fixed a deadlock with small logfiles [abatianni]
+    + Committed a patch by Michael Nottebrock [abatianni]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 11 Dec 2003 21:41:03 -0500
+
+konversation (0.13+20031208-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Improved joining of large channels (again) [abatianni]
+    + konversation/channel.cpp: Remove some unneeded sort() calls [psn]
+    + konversation/ircview.cpp: Minor clean up [psn]
+    + konversation/preferences.cpp: Fix memleak [psn]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon,  8 Dec 2003 17:04:48 -0500
+
+konversation (0.13+20031206-2) experimental; urgency=low
+
+  * debian/rules: make konvi scripts executable, install README.scripts
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun,  7 Dec 2003 13:15:26 -0500
+
+konversation (0.13+20031206-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Scripts can now be placed in central KDE installation folder [abatianni]
+    + i18n fixes + a small code simplification [lukas]
+    + Code shuffles and leak fixors reviewed by Dario Abatianni. Hail the
+      coolest KDE IRC applikation ;) [cartman]
+    + Server list is now a tree list [abatianni]
+    + Added an away nickname [psn]
+    + Right click a channel list item and you get a menu to open the URLs
+      found in the channel's topic [binner]
+    + Slower blinking tabs if only join/part/quit/nick change happened in
+      channel [binner]
+    + Implemented an option to hide Join / Part / Nickchange events
+      [abatianni]
+    + Added dialog to close queries on ignore [abatianni]
+    + make the alternating nicklist look a lot nicer [danimo]
+    + channellistpanel.cpp, channellistpanel.h: Apply filter during list
+      creation and not afterwards [binner]
+    + Custom CTCP::VERSION reply support for all those kids obsessed with my
+      mirc version ;) Reviewed by Dario Abatianni [cartman]
+    + scripts/: Added uptime script by Magnus Romnes [abatianni]
+    + First work on logfile reader ... not working completely yet. [abatianni]
+    + Some fixes for Nick() and LedListViewItems [abatianni]
+    + Added shortcut for "Close All Open Queries" that you can find in some
+      popular scripted mirc proggies.  This helps with auto-messagers too ;) .
+      Reviewed by Berkus & style comments by Berkus. [cartman]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun,  7 Dec 2003 13:01:04 -0500
+
+konversation (0.13+20031201-1) experimental; urgency=low
+
+  * Not uploaded because I cannot build the darn thing (grrr autotools).
+  * New CVS snapshot.
+    + Added tab move context menu items [abatianni]
+    + Don't put email addresses into URL catcher [abatianni]
+    + Rejoin all open channels on reconnect (by psn)
+    + Added useful scripts dir [karchebny]
+    + Implemented the following: [psn]
+      * /aaway to go away on all servers 
+      * /ame to send actions to all channels 
+      * /amsg to send message to all channels
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon,  1 Dec 2003 19:38:42 -0500
+
+konversation (0.13+20031123-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Highlight email addresses [psn]
+    + Patched URL regex to not match stuff like awwww...nice :) [abatianni]
+    + nickchangedialog.cpp: Current nick does not get inserted into nick list
+      anymore if it is already in there [abatianni]
+    + No more duplicate entries in DCC send list [abatianni]
+    + Add a close tab button to the tab bar [psn]
+    + Make copy url to clipboard compatible with kmail and konq. Fill up both
+      selection and clipboard. [psn]
+    + Make it possible to hide the topic line [psn]
+    + Fixed wrong ops count with channel owners, halfops and admins
+      [abatianni]
+  * debian/{control,copyright}: merged in some minor changes from my proposed
+    0.13-2 package
+  * debian/patches/000-authors.patch: deleted (applied upstream)
+  * debian/patches/002-del-empty-docs.patch: new patch: do not package the
+    empty README and NEWS files
+  * debian/rules:
+    + install examples/dcop-away.sh executable, as linda does not like it
+      otherwise, and some other packages also do this (exim4, autotools, ...)
+    + make usr/share/apps/tdeconf_update/*.pl executable as well, for a similar
+      reason (quiets lintian, and there is precedent for either way)
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 23 Nov 2003 18:22:31 -0500
+
+konversation (0.13+20031120-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Use the [KDE prefs] framework as far as possible [psn]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 21 Nov 2003 01:43:04 -0500
+
+konversation (0.13+20031119-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Add a configure toolbars action [psn]
+    + DCC Chat working, a little rough but we can improve it [abatianni]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed, 19 Nov 2003 22:16:52 -0500
+
+konversation (0.13+20031117-1) experimental; urgency=low
+
+  * New CVS snapshot.
+    + Add new completion mode: Shell like with completion box [psn]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 17 Nov 2003 21:54:06 -0500
+
+konversation (0.13+20031116-1) experimental; urgency=low
+
+  * Moved snapshot packages to experimental dist. (actually did this with the
+    previous build, but forgot to mention it in the changelog)
+  * New CVS snapshot.
+    + Post freeze commit :) This commit does the following:
+      * Add systray notification (it's disabled by default and still buggy so
+        use with care or risk going crazy ;))
+      * Add shell like nick completion mode (aka uga mode). It's a bit
+        primitive at the moment though. The default is the old cycle through
+        nick list.
+      * A cleaner way of handling tab shortcuts.
+      That's all for now I think :) [psn]
+    + Layouting fix for nick completion preferences page [abatianni]
+    + Updated authors [abatianni]
+    + Moved close button settings into new prefs page [abatianni]
+    + Moved general tab settings to new prefs page [abatianni]
+    + Fix cycle completion so that it adds the configured extra chars [psn]
+    + Fix event handling for the systray notification [psn]
+    + Show shell like completion possibilities in chatwindow [psn]
+    + Keep the case of the nicks in the completion list [psn]
+    + First very rough implementation of DCC Chat (receiver side) [abatianni]
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 16 Nov 2003 20:39:51 -0500
+
+konversation (0.13+20031114-1) unstable; urgency=low
+
+  * New CVS snapshot.
+    + no changes; just incremented build number
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 14 Nov 2003 17:04:25 -0500
+
+konversation (0.13-1) unstable; urgency=low
+
+  * New upstream beta release.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 14 Nov 2003 16:33:52 -0500
+
+konversation (0.12pre13+cvs20031113-1) unstable; urgency=low
+
+  * New CVS snapshot.
+    + Fix nick detection for nicks with special chars (psn)
+    + Make the nick completion list stay sorted (psn)
+    + Fixed error message on dns resolution failure (abatianni)
+  * Disabled 001-trayicon-notify.patch for now, because I get build failures
+    with it (I'll look into this later).
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 13 Nov 2003 20:29:25 -0500
+
+konversation (0.12pre13+cvs20031109-2) unstable; urgency=low
+
+  * Applied patch from Peter Simonsson to make tray icon blink on new messages
+    - debian/patches/001-trayicon-notify.patch
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue, 11 Nov 2003 08:44:16 -0500
+
+konversation (0.12pre13+cvs20031109-1) unstable; urgency=low
+
+  * New CVS snapshot.
+    + Add knotify support to user offline notify
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun,  9 Nov 2003 14:11:00 -0500
+
+konversation (0.12pre13+cvs20031104-2) unstable; urgency=low
+
+  * debian/konversation.1.docbook:
+    + Corrected DOCTYPE
+    + Removed innaccurate para about GNU Info
+    + Added list of generic options and better explanation thereof
+    + Added short section on scripting
+    + Added a SEE ALSO section, referenced dcop(1)
+    + Misc. cleanups
+  * debian/rules:
+    + include proper dependency info for man page target
+    + install an example
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu,  6 Nov 2003 23:52:01 -0500
+
+konversation (0.12pre13+cvs20031104-1) unstable; urgency=low
+
+  * New CVS snapshot.
+    + Style changes now don't trash users color settings anymore
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Wed,  5 Nov 2003 15:59:27 -0500
+
+konversation (0.12pre13+cvs20031027-1) unstable; urgency=low
+
+  * New CVS snapshot.
+    + added support for extended user modes (admin, owner, halfop)
+    + implemented /say command
+    + added Whois item on query menus
+  * debian/patches/000-authors.patch: added Sascha Cunz (extended user modes
+    patch)
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Tue, 28 Oct 2003 02:25:07 -0500
+
+konversation (0.12pre13+cvs20031026-1) unstable; urgency=low
+
+  * New CVS snapshot:
+    + build number incremented
+    + more keyboard shortcuts
+    + make large paste message more informative
+    + ignore: !* hostmask now added automagically if you specify only nick
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 26 Oct 2003 23:10:31 -0500
+
+konversation (0.12pre13+cvs20031025-1) unstable; urgency=low
+
+  * New CVS snapshot:
+    + the Actions menu now contains some actions
+    + keyboard shortcuts added for many things
+  * debian/control: do not assume readers know what IRC is
+  * debian/rules: remove config.status in the clean target (this was causing
+    some build failures); also remove some other generated files
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 26 Oct 2003 02:26:52 -0500
+
+konversation (0.12pre13+cvs20031022-1) unstable; urgency=low
+
+  * New CVS snapshot. (nothing interesting)
+  * debian/copyright: wrote a proper copyright file
+  * debian/rules: converted to CDBS
+  * debian/patches/000-authors.patch: synchronize AUTHORS file with Help |
+    About | Authors dialog contents
+  * debian/control:
+    + updated Standards-Version (no changes)
+    + actually wrote a long Description
+    + added cdbs to Build-Depends
+    + added xmlto to Build-Depends for manpage
+  * wrote a very minimal manpage
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Thu, 23 Oct 2003 08:22:53 -0400
+
+konversation (0.12pre13+cvs20031017-2) unstable; urgency=low
+
+  * debian/control:
+    + fixed maintainer field
+    + wrote proper Build-Depends (I think)
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Mon, 20 Oct 2003 11:54:58 -0400
+
+konversation (0.12pre13+cvs20031017-1) unstable; urgency=low
+
+  * New CVS snapshot.
+    + OSD text now has a black border.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 17 Oct 2003 15:41:27 -0400
+
+konversation (0.12pre13+cvs20031011-2) unstable; urgency=low
+
+  * Install .desktop file in old KDE 3.1 location too.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Sun, 11 Oct 2003 00:30:00 -0400
+
+konversation (0.12-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Nathaniel W. Turner <nate@houseofnate.net>  Fri, 10 Oct 2003 23:39:24 -0400
+

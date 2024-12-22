@@ -1,0 +1,24 @@
+debian/tmp/usr/include/tde/kjsembed/*
+debian/tmp/usr/lib/*/libkjsembed.so
+debian/tmp/usr/lib/*/libkjsembed.la
+
+kjsembed/plugins/customobject_plugin.cpp		/usr/share/doc/libkjsembed-trinity-dev/plugin-examples/customobject/
+kjsembed/plugins/customobject_plugin.h			/usr/share/doc/libkjsembed-trinity-dev/plugin-examples/customobject/
+kjsembed/plugins/customobject_plugin.desktop		/usr/share/doc/libkjsembed-trinity-dev/plugin-examples/customobject/
+kjsembed/plugins/customqobject_plugin.cpp		/usr/share/doc/libkjsembed-trinity-dev/plugin-examples/customqobject/
+kjsembed/plugins/customqobject_plugin.h			/usr/share/doc/libkjsembed-trinity-dev/plugin-examples/customqobject/
+kjsembed/plugins/customqobject_plugin.desktop		/usr/share/doc/libkjsembed-trinity-dev/plugin-examples/customqobject/
+
+kjsembed/docs/embedding/simple-embed/demo.html             /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/embedjs.desktop       /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/embedjsui.rc          /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/embedviewimp.cpp      /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/embedviewimp.h        /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/embedview.ui          /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/hi16-app-embedjs.png  /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/hi32-app-embedjs.png  /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/main.cpp              /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/Makefile.am           /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/README                /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+kjsembed/docs/embedding/simple-embed/test.js               /usr/share/doc/libkjsembed-trinity-dev/embedding-examples/simple-embed/
+

@@ -1,0 +1,30 @@
+Index: konqueror/konqfilemgr.desktop
+===================================================================
+--- konqueror/konqfilemgr.desktop.orig
++++ konqueror/konqfilemgr.desktop
+@@ -4,7 +4,8 @@ Exec=kfmclient openProfile filemanagemen
+ Icon=kfm
+ DocPath=konqueror/index.html
+ 
+-Name=File Manager
++Name=Konqueror
++GenericName=File Manager
+ Name[af]=Lêer Bestuurder
+ Name[ar]=مدبّر الملفات
+ Name[az]=Fayl İdarəcisi
+Index: konqueror/Makefile.am
+===================================================================
+--- konqueror/Makefile.am.orig
++++ konqueror/Makefile.am
+@@ -69,10 +69,7 @@ messages: rc.cpp
+ 	$(XGETTEXT) -kaliasLocal rc.cpp *.h *.cc *view/*h *view/*cc  kedit*/*.h kedit*/*.cpp about/*.h about/*.cc remoteencodingplugin/*.cpp remoteencodingplugin/*.h shellcmdplugin/*.cpp -o `find sidebar -name "*.cpp"` `find sidebar -name "*.h"` -o $(podir)/konqueror.pot
+ 
+ xdg_apps_DATA = kfmclient.desktop kfmclient_dir.desktop kfmclient_html.desktop \
+-	kfmclient_war.desktop konqbrowser.desktop konquerorsu.desktop Home.desktop
+-
+-konq_data4_DATA = konqfilemgr.desktop
+-konq_data4dir = $(kde_appsdir)/.hidden
++	kfmclient_war.desktop konqbrowser.desktop konquerorsu.desktop Home.desktop konqfilemgr.desktop
+ 
+ kde_kcfg_DATA = konqueror.kcfg
+ 

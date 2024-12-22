@@ -1,0 +1,8 @@
+?package(krdc-trinity):\
+	needs="X11"\
+	section="Apps/Net"\
+	hints="TDE"\
+	title="Krdc"\
+	icon32x32="/usr/share/pixmaps/krdc.xpm"\
+	icon16x16="/usr/share/pixmaps/krdc-16.xpm"\
+	command="/usr/bin/krdc"

@@ -1,0 +1,37 @@
+Source: knights-trinity
+Section: games
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Jose Carlos Medeiros <debian@psabs.com.br>
+Uploaders: Ola Lundqvist <opal@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://knights.sourceforge.net/
+
+Package: knights-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, tdebase-tdeio-plugins-trinity
+Replaces: knights-trinity (<< 4:14.0.0~)
+Breaks: knights-trinity (<< 4:14.0.0~)
+Suggests: gnuchess | crafty | sjeng, knights-themepack-trinity
+Description: A chess interface for the Trinity Desktop Environment [Trinity]
+ Knights aims to be the ultimate chess resource on your computer. 
+ Written for the Trinity Desktop Environment, it's designed to be both friendly 
+ to new chess players and functional for Grand Masters.
+ .
+ Here's a quick list of Knights' key features:
+ .
+    * Play against yourself, against computer opponents, 
+      or against others over the Internet.
+    * Customize your board and pieces with over 30 different themes, 
+      or make your own!
+    * Audio cues help alert you to important events.
+    * Novice players can preview potential moves.
+    * Save your unfinished matches and play them again later.
+
+Package: knights-themepack-trinity
+Architecture: all
+Depends: ${shlibs:Depends}
+Enhances: knights-trinity
+Description: A chess interface for the Trinity Desktop Environment [Trinity]
+ This packages contains extra themes.

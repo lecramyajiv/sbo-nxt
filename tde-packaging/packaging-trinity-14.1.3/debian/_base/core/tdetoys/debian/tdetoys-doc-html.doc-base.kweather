@@ -1,0 +1,11 @@
+Document: tdetoys-doc-html-kweather
+Title: KWeather Handbook
+Abstract: KWeather is an application that can display your area's current
+ weather.  It provides a panel applet as well as a weather service that
+ can supply information to other applications.
+Section: Games/Toys
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kweather/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kweather/*.html
+

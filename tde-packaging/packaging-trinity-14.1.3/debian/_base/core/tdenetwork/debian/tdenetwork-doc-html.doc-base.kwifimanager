@@ -1,0 +1,11 @@
+Document: tdenetwork-doc-html-kwifimanager
+Title: KWiFiManager Handbook
+Author: Stefan Winter
+Abstract: The KWiFiMananger suite can be used to configure and monitor
+ wireless LAN cards.
+Section: Apps/Net
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kwifimanager/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kwifimanager/*.html
+

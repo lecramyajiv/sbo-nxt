@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kgamma
+Title: KGamma Handbook
+Author: Michael v. Ostheim
+Abstract: KGamma is a simple tool for monitor gamma correction.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kgamma/index.html
+Files: /usr/share/doc/tde/HTML/en/kgamma/*.html
+

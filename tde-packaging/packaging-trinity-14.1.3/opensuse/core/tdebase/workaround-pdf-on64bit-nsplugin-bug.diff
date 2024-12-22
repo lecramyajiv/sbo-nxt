@@ -1,0 +1,44 @@
+Index: nsplugins/nspluginloader.cpp
+===================================================================
+--- nsplugins/nspluginloader.cpp.orig
++++ nsplugins/nspluginloader.cpp
+@@ -322,7 +322,7 @@ QString NSPluginLoader::lookup(const QSt
+ }
+ 
+ 
+-bool NSPluginLoader::loadViewer()
++bool NSPluginLoader::loadViewer(const QString &mimeType)
+ {
+    kdDebug() << "NSPluginLoader::loadViewer" << endl;
+ 
+@@ -346,7 +346,7 @@ bool NSPluginLoader::loadViewer()
+    }
+ 
+    // find the external artsdsp process
+-   if( _useArtsdsp ) {
++   if( _useArtsdsp && mimeType != "application/pdf" ) {
+        kdDebug() << "trying to use artsdsp" << endl;
+        QString artsdsp = KGlobal::dirs()->findExe("artsdsp");
+        if (!artsdsp)
+@@ -460,7 +460,7 @@ NSPluginInstance *NSPluginLoader::newIns
+    if ( !_viewer )
+    {
+       // load plugin viewer process
+-      loadViewer();
++      loadViewer(mimeType);
+ 
+       if ( !_viewer )
+       {
+Index: nsplugins/nspluginloader.h
+===================================================================
+--- nsplugins/nspluginloader.h.orig
++++ nsplugins/nspluginloader.h
+@@ -100,7 +100,7 @@ protected:
+   QString lookup(const QString &mimeType);
+   QString lookupMimeType(const QString &url);
+ 
+-  bool loadViewer();
++  bool loadViewer(const QString &mimeType);
+   void unloadViewer();
+ 
+ protected slots:

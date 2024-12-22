@@ -1,0 +1,29 @@
+This package was debianized by Tobi Vollebregt <tobivollebregt@gmail.com> on
+Thu, 14 Jul 2005 22:47:39 +0200
+
+It was downloaded from http://arminstraub.de
+
+Copyright:
+    Copyright (C) 2004 by Tobi Vollebregt
+    tobivollebregt@gmail.com
+
+    Copyright (C) 2004 by Armin Straub
+    linux@arminstraub.de
+
+    This program was initially written by Michael Schuerig.
+    Although I have completely rewritten it, most ideas are adopted
+    from his original work.
+
+    Copyright (C) 2002 by Michael Schuerig
+    michael@schuerig.de
+
+Upstream Authors:
+    Tobi Vollebregt <tobivollebregt@gmail.com>
+    Armin Straub <linux@arminstraub.de>
+    Michael Schuerig <schuerig@acm.org>
+
+License:
+    You are free to distribute this software under the terms of
+    the GNU General Public License.
+    On Debian systems, the complete text of the GNU General Public
+    License can be found in the file `/usr/share/common-licenses/GPL'.

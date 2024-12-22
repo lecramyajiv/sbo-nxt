@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+if [ "${BASEDIR:=/}" = "/" ]; then
+	BASEDIR=""
+fi
+
+# Link /usr/share/apps/kworldwatch to /usr/share/apps/kworldclock.
+if [ "$1" = "configure" ]; then
+	if [ -d ${BASEDIR}/usr/share/apps -a ! -e ${BASEDIR}/usr/share/apps/kworldwatch -a -d ${BASEDIR}/usr/share/apps/kworldclock ]; then
+		ln -sf kworldclock ${BASEDIR}/usr/share/apps/kworldwatch
+	fi
+fi
+
+#DEBHELPER#
+exit 0

@@ -1,0 +1,31 @@
+------------------------------------------------------------------------
+r1074156 | mueller | 2010-01-13 16:02:53 +0100 (Mi, 13. Jan 2010) | 2 Zeilen
+
+fix build with gcc 4.5
+
+------------------------------------------------------------------------
+Index: kate/part/katehighlight.cpp
+===================================================================
+--- kate/part/katehighlight.cpp	(Revision 1074155)
++++ kate/part/katehighlight.cpp	(Revision 1074156)
+@@ -3225,7 +3225,7 @@ void KateHlManager::getDefaults(uint sch
+   list.append(charAttribute);
+ 
+   KateAttribute* string = new KateAttribute();
+-  string->setTextColor(QColor::QColor("#D00"));
++  string->setTextColor(QColor("#D00"));
+   string->setSelectedTextColor(Qt::red);
+   list.append(string);
+ 
+@@ -3242,9 +3242,9 @@ void KateHlManager::getDefaults(uint sch
+ 
+   KateAttribute* alert = new KateAttribute();
+   alert->setTextColor(Qt::black);
+-  alert->setSelectedTextColor( QColor::QColor("#FCC") );
++  alert->setSelectedTextColor( QColor("#FCC") );
+   alert->setBold(true);
+-  alert->setBGColor( QColor::QColor("#FCC") );
++  alert->setBGColor( QColor("#FCC") );
+   list.append(alert);
+ 
+   KateAttribute* functionAttribute = new KateAttribute();

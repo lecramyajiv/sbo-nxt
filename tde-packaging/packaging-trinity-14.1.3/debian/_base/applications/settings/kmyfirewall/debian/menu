@@ -1,0 +1,6 @@
+?package(kmyfirewall-trinity):needs="X11" \
+  section="Applications/System/Security" \
+  title="KMyFirewall" \
+  hints="TDE" \
+  icon="kmyfirewall.xpm" \
+  command="/opt/trinity/bin/kmyfirewall"

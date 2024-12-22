@@ -1,0 +1,62 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+# The default gzip compressor has been changed in dpkg >= 1.17.0.
+deb_default_compress = $(shell LANG=C dpkg-deb --version | head -n1 | \
+                         sed -e "s|.*version ||" -e "s| .*||" | \
+                         xargs -r dpkg --compare-versions 1.17.0 lt \
+                         && echo xz || echo gzip)
+ifeq ($(deb_default_compress),gzip)
+DEB_DH_BUILDDEB_ARGS += -- -Z$(shell dpkg-deb --help | grep -q ":.* xz[,.]" \
+                               && echo xz || echo bzip2)
+endif
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+
+	touch configure-stamp
+
+build: build-stamp
+
+build-stamp: configure-stamp 
+	dh_testdir
+	touch $@
+	
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-arch-stamp build-indep-stamp configure-stamp
+	
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k -i
+	dh_installdirs -i
+
+
+binary-arch: build install
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+#	dh_install
+#	dh_installinfo
+	dh_installman
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb $(DEB_DH_BUILDDEB_ARGS)
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

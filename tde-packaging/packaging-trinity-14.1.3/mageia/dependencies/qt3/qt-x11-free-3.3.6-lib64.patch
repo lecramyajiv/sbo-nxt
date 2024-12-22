@@ -1,0 +1,56 @@
+--- qt-x11-free-3.3.6/config.tests/unix/checkavail.lib64	2003-05-27 11:19:12.000000000 -0400
++++ qt-x11-free-3.3.6/config.tests/unix/checkavail	2006-09-01 10:50:28.000000000 -0400
+@@ -9,11 +9,41 @@ SUCCESS=
+ MODULE_NAME=$1
+ VERBOSE=$2
+ shift 2
+-LIBDIRS="/lib /usr/lib"
+ LIBNAMES=""
+ INCLUDEDIRS="/usr/include"
+ INCLUDES=""
+ 
++# Detect libdir name for Linux systems (*/lib or */lib64)
++UNAME_SYSTEM=`(uname -s) 2>/dev/null`
++case "$UNAME_SYSTEM" in
++Linux)
++  tmpc="conftest.c"
++  tmpo="conftest.o"
++  echo 'int i;' > $tmpc
++  is_64bit_output=no
++  if gcc -c $tmpc -o $tmpo; then
++    case `/usr/bin/file $tmpo` in
++    *"ELF 64"*)
++      is_64bit_output=yes
++      ;;
++    esac
++  fi
++  rm -rf $tmpc $tmpo
++  ;;
++esac
++
++UNAME_MACHINE=`(uname -m) 2>/dev/null`
++case $UNAME_MACHINE:$is_64bit_output in
++  ppc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
++  LIB="lib64"
++  ;;
++*:*)
++  LIB="lib"
++  ;;
++esac
++
++LIBDIRS="/$LIB /usr/$LIB"
++  
+ PARAMS=$@
+ for PARAM in $PARAMS
+ do
+--- qt-x11-free-3.3.6/mkspecs/linux-g++-64/qmake.conf.lib64	2006-09-01 10:28:16.000000000 -0400
++++ qt-x11-free-3.3.6/mkspecs/linux-g++-64/qmake.conf	2006-09-01 10:37:41.000000000 -0400
+@@ -46,7 +46,7 @@ QMAKE_LIBDIR		=
+ QMAKE_INCDIR_X11	= /usr/X11R6/include
+ QMAKE_LIBDIR_X11	= /usr/X11R6/lib64
+ QMAKE_INCDIR_QT		= $(QTDIR)/include
+-QMAKE_LIBDIR_QT		= $(QTDIR)/lib
++QMAKE_LIBDIR_QT		= $(QTDIR)/lib64
+ QMAKE_INCDIR_OPENGL	= /usr/X11R6/include
+ QMAKE_LIBDIR_OPENGL	= /usr/X11R6/lib64
+ 

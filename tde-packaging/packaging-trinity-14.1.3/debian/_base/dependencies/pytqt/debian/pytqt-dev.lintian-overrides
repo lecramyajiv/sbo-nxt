@@ -1,0 +1,14 @@
+# lintian test overriden as the files tripping this error are put into the source
+# of the generated package. This is a false-positive
+
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqt/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtaxcontainer/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtcanvas/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtext/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtgl/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtnetwork/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtpe/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtsql/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqttable/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtui/copying.sip
+pytqt-dev binary: extra-license-file usr/share/sip-tqt/tqt/tqtxml/copying.sip

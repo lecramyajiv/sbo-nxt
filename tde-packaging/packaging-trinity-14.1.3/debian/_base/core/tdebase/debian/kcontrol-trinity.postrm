@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+case "$1" in
+
+	purge)
+	LINK="/etc/udev/rules.d/025_logitechmouse.rules"
+	[ ! -L "$LINK" ] || rm -f "$LINK"
+	;;
+
+esac
+
+#DEBHELPER#
+
+exit 0

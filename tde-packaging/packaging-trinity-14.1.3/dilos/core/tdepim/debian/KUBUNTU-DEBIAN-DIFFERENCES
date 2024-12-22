@@ -1,0 +1,18 @@
+Not build using tar inside .orig, no DEB_TDE_CVS_MAKE := yes
+Don't build-dep on libgnokii-dev, not in main
+Install /usr/share/services/kontact/knode* in knode and add replaces
+don't build-dep on gnokii or automake1.9
+make kontact depend on kmail, korganizer, kaddressbook
+Remove 16_kde_modulename.diff, module name isn't changed in Ubuntu
+remove debian/stamp-libtool-update:
+various Replaces/Conflicts (search for ubuntu)
+split out services/kontact/*desktop from kontact to indiviual apps
+add kandy*xpm to debian/icons and install lines to kandy.install
+remove clean:: rule
+Control has networkstatus-dev package and networkstatus package includes
+   libnetworkstatus.so* files
+build-dep on gpgsm
+kmail depends on gpgsm, gnupg-agent, pinentry-tqt | pinentry-qt | pinentry-x11
+add scalix support
+
+remove debian/patches/30_debianize_akregator_default.diff

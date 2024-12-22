@@ -1,0 +1,2 @@
+# This package contains several libraries.
+libtdeedu3-trinity: package-name-doesnt-match-sonames libtdeeduplot1-trinity libtdeeducore1-trinity libextdate1-trinity libtdeeduui3-trinity

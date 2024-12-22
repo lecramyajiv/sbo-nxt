@@ -1,0 +1,24 @@
+Source: knetload-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Helen Faulkner <helen@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev (>= 4:3.4.2)
+Standards-Version: 3.8.4
+
+Package: knetload-trinity
+Architecture: any
+Section: tde
+Replaces: knetload-trinity (<< 4:14.0.0~)
+Breaks: knetload-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Conflicts: knetload
+Suggests: kcpuload-trinity
+Description: a network meter for Kicker [Trinity]
+ KNetLoad is a small network meter for Kicker (the TDE panel).  It shows
+ a recent history of network usage in the form of two configurable
+ diagrams in the system tray, one for incoming and one for outgoing
+ data.  These diagrams have settings for colours and various different
+ styles.
+ .
+ KNetLoad can monitor just about any network device.

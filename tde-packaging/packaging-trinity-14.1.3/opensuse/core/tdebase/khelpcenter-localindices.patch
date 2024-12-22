@@ -1,0 +1,41 @@
+Index: khelpcenter/kcmhelpcenter.cpp
+===================================================================
+--- khelpcenter/kcmhelpcenter.cpp.orig
++++ khelpcenter/kcmhelpcenter.cpp
+@@ -321,6 +321,7 @@ bool KCMHelpCenter::save()
+ 
+ void KCMHelpCenter::load()
+ {
++  findWriteableIndexDir();
+   mIndexDirLabel->setText( Prefs::indexDirectory() );
+ 
+   mListView->clear();
+@@ -675,6 +676,12 @@ void KCMHelpCenter::checkSelection()
+   enableButtonOK( count != 0 );
+ }
+ 
++void KCMHelpCenter::findWriteableIndexDir()
++{
++  QFileInfo currentDir( Prefs::indexDirectory() );
++  if ( !currentDir.isWritable() )
++    Prefs::setIndexDirectory( KGlobal::dirs()->saveLocation("data", "khelpcenter/index/") );
++}
+ #include "kcmhelpcenter.moc"
+ 
+ // vim:ts=2:sw=2:et
+Index: khelpcenter/kcmhelpcenter.h
+===================================================================
+--- khelpcenter/kcmhelpcenter.h.orig
++++ khelpcenter/kcmhelpcenter.h
+@@ -146,6 +146,11 @@ class KCMHelpCenter : public KDialogBase
+ 
+     void advanceProgress();
+ 
++    /**
++     * Find a user-writeable location for the indices, if the current location
++     * is not.
++     */
++    void findWriteableIndexDir();
+   private:
+     KHC::SearchEngine *mEngine;
+   

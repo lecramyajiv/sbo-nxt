@@ -1,0 +1,17 @@
+Source: kiosktool-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Pedro Jurado Maqueda <melenas@kdehispano.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: kiosktool-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, tdesudo-trinity
+Replaces: kiosktool-trinity (<< 4:14.0.0~)
+Breaks: kiosktool-trinity (<< 4:14.0.0~)
+Description: tool to configure the TDE kiosk framework
+ A Point&Click tool for system administrators to enable 
+ TDE's KIOSK features or otherwise preconfigure TDE for 
+ groups of users.

@@ -1,0 +1,15 @@
+.TH SLOXWIZARD 1
+.SH NAME
+sloxwizard \- TDE Openexchange Wizard
+.SH SYNOPSIS
+.B sloxwizard
+.I [Qt-options] [TDE-options] [options]
+.SH DESCRIPTION
+.B sloxwizard
+is a front end to configure SUSE Linux Openexchange servers.
+.SH PROGRAM OPTIONS
+.TP
+.B --verbose
+Verbose output.
+.so kdeopt.part
+

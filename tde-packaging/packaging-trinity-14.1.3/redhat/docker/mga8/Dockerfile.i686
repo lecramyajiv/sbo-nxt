@@ -1,0 +1,51 @@
+FROM mageia32:8
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=i686
+
+# Reset URPMI repositories to default
+# Enable more URPMI repositories
+RUN urpmi.removemedia -a \
+ && urpmi.addmedia --distrib http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/8/i586/ \
+ && sed -i "/etc/urpmi/urpmi.cfg" -e "/Tainted\\\ Release  {/{p;N;d}" -e "/Tainted\\\ Updates  {/{p;N;d}"
+
+# Enable english locales
+RUN urpmi --replacepkgs glibc \
+ && localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || :
+
+# Update distribution
+# Install Trinity build dependencies
+COPY packages.${ARCH} /packages
+RUN urpmi.update -a \
+ && urpmi --auto-select --auto \
+ && urpmi --auto $(</packages)
+
+# Enable ccache
+RUN sed -i "/etc/sysconfig/ccache" -e "s|USE_CCACHE_DEFAULT=.*|USE_CCACHE_DEFAULT=\"yes\"|"
+
+# Fix utempter detection
+RUN chmod a+r /usr/libexec/utempter/utempter
+
+# Fix poppler support
+RUN sed -i "/usr/include/poppler/poppler-config.h" -e "/define HAVE_SPLASH/ s|^|//|"
+
+# Add non-root user to build packages
+RUN rm -rf /home/trinity \
+ && useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>"/etc/sudoers"
+
+# Configure user trinity
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+# Add rpmbuild repositories
+RUN mkdir -p ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} \
+ && genhdlist2 --allow-empty-media --clean ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} \
+ && sudo urpmi.addmedia rpmbuild.${ARCH} ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} \
+ && mkdir -p ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch \
+ && genhdlist2 --allow-empty-media --clean ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch \
+ && sudo urpmi.addmedia rpmbuild.noarch ${HOME}/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch
+
+# Build development packages that are missing
+RUN setarch ${ARCH} rpmbuild --rebuild http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/8/SRPMS/core/release/perl-PAR-Packer-1.51.0-2.mga8.src.rpm \
+ && sudo rpm -Uvh --force "${HOME}/rpmbuild/RPMS/"*"/perl-PAR-Packer-"*".rpm"

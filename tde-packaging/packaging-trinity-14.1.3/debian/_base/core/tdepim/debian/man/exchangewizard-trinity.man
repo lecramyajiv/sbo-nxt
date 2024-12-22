@@ -1,0 +1,15 @@
+.TH EXCHANGEWIZARD 1
+.SH NAME
+exchangewizard \- MS Exchange Setup Wizard
+.SH SYNOPSIS
+.B exchangewizard
+.I [Qt-options] [TDE-options] [options]
+.SH DESCRIPTION
+.B exchangewizard
+is a front end to configure Microsoft Exchange servers.
+.SH PROGRAM OPTIONS
+.TP
+.B --verbose
+Enable verbose output.
+.so kdeopt.part
+

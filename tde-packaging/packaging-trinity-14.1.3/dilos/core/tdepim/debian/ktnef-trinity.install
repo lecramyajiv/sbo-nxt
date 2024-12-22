@@ -1,0 +1,10 @@
+/usr/bin/ktnef
+/usr/share/applications/tde/ktnef.desktop
+/usr/share/apps/ktnef
+/usr/share/doc/tde/HTML/en/ktnef
+/usr/share/icons/hicolor/48x48/apps/ktnef.png
+/usr/share/icons/locolor/16x16/apps/ktnef.png
+/usr/share/icons/locolor/32x32/apps/ktnef.png
+/usr/share/mimelnk/application/ms-tnef.desktop
+../icons/ktnef.xpm /usr/share/pixmaps
+../icons/ktnef-16.xpm /usr/share/pixmaps

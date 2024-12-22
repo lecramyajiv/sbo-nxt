@@ -1,0 +1,35 @@
+diff --git a/klaptopdaemon/acpi.cpp b/klaptopdaemon/acpi.cpp
+index 4dfb247..cd8f4b0 100644
+--- a/klaptopdaemon/acpi.cpp
++++ b/klaptopdaemon/acpi.cpp
+@@ -178,7 +178,7 @@ void AcpiConfig::setupHelper()
+ 			proc << tdesu;
+ 			proc << "-u";
+ 			proc << "root";
+-			proc <<  "chown root "+helper+"; chmod +s "+helper;
++			proc <<  "dpkg-statoverride --update --add root root 6755 "+helper;
+ 			proc.start(TDEProcess::Block);	// run it sync so has_acpi below sees the results
+ 		}
+ 	} else {
+diff --git a/klaptopdaemon/apm.cpp b/klaptopdaemon/apm.cpp
+index 9de0c85..e348943 100644
+--- a/klaptopdaemon/apm.cpp
++++ b/klaptopdaemon/apm.cpp
+@@ -166,7 +166,7 @@ void ApmConfig::setupHelper()
+ 			proc << tdesu;
+ 			proc << "-u";
+ 			proc << "root";
+-			proc <<  TQString("chown root ")+apm_name+TQString("; chmod +s ")+apm_name;
++			proc <<  TQString("dpkg-statoverride --update --add root root 6755 ")+apm_name;
+ 			proc.start(TDEProcess::Block);	// run it sync so has_apm below sees the results
+ 		}
+ 	} else {
+@@ -200,7 +200,7 @@ void ApmConfig::setupHelper2()	// we use the acpi helper to do software suspend
+ 			proc << tdesu;
+ 			proc << "-u";
+ 			proc << "root";
+-			proc <<  "chown root "+helper+"; chmod +s "+helper;
++			proc <<  "dpkg-statoverride --update --add root root 6755 "+helper;
+ 			proc.start(TDEProcess::Block);	// run it sync so has_acpi below sees the results
+ 		}
+ 	} else {

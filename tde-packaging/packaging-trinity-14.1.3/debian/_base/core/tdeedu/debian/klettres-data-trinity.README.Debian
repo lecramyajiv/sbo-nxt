@@ -1,0 +1,7 @@
+KLettres data for Debian
+------------------------
+
+This package merely provides supporting data files for KLettres.  The
+KLettres application itself can be found in the klettres package.
+
+ -- Ben Burton <bab@debian.org>, Mon, 23 Feb 2004 08:14:22 +1100

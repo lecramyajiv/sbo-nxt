@@ -1,0 +1,129 @@
+potracegui-trinity (1.3-2.0ubuntu1) karmic; urgency=low
+
+  * Karmic rebuild for Trinity
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 06 Mar 2010 06:02:00 -0600
+
+potracegui (1.3-2.3ubuntu2) jaunty; urgency=low
+
+  * debian/rules: added --without-arts parameter to configure script call to
+    rebuild without arts support (LP: #320915)
+
+ -- Fabrice Coutadeur <fabricesp@ubuntu.com>  Fri, 17 Apr 2009 05:08:31 +0000
+
+potracegui (1.3-2.3ubuntu1) intrepid; urgency=low
+
+  * Merge from Debian unstable (LP: #229066). Remaining Ubuntu changes:
+    - debian/control: modify Maintainer to Ubuntu MOTU Developers
+    - debian/rules: add dh_icon
+  * Update Standards-Version to 3.7.3.
+  * Fix debian-rules-ignores-make-clean-error lintian warning.
+  * Fix debhelper-script-needs-versioned-build-depends lintian warning.
+
+ -- Devid Filoni <d.filoni@techemail.com>  Sat, 22 Mar 2008 15:31:50 +0100
+
+potracegui (1.3-2.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS with GCC 4.3 (Closes: #417484).
+
+ -- Luk Claes <luk@debian.org>  Fri, 14 Mar 2008 19:01:38 +0000
+
+potracegui (1.3-2.2ubuntu3) hardy; urgency=low
+
+  * debian/rules: change dh_iconcache to dh_icons to fix FTFBS. (LP: #204263)
+
+ -- Andrea Colangelo <warp10@ubuntu.com>  Thu, 20 Mar 2008 14:41:57 +0100
+
+potracegui (1.3-2.2ubuntu2) gutsy; urgency=low
+
+  * debian/control: Update maintainer fields according to debian-
+    maintainer-field spec.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Wed, 15 Aug 2007 08:09:41 +0000
+
+potracegui (1.3-2.2ubuntu1) dapper; urgency=low
+
+  * debian/rules: added dh_iconcache
+
+ -- Szilveszter Farkas (Phanatic) <Szilveszter.Farkas@gmail.com>  Mon,  8 May 2006 10:26:45 +0200
+
+potracegui (1.3-2.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS due to more restrictive coreutils. (Closes: #340010)
+    Patch by Roland Stigge.
+
+ -- Adeodato Simó <dato@net.com.org.es>  Tue, 13 Dec 2005 03:40:56 +0100
+
+potracegui (1.3-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Rebuild for the Qt/KDE transition (Closes: #327984)
+  * German PO file corrections (Closes: #313817)
+
+ -- Luk Claes <luk@debian.org>  Fri, 30 Sep 2005 17:24:45 +0200
+
+potracegui (1.3-2) unstable; urgency=medium
+
+  * Urgency medium, cause without this fix package is almost unusable
+    for people using German locale.
+  * Closes: #303718: translated text is passed as option to potrace
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Sat, 30 Apr 2005 23:04:34 +0200
+
+potracegui (1.3-1) unstable; urgency=low
+
+  * New upstream release
+    - german translation
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Sat,  5 Mar 2005 12:46:14 +0100
+
+potracegui (1.2-1) unstable; urgency=low
+
+  * New upstream release
+  	- added support for autotrace
+  * added upstream author to manpage
+  * Suggests autotrace now
+  * mention autotrace in description
+  * using dh_installman now
+  * added watch file
+  * various other minor fixes to make sponsor happy
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Tue,  4 Jan 2005 09:30:40 +0100
+
+potracegui (1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Wed, 17 Nov 2004 07:04:33 +0100
+
+potracegui (1.0-1) unstable; urgency=low
+
+  * new upstream release.
+  * removed recommondation for libmagick, as it is no longer needed.
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Tue, 22 Jun 2004 14:56:45 +0200
+
+potracegui (0.5.1-3) unstable; urgency=low
+
+  * added autotool-dev to Build-Depends.
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Thu, 10 Jun 2004 16:00:58 +0200
+
+potracegui (0.5.1-2) unstable; urgency=low
+
+  * adjusting the copyright file and the package description.
+  * fixed Build-Depends.
+  * Closes: #253205: ITP: potracegui -- a KDE frontend for potrace.
+  * Recommends now imagemagick, needed for displaying tracing results.
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Tue,  8 Jun 2004 09:40:05 +0200
+
+potracegui (0.5.1-1) unstable; urgency=low
+
+  * Initial Release.
+  * My first debian package.
+
+ -- Christoph Wegscheider <christoph.wegscheider@wegi.net>  Sat,  5 Jun 2004 14:59:34 +0200
+

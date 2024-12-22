@@ -1,0 +1,21 @@
+------------------------------------------------------------------------
+r1052100 | mueller | 2009-11-20 19:35:00 +0000 (Fri, 20 Nov 2009) | 2 lines
+Changed paths:
+   M /branches/KDE/4.3/kdelibs/kjs/dtoa.cpp
+
+fix array overrun (CVE-2009-0689)
+
+------------------------------------------------------------------------
+Index: dtoa.cpp
+===================================================================
+--- kjs/dtoa.cpp	(revision 1052099)
++++ kjs/dtoa.cpp	(revision 1052100)
+@@ -457,7 +457,7 @@
+ #define FREE_DTOA_LOCK(n)	/*nothing*/
+ #endif
+ 
+-#define Kmax 15
++#define Kmax (sizeof(size_t) << 3)
+ 
+  struct
+ Bigint {

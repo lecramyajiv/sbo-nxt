@@ -1,0 +1,17 @@
+debian/tmp/usr/bin/kcharselect
+debian/tmp/usr/lib/*/trinity/kcharselect_panelapplet.la
+debian/tmp/usr/lib/*/trinity/kcharselect_panelapplet.so
+debian/tmp/usr/share/applications/tde/KCharSelect.desktop
+debian/tmp/usr/share/apps/kcharselect/kcharselectui.rc
+debian/tmp/usr/share/apps/tdeconf_update/kcharselect.upd
+debian/tmp/usr/share/apps/kicker/applets/kcharselectapplet.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/kcharselect/common
+debian/tmp/usr/share/doc/tde/HTML/en/kcharselect/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kcharselect/index.docbook
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kcharselect.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kcharselect.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kcharselect.png
+debian/tmp/usr/share/man/man1/kcharselect.1
+
+debian/icons/kcharselect.xpm		/usr/share/pixmaps
+debian/icons/kcharselect-16.xpm		/usr/share/pixmaps

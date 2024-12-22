@@ -1,0 +1,40 @@
+Index: interfaces/kmediaplayer/kfileaudiopreview/Makefile.am
+===================================================================
+--- interfaces/kmediaplayer/kfileaudiopreview/Makefile.am.orig
++++ interfaces/kmediaplayer/kfileaudiopreview/Makefile.am
+@@ -1,11 +1,11 @@
+-INCLUDES = -I$(top_srcdir)/interfaces/ -I$(top_srcdir)/arts/kde -I$(includedir)/arts $(all_includes)
++INCLUDES = -I$(top_srcdir)/interfaces/  $(all_includes)
+ METASOURCES = AUTO
+ 
+ kde_module_LTLIBRARIES = kfileaudiopreview.la
+ 
+ kfileaudiopreview_la_SOURCES = kfileaudiopreview.cpp
+ kfileaudiopreview_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -module -avoid-version -no-undefined
+-kfileaudiopreview_la_LIBADD = $(top_builddir)/interfaces/kmediaplayer/libkmediaplayer.la $(top_builddir)/arts/kde/libartskde.la $(LIB_KIO)
++kfileaudiopreview_la_LIBADD = $(top_builddir)/interfaces/kmediaplayer/libkmediaplayer.la $(top_builddir)/kdemm/libkdemm.la $(LIB_KIO)
+ 
+ noinst_HEADERS = kfileaudiopreview.h
+ 
+Index: interfaces/kmediaplayer/kfileaudiopreview/kfileaudiopreview.cpp
+===================================================================
+--- interfaces/kmediaplayer/kfileaudiopreview/kfileaudiopreview.cpp.orig
++++ interfaces/kmediaplayer/kfileaudiopreview/kfileaudiopreview.cpp
+@@ -13,7 +13,7 @@
+ #include <kmimetype.h>
+ #include <kparts/componentfactory.h>
+ 
+-#include <kplayobjectfactory.h>
++#include <kdemm/factory.h>
+ 
+ #include <config-kfile.h>
+ 
+@@ -58,7 +58,7 @@ KFileAudioPreview::KFileAudioPreview( QW
+ {
+     KGlobal::locale()->insertCatalogue("kfileaudiopreview");    
+ 
+-    QStringList formats = KDE::PlayObjectFactory::mimeTypes();
++    QStringList formats = KDE::Multimedia::Factory::self()->playableMimeTypes();
+     // ###
+     QStringList::ConstIterator it = formats.begin();
+     for ( ; it != formats.end(); ++it )

@@ -1,0 +1,13 @@
+debian/tmp/usr/bin/mpeglibartsplay
+debian/tmp/usr/lib/*/libarts_mpeglib-0.3.0.so.0
+debian/tmp/usr/lib/*/libarts_mpeglib-0.3.0.so.0.0.3
+debian/tmp/usr/lib/*/libarts_mpeglib.la
+debian/tmp/usr/lib/*/libarts_splay.la
+debian/tmp/usr/lib/*/libarts_splay.so.0
+debian/tmp/usr/lib/*/libarts_splay.so.0.0.0
+debian/tmp/usr/lib/*/mcop/CDDAPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/MP3PlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/NULLPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/OGGPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/SplayPlayObject.mcopclass
+debian/tmp/usr/lib/*/mcop/WAVPlayObject.mcopclass

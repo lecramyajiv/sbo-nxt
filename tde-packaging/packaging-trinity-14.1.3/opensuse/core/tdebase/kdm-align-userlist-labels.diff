@@ -1,0 +1,46 @@
+Index: kdm/kfrontend/kgreeter.cpp
+===================================================================
+--- kdm/kfrontend/kgreeter.cpp.orig
++++ kdm/kfrontend/kgreeter.cpp
+@@ -59,6 +59,7 @@ Foundation, Inc., 51 Franklin Street, Fi
+ #include <qtooltip.h>
+ #include <qaccel.h>
+ #include <qeventloop.h>
++#include <qbitmap.h>
+ 
+ #include <pwd.h>
+ #include <grp.h>
+@@ -313,6 +314,33 @@ KGreeter::insertUser( const QImage &defa
+         if ( p.isNull() )
+             p = default_pix;
+ 
++	const int size = 48;
++	const int wdiff = size - p.size().width();
++	const int hdiff = size - p.size().height();
++	if (wdiff>0 || hdiff>0) {
++		QPixmap pix(p);
++		QBitmap mask;
++		mask.convertFromImage(p.createAlphaMask());
++		pix.resize(size, size);
++		bitBlt(&pix, wdiff/2.0, hdiff/2.0, &pix);
++		if (mask.isNull()) {
++		   mask = QBitmap(size, size);
++		   mask.fill(Qt::color1);
++		}
++		else {
++		   mask.resize(size, size);
++		   bitBlt(&mask, wdiff/2.0, hdiff/2.0, &mask);
++		}
++		QPainter pa(&mask);
++		pa.fillRect(0, 0, size, hdiff/2.0, Qt::color0);
++		pa.fillRect(0, 0, wdiff/2.0, size, Qt::color0);
++		pa.fillRect(size-(wdiff/2.0), 0, size, size, Qt::color0);
++		pa.fillRect(0, size-(hdiff/2.0), size, size, Qt::color0);
++		pa.end();
++		pix.setMask(mask);
++		p=pix.convertToImage();
++        }
++
+ 	QString realname = KStringHandler::from8Bit( ps->pw_gecos );
+ 	realname.truncate( realname.find( ',' ) );
+ 	if (realname.isEmpty() || realname == username)

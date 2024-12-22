@@ -1,0 +1,26 @@
+Index: kioslave/media/mediamanager/halbackend.cpp
+===================================================================
+--- kioslave/media/mediamanager/halbackend.cpp.orig
++++ kioslave/media/mediamanager/halbackend.cpp
+@@ -33,6 +33,7 @@
+ #include <kmountpoint.h>
+ #include <kmessagebox.h>
+ #include <kio/job.h>
++#include <kprotocolinfo.h>
+ 
+ #define MOUNT_SUFFIX	(libhal_volume_is_mounted(halVolume) ? QString("_mounted") : QString("_unmounted"))
+ #define MOUNT_ICON_SUFFIX	(libhal_volume_is_mounted(halVolume) ? QString("_mount") : QString("_unmount"))
+@@ -532,6 +533,13 @@ void HALBackend::setVolumeProperties(Med
+             case LIBHAL_DRIVE_TYPE_PORTABLE_AUDIO_PLAYER:
+             {
+                 medium->setIconName("ipod" + MOUNT_ICON_SUFFIX);
++
++                if (libhal_device_get_property_QString(m_halContext, driveUdi.latin1(), "info.product") == "iPod" &&
++		         KProtocolInfo::isKnownProtocol( QString("ipod") ) )
++                {
++                    medium->unmountableState( "ipod:/" );
++                    medium->mountableState(  libhal_volume_is_mounted(halVolume) );
++                }
+                 break;
+             }
+             case LIBHAL_DRIVE_TYPE_CAMERA:

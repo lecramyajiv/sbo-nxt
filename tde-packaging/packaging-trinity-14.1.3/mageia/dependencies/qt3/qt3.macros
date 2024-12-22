@@ -1,0 +1,36 @@
+%qt3dir        %_prefix/lib/qt3
+%qt3lib        %_libdir
+%qt3bin        %qt3dir/bin
+%qt3include    %{qt3dir}/include
+%qt3plugins    %_libdir/qt3/plugins
+
+%configure_qt3 \\\
+  %before_configure ; \
+  %{?_enable_libtoolize:%{?__libtoolize_configure:%{__libtoolize_configure};}} \
+  [ -f $CONFIGURE_TOP/configure.in -o -f $CONFIGURE_TOP/configure.ac ] && \
+  CONFIGURE_XPATH="--x-includes=%{_prefix}/include --x-libraries=%{_prefix}/%{_lib}" \
+  PATH="%qt3bin:$PATH" ; export PATH ; \
+  $CONFIGURE_TOP/configure --build=%{_target_platform} \\\
+     --prefix=%{_prefix} \\\
+     --exec-prefix=%{_exec_prefix} \\\
+     --bindir=%{_bindir} \\\
+     --sbindir=%{_sbindir} \\\
+     --sysconfdir=%{_sysconfdir} \\\
+     --datadir=%{_datadir} \\\
+     --includedir=%{_includedir} \\\
+     --libdir=%{_libdir} \\\
+     --libexecdir=%{_libexecdir} \\\
+     --localstatedir=%{_localstatedir} \\\
+     --sharedstatedir=%{_sharedstatedir} \\\
+     --mandir=%{_mandir} \\\
+     --infodir=%{_infodir} \\\
+     --disable-rpath \\\
+     $CONFIGURE_XPATH
+
+%qmake_qt3 \
+  CPPFLAGS="${CPPFLAGS:-%optflags -DPIC -fPIC}" ; export CPPFLAGS ; \
+  CXXFLAGS="${CXXFLAGS:-%optflags -DPIC -fPIC}" ; export CXXFLAGS ; \
+  CFLAGS="${CFLAGS:-%optflags -DPIC -fPIC}" ; export CFLAGS ; \
+  QTDIR="%qt3dir" ; export QTDIR ; \
+  %{qt3bin}/qmake
+

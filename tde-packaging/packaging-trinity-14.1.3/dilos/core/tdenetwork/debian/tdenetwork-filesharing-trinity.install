@@ -1,0 +1,10 @@
+debian/tmp/usr/lib/*/trinity/fileshare_propsdlgplugin.la
+debian/tmp/usr/lib/*/trinity/fileshare_propsdlgplugin.so
+debian/tmp/usr/lib/*/trinity/kcm_fileshare.la
+debian/tmp/usr/lib/*/trinity/kcm_fileshare.so
+debian/tmp/usr/lib/*/trinity/kcm_kcmsambaconf.la
+debian/tmp/usr/lib/*/trinity/kcm_kcmsambaconf.so
+debian/tmp/usr/share/applications/tde/fileshare.desktop
+debian/tmp/usr/share/applications/tde/kcmsambaconf.desktop
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kcmsambaconf.png
+debian/tmp/usr/share/services/fileshare_propsdlgplugin.desktop

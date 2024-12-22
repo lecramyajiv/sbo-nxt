@@ -1,0 +1,13 @@
+Index: kdeprint/kdeprintfax/confsystem.cpp
+===================================================================
+--- kdeprint/kdeprintfax/confsystem.cpp.orig
++++ kdeprint/kdeprintfax/confsystem.cpp
+@@ -103,7 +103,7 @@ void ConfSystem::load()
+ 	m_commands << conf->readPathEntry("HylaFax", defaultCommand(hylafax_default_cmd));
+ 	m_commands << conf->readPathEntry("Mgetty", defaultCommand(mgetty_default_cmd));
+ 	m_commands << conf->readPathEntry( "Other", QString::null );
+-	QString	v = conf->readEntry("System", "efax");
++	QString	v = conf->readEntry("System", "hylafax");
+ 	if (v == "mgetty") m_current = MGETTY_ID;
+ 	else if (v == "hylafax") m_current = HYLAFAX_ID;
+ 	else if ( v == "other" ) m_current = OTHER_ID;

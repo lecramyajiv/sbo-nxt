@@ -1,0 +1,11 @@
+?package(ksnapshot-trinity):\
+	needs="X11"\
+	section="Applications/Graphics"\
+	hints="TDE"\
+	title="KSnapshot"\
+	icon32x32="/usr/share/pixmaps/ksnapshot.xpm"\
+	icon16x16="/usr/share/pixmaps/ksnapshot-16.xpm"\
+	command="/usr/bin/ksnapshot"
+
+# Icon 32x32 ksnapshot/cr32-app-ksnapshot.png ksnapshot.xpm
+# Icon 16x16 ksnapshot/cr16-app-ksnapshot.png ksnapshot-16.xpm

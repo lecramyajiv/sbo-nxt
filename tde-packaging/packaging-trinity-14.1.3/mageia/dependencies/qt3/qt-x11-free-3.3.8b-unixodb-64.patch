@@ -1,0 +1,111 @@
+--- src/sql/drivers/odbc/qsql_odbc.cpp	2008-01-15 17:09:13.000000000 -0200
++++ src/sql/drivers/odbc/qsql_odbc.cpp.new	2009-02-09 16:02:25.000000000 -0200
+@@ -263,8 +263,7 @@
+ {
+     QString     fieldVal;
+     SQLRETURN   r = SQL_ERROR;
+-    QSQLLEN  lengthIndicator = 0;
+-
++    SQLLEN lengthIndicator = 0;
+     if ( colSize <= 0 ) {
+ 	colSize = 256;
+     } else if ( colSize > 65536 ) { // limit buffer size to 64 KB
+@@ -319,14 +318,14 @@
+     return fieldVal;
+ }
+ 
+-static QByteArray qGetBinaryData( SQLHANDLE hStmt, int column, QSQLLEN& lengthIndicator, bool& isNull )
++static QByteArray qGetBinaryData( SQLHANDLE hStmt, int column, SQLLEN& lengthIndicator, bool& isNull )
+ {
+     QByteArray fieldVal;
+     SQLSMALLINT colNameLen;
+     SQLSMALLINT colType;
+-    QSQLULEN colSize;
+-    SQLSMALLINT colScale;
++    SQLULEN colSize;
+     SQLSMALLINT nullable;
++    SQLSMALLINT colScale;
+     SQLRETURN r = SQL_ERROR;
+ 
+     SQLTCHAR colName[COLNAMESIZE];
+@@ -356,7 +355,7 @@
+ 			column+1,
+ 			SQL_C_BINARY,
+ 			(SQLPOINTER) buf,
+-			(QSQLLEN)colSize,
++			(SQLLEN)colSize,
+ 			&lengthIndicator );
+ 	if ( r == SQL_SUCCESS || r == SQL_SUCCESS_WITH_INFO ) {
+ 	    if ( lengthIndicator == SQL_NULL_DATA ) {
+@@ -393,7 +392,7 @@
+ {
+     QSQLLEN intbuf = 0;
+     isNull = FALSE;
+-    QSQLLEN lengthIndicator = 0;
++    SQLLEN lengthIndicator = 0;
+     SQLRETURN r = SQLGetData( hStmt,
+ 			      column+1,
+ 			      SQL_C_SLONG,
+@@ -410,7 +409,7 @@
+ static double qGetDoubleData( SQLHANDLE hStmt, int column, bool& isNull )
+ {
+     SQLDOUBLE dblbuf;
+-    QSQLLEN lengthIndicator = 0;
++    SQLLEN lengthIndicator = 0;
+     isNull = FALSE;
+     SQLRETURN r = SQLGetData( hStmt,
+ 			      column+1,
+@@ -430,7 +429,7 @@
+ {
+     SQLBIGINT lngbuf = Q_INT64_C( 0 );
+     isNull = FALSE;
+-    QSQLLEN lengthIndicator = 0;
++    SQLLEN lengthIndicator = 0;
+     SQLRETURN r = SQLGetData( hStmt,
+ 			      column+1,
+ 			      SQL_C_SBIGINT,
+@@ -468,7 +467,7 @@
+ {
+     SQLSMALLINT colNameLen;
+     SQLSMALLINT colType;
+-    QSQLULEN colSize;
++    SQLULEN colSize;
+     SQLSMALLINT colScale;
+     SQLSMALLINT nullable;
+     SQLRETURN r = SQL_ERROR;
+@@ -866,7 +865,7 @@
+     if ( fieldCache.contains( field ) )
+ 	return fieldCache[ field ];
+     SQLRETURN r(0);
+-    QSQLLEN lengthIndicator = 0;
++    SQLLEN lengthIndicator = 0;
+     bool isNull = FALSE;
+     int current = fieldCache.count();
+     for ( ; current < (field + 1); ++current ) {
+@@ -930,7 +929,7 @@
+ 	    break;
+         case QVariant::ByteArray: {
+ 	    isNull = FALSE;
+-	    QByteArray val = qGetBinaryData( d->hStmt, current, lengthIndicator, isNull );
++	    QByteArray val = qGetBinaryData( d->hStmt, current, (SQLLEN&)lengthIndicator, isNull );
+ 	    fieldCache[ current ] = QVariant( val );
+ 	    nullCache[ current ] = isNull;
+ 	    break; }
+@@ -979,7 +978,7 @@
+ 
+ int QODBCResult::numRowsAffected()
+ {
+-    QSQLLEN affectedRowCount(0);
++    SQLLEN affectedRowCount(0);
+     SQLRETURN r = SQLRowCount( d->hStmt, &affectedRowCount );
+     if ( r == SQL_SUCCESS )
+ 	return affectedRowCount;
+@@ -1084,7 +1083,7 @@
+ 	QVariant val;
+ 	for ( it = extension()->index.begin(); it != extension()->index.end(); ++it ) {
+ 	    val = extension()->values[ it.data() ].value;
+-	    QSQLLEN *ind = new QSQLLEN( SQL_NTS );
++	    SQLLEN *ind = new SQLLEN( SQL_NTS );
+ 	    tmpStorage.append( qAutoDeleter(ind) );
+ 	    if ( val.isNull() ) {
+ 		*ind = SQL_NULL_DATA;

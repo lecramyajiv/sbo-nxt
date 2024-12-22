@@ -1,0 +1,16 @@
+KTeaTime for Debian
+-------------------
+
+Non-TDE Users:
+
+  Please note that KTeaTime is written explicitly for TDE.  If you are
+  using a non-TDE window manager or desktop environment then it is quite
+  possible that KTeaTime will not work on your system.
+
+HTML Documentation:
+
+  This application provides documentation in a docbook format that the TDE
+  Help Centre can display.  For HTML documentation that can be read in any
+  web browser, see the package tdetoys-doc-html.
+
+ -- Ben Burton <bab@debian.org>, Sun,  6 Feb 2005 17:51:59 +1100

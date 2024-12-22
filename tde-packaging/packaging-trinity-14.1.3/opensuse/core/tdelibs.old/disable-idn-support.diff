@@ -1,0 +1,34 @@
+Index: kdecore/network/kresolver.cpp
+===================================================================
+--- kdecore/network/kresolver.cpp.orig
++++ kdecore/network/kresolver.cpp
+@@ -50,6 +50,7 @@
+ 
+ // IDN
+ #ifdef HAVE_IDNA_H
++# include <stdlib.h>
+ # include <idna.h>
+ #endif
+ 
+@@ -1084,6 +1085,10 @@ static QStringList splitLabels(const QSt
+ static QCString ToASCII(const QString& label)
+ {
+ #ifdef HAVE_IDNA_H
++  // We do disable it by default for security reasons for now.
++  if ( getenv("KDE_NO_IPV6") && strcmp( getenv("KDE_NO_IPV6"), "no" ) )
++     return label.latin1();
++
+   // We have idna.h, so we can use the idna_to_ascii
+   // function :)
+ 
+@@ -1118,6 +1123,10 @@ static QCString ToASCII(const QString& l
+ static QString ToUnicode(const QString& label)
+ {
+ #ifdef HAVE_IDNA_H
++  // We do disable it by default for security reasons for now.
++  if ( getenv("KDE_NO_IPV6") && strcmp( getenv("KDE_NO_IPV6"), "no" ) )
++     return label;
++
+   // We have idna.h, so we can use the idna_to_unicode
+   // function :)
+ 

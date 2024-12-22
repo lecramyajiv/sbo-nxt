@@ -1,0 +1,12 @@
+# default: off
+# description: KDE version of the talk server (accepting talk requests
+#              for chatting with users on other systems).
+service ntalk
+{
+	disable		= yes
+	socket_type	= dgram
+	wait		= yes
+	user		= root
+	group		= tty
+	server		= /usr/bin/ktalkd
+}

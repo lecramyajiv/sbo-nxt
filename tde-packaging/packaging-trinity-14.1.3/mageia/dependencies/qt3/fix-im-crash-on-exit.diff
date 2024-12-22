@@ -1,0 +1,15 @@
+--- src/kernel/qwidget_x11.cpp	2006-02-17 15:45:54.000000000 -0500
++++ src/kernel/qwidget_x11.cpp.orig	2006-02-17 16:27:07.000000000 -0500
+@@ -2753,10 +2753,8 @@
+ */
+ void QWidget::createInputContext()
+ {
+-#if !defined(QT_NO_IM_EXTENSIONS)
+-    if( !isInputMethodEnabled() )
+-	return;
+-#endif
++   if( !isInputMethodEnabled() || QApplication::closingDown() )
++      return;
+ 
+     QWidget *icWidget = icHolderWidget();
+ #ifndef QT_NO_IM

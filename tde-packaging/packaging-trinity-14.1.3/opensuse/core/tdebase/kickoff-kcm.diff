@@ -1,0 +1,217 @@
+--- menutab_impl.h		(revision 755866)
++++ menutab_impl.h		(revision 774645)
+@@ -62,6 +62,7 @@ signals:
+ 
+ public slots:
+     void launchMenuEditor();
++    void menuStyleChanged();
+ 
+ protected:
+     kSubMenuItem *m_bookmarkMenu;
+--- kicker_config_hiding.desktop		(revision 755866)
++++ kicker_config_hiding.desktop		(revision 774645)
+@@ -146,7 +146,7 @@ Keywords[csb]=kicker,panel,kpanel,lëst�
+ Keywords[cy]=ciciwr,kicker,panel,kpanel,bar tasgau,bar cychwyn,bar lansio,lleoliad,maint,awto-guddio,hunan-guddio,cuddio,botymau,animeiddiad,cefndir,themâu,storfa dewislen, storfa,cache,celc,cudd,K-Menu,nodau tudalen,dogfenni diweddar,porydd cyflym,dewislen porydd,dewislen,eiconau,teiliau,rhaglenigion,ymcychwyn,amlygu,carnau,eiconau chwyddo
+ Keywords[da]=kicker,panel,kpanel,opgavelinje,startlinje,sted,størrelse,autogem,gem,knapper,animering,baggrund,temaer,menucache,cache,skjult,K-Menu,bogmærker,nylige dokumenter,hurtigsøger,søgemenu,menu,ikoner,fliser,panelprogrammer,opstart,markér,håndterer,ikoner
+ Keywords[de]=Kicker,Panel,Taskbar,Kontrollleiste,Startleiste,Klickstartleiste,Fensterleiste,Autom. ausblenden,Ausblenden, Knöpfe,Animation,Hintergründe,Stile,Design,Themes,Menü-Zwischenspeicher, K-Menü,Zwischenspeicher,Lesezeichen,Zuletzt geöffnete Dateien, Schnellanzeiger,Menüs,Symbole,Icons,Kacheln,Applets,Miniprogramme, Java-Miniprogramme,Hervorhebung,Anfasser,Sicherheitsstufen,Zoom für Symbole
+-Keywords[el]=kicker,πίνακας,kpanel,γραμμή εργασιών,γραμμή έναρξης,γραμμή εκκίνησης,τοποθεσία,μέγεθος,αυτόματη απόκρυψη,απόκρυψη,κουμπιά,εφέ κίνησης,φόντο,θέματα,λανθάνουσα μνήμη μενού,λανθάνουσα μνήμη,κρυφό, K-Μενού,σελιδοδείκτες,πρόσφατα έγγραφα,γρήγορος εξερευνητής,μενού εξερευνητή,μενού,εικονίδια,tiles,μικροεφαρμογές,έναρξη,τονισμός,χειριστήρια, μεγέθυνση εικονιδίων
++Keywords[el]=kicker,πίνακας,kpanel,γραμμή εργασιών,γραμμή έναρξης,γραμμή εκκίνησης,τοποθεσία,μέγεθος,αυτόματη απόκρυψη,απόκρυψη,κουμπιά,εφέ κίνησης,φόντο,θέματα,λανθάνουσα μνήμη μενού,λανθάνουσα μνήμη,κρυφό, K-Μενού,σελιδοδείκτες,πρόσφατα έγγραφα,γρήγορος εξερευνητής,μενού εξερευνητή,μενού,εικονίδια,tiles,εφαρμογίδια,έναρξη,τονισμός,χειριστήρια, μεγέθυνση εικονιδίων
+ Keywords[eo]=lanĉilo,panelo,tasklistelo,situo,grandeco,aŭtokaŝo,kaŝo,butono,fono,etoso,menubufro,K-Menuo,legosigno,lasta dokumento,rapidrigardilo,rigardmenuo,piktogramo,kahelo,aplikaĵo,lanĉo,emfazo,teniloj,pligrandigo,fidindaj aplikaĵetoj,sekurecnivelo
+ Keywords[es]=kicker,panel,kpanel,barra de tareas,barra de inicio,barra de lanzamiento,dirección,tamaño,auto ocultar,ocultar,botones,animación,fondo,temas,caché de menú,caché,oculto,Menú K,marcadores,documentos recientes,navegador rápido,menú navegador,menú,iconos,mosaicos,miniaplicaciones,arranque,resaltado,asas,iconos ampliados
+ Keywords[et]=kicker,paneel,kpanel,tegumiriba,käivitusriba,asukoht,suurus,terminal,automaatne peitmine,peitmine,nupud,animatsioon,taust,teemad,menüü vahemälu,vahemälu,peidetud,K-menüü,järjehoidjad,viimati kasutatud dokumendid, kiirbrauser,lehitsemise menüü,menüü,ikoonid,apletid,käivitamine,esiletõstmine,piirded,ikoonide suurendamine,usaldusväärsed apletid,turvatase
+--- menutab_impl.cpp		(revision 755866)
++++ menutab_impl.cpp		(revision 774645)
+@@ -16,12 +16,16 @@
+  */
+ 
+ #include <qcheckbox.h>
++#include <qgroupbox.h>
+ #include <qdir.h>
+ #include <qlabel.h>
+ #include <qlayout.h>
+ #include <qpushbutton.h>
+ #include <qradiobutton.h>
++#include <qcombobox.h>
++#include <qbuttongroup.h>
+ 
++#include <dcopref.h>
+ #include <kapplication.h>
+ #include <kdebug.h>
+ #include <kdesktopfile.h>
+@@ -123,12 +127,41 @@ void MenuTab::load( bool useDefaults )
+         }
+     }
+ 
++    c->setGroup("General");
++    m_comboMenuStyle->setCurrentItem( c->readBoolEntry("LegacyKMenu", false) ? 1 : 0 );
++    m_openOnHover->setChecked( c->readBoolEntry("OpenOnHover", true) );
++    menuStyleChanged();
++
++    connect(m_comboMenuStyle, SIGNAL(activated(int)), SIGNAL(changed()));
++    connect(m_comboMenuStyle, SIGNAL(activated(int)), SLOT(menuStyleChanged()));
++    connect(m_openOnHover, SIGNAL(clicked()), SIGNAL(changed()));
++
+     m_showFrequent->setChecked(true);
+ 
+     if ( useDefaults )
+        emit changed();
+ }
+ 
++void MenuTab::menuStyleChanged()
++{
++    if (m_comboMenuStyle->currentItem()==1) {
++       m_openOnHover->setEnabled(false);
++       m_subMenus->setEnabled(true);
++       kcfg_UseSidePixmap->setEnabled(true);
++       kcfg_MenuEntryFormat->setEnabled(true);
++       kcfg_RecentVsOften->setEnabled(true);
++       m_showFrequent->setEnabled(true);
++    }
++    else {
++       m_openOnHover->setEnabled(true);
++       m_subMenus->setEnabled(false);
++       kcfg_UseSidePixmap->setEnabled(false);
++       kcfg_MenuEntryFormat->setEnabled(false);
++       kcfg_RecentVsOften->setEnabled(false);
++       m_showFrequent->setEnabled(false);
++    }
++}
++
+ void MenuTab::save()
+ {
+     KSharedConfig::Ptr c = KSharedConfig::openConfig(KickerConfig::the()->configName());
+@@ -154,8 +187,17 @@ void MenuTab::save()
+         }
+     }
+     c->writeEntry("Extensions", ext);
++    c->setGroup("General");
+ 
++    bool kmenusetting = m_comboMenuStyle->currentItem()==1;
++    bool oldkmenusetting = c->readBoolEntry("LegacyKMenu", false);
++
++    c->writeEntry("LegacyKMenu", kmenusetting);
++    c->writeEntry("OpenOnHover", m_openOnHover->isChecked());
+     c->sync();
++
++    if (kmenusetting != oldkmenusetting)
++        DCOPRef ("kicker", "default").call("restart()");
+ }
+ 
+ void MenuTab::defaults()
+--- menutab.ui		(revision 755866)
++++ menutab.ui		(revision 774645)
+@@ -8,8 +8,8 @@
+         <rect>
+             <x>0</x>
+             <y>0</y>
+-            <width>410</width>
+-            <height>437</height>
++            <width>923</width>
++            <height>649</height>
+         </rect>
+     </property>
+     <vbox>
+@@ -19,6 +19,59 @@
+         <property name="margin">
+             <number>0</number>
+         </property>
++        <widget class="QLayoutWidget">
++            <property name="name">
++                <cstring>layout5</cstring>
++            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QLabel">
++                    <property name="name">
++                        <cstring>textLabel1</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Start menu style:</string>
++                    </property>
++                    <property name="buddy" stdset="0">
++                        <cstring>comboMenuStyle</cstring>
++                    </property>
++                </widget>
++                <widget class="QComboBox">
++                    <item>
++                        <property name="text">
++                            <string>SUSE</string>
++                        </property>
++                    </item>
++                    <item>
++                        <property name="text">
++                            <string>KDE</string>
++                        </property>
++                    </item>
++                    <property name="name">
++                        <cstring>m_comboMenuStyle</cstring>
++                    </property>
++                </widget>
++                <spacer>
++                    <property name="name">
++                        <cstring>spacer4</cstring>
++                    </property>
++                    <property name="orientation">
++                        <enum>Horizontal</enum>
++                    </property>
++                    <property name="sizeType">
++                        <enum>Expanding</enum>
++                    </property>
++                    <property name="sizeHint">
++                        <size>
++                            <width>40</width>
++                            <height>20</height>
++                        </size>
++                    </property>
++                </spacer>
++            </hbox>
++        </widget>
+         <widget class="QGroupBox">
+             <property name="name">
+                 <cstring>m_kmenuGroup</cstring>
+@@ -38,6 +91,14 @@
+                         <property name="name">
+                             <cstring>unnamed</cstring>
+                         </property>
++                <widget class="QCheckBox" row="0" column="0">
++                    <property name="name">
++                        <cstring>m_openOnHover</cstring>
++                    </property>
++                    <property name="text">
++                        <string>Open menu on mouse hover</string>
++                    </property>
++                </widget>
+                         <widget class="QButtonGroup">
+                             <property name="name">
+                                 <cstring>kcfg_MenuEntryFormat</cstring>
+@@ -377,6 +438,8 @@
+         </widget>
+     </vbox>
+ </widget>
++<customwidgets>
++</customwidgets>
+ <tabstops>
+     <tabstop>m_formatSimple</tabstop>
+     <tabstop>m_formatNameDesc</tabstop>
+@@ -400,8 +463,5 @@
+ <includehints>
+     <includehint>klistview.h</includehint>
+     <includehint>knuminput.h</includehint>
+-    <includehint>knuminput.h</includehint>
+-    <includehint>knuminput.h</includehint>
+-    <includehint>knuminput.h</includehint>
+ </includehints>
+ </UI>
+--- kicker_config_menus.desktop		(revision 755866)
++++ kicker_config_menus.desktop		(revision 774645)
+@@ -143,7 +143,7 @@ Keywords[csb]=kicker,panel,kpanel,lëst�
+ Keywords[cy]=ciciwr,kicker,panel,kpanel,bar tasgau,bar cychwyn,bar lansio,lleoliad,maint,awto-guddio,hunan-guddio,cuddio,botymau,animeiddiad,cefndir,themâu,storfa dewislen, storfa,cache,celc,cudd,K-Menu,nodau tudalen,dogfenni diweddar,porydd cyflym,dewislen porydd,dewislen,eiconau,teiliau,rhaglenigion,ymcychwyn,amlygu,carnau,eiconau chwyddo
+ Keywords[da]=kicker,panel,kpanel,opgavelinje,startlinje,sted,størrelse,autogem,gem,knapper,animering,baggrund,temaer,menucache,cache,skjult,K-Menu,bogmærker,nylige dokumenter,hurtigsøger,søgemenu,menu,ikoner,fliser,panelprogrammer,opstart,markér,håndterer,ikoner
+ Keywords[de]=Kicker,Panel,Taskbar,Kontrollleiste,Startleiste,Klickstartleiste,Fensterleiste,Autom. ausblenden,Ausblenden, Knöpfe,Animation,Hintergründe,Stile,Design,Themes,Menü-Zwischenspeicher, K-Menü,Zwischenspeicher,Lesezeichen,Zuletzt geöffnete Dateien, Schnellanzeiger,Menüs,Symbole,Icons,Kacheln,Applets,Miniprogramme, Java-Miniprogramme,Hervorhebung,Anfasser,Sicherheitsstufen,Zoom für Symbole
+-Keywords[el]=kicker,πίνακας,kpanel,γραμμή εργασιών,γραμμή έναρξης,γραμμή εκκίνησης,τοποθεσία,μέγεθος,αυτόματη απόκρυψη,απόκρυψη,κουμπιά,εφέ κίνησης,φόντο,θέματα,λανθάνουσα μνήμη μενού,λανθάνουσα μνήμη,κρυφό, K-Μενού,σελιδοδείκτες,πρόσφατα έγγραφα,γρήγορος εξερευνητής,μενού εξερευνητή,μενού,εικονίδια,tiles,μικροεφαρμογές,έναρξη,τονισμός,χειριστήρια, μεγέθυνση εικονιδίων
++Keywords[el]=kicker,πίνακας,kpanel,γραμμή εργασιών,γραμμή έναρξης,γραμμή εκκίνησης,τοποθεσία,μέγεθος,αυτόματη απόκρυψη,απόκρυψη,κουμπιά,εφέ κίνησης,φόντο,θέματα,λανθάνουσα μνήμη μενού,λανθάνουσα μνήμη,κρυφό, K-Μενού,σελιδοδείκτες,πρόσφατα έγγραφα,γρήγορος εξερευνητής,μενού εξερευνητή,μενού,εικονίδια,tiles,εφαρμογίδια,έναρξη,τονισμός,χειριστήρια, μεγέθυνση εικονιδίων
+ Keywords[eo]=lanĉilo,panelo,tasklistelo,situo,grandeco,aŭtokaŝo,kaŝo,butono,fono,etoso,menubufro,K-Menuo,legosigno,lasta dokumento,rapidrigardilo,rigardmenuo,piktogramo,kahelo,aplikaĵo,lanĉo,emfazo,teniloj,pligrandigo,fidindaj aplikaĵetoj,sekurecnivelo
+ Keywords[es]=kicker,panel,kpanel,barra de tareas,barra de inicio,barra de lanzamiento,dirección,tamaño,auto ocultar,ocultar,botones,animación,fondo,temas,caché de menú,caché,oculto,Menú K,marcadores,documentos recientes,navegador rápido,menú navegador,menú,iconos,mosaicos,miniaplicaciones,arranque,resaltado,asas,iconos ampliados
+ Keywords[et]=kicker,paneel,kpanel,tegumiriba,käivitusriba,asukoht,suurus,terminal,automaatne peitmine,peitmine,nupud,animatsioon,taust,teemad,menüü vahemälu,vahemälu,peidetud,K-menüü,järjehoidjad,viimati kasutatud dokumendid, kiirbrauser,lehitsemise menüü,menüü,ikoonid,apletid,käivitamine,esiletõstmine,piirded,ikoonide suurendamine,usaldusväärsed apletid,turvatase

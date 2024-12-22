@@ -1,0 +1,33 @@
+Index: kcontrol/locale/kcmlocale.cpp
+===================================================================
+--- kcontrol/locale/kcmlocale.cpp.orig
++++ kcontrol/locale/kcmlocale.cpp
+@@ -292,9 +292,13 @@ void KLocaleConfig::loadCountryList()
+     QString map( locate( "locale",
+                           QString::fromLatin1( "l10n/%1.png" )
+                           .arg(tag) ) );
++#if 0
+     QIconSet icon;
+     if ( !map.isNull() )
+       icon = KGlobal::iconLoader()->loadIconSet(map, KIcon::Small);
++#else
++    QIconSet icon;
++#endif
+     m_comboCountry->insertSubmenu( icon, name, tag, sub, -2 );
+   }
+ 
+@@ -318,10 +322,14 @@ void KLocaleConfig::loadCountryList()
+     tag = tag.mid(index + 1);
+     int menu_index = submenu.isEmpty() ? -1 : -2;
+ 
++#if 0
+     QString flag( locate( "locale",
+                           QString::fromLatin1( "l10n/%1/flag.png" )
+                           .arg(tag) ) );
+     QIconSet icon( KGlobal::iconLoader()->loadIconSet(flag, KIcon::Small) );
++#else
++    QIconSet icon;
++#endif
+     m_comboCountry->insertItem( icon, name, tag, submenu, menu_index );
+   }
+ 

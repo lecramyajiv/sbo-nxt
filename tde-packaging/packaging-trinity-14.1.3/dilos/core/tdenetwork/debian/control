@@ -1,0 +1,359 @@
+Source: tdenetwork-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Ana Beatriz Guerrero Lopez <ana@debian.org>, Christopher Martin <chrsmrtn@debian.org>, Modestas Vainius <geromanas@mailas.com>, Sarah Hobbs <hobbsee@ubuntu.com>, Sune Vuorela <debian@pusling.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, docbook-to-man, doxygen, tdelibs14-trinity-dev, libgnutls-dev | libgadu-dev (>> 1:1.12.0-3), libgcrypt-dev, libgadu-dev, libiw-dev (>> 27+28pre8) [!solaris-any], libmeanwhile-dev (>= 1.0.2), libslp-dev, libspeex-dev, libsqlite3-dev, libxml2-dev, libxslt1-dev, libxtst-dev, libtqtinterface-doc, valgrind [!armel !mips !mipsel !riscv64 !solaris-any], libxxf86vm-dev, libv4l-dev [!solaris-any], libssl-dev
+Standards-Version: 3.8.4
+
+Package: tdenetwork-trinity
+Section: tde
+Architecture: all
+Replaces: kdenetwork-trinity (<< 4:14.0.0~)
+Breaks: kdenetwork-trinity (<< 4:14.0.0~)
+Depends: dcoprss-trinity (>= ${source:Version}), tdenetwork-tdefile-plugins-trinity (>= ${source:Version}), kdict-trinity (>= ${source:Version}), tdednssd-trinity (>= ${source:Version}), kget-trinity (>= ${source:Version}), knewsticker-trinity (>= ${source:Version}), kopete-trinity (>= ${source:Version}), kpf-trinity (>= ${source:Version}), kppp-trinity (>= ${source:Version}), krdc-trinity (>= ${source:Version}), krfb-trinity (>= ${source:Version}), ksirc-trinity (>= ${source:Version}), librss1-trinity (>= ${source:Version})
+Recommends: tdenetwork-filesharing-trinity (>= ${source:Version}), ktalkd-trinity (>= ${source:Version}), lisa-trinity (>= ${source:Version})
+Suggests: tdenetwork-trinity-doc-html (>= ${source:Version})
+Description: network-related apps from the official Trinity release
+ TDE (the Trinity Desktop Environment) is a powerful Open Source graphical
+ desktop environment for Unix workstations. It combines ease of use,
+ contemporary functionality, and outstanding graphical design with the
+ technological superiority of the Unix operating system.
+ .
+ This metapackage includes a collection of network and networking related
+ applications provided with the official release of Trinity.
+
+Package: dcoprss-trinity
+Section: net
+Architecture: any
+Replaces: dcoprss-trinity (<< 4:14.0.0~)
+Breaks: dcoprss-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: RSS utilities for Trinity
+ tdenetwork-dcoprss is a RSS to DCOP bridge, allowing all
+ DCOP aware applications to access RSS news feeds. There is also
+ a few sample utilities provided.
+ .
+ RSS is a standard for publishing news headlines.
+ DCOP is the TDE interprocess communication protocol.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: tdenetwork-trinity-doc-html
+Architecture: all
+Section: doc
+Replaces: kdenetwork-trinity-doc-html (<< 4:14.0.0~)
+Breaks: kdenetwork-trinity-doc-html (<< 4:14.0.0~)
+Suggests: konqueror-trinity | www-browser, tdebase-trinity
+Description: Trinity network documentation in HTML format
+ By default the modules provided by TDE only provide their documentation
+ in TDE docbook format, which can only be read by Konqueror or KHelpCenter.
+ This package provides all of the TDE network documentation converted to
+ HTML format so it can be read with any web browser.
+ .
+ The documentation will be installed into the usual directories
+ /usr/share/doc/tde/HTML/<language>/<app>/, for instance
+ /usr/share/doc/tde/HTML/en/kdict/. Documentation is provided for most
+ TDE network packages.
+ .
+ This package is part of TDE, and a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: tdenetwork-tdefile-plugins-trinity
+Section: tde
+Architecture: any
+Replaces: kdenetwork-kfile-plugins-trinity (<< 4:14.0.0~)
+Breaks: kdenetwork-kfile-plugins-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Enhances: konqueror-trinity
+Description: torrent metainfo plugin for Trinity
+ This package provides a metainformation plugin for bittorrent files.
+ .
+ Kde uses tdefile-plugins to provide metainfo tab in the files properties
+ dialog in konqueror and other file-handling applications.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: tdenetwork-filesharing-trinity
+Section: net
+Architecture: any
+Replaces: kdenetwork-filesharing-trinity (<< 4:14.0.0~)
+Breaks: kdenetwork-filesharing-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Recommends: perl-suid
+Description: network filesharing configuration module for Trinity
+ This package provides a Trinity Control Center module to configure
+ NFS and Samba.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: kdict-trinity
+Section: net
+Architecture: any
+Replaces: kdict-trinity (<< 4:14.0.0~)
+Breaks: kdict-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Provides: dict-client-trinity
+Description: dictionary client for Trinity
+ KDict is an advanced TDE graphical client for the DICT Protocol, with full
+ Unicode support. It enables you to search through dictionary databases for a
+ word or phrase, then displays suitable definitions. KDict tries to ease
+ basic as well as advanced queries.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: kget-trinity
+Section: net
+Architecture: any
+Replaces: kget-trinity (<< 4:14.0.0~)
+Breaks: kget-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Description: download manager for Trinity
+ KGet is a a download manager similar to GetRight or Go!zilla. It keeps
+ all your downloads in one dialog and you can add and remove transfers.
+ Transfers can be paused, resumed, queued or scheduled.
+ Dialogs display info about status of transfers - progress, size, speed
+ and remaining time. Program supports drag & drop from TDE
+ applications and Netscape.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: knewsticker-trinity
+Section: tde
+Architecture: any
+Replaces: knewsticker-trinity (<< 4:14.0.0~)
+Breaks: knewsticker-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, kicker-trinity
+Suggests: khelpcenter-trinity, knewsticker-scripts-trinity
+Description: news ticker applet for Trinity
+ This is a news ticker applet for the Trinity panel. It can scroll news from
+ your favorite news sites, such as lwn.net, /. and freshmeat.net.
+ To achieve this, KNewsTicker requires the news sites to provide a
+ RSS feed to newsitems. KNewsTicker already comes with a selection of
+ good news sources which provide such files.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: kopete-trinity
+Section: tde
+Architecture: any
+Replaces: kopete-trinity (<< 4:14.0.0~)
+Breaks: kopete-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Recommends: tqca-tls
+Suggests: tdeartwork-emoticons-trinity, khelpcenter-trinity, imagemagick, gnupg, gnomemeeting
+Description: instant messenger for Trinity
+ Kopete is an instant messenger program which can communicate with a variety
+ of IM systems, such as Yahoo, ICQ, MSN, IRC and Jabber.
+ .
+ Kopete includes the "Now Listening" plug-in that can report what music you
+ are currently listening to, in a number of different players, including
+ noatun, kscd, juk, kaffeine and amarok.
+ .
+ Support for more IM protocols can be added through a plugin system.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+ .
+ Homepage: http://kopete.kde.org
+
+Package: kpf-trinity
+Section: net
+Architecture: any
+Replaces: kpf-trinity (<< 4:14.0.0~)
+Breaks: kpf-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Description: public fileserver for Trinity
+ kpf provides simple file sharing using HTTP. kpf is strictly a public
+ fileserver, which means that there are no access restrictions to shared
+ files. Whatever you select for sharing is available to anyone. kpf is
+ designed to be used for sharing files with friends.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: kppp-trinity
+Section: net
+Architecture: any
+Replaces: kppp-trinity (<< 4:14.0.0~)
+Breaks: kppp-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ppp [!solaris-any]
+Suggests: khelpcenter-trinity
+Description: modem dialer and ppp frontend for Trinity
+ KPPP is a dialer and front end for pppd. It allows for interactive
+ script generation and network setup. It will automate the dialing in
+ process to your ISP while letting you conveniently monitor the entire
+ process.
+ .
+ Once connected KPPP will provide a rich set of statistics and keep
+ track of the time spent online for you.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: krdc-trinity
+Section: net
+Architecture: any
+Replaces: krdc-trinity (<< 4:14.0.0~)
+Breaks: krdc-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Recommends: rdesktop, libjpeg-turbo62
+Description: Remote Desktop Connection for Trinity
+ krdc is an TDE graphical client for the rfb protocol, used by VNC,
+ and if rdesktop is installed, krdc can connect to Windows Terminal
+ Servers using RDP.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: krfb-trinity
+Section: net
+Architecture: any
+Replaces: krfb-trinity (<< 4:14.0.0~)
+Breaks: krfb-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity
+Recommends: libjpeg-turbo62
+Description: Desktop Sharing for Trinity
+ Desktop Sharing (krfb) is a server application that allows you to share
+ your current session with a user on another machine, who can use a
+ VNC client like krdc to view or even control the desktop. It doesn't
+ require you to start a new X session - it can share the current session.
+ This makes it very useful when you want someone to help you perform a
+ task.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: ksirc-trinity
+Section: net
+Architecture: any
+Replaces: ksirc-trinity (<< 4:14.0.0~)
+Breaks: ksirc-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${perl:Depends}
+Recommends: libio-socket-ssl-perl
+Suggests: khelpcenter-trinity
+Description: IRC client for Trinity
+ KSirc is an IRC chat client for TDE. It supports scripting with Perl and has a
+ lot of compatibility with mIRC for general use.
+ .
+ If you want to connect to an IRC server via SSL, you will need to install the
+ recommended package libio-socket-ssl-perl.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: ktalkd-trinity
+Section: net
+Priority: extra
+Replaces: ktalkd-trinity (<< 4:14.0.0~)
+Breaks: ktalkd-trinity (<< 4:14.0.0~)
+Architecture: any
+Depends: ${shlibs:Depends}, netbase, update-inetd
+Recommends: talk, ytalk
+Suggests: khelpcenter-trinity
+Provides: talkd-trinity
+Description: talk daemon for Trinity
+ KTalkd is an enhanced talk daemon - a program to handle incoming talk
+ requests, announce them and allow you to respond to it using a talk
+ client. Note that KTalkd is designed to run on a single-user workstation,
+ and shouldn't be run on a multi-user machine.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+# Package: kwifimanager-trinity
+# Section: net
+# Architecture: any
+# Replaces: kwifimanager-trinity (<< 4:14.0.0~)
+# Breaks: kwifimanager-trinity (<< 4:14.0.0~)
+# Depends: ${shlibs:Depends}, wireless-tools [!solaris-any]
+# Suggests: khelpcenter-trinity
+# Description: wireless lan manager for Trinity
+#  KWiFiManager suite is a set of tools which allows you to manage your
+#  wireless LAN connection under the Trinity Desktop Environment. It provides
+#  information about your current connection. KWiFiManager supports every
+#  wavelan card that uses the wireless extensions interface.
+#  .
+#  This package is part of Trinity, as a component of the TDE network module.
+#  See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: librss1-trinity
+Section: libs
+Architecture: any
+Replaces: librss1-trinity (<< 4:14.0.0~)
+Breaks: librss1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: RSS library for Trinity
+ This is the runtime package for programs that use the TDE RSS library.
+ End users should not need to install this, it should get installed
+ automatically when needed.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: tdenetwork-trinity-dev
+Section: devel
+Architecture: any
+Replaces: kdenetwork-trinity-dev (<< 4:14.0.0~)
+Breaks: kdenetwork-trinity-dev (<< 4:14.0.0~)
+Depends: kdict-trinity (= ${source:Version}), kopete-trinity (= ${source:Version}), ksirc-trinity (= ${source:Version}), librss1-trinity (= ${source:Version}), tdelibs14-trinity-dev
+Description: development files for the Trinity network module
+ This is the development package which contains the headers for the TDE RSS
+ library as well as the Kopete chat client, as well as miscellaneous
+ development-related files for the TDE network module.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: lisa-trinity
+Section: net
+Architecture: any
+Replaces: lisa-trinity (<< 4:14.0.0~)
+Breaks: lisa-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: khelpcenter-trinity, samba-common
+Description: LAN information server for Trinity
+ LISa is intended to provide TDE with a kind of "network neighborhood"
+ but relying only on the TCP/IP protocol.
+ .
+ This package is part of Trinity, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: tdednssd-trinity
+Section: net
+Architecture: any
+Replaces: kdnssd-trinity (<< 4:14.0.0~)
+Breaks: kdnssd-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Recommends: avahi-daemon
+Suggests: avahi-autoipd | zeroconf
+Description: Zeroconf support for TDE
+ A tdeioslave and kded module that provide Zeroconf support. Try
+ "zeroconf:/" in Konqueror.
+ .
+ This package is part of TDE, as a component of the TDE network module.
+ See the 'tde-trinity' and 'tdenetwork-trinity' packages for more information.
+
+Package: tdenetwork-trinity-dbg
+Section: libdevel
+Architecture: linux-any
+Replaces: kdenetwork-trinity-dbg (<< 4:14.0.0~)
+Breaks: kdenetwork-trinity-dbg (<< 4:14.0.0~)
+Priority: extra
+Depends: librss1-trinity (= ${source:Version}), tdelibs-trinity-dbg
+Description: debugging symbols for tdenetwork-trinity
+ This package contains the debugging symbols associated with tdenetwork-trinity.
+ They will automatically be used by gdb for debugging tdenetwork-related
+ issues.

@@ -1,0 +1,11 @@
+--- qmake/generators/unix/unixmake.cpp
++++ qmake/generators/unix/unixmake.cpp
+@@ -839,7 +839,7 @@
+ 	    ret += "\n\t";
+ 	ret += QString(resource ? "-$(INSTALL_DIR)" : "-$(INSTALL_FILE)") + " \"" +
+ 	       src_targ + "\" \"" + dst_targ + "\"";
+-	if(!project->isActiveConfig("debug") && !project->isEmpty("QMAKE_STRIP") &&
++	if(false && !project->isActiveConfig("debug") && !project->isEmpty("QMAKE_STRIP") &&
+ 	   (project->first("TEMPLATE") != "lib" || !project->isActiveConfig("staticlib"))) {
+ 	    ret += "\n\t-" + var("QMAKE_STRIP");
+ 	    if(project->first("TEMPLATE") == "lib" && !project->isEmpty("QMAKE_STRIPFLAGS_LIB"))

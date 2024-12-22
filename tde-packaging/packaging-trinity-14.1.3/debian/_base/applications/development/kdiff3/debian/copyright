@@ -1,0 +1,26 @@
+This package was debianized by Eike Sauer <eikes@cs.tu-berlin.de> on
+Tue, 21 Oct 2003 14:42:39 +0200.
+
+It was downloaded from http://kdiff3.sourceforge.net
+
+Upstream Author: Joachim Eibl <joachim.eibl@gmx.de>
+
+Copyright: (C) 2002-2007 by Joachim Eibl
+
+Parts of this software are derived from GNU diffutils
+by Haertel, Hayes, Stallman, Tower, Eggert et al.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License with
+the Debian GNU/Linux distribution in file /usr/share/common-licenses/GPL;
+if not, write to the Free Software Foundation, Inc., 51 Franklin St, 
+Fifth Floor, Boston, MA 02110-1301, USA.

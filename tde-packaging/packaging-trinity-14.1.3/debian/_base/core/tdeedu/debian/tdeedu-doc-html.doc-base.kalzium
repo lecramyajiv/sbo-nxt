@@ -1,0 +1,11 @@
+Document: kalzium
+Title: Kalzium Handbook
+Author: Carsten Niehaus <cniehaus@kde.org>
+Abstract: Kalzium is a program which shows you the Periodic System of
+ elements (PSE).  You can use Kalzium to search for information about
+ the elements or to learn facts about the PSE.
+Section: Apps/Science
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kalzium/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kalzium/*.html

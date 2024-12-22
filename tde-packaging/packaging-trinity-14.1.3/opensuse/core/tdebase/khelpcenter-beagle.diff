@@ -1,0 +1,172 @@
+Index: khelpcenter/searchhandlers/khc_beagle_search.pl
+===================================================================
+--- /dev/null
++++ khelpcenter/searchhandlers/khc_beagle_search.pl
+@@ -0,0 +1,88 @@
++#!/usr/bin/perl -w
++# vim:sw=4:et
++
++use warnings;
++use strict;
++use Getopt::Long;
++
++sub isBeagleRunning()
++{
++    open(IN, "-|") || exec "beagle-ping";
++    while(<IN>) {
++        if (/^Daemon version:/) {
++            close(IN);
++            return 1;
++        }
++    }
++    close(IN);
++    return 0;
++}
++
++sub formatHTML($$)
++{
++    my ($query, $hits) = @_;
++
++    print "<html>\n<body\n<ul>\n";
++
++    foreach my $hit(@$hits) {
++        print "<li>$hit</li>\n";
++    }
++    print "</ul>\n</body>\n</html>\n";
++}
++
++sub beagleQuery($$$)
++{
++    my ($words, $method, $maxnum) = @_;
++
++    my @hits = ();
++
++    open(IN, "-|") || exec "beagle-query", "--type", "DocbookEntry", "--type", "File", "--max-hits", $maxnum, @$words, "ext:docbook";
++    while(<IN>) {
++        chop;
++        next if (/^Debug:/);
++
++        my $uri = $_;
++        $uri = $1 if ($uri =~ /^file:\/\/(.*)$/);
++
++        print "uri: $uri\n";
++        my $helpLink = &makeHelpLink($uri);
++
++        push(@hits, $helpLink) if (!grep { /^$helpLink$/ } @hits);
++    }
++    close(IN);
++    return @hits;
++}
++
++sub makeHelpLink($)
++{
++    # Try to figure out the name of the application from the path to its index.docbook file
++
++    my ($path) = @_;
++    my @pathcomponents = split '/', $path;
++
++    my $appName = $pathcomponents[-2];
++    my $appName2 = $pathcomponents[-3];
++
++    if ($appName eq $appName2 or $appName2 eq "doc" 
++        or (-d "/usr/share/locale/$appName2")) {
++        return "<a href=\"help:/$appName\">$appName</a>";
++    }
++    return "<a href=\"help:/$appName2/$appName\">$appName ($appName2)</a>";
++}
++
++my $method = "and";
++my $maxnum = 100;
++
++GetOptions("method=s", \$method, "maxnum=i", \$maxnum);
++
++my @hits = ("The Beagle daemon is not running, search is not available");
++
++my @words = @ARGV;
++
++if (isBeagleRunning()) {
++    @hits = beagleQuery(\@words, $method, $maxnum);
++}
++
++@hits = ("There are no search results") if ($#hits < 0);
++
++formatHTML(\@words, \@hits);
+Index: khelpcenter/searchhandlers/khc_beagle_index.pl
+===================================================================
+--- /dev/null
++++ khelpcenter/searchhandlers/khc_beagle_index.pl
+@@ -0,0 +1,49 @@
++#!/usr/bin/perl
++# vim:sw=4:et
++
++use warnings;
++
++sub getKDEDocDir() 
++{
++    my $prefix = `kde-config --prefix`;
++    chomp $prefix;
++
++    $prefix = "/opt/kde" if (not defined($prefix));
++    return "$prefix/share/doc";
++}
++
++sub addRoot() 
++{
++    my $kdedocdir = &getKDEDocDir;
++
++    open (IN, "-|") || exec "beagle-config", "indexing", "ListRoots";
++
++    my $kdedoc_found = 0;
++    while(<IN>) {
++        if (/^$kdedocdir/o) {
++            $kdedoc_found = 1;
++            last;
++        }
++    }
++    close(IN);
++
++    if (not $kdedoc_found) {
++        `beagle-config indexing AddRoot $kdedocdir`;
++        `beagle-config indexing AddRoot $kdedocdir-bundle`;
++    }
++}
++
++sub createExistsFile($$)
++{
++    my ($idir, $ident) = @_;
++
++    open(OUT, ">", "$idir/$idir");
++    close(OUT);
++}
++
++my $idir = $ARGV[0];
++my $ident = $ARGV[1];
++
++if (addRoot) {
++    createExistsFile($idir, $ident);
++}
+Index: khelpcenter/searchhandlers/docbook.desktop
+===================================================================
+--- khelpcenter/searchhandlers/docbook.desktop.orig
++++ khelpcenter/searchhandlers/docbook.desktop
+@@ -2,5 +2,5 @@
+ 
+ DocumentTypes=text/docbook
+ 
+-SearchCommand=khc_htsearch.pl --docbook --indexdir=%d --config=%i --words=%w --method=%o --maxnum=%m --lang=en
+-IndexCommand=khc_docbookdig.pl --indexdir=%d --docpath=%p --identifier=%i
++SearchCommand=khc_beagle_search.pl --method=%o --maxnum=%m %w
++IndexCommand=khc_beagle_index.pl %d %i
+Index: khelpcenter/searchhandlers/Makefile.am
+===================================================================
+--- khelpcenter/searchhandlers/Makefile.am.orig
++++ khelpcenter/searchhandlers/Makefile.am
+@@ -3,7 +3,7 @@ searchhandlers_DATA = htdig.desktop man.
+ searchhandlersdir = $(kde_datadir)/khelpcenter/searchhandlers
+ 
+ kde_bin_SCRIPTS = khc_htdig.pl khc_htsearch.pl khc_mansearch.pl \
+-  khc_docbookdig.pl
++  khc_docbookdig.pl khc_beagle_search.pl khc_beagle_index.pl
+ 
+ htdigdata_DATA = htdig_long.html
+ 

@@ -1,0 +1,6 @@
+?package(kvpnc-trinity):\
+  needs="X11"\
+  section="Applications/Network/Communication"\
+  title="kvpnc"\
+  hints="TDE"\
+  command="su-to-root -X -c kvpnc"

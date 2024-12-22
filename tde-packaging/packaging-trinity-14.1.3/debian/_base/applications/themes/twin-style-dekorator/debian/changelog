@@ -1,0 +1,12 @@
+twin-style-dekorator-trinity (0.3-2) unstable; urgency=low
+
+  * Initial release for TDE
+
+ -- Mavridis Philippe <mavridisf@gmail.com>  Fri, 30 Jul 2021 12:35:19 +0900
+
+kwin-style-dekorator (0.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #374869)
+
+ -- Sune Vuorela <debian@pusling.com>  Wed, 21 Jun 2006 20:04:02 +0200
+

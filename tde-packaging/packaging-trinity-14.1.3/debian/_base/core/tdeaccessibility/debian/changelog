@@ -1,0 +1,437 @@
+tdeaccessibility-trinity (4:3.5.10-0ubuntu3) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+tdeaccessibility-trinity (4:3.5.10-0ubuntu1~intrepid4) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 28 Feb 2009 16:19:00 -0600
+
+tdeaccessibility-trinity (4:3.5.10-0ubuntu1~intrepid3) intrepid; urgency=low
+
+  * Import from SVN
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 26 Nov 2008 21:56:00 -0600
+
+tdeaccessibility (4:3.5.10-0ubuntu1~hardy1) hardy-backports; urgency=low
+
+  * New upstream bugfix release (LP: #261366)
+    - Bump build-dep version of tdelibs4-dev and tdemultimedia-dev to
+      3.5.10
+
+ -- Scott Kitterman <scott@kitterman.com>  Tue, 26 Aug 2008 00:21:01 -0400
+
+tdeaccessibility (4:3.5.9-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 14 Feb 2008 12:27:05 +0000
+
+tdeaccessibility (4:3.5.8-1ubuntu2) hardy; urgency=low
+
+  * Run buildprep before upload
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 15 Nov 2007 10:59:22 +0000
+
+tdeaccessibility (4:3.5.8-1ubuntu1) hardy; urgency=low
+
+  * Merge with Debian, remaining change:
+   - Remove Section: contrib/ from kttsd-contrib-plugins
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 14 Nov 2007 17:25:46 +0000
+
+tdeaccessibility (4:3.5.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Implement uploaders.mk
+
+  +++ Changes by Ana Beatriz Guerrero Lopez:
+
+  * Update section in Debian menu files.
+  * Redo buildprep and bump version stuff to 3.5.8.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Sun, 14 Oct 2007 18:28:25 +0200
+
+tdeaccessibility (4:3.5.8-0ubuntu1) gutsy; urgency=low
+
+  * Remove contrib section
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 09 Oct 2007 21:52:11 +0100
+
+tdeaccessibility (4:3.5.8-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 09 Oct 2007 11:41:27 +0100
+
+tdeaccessibility (4:3.5.7-1ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian for new upstream version
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 23 May 2007 17:00:20 +0100
+
+tdeaccessibility (4:3.5.7-1) unstable; urgency=low
+
+  * New upstream version. 
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Wed, 16 May 2007 02:01:02 +0100
+
+tdeaccessibility (4:3.5.6-2ubuntu1) gutsy; urgency=low
+
+  * Merge with Debian
+  * No remaining changes besides patches
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 30 Apr 2007 20:32:56 +0100
+
+tdeaccessibility (4:3.5.6-2) unstable; urgency=low
+
+  * Upload to unstable after Etch release. 
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Fri, 20 Apr 2007 17:36:39 +0100
+
+tdeaccessibility (4:3.5.6-1) experimental; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Sune Vuorela:
+  * Fix some kfreebsd related problems: don't expect alsa stuff to be
+    installed. (Closes: 403741)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu, 18 Jan 2007 00:20:08 +0100
+
+tdeaccessibility (4:3.5.5-2) unstable; urgency=low
+
+  ++ Changes by Josh Metzler:
+  * Make tdeaccessibility-dbg depend on tdelibs-dbg to get useful backtraces
+    when debugging.
+
+  ++ Ana Beatriz Guerrero Lopez:
+  * Removed plugin for GStreamer of kttsd. (This plugin was built against
+    GStreamer 0.8 that is going to be removed from the archive).
+  * Added extras spaces to homepage pseudo header. 
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  7 Dec 2006 14:56:02 +0100
+
+tdeaccessibility (4:3.5.6-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 17 Jan 2007 11:22:31 +0000
+
+tdeaccessibility (4:3.5.5-1ubuntu1) feisty; urgency=low
+
+  * Merge with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 16 Nov 2006 22:12:42 +0000
+
+tdeaccessibility (4:3.5.5-1) unstable; urgency=low
+
+  * New upstream release.
+    + Fixes ksayit: crash with "terminate called after throwing an instance
+      of 'QString'" error. (Closes: #350678)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed,  4 Oct 2006 20:40:37 -0400
+
+tdeaccessibility (4:3.5.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * KDE_3_5_BRANCH update (up to r567761).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat, 29 Jul 2006 21:12:52 -0400
+
+tdeaccessibility (4:3.5.5-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  3 Oct 2006 10:56:05 +0000
+
+tdeaccessibility (4:3.5.4-0ubuntu5) edgy; urgency=low
+
+  * Rebuild on latest cdbs to change .pot files to UTF8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 20 Sep 2006 13:09:37 +0100
+
+tdeaccessibility (4:3.5.4-0ubuntu4) edgy; urgency=low
+
+  * Rebuild with latest cdbs to add gettext domain to .desktop files for
+    langpacks-desktopfiles-kde, no source changes
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  5 Sep 2006 22:53:10 +0000
+
+tdeaccessibility (4:3.5.4-0ubuntu3) edgy; urgency=low
+
+  * Build-dep on new akode so it doesn't bring in akode-mpeg
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  2 Aug 2006 13:35:28 +0000
+
+tdeaccessibility (4:3.5.4-0ubuntu2) edgy; urgency=low
+
+  * Build-dep on new akode so it doesn't bring in Jack
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 30 Jul 2006 16:28:24 +0100
+
+tdeaccessibility (4:3.5.4-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 25 Jul 2006 10:12:17 +0000
+
+tdeaccessibility (4:3.5.3-1ubuntu1) edgy; urgency=low
+
+  * Sync with Debian
+  * Don't build-dep on gstreamer0.8 and remove --with-gstreamer (it's in universe)
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  4 Jul 2006 15:12:40 +0000
+
+tdeaccessibility (4:3.5.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+  * KDE_3_5_BRANCH update (up to r548166).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun,  4 Jun 2006 18:34:43 -0400
+
+tdeaccessibility (4:3.5.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 29 Mar 2006 21:18:53 -0500
+
+tdeaccessibility (4:3.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Christopher Martin:
+
+  * Upload to unstable.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun, 29 Jan 2006 10:44:07 -0500
+
+tdeaccessibility (4:3.5.0-3) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * Upload to unstable.
+
+  * KDE_3_5_BRANCH update (up to r495385).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat,  7 Jan 2006 17:25:45 -0500
+
+tdeaccessibility (4:3.5.0-2) experimental; urgency=low
+
+  * Upload to experimental.
+
+  * KDE_3_5_BRANCH update (up to r492083).
+
+  +++ Changes by Christopher Martin:
+
+  * No longer build with gcc-3.4 on any architectures, since gcc-4.0 should
+    be fixed. (Closes: #342977)
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 28 Dec 2005 13:31:29 -0500
+
+tdeaccessibility (4:3.5.2-0ubuntu3) dapper; urgency=low
+
+  * debian/cdbs/debian-qt-kde.mk to call dh_iconcache
+
+ -- Gauvain Pocentek <gauvainpocentek@ubuntu.com>  Wed, 24 May 2006 12:55:38 +0200
+
+tdeaccessibility (4:3.5.2-0ubuntu2) dapper; urgency=low
+
+  * Edit debian/cdbs/kde.mk to mark .po files as UTF-8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 21 Apr 2006 19:14:27 +0100
+
+tdeaccessibility (4:3.5.2-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 20 Mar 2006 12:06:28 +0000
+
+tdeaccessibility (4:3.5.1-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 23 Jan 2006 14:26:05 +0000
+
+tdeaccessibility (4:3.5.0-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+  * Remove GCC 3.4 on hppa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  6 Dec 2005 12:26:30 +0000
+
+tdeaccessibility (4:3.5-rc2-0ubuntu1) dapper; urgency=low
+
+  * New upstream pre-release
+  * Sync with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 23 Nov 2005 13:33:38 +0000
+
+tdeaccessibility (4:3.5.0-1) alioth; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Josh Metzler:
+
+  * Add libakode-dev build dependency to build akode plugin.
+
+  * Remove epos, flite, and festival build dependencies.  The plugins
+    are still built without them installed.
+
+  +++ Changes by Christopher Martin:
+
+  * Bump DH_COMPAT to 5. No changes.
+
+  * Add tdeaccessibility-dbg, to help track down problems.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 30 Nov 2005 18:41:50 -0500
+
+tdeaccessibility (4:3.4.3-2) unstable; urgency=low
+
+  * Upload to unstable, rebuilding against tdelibs4c2a.
+
+  * KDE_3_4_BRANCH update (up to r484426).
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Wed, 30 Nov 2005 19:49:02 +0100
+
+tdeaccessibility (4:3.4.3-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun, 16 Oct 2005 14:19:29 -0400
+
+tdeaccessibility (4:3.4.2-2) unstable; urgency=low
+
+  +++ Changes by Luk Claes:
+  
+  * Add new files to respective debian/*.install files
+  
+  * Build with g++-3.4 on arm, m68k and hppa; tdeaccessibility triggers the same
+    gcc 4.0 ICE as arts does.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Fri,  2 Sep 2005 20:18:02 +0200
+
+tdeaccessibility (4:3.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+  +++ Changes by Luk Claes:
+
+  * Added me to uploaders
+  
+  * Updated FSF's address
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Thu,  1 Sep 2005 17:31:25 +0200
+
+tdeaccessibility (4:3.4.1-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 31 May 2005 15:43:52 -0400
+
+tdeaccessibility (4:3.4.0-0pre1) alioth; urgency=low
+
+  * New upstream release.
+
+  * Converted packaging to CDBS.
+
+  +++ Changes by Pierre Habouzit:
+
+  * Bunch of new packages : kttsd*, kde-icons-mono, ksayit, kbstate.
+  * Wrote a README.Debian for kttsd to clarify synth-plugin state.
+  * Reworked package descriptions.
+
+  +++ Changes by Adeodato Simó:
+
+  * Created XPM icons for packages having a menu file. Install them in
+    /opt/trinity/share/pixmaps and update the menu entries to use them.
+
+  +++ Changes by Christopher Martin:
+
+  * New tdeaccessibility-doc-html package, containing doc-base registered
+    HTML versions of application handbooks, for users without Konqueror or
+    KHelpCenter.
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sat,  5 Mar 2005 21:32:41 +0100
+
+tdeaccessibility (4:3.3.2-1) unstable; urgency=low
+
+  +++ Changes by Christopher Martin:
+
+  * KDE_3_3_BRANCH update.
+
+  * Change debian/copyright file to refer to licenses, instead of copyright,
+    when discussing KDE's licenses.
+
+  +++ Changes by Isaac Clerencia:
+
+  * Added myself to Uploaders
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Sun, 23 Jan 2005 23:09:07 +0100
+
+tdeaccessibility (4:3.3.2-0pre1) experimental; urgency=low
+
+  * New upstream release.
+  * KDE_3_3_BRANCH update.
+  * Remove build-dependency on automake1.9.
+
+ -- Christopher Martin <chrsmrtn@freeshell.org>  Thu, 16 Dec 2004 14:43:11 -0500
+
+tdeaccessibility (3.3.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * KDE_3_3_BRANCH update.
+  * Add libxtst-dev to Build-Depends. (Closes: #277197)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Thu,  4 Nov 2004 22:30:00 -0600
+
+tdeaccessibility (3.3.0-2) unstable; urgency=low
+
+  * KDE_3_3_BRANCH update.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sat, 25 Sep 2004 23:00:00 -0500
+
+tdeaccessibility (3.3.0-1) unstable; urgency=high
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Fri, 13 Aug 2004 22:30:00 -0500
+
+tdeaccessibility (3.2.3-1) unstable; urgency=high
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Tue,  3 Aug 2004 05:00:00 -0500
+
+tdeaccessibility (3.2.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/*.menu: remove the obsolete kderemove tag.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Sun, 11 Apr 2004 23:00:00 -0500
+
+tdeaccessibility (3.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added Build-Depends: groff-base. (Closes: #235015)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Fri,  5 Mar 2004 17:00:00 -0600
+
+tdeaccessibility (3.2.0-0pre1v1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Thu, 19 Feb 2004 17:00:00 -0600
+
+tdeaccessibility (3.1.95-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Christopher L Cheney <ccheney@debian.org>  Fri, 30 Jan 2004 17:00:00 -0600
+

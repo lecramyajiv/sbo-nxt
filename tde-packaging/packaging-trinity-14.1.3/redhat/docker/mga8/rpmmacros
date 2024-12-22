@@ -1,0 +1,7 @@
+%dist .mga8
+%_smp_mflags -j8
+%jobs 8
+%_program_prefix ""
+%_debugsource_packages %nil
+%_debugsource_template %nil
+%_vpath_builddir .

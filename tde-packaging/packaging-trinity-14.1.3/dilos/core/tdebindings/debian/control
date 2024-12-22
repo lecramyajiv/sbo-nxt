@@ -1,0 +1,328 @@
+Source: tdebindings-trinity
+Build-Depends: cdbs (>= 0.4.43), debhelper (>= 10~),
+ python3-all-dev, dh-python, quilt, gawk,
+ default-jdk [amd64 i386 armel armhf arm64 mipsel ia64 powerpc ppc64el riscv64 s390 sparc],
+ tdelibs14-trinity-dev, libtqt3-compat-headers,
+ ruby, ruby-dev, flex, bison, libpkcs11-helper1-dev, automake, autoconf, libtool, libltdl-dev,
+ graphviz [solaris-any], libgtk2.0-dev [solaris-any], oracle-java8-jdk [solaris-any]
+Section: devel
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Adeodato Sim <dato@net.com.org.es>, Ana Beatriz Guerrero Lopez <ana@debian.org>, Ricardo Cardenes <rcardenes@debian.org>, Sune Vuorela <debian@pusling.com>
+Standards-Version: 3.8.4
+
+Package: tdebindings-trinity
+Architecture: all
+Section: tde
+Replaces: kdebindings-trinity (<< 4:14.0.0~)
+Breaks: kdebindings-trinity (<< 4:14.0.0~)
+Depends: tdebindings-java-trinity (>= ${source:Version}), libdcop3-java-trinity (>= ${source:Version}), libdcop3-jni-trinity (>= ${source:Version}), libqt3-java-trinity (>= ${source:Version}), libqt3-jni-trinity (>= ${source:Version}), libtrinity-java-trinity (>= ${source:Version}), libtrinity-jni-trinity (>= ${source:Version}), libsmoketqt1-trinity (>= ${source:Version}), libsmoketde1-trinity (>= ${source:Version}), python3-dcop-trinity (>= ${source:Version}), libkjsembed1-trinity (>= ${source:Version}), kjscmd-trinity (>= ${source:Version}), juic-trinity (>= ${source:Version}), libkorundum0-ruby-trinity (>= ${source:Version}), libqt0-ruby-trinity (>= ${source:Version}), tde-xparts-extras-trinity (>= ${source:Version})
+Description: TDE bindings metapackage
+ TDE (the Trinity Desktop Environment) is a powerful Open Source graphical
+ desktop environment for Unix workstations. It combines ease of use,
+ contemporary functionality, and outstanding graphical design with the
+ technological superiority of the Unix operating system.
+ .
+ This metapackage includes all binding packages provided by Trinity.
+
+Package: tdebindings-trinity-dev
+Architecture: all
+Section: libdevel
+Replaces: kdebindings-trinity-dev (<< 4:14.0.0~)
+Breaks: kdebindings-trinity-dev (<< 4:14.0.0~)
+Depends: libsmoketqt-trinity-dev, libsmoketde-trinity-dev, libkjsembed-trinity-dev
+Description: TDE bindings metapackage
+ TDE (the Trinity Desktop Environment) is a powerful Open Source graphical
+ desktop environment for Unix workstations. It combines ease of use,
+ contemporary functionality, and outstanding graphical design with the
+ technological superiority of the Unix operating system.
+ .
+ This metapackage includes all development files related to the binding packages provided by Trinity.
+
+Package: tdebindings-java-trinity
+Section: libs
+Architecture: all
+Replaces: kdebindings-java-trinity (<< 4:14.0.0~)
+Breaks: kdebindings-java-trinity (<< 4:14.0.0~)
+Depends: libdcop3-java-trinity (= ${source:Version}), libqt3-java-trinity (= ${source:Version}), libtrinity-java-trinity (= ${source:Version})
+Description: TDE Java bindings metapackage [Trinity]
+ A metapackage depending on all TDE, Qt and DCOP bindings libraries
+ related to the Java language.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libdcop3-java-trinity
+Architecture: all
+Section: libs
+Replaces: libdcop3-java-trinity (<< 4:14.0.0~)
+Breaks: libdcop3-java-trinity (<< 4:14.0.0~)
+Depends: libdcop3-jni-trinity (>> ${TDE-Version3}~), libdcop3-jni-trinity (<< ${TDE-Next-Version3}~), gij | java1-runtime | java2-runtime
+Description: DCOP bindings for Java [Trinity]
+ This package contains the Java classes necessary to run Java programs
+ using the Java DCOP bindings. DCOP is the Trinity Desktop COmmunications
+ Protocol, used for communicating with running TDE applications.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libdcop3-jni-trinity
+Architecture: amd64 i386 armel armhf arm64 mipsel ia64 powerpc ppc64el riscv64 s390 sparc solaris-any
+Section: libs
+Replaces: libdcop3-jni-trinity (<< 4:14.0.0~)
+Breaks: libdcop3-jni-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: DCOP bindings for Java ( Native libraries ) [Trinity]
+ This package contains the shared libraries and scripts necessary to
+ run programs using the Java DCOP bindings. DCOP is the Trinity Desktop
+ COmmunications Protocol, used for communicating with running TDE
+ applications.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libdcop3-java-trinity-dev
+Architecture: amd64 i386 armel armhf arm64 mipsel ia64 powerpc ppc64el riscv64 s390 sparc solaris-any
+Section: libdevel
+Replaces: libdcop3-java-trinity-dev (<< 4:14.0.0~)
+Breaks: libdcop3-java-trinity-dev (<< 4:14.0.0~)
+Depends: libdcop3-java-trinity (>> ${TDE-Version3}~), libdcop3-java-trinity (<< ${TDE-Next-Version3}~)
+Description: DCOP bindings for Java (dcopidl2java program) [Trinity]
+ This package contains the dcopidl2java program which generates Java 
+ stubs from DCOP IDL files, necessary to do development with the DCOP Java
+ bindings. DCOP is the Trinity Desktop COmmunications Protocol, used for
+ communicating with running TDE applications.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libqt3-java-trinity
+Architecture: all
+Section: libs
+Replaces: libqt3-java-trinity (<< 4:14.0.0~)
+Breaks: libqt3-java-trinity (<< 4:14.0.0~)
+Depends: libqt3-jni-trinity (>> ${TDE-Version3}~), libqt3-jni-trinity (<< ${TDE-Next-Version3}~), gij | java1-runtime | java2-runtime
+Suggests: juic-trinity
+Description: Java bindings for Qt [Trinity]
+ This package contains the Java classes necessary to run Java programs
+ using the Java Qt bindings. Qt is a very popular GUI toolkit, used by
+ the Trinity desktop environment.
+ .
+ It also includes many example programs that make use of these bindings,
+ plus many of the Qt Tutorial examples translated into Java.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libqt3-jni-trinity
+Architecture: amd64 i386 armel armhf arm64 mipsel ia64 powerpc ppc64el riscv64 s390 sparc solaris-any
+Section: libs
+Replaces: libqt3-jni-trinity (<< 4:14.0.0~)
+Breaks: libqt3-jni-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Java bindings for Qt ( Native libraries ) [Trinity]
+ This package contains the shared libraries necessary to run Java
+ programs using the Java Qt bindings. Qt is a very popular GUI
+ toolkit, used by the Trinity desktop environment.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libtrinity-java-trinity
+Architecture: all
+Section: libs
+Replaces: libtrinity-java-trinity (<< 4:14.0.0~)
+Breaks: libtrinity-java-trinity (<< 4:14.0.0~)
+Depends: libtrinity-jni-trinity (>> ${TDE-Version3}~), libtrinity-jni-trinity (<< ${TDE-Next-Version3}~), gij | java1-runtime | java2-runtime
+Description: tdelibs bindings for Java [Trinity]
+ This package contains the Java classes necessary to run Java programs
+ using the Java tdelibs bindings. TDE is the Trinity Desktop Environment, a
+ very popular UNIX Desktop Environment.
+ .
+ It also includes some example applications that use these Java
+ classes, and multiple usage samples of the most common TDE classes.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libtrinity-jni-trinity
+Architecture: amd64 i386 armel armhf arm64 mipsel ia64 powerpc ppc64el riscv64 s390 sparc solaris-any
+Section: libs
+Replaces: libtrinity-jni-trinity (<< 4:14.0.0~)
+Breaks: libtrinity-jni-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: tdelibs bindings for java ( Native libraries ) [Trinity]
+ This package contains the shared libraries necessary to run Java
+ programs using the Java tdelibs bindings. TDE is the Trinity Desktop
+ Environment, a very popular UNIX Desktop Environment.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libsmoketqt1-trinity
+Architecture: any
+Section: libs
+Replaces: libsmokeqt1-trinity (<< 4:14.0.0~)
+Breaks: libsmokeqt1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: SMOKE Binding Library to TQt
+ The "Scripting Meta Object Kompiler Engine" library is used by
+ various TDE language bindings packages to provide interfaces to the
+ TQt library.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libsmoketqt-trinity-dev
+Architecture: any
+Section: libdevel
+Replaces: libsmokeqt-trinity-dev (<< 4:14.0.0~)
+Breaks: libsmokeqt-trinity-dev (<< 4:14.0.0~)
+Depends: libsmoketqt1-trinity (= ${binary:Version})
+Description: SMOKE Binding Library to TQt - Development Files
+ The "Scripting Meta Object Kompiler Engine" library is used by
+ various TDE language bindings packages to provide interfaces to the
+ TQt library. This package contains the development files for the
+ library.
+ .
+ If you are a normal Debian user, you probably don't need this
+ package.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libsmoketde1-trinity
+Architecture: any
+Section: libs
+Replaces: libsmokekde1-trinity (<< 4:14.0.0~)
+Breaks: libsmokekde1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: SMOKE Binding Library to TDE
+ The "Scripting Meta Object Kompiler Engine" library is used by
+ various TDE language bindings packages to provide interfaces to the
+ TDE libraries.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libsmoketde-trinity-dev
+Architecture: any
+Section: libdevel
+Replaces: libsmokekde-trinity-dev (<< 4:14.0.0~)
+Breaks: libsmokekde-trinity-dev (<< 4:14.0.0~)
+Depends: libsmoketde1-trinity (= ${binary:Version})
+Description: SMOKE Binding Library to TDE - Development Files
+ The "Scripting Meta Object Kompiler Engine" library is used by
+ various TDE language bindings packages to provide interfaces to the
+ Qt and TDE libraries. This package contains the development files for
+ the library.
+ .
+ If you are a normal Debian user, you probably don't need this
+ package.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: python3-dcop-trinity
+Architecture: any
+Section: python
+Depends: ${python3:Depends}, ${shlibs:Depends}
+Provides: ${python3:Provides}
+Description: DCOP bindings for Python
+ This package contains the shared libraries necessary to run and
+ develop Python programs using the Python DCOP bindings
+ libraries. DCOP is the Trinity Desktop COmmunications Protocol, used for
+ communicating with running TDE applications.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libkjsembed1-trinity
+Architecture: any
+Section: libs
+Replaces: libkjsembed1-trinity (<< 4:14.0.0~)
+Breaks: libkjsembed1-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: Embedded JavaScript library
+ This package contains the shared libraries necessary to run programs
+ linked with the KJSEmbed library. This library provides JavaScript
+ embedded scripting facilities to TDE applications.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libkjsembed-trinity-dev
+Architecture: any
+Section: libdevel
+Replaces: libkjsembed-trinity-dev (<< 4:14.0.0~)
+Breaks: libkjsembed-trinity-dev (<< 4:14.0.0~)
+Depends: libkjsembed1-trinity (= ${binary:Version})
+Description: Embedded JavaScript library (Development files)
+ This package contains the header files and symbolic links necessary
+ to develop and compile programs using the KJSEmbed library. This
+ library provides JavaScript embedded scripting facilities to TDE
+ applications.
+ .
+ It also includes lots of example programs that make use of these
+ bindings, plus comprehensive documentation of the bindings.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: kjscmd-trinity
+Architecture: any
+Section: interpreters
+Replaces: kjscmd-trinity (<< 4:14.0.0~)
+Breaks: kjscmd-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Description: A script interpreter using the TDE JavaScript library
+ This package contains the kjscmd program, which is a standalone
+ JavaScript interpreter using the KJSEmbed library.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: juic-trinity
+Architecture: all
+Section: libdevel
+Replaces: juic-trinity (<< 4:14.0.0~)
+Breaks: juic-trinity (<< 4:14.0.0~)
+Depends: xsltproc
+Recommends: libqt3-java-trinity
+Suggests: qt3-designer
+Description: The Qt Java UI Compiler
+ This package contains the juic program, which is used to convert
+ a UI description file generated by the Qt Designer, and converts
+ it into a Qt Java class. It is necessary for compiling and 
+ developing programs using the Qt Java bindings together with Qt
+ Designer.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libkorundum0-ruby-trinity
+Architecture: any
+Section: interpreters
+Replaces: libkorundum0-ruby1.8-trinity (<< 4:14.0.0~)
+Breaks: libkorundum0-ruby1.8-trinity (<< 4:14.0.0~)
+Depends: libqt0-ruby-trinity (= ${binary:Version}), ${shlibs:Depends}
+Provides: libkorundum0-ruby1.8-trinity
+Description: TDE bindings for Ruby [Trinity]
+ This package contains the files necessary for running and developing
+ Ruby code using the Korundum TDE Ruby bindings.
+ .
+ It also includes some example programs and templates that make use of
+ these bindings.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: libqt0-ruby-trinity
+Architecture: any
+Section: interpreters
+Replaces: libqt0-ruby1.8-trinity (<< 4:14.0.0~)
+Breaks: libqt0-ruby1.8-trinity (<< 4:14.0.0~)
+Depends: ruby, ${shlibs:Depends}
+Provides: libqt0-ruby1.8-trinity
+Description: Qt bindings for Ruby [Trinity]
+ This package contains the files necessary for running and developing
+ Ruby code using the Qt Ruby bindings.
+ .
+ It also includes some example programs that make use of these bindings,
+ plus many of the Qt Tutorial examples translated into Ruby.
+ .
+ This package is part of the official TDE bindings module.
+
+Package: tde-xparts-extras-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: kde-xparts-extras-trinity (<< 4:14.0.0~)
+Breaks: kde-xparts-extras-trinity (<< 4:14.0.0~)
+Description: Extra xparts for TDE [Trinity]
+ This package contains extra xparts-based modules for Trinity
+ This includes the mozilla-konqueror plugin
+ .
+ This package is part of the official TDE bindings module.

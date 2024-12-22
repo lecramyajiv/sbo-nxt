@@ -1,0 +1,38 @@
+soundkonverter-trinity (0.3.8-5) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+soundkonverter-trinity (0.3.8-3) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 17 June 2009 22:08:00 -0600
+
+soundkonverter (0.3.8-2) unstable; urgency=low
+
+  * Changed build dependency from automake-1.9 to automake. (Closes: #488814)
+
+ -- Michael Meskes <meskes@debian.org>  Tue, 01 Jul 2008 16:16:14 +0200
+
+soundkonverter (0.3.8-1) unstable; urgency=low
+
+  * New upstream version. (Closes: #488227)
+  * Made amarok script list the current version number. (Closes: #447623)
+  * Added a note to README.Debian about how to enable soundkonverter-amarok
+    script. (Closes: #447625)
+  * Moved homepage in description to its own field.
+  * Made lintian happy by slightly rewording copyright file.
+  * Bumped Standards-Version to 3.8.0, no changes needed.
+  * Added myself as uploader.
+
+ -- Michael Meskes <meskes@debian.org>  Fri, 27 Jun 2008 12:38:16 +0200
+
+soundkonverter (0.3.6-1) unstable; urgency=low
+
+  * Initial release. (Closes: #446403)
+
+ -- Fathi Boudra <fboudra@free.fr>  Sat, 13 Oct 2007 14:50:28 +0200
+

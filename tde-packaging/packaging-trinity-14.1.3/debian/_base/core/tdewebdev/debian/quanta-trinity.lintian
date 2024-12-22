@@ -1,0 +1,4 @@
+# This tag is required for apps already in the TDE menu.
+quanta-trinity: menu-item-contains-unknown-tag kderemove /opt/trinity/lib/menu/quanta:9
+# This is part of the docbook docs.
+quanta-trinity: extra-license-file opt/trinity/share/doc/tde/HTML/en/quanta/credits-license.docbook

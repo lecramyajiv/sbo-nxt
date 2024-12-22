@@ -1,0 +1,3 @@
+version=3
+
+http://sf.net/wlassistant/wlassistant-(.*)\.tar\.bz2	debian	svn-upgrade

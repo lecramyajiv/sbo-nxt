@@ -1,0 +1,16 @@
+usr/bin/kalzium
+/usr/share/applications/tde/kalzium.desktop
+/usr/share/config.kcfg/kalzium.kcfg
+/usr/share/doc/tde/HTML/en/kalzium/common
+/usr/share/doc/tde/HTML/en/kalzium/index.cache.bz2
+/usr/share/doc/tde/HTML/en/kalzium/*.docbook
+/usr/share/doc/tde/HTML/en/kalzium/*.png
+/usr/share/icons/hicolor/16x16/apps/kalzium.png
+/usr/share/icons/hicolor/22x22/apps/kalzium.png
+/usr/share/icons/hicolor/32x32/apps/kalzium.png
+/usr/share/icons/hicolor/48x48/apps/kalzium.png
+/usr/share/icons/hicolor/64x64/apps/kalzium.png
+/usr/share/icons/hicolor/128x128/apps/kalzium.png
+/usr/share/icons/hicolor/scalable/apps/kalzium.svgz
+/usr/share/man/man1/kalzium.1
+../icons/kalzium.xpm /usr/share/pixmaps

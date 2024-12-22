@@ -1,0 +1,15 @@
+Source: tde-style-domino-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+X-Original-Maintainer: Jonathan Patrick Davies <jpatrick@kubuntu.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdebase-trinity-dev
+Standards-Version: 3.7.3
+Homepage: http://kde-look.org/content/show.php?content=42804
+
+Package: tde-style-domino-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Domino widget style and twin decoration for TDE
+ Domino is a style with a soft look. It allows to fine adjust the shininess
+ of the widgets by customizable color gradients.

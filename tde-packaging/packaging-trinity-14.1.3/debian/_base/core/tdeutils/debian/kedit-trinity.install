@@ -1,0 +1,19 @@
+debian/tmp/opt/trinity/bin/kedit
+debian/tmp/opt/trinity/lib/trinity/kedit.la
+debian/tmp/opt/trinity/lib/trinity/kedit.so
+debian/tmp/opt/trinity/lib/libtdeinit_kedit.so
+debian/tmp/opt/trinity/share/applications/tde/KEdit.desktop
+debian/tmp/opt/trinity/share/apps/kedit/keditui.rc
+debian/tmp/opt/trinity/share/config.kcfg/kedit.kcfg
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kedit/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kedit/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kedit/index.docbook
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kedit.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kedit.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kedit.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kedit.png
+debian/tmp/opt/trinity/share/icons/hicolor/64x64/apps/kedit.png
+debian/tmp/opt/trinity/share/man/man1/kedit.1
+
+debian/icons/kedit.xpm		/opt/trinity/share/pixmaps
+debian/icons/kedit-16.xpm	/opt/trinity/share/pixmaps

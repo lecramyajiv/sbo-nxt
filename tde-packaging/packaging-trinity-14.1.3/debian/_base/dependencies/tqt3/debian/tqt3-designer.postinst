@@ -1,0 +1,10 @@
+#!/bin/sh 
+
+set -e
+
+update-alternatives --install \
+	/usr/bin/designer designer "/usr/bin/tqdesigner" "45" \
+	--slave /usr/share/man/man1/designer.1.gz designer.1.gz \
+	"/usr/share/man/man1/tqdesigner.1.gz"
+
+#DEBHELPER#

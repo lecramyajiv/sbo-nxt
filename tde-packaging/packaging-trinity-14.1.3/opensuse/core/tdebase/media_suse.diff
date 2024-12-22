@@ -1,0 +1,49 @@
+Index: kioslave/media/mediamanager/halbackend.cpp
+===================================================================
+--- kioslave/media/mediamanager/halbackend.cpp.orig
++++ kioslave/media/mediamanager/halbackend.cpp
+@@ -248,14 +248,15 @@ void HALBackend::AddDevice(const char *u
+                 return;
+             }
+         }
++        m_mediaList.addMedium(medium, allowNotification);
++
+         QMap<QString,QString> options = MediaManagerUtils::splitOptions(mountoptions(udi));
+         kdDebug() << "automount " << options["automount"] << endl;
+-        if (options["automount"] == "true" && allowNotification ) {
++        if (options["automount"] == "true" ) {
+             QString error = mount(medium);
+             if (!error.isEmpty())
+                 kdDebug() << "error " << error << endl;
+         }
+-        m_mediaList.addMedium(medium, allowNotification);
+ 
+         return;
+     }
+@@ -292,6 +293,12 @@ void HALBackend::AddDevice(const char *u
+         m_mediaList.addMedium(medium, allowNotification);
+         return;
+     }
++
++    if ( allowNotification ) {
++        KProcess proc;
++        proc << "suseplugger" << udi;
++        proc.start(KProcess::DontCare);
++    }
+ }
+ 
+ void HALBackend::RemoveDevice(const char *udi)
+@@ -816,8 +823,12 @@ QStringList HALBackend::mountoptions(con
+         removable = libhal_device_get_property_bool(m_halContext, drive_udi.latin1(), "storage.removable", NULL)
+                      || libhal_device_get_property_bool(m_halContext, drive_udi.latin1(), "storage.hotpluggable", NULL);
+ 
++    bool value = removable;
++    QString drive_type = libhal_device_get_property_QString( m_halContext, drive_udi.latin1(), "storage.drive_type" );
++    value |= ( drive_type == "cdrom" );
++
+     config.setGroup(drive_udi);
+-    bool value = config.readBoolEntry("automount", false);
++    value = config.readBoolEntry("automount", value);
+     config.setGroup(name);
+ 
+     if (libhal_device_get_property_bool(m_halContext, name.latin1(), "volume.disc.is_blank", NULL)

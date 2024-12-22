@@ -1,0 +1,75 @@
+kmyfirewall-trinity (1.1.1-1~1ubuntu1) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+kmyfirewall-trinity (1.1.1-1~1ubuntu0) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 05 March 2009 29:52:00 -0600
+
+kmyfirewall-trinity (1.1.1-1~0ubuntu2) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 20 Dec 2008 12:38:00 -0600
+
+kmyfirewall (1.1.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Applied the following patched from Ubuntu, thanks Matvey Kozhev:
+    - Added debian/watch.
+    - Added debian/kmfinstallerplugin.desktop, tweaked for Lintian
+      cleanliness.
+    - Added debian/kmyfirewall.desktop, tweaked for Lintian cleanliness.
+    - Added debian/kmyfirewall.xpm.
+    - Added debian/install to install the desktop and xpm files.
+    - Updated debian/menu.
+    - debian/compat: Bumped to 5.
+    - debian/rules:
+      * Removed dh_installdirs call, not needed.
+      * Delete /usr/lib/*.so, leave only *.so.0.
+      * Strip /usr/lib rpath with chrpath.
+      * Do not ignore make distclean output.
+      * Moved config.guess/config.sub copy commands from clean to configure.
+      * Replaced dh_iconcache with dh_icons.
+      * Added dh_desktop.
+  * Bumped Standards-Version to 3.7.3.0.
+  * debian/copyright: Added copyright notice
+  * Fixed HTML docs path. (Closes: #408677)
+
+ -- Alberto Gonzalez Iniesta <agi@inittab.org>  Sun, 10 Feb 2008 13:33:13 +0100
+
+kmyfirewall (1.0-2) unstable; urgency=low
+
+  * Bumped Standards-Version to 3.6.2.0, no change.
+  * Fixed FSF address.
+
+ -- Alberto Gonzalez Iniesta <agi@inittab.org>  Sat, 17 Dec 2005 23:45:33 +0100
+
+kmyfirewall (1.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Alberto Gonzalez Iniesta <agi@inittab.org>  Sat, 17 Dec 2005 13:42:07 +0100
+
+kmyfirewall (0.9.6.2-2) unstable; urgency=low
+
+  * Rebuilt package for the Qt/KDE transition
+    (Closes: #327003, #327979)
+
+ -- Alberto Gonzalez Iniesta <agi@inittab.org>  Tue, 13 Sep 2005 14:47:35 +0200
+
+kmyfirewall (0.9.6.2-1) unstable; urgency=low
+
+  * The 'Three Wise Men' release.
+  * Initial Release. (Closes: #247871)
+    Thanks a lot to Alejandro Exojo Piqueras <suy@badopi.org> for
+    letting me take this package and for his initial work on it.
+  * Added manpage for kmyfirewall.
+
+ -- Alberto Gonzalez Iniesta <agi@inittab.org>  Tue, 04 Jan 2005 20:17:02 +0100
+

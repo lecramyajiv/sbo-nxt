@@ -1,0 +1,50 @@
+diff -uNr kdelibs-3.5.1.old/pics/hicolor/index.theme kdelibs-3.5.1/pics/hicolor/index.theme
+--- kdelibs-3.5.1.old/pics/hicolor/index.theme	2006-01-20 07:53:04.000000000 +0100
++++ kdelibs-3.5.1/pics/hicolor/index.theme	2006-04-12 20:18:31.907163700 +0200
+@@ -314,36 +314,36 @@
+ Type=Threshold
+ 
+ [scalable/actions]
+-MinSize=1
+-Size=128
++MinSize=32
++Size=48
+ MaxSize=256
+ Context=Actions
+ Type=Scalable
+ 
+ [scalable/apps]
+-MinSize=1
+-Size=128
++MinSize=32
++Size=48
+ MaxSize=256
+ Context=Applications
+ Type=Scalable
+ 
+ [scalable/devices]
+-MinSize=1
+-Size=128
++MinSize=32
++Size=48
+ MaxSize=256
+ Context=Devices
+ Type=Scalable
+ 
+ [scalable/filesystems]
+-MinSize=1
+-Size=128
++MinSize=32
++Size=48
+ MaxSize=256
+ Context=FileSystems
+ Type=Scalable
+ 
+ [scalable/mimetypes]
+-MinSize=1
+-Size=128
++MinSize=32
++Size=48
+ MaxSize=256
+ Context=MimeTypes
+ Type=Scalable

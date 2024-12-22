@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+#DEBHELPER#
+
+update-alternatives --install /usr/bin/qalculate qalculate \
+	/opt/trinity/bin/qalculate-tde 10

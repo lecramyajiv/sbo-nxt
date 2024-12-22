@@ -1,0 +1,11 @@
+?package(kaudiocreator-trinity):\
+	needs="X11"\
+	section="Apps/Sound"\
+	hints="TDE"\
+	title="KAudioCreator"\
+	icon32x32="/opt/trinity/share/pixmaps/kaudiocreator.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kaudiocreator-16.xpm"\
+	command="/opt/trinity/bin/kaudiocreator"
+
+# Icon 32x32 kaudiocreator/cr32-app-kaudiocreator.png kaudiocreator.xpm
+# Icon 16x16 kaudiocreator/cr16-app-kaudiocreator.png kaudiocreator-16.xpm

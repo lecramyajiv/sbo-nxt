@@ -1,0 +1,9 @@
+?package(klickety-trinity):\
+	needs="x11"\
+	section="Games/Puzzles"\
+	hints="TDE"\
+	title="Klickety"\
+	icon32x32="/usr/share/pixmaps/klickety.xpm"\
+	icon16x16="/usr/share/pixmaps/klickety-16.xpm"\
+	command="/usr/games/klickety"
+

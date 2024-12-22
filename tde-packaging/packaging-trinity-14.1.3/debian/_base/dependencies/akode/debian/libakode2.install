@@ -1,0 +1,8 @@
+debian/tmp/usr/bin/akodeplay
+debian/tmp/usr/lib/libakode.so.2
+debian/tmp/usr/lib/libakode.so.2.0.0
+debian/tmp/usr/lib/libakode_alsa_sink.so
+debian/tmp/usr/lib/libakode_mpc_decoder.so
+debian/tmp/usr/lib/libakode_oss_sink.so
+debian/tmp/usr/lib/libakode_src_resampler.so
+debian/tmp/usr/lib/libakode_xiph_decoder.so

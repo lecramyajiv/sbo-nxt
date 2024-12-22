@@ -1,0 +1,27 @@
+kaffeine-mozilla-trinity (0.4.3.1.dfsg-0.2) karmic; urgency=low
+
+  * Karmic upload
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Mon, 07 Dec 2009 00:26:00 -0600
+
+kaffeine-mozilla (0.4.3.1.dfsg-0.1) unstable; urgency=low
+
+  * Non-maintainer upload
+  * Repackaging source package; removing unclear licensed jri*.h files
+    (Closes: 322961)
+  * Removed the sources put in twice
+  * Found the missing jri*.h files and jni*.h-files in mozilla-dev
+    and changed the path to prtypes.h to make them usable.
+    New files introduced in the diff.gz
+  * Built and tested.
+
+ -- Sune Vuorela <debian@pusling.com>  Wed, 14 Jun 2006 02:21:30 +0200
+
+kaffeine-mozilla (0.4.3.1-1) unstable; urgency=low
+
+  * This version corresponds to '0.2' upstream.
+  * kaffeine-mozilla has been split from kaffeine at the source level
+    upstream. Redid packaging.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Thu, 13 May 2004 18:28:05 -0400
+

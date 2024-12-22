@@ -1,0 +1,10 @@
+Document: tdesdk-doc-html-cervisia
+Title: Cervisia Manual
+Author: Bernd Gehrmann <bernd@mail.berlios.de> and Carlos Woelz <carloswoelz@imap-mail.com>
+Abstract: Cervisia provides a graphical view of CVS.
+Section: Apps/Programming
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/cervisia/index.html
+Files: /usr/share/doc/tde/HTML/en/cervisia/*.html
+

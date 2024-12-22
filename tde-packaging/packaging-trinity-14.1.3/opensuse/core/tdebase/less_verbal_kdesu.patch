@@ -1,0 +1,26 @@
+Index: kdesu/kdesu/sudlg.cpp
+===================================================================
+--- kdesu/kdesu/sudlg.cpp.orig
++++ kdesu/kdesu/sudlg.cpp
+@@ -29,18 +29,10 @@ KDEsuDialog::KDEsuDialog(QCString user,
+     setCaption(i18n("Run as %1").arg(user));
+ 
+     QString prompt;
+-    if (superUserCommand == "sudo" && m_User == "root") {
+-	    prompt = i18n("Please enter your password." );
++    if (m_User == "root") {
++        prompt = i18n("Please enter the Administrator (root) password to continue.");
+     } else {
+-        if (m_User == "root") {
+-	    prompt = i18n("The action you requested needs root privileges. "
+-	    "Please enter root's password below or click "
+-	    "Ignore to continue with your current privileges.");
+-        } else {
+-	    prompt = i18n("The action you requested needs additional privileges. "
+-		"Please enter the password for \"%1\" below or click "
+-		"Ignore to continue with your current privileges.").arg(m_User);
+-	}
++        prompt = i18n("Please enter password for \"%1\" to continue.").arg(m_User);
+     }
+     setPrompt(prompt);
+ 

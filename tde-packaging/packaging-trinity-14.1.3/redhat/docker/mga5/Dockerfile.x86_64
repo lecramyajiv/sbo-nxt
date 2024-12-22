@@ -1,0 +1,35 @@
+FROM mageia:5.1
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+# Reset URPMI repositories to default
+RUN urpmi.removemedia -a
+RUN urpmi.addmedia --distrib --mirrorlist '$MIRRORLIST'
+
+# Enable more URPMI repositories
+RUN sed -i "/etc/urpmi/urpmi.cfg" -e "/Tainted\\\ Release  {/{p;N;d}" -e "/Tainted\\\ Updates  {/{p;N;d}"
+
+# Update distribution
+RUN urpmi.update -a
+RUN urpmi --auto-select --auto
+
+# Install Trinity build dependencies
+ADD packages.${ARCH} /etc/urpmi/packages
+RUN while ! urpmi --auto $(</etc/urpmi/packages); do urpmi.update -a; done
+
+# Add rpmbuild repositories
+RUN mkdir -p /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch
+RUN genhdlist2 --allow-empty-media /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH}
+RUN urpmi.addmedia rpmbuild.${ARCH} /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH}
+RUN genhdlist2 --allow-empty-media /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch
+RUN urpmi.addmedia rpmbuild.noarch /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch
+
+# Add non-root user to build packages
+RUN rm -rf /home/trinity
+RUN useradd -m -s /bin/bash -u 1000 trinity
+RUN echo "trinity ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+ADD rpmmacros /home/trinity/.rpmmacros
+
+# Enable ccache
+RUN sed -i "/etc/sysconfig/ccache" -e "s|USE_CCACHE_DEFAULT=.*|USE_CCACHE_DEFAULT=\"yes\"|"

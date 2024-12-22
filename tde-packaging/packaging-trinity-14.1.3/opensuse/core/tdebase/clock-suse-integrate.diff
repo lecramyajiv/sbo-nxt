@@ -1,0 +1,288 @@
+Index: kcontrol/clock/tzone.cpp
+===================================================================
+--- kcontrol/clock/tzone.cpp.orig
++++ kcontrol/clock/tzone.cpp
+@@ -27,12 +27,16 @@
+ 
+ #include <qlabel.h>
+ #include <qfile.h>
++#include <qregexp.h>
+ 
+ #include <kdebug.h>
+ #include <klocale.h>
+ #include <kmessagebox.h>
+ #include <kdialog.h>
+ #include <kio/netaccess.h>
++#include <kprocess.h>
++#include <ksavefile.h>
++#include <kstandarddirs.h>
+ 
+ //#include "xpm/world.xpm"
+ #include "tzone.h"
+@@ -55,6 +59,8 @@ Tzone::Tzone(QWidget * parent, const cha
+     connect( tzonelist, SIGNAL(selectionChanged()), SLOT(handleZoneChange()) );
+ 
+     m_local = new QLabel(this);
++    
++    setupSuseTimezone();
+ 
+     load();
+ 
+@@ -158,28 +164,38 @@ void Tzone::save()
+ 
+         QString val = selectedzone;
+ #else
+-        QFile fTimezoneFile("/etc/timezone");
++        QString tz = "/usr/share/zoneinfo/" + selectedzone;
+ 
+-        if (fTimezoneFile.open(IO_WriteOnly | IO_Truncate) )
++        kdDebug() << "Set time zone " << tz << endl;
++        
++        writeSuseTimezone( selectedzone );
++
++        if( !KStandardDirs::findExe( "zic" ).isEmpty())
+         {
+-            QTextStream t(&fTimezoneFile);
+-            t << selectedzone;
+-            fTimezoneFile.close();
++            KProcess proc;
++            proc << "zic" << "-l" << selectedzone;
++            proc.start( KProcess::Block );
+         }
++        else
++        {
++            QFile fTimezoneFile("/etc/timezone");
+ 
+-        QString tz = "/usr/share/zoneinfo/" + selectedzone;
+-
+-        kdDebug() << "Set time zone " << tz << endl;
++            if (fTimezoneFile.open(IO_WriteOnly | IO_Truncate) )
++            {
++                QTextStream t(&fTimezoneFile);
++                t << selectedzone;
++                fTimezoneFile.close();
++            }
+ 
+-	if (!QFile::remove("/etc/localtime"))
+-	{
++    	if (!QFile::remove("/etc/localtime"))
++    	    {
+ 		//After the KDE 3.2 release, need to add an error message
+-	}
+-	else
++	    }
++	    else
+ 		if (!KIO::NetAccess::file_copy(KURL(tz),KURL("/etc/localtime")))
+ 			KMessageBox::error( 0,  i18n("Error setting new timezone."),
+                         		    i18n("Timezone Error"));
+-
++        }
+         QString val = ":" + tz;
+ #endif // !USE_SOLARIS
+ 
+@@ -198,3 +214,58 @@ void Tzone::save()
+ 
+     currentZone();
+ }
++
++// read the configured timezone from /etc/sysconfig/clock
++// and simply set it as $TZ, KDE code then will take it as the timezone
++void Tzone::setupSuseTimezone()
++{
++    QFile f( "/etc/sysconfig/clock" );
++    if( !f.open( IO_ReadOnly ))
++        return;
++    QTextStream str( &f );
++    while( !str.atEnd())
++    {
++        QString line = str.readLine();
++        if( line.startsWith( "TIMEZONE=" ))
++        {
++            QRegExp r( "\\s*TIMEZONE=\"(.*)\"\\s*" );
++            if( r.exactMatch( line ))
++            {
++                QString tz = r.cap( 1 );
++                setenv( "TZ", tz.ascii(), 1 );
++            }
++        }
++    }
++}
++
++void Tzone::writeSuseTimezone( QString zone )
++{
++    QFile f( "/etc/sysconfig/clock" );
++    if( !f.open( IO_ReadOnly ))
++        return;
++    KSaveFile out( "/etc/sysconfig/clock", 0644 );
++    QFile* fout = out.file();
++    if( fout == NULL )
++        return;
++    QTextStream str( &f );
++    QTextStream strout( fout );
++    while( !str.atEnd())
++    {
++        QString line = str.readLine();
++        if( line.startsWith( "TIMEZONE=" ))
++        {
++            QRegExp r( "\\s*TIMEZONE=\"(.*)\"\\s*" );
++            if( r.exactMatch( line ))
++            {
++                QString tz = r.cap( 1 );
++                if( tz == zone ) // not changed, abort
++                {
++                    out.abort();
++                    return;
++                }
++                line = "TIMEZONE=\"" + zone + "\"";
++            }
++        }
++        strout << line << '\n';
++    }
++}
+Index: kcontrol/clock/tzone.h
+===================================================================
+--- kcontrol/clock/tzone.h.orig
++++ kcontrol/clock/tzone.h
+@@ -47,6 +47,8 @@ protected slots:
+ 
+ private:
+   void currentZone();
++  void setupSuseTimezone();
++  void writeSuseTimezone( QString timezone );
+   KTimezones m_zoneDb;
+   QLabel *m_local;
+   KTimezoneWidget *tzonelist;
+Index: kcontrol/clock/dtime.h
+===================================================================
+--- kcontrol/clock/dtime.h.orig
++++ kcontrol/clock/dtime.h
+@@ -65,6 +65,9 @@ signals:
+   void	timeout();
+   void	set_time();
+   void	changeDate(QDate);
++#if 1
++  void configureTimeServer();
++#endif
+ 
+ private:
+   void	findNTPutility();
+@@ -72,7 +75,11 @@ private:
+ 
+   QWidget*	privateLayoutWidget;
+   QCheckBox	*setDateTimeAuto;
++#if 1
++  QPushButton   *timeServerConfigure;
++#else
+   QComboBox	*timeServerList;
++#endif
+ 
+   KDatePicker	*cal;
+   QComboBox	*month;
+Index: kcontrol/clock/dtime.cpp
+===================================================================
+--- kcontrol/clock/dtime.cpp.orig
++++ kcontrol/clock/dtime.cpp
+@@ -38,6 +38,7 @@
+ #include <kmessagebox.h>
+ #include <kdialog.h>
+ #include <kconfig.h>
++#include <kstandarddirs.h>
+ 
+ #include "dtime.h"
+ #include "dtime.moc"
+@@ -74,6 +75,18 @@ Dtime::Dtime(QWidget * parent, const cha
+   connect(setDateTimeAuto, SIGNAL(toggled(bool)), SLOT(configChanged()));
+   layout1->addWidget( setDateTimeAuto );
+ 
++#if 1
++  // simply add a pushbutton that'll invoke the yast module
++  ntpUtility = KStandardDirs::findExe( "rcntp");
++  timeServerConfigure = new QPushButton( i18n( "Configure" ), privateLayoutWidget, "timeServerConfigure" );
++  connect(timeServerConfigure, SIGNAL(clicked()), SLOT(configChanged()));
++  connect(timeServerConfigure, SIGNAL(clicked()), SLOT(configureTimeServer()));
++  connect(setDateTimeAuto, SIGNAL(toggled(bool)), timeServerConfigure, SLOT(setEnabled(bool)));
++  timeServerConfigure->setEnabled(false);
++  layout1->addWidget( timeServerConfigure );
++  if( ntpUtility.isEmpty())
++    privateLayoutWidget->hide();
++#else
+   timeServerList = new QComboBox( false, privateLayoutWidget, "timeServerList" );
+   connect(timeServerList, SIGNAL(activated(int)), SLOT(configChanged()));
+   connect(timeServerList, SIGNAL(textChanged(const QString &)), SLOT(configChanged()));
+@@ -82,6 +95,7 @@ Dtime::Dtime(QWidget * parent, const cha
+   timeServerList->setEditable(true);
+   layout1->addWidget( timeServerList );
+   findNTPutility();
++#endif
+ 
+   // Date box
+   QGroupBox* dateBox = new QGroupBox( this, "dateBox" );
+@@ -179,7 +193,11 @@ Dtime::Dtime(QWidget * parent, const cha
+       hour->setEnabled(false);
+       minute->setEnabled(false);
+       second->setEnabled(false);
++#if 1
++      timeServerConfigure->setEnabled(false);
++#else
+       timeServerList->setEnabled(false);
++#endif
+       setDateTimeAuto->setEnabled(false);
+     }
+   kclock->setEnabled(false);
+@@ -241,6 +259,15 @@ void Dtime::configChanged(){
+ void Dtime::load()
+ {
+   KConfig config("kcmclockrc", true, false);
++#if 1
++  if( !ntpUtility.isEmpty())
++  {
++    KProcess proc;
++    proc << ntpUtility << "status";
++    proc.start( KProcess::Block );
++    setDateTimeAuto->setChecked( proc.exitStatus() == 0 );
++  }
++#else
+   config.setGroup("NTP");
+   timeServerList->insertStringList(QStringList::split(',', config.readEntry("servers",
+     i18n("Public Time Server (pool.ntp.org),\
+@@ -249,6 +276,7 @@ europe.pool.ntp.org,\
+ north-america.pool.ntp.org,\
+ oceania.pool.ntp.org"))));
+   setDateTimeAuto->setChecked(config.readBoolEntry("enabled", false));
++#endif
+ 
+   // Reset to the current date and time
+   time = QTime::currentTime();
+@@ -264,6 +292,7 @@ oceania.pool.ntp.org"))));
+ void Dtime::save()
+ {
+   KConfig config("kcmclockrc", false, false);
++#if 0
+   config.setGroup("NTP");
+ 
+   // Save the order, but don't duplicate!
+@@ -301,7 +330,9 @@ void Dtime::save()
+         kdDebug() << "Set date from time server " << timeServer.latin1() << " success!" << endl;
+     }
+   }
+-  else {
++  else
++#endif
++       {
+     // User time setting
+     KProcess c_proc;
+ 
+@@ -356,6 +387,13 @@ void Dtime::timeout()
+   kclock->setTime( time );
+ }
+ 
++void Dtime::configureTimeServer()
++{
++  KProcess proc;
++  proc << "/sbin/yast2" << "ntp-client";
++  proc.start( KProcess::DontCare );
++}
++
+ QString Dtime::quickHelp() const
+ {
+   return i18n("<h1>Date & Time</h1> This control module can be used to set the system date and"

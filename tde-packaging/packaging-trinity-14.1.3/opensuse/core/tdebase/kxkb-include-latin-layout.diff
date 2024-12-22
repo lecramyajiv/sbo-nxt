@@ -1,0 +1,14 @@
+Index: kxkb/kcmlayout.cpp
+===================================================================
+--- kxkb/kcmlayout.cpp.orig
++++ kxkb/kcmlayout.cpp
+@@ -352,6 +352,9 @@ void LayoutConfig::add()
+     // Create a copy of the sel widget, as one might add the same layout more
+     // than one time, with different variants.
+     QListViewItem* toadd = copyLVI(sel, widget->listLayoutsDst);
++    
++    // Turn on "Include Latin layout" for new language by default (bnc:204402)
++    toadd->setText(LAYOUT_COLUMN_INCLUDE, "us");
+ 
+     widget->listLayoutsDst->insertItem(toadd);
+     if( widget->listLayoutsDst->childCount() > 1 )

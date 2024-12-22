@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/share/apps/tork/*
+debian/tmp/opt/trinity/share/doc/*
+debian/tmp/opt/trinity/share/locale/*
+debian/tmp/opt/trinity/share/config.kcfg/*

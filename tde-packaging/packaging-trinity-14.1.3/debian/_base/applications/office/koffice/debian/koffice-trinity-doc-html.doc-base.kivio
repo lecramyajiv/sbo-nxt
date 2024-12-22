@@ -1,0 +1,10 @@
+Document: koffice-doc-html-kivio
+Title: Kivio User's Manual
+Author: Ben Lamb <kde@zurgy.org>
+Abstract: Kivio is the KOffice flowchart and diagram creation tool.
+Section: Office
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kivio/index.html
+Files: /usr/share/doc/tde/HTML/en/kivio/*.html
+

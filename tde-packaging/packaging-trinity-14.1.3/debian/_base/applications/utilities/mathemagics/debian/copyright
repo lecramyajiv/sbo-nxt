@@ -1,0 +1,12 @@
+This package was debianized by Slávek Banko <slavek.banko@axis.cz> on
+Sun, 10 Aug 2020 23:32:23 +0200.
+
+Upstream Author: Jason Katz-Brown <jason@katzbrown.com>
+
+mathemagics is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+On Debian systems, the full text of GNU's GPL can be found in
+/usr/share/common-licenses/GPL-2

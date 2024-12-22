@@ -1,0 +1,33 @@
+Source: tderadio-trinity
+Section: sound
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev,
+               liblirc-dev, libsndfile1-dev, libmp3lame-dev, libogg-dev, libvorbis-dev
+Standards-Version: 3.8.4
+
+Package: tderadio-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: kradio-trinity (<< 4:14.0.0~)
+Breaks: kradio-trinity (<< 4:14.0.0~)
+Description: Comfortable Radio Application for TDE [Trinity]
+ TDERadio is a comfortable radio application for TDE with support for 
+ V4L and V4L2 radio cards drivers.
+ .
+ TDERadio currently provides
+ .
+   * V4L/V4L2 radio support
+   * Remote control support (LIRC)
+   * Alarms, sleep Countdown
+   * Several GUI Controls (Docking Menu, Station Quickbar, Radio Display)
+   * Recording capabilities, including MP3 and Ogg/Vorbis encoding
+   * Timeshifter functionality
+   * Extendable plugin architecture
+ .
+ This package also includes a growing collection of station preset
+ files for many cities around the world contributed by TDERadio users.
+ .
+ As TDERadio is based on an extendable plugin architecture, contributions
+ of new plugins (e.g. Internet Radio Streams, new cool GUIs) are welcome.
+ .

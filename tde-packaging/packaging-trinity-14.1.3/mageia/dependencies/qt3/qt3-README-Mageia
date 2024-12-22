@@ -1,0 +1,21 @@
+You should not need to set QTDIR because it should already been automatically
+configured (in '/etc/profile.d/qt.sh' and '/etc/profile.d/qt.csh').
+
+To check if it is the case, do 'echo $QTDIR'. Answer should be '/usr/lib/qt3'.
+
+If it is not the case, do 'export QTDIR=/usr/lib/qt3' if you use bash or
+'setenv QTDIR /usr/lib/qt3/' if you use csh.
+
+Qt documentation is in /usr/lib/doc/qt3-QtVersion/ (you need to
+install package libqt3-devel-PackageVersion if it is not already
+done).
+
+Other Qt things are in /usr/lib/qt3/ (which contains needed symlinks
+to create a fake QTDIR).
+
+Examples and tutorials are compressed to save space. If you want to use them,
+you need to uncompress them somewhere in your home directory using:
+'tar jxf /usr/lib/doc/qt3--QtVersion your_directory'.
+
+XFT support (Anti Aliasing) is enable by default. The QT_XFT environmental
+variable is setted in '/etc/profile.d/qt.sh' and '/etc/profile.d/qt.csh'.

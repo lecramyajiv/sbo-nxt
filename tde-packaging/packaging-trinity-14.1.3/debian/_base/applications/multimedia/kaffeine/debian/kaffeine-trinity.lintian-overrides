@@ -1,0 +1,8 @@
+kaffeine: manpage-has-errors-from-man usr/share/man/man1/kaffeine.1.gz 17: warning: can't find numbered character 195
+# It isn't a library or a development package and no other packages uses
+# libkaffeinedvbplugin0, libkaffeineaudioencoder0 and libkaffeinepart.
+# kaffeine needs them and maybe a split can happen later.
+kaffeine-trinity: package-name-doesnt-match-sonames libkaffeineaudioencoder0 libkaffeinedvbplugin0 libkaffeinepart
+kaffeine-trinity: non-dev-pkg-with-shlib-symlink usr/lib/libkaffeinedvbplugin.so.0.0.1 usr/lib/libkaffeinedvbplugin.so
+kaffeine-trinity: non-dev-pkg-with-shlib-symlink usr/lib/libkaffeineaudioencoder.so.0.0.1 usr/lib/libkaffeineaudioencoder.so
+kaffeine-trinity: shlib-missing-in-control-file libkaffeinepart.so for usr/lib/libkaffeinepart.so

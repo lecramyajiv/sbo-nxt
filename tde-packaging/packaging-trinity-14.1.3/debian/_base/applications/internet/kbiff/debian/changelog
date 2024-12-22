@@ -1,0 +1,90 @@
+kbiff-trinity (3.9-1) squeeze; urgency=low
+
+  * Initial Release for TDE
+
+ -- Slávek Banko <slavek.banko@axis.cz>  Tue, 02 Jul 2013 18:39:16 +0200
+
+kbiff (3.9-1) unstable; urgency=low
+
+  * QA upload. 
+  
+  [ Lisandro Damián Nicanor Pérez Meyer ]
+  * Set Maintainer to Debian QA Group (Closes: #540212).
+  * Drop Debian revision in package dependence on kdelibs4-dev. 
+  * Bumped standars version from 3.7.3 to 3.9.1, no changes needed. 
+  * Switch to source version 3.0 (quilt). 
+  * Disable compilation with rpath. 
+  * Fixed utime-preservation code is off by one hour (Closes: #498404).
+  * Fixed wrong code for Nynorsk translation (Closes: #365185).
+  * Compiling with gcc 4.4.4, I can't see "gcc warnings: extra tokens at end 
+    of #... directive.", so I'm closing this bug. (Closes: #455381).
+
+  [ Ana Beatriz Guerrero Lopez ]
+  * Add libqt3-compat-headers to the build depends.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Fri, 13 Aug 2010 00:03:57 +0200
+
+kbiff (3.8-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Build without libqt3-compat-headers. (Closes: #464473).
+  * Add build-dep on autotools-dev for config.* madness.
+  * Remove po/*.gmo files on clean. (Closes: #442610).
+  * Make clean not ignore errors.
+  * Add watch file.
+  * Build/install library file in /usr/lib/kbiff.
+  * Update FSF addresses in debian/copyright.
+  * Remove full text of GFDL and add pointer to GFDL license.
+  * Update link to appropriate license: GPL-2.
+  * Bump debhelper build-dep and compat to 5.
+  * Bump Standards Version to 3.7.3.
+    + Lib shouldn't be in /usr/lib without library package.
+
+ -- Barry deFreese <bddebian@comcast.net>  Wed, 06 Feb 2008 20:59:12 -0500
+
+kbiff (3.8-1) unstable; urgency=low
+
+  * New upstream release.
+  (closes: #343187, #297302, #312381).
+  * Update the German PO file.
+  (closes: #314015)
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Sat, 21 Jan 2006 10:30:17 +0100
+
+kbiff (3.7.1-4) unstable; urgency=low
+
+  * Add kdelibs4-dev (>= 4:3.4.2-1) in Build-Depends to build with a
+    transitioned C++ version.
+  (closes: #327533, #328021)
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Tue, 27 Sep 2005 21:57:01 +0200
+
+kbiff (3.7.1-3.1) unstable; urgency=low
+
+  * NMU
+  * Added complete GFDL license to debian copyright and correct license
+    location to man/kbiff.sgml (Closes: #292234)
+  * Regenerated man/kbiff.1 with docbook-to-man
+
+ -- Paul Brossier <piem@altern.org>  Fri,  4 Feb 2005 18:16:48 +0000
+
+kbiff (3.7.1-3) unstable; urgency=low
+
+  * Do not gzip index.docbook files.
+  (Closes: #248984)
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Fri, 26 Nov 2004 15:26:02 +0100
+
+kbiff (3.7.1-2) unstable; urgency=low
+
+  * Correct a typo in the description.
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Mon, 26 Apr 2004 14:42:52 +0000
+
+kbiff (3.7.1-1) unstable; urgency=low
+
+  * Initial Release.
+  (Closes: #143914)
+
+ -- Jean-Michel Kelbert <kelbert@debian.org>  Sun, 11 Apr 2004 23:19:15 +0200
+

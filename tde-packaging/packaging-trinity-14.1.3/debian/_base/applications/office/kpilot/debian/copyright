@@ -1,0 +1,66 @@
+This package was debianized by Harald Sitter <apachelogger@ubuntu.com> on
+Tue,  1 May 2007 23:15:53 +0200.
+
+It was downloaded from http://kopete-otr.follefuder.org/
+
+Upstream Authors:
+  Michael Zanetti <michael_zanetti@gmx.net>
+  Frank Scheffold <fscheffold@googlemail.com>
+
+Copyright:
+  (C) 2007 Michael Zanetti <michael_zanetti@gmx.net>
+  (C) 2007 Frank Scheffold <fscheffold@googlemail.com>
+
+License:
+
+  This package is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This package is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this package; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+On Debian systems, the complete text of the GNU General Public License 
+can be found in '/usr/share/common-licenses/GPL'.
+
+
+Various files in the admin directory are covered by the GNU LGPL:
+
+  This package is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  This package is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this package; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+On Debian systems, the complete text of the GNU Lesser General
+Public License can be found in `/usr/share/common-licenses/LGPL'.
+
+
+The file admin/am_edit is licensed under the following terms:
+
+  "This is really free software, unencumbered by the GPL.
+   You can do anything you like with it except sueing me."
+
+
+Documentation is licensed under GFDL.
+On Debian systems, the complete text of the GNU Free Documentation License
+can be found in '/usr/share/common-licenses/GFDL'.
+
+
+The Debian packaging is (C) 2007, Harald Sitter <apachelogger@ubuntu.com> and
+is licensed under the GPL.

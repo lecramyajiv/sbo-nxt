@@ -1,0 +1,13 @@
+/opt/trinity/share/apps/kenolaba/*
+/opt/trinity/share/icons/hicolor/16x16/apps/kenolaba.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kenolaba.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kenolaba.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kenolaba.png
+/opt/trinity/share/icons/hicolor/64x64/apps/kenolaba.png
+/opt/trinity/share/icons/hicolor/128x128/apps/kenolaba.png
+/opt/trinity/share/applications/tde/kenolaba.desktop
+/opt/trinity/games/kenolaba
+/opt/trinity/share/doc/tde/HTML/en/kenolaba/*
+/opt/trinity/share/man/man6/kenolaba.6
+../icons/kenolaba.xpm /opt/trinity/share/pixmaps
+../icons/kenolaba-16.xpm /opt/trinity/share/pixmaps

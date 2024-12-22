@@ -1,0 +1,9 @@
+Document: kdbg-trinity
+Title: KDbg - User's Manual [Trinity]
+Author: Johannes Sixt <Johannes.Sixt@telecom.at>
+Abstract:  KDbg is a front-end for gdb, the GNU debugger.
+Section: Programming
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kdbg/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kdbg/*.html

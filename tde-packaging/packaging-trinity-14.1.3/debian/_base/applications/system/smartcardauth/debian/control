@@ -1,0 +1,21 @@
+Source: smartcardauth
+Section: tde
+Priority: extra
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, pkg-config, libpkcs11-helper1-dev, libgnutls-dev | libgnutls28-dev | libgnutls30-dev
+Standards-Version: 3.8.4
+
+Package: smartcardauth
+Architecture: any
+Depends: ${shlibs:Depends}, pcsc-tools, pcscd (>= 1.7~), initramfs-tools, libpcsc-perl, libpcsclite1, libccid, opensc, libpam-heimdal, psmisc, xxd
+Recommends: libpam-ccreds, libpam-ck-connector, libpam-pkcs11, libpam-mount
+Replaces: smartcardauth (<< 4:14.0.0~)
+Breaks: smartcardauth (<< 4:14.0.0~)
+Conflicts: openct
+Description: SmartCard Login and LUKS Decrypt, Setup Utility
+ This utility will allow you to set up your computer to accept a SmartCard as an authentication source for:
+ - Your encrypted LUKS partition
+ - TDE R14.x, including automatic login, lock, and unlock features
+ It is designed to work with any OpenSC-supported, ISO 7816-4,-8 compliant, PKCS#11 enabled smartcard
+ Examples of such cards are:
+ - The OpenPGP card (ISO ISO 7816-4,-8 compliant)

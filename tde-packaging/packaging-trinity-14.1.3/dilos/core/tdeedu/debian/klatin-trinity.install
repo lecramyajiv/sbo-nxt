@@ -1,0 +1,17 @@
+usr/bin/klatin
+/usr/share/applications/tde/klatin.desktop
+/usr/share/apps/klatin
+/usr/share/config.kcfg/klatin.kcfg
+/usr/share/doc/tde/HTML/en/klatin/*.bz2
+/usr/share/doc/tde/HTML/en/klatin/common
+/usr/share/doc/tde/HTML/en/klatin/*.docbook
+/usr/share/doc/tde/HTML/en/klatin/*.png
+/usr/share/icons/hicolor/16x16/apps/klatin.png
+/usr/share/icons/hicolor/22x22/apps/klatin.png
+/usr/share/icons/hicolor/32x32/apps/klatin.png
+/usr/share/icons/hicolor/48x48/apps/klatin.png
+/usr/share/icons/hicolor/64x64/apps/klatin.png
+/usr/share/icons/hicolor/128x128/apps/klatin.png
+/usr/share/icons/hicolor/scalable/apps/klatin.svgz
+/usr/share/man/man1/klatin.1
+../icons/klatin.xpm /usr/share/pixmaps

@@ -1,0 +1,35 @@
+#! /usr/bin/make -f
+
+include /usr/share/cdbs/1/class/cmake.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DBUILD_ALL="ON" \
+ -DWITH_ALL_OPTIONS="ON" \
+ -DWITH_LAME="OFF"
+
+# Tests depend on external services on the Internet - disabled for automatic builds
+# DEB_MAKE_CHECK_TARGET = check
+
+DOC_HTML_PRUNE := kcontrol-trinity
+
+DEB_DH_STRIP_ARGS  := --dbg-package=tdemultimedia-trinity-dbg
+
+PACKAGES_WITH_LIBS := artsbuilder-trinity tdemultimedia-tdeio-plugins-trinity tdemid-trinity kmix-trinity krec-trinity \
+	libarts1-akode-trinity libarts1-audiofile-trinity libarts1-mpeglib-trinity libarts1-xine-trinity \
+	libkcddb1-trinity mpeglib-trinity noatun-trinity
+
+#shlibs_ver = 4:3.5.0-1
+#$(foreach p,$(PACKAGES_WITH_LIBS),$(eval DEB_DH_MAKESHLIBS_ARGS_$(p) := -V'$(p) (>= $(shlibs_ver))'))
+
+install/tdemultimedia-kappfinder-data-trinity::
+	install -p -D -m644 debian/tmp/etc/xdg/menus/applications-merged/tde-multimedia-music.menu debian/tdemultimedia-kappfinder-data-trinity/etc/xdg/menus/applications-merged/trinity-multimedia-music.menu

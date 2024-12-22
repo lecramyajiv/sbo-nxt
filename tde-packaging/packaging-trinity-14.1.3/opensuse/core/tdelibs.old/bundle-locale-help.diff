@@ -1,0 +1,107 @@
+Index: kdecore/kstandarddirs.cpp
+===================================================================
+--- kdecore/kstandarddirs.cpp.orig
++++ kdecore/kstandarddirs.cpp
+@@ -94,8 +94,8 @@ KStandardDirsSingleton* KStandardDirsSin
+     return s_self;
+ }
+ 
+-static const char* const types[] = {"html", "icon", "apps", "sound",
+-			      "data", "locale", "services", "mime",
++static const char* const types[] = {"html", "html-bundle", "icon", "apps", "sound",
++			      "data", "locale", "locale-bundle", "services", "mime",
+ 			      "servicetypes", "config", "exe",
+ 			      "wallpaper", "lib", "pixmap", "templates",
+ 			      "module", "qtplugins",
+@@ -1023,6 +1023,8 @@ static int tokenize( QStringList& tokens
+ QString KStandardDirs::kde_default(const char *type) {
+     if (!strcmp(type, "data"))
+ 	return "share/apps/";
++    if (!strcmp(type, "html-bundle"))
++	return "share/doc-bundle/HTML/";
+     if (!strcmp(type, "html"))
+ 	return "share/doc/HTML/";
+     if (!strcmp(type, "icon"))
+@@ -1035,6 +1037,8 @@ QString KStandardDirs::kde_default(const
+ 	return "share/applnk/";
+     if (!strcmp(type, "sound"))
+ 	return "share/sounds/";
++    if (!strcmp(type, "locale-bundle"))
++	return "share/locale-bundle/";
+     if (!strcmp(type, "locale"))
+ 	return "share/locale/";
+     if (!strcmp(type, "services"))
+Index: kdecore/kcatalogue.cpp
+===================================================================
+--- kdecore/kcatalogue.cpp.orig
++++ kdecore/kcatalogue.cpp
+@@ -66,7 +66,11 @@ KCatalogue::KCatalogue(const QString & n
+     .arg( d->language )
+     .arg( d->name );
+ 
+-  setFileName( locate( "locale", path ) );
++  QString fileName = locate( "locale", path );
++  if (fileName.isEmpty())
++    fileName = locate( "locale-bundle", path );
++
++  setFileName( fileName );
+     
+ }
+ 
+Index: kdecore/klocale.cpp
+===================================================================
+--- kdecore/klocale.cpp.orig
++++ kdecore/klocale.cpp
+@@ -402,7 +402,11 @@ QString KLocale::catalogueFileName(const
+     .arg( language )
+     .arg( catalog.name() );
+ 
+-  return locate( "locale", path );
++  QString fileName = locate( "locale", path );
++  if (fileName.isEmpty())
++    fileName = locate( "locale-bundle", path );
++
++  return fileName;
+ }
+ 
+ bool KLocale::setLanguage(const QString & language)
+@@ -501,6 +505,9 @@ bool KLocale::isApplicationTranslatedInt
+   // kdDebug() << "isApplicationTranslatedInto: filename " << sFileName << endl;
+ 
+   QString sAbsFileName = locate( "locale", sFileName );
++  if (sAbsFileName.isEmpty())
++    sAbsFileName = locate( "locale-bundle", sFileName );
++
+   // kdDebug() << "isApplicationTranslatedInto: absname " << sAbsFileName << endl;
+   return ! sAbsFileName.isEmpty();
+ }
+Index: kdoctools/kio_help.cpp
+===================================================================
+--- kdoctools/kio_help.cpp.orig
++++ kdoctools/kio_help.cpp
+@@ -42,7 +42,7 @@ QString HelpProtocol::langLookup(const Q
+     QStringList search;
+ 
+     // assemble the local search paths
+-    const QStringList localDoc = KGlobal::dirs()->resourceDirs("html");
++    const QStringList localDoc = KGlobal::dirs()->resourceDirs("html") + KGlobal::dirs()->resourceDirs("html-bundle");
+ 
+     kdDebug( 7119 ) << "Looking up help for: " << fname << endl;
+     QString _fname = fname;
+@@ -60,10 +60,14 @@ QString HelpProtocol::langLookup(const Q
+     QStringList langs = KGlobal::locale()->languageList();
+     QStringList::ConstIterator lang;
+     for (lang = langs.begin(); lang != langs.end(); ++lang)
+-        if ((*lang).left(2) == "en")
++        if ((*lang).left(2) == "en") {
+ 	    search.append(QString("/usr/share/gnome/help/%1/C%2").arg(path).arg(_fname));
+-        else
++	    search.append(QString("/usr/share/gnome/help-bundle/%1/C%2").arg(path).arg(_fname));
++        }
++        else {
+ 	    search.append(QString("/usr/share/gnome/help/%1/%2%3").arg(path).arg(*lang).arg(_fname));
++	    search.append(QString("/usr/share/gnome/help-bundle/%1/%2%3").arg(path).arg(*lang).arg(_fname));
++        }
+ 
+     langs.append( "en" );
+     langs.remove( "C" );

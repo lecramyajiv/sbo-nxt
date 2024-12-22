@@ -1,0 +1,19 @@
+Source: tdmtheme-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Kel Modderman <kel@otaku42.de>, Fathi Boudra <fabo@debian.org>,
+ Mark Purcell <msp@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://beta.smileaf.org/projects
+
+Package: tdmtheme-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, tdm-trinity
+Replaces: kdmtheme-trinity (<< 4:14.0.0~)
+Breaks: kdmtheme-trinity (<< 4:14.0.0~)
+Description: theme manager for TDM [Trinity]
+ tdmtheme is a theme manager for TDM. It provides a Trinity Control Module (KCM)
+ that allows you to easily install, remove and change your TDM themes.

@@ -1,0 +1,424 @@
+Index: kdm/config.def
+===================================================================
+--- kdm/config.def.orig
++++ kdm/config.def
+@@ -2002,6 +2002,17 @@ Description:
+  Specify the widget style for the greeter. Empty means to use the
+  built-in default which currently is <literal>Plastik</literal>.
+ 
++Key: UseAdminSession
++Type: bool
++Default: false
++User: greeter
++Instance: #*/!
++Comment:
++ Admin session
++Description:
++ If given there will be a special button that requires root password
++ and starts the given session
++
+ Key: ColorScheme
+ Type: string
+ Default: ""
+Index: kdm/kfrontend/Makefile.am
+===================================================================
+--- kdm/kfrontend/Makefile.am.orig
++++ kdm/kfrontend/Makefile.am
+@@ -21,6 +21,7 @@ kdm_greet_SOURCES = \
+     kchooser.cpp \
+     kgverify.cpp \
+     kdmshutdown.cpp \
++    kdmadmindialog.cpp \
+     kgreeter.cpp \
+     kgapp.cpp
+ kdm_greet_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+Index: kdm/kfrontend/kdmadmindialog.cpp
+===================================================================
+--- /dev/null
++++ kdm/kfrontend/kdmadmindialog.cpp
+@@ -0,0 +1,176 @@
++    /*
++
++    Admin dialog
++
++    Copyright (C) 1997, 1998, 2000 Steffen Hansen <hansen@kde.org>
++    Copyright (C) 2000-2003 Oswald Buddenhagen <ossi@kde.org>
++
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program; if not, write to the Free Software
++    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
++
++    */
++
++#include "kdmadmindialog.h"
++#include "kdmconfig.h"
++#include "kgdialog.h"
++#include "kdm_greet.h"
++#include <stdlib.h>
++
++#include <kapplication.h>
++#include <kseparator.h>
++#include <klocale.h>
++#include <kpushbutton.h>
++#include <kstdguiitem.h>
++
++#include <qcombobox.h>
++#include <qvbuttongroup.h>
++#include <qstyle.h>
++#include <qlayout.h>
++#include <qaccel.h>
++#include <qpopupmenu.h>
++
++int KDMAdmin::curPlugin = -1;
++PluginList KDMAdmin::pluginList;
++
++KDMAdmin::KDMAdmin( const QString &user, QWidget *_parent )
++    : inherited( _parent )
++    , verify( 0 ), curUser(user)
++{
++    QSizePolicy fp( QSizePolicy::Fixed, QSizePolicy::Fixed );
++
++    QVBoxLayout *box = new QVBoxLayout( this, 10 );
++
++    QHBoxLayout *hlay = new QHBoxLayout( box );
++
++    GSendInt( G_ReadDmrc );
++    GSendStr( "root" );
++    GRecvInt(); // ignore status code ...
++
++    if (curPlugin < 0) {
++       curPlugin = 0;
++       pluginList = KGVerify::init( "classic" );
++    }
++    verify = new KGStdVerify( this, this,
++			      this, "root",
++			      pluginList, KGreeterPlugin::Authenticate,
++			      KGreeterPlugin::Shutdown );
++    verify->selectPlugin( curPlugin );
++    box->addLayout( verify->getLayout() );
++    QAccel *accel = new QAccel( this );
++    accel->insertItem( ALT+Key_A, 0 );
++    connect( accel, SIGNAL(activated(int)), SLOT(slotActivatePlugMenu()) );
++
++    box->addWidget( new KSeparator( KSeparator::HLine, this ) );
++
++    okButton = new KPushButton( KStdGuiItem::ok(), this );
++    okButton->setSizePolicy( fp );
++    okButton->setDefault( true );
++    cancelButton = new KPushButton( KStdGuiItem::cancel(), this );
++    cancelButton->setSizePolicy( fp );
++
++    hlay = new QHBoxLayout( box );
++    hlay->addStretch( 1 );
++    hlay->addWidget( okButton );
++    hlay->addStretch( 1 );
++    hlay->addWidget( cancelButton );
++    hlay->addStretch( 1 );
++
++    connect( okButton, SIGNAL(clicked()), SLOT(accept()) );
++    connect( cancelButton, SIGNAL(clicked()), SLOT(reject()) );
++
++    slotWhenChanged();
++}
++
++KDMAdmin::~KDMAdmin()
++{
++    hide();
++    delete verify;
++}
++
++void
++KDMAdmin::slotActivatePlugMenu()
++{
++    QPopupMenu *cmnu = verify->getPlugMenu();
++    QSize sh( cmnu->sizeHint() / 2 );
++    cmnu->exec( geometry().center() - QPoint( sh.width(), sh.height() ) );
++}
++
++void
++KDMAdmin::accept()
++{
++    verify->accept();
++}
++
++void
++KDMAdmin::slotWhenChanged()
++{
++    verify->abort();
++    verify->setEnabled( 1 );
++    verify->start();
++}
++
++void
++KDMAdmin::bye_bye()
++{
++  GSendInt( G_GetDmrc );
++  GSendStr( "Session" );
++  char *sess = GRecvStr();
++  if (sess && strcmp(sess, "admin")) {
++    GSendInt( G_PutDmrc );
++    GSendStr( "OrigSession");
++    GSendStr( sess);
++    free(sess);
++  }
++
++  GSendInt( G_PutDmrc );
++  GSendStr( "Session" );
++  GSendStr( "admin" );
++  inherited::accept();
++}
++
++void
++KDMAdmin::verifyPluginChanged( int id )
++{
++    curPlugin = id;
++    adjustSize();
++}
++
++void
++KDMAdmin::verifyOk()
++{
++    bye_bye();
++}
++
++void
++KDMAdmin::verifyFailed()
++{
++    okButton->setEnabled( false );
++    cancelButton->setEnabled( false );
++}
++
++void
++KDMAdmin::verifyRetry()
++{
++    okButton->setEnabled( true );
++    cancelButton->setEnabled( true );
++}
++
++void
++KDMAdmin::verifySetUser( const QString & )
++{
++}
++
++
++#include "kdmadmindialog.moc"
+Index: kdm/kfrontend/kdmadmindialog.h
+===================================================================
+--- /dev/null
++++ kdm/kfrontend/kdmadmindialog.h
+@@ -0,0 +1,70 @@
++    /*
++
++    Shutdown dialog
++
++    Copyright (C) 1997, 1998 Steffen Hansen <hansen@kde.org>
++    Copyright (C) 2000-2003 Oswald Buddenhagen <ossi@kde.org>
++
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program; if not, write to the Free Software
++    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
++
++    */
++
++
++#ifndef KDMADMIN_H
++#define KDMADMIN_H
++
++#include "kgverify.h"
++
++#include <qradiobutton.h>
++
++class LiloInfo;
++class QLabel;
++class KPushButton;
++class QButtonGroup;
++class QComboBox;
++
++class KDMAdmin : public FDialog, public KGVerifyHandler {
++    Q_OBJECT
++    typedef FDialog inherited;
++
++public:
++    KDMAdmin( const QString &user, QWidget *_parent = 0 );
++    ~KDMAdmin();
++
++public slots:
++    void accept();
++    void slotWhenChanged();
++    void slotActivatePlugMenu();
++
++private:
++    void bye_bye();
++    
++    KPushButton		*okButton, *cancelButton;
++    KGStdVerify		*verify;
++    QString             curUser;
++
++    static int		curPlugin;
++    static PluginList	pluginList;
++
++public: // from KGVerifyHandler
++    virtual void verifyPluginChanged( int id );
++    virtual void verifyOk();
++    virtual void verifyFailed();
++    virtual void verifyRetry();
++    virtual void verifySetUser( const QString &user );
++};
++
++#endif
+Index: kdm/kfrontend/kgreeter.cpp
+===================================================================
+--- kdm/kfrontend/kgreeter.cpp.orig
++++ kdm/kfrontend/kgreeter.cpp
+@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fi
+ #include "kdmconfig.h"
+ #include "kdmclock.h"
+ #include "kdm_greet.h"
++#include "kdmadmindialog.h"
+ #include "themer/kdmthemer.h"
+ #include "themer/kdmitem.h"
+ #include "themer/kdmlabel.h"
+@@ -509,7 +510,7 @@ KGreeter::insertSessions()
+ 	for (char **dit = _sessionsDirs; *dit; ++dit) {
+ 		QStringList ents = QDir( *dit ).entryList();
+ 		for (QStringList::ConstIterator it = ents.begin(); it != ents.end(); ++it)
+-			if ((*it).endsWith( ".desktop" )) {
++		  if ((*it).endsWith( ".desktop" ) && !(*it).endsWith("admin.desktop")) {
+ 				KSimpleConfig dsk( QString( *dit ).append( '/' ).append( *it ) );
+ 				dsk.setGroup( "Desktop Entry" );
+ 				putSession( (*it).left( (*it).length() - 8 ),
+@@ -648,6 +649,17 @@ KGreeter::slotLoadPrevWM()
+ 				return;
+ 			}
+ 		} else {
++		  if (!strcmp(sess, "admin")) {
++		    // need to get the original
++		    GSendInt( G_GetDmrc);
++		    GSendStr( "OrigSession");
++		    sess = GRecvStr();
++		    if (!sess) {
++		      free(sess);
++		      sess = strdup("default");
++		    }
++		  }
++
+ 			for (uint i = 0; i < sessionTypes.count() && !sessionTypes[i].hid; i++)
+ 				if (sessionTypes[i].type == sess) {
+ 					free( sess );
+@@ -998,6 +1010,12 @@ KThemedGreeter::KThemedGreeter()
+ 		}
+ 	}
+ 
++	admin_button = themer->findNode( "admin_button");
++	if ( admin_button ) {
++	  if ( !_useAdminSession )
++	    admin_button->hide( true );
++	}
++
+ 	if (plugMenu) {
+ 		inserten( i18n("&Authentication Method"), 0, plugMenu );
+ 		needSep = true;
+@@ -1103,6 +1121,8 @@ KThemedGreeter::slotThemeActivated( cons
+ 		slotSessMenu();
+ 	else if (id == "system_button")
+ 		slotActionMenu();
++	else if (id == "admin_button")
++	        slotAskAdminPassword();
+ }
+ 
+ void
+@@ -1129,4 +1149,15 @@ KThemedGreeter::keyPressEvent( QKeyEvent
+ 		accept();
+ }
+ 
++void
++KThemedGreeter::slotAskAdminPassword()
++{
++  KDMAdmin k(curUser, this);
++  if (k.exec()) {
++	GSendInt(G_Ready);
++	hide();
++	done(ex_exit);
++   }
++}
++
+ #include "kgreeter.moc"
+Index: kdm/kfrontend/kgreeter.h
+===================================================================
+--- kdm/kfrontend/kgreeter.h.orig
++++ kdm/kfrontend/kgreeter.h
+@@ -146,6 +146,7 @@ class KThemedGreeter : public KGreeter {
+ 	void slotThemeActivated( const QString &id );
+ 	void slotSessMenu();
+ 	void slotActionMenu();
++	void slotAskAdminPassword();
+ 
+   protected:
+ 	virtual void updateStatus( bool fail, bool caps, int timedleft );
+@@ -158,7 +159,7 @@ class KThemedGreeter : public KGreeter {
+ 	KdmThemer *themer;
+ 	KdmItem *caps_warning, *xauth_warning, *pam_error, *timed_label,
+ 	        *console_rect, *userlist_rect,
+-	        *session_button, *system_button;
++	        *session_button, *system_button, *admin_button;
+ 
+   public: // from KGVerifyHandler
+ 	virtual void verifyFailed();
+Index: kdm/kfrontend/sessions/Makefile.am
+===================================================================
+--- kdm/kfrontend/sessions/Makefile.am.orig
++++ kdm/kfrontend/sessions/Makefile.am
+@@ -1,6 +1,6 @@
+ sessionsdir = $(kde_datadir)/kdm/sessions
+ sessions_DATA = \
+-    kde.desktop gnome.desktop \
++    admin.desktop kde.desktop gnome.desktop \
+     9wm.desktop \
+     aewm++.desktop \
+     aewm.desktop \
+Index: kdm/kfrontend/sessions/admin.desktop
+===================================================================
+--- /dev/null
++++ kdm/kfrontend/sessions/admin.desktop
+@@ -0,0 +1,7 @@
++[Desktop Entry]
++Encoding=UTF-8
++Type=XSession
++Exec=YaSTadminSession
++TryExec=YaSTadminSession
++Name=admin
++Comment=Yast Admin Session
+Index: kdm/kfrontend/themer/kdmlabel.cpp
+===================================================================
+--- kdm/kfrontend/themer/kdmlabel.cpp.orig
++++ kdm/kfrontend/themer/kdmlabel.cpp
+@@ -214,6 +214,7 @@ static const struct {
+ 	{ "language",           I18N_NOOP("&Language") },
+ 	{ "session",            I18N_NOOP("Session &Type") },
+ 	{ "system",             I18N_NOOP("&System") }, // i18n("Actions");
++        { "admin",              I18N_NOOP("&Administration") },
+ 	{ "disconnect",         I18N_NOOP("&Disconnect") },
+ 	{ "quit",               I18N_NOOP("&Quit") },
+ 	{ "halt",               I18N_NOOP("Power O&ff") },

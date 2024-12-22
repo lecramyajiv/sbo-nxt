@@ -1,0 +1,16 @@
+debian/tmp/opt/trinity/bin/kjots
+debian/tmp/opt/trinity/share/applications/tde/Kjots.desktop
+debian/tmp/opt/trinity/share/apps/kjots/kjotsui.rc
+debian/tmp/opt/trinity/share/apps/kjots/pics/filedel.png
+debian/tmp/opt/trinity/share/config.kcfg/kjots.kcfg
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kjots/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kjots/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kjots/index.docbook
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kjots.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kjots.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kjots.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kjots.png
+debian/tmp/opt/trinity/share/icons/hicolor/64x64/apps/kjots.png
+
+debian/icons/kjots.xpm		/opt/trinity/share/pixmaps
+debian/icons/kjots-16.xpm	/opt/trinity/share/pixmaps

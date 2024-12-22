@@ -1,0 +1,4 @@
+install adblocker files in konq-plugins.install
+
+  * Stop tdeaddons meta-package depending on knewsticker-scripts, 
+    it depends on stuff in universe

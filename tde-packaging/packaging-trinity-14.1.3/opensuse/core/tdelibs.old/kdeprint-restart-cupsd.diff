@@ -1,0 +1,32 @@
+Index: kdeprint/cups/cupsdconf2/cupsddialog.cpp
+===================================================================
+--- kdeprint/cups/cupsdconf2/cupsddialog.cpp.orig
++++ kdeprint/cups/cupsdconf2/cupsddialog.cpp
+@@ -45,6 +45,7 @@
+ #include <kguiitem.h>
+ #include <kprocess.h>
+ 
++#include <stdlib.h>
+ #include <signal.h>
+ #include <cups/cups.h>
+ 
+@@ -205,15 +206,13 @@ bool CupsdDialog::restartServer(QString&
+ 	}
+ 	else
+ 	{
++		KProcess proc;
+                 bool success = false;
+                 if (getuid() == 0 )
+-                        success = (::kill(serverPid, SIGHUP) == 0);
++                        proc << "rccups" << "force-reload";
+                 else
+-                {
+-                        KProcess proc;
+-                        proc << "kdesu" << "-c" << "kill -SIGHUP " + QString::number( serverPid );
+-                        success = proc.start( KProcess::Block ) && proc.normalExit();
+-                }
++                        proc << "kdesu" << "-c" << "rccups" << "force-reload";
++		success = proc.start( KProcess::Block ) && proc.normalExit();
+                 if( !success )    
+ 			msg = i18n("Unable to restart CUPS server (pid = %1)").arg(serverPid);
+ 	}

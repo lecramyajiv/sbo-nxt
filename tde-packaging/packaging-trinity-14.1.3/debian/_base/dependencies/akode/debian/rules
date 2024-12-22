@@ -1,0 +1,35 @@
+#! /usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_HOST_ARCH_OS = $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+ifeq (linux,$(DEB_HOST_ARCH_OS))
+DEB_DH_GENCONTROL_ARGS=-- -Valsa-dev=libasound2-dev
+endif
+
+DEB_DH_STRIP_ARGS  := --dbg-package=akode-dbg
+
+PACKAGES_WITH_LIBS := libakode2
+
+DEB_DH_MAKESHLIBS_ARGS_libakode2 := -V'libakode2 (>= 2-rc1-1)'
+
+# Build options
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DWITH_ALL_OPTIONS="ON" \
+ -DWITH_LIBLTDL="OFF" \
+ -DWITH_FFMPEG_DECODER="ON"
+
+common-install-prehook-arch::
+	grep -v libakode_alsa_sink debian/libakode2.install > debian/libakode2.install.kfreebsd-i386
+	grep -v libakode_alsa_sink debian/libakode2.install > debian/libakode2.install.kfreebsd-amd64
+	grep -v libakode_alsa_sink debian/libakode-dev.install > debian/libakode-dev.install.kfreebsd-i386
+	grep -v libakode_alsa_sink debian/libakode-dev.install > debian/libakode-dev.install.kfreebsd-amd64
+
+clean::
+	rm -f debian/libakode2.install.kfreebsd* debian/libakode-dev.install.kfreebsd*

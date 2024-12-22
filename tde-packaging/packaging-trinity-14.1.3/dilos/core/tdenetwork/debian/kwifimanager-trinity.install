@@ -1,0 +1,35 @@
+debian/tmp/usr/bin/kwifimanager
+debian/tmp/usr/lib/*/trinity/kcm_wifi.la
+debian/tmp/usr/lib/*/trinity/kcm_wifi.so
+debian/tmp/usr/lib/*/libkwireless.la
+debian/tmp/usr/lib/*/libkwireless.so
+debian/tmp/usr/share/applications/tde/kcmwifi.desktop
+debian/tmp/usr/share/applications/tde/kwifimanager.desktop
+debian/tmp/usr/share/apps/kicker/applets/kwireless.desktop
+debian/tmp/usr/share/apps/kwifimanager/kwifimanagerui.rc
+debian/tmp/usr/share/apps/kwifimanager/locations/DE_BW_Karlsruhe_University.loc
+debian/tmp/usr/share/apps/kwifimanager/locations/NOWHERE.loc
+debian/tmp/usr/share/apps/kwifimanager/pics/ad_hoc.png
+debian/tmp/usr/share/apps/kwifimanager/pics/all_alone.png
+debian/tmp/usr/share/apps/kwifimanager/pics/ap_connect.png
+debian/tmp/usr/share/apps/kwifimanager/pics/excellent.png
+debian/tmp/usr/share/apps/kwifimanager/pics/good.png
+debian/tmp/usr/share/apps/kwifimanager/pics/marginal.png
+debian/tmp/usr/share/apps/kwifimanager/pics/no_card.png
+debian/tmp/usr/share/apps/kwifimanager/pics/offline.png
+debian/tmp/usr/share/apps/kwifimanager/pics/oor_down.png
+debian/tmp/usr/share/apps/kwifimanager/pics/oor_minimum.png
+debian/tmp/usr/share/doc/tde/HTML/en/kwifimanager/common
+debian/tmp/usr/share/doc/tde/HTML/en/kwifimanager/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kwifimanager/index.docbook
+debian/tmp/usr/share/icons/hicolor/128x128/apps/kwifimanager.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kwifimanager.png
+debian/tmp/usr/share/icons/hicolor/22x22/apps/kwifimanager.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kwifimanager.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kwifimanager.png
+debian/tmp/usr/share/icons/hicolor/64x64/apps/kwifimanager.png
+debian/tmp/usr/share/icons/hicolor/scalable/apps/kwifimanager.svgz
+debian/tmp/usr/share/man/man1/kwifimanager.1
+
+debian/icons/kwifimanager-16.xpm	/usr/share/pixmaps
+debian/icons/kwifimanager.xpm		/usr/share/pixmaps

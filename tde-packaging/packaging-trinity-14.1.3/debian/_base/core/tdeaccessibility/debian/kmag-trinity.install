@@ -1,0 +1,19 @@
+debian/tmp/opt/trinity/bin/kmag
+debian/tmp/opt/trinity/share/applications/tde/kmag.desktop
+debian/tmp/opt/trinity/share/apps/kmag/icons/hicolor/16x16/actions/followmouse.png
+debian/tmp/opt/trinity/share/apps/kmag/icons/hicolor/16x16/actions/hidemouse.png
+debian/tmp/opt/trinity/share/apps/kmag/icons/hicolor/16x16/actions/window.png
+debian/tmp/opt/trinity/share/apps/kmag/kmagui.rc
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmag/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmag/index.cache.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmag/index.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmag/man-kmag.1.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kmag/screenshot.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kmag.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kmag.png
+debian/tmp/opt/trinity/share/icons/locolor/16x16/apps/kmag.png
+debian/tmp/opt/trinity/share/icons/locolor/32x32/apps/kmag.png
+debian/tmp/opt/trinity/share/man/man1/kmag.1
+
+debian/icons/kmag.xpm		/opt/trinity/share/pixmaps
+debian/icons/kmag-16.xpm	/opt/trinity/share/pixmaps

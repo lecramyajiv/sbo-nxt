@@ -1,0 +1,23 @@
+Source: ksystemlog-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Fathi Boudra <fboudra@free.fr>, Mark Purcell <msp@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: ksystemlog-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: ksystemlog-trinity (<< 4:14.0.0~)
+Breaks: ksystemlog-trinity (<< 4:14.0.0~)
+Description: system log viewer tool for Trinity
+ ksystemlog is a system log viewer tool for Trinity.
+ .
+ This program is developed for being used by beginner users, which don't know
+ how to find information about their Linux system, and how the log files are in
+ their computer. But it is also designed for advanced users, who want to
+ quickly see problems occuring on their server.
+ .
+  Homepage: http://ksystemlog.forum-software.org

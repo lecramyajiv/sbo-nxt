@@ -1,0 +1,343 @@
+kmplayer-trinity (1:0.10.0c-0ubuntu4) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+kmplayer-trinity (1:0.10.0c-0ubuntu3) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 05 March 2009 29:52:00 -0600
+
+kmplayer-trinity (1:0.10.0c-0ubuntu1) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 31 Dec 2008 15:38:00 -0600
+
+kmplayer (1:0.10.0c-0ubuntu3) hardy; urgency=low
+
+  * Drop /usr/share/doc/tde/HTML from kmplayer, as it's already in
+    kmplayer-doc (LP: #210443).
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Tue, 15 Apr 2008 02:22:14 +0100
+
+kmplayer (1:0.10.0c-0ubuntu2) hardy; urgency=low
+
+  * dapper -> hardy upgrade fixes, kmplayer replaces old kmplayer-doc
+    and vice-versa
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 19 Mar 2008 15:38:32 +0000
+
+kmplayer (1:0.10.0c-0ubuntu1) hardy; urgency=low
+
+  * New upstream release.
+  * Merged Debian changelog, remaining changes in 0.10.0a-2ubuntu1 entry.
+  * Cleaned up rules file.
+
+ -- Jonathan Patrick Davies <jpatrick@kubuntu.org>  Fri, 22 Dec 2007 11:23:40 +0100
+
+kmplayer (1:0.10.0b-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #454794)
+  * Update my e-mail address.
+  * Bump Standards-Version to 3.7.3.
+  * Use Homepage field.
+  * Build with --as-needed linker flags.
+
+ -- Fathi Boudra <fabo@debian.org>  Thu, 06 Dec 2007 09:26:27 +0100
+
+kmplayer (1:0.10.0b-0ubuntu1) hardy; urgency=low
+
+  * New upstream release.
+  * Dropped kubuntu_02_use_default_config_with_tdeparts_.diff - applied upstream.
+  * Updated email in kmplayer.1.docbook.
+  * Updated Standards-Version to 3.7.3.0.
+
+ -- Jonathan Patrick Davies <jpatrick@kubuntu.org>  Fri, 7 Dec 2007 18:56:10 +0100
+
+kmplayer (1:0.10.0a-2ubuntu4) hardy; urgency=low
+
+  * Fix kmplayer-doc.install to include all documentation.
+  * Removed "debian/tmp/" from *.install's.
+
+ -- Jonathan Patrick Davies <jpatrick@kubuntu.org>  Mon, 12 Nov 2007 22:25:24 +0100
+
+kmplayer (1:0.10.0a-2ubuntu3) hardy; urgency=low
+
+  * Reuploaded as the buildd seems to be fixed
+
+ -- Anthony Mercatante <tonio@ubuntu.com>   Mon, 12 Nov 2007 14:14:56 +0100
+
+kmplayer (1:0.10.0a-2ubuntu2) hardy; urgency=low
+
+  * Re-add kubuntu_03_no_audio_mimetypes, not merged upstream
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sat, 10 Nov 2007 10:20:27 +0100
+
+kmplayer (1:0.10.0a-2ubuntu1) hardy; urgency=low
+
+  * Merge from debian unstable, remaining changes:
+    - Ubuntu maintainer spec.
+    - kmplayer-base instead of kmplayer-common.
+    - kmplayer-konq-plugin instead of kmplayer-plugin.
+    - Added kubuntu_ patches to series.
+    - No overrides.
+    - Remove 10_xine_default_player.diff - done by kubuntu_01_kmplayerrc.diff.
+    - Drop 12_remove_audio_mimetypes and kubuntu_04_real_mimetype - applied
+      upstream.
+    - docbook2x dep for docbooks.
+  * New upstream release. (LP: #131620)
+  * Adjust kmplayer's xine deps for new packages. (LP: #159338)
+  * Bumped Standards-Version to 3.7.2.2.
+  * Updated kmplayer.1.docbook.
+  * New Homepage field location.
+  * Drop kubuntu_03_no_audio_mimetypes - applied upstream.
+  * Drop kubuntu_05_gxx32 - changed upstream.
+  * Remove quilt patch system.
+  * And drop build dep on quilt.
+
+ -- Jonathan Patrick Davies <jpatrick@kubuntu.org>  Sat, 03 Nov 2007 12:26:24 +0100
+
+kmplayer (1:0.10.0a-2) unstable; urgency=low
+
+  * Add Depends: libxine1-x
+
+ -- Mark Purcell <msp@debian.org>  Thu, 25 Oct 2007 21:45:35 +0100
+
+kmplayer (1:0.10.0a-1) unstable; urgency=low
+
+  * New upstream release.
+  * Update patches. Remove 14_use_pkgconfig_for_nspr_cfg patch.
+  * Remove libnspr4-dev build dependency.
+
+ -- Fathi Boudra <fboudra@free.fr>  Sat, 20 Oct 2007 12:09:01 +0200
+
+kmplayer (1:0.10.0-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #437982)
+  * Update menu file to latest Debian menu policy.
+
+ -- Fathi Boudra <fboudra@free.fr>  Wed, 03 Oct 2007 10:37:32 +0200
+
+kmplayer (1:0.10.0~pre3-1) unstable; urgency=low
+
+  * New upstream release
+     - Fixes: ftbfs with g++-4.3/gcc-snapshot (Closes: #441548)
+
+ -- Mark Purcell <msp@debian.org>  Sun, 30 Sep 2007 11:53:49 +0100
+
+kmplayer (1:0.10.0~pre2-2) unstable; urgency=low
+
+  * Add knpplayer to kmplayer-common package.
+
+ -- Fathi Boudra <fboudra@free.fr>  Mon, 30 Jul 2007 11:54:42 +0200
+
+kmplayer (1:0.10.0~pre2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add libdbus-1-dev, libdbus-glib-1-dev, libdbus-qt-1-dev, libgtk2.0-dev and
+    libnspr4-dev build dependencies.
+  * Remove libcairo-dev build dependency.
+  * Update copyright. Add moz-sdk related licences.
+
+ -- Fathi Boudra <fboudra@free.fr>  Sat, 28 Jul 2007 11:18:55 +0200
+
+kmplayer (1:0.9.4a-2) unstable; urgency=low
+
+  * Update debian/watch
+  * Build-Depends: libcairo2-dev | libcairo-dev
+    - libcairo is missing in dependency (Closes: #422431)
+
+ -- Mark Purcell <msp@debian.org>  Thu, 17 May 2007 16:45:55 +0100
+
+kmplayer (1:0.9.4a-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add patch to replace deprecated -vop flag by -vf.
+
+ -- Fathi Boudra <fboudra@free.fr>  Tue, 15 May 2007 22:01:53 +0200
+
+kmplayer (1:0.9.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Mark Purcell <msp@debian.org>  Sat,  3 Mar 2007 13:01:59 +0000
+
+kmplayer (1:0.9.3a-1) experimental; urgency=low
+
+  * New upstream release
+
+  [ Fathi Boudra ]
+  * Add patch to remove audio mimetypes
+  * Add missing documentation and locales
+
+  [ Mark Purcell ]
+  * While I enjoy kmplayer, lets lower .desktop InitialPreference to 5
+
+ -- Fathi Boudra <fboudra@free.fr>  Sun,  7 Jan 2007 18:50:55 +0100
+
+kmplayer (1:0.9.3-2) unstable; urgency=low
+
+  * Epoc to ensure version compatability with debian-multimedia.org
+  * debian/watch to only review x.x.x
+
+ -- Mark Purcell <msp@debian.org>  Mon, 30 Oct 2006 18:04:39 +0000
+
+kmplayer (0.9.4a-0ubuntu2) gutsy; urgency=low
+
+  * Build with -fpermissive when building with g++-4.3. LP: #138604.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 13 Sep 2007 19:53:49 +0200
+
+kmplayer (0.9.4a-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sat, 30 Jun 2007 22:55:48 +0200
+
+kmplayer (0.9.4-0ubuntu4) gutsy; urgency=low
+
+  * debian/control: Dropped unnecessary Build-dep on xlibs-dev.
+
+ -- Timo Aaltonen <tepsipakki@ubuntu.com>  Wed, 16 May 2007 14:42:30 +0300
+
+kmplayer (0.9.4-0ubuntu3) gutsy; urgency=low
+
+  * Fix typo in kubuntu_03_no_audio_mimetypes.patch
+
+ -- Andrew Ash <ash211@gmail.com>  Fri, 27 Apr 2007 19:08:56 -0400
+
+kmplayer (0.9.4-0ubuntu2) feisty; urgency=low
+
+  * Add kubuntu_04_real_mimetype.diff to support real -plugin mimetype
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 26 Mar 2007 12:37:14 +0100
+
+kmplayer (0.9.4-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 15 Mar 2007 11:28:27 +0100
+
+kmplayer (0.9.3a-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Monday,  8 Jan 2007 11:58:34 +0100
+
+kmplayer (0.9.3-1) unstable; urgency=low
+
+  [ Fathi Boudra ]
+  * New upstream release
+  * control: add mplayer to Suggests (Closes: #381971)
+  * copyright: update author mail
+
+ -- Fathi Boudra <fboudra@free.fr>  Wed, 20 Sep 2006 11:47:59 +0200
+
+kmplayer (0.9.3-0ubuntu4) feisty; urgency=low
+
+  * Fix typo in kubuntu_03_no_audio_mimetypes.patch
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun,  7 Jan 2007 18:48:42 +0000
+
+kmplayer (0.9.3-0ubuntu3) feisty; urgency=low
+
+  * Rebuilt without gstreamer support
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 07 Dec 2006 12:57:04 +0100
+
+kmplayer (0.9.3-0ubuntu2) feisty; urgency=low
+
+  * Add kubuntu_03_no_audio_mimetypes.patch to remove
+    audio mymetypes.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 20 Oct 2006 17:58:05 +0200
+
+kmplayer (0.9.3-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Wed, 27 Sep 2006 05:08:05 +0200
+
+kmplayer (0.9.2a-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Fathi Boudra <fboudra@free.fr>  Mon, 12 Jun 2006 12:51:35 +0200
+
+kmplayer (0.9.2a-0ubuntu1) edgy; urgency=low
+
+  * New upstream maintainace release.
+  * Merge Debian changelog, keep Debian defaults and add Debian: build-dep:
+    libxv-dev and ${shlibs:Depends}.
+
+ -- Jonathan Patrick Davies <jpatrick@ubuntu.com>  Sun, 11 Jun 2006 13:22:04 +0200
+
+kmplayer (0.9.2-1) unstable; urgency=low
+
+  [ Fathi Boudra ]
+  * Initial release (Closes: #360092)
+  * Set Xine as default player
+  * Add libgstreamer-plugins-base0.10-dev to build-depends
+  * Force a call to ldconfig for postrm/postinst
+  * Bumped Standards-Version to current policy
+  * Update debian/copyright according to GFDL documentations
+
+  [ Mark Purcell ]
+  * Update debian/watch to use svn-upgrade
+  * Update debian/copyright
+  * Add Depends: ${shlibs:Depends}
+  * Add Build-Depends: libxv-dev
+
+ -- Fathi Boudra <fboudra@free.fr>  Thu, 18 May 2006 19:40:27 +0100
+
+kmplayer (0.9.1.99+0.9.2-rc1-0ubuntu1) dapper; urgency=low
+
+  * New upstream release.
+  * Merge Debian changelog.
+  * Enable gstreamer0.10 support.
+  * Added kubuntu_01_kmplayerrc.diff: extra recorder using Xine (which
+    has an extra benefit that it records while playing).
+  * Remove kubuntu_01_use_xine_by_default: now in kubuntu_01_kmplayerrc.
+
+ -- Jonathan Patrick Davies <jpatrick@ubuntu.com>  Sat, 08 Apr 2006 11:04:34 +0200
+
+kmplayer (0.9.2-pre3-1) unstable; urgency=low
+
+  [ Fathi Boudra ]
+  * Initial release Closes: #360092
+  * Set Xine as default player and disable gstreamer support
+
+  [ Mark Purcell ]
+  * Update debian/watch to use svn-upgrade
+
+ -- Mark Purcell <msp@debian.org>  Fri,  7 Apr 2006 23:39:00 +0100
+
+kmplayer (0.9.1.99+0.9.2-pre3-0ubuntu2) dapper; urgency=low
+
+  * Remove suggests on gstreamer, we don't use gstreamer 0.8
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 30 Mar 2006 17:01:59 +0100
+
+kmplayer (0.9.1.99+0.9.2-pre3-0ubuntu1) dapper; urgency=low
+
+  * Initial release
+
+  [Achim Bonnet]
+  * Defined package structure
+
+  [Jonathan Patrick Davies]
+  * Global packaging
+
+  [Anthony Mercatante]
+  * Package polishing (debian/copyright, debian/rules...)
+  * Added kubuntu_01_use_xine_by_default.patch to make usage of wine by default
+  * Added kubuntu_02_use_default_config_with_tdeparts_.patch to enable default
+    config in the konqueror plugin
+  * Tarball rebuilt to remove obsolete debian/ folder in it
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Sun, 26 Mar 2006 16:03:54 +0100
+

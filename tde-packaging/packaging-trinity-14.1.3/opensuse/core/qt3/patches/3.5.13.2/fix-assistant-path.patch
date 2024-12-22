@@ -1,0 +1,11 @@
+--- tools/assistant/lib/qassistantclient.cpp
++++ tools/assistant/lib/qassistantclient.cpp
+@@ -135,7 +135,7 @@
+     : QObject( parent, name ), host ( "localhost" )
+ {
+     if ( path.isEmpty() )
+-	assistantCommand = "assistant";
++	assistantCommand = "/usr/lib/qt3/bin/assistant";
+     else {
+ 	QFileInfo fi( path );
+ 	if ( fi.isDir() )

@@ -1,0 +1,2 @@
+?package(tde-style-baghira-trinity):needs="X11" section="Apps/System" \
+  title="Baghira's BAB" command="/opt/trinity/bin/bab"

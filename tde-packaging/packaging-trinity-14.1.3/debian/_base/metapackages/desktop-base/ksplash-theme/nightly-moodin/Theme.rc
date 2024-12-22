@@ -1,0 +1,25 @@
+[KSplash Theme: nightly-moodin]
+Name = Nightly (Moodin)
+Description = Nightly KSplash Theme using Moodin engine, based on Nightly wallpaper and Vallerie theme, with icons from Nuvola iconset.
+Version = 1.0
+Author = Robert Jaehne
+Engine = Moodin
+
+BeginOpacity = 0.1
+Background = background.png
+BaseResolution = 1600,1200
+
+UseIconSet = false
+
+ShowStatusText = true
+StatusFont = Arial Black L,14,-1,5,50,1
+StatusCoords = -1,350
+
+ImageCoords1 = 50,450
+ImageCoords2 = 250,320
+ImageCoords3 = 450,200
+ImageCoords4 = 650,140
+ImageCoords5 = 850,140
+ImageCoords6 = 1050,200
+ImageCoords7 = 1250,320
+ImageCoords8 = 1450,450

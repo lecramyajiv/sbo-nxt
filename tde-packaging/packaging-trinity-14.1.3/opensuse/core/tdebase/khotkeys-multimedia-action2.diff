@@ -1,0 +1,81 @@
+Index: khotkeys/shared/actions.cpp
+===================================================================
+--- khotkeys/shared/actions.cpp.orig
++++ khotkeys/shared/actions.cpp
+@@ -29,6 +29,7 @@
+ #include <kaccel.h>
+ #include <kservice.h>
+ #include <kprocess.h>
++#include <qregexp.h>
+ 
+ #include "windows.h"
+ #include "action_data.h"
+@@ -116,7 +117,6 @@ void Command_url_action::execute()
+     {
+     if( command_url().isEmpty())
+         return;
+-    KURIFilterData uri;
+     QString cmd = command_url();
+     static bool sm_ready = false;
+     if( !sm_ready )
+@@ -124,6 +124,9 @@ void Command_url_action::execute()
+         kapp->propagateSessionManager();
+         sm_ready = true;
+         }
++    if( substituteAndHandleSpecial( cmd ))
++        return;
++    KURIFilterData uri;
+ //    int space_pos = command_url().find( ' ' );
+ //    if( command_url()[ 0 ] != '\'' && command_url()[ 0 ] != '"' && space_pos > -1
+ //        && command_url()[ space_pos - 1 ] != '\\' )
+@@ -176,6 +179,38 @@ void Command_url_action::execute()
+     timeout.start( 1000, true ); // 1sec timeout
+     }
+ 
++// do special command substitutions, return true if also already handled
++bool Command_url_action::substituteAndHandleSpecial( QString& cmd )
++    {
++    if( cmd.contains( "KHOTKEYS_BROWSER" ))
++        { // the default browser
++        KConfig config( QString::fromLatin1("kfmclientrc")); // see KRun
++        config.setGroup("General");
++        QString browser = config.readEntry("BrowserApplication");
++        if( browser.startsWith( QString::fromLatin1( "!" )))
++            browser = browser.mid( 1 );
++        else
++            {
++            KService::Ptr service = KService::serviceByStorageId( browser );
++            if( service )
++                {
++                browser = service->exec();
++                browser.replace( QRegExp( " %.?" ), "" ); // remove " %u" and others
++                }
++            }
++        if( browser.isEmpty())
++            browser = QString::fromLatin1( "konqueror" ); // opens in webbrowsing profile by default
++        cmd = cmd.replace( "KHOTKEYS_BROWSER", browser );
++        }
++    if( cmd.contains( "KHOTKEYS_TERMINAL" ))
++        { // the default terminal application
++        KConfigGroup config( KGlobal::config(), "General" );
++        QString terminal = config.readPathEntry( "TerminalApplication", "konsole" );
++        cmd = cmd.replace( "KHOTKEYS_TERMINAL", terminal );
++        }
++    return false;
++    }
++
+ QString Command_url_action::description() const
+     {
+     return i18n( "Command/URL : " ) + command_url();
+Index: khotkeys/shared/actions.h
+===================================================================
+--- khotkeys/shared/actions.h.orig
++++ khotkeys/shared/actions.h
+@@ -75,6 +75,7 @@ class KDE_EXPORT Command_url_action
+     protected:
+         QTimer timeout;
+     private:
++        bool substituteAndHandleSpecial( QString& cmd );
+         QString _command_url;
+     };
+     

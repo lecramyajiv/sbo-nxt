@@ -1,0 +1,13 @@
+Index: qmake/generators/unix/unixmake.cpp
+===================================================================
+--- qmake/generators/unix/unixmake.cpp.orig
++++ qmake/generators/unix/unixmake.cpp
+@@ -839,7 +839,7 @@ UnixMakefileGenerator::defaultInstall(co
+ 	    ret += "\n\t";
+ 	ret += TQString(resource ? "-$(INSTALL_DIR)" : "-$(INSTALL_FILE)") + " \"" +
+ 	       src_targ + "\" \"" + dst_targ + "\"";
+-	if(!project->isActiveConfig("debug") && !project->isEmpty("QMAKE_STRIP") &&
++	if(false && !project->isActiveConfig("debug") && !project->isEmpty("QMAKE_STRIP") &&
+ 	   (project->first("TEMPLATE") != "lib" || !project->isActiveConfig("staticlib"))) {
+ 	    ret += "\n\t-" + var("QMAKE_STRIP");
+ 	    if(project->first("TEMPLATE") == "lib" && !project->isEmpty("QMAKE_STRIPFLAGS_LIB"))

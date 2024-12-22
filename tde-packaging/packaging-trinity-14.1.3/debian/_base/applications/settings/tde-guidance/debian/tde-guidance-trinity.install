@@ -1,0 +1,16 @@
+opt/trinity/bin
+opt/trinity/lib/trinity
+opt/trinity/share/applications/tde
+opt/trinity/share/apps/guidance/pics
+opt/trinity/share/doc
+opt/trinity/share/icons/crystalsvg
+opt/trinity/share/man/man1
+usr/lib/python*/dist-packages/tde-guidance/SMBShareSelectDialog.py
+usr/lib/python*/dist-packages/tde-guidance/SimpleCommandRunner.py
+usr/lib/python*/dist-packages/tde-guidance/fuser.py
+usr/lib/python*/dist-packages/tde-guidance/fuser_ui.py
+usr/lib/python*/dist-packages/tde-guidance/mountconfig.py
+usr/lib/python*/dist-packages/tde-guidance/serviceconfig.py
+usr/lib/python*/dist-packages/tde-guidance/sizeview.py
+usr/lib/python*/dist-packages/tde-guidance/unixauthdb.py
+usr/lib/python*/dist-packages/tde-guidance/userconfig.py

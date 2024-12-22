@@ -1,0 +1,11 @@
+debian/tmp/usr/lib/*/libtqtjavasupport.la
+debian/tmp/usr/lib/*/libtqtjavasupport.so
+debian/tmp/usr/lib/*/libtqtjavasupport.so.1
+debian/tmp/usr/lib/*/libtqtjavasupport.so.1.0.0
+
+debian/tmp/usr/lib/*/jni/libtqtjava.la
+debian/tmp/usr/lib/*/jni/libtqtjava.so
+debian/tmp/usr/lib/*/jni/libtqtjava.so.1
+debian/tmp/usr/lib/*/jni/libtqtjava.so.1.0.0
+
+qtjava/ChangeLog /usr/share/doc/libqt3-jni

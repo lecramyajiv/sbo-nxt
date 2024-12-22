@@ -1,0 +1,14 @@
+Index: kcminit/main.cpp
+===================================================================
+--- kcminit/main.cpp.orig
++++ kcminit/main.cpp
+@@ -98,6 +98,9 @@ void KCMInit::runModules( int phase )
+       if (library.isEmpty())
+         library = service->library();
+       
++      if (library == "arts" && list.size() > 1)
++	continue;
++
+       if (library.isEmpty() || service->init().isEmpty())
+ 	continue; // Skip
+ 

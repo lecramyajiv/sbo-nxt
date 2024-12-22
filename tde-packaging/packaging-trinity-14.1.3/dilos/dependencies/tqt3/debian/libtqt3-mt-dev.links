@@ -1,0 +1,11 @@
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqt-mt.la /usr/share/tqt3/lib/libtqt-mt.la
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqui.prl /usr/share/tqt3/lib/libtqui.prl
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqui.so.1.0.0 /usr/share/tqt3/lib/libtqui.so
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqui.so.1.0.0 /usr/share/tqt3/lib/libtqui.so.1
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqui.so.1.0.0 /usr/share/tqt3/lib/libtqui.so.1.0
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqt-mt.prl /usr/share/tqt3/lib/libtqt-mt.prl
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqt-mt.so.3.5.0 /usr/share/tqt3/lib/libtqt-mt.so
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqt-mt.so.3.5.0 /usr/share/tqt3/lib/libtqt-mt.so.3
+/usr/lib/$(DEB_HOST_MULTIARCH)/libtqt-mt.so.3.5.0 /usr/share/tqt3/lib/libtqt-mt.so.3.5
+/usr/lib/$(DEB_HOST_MULTIARCH)/tqt3/plugins /usr/share/tqt3/plugins
+/usr/include/tqt3 /usr/share/tqt3/include

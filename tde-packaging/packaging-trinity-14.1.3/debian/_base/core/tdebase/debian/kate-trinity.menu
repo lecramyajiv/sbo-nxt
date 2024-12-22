@@ -1,0 +1,23 @@
+?package(kate-trinity):\
+	needs="X11"\
+	section="Applications/Editors"\
+	hints="TDE,Text"\
+	title="Kate"\
+	icon32x32="/opt/trinity/share/pixmaps/kate.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kate-16.xpm"\
+	command="/opt/trinity/bin/kate"
+
+?package(kate-trinity):\
+	needs="X11"\
+	section="Applications/Editors"\
+	hints="TDE,Text"\
+	title="KWrite"\
+	icon32x32="/opt/trinity/share/pixmaps/kwrite.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/kwrite-16.xpm"\
+	command="/opt/trinity/bin/kwrite"
+
+# Icon 32x32 kate/pics/cr32-app-kate.png kate.xpm
+# Icon 16x16 kate/pics/cr16-app-kate.png kate-16.xpm
+
+# Icon 32x32 kate/pics/cr32-app-kwrite.png kwrite.xpm
+# Icon 16x16 kate/pics/cr16-app-kwrite.png kwrite-16.xpm

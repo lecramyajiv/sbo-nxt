@@ -1,0 +1,2 @@
+kmenuedit-trinity: no-shlibs-control-file opt/trinity/lib/libtdeinit_kcontroledit.so
+kmenuedit-trinity: no-shlibs-control-file opt/trinity/lib/libtdeinit_kmenuedit.so

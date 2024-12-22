@@ -1,0 +1,25 @@
+--- kicker/kicker/ui/k_new_mnu.cpp	2007/08/08 15:14:50	1.141
++++ kicker/kicker/ui/k_new_mnu.cpp	2007/08/08 15:39:58
+@@ -1345,6 +1345,9 @@
+     KService::Ptr p = KService::serviceByStorageId("/usr/share/applications/YaST.desktop");
+     m_systemView->insertMenuItem(p, nId++, index++);
+ 
++    p = KService::serviceByStorageId("/usr/share/applications/package-manager.desktop");
++    m_systemView->insertMenuItem(p, nId++, index++);
++
+     m_systemView->insertItem( "info", i18n( "System Information" ),
+                               "sysinfo:/",  "sysinfo:/", nId++, index++ );
+ 
+--- kicker/kicker/ui/itemview.cpp	2007/08/08 15:14:50	1.141
++++ kicker/kicker/ui/itemview.cpp	2007/08/08 15:59:35
+@@ -139,7 +139,9 @@
+ void KMenuItem::setIcon(const QString& icon, int size)
+ {
+     m_icon = icon;
+-    QListViewItem::setPixmap(0, KGlobal::iconLoader()->loadIcon(icon, KIcon::Panel, size ));
++    QPixmap pixmap = KGlobal::iconLoader()->loadIcon(icon, KIcon::Panel, size, KIcon::DefaultState, 0L, true);
++    if (!pixmap.isNull())
++       QListViewItem::setPixmap(0, pixmap);
+ }
+ 
+ void KMenuItem::setHasChildren( bool flag )

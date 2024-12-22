@@ -1,0 +1,2504 @@
+-------------------------------------------------------------------
+Thu Feb  2 01:16:04 UTC 2012 - robxu9@gmail.com
+
+- Remove obsolete patches, update .in files, feel accomplished
+
+-------------------------------------------------------------------
+Wed Feb  1 23:15:48 UTC 2012 - robxu9@gmail.com
+
+- Update to 3.4.0, which includes a breaking ABI change 
+
+-------------------------------------------------------------------
+Sat Nov 19 23:23:57 UTC 2011 - andrea@nucleus.it
+
+- Removed all the patches already applied in the 3.3.8d tree.
+- Modified all the remaining to apply with fuzz=0.
+- Created a new patch to revert the use of libiodbc to libodbc
+  otherwise qt3-unixODBC does not build.
+- Some cosmetic change to the specfiles.
+
+-------------------------------------------------------------------
+Sun Nov 13 22:40:37 UTC 2011 - robxu9@gmail.com
+
+- Remove 0001-dnd_optimization.patch; upstream 
+
+-------------------------------------------------------------------
+Sun Nov 13 16:28:34 UTC 2011 - robxu9@gmail.com
+
+- Qt3 has a new upstream; update to 3.3.8d
+
+-------------------------------------------------------------------
+Fri Sep 23 10:16:33 UTC 2011 - coolo@suse.com
+
+- fix qt3-extensions
+
+-------------------------------------------------------------------
+Fri Apr 22 18:31:12 UTC 2011 - anixx@opensuse.org
+
+- changed compression to .tar.bz2
+
+-------------------------------------------------------------------
+Thu Apr 21 11:40:38 CEST 2011 - pth@suse.de
+
+- Don't try to patch in the version twice in qt-3.3.8c.diff.
+- Resync those patches that don't apply without offset.
+- Mark scriptlets in profile.d as being configuration files.
+- Remove the calls to run_ldconfig.
+
+-------------------------------------------------------------------
+Mon Apr 18 18:46:34 UTC 2011 - robxu9@gmail.com
+
+- a fix to the 3.3.8c patch
+
+-------------------------------------------------------------------
+Thu Mar 31 18:15:29 UTC 2011 - coolo@novell.com
+
+- another gcc 4.6 fix
+
+-------------------------------------------------------------------
+Mon Jan 31 21:23:51 UTC 2011 - robxu9@gmail.com
+
+- Update to version 3.3.8c, by the Trinity Project
+- pre_checkin.sh was not run as this caused too many unneccesary
+  changes to occur.
+- The translations tarball was left at version 3.3.8b.
+
+-------------------------------------------------------------------
+Sat Nov 20 02:26:08 CET 2010 - dmueller@suse.de
+
+- fix build against gcc 4.6
+
+-------------------------------------------------------------------
+Mon Nov  1 10:09:40 UTC 2010 - coolo@novell.com
+
+- fix libpng dependencies
+
+-------------------------------------------------------------------
+Wed Sep  1 13:22:38 UTC 2010 - pgajdos@novell.com
+
+- port to libpng14
+
+-------------------------------------------------------------------
+Wed May  5 19:42:33 UTC 2010 - coolo@novell.com
+
+- do not patch the symlink
+
+-------------------------------------------------------------------
+Mon Apr  5 21:06:20 CEST 2010 - dmueller@suse.de
+
+- fix -devel package requires
+- simplify requires of sub-specfiles
+
+-------------------------------------------------------------------
+Mon Apr  5 16:00:15 CEST 2010 - dmueller@suse.de
+
+- build against libpng12 
+
+-------------------------------------------------------------------
+Thu Jan 21 14:24:13 CET 2010 - dmueller@suse.de
+
+- recommend kdelibs3-default-style (bnc#544581)
+
+-------------------------------------------------------------------
+Fri Dec 18 17:04:51 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- add baselib definitions for SPARC
+
+-------------------------------------------------------------------
+Fri Nov 13 14:28:47 CET 2009 - dmueller@suse.de
+
+- fix patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Nov  3 19:14:30 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Aug 11 11:24:13 CEST 2009 - dmueller@suse.de
+
+- fix popen leak (bnc#529615)
+
+-------------------------------------------------------------------
+Mon Feb  9 12:08:04 CET 2009 - coolo@suse.de
+
+- strip out date from .la files
+
+-------------------------------------------------------------------
+Sat Feb  7 20:43:40 CET 2009 - coolo@suse.de
+
+- do not put timestamps in generated sources
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:57:56 CET 2008 - ro@suse.de
+
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf
+
+-------------------------------------------------------------------
+Wed Sep 10 18:50:12 CEST 2008 - dmueller@suse.de
+
+- remove qt3-static package
+
+-------------------------------------------------------------------
+Mon Jul 21 21:20:47 CEST 2008 - dmueller@suse.de
+
+- more verbose qtimer debug
+
+-------------------------------------------------------------------
+Sun Jun 22 13:00:45 CEST 2008 - schwab@suse.de
+
+- Fix invalid array reference in font name parser.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Mar 10 16:48:36 CET 2008 - dmueller@suse.de
+
+- fix build with updated x.org
+
+-------------------------------------------------------------------
+Thu Feb  7 17:51:25 CET 2008 - dmueller@suse.de
+
+- fix memory corruption when removing CRTc's dynamically
+
+-------------------------------------------------------------------
+Sat Jan 19 07:19:25 CET 2008 - stbinner@suse.de
+
+- This version adds the GNU Public License version 3 as a
+  possible choice for licenses to the Open Source releases of Qt 3.
+- upstreaming of patches and few other minor bugfixes
+
+-------------------------------------------------------------------
+Tue Jan 15 01:42:37 CET 2008 - dmueller@suse.de
+
+- fix xrandr resize race (#335410)
+
+-------------------------------------------------------------------
+Thu Dec  6 01:32:32 CET 2007 - dmueller@suse.de
+
+- fix the build key for gcc 4.3
+
+-------------------------------------------------------------------
+Mon Dec  3 15:12:36 CET 2007 - dmueller@suse.de
+
+- back out khmer "fix" from 3.3.8, which apparently
+  made it worse (#345459)
+
+-------------------------------------------------------------------
+Tue Nov 20 20:25:18 CET 2007 - dmueller@suse.de
+
+- fix build with gcc 4.3 again
+
+-------------------------------------------------------------------
+Mon Oct  1 11:48:51 CEST 2007 - dmueller@suse.de
+
+- fix build with gcc 4.3
+
+-------------------------------------------------------------------
+Fri Sep  7 12:32:22 CEST 2007 - dmueller@suse.de
+
+- fix off-by-one in utf8 decoder (#304249, CVE-2007-4137)
+- fix typo in QDate::fromString()
+
+-------------------------------------------------------------------
+Wed Aug 29 17:08:22 CEST 2007 - llunak@suse.cz
+
+- fix reading MNG files, visible in Kickoff (#278548)
+- remove patching of symlinks from the immodule patch
+- improve support for compositing (qt-copy patches #0079,#0080)
+
+-------------------------------------------------------------------
+Fri Aug 24 18:39:04 CEST 2007 - dmueller@suse.de
+
+- fix format string issues (#291754, CVE-2007-3388)
+- fix xrandr 1.2 detection
+
+-------------------------------------------------------------------
+Thu Jul  5 17:25:18 CEST 2007 - coolo@suse.de
+
+- package desktop files and png files
+
+-------------------------------------------------------------------
+Thu Jun 21 12:04:33 CEST 2007 - stbinner@suse.de
+
+- run fdupes in qt3-extensions.spec
+
+-------------------------------------------------------------------
+Thu May 24 19:15:38 CEST 2007 - dmueller@suse.de
+
+- redo the last change in the correct spec file
+
+-------------------------------------------------------------------
+Wed May 23 17:08:39 CEST 2007 - dmueller@suse.de
+
+- qt3-examples -> qt3-devel-examples
+
+-------------------------------------------------------------------
+Thu May 17 06:49:50 CEST 2007 - stbinner@suse.de
+
+- removed some historic stuff from the spec file
+
+-------------------------------------------------------------------
+Tue May  8 14:32:40 CEST 2007 - dmueller@suse.de
+
+- trust libxinerama only if it provides more screens
+  than xrandr crtcs (#264199)
+
+-------------------------------------------------------------------
+Fri May  4 19:06:40 CEST 2007 - dmueller@suse.de
+
+- fix permissions of qmake specs
+
+-------------------------------------------------------------------
+Wed May  2 11:50:07 CEST 2007 - coolo@suse.de
+
+- remove Suse-translate from desktop file
+- remove obsolete suse version support
+
+-------------------------------------------------------------------
+Mon Apr 30 14:39:40 CEST 2007 - stbinner@suse.de
+
+- fix build of qt3-devel-doc with desktop-file-validate run
+
+-------------------------------------------------------------------
+Mon Apr 16 16:10:59 CEST 2007 - dmueller@suse.de
+
+- temporarily disable Xrandr 1.2 support until (#264199) is 
+  resolved
+- use -Bsymbolic-functions
+
+-------------------------------------------------------------------
+Sun Apr  1 20:40:04 CEST 2007 - dmueller@suse.de
+
+- fix utf8 decoder (#259187, CVE-2007-0242)
+
+-------------------------------------------------------------------
+Thu Mar 29 18:02:30 CEST 2007 - dmueller@suse.de
+
+- Fix XRandr 1.2 support
+
+-------------------------------------------------------------------
+Fri Mar 16 14:52:22 CET 2007 - dmueller@suse.de
+
+- call XftDefaultSubstitute (#255330)
+
+-------------------------------------------------------------------
+Thu Mar 15 11:07:44 CET 2007 - dmueller@suse.de
+
+- update font fix patch (#244579)
+
+-------------------------------------------------------------------
+Mon Mar 12 16:09:29 CET 2007 - dmueller@suse.de
+
+- enable tablet support (#253392)
+- add default substitution for font queries (#244579)
+
+-------------------------------------------------------------------
+Tue Mar  6 19:37:48 CET 2007 - dmueller@suse.de
+
+- fix mysql driver crash on shutdown (#251222)
+
+-------------------------------------------------------------------
+Sun Feb 25 11:52:26 CET 2007 - dmueller@suse.de
+
+- update to 3.3.8:
+  * changelog is under /usr/share/doc/packages/qt3/changes-3.3.8
+
+-------------------------------------------------------------------
+Wed Feb 21 13:00:52 CET 2007 - dmueller@suse.de
+
+- fix build for 9.3
+
+-------------------------------------------------------------------
+Wed Feb  7 10:39:13 CET 2007 - dmueller@suse.de
+
+- also build qt3-static as full-config
+
+-------------------------------------------------------------------
+Mon Feb  5 15:18:34 CET 2007 - stbinner@suse.de
+
+- fix build of qt3-extensions on 9.3
+
+-------------------------------------------------------------------
+Fri Feb  2 15:41:36 CET 2007 - stbinner@suse.de
+
+- fix changelog chronological order
+
+-------------------------------------------------------------------
+Wed Jan 31 21:40:07 CET 2007 - dmueller@suse.de
+
+- add a sanity check to ensure that we have a full version
+- fix compile warnings in headers
+
+-------------------------------------------------------------------
+Tue Jan  9 15:36:14 CET 2007 - dmueller@suse.de
+
+- drop misfuzzed patch
+
+-------------------------------------------------------------------
+Mon Jan  8 18:35:16 CET 2007 - dmueller@suse.de
+
+- add patch to fix indic rendering issue
+
+-------------------------------------------------------------------
+Tue Oct 31 13:18:44 CET 2006 - dmueller@suse.de
+
+- add patch to fix han localisation issue (#216183)
+- update qt-debug-timer patch to output more verbose debug
+- add patch to fix xinerama issue with popupmenus (#216235)
+
+-------------------------------------------------------------------
+Fri Oct 20 15:54:30 CEST 2006 - dmueller@suse.de
+
+- update to 3.3.7:
+    * include CVE-2006-4811 patch
+
+-------------------------------------------------------------------
+Thu Oct 19 15:21:51 CEST 2006 - dmueller@suse.de
+
+- add patch for integer overflow in QPixmap/QImage
+  (#212544, CVE-2006-4811)
+
+-------------------------------------------------------------------
+Tue Oct 10 23:31:01 CEST 2006 - dmueller@suse.de
+
+- add patch for qtimer debugging
+
+-------------------------------------------------------------------
+Wed Oct  4 19:39:56 CEST 2006 - dmueller@suse.de
+
+- fix headers to compile in -pedantic mode
+
+-------------------------------------------------------------------
+Thu Sep 14 13:27:03 CEST 2006 - dmueller@suse.de
+
+- don't install static libs as executable
+
+-------------------------------------------------------------------
+Fri Sep  1 16:18:07 CEST 2006 - llunak@suse.cz
+
+- Add patches with Xinerama improvements.
+
+-------------------------------------------------------------------
+Thu Aug 17 13:42:28 CEST 2006 - stbinner@suse.de
+
+- fix qt3-devel-tools file conflict with qt-devel-doc
+
+-------------------------------------------------------------------
+Tue Aug  1 14:47:18 CEST 2006 - stbinner@suse.de
+
+- disable noisy debug message in qt-x11-immodule-unified diff
+
+-------------------------------------------------------------------
+Sun Jul  9 21:39:54 CEST 2006 - stbinner@suse.de
+
+- fix {designer3,linguist}.desktop starting Qt4 versions (#190135)
+
+-------------------------------------------------------------------
+Tue Jul 04 15:12:18 CEST 2006 - mfabian@suse.de
+
+- update qt-x11-immodule-unified diff to 20060318 version.
+  This update already includes the following patches:
+  + fix-x11-immodule.diff
+  + disable-inputmethod-for-passords.patch
+  + qt-x11-immodule-capitalization-fix.diff
+  + fix-im-crash-on-exit.diff
+  + fix-immodule-buffer-overflow.diff
+  + qt-x11-immodule-qtextedit-fix.diff
+  + qt-x11-immodule-focus-handling.diff
+  + qt-x11-immodule-fix-inputcontext-crash.diff
+  which are thus removed.
+
+-------------------------------------------------------------------
+Wed Jun 28 10:07:30 CEST 2006 - dmueller@suse.de
+
+- fix $QT_SYSTEM_DIR (#188217) 
+
+-------------------------------------------------------------------
+Fri Jun  9 15:25:49 CEST 2006 - llunak@suse.de
+
+- add $QT_SYSTEM_DIR (#183059)
+
+-------------------------------------------------------------------
+Wed May 31 15:51:01 CEST 2006 - adrian@suse.de
+
+- remove BuildRequires libdrm-devel
+
+-------------------------------------------------------------------
+Wed May 31 13:24:56 CEST 2006 - dmueller@suse.de
+
+- fix xpm image loading problem
+- add performance regression fix
+- add asian font loading fix 
+
+-------------------------------------------------------------------
+Mon May 29 08:41:44 CEST 2006 - adrian@suse.de
+
+- revert requires macro, this breaks the build system mapping
+- require right packages in -devel for < 10.1
+
+-------------------------------------------------------------------
+Fri May 26 19:40:44 CEST 2006 - dmueller@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Fri May 26 10:42:43 CEST 2006 - dmueller@suse.de
+
+- 3.3.6 update 
+  * numerous bugfixes and translations
+
+-------------------------------------------------------------------
+Wed May 10 17:12:34 CEST 2006 - dmueller@suse.de
+
+- drop substitutions from global rc file (#171513) 
+
+-------------------------------------------------------------------
+Fri Apr 14 01:46:36 CEST 2006 - dmueller@suse.de
+
+- drop linguist3.png/desktop as its unused and install 
+  linguist.desktop instead (fixes build failure).
+
+-------------------------------------------------------------------
+Mon Apr 10 10:40:11 CEST 2006 - dmueller@suse.de
+
+- strip installed static libraries 
+- fix file conflict with Qt4 packages
+
+-------------------------------------------------------------------
+Mon Apr  3 16:34:14 CEST 2006 - dmueller@suse.de
+
+- restore libraryPaths which broke instsys (#162930)
+
+-------------------------------------------------------------------
+Thu Mar 30 12:49:05 CEST 2006 - coolo@suse.de
+
+- update qtrc to the real values avoiding dark gray platinum even
+  if not overwritten with desktop settings
+
+-------------------------------------------------------------------
+Tue Mar 21 14:59:49 CET 2006 - dmueller@suse.de
+
+- update patch for QLabel layout issues to the one from Qt 3.3.7 
+
+-------------------------------------------------------------------
+Fri Mar 17 18:39:04 CET 2006 - dmueller@suse.de
+
+- add patch for QLabel layout management issues (#153029) 
+
+-------------------------------------------------------------------
+Fri Mar 17 12:23:30 CET 2006 - dmueller@suse.de
+
+- fix crash on painting > 32000 chars at once
+- fix error in wrapping japanese text
+- fix QFile::flush() not setting error status
+- fix window gravity being wrong for RTL 
+
+-------------------------------------------------------------------
+Tue Mar 14 00:22:32 CET 2006 - dmueller@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Mon Mar 13 17:02:09 CET 2006 - dmueller@suse.de
+
+- build qt3-devel-doc as noarch package 
+
+-------------------------------------------------------------------
+Tue Mar  7 10:49:56 CET 2006 - dmueller@suse.de
+
+- moving libqassistantclient to -devel (#155519) and assistant
+  to qt3. 
+- translation update
+- fix assistant invocation to prefer Qt3's assistant over Qt 4.x
+
+-------------------------------------------------------------------
+Wed Feb 22 14:00:00 CET 2006 - dmueller@suse.de
+
+- fix crash when not able to load imswitch (#117443) 
+
+-------------------------------------------------------------------
+Sat Feb 18 01:15:54 CET 2006 - dmueller@suse.de
+
+- add more immodule fixes
+- fix build of qt3-extensions
+- remove sections for SL < 9.2
+ 
+-------------------------------------------------------------------
+Fri Feb 17 16:47:41 CET 2006 - dmueller@suse.de
+
+- fix crash on shutdown (#151831)
+
+-------------------------------------------------------------------
+Mon Feb 13 15:52:19 CET 2006 - coolo@suse.de
+
+- update translations
+
+-------------------------------------------------------------------
+Mon Feb  6 05:22:44 CET 2006 - zsu@suse.de
+
+- Add patch qt3-khmer-script.patch to fix a rendering issue of Khmer
+  script (by Jens Herden<jens@khmeros.info>, #147190).
+
+-------------------------------------------------------------------
+Sat Jan 28 10:48:06 CET 2006 - coolo@suse.de
+
+- really install the icon
+
+-------------------------------------------------------------------
+Fri Jan 27 20:02:59 CET 2006 - llunak@suse.cz
+
+- fix rubberband.diff to emit selectionChanged() properly (#132920)
+
+-------------------------------------------------------------------
+Fri Jan 27 12:24:41 CET 2006 - coolo@suse.de
+
+- avoid file conflict with qt package
+
+-------------------------------------------------------------------
+Fri Jan 27 08:08:10 CET 2006 - coolo@suse.de
+
+- fix qt3.sh
+
+-------------------------------------------------------------------
+Fri Jan 27 02:21:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 18:06:26 CET 2006 - dmueller@suse.de
+
+- set $QTDIR in /etc/profile.d/qt3.(c)sh 
+
+-------------------------------------------------------------------
+Sat Dec  3 14:30:43 CET 2005 - coolo@suse.de
+
+- build with -Bdirect if available
+- updating font patch
+
+-------------------------------------------------------------------
+Fri Dec  2 00:11:21 CET 2005 - dmueller@suse.de
+
+- build with -fno-strict-aliasing 
+
+-------------------------------------------------------------------
+Wed Nov 23 10:18:29 CET 2005 - dmueller@suse.de
+
+- unify spec files via a common patch/sources section
+  and adjust spec files accordingly
+- add /etc/profile.d hook to put qmake in the path (#134377)
+- drop fast-malloc patch for all packages (#134563) 
+
+-------------------------------------------------------------------
+Fri Nov 18 15:20:21 CET 2005 - stbinner@suse.de
+
+- only disable FcFontSort patch for released distributions
+
+-------------------------------------------------------------------
+Fri Nov 18 12:08:43 CET 2005 - stbinner@suse.de
+
+- disable FcFontSort patch because of immaturity
+
+-------------------------------------------------------------------
+Fri Nov 11 15:48:07 CET 2005 - dmueller@suse.de
+
+- avoid crashes after QListView::clear() 
+
+-------------------------------------------------------------------
+Wed Nov  2 15:52:04 CET 2005 - coolo@suse.de
+
+- avoid FcFontSort as it's very expensive
+
+-------------------------------------------------------------------
+Thu Oct 27 14:38:16 CEST 2005 - stbinner@suse.de
+
+- extend fix-key-release-event-with-imm.diff to fix another Immodule
+  related key release event bug (#130727)
+
+-------------------------------------------------------------------
+Wed Oct 12 19:25:52 CEST 2005 - dmueller@suse.de
+
+- update -Werror patch to catch one more case 
+
+-------------------------------------------------------------------
+Mon Oct 10 16:58:30 CEST 2005 - dmueller@suse.de
+
+- add patch to fix broken key compression (#121049) 
+
+-------------------------------------------------------------------
+Sat Oct  8 00:04:41 CEST 2005 - dmueller@suse.de
+
+- patch cleanup 
+
+-------------------------------------------------------------------
+Wed Oct  5 13:59:53 CEST 2005 - dmueller@suse.de
+
+- add 0065-fix_werror_with_gcc4.patch (#119209) 
+
+-------------------------------------------------------------------
+Wed Sep 28 16:32:43 CEST 2005 - stbinner@suse.de
+
+- removed historic "Autoreqprov:off" leftover
+
+-------------------------------------------------------------------
+Wed Sep 28 15:27:34 CEST 2005 - stbinner@suse.de
+
+- add a patch to fix capitalization of Immodule strings
+
+-------------------------------------------------------------------
+Mon Sep 26 10:57:35 CEST 2005 - coolo@suse.de
+
+- fix build on x86_64
+
+-------------------------------------------------------------------
+Mon Sep 19 12:40:22 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #117115: enable input methods in qlineedit widgets
+  only when "mode == Normal" (i.e. not when "mode == NoEcho" or
+  "mode == Password"). Using input methods while inputting
+  passwords is useless and confusing. 
+
+-------------------------------------------------------------------
+Fri Sep 16 23:06:14 CEST 2005 - schwab@suse.de
+
+- Never strip gratuitously.
+
+-------------------------------------------------------------------
+Thu Sep 15 10:57:05 CEST 2005 - stbinner@suse.de
+
+- update to version 3.3.5
+
+-------------------------------------------------------------------
+Mon Sep  5 13:04:30 CEST 2005 - coolo@suse.de
+
+- layout popup menus correctly (#113048)
+
+-------------------------------------------------------------------
+Fri Aug 19 17:04:02 CEST 2005 - llunak@suse.cz
+
+- Place dialog properly for systray icons on xinerama (#104794).
+
+-------------------------------------------------------------------
+Fri Jul 29 18:24:24 CEST 2005 - dmueller@suse.de
+
+- add Q_EXPORT visibility support
+- Fix gcc 4.0.x compiler detection for qt plugin buildkey 
+
+-------------------------------------------------------------------
+Thu Jun 23 14:37:00 CEST 2005 - mrueckert@suse.de
+
+- Applied patch from Lubos Lunak to fix drag'n'drop when the
+  visible window is not at the top of the window stack.
+
+-------------------------------------------------------------------
+Fri Jun 10 17:28:47 CEST 2005 - adrian@suse.de
+
+- Apply workaround from Simon Hausmann to avoid miscompilation with gcc4
+
+-------------------------------------------------------------------
+Tue Jun  7 16:15:54 CEST 2005 - adrian@suse.de
+
+- do not trigger -debug configure flag on -g, but use it for beta
+  distribution
+
+-------------------------------------------------------------------
+Tue May 31 10:49:30 CEST 2005 - adrian@suse.de
+
+- require freeglut-devel instead of XFree86-Mesa-devel
+
+-------------------------------------------------------------------
+Fri Apr 15 19:52:35 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #74133: check for some more glyphs for Katakana and
+  Hiragana, especially also check for all the glyphs which are
+  checked for Han_Japanese. This usually guarantees that the same
+  font is used for Katakana and Hiragana as for Japanese Kanji,
+  which is what we want.
+
+-------------------------------------------------------------------
+Fri Apr  8 15:28:36 CEST 2005 - uli@suse.de
+
+- fixed to build with GCC4 on ARM 
+
+-------------------------------------------------------------------
+Mon Apr  4 15:02:41 CEST 2005 - adrian@suse.de
+
+- apply patches from qt-copy, fixes for mouse handling in popups
+
+-------------------------------------------------------------------
+Thu Mar 24 09:57:01 CET 2005 - adrian@suse.de
+
+- update font mappings in qtrc for asian languages (#74363)
+
+-------------------------------------------------------------------
+Wed Mar 16 17:54:12 CET 2005 - adrian@suse.de
+
+- fix possible crash in qtranslator (#71968, by Lubos)
+
+-------------------------------------------------------------------
+Fri Mar  4 15:50:50 CET 2005 - adrian@suse.de
+
+- fix loading of style plugins for lib/lib64 mixed systesm (by Lubos)
+
+-------------------------------------------------------------------
+Fri Feb 25 13:26:56 CET 2005 - adrian@suse.de
+
+- fix all Exec= lines for menu entries
+
+-------------------------------------------------------------------
+Fri Feb 11 18:29:14 CET 2005 - adrian@suse.de
+
+- apply patch for rubberband selections from Andre Moreira Magalhaes
+
+-------------------------------------------------------------------
+Wed Feb  9 17:55:47 CET 2005 - adrian@suse.de
+
+- add qclipboard hack to avoid freezes from qt-copy again
+
+-------------------------------------------------------------------
+Wed Feb  2 16:35:44 CET 2005 - adrian@suse.de
+
+- fix plugin loading for the KDE integration
+
+-------------------------------------------------------------------
+Wed Jan 26 17:49:46 CET 2005 - adrian@suse.de
+
+- update to version 3.3.4
+- reenable limit size patch to keep BC
+- remove qclipboard fix, it got merged
+- remove bidi fixes, they got merged
+- remove gif handler fixes, they got merged
+- apply KDE dialog integration code from Lubos
+- revert some changes in imm code to solve a problem with missing
+  key release events
+
+-------------------------------------------------------------------
+Fri Jan 14 14:12:06 CET 2005 - adrian@suse.de
+
+- update imm patch to version from 20041203
+- disable image size patch for now, it broke printing of large images
+
+-------------------------------------------------------------------
+Wed Jan  5 13:37:00 CET 2005 - adrian@suse.de
+
+- reenable the SHM patch again
+- add qtimm patch to solve an issue with Opera
+- remove binary links from /usr/bin/, they do conflict with Qt 4
+
+-------------------------------------------------------------------
+Mon Nov 22 12:06:33 CET 2004 - ro@suse.de
+
+- "sed -i" does not work on old distributions 
+
+-------------------------------------------------------------------
+Tue Nov 16 11:04:55 CET 2004 - adrian@suse.de
+
+- package icon files for desktop entries
+
+-------------------------------------------------------------------
+Mon Nov  8 16:07:11 CET 2004 - coolo@suse.de
+
+- improve Waldo's patch to limit image dimensions
+
+-------------------------------------------------------------------
+Fri Oct 29 23:29:44 CEST 2004 - schwab@suse.de
+
+- Revert last change to png writing.
+
+-------------------------------------------------------------------
+Tue Oct 26 10:51:34 CEST 2004 - adrian@suse.de
+
+- fix from Lubos for full screen mode switching on 64bit (#46972)
+
+-------------------------------------------------------------------
+Mon Oct 25 14:26:40 CEST 2004 - schwab@suse.de
+
+- Extend last change to png writing.
+
+-------------------------------------------------------------------
+Sat Oct 23 23:23:21 CEST 2004 - schwab@suse.de
+
+- Fix endian bug in png reading.
+
+-------------------------------------------------------------------
+Thu Oct 14 18:09:56 CEST 2004 - adrian@suse.de
+
+- fix assitant zoom functionality, patch by Waldo (#45688)
+
+-------------------------------------------------------------------
+Mon Oct 11 18:11:32 CEST 2004 - adrian@suse.de
+
+- fix requires of qt3-devel for new x.org packages
+
+-------------------------------------------------------------------
+Wed Sep 29 10:27:12 CEST 2004 - adrian@suse.de
+
+- prefer MiscGlyphSymbol fonts with tics over others (#46280)
+- enable BiDi support by default
+
+-------------------------------------------------------------------
+Tue Sep 28 11:45:55 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #46216: make "On The Spot" the default input style
+  for Qt.
+
+-------------------------------------------------------------------
+Sat Sep 25 13:46:59 CEST 2004 - adrian@suse.de
+
+- prefer the .lib64.so extension on lib64 systems, but do not 
+  require it anymore
+
+-------------------------------------------------------------------
+Fri Sep 24 22:10:29 CEST 2004 - adrian@suse.de
+
+- fix load of plugins on lib64 systems. The plugins do need a
+  .lib64.so extension now 
+
+-------------------------------------------------------------------
+Wed Sep 15 17:52:55 CEST 2004 - adrian@suse.de
+
+- add two more glyphs to simplified chinese detection. (#44059)
+
+-------------------------------------------------------------------
+Tue Sep 14 13:57:01 CEST 2004 - adrian@suse.de
+
+- handle also hongkong chinese local in a correct way (#44059)
+- prefer chinese fonts via optional glyphs, but use also
+  the free ones, if no commercial font is avaible (#44059)
+
+-------------------------------------------------------------------
+Mon Sep 13 20:14:31 CEST 2004 - adrian@suse.de
+
+- hopefully solve the chinese font detection problems (#44059)
+
+-------------------------------------------------------------------
+Mon Sep 13 11:17:50 CEST 2004 - adrian@suse.de
+
+- fix build for old distributions
+- prepare qt for konsole transparency mode (via composite extension)
+
+-------------------------------------------------------------------
+Fri Sep 10 17:43:56 CEST 2004 - mfabian@suse.de
+
+- update to qt-x11-immodule-unified-qt3.3.3-20040910.diff which
+  merges the previous three patches (With help from Adrian to
+  make it build).
+
+-------------------------------------------------------------------
+Fri Sep 10 16:34:52 CEST 2004 - mfabian@suse.de
+
+- add qt-x11-immodule-unified-qt3.3.3-r123-event-inversion-20040909.diff
+  to fix the endless loop problem when using M17N-t-latin1-post
+  or M17N-vi-viqr. See also
+  http://freedesktop.org/pipermail/immodule-qt/2004-September/000447.html
+  and followups. Patch thanks to Yamaken.
+
+-------------------------------------------------------------------
+Wed Sep  8 10:13:26 CEST 2004 - adrian@suse.de
+
+- add 3.3.3 regression fixes in pre-3.3.4.diff
+- add bidi fixes from qt-copy
+- add qpixmap mitshm support from Lubos
+- update immodule patch to stable release 20040819
+- adding event inversion fix for immodule from Zhe Su
+
+-------------------------------------------------------------------
+Fri Sep  3 15:06:55 CEST 2004 - adrian@suse.de
+
+- udpate qt immodule patch to snapshot from 20040814
+
+-------------------------------------------------------------------
+Thu Aug 26 17:09:14 CEST 2004 - adrian@suse.de
+
+- disable explicit debug flags again
+
+-------------------------------------------------------------------
+Mon Aug 23 13:23:02 CEST 2004 - adrian@suse.de
+
+- apply workaround for broken focus handling cause by the xim
+  patch due to a bug in X for released distributions (by Lubos)
+
+-------------------------------------------------------------------
+Wed Aug 18 12:06:15 CEST 2004 - adrian@suse.de
+
+- enable full debug compile, if -g is in RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Aug 17 14:46:19 CEST 2004 - coolo@suse.de
+
+- install qt3 after grep
+
+-------------------------------------------------------------------
+Tue Aug 17 07:27:13 CEST 2004 - adrian@suse.de
+
+- apply patch from Waldo to be able to limit the size of loaded
+  images. Important for khtml (#43841)
+- apply fix to handle the side pixmap of the kmenu correctly (0047)
+- apply KToolBarButton fix (0051)
+
+-------------------------------------------------------------------
+Fri Aug 13 06:19:32 CEST 2004 - adrian@suse.de
+
+- fix gif handling (#43356)
+
+-------------------------------------------------------------------
+Thu Aug 12 08:23:16 CEST 2004 - adrian@suse.de
+
+- update to version 3.3.3
+- remove obsolete patches
+
+-------------------------------------------------------------------
+Tue Aug  3 16:16:53 CEST 2004 - adrian@suse.de
+
+- add patch to support scim
+
+-------------------------------------------------------------------
+Wed Jun  9 15:21:27 CEST 2004 - adrian@suse.de
+
+- update asian font mappings for commercial japanese fonts
+  (by mfabian)
+
+-------------------------------------------------------------------
+Wed Jun  2 16:17:53 CEST 2004 - adrian@suse.de
+
+- fix libGL loading in the right way, no .so link is needed anymore
+  again
+
+-------------------------------------------------------------------
+Wed May 26 16:47:34 CEST 2004 - adrian@suse.de
+
+- load libGL via .so link again (due to the different possible
+                                 setups #41118)
+- libXmu gets still loaded via hardcoded path and version
+
+-------------------------------------------------------------------
+Tue Apr 27 15:55:48 CEST 2004 - adrian@suse.de
+
+- update to version 3.3.2
+  * remove obsolete patches
+- do apply %patch16
+
+-------------------------------------------------------------------
+Fri Apr 23 09:26:44 CEST 2004 - adrian@suse.de
+
+- disable atk support for released distributions
+
+-------------------------------------------------------------------
+Thu Apr 22 11:40:17 CEST 2004 - coolo@suse.de
+
+- another try to fix wrong font caching also for japanese/chinese
+
+-------------------------------------------------------------------
+Tue Apr 20 11:34:13 CEST 2004 - coolo@suse.de
+
+- apply fix for wrong font caching (#39175)
+
+-------------------------------------------------------------------
+Fri Apr 16 11:42:30 CEST 2004 - adrian@suse.de
+
+- apply fix for opentype aliasing issues
+
+-------------------------------------------------------------------
+Tue Apr 13 10:50:22 CEST 2004 - adrian@suse.de
+
+- fix OpenGL support, if no -devel package is installed (#38857)
+- fix xcursor support
+- add current snapshot of Qt-ATK bridge patch
+  (disabled as long USE_QACCESSIBLE enviroment variable isn't set)
+
+-------------------------------------------------------------------
+Sat Apr  3 10:07:55 CEST 2004 - adrian@suse.de
+
+- apply 0043-fix_expired_cookie_crash.diff from qt-copy(by Dirk)
+  * qt based applications can crash in ssh sessions with new
+    openssh (#38185) 
+
+-------------------------------------------------------------------
+Wed Mar 31 17:47:33 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #37720:
+  add font substitutions for "SUSE*" fonts to default qtrc.
+
+-------------------------------------------------------------------
+Thu Mar 25 10:12:37 CET 2004 - coolo@suse.de
+
+- fix for richtext tags (in knotes)
+- fix for fonts with multiple scripts (#36583)
+- fix for custom resolutions
+
+-------------------------------------------------------------------
+Tue Mar 16 16:29:42 CET 2004 - adrian@suse.de
+
+- fix for command line handling (XIM in QApplication)(#35881)
+- fix double packaging of qassistant translations
+
+-------------------------------------------------------------------
+Mon Mar 15 17:55:57 CET 2004 - adrian@suse.de
+
+- define a default Font again. (Sans Serif with 10points)
+  (#36014)
+
+-------------------------------------------------------------------
+Wed Mar 10 08:44:03 CET 2004 - adrian@suse.de
+
+- fix for xcursor cache hangling (by Lubos)
+- move assistant to -devel-doc package
+
+-------------------------------------------------------------------
+Thu Mar  4 22:10:52 CET 2004 - adrian@suse.de
+
+- apply fix for not found monospaced fonts without Euro glyph
+  (Patch by Lars Knoll)
+
+-------------------------------------------------------------------
+Thu Mar  4 13:53:53 CET 2004 - adrian@suse.de
+
+- apply different bugfix and speed enhancement patches from qt-copy
+  as recommended by Lubos
+  * 0001: DnD optimisation
+  * 0002: Active Window Fix
+  * 0007: MITSHM extension support for QPixmap<>Qimage conversation
+  * 0037: dnd timestamp fix
+  * 0038: dragobject prefer fix
+
+-------------------------------------------------------------------
+Mon Mar  1 11:39:25 CET 2004 - adrian@suse.de
+
+- update to final 3.3.1 version
+- disable fast-malloc for > 9.0, nptl does work good enough
+- add qclipboard-recursion-fix from Lubos
+- further 64bit aliasing fixes
+
+-------------------------------------------------------------------
+Mon Feb 16 14:43:49 CET 2004 - adrian@suse.de
+
+- update to current snapshot (3.3.1-snapshot-20040216)
+- build opentype with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Mon Feb  9 17:02:41 CET 2004 - adrian@suse.de
+
+- fix non-latin1 QString handling
+  (patch from Roman Stepanov)
+
+-------------------------------------------------------------------
+Wed Feb  4 20:24:37 CET 2004 - adrian@suse.de
+
+- update to version 3.3.0 final
+- disable 3rdparty source and use system libraries
+
+-------------------------------------------------------------------
+Thu Jan 29 14:05:26 CET 2004 - adrian@suse.de
+
+- update to snapshot 20040129
+- use original qstring again, kprinter got fixed
+
+-------------------------------------------------------------------
+Sun Jan 25 17:53:03 CET 2004 - adrian@suse.de
+
+- update to snapshot 20040125
+- revert qstring changes
+
+-------------------------------------------------------------------
+Tue Jan 13 14:52:07 CET 2004 - adrian@suse.de
+
+- update to snapshot 20040113
+
+-------------------------------------------------------------------
+Mon Dec 29 11:48:49 CET 2003 - adrian@suse.de
+
+- update to snapshot from 20031229 to get KDE compiling again
+- remove upstream included translation files
+- cleanup stuff not anymore needed
+- do not build sqlite plugin with (broken) sqlite sources from qt 
+  tar ball anymore
+
+-------------------------------------------------------------------
+Thu Dec 11 13:10:37 CET 2003 - adrian@suse.de
+
+- update to version 3.3 beta 1
+  * solves the remaining issues with dlopen GL
+
+-------------------------------------------------------------------
+Tue Dec  9 17:20:56 CET 2003 - adrian@suse.de
+
+- add KDE plugin path for qt 3.3
+
+-------------------------------------------------------------------
+Thu Dec  4 11:25:27 CET 2003 - adrian@suse.de
+
+- update to snapshot 20031204
+- do not link against GL libs anymore, but still support GL via dlopen
+  apps and libs beside libbqt* are still linked against GL for now
+- build fix for qt3-extensions
+
+-------------------------------------------------------------------
+Tue Dec  2 17:54:34 CET 2003 - adrian@suse.de
+
+- update to current 3.3 snapshot ( 20031202 - pre beta 1)
+  * obsoletes several patches
+  * IPv6 support
+- temporary disabled PostgreSQL support
+- add SQLite support
+
+-------------------------------------------------------------------
+Fri Nov 21 11:05:33 CET 2003 - adrian@suse.de
+
+- drop not applyed font_fixes patch and add the old Xft2 fixes 
+  again, to support displays without Render extension.
+
+-------------------------------------------------------------------
+Fri Nov 14 14:30:11 CET 2003 - adrian@suse.de
+
+- update to version 3.2.3 and usual patch cleanup
+
+-------------------------------------------------------------------
+Thu Oct 23 09:52:28 CEST 2003 - adrian@suse.de
+
+- build without -mminimal-toc on ppc64
+- apply crash fix from TT for some fonts in XLFD mode
+
+-------------------------------------------------------------------
+Thu Oct 16 16:00:46 CEST 2003 - adrian@suse.de
+
+- update to version 3.2.2
+  * font fixes patch is not applied intentionaly, for testing
+    plain qt behaviour for now.
+
+-------------------------------------------------------------------
+Thu Oct  2 12:06:08 CEST 2003 - adrian@suse.de
+
+- require freeglut-devel, instead of mesaglut-devel for > 9.0
+
+-------------------------------------------------------------------
+Tue Sep 30 09:25:31 CEST 2003 - coolo@suse.de
+
+- using the right tool to compile translation files
+
+-------------------------------------------------------------------
+Thu Sep 25 13:05:03 CEST 2003 - adrian@suse.de
+
+- update fontconfig patch again, fixes multiple listing of fonts
+- do not complain anymore about not matching plugin
+
+-------------------------------------------------------------------
+Sun Sep 21 15:02:56 CEST 2003 - adrian@suse.de
+
+- prefer Nimbus fonts, instead of using asian fonts, if possible
+  (the asian fonts have some broken latin chars)
+
+-------------------------------------------------------------------
+Sun Sep 21 12:35:19 CEST 2003 - adrian@suse.de
+
+- install html docu to the same place as on 8.2, to solve
+  update problems (#31507). (install dir and symlink was 
+  swapped for unknown reason)
+
+-------------------------------------------------------------------
+Fri Sep 19 15:48:11 CEST 2003 - adrian@suse.de
+
+- memory leak fix from Lars in QTextEngine
+
+-------------------------------------------------------------------
+Thu Sep 18 16:35:05 CEST 2003 - adrian@suse.de
+
+- updated patches from Lars
+  * fixing Unicode families and foundaries issues
+  * printing issues
+- clean up unused patches
+
+-------------------------------------------------------------------
+Wed Sep 17 18:31:56 CEST 2003 - adrian@suse.de
+
+- a bit more silence .. QPixmap before QApplication warning is away
+- new asian font mappings from mfabian
+
+-------------------------------------------------------------------
+Mon Sep 15 18:02:31 CEST 2003 - adrian@suse.de
+
+- new font fixes from Lars, the default size problem should be away
+- fix build for non-Xft2 distibutions
+
+-------------------------------------------------------------------
+Thu Sep 11 22:18:01 CEST 2003 - adrian@suse.de
+
+- silence on lib64 systems with 32bit plugins installed (#30559)
+- ensure to have a [3.2] section in old qtrc files
+
+-------------------------------------------------------------------
+Mon Sep  8 16:26:49 CEST 2003 - coolo@suse.de
+
+- apply fix from TT to fix konsole + setRawName
+
+-------------------------------------------------------------------
+Thu Sep  4 12:53:19 CEST 2003 - adrian@suse.de
+
+- add always lib and lib64 kde plugin path to qtrc
+
+-------------------------------------------------------------------
+Wed Sep  3 16:55:00 CEST 2003 - adrian@suse.de
+
+- apply fix from TT: "don't generate bogus mouse move events."
+- qt3-devel requires XFree86-Mesa-devel
+
+-------------------------------------------------------------------
+Tue Sep  2 17:20:05 CEST 2003 - adrian@suse.de
+
+- add slovak translation from Stanislav Visnovsky
+- add czech translation from Klara Cihlarova
+
+-------------------------------------------------------------------
+Tue Sep  2 16:20:15 CEST 2003 - adrian@suse.de
+
+- add asian mappings from 8.2 to qtrc again
+
+-------------------------------------------------------------------
+Mon Sep  1 18:13:33 CEST 2003 - meissner@suse.de
+
+- Don't do readlink checks for set*id programs (will break
+  in TLS startup sequence of glibc), just fall back to old
+  malloc. #29530
+
+-------------------------------------------------------------------
+Mon Sep  1 12:02:00 CEST 2003 - adrian@suse.de
+
+- apply qlineedit fix from TT
+
+-------------------------------------------------------------------
+Mon Sep  1 11:30:31 CEST 2003 - adrian@suse.de
+
+- qtconfig menu entry becomes unimportant
+
+-------------------------------------------------------------------
+Sun Aug 31 22:33:44 CEST 2003 - adrian@suse.de
+
+- generate .la file again
+
+-------------------------------------------------------------------
+Fri Aug 29 15:16:43 CEST 2003 - adrian@suse.de
+
+- use newer font_fixes patch from Lars
+- enforce usage of Xft2 even on non-Xrender displays
+- revert qclipboard changes to 3.1.2 code
+
+-------------------------------------------------------------------
+Wed Aug 27 13:38:51 CEST 2003 - adrian@suse.de
+
+- use official 3.2.1 tar ball instead of 3.2.0+patch
+
+-------------------------------------------------------------------
+Tue Aug 26 08:20:07 CEST 2003 - adrian@suse.de
+
+- new _big_ fix from Lars for fixing the remaining font issues
+
+-------------------------------------------------------------------
+Sun Aug 24 16:55:24 CEST 2003 - adrian@suse.de
+
+- apply fix from Lars for the foundary font problem, when
+  using pixmap fonts via Xft2. This makes the freetype2 
+  foundary-family patch obsolete from qt view.
+
+-------------------------------------------------------------------
+Sat Aug 23 13:44:22 CEST 2003 - adrian@suse.de
+
+- apply 3.2.1 patch, until the official tar ball arrives
+
+-------------------------------------------------------------------
+Sat Aug 16 13:58:14 CEST 2003 - adrian@suse.de
+
+- justify Category of qtconfig
+
+-------------------------------------------------------------------
+Fri Aug  1 18:00:24 CEST 2003 - adrian@suse.de
+
+- add desktop file for qtconfig
+
+-------------------------------------------------------------------
+Wed Jul 23 16:20:03 CEST 2003 - adrian@suse.de
+
+- update to version 3.2.0 final
+
+-------------------------------------------------------------------
+Thu Jul 17 12:55:23 CEST 2003 - adrian@suse.de
+
+- fix .la files after build
+
+-------------------------------------------------------------------
+Tue Jul 15 08:49:39 CEST 2003 - adrian@suse.de
+
+- update to 3.2.0 beta 2
+- remove obsolete patches
+
+-------------------------------------------------------------------
+Sun Jun 15 12:19:14 CEST 2003 - coolo@suse.de
+
+- never strip explicitly
+- always build with -release to avoid debug output even with -g
+
+-------------------------------------------------------------------
+Thu Jun 12 09:07:58 CEST 2003 - coolo@suse.de
+
+- move the html docu into docdir and put the link in lib
+- package directories
+- fix directory permissions
+
+-------------------------------------------------------------------
+Fri May 30 15:04:29 CEST 2003 - adrian@suse.de
+
+- fix file conflicts
+
+-------------------------------------------------------------------
+Mon May 19 11:28:36 CEST 2003 - adrian@suse.de
+
+- revert source incompatibility to 3.1.x in qhbox constructor
+
+-------------------------------------------------------------------
+Sun May 18 14:03:31 CEST 2003 - adrian@suse.de
+
+- update to version 3.2 beta 1
+- big patch clean up
+- use largefile support api for > 8.2
+
+-------------------------------------------------------------------
+Thu Apr 10 17:01:32 CEST 2003 - coolo@suse.de
+
+- fixing long font names as returned by font-config
+
+-------------------------------------------------------------------
+Wed Mar 26 13:19:48 CET 2003 - adrian@suse.de
+
+- workaround rpm bug on 7.3-ppc
+
+-------------------------------------------------------------------
+Mon Mar 24 10:04:18 CET 2003 - adrian@suse.de
+
+- fix build on SuSE < 8.1
+
+-------------------------------------------------------------------
+Fri Mar 21 14:59:11 CET 2003 - adrian@suse.de
+
+- update to version 3.1.2 and remove obsolete patches
+
+-------------------------------------------------------------------
+Tue Mar 11 20:33:03 CET 2003 - coolo@suse.de
+
+- fixing the fix
+
+-------------------------------------------------------------------
+Tue Mar 11 13:35:31 CET 2003 - coolo@suse.de
+
+- applied patch by TT to fix kmail folder selection
+  (#24519 - also known as kde bug #48888)
+
+-------------------------------------------------------------------
+Fri Mar  7 21:16:17 CET 2003 - adrian@suse.de
+
+- do not use XListFonts, if X server supports Xft on >8.1 (Xft2)
+
+-------------------------------------------------------------------
+Fri Feb 28 00:25:14 CET 2003 - adrian@suse.de
+
+- fast malloc is back
+  (still 20% with glibc 2.3 without spinlock'ed-malloc)
+- extend blacklist
+- use fast malloc also on hammer
+
+-------------------------------------------------------------------
+Wed Feb 26 11:43:08 CET 2003 - adrian@suse.de
+
+- add [3.1] plugin path
+- add fix for mouse cursor bug over ssh
+
+-------------------------------------------------------------------
+Mon Feb 24 11:56:07 CET 2003 - adrian@suse.de
+
+- use correct kde plugin path on lib64 systems
+
+-------------------------------------------------------------------
+Mon Feb  3 11:39:24 CET 2003 - adrian@suse.de
+
+- fix missing symbols in libqt*
+
+-------------------------------------------------------------------
+Thu Jan 30 16:19:31 CET 2003 - adrian@suse.de
+
+- fix %pre script
+
+-------------------------------------------------------------------
+Sun Jan 26 14:05:56 CET 2003 - adrian@suse.de
+
+- prefix=/usr/lib/qt3
+  (third party apps installing translations into $QTDIR now)
+- modify qdesktopwidget resize patch to be BC with Qt 3.2
+- comment out non-official api extensions
+- remove private headers tar ball again
+  (qsa beta2 contains them)
+- fix qtrc enviroment patch
+- hardcode qt settings dir to /etc/X11 (no need for $QTDIR/etc/settings anymore)
+- enable all designer plugins
+
+-------------------------------------------------------------------
+Thu Jan 23 18:36:05 CET 2003 - adrian@suse.de
+
+- add xrandr extension from Qt 3.2
+- add resize event to qdesktopwidget (patch from Lubos)
+- compile codecs as plugins
+
+-------------------------------------------------------------------
+Tue Jan 21 12:52:33 CET 2003 - adrian@suse.de
+
+- use fast malloc only on %ix86
+
+-------------------------------------------------------------------
+Thu Jan 16 15:58:23 CET 2003 - adrian@suse.de
+
+- include qt default translations
+
+-------------------------------------------------------------------
+Fri Jan 10 15:12:46 CET 2003 - adrian@suse.de
+
+- hppa is parisc
+
+-------------------------------------------------------------------
+Thu Jan  9 14:44:06 CET 2003 - adrian@suse.de
+
+- fix some more qmake.conf entries
+  (esp. pathes to lib64 directories and flags based on $RPM_OPT_FLAGS)
+
+-------------------------------------------------------------------
+Tue Jan  7 16:42:59 CET 2003 - adrian@suse.de
+
+- use -ffunction-sections on hppa
+
+-------------------------------------------------------------------
+Thu Jan  2 13:07:01 CET 2003 - adrian@suse.de
+
+- fix build ( patch -p1 -> -p0 )
+
+-------------------------------------------------------------------
+Fri Dec 27 17:50:17 CET 2002 - adrian@suse.de
+
+- several small changes/fixes/workarounds to be able to compile qsa
+  (they will be changed in 3.1.2)
+
+-------------------------------------------------------------------
+Tue Dec 17 12:40:16 CET 2002 - adrian@suse.de
+
+- update to version 3.1.1 and cleanup patches
+- apply Xft speed-up patch from dfaure
+
+-------------------------------------------------------------------
+Wed Dec  4 15:10:17 CET 2002 - adrian@suse.de
+
+- drop fast-malloc, not needed since glibc 2.3
+
+-------------------------------------------------------------------
+Thu Nov 28 18:33:28 CET 2002 - adrian@suse.de
+
+- add qprinter fix from Lars
+
+-------------------------------------------------------------------
+Wed Nov 27 00:44:44 CET 2002 - ro@suse.de
+
+- added expat to neededforbuild
+
+-------------------------------------------------------------------
+Sat Nov 23 14:12:16 CET 2002 - adrian@suse.de
+
+- use Xft2 from XFree package now for > SuSE 8.1
+  (experimental fontconfig package is dropped)
+- build qt3-non-mt with extra spec file now
+- fix korean [Font Substitutions] (#19575)
+- fix broken qmake debug defaults (#21891)
+- fix requires of database plugin packages
+
+-------------------------------------------------------------------
+Fri Nov 15 10:33:53 CET 2002 - adrian@suse.de
+
+- update to 3.1.0 final version
+- apply qwidget/hideChildren patch from Harri
+- move libqui into qt3 main package
+
+-------------------------------------------------------------------
+Tue Nov  5 20:00:37 CET 2002 - adrian@suse.de
+
+- package also missing mkspecs/*
+
+-------------------------------------------------------------------
+Sun Nov  3 12:54:52 CET 2002 - adrian@suse.de
+
+- update to post 3.1 beta 2 snapshot (rc1 or rc2 ?)
+- big rework of spec file, lots of workarounds are not needed anymore :)
+- use experimental fontconfig/Xft2 package for > 8.1
+- enable nis & cups support
+
+-------------------------------------------------------------------
+Mon Oct 21 18:25:53 CEST 2002 - adrian@suse.de
+
+- swab %ifarch <> %if for old broken rpm's
+
+-------------------------------------------------------------------
+Mon Oct 21 13:44:15 CEST 2002 - adrian@suse.de
+
+- remove rpath again, which came back with 3.0.5 update (#20929)
+- disable qDebug lines in chinese patch (#20959)
+
+-------------------------------------------------------------------
+Wed Oct  9 11:47:44 CEST 2002 - adrian@suse.de
+
+- implement a blacklist of executables which should not use
+  the fast malloc implementation. (python and perl atm)
+- disable fast-malloc for >8.1
+- enable fast-malloc for x86_64
+
+-------------------------------------------------------------------
+Fri Sep 20 11:24:51 CEST 2002 - adrian@suse.de
+
+- qclipboard fix from Lubos. Copy from old X applications works again
+
+-------------------------------------------------------------------
+Mon Sep 16 12:07:53 CEST 2002 - adrian@suse.de
+
+- replace qt3-gb18030.diff patch with the new patch from 
+  James Su<suzhe@turbolinux.com.cn> for chinese handling (#19399)
+- set XIMInputStyle for japanese input (#19387)
+- change Requires: from /usr/include/png.h to libpng-devel, since
+  connectivas apt can not handle this.
+
+-------------------------------------------------------------------
+Fri Aug 30 14:13:34 CEST 2002 - adrian@suse.de
+
+- remove the dlopen patch again. It is not needed anymore and may
+  cause crashes in rare cases.
+
+-------------------------------------------------------------------
+Wed Aug 28 15:26:02 CEST 2002 - adrian@suse.de
+
+- apply fix from Lubos for DND in kcontrol
+- apply fix to fix gb18030 encoding (from Turbolinux China)
+
+-------------------------------------------------------------------
+Mon Aug 26 16:25:40 CEST 2002 - adrian@suse.de
+
+- do not use -plugindir configure option anymore. it caused the 
+  broken plugin support and remov $QTDIR/plugins again from qtrc
+  qtrc is also a (noreplace) config file again
+- s,getenv,__secure_getenv, as suggested by okir in plugin_path.dif
+
+-------------------------------------------------------------------
+Thu Aug 22 18:33:55 CEST 2002 - adrian@suse.de
+
+- add patch to set the qt settings dir to a non-default dir
+- add patches from qt 3.0.6 to fix asian copy&paste problems
+- set explicit plugin pathes in qtrc and replace them during update
+  (this is only a workaround until I know why qt does not use the
+   compiled path)
+
+-------------------------------------------------------------------
+Thu Aug 22 14:53:57 CEST 2002 - adrian@suse.de
+
+- remove dangeling symlink in /usr/lib/qt3/mkspecs/linux-g++
+- add plugin path to global qtrc
+
+-------------------------------------------------------------------
+Tue Aug 20 13:24:25 CEST 2002 - adrian@suse.de
+
+- fix #defines
+
+-------------------------------------------------------------------
+Tue Aug 20 00:24:37 CEST 2002 - adrian@suse.de
+
+- redo the plugin path patch again, we use now a implicit
+  subdirectory like "lib64", if needed.
+- qtconfig is patched to hide/not write back those entries
+
+-------------------------------------------------------------------
+Fri Aug 16 14:00:33 CEST 2002 - coolo@suse.de
+
+- fixing the patches
+
+-------------------------------------------------------------------
+Fri Aug 16 13:18:21 CEST 2002 - coolo@suse.de
+
+- applying the plugin path patches, so they actually do something
+  on lib64 platforms
+
+-------------------------------------------------------------------
+Fri Aug  9 17:35:58 CEST 2002 - adrian@suse.de
+
+- fix plugin installation
+
+-------------------------------------------------------------------
+Thu Aug  8 10:00:46 CEST 2002 - adrian@suse.de
+
+- use %suse_version macro instead of /etc/SuSE-release
+
+-------------------------------------------------------------------
+Fri Aug  2 14:41:33 CEST 2002 - coolo@suse.de
+
+- shut up if passed -noxim is passed and xim doesn't work
+
+-------------------------------------------------------------------
+Tue Jul 30 14:43:32 CEST 2002 - adrian@suse.de
+
+- disable pre-3.0.6 patches again, until focus problem is located
+- add zlib-devel to Requires for qt3-devel and SuSE 8.1
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jul 29 17:31:37 CEST 2002 - adrian@suse.de
+
+- apply shut-up.dif
+- clean up neededforbuild
+
+-------------------------------------------------------------------
+Fri Jul 26 16:33:25 CEST 2002 - adrian@suse.de
+
+- port Lea's fast malloc implementation to libqt-mt
+- designer sig11 fixes are not needed anymore
+- use some patches from qt-rsync
+
+-------------------------------------------------------------------
+Fri Jul 19 13:07:05 CEST 2002 - adrian@suse.de
+
+- fix designer sig11 really
+- kick warnings about unsuccesfull locks for non-root users
+
+-------------------------------------------------------------------
+Thu Jul 18 18:00:13 CEST 2002 - adrian@suse.de
+
+- don't strip when in debug mode
+- fix typo in build script
+
+-------------------------------------------------------------------
+Wed Jul 17 09:59:28 CEST 2002 - adrian@suse.de
+
+- update to 3.0.5 final
+  * lots of bugfixes, see changes-3.0.5 for details
+  * new, binary incompatible plugin system
+- fix sig11 in designer
+- clean spec file, drop all not applied patches
+
+-------------------------------------------------------------------
+Thu Jul 11 10:42:14 CEST 2002 - coolo@suse.de
+
+- reenable work around for transparenent images while printing
+  (PR16188)
+
+-------------------------------------------------------------------
+Wed Jul 10 17:51:47 CEST 2002 - adrian@suse.de
+
+- update to near 3.0.5-final snapshot 3.0.5-snapshot-20020710
+
+-------------------------------------------------------------------
+Fri Jul  5 14:16:16 CEST 2002 - adrian@suse.de
+
+- fix -g detection during build
+
+-------------------------------------------------------------------
+Fri Jun 21 00:21:28 CEST 2002 - adrian@suse.de
+
+- fix use of $RPM_OPT_FLAGS (broken since 3.0.4 update)
+- use -mminimal-toc on ppc64 to workaround compiler bug atm
+- update to pre-3.0.5 snapshot-20020620
+  * use buildkey for plugins instead of our own plugin hack
+  * lots of fixes (exact description in changes-3.0.5)
+- add lib64 to build key, if needed
+- remove obsolete patches
+
+-------------------------------------------------------------------
+Thu Jun  6 13:41:19 CEST 2002 - adrian@suse.de
+
+- rework plugin path patch for distributions > 8.0
+  change name of "plugins" directory instead of filenames
+  * plugins              -- lib32 and multithreaded plugins
+  * plugins-non-mt       -- lib32 and without multithread support
+  * plugins-lib64        -- lib64 and multithreaded plugins
+  * plugins-lib64-non-mt -- lib64 and without multithread support
+
+-------------------------------------------------------------------
+Thu May 30 20:03:50 CEST 2002 - adrian@suse.de
+
+- disable style-plugins again (too much qt apps have problems)
+- disable Xft/Xrender support also for SuSE 7.3 (XFree 4.1.0)
+  (no one reads READMES and too many people had crashes)
+
+-------------------------------------------------------------------
+Tue May 28 10:58:01 CEST 2002 - adrian@suse.de
+
+- fix %files
+
+-------------------------------------------------------------------
+Mon May 27 13:37:15 CEST 2002 - adrian@suse.de
+
+- move qconfig, qmake to qt3-devel-tools
+- build styles as plugin (except our default style: Platinum)
+
+-------------------------------------------------------------------
+Mon May 27 00:10:23 CEST 2002 - ro@suse.de
+
+- lib64: fix qtmake.conf: QTLIBDIR also has the trailing "64" 
+- fix build-script for lib64 issues
+
+-------------------------------------------------------------------
+Mon May 20 23:26:35 CEST 2002 - adrian@suse.de
+
+- fix build (disable odbc during qt3.spec build)
+
+-------------------------------------------------------------------
+Mon May 20 10:13:55 CEST 2002 - adrian@suse.de
+
+- enable -tablet support if XFree86 provides it
+- compile with -debug mode, if -g is set in enviroment
+- fix postgres plugin build
+- enable unixODBC support for newer distributions
+- split sql drivers to extra packages
+- fix dlopen call
+
+-------------------------------------------------------------------
+Tue May 14 12:39:51 CEST 2002 - adrian@suse.de
+
+- fix lib64 patch to find OpenGL libs
+
+-------------------------------------------------------------------
+Thu May  9 21:54:41 CEST 2002 - adrian@suse.de
+
+- apply fix for NetAccess focus, insertTitle(), QTextEdit and
+  QToolbar from qt-copy
+
+-------------------------------------------------------------------
+Wed May  8 09:39:48 CEST 2002 - coolo@suse.de
+
+- fixing patch section (grr)
+
+-------------------------------------------------------------------
+Tue May  7 17:13:41 CEST 2002 - coolo@suse.de
+
+- adding fix for x86_64
+
+-------------------------------------------------------------------
+Tue May  7 14:32:39 MEST 2002 - coolo@suse.de
+
+- update to qt 3.0.4 - remove fixes that do
+  not apply any longer
+- disable asian patches as they do not apply 
+  and I don't want to split them as I have no
+  idea if the problems they try to fix are still
+  there
+
+-------------------------------------------------------------------
+Wed Apr 24 16:09:09 CEST 2002 - coolo@suse.de
+
+- fix lib64 support
+- fix asian patch not to use arrays in unused arrays
+  (triggers compiler problem) 
+
+-------------------------------------------------------------------
+Sun Apr 21 12:58:33 CEST 2002 - adrian@suse.de
+
+- improve image rendering speed (patch by Lubos)
+
+-------------------------------------------------------------------
+Tue Apr  9 16:21:07 CEST 2002 - adrian@suse.de
+
+- apply patch from Lubos to fix alpha channel in QMovie
+
+-------------------------------------------------------------------
+Fri Apr  5 15:29:03 CEST 2002 - adrian@suse.de
+
+- fixed print support in qpsprint
+- binary compatibility fixes by Lars for gbk encoding
+
+-------------------------------------------------------------------
+Wed Apr  3 21:33:26 CEST 2002 - adrian@suse.de
+
+- apply fixes/extensions for asian/utf-8-based languages
+  (assembled by Lars and Brad, thank you, verifed by mfabian)
+- 64bit fixes from Andreas Schwab (const char*) null pointer casts
+
+-------------------------------------------------------------------
+Sun Mar 24 13:23:18 CET 2002 - adrian@suse.de
+
+- apply qtabbar fix. Fixes crashes with kcm modules.
+
+-------------------------------------------------------------------
+Fri Mar 22 10:33:58 CET 2002 - adrian@suse.de
+
+- apply fix for sig11 in QCommonStyle (made by Waldo/Trolltech)
+- apply fix to use libpng instead of libmng to load pngs (by coolo)
+- add missing Requires for qt3-devel
+
+-------------------------------------------------------------------
+Wed Mar 20 22:47:59 CET 2002 - adrian@suse.de
+
+- verify 3.0.3 final version
+- add check for null pointer returned by libXft
+  (fix sig11 when no Xft fonts are configured)
+- fix scrollbar behaviour for QT Platinum style 
+  (we are X Windows compatible instead of MS Windows)
+
+-------------------------------------------------------------------
+Tue Mar 19 10:36:42 CET 2002 - adrian@suse.de
+
+- update to version 3.0.3
+  (rc6 tar ball from troll, I have to check after the qt-3.0.3 release,
+   if this is really qt-3.0.3 final)
+
+-------------------------------------------------------------------
+Tue Mar 12 20:01:34 CET 2002 - adrian@suse.de
+
+- update to pre 3.0.3 snapshot (3.0.2.20020312)
+  
+-------------------------------------------------------------------
+Mon Mar  4 09:44:37 CET 2002 - adrian@suse.de
+
+- more fixes
+  * fix auto-resizing with QMovie
+  * fix to correctly open submenues in right to left layout
+  * reduce number of mallocs by sharing QColorGroup
+  * Simplified static cleanup handlers.
+  * smarter tooltip placement
+- require "c++_compiler" for distributions newer than 7.3 only
+
+-------------------------------------------------------------------
+Sun Mar  3 02:31:31 CET 2002 - adrian@suse.de
+
+- apply some fixes from qt-copy
+  * 8 bit color depth image format fixes
+  * spinbox flicker fix
+  * qrichtext dangeling pointers fix
+  * qmenubar right to left layout mode cursor navigation fix
+  * qcombobox avoid emitting highlighted twice on keyPressEvent
+
+-------------------------------------------------------------------
+Mon Feb 25 17:34:15 CET 2002 - adrian@suse.de
+
+- update to version 3.0.2
+- remove compile fixes
+- fix symlink for qtconfig
+
+-------------------------------------------------------------------
+Thu Feb 14 01:05:14 CET 2002 - adrian@suse.de
+
+- fix Requires for qt3-devel (add g++ compiler)
+
+-------------------------------------------------------------------
+Tue Feb 12 01:01:31 CET 2002 - adrian@suse.de
+
+- fix build for lib64/s390x
+
+-------------------------------------------------------------------
+Wed Feb  6 21:08:43 CET 2002 - adrian@suse.de
+
+- add links in /usr/bin for qtconfig
+
+-------------------------------------------------------------------
+Sun Feb  3 14:57:30 CET 2002 - adrian@suse.de
+
+- fix dumb-packager-bug (s,%fi,%endif,)
+
+-------------------------------------------------------------------
+Sun Feb  3 12:23:35 CET 2002 - adrian@suse.de
+
+- compile fix for postrgres module
+- extend plugin patch to work on s390x and sparc64 to work with 
+  lib64 plugins
+- add %{_libdir}/qt3 symlink for s390x and sparc64
+
+-------------------------------------------------------------------
+Sat Feb  2 13:00:38 CET 2002 - ro@suse.de
+
+- cleaned changes file 
+
+-------------------------------------------------------------------
+Fri Feb  1 15:29:58 CET 2002 - adrian@suse.de
+
+- update to current qt-copy snapshot (needed for KDE 3.0 beta 2)
+- make threaded plugins as usual again
+- non-threaded plugins needs now the not compatible -non-mt.so
+  suffix
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Tue Jan 29 16:29:15 CET 2002 - adrian@suse.de
+
+- enable AA for SuSE > 7.3
+
+-------------------------------------------------------------------
+Tue Jan 29 10:58:57 CET 2002 - schwab@suse.de
+
+- Fix use of varargs on 64 bit platforms.
+
+-------------------------------------------------------------------
+Wed Jan 23 22:56:28 CET 2002 - adrian@suse.de
+
+- patch plugin loader to load only plugins with -mt.so 
+  extension
+- link direct against libpng
+- move qt3.conf file to susehelp
+- TODO: make plugin loader path depending on %_libdir
+
+-------------------------------------------------------------------
+Tue Jan 22 21:47:19 CET 2002 - adrian@suse.de
+
+- enable Xrender/Xft again for SuSE 7.3
+  (I was misleaded by a broken libXft :/ )
+- using qt plugin mechanism for picture format support
+- enable XRender by default, but leave Xft disabled by default
+  (kcontrol can switch Xft on for KDE applications now)
+- add additional include path for postgres 7.2b5
+
+-------------------------------------------------------------------
+Mon Jan 21 16:58:53 CET 2002 - adrian@suse.de
+
+- disable Xft for all distributions until 7.3
+  (XFree 4.2 is needed)
+- sync QClipboard fix from qt-copy
+
+-------------------------------------------------------------------
+Tue Jan  8 16:11:14 CET 2002 - adrian@suse.de
+
+- fix Requires
+- disable rpath
+
+-------------------------------------------------------------------
+Sun Jan  6 00:31:11 CET 2002 - adrian@suse.de
+
+- split non multithreaded librarys into qt3-non-mt package
+- split developer tutorial into qt3-tutorial package
+- use common config script to prepare build
+- move libs to /usr/lib/qt3/%{_libdir}
+- remove .prl files from file list again
+
+-------------------------------------------------------------------
+Thu Jan  3 16:48:59 CET 2002 - adrian@suse.de
+
+- rename qt3-designer subpackage to qt3-devel-tools
+- add default qtrc file
+  * disable Xft support by default
+  * use Platinum style
+  * set qt plugin path
+- move qtconfig to qt base package
+- apply fixes from qt-copy/KDE-cvs
+
+-------------------------------------------------------------------
+Thu Dec 13 10:42:07 CET 2001 - adrian@suse.de
+
+- use $RPM_OPT_FLAGS during compile
+- add missing .prl files to file list
+
+-------------------------------------------------------------------
+Wed Dec 12 16:39:16 CET 2001 - adrian@suse.de
+
+- update to version 3.0.1
+- build all extra tools
+- fix default mkspec symlink
+- include examples to devel-doc package
+
+-------------------------------------------------------------------
+Thu Nov  8 18:39:52 CET 2001 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Tue Oct 16 11:13:50 CEST 2001 - adrian@suse.de
+
+- fix hardcoded install dir in libqt
+  (no $QTDIR is needed at runtime anymore)
+
+-------------------------------------------------------------------
+Mon Oct 15 18:16:49 CEST 2001 - adrian@suse.de
+
+- update to QT 3.0.0 final
+  (the KDE 3 battle begins :)
+
+-------------------------------------------------------------------
+Fri Oct  5 10:50:24 CEST 2001 - adrian@suse.de
+
+- add missing header files
+- cleanup workarounds in spec file and add some new (but less ;)
+
+-------------------------------------------------------------------
+Mon Oct  1 16:35:56 CEST 2001 - adrian@suse.de
+
+- update to beta6
+
+-------------------------------------------------------------------
+Tue Sep 18 08:54:02 CEST 2001 - adrian@suse.de
+
+- update to beta5
+
+-------------------------------------------------------------------
+Wed Sep  5 12:17:19 CEST 2001 - adrian@suse.de
+
+- okay, my last try ... cp -f has different return values on the
+  distributions :(
+
+-------------------------------------------------------------------
+Tue Sep  4 10:18:20 CEST 2001 - adrian@suse.de
+
+- disable postgres support for old distributions
+  (now it also builds with SuSE 6.4)
+
+-------------------------------------------------------------------
+Mon Sep  3 15:42:48 CEST 2001 - adrian@suse.de
+
+- fix broken links in include path
+
+-------------------------------------------------------------------
+Sun Sep  2 19:47:01 CEST 2001 - adrian@suse.de
+
+- workaround bugs in Makefile to install all needed files
+- remove -j4 behind make
+
+-------------------------------------------------------------------
+Tue Jun 19 15:26:54 CEST 2001 - adrian@suse.de
+
+- split documentation from qt3-devel to qt3-doc
+
+-------------------------------------------------------------------
+Fri May 25 11:57:34 CEST 2001 - adrian@suse.de
+
+- first try with QT 3.0.0 beta 1
+  ( this package is far away from being perfect ) 
+
+-------------------------------------------------------------------
+Sun May  6 10:52:33 CEST 2001 - adrian@suse.de
+
+- apply XftGlyph fix for qfont_x11.cpp from Keith Packard
+- fix build for distributions before 7.1
+
+-------------------------------------------------------------------
+Fri May  4 11:39:55 CEST 2001 - adrian@suse.de
+
+- add fix for buffer overflow on qfont_x11 and some minor glitches
+  in qt-png
+- qt-experimental is dropped, since we can enable AA in qt now.
+
+-------------------------------------------------------------------
+Fri Apr 27 15:29:17 CEST 2001 - adrian@suse.de
+
+- switch BuildIndex for SuSEhelp to false by default
+
+-------------------------------------------------------------------
+Mon Apr 23 22:22:19 CEST 2001 - adrian@suse.de
+
+- using -DNO_DEBUG
+- apply latin9 patch from mls@suse.de
+
+-------------------------------------------------------------------
+Wed Apr  4 22:48:01 CEST 2001 - mfabian@suse.de
+
+- add /etc/qt.fontguess (config file for Japanese and Korean
+  fonts)
+
+-------------------------------------------------------------------
+Wed Mar 21 17:43:49 CET 2001 - adrian@suse.de
+
+- disable AA by default (still to many problems)
+
+-------------------------------------------------------------------
+Sun Mar 18 09:46:50 CET 2001 - adrian@suse.de
+
+- reenable qt-experimental for SuSE distribution < 7.2
+  disable opengl module for these distris in this package
+
+-------------------------------------------------------------------
+Sat Mar 17 14:43:11 CET 2001 - adrian@suse.de
+
+- update to QT 2.3.0
+  this makes qt-experimental obsolete
+  (maybe still some problems with the nvidia driver, but the nv
+   should work fine and the users are warned about nvidia since
+   SuSE 7.1)
+
+-------------------------------------------------------------------
+Sun Mar 11 20:20:41 CET 2001 - mfabian@suse.de
+
+- fix spec-file to make it build with "rpm -ba" 
+
+-------------------------------------------------------------------
+Fri Feb  9 19:55:09 CET 2001 - adrian@suse.de
+
+- use $RPM_OPT_FLAGS
+  drop signed char patch
+
+-------------------------------------------------------------------
+Sat Feb  3 14:12:01 CET 2001 - adrian@suse.de
+
+- update to QT 2.2.4
+  qt-static is an own package and no sub packages anymore
+  fix/patch for qprintdialog is no longer needed
+  add fix from Andreas Schwab for 64bit platforms
+
+-------------------------------------------------------------------
+Fri Jan 19 11:33:07 CET 2001 - adrian@suse.de
+
+- swap link and directory of html documentation. This makes
+  trouble during update from older distributions
+
+-------------------------------------------------------------------
+Sat Jan 13 21:18:58 CET 2001 - adrian@suse.de
+
+- remove not necessary susehelp/htdig conf file
+  remove file conflicts between qt-devel and qt-experimental
+
+-------------------------------------------------------------------
+Thu Jan  4 21:37:49 CET 2001 - adrian@suse.de
+
+- added qt-experimental,qt-japanese,qt-korean to Obsoletes:
+
+-------------------------------------------------------------------
+Wed Jan  3 02:24:50 CET 2001 - adrian@suse.de
+
+- fix qprintdialog
+  fix qrichtext (Thanks Stefan)
+
+-------------------------------------------------------------------
+Wed Jan  3 02:24:15 CET 2001 - adrian@suse.de
+
+- fix qprintdialog
+
+-------------------------------------------------------------------
+Mon Jan  1 17:18:43 CET 2001 - adrian@suse.de
+
+- spec file fix
+
+-------------------------------------------------------------------
+Sun Dec 31 13:18:17 CET 2000 - adrian@suse.de
+
+- added small tools to qt-devel (thanks Dirk)
+
+-------------------------------------------------------------------
+Fri Dec 22 20:46:34 CET 2000 - adrian@suse.de
+
+- remove asian patches from qt-experimental
+
+-------------------------------------------------------------------
+Wed Dec 20 18:51:44 CET 2000 - adrian@suse.de
+
+- fixe type in package name
+
+-------------------------------------------------------------------
+Wed Dec 20 18:44:44 CET 2000 - adrian@suse.de
+
+- move docu from qtlib2 to qt
+
+-------------------------------------------------------------------
+Sat Dec 16 17:02:47 CET 2000 - adrian@suse.de
+
+- initial package. support for font anti aliasing has been added
+  Also OpenGL module is active
+
+-------------------------------------------------------------------
+Thu Dec 14 11:51:41 CET 2000 - adrian@suse.de
+
+- update to 2.2.3 and remove all the unneeded fix patches.
+  added SuSE help conf files to qt-devel
+
+-------------------------------------------------------------------
+Tue Dec 12 15:32:01 CET 2000 - schwab@suse.de
+
+- Build with -O0 on ia64.
+
+-------------------------------------------------------------------
+Fri Dec  1 00:29:50 CET 2000 - adrian@suse.de
+
+- added rpath for uic/kdelibs and fixed uic fix ..
+  to drunk to drink more
+
+-------------------------------------------------------------------
+Thu Nov 30 11:31:36 CET 2000 - adrian@suse.de
+
+- fixed dif
+
+-------------------------------------------------------------------
+Thu Nov 30 00:33:26 CET 2000 - adrian@suse.de
+
+- added fix for uic and qiconview 
+
+-------------------------------------------------------------------
+Wed Nov 29 11:33:51 CET 2000 - adrian@suse.de
+
+- fixed build on ppc
+
+-------------------------------------------------------------------
+Tue Nov 21 09:31:40 CET 2000 - ro@suse.de
+
+- spec fix 
+
+-------------------------------------------------------------------
+Fri Nov 17 14:57:54 CET 2000 - ro@suse.de
+
+- fixed neededforbuild: += libmng-devel 
+
+-------------------------------------------------------------------
+Mon Nov 13 21:40:29 CET 2000 - adrian@suse.de
+
+- new version 2.2.2
+  added qpngio fix from waldo
+
+-------------------------------------------------------------------
+Fri Nov 10 00:57:39 CET 2000 - adrian@suse.de
+
+- fixed static config for <6.4 distris (no libmng)
+
+-------------------------------------------------------------------
+Tue Oct 31 13:45:29 CET 2000 - adrian@suse.de
+
+- split the qt package in
+  qt
+  qt-devel
+  qt-extensions
+  qt-man
+  qt-static
+
+  Added an ugly patch to get an uic with KDE support. The designer
+  is broken in this package after this patch, so it is not packaged.
+  The designer can be found in the qt-designer package
+
+-------------------------------------------------------------------
+Tue Oct 17 09:59:23 MEST 2000 - adrian@suse.de
+
+- switch to -O0 for ppc
+
+-------------------------------------------------------------------
+Sat Oct 14 09:51:19 CEST 2000 - adrian@suse.de
+
+- drop OpenGL support. Problems with Nvidia's binary only driver
+
+- added fix from waldo (fixing memory leak in qpngio)
+
+-------------------------------------------------------------------
+Mon Oct  9 16:00:44 CEST 2000 - adrian@suse.de
+
+- update the tar archiv (which contains a corrected classes.html file)
+
+-------------------------------------------------------------------
+Fri Oct  6 12:46:48 CEST 2000 - adrian@suse.de
+
+- update to 2.2.1
+  added static libs for libqt and libqt-mt
+  added support for libmng
+
+-------------------------------------------------------------------
+Mon Oct  2 10:56:03 CEST 2000 - adrian@suse.de
+
+- added missing header files
+
+-------------------------------------------------------------------
+Tue Sep 19 16:03:56 MEST 2000 - adrian@suse.de
+
+- switch to -O0 for axp
+
+-------------------------------------------------------------------
+Fri Sep  8 17:09:15 CEST 2000 - schwab@suse.de
+
+- Update ia64 configuration.
+
+-------------------------------------------------------------------
+Fri Sep  8 15:36:30 CEST 2000 - adrian@suse.de
+
+- added missing libqt-mt.so
+  clean up in filelist
+  changed copyright/license to GPL
+
+-------------------------------------------------------------------
+Thu Sep  7 22:35:05 CEST 2000 - adrian@suse.de
+
+- update to qt 2.2.0 final
+
+-------------------------------------------------------------------
+Tue Aug 22 19:56:07 CEST 2000 - adrian@suse.de
+
+- removed uic/moc bindings to libGL and other
+
+-------------------------------------------------------------------
+Fri Aug 18 20:33:25 CEST 2000 - adrian@suse.de
+
+- update to qt 2.2.0 beta 2
+  spec file rewritten
+
+-------------------------------------------------------------------
+Tue Jul  4 15:11:10 CEST 2000 - adrian@suse.de
+
+- moved links from /usr/lib/qt/lib to /usr/lib/
+
+-------------------------------------------------------------------
+Thu Jun 22 15:59:04 CEST 2000 - adrian@suse.de
+
+- add libqt.so.2 links in /usr/lib/qt/lib
+
+-------------------------------------------------------------------
+Fri Jun 16 16:26:31 CEST 2000 - adrian@suse.de
+
+- moved libqt.so back to qtlib2, after religios war.
+
+-------------------------------------------------------------------
+Fri Jun 16 12:26:33 CEST 2000 - adrian@suse.de
+
+- enable gif support again
+
+-------------------------------------------------------------------
+Fri Jun 16 09:18:31 CEST 2000 - adrian@suse.de
+
+- moved static libs to qtdevel2
+
+-------------------------------------------------------------------
+Tue Jun  6 14:06:10 CEST 2000 - schwab@suse.de
+
+- Reduce opt level on ia64.
+
+-------------------------------------------------------------------
+Tue Jun  6 01:06:59 CEST 2000 - adrian@suse.de
+
+- fixed dependencies
+
+-------------------------------------------------------------------
+Tue May 30 23:02:56 CEST 2000 - adrian@suse.de
+
+- readded mesadev in neededforbuild
+
+-------------------------------------------------------------------
+Tue May 30 15:30:16 CEST 2000 - adrian@suse.de
+
+- update to 2.1.1
+
+-------------------------------------------------------------------
+Wed May 24 13:06:43 CEST 2000 - adrian@suse.de
+
+- added mesadev in neededforbuild
+  removed gif support (license issue)
+
+-------------------------------------------------------------------
+Tue May 16 21:44:53 CEST 2000 - adrian@suse.de
+
+- added -fno-exception (smaller binaries)
+
+-------------------------------------------------------------------
+Fri May 12 08:55:01 CEST 2000 - adrian@suse.de
+
+- fixed link  /usr/doc/packages/html
+  using %{_defaultdocdir}
+  using %{_mandir}
+
+-------------------------------------------------------------------
+Fri Apr 14 15:14:19 CEST 2000 - adrian@suse.de
+
+- update to 2.1.0 final
+  new package for all man pages
+
+-------------------------------------------------------------------
+Thu Apr  6 19:16:55 CEST 2000 - adrian@suse.de
+
+- update to 2.1.0 beta 4
+
+-------------------------------------------------------------------
+Thu Mar 30 15:57:33 CEST 2000 - adrian@suse.de
+
+- update to qtlib 2.1.0 beta 3
+  the destination directory is not longer /usr/lib/qt !!!
+  QTDIR=/usr/lib/qt-2.1.0
+  There is also a link /usr/lib/qt2 to /usr/lib/qt-2.1.0
+
+-------------------------------------------------------------------
+Thu Mar  2 11:17:22 CET 2000 - ro@suse.de
+
+- removed obsolete part of patch 
+
+-------------------------------------------------------------------
+Thu Mar  2 07:27:34 CET 2000 - ro@suse.de
+
+- configure doesn't know --mandir ... :( 
+
+-------------------------------------------------------------------
+Thu Mar  2 01:59:58 CET 2000 - ro@suse.de
+
+- work-around for prepare-spec buglet 
+
+-------------------------------------------------------------------
+Wed Mar  1 00:05:15 CET 2000 - ro@suse.de
+
+- man to /usr/share using macro 
+
+-------------------------------------------------------------------
+Tue Feb 29 15:55:33 CET 2000 - kettner@suse.de
+
+- Apply patch for qfont_x11.cpp from warwick@warwick-bippy
+
+-------------------------------------------------------------------
+Mon Feb 28 18:26:18 CET 2000 - kettner@suse.de
+
+- increased font cache from 4MB to 9MB in order to
+  speed up UNICODE fonts for YaST2
+
+-------------------------------------------------------------------
+Thu Nov 11 20:00:14 MET 1999 - uli@suse.de
+
+- removed netscape from neededforbuild
+
+-------------------------------------------------------------------
+Tue Nov  9 11:12:48 MET 1999 - kettner@suse.de
+
+- Removed mesa from Requires, as it is not required
+
+-------------------------------------------------------------------
+Fri Oct 22 14:42:35 MEST 1999 - kettner@suse.de
+
+ - Patch extensions/imageio/src/Makefile.in in order to get
+   shared library of libimgio again. Worked in 2.00.
+
+-------------------------------------------------------------------
+Mon Oct 11 21:06:47 MEST 1999 - kettner@suse.de
+
+ - New version 2.0.2
+
+-------------------------------------------------------------------
+Tue Sep 28 18:09:12 MEST 1999 - uli@suse.de
+
+- switched from Motif to lesstif
+
+-------------------------------------------------------------------
+Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
+
+- fixed requirements for sub packages
+
+-------------------------------------------------------------------                                 
+Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
+
+- Reinserted old # Commandline line.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Jul 14 11:49:22 CEST 1999 - kettner@suse.de
+
+ - New version 2.00
+
+-------------------------------------------------------------------
+Tue Jul 13 19:31:56 CEST 1999 - kettner@suse.de
+
+ - New version 2.00
+
+-------------------------------------------------------------------
+Mon Jul 12 19:15:16 CEST 1999 - kettner@suse.de
+
+ - New version 2.00
+

@@ -1,0 +1,473 @@
+Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat?action=recall&rev=226
+Original-Source-Location: http://ksquirrel.sourceforge.net/download.php
+Upstream-Author: Baryshev Dmitry aka Krasu <ksquirrel.iv@gmail.com>
+
+* some files in admin/ are under LGPL, see LICENSE.LGPL
+
+Files: *
+Copyright: © 2003-2007 by Baryshev Dmitry <ksquirrel.iv@gmail.com>
+License: GPL-2+
+
+Files: ksquirrel/sq_thumbnailloadjob.*
+Copyright: © 2004 by Baryshev Dmitry
+Copyright: © 2000 David Faure <faure@kde.org>
+Copyright: © 2000 Carsten Pfeiffer <pfeiffer@kde.org>
+License: GPL-2+
+
+Files: ksquirrel/sq_splashscreen.*
+Copyright: © 2001 by Kai Heitkamp <koncd@kai-heitkamp.de>
+Copyright: © 2006 Baryshev Dmitry, KSquirrel project.
+License: GPL-2+
+
+Files: ltmain.sh
+Copyright: © 1996,1997,1998,1999,2000,2001,2003
+  Free Software Foundation, Inc.
+Copyright: © 1996 by Gordon Matzigkeit <gord@gnu.ai.mit.edu>
+License: GPL-2+ | GPL-2+/extra
+
+Files: sq_categorybrowsermenu.*
+Copyright: © 2006 Baryshev Dmitry, KSquirrel project
+Copyright: © 2001 Matthias Elter <elter@kde.org>
+License: MIT
+
+Files: sq_glwidget.cpp
+Copyright: © 2004 Baryshev Dmitry
+Copyright: © 2004 Guillaume Chazarain <guichaz@yahoo.fr>
+License: GPL-2+
+
+Files: sq_thumbnailsize.*
+Copyright: © 2004 by Baryshev Dmitry
+Copyright: © 2000-2003 Aur?lien G?teau
+License: GPL-2+
+
+Files: sq_glu.*
+Copyright: © 1995-2001 Brian Paul
+Copyright: © 2004 by Baryshev Dmitry <ksquirrel.iv@gmail.com>
+License: LGPL-2+
+
+Files: debian/*
+Copyright: © 2008 Paul Gevers <paul@climbing.nl>
+License: GPL-2+
+  The Debian packaging is © 2008, Paul Gevers <paul@climbing.nl> and
+  is licensed under the GPL version 2 or later, see
+  /usr/share/common-licenses/GPL-2.
+
+Files: LICENSE
+Copyright: © 1989, 1991 Free Software Foundation, Inc.
+License: other
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+
+Files: LICENSE.GFDL
+Copyright: © 2000,2001,2002 Free Software Foundation, Inc.
+License: other
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+
+Files: LICENSE.LGPL
+Copyright: © 1991 Free Software Foundation, Inc.
+License: other
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+
+Files: admin/*
+Copyright:
+License: LGPL-2+
+
+Files: admin/acinclude.m4.in
+Copyright: © 1997 Janos Farkas <chexum@shadow.banki.hu>
+Copyright: © 1997,98,99 Stephan Kulow <coolo@kde.org>
+License: LGPL-2+
+
+Files: admin/am_edit
+Copyright: © 1998 Kalle Dalheimer <kalle@kde.org>
+License: other
+  This is really free software, unencumbered by the GPL.
+  You can do anything you like with it except sueing me
+
+Files: admin/compile
+Copyright: © 1999,2000,2003,2004,2005 Free Software Foundation, Inc.
+License: GPL-2+ | GPL-2+/extra
+
+Files: admin/conf.change.pl, admin/config.pl
+Copyright: © Michael Matz <matz@kde.org>
+Copyright: © Dirk Mueller <mueller@kde.org>
+License: LGPL-2+
+
+Files: admin/config.guess, admin/config.sub
+Copyright: © 1992-2005 Free Software Foundation, Inc.
+License: GPL-2+ | GPL-2+/extra
+
+Files: admin/config.rpath
+Copyright: © 1996-2003 Free Software Foundation, Inc.
+Copyright: © 1996 Gordon Matzigkeit <gord@gnu.ai.mit.edu>
+License: GPL-2+ | GPL-2+/extra
+
+Files: admin/configure.in.min
+Copyright: © 2001 Stephan Kulow <coolo@kde.org>
+License: GPL-2+
+
+Files: admin/depcomp
+Copyright: © 1999-2005 Free Software Foundation, Inc.
+License: GPL-2+ | GPL-2+/extra
+
+Files: admin/detect-autoconf.pl
+Copyright: © 2005 Michael Pyne <michael.pyne@kdemail.net>
+License: PD
+  This code is public domain. You may use it however you like
+  (including relicensing).
+
+Files: admin/doxygen.sh
+Copyright: © 2005 by Adriaan de Groot
+License: GPL-2
+
+Files: admin/libtool.m4.in
+Copyright: © 1996-2001 Free Software Foundation, Inc.
+License: GPL-2+ | GPL-2+/extra
+
+Files: admin/ltmain.sh
+Copyright: © 1996,1997,1998,1999,2000,2001,2003
+  Free Software Foundation, Inc.
+License: GPL-2+ | GPL-2+/extra
+
+Files: admin/Makefile.common
+Copyright: © 2002 by the KDE developers
+License: unknown
+
+Files: admin/missing
+Copyright: © 1996,1997,1999,2000,2002,2003,2004
+  Free Software Foundation, Inc.
+License: GPL-2+ | GPL-2+/extra
+
+Files: admin/mkinstalldirs
+Copyright: © -
+License: PD
+  Public domain
+
+Files: admin/oldinclude.m4.in
+Copyright: © 1997 Janos Farkas <chexum@shadow.banki.hu>
+Copyright: © 1997,98,99 Stephan Kulow <coolo@kde.org>
+License: GPL-2+
+
+Files: admin/ylwrap
+Copyright: © 1996,1997,1998,1999,2001,2002,2003,2004,2005
+  Free Software Foundation, Inc.
+License: GPL-2+ | GPL-2+/extra
+
+Files: cs.po
+Copyright: © 2007 Karel Volný <kavol@seznam.cz>
+License: GPL-2+
+
+Files: de.po
+Copyright: © 2007 Oliver Dörr <kde@doerr-privat.de>
+Copyright: © 2007 Frederik Schwarzer <schwarzerf@gmail.com>
+License: GPL-2+
+
+Files: en_GB.po
+Copyright: © 2007 Malcolm Hunter <malcolm.hunter@gmx.co.uk>
+License: GPL-2+
+
+Files: it.po
+Copyright: © 2007 Martino Barbon <martins999@gmail.com>
+License: GPL-2+
+
+Files: pl.po
+Copyright: © 2007 Grzegorz Gibas <amigib@gmail.com>
+License: GPL-2+
+
+Files: ru.po
+Copyright: © 2007 Baryshev Dmitry <ksquirrel.iv@gmail.com>
+License: GPL-2+
+
+Files: tr.po
+Copyright: © 2007 Serdar Soytetir <tulliana@gmail.com>
+License: GPL-2+
+
+Files: uk.po
+Copyright: © 2007 Yuri Chornoivan <yurchor@ukr.net>
+License: GPL-2+
+
+Files: doc/ru/*
+Copyright: © 2004 by Baryshev Dmitry <ksquirrel.iv@gmail.com>
+License: GFDL-1.2
+
+Files: print.png
+Copyright: © 2006-2007 Everaldo Coelho <everaldo@everaldo.com>
+License: LGPL-2.1+
+  taken from Crystal theme by (c) Everaldo. Available at
+  http://www.kde-look.org/content/show.php/Crystal+Project?content=60475
+
+Files: file_broken.xpm
+Copyright: ©  2003-2004  David Vignoni <dave [at] icon-king.com>
+License: LGPL-2.1+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation,
+  version 2.1 of the License.
+  .
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+  .
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library (see the the license.txt file); 
+  if not, write to the Free Software Foundation, Inc., 51 Franklin
+  Street, Fifth Floor, Boston, MA 02110-1301, USA
+  .
+  NOTE THIS ADD-ON
+  .
+  The GNU Lesser General Public License or LGPL is written for software libraries
+  in the first place. The LGPL has to be considered valid for this artwork
+  library too.
+  .
+  Nuvola icon theme for KDE 3.x is a special kind of software library, it is an
+  artwork library, it's elements can be used in a Graphical User Interface, or
+  GUI.
+  .
+  Source code, for this library means:
+  - raster png image* .
+  .
+  The LGPL in some sections obliges you to make the files carry
+  notices. With images this is in some cases impossible or hardly useful.
+  With this library a notice is placed at a prominent place in the directory
+  containing the elements. You may follow this practice.
+  The exception in section 6 of the GNU Lesser General Public License covers
+  the use of elements of this art library in a GUI.
+
+Files: admin/install-sh
+Copyright: © 1994 X Consortium
+License: other
+  Permission is hereby granted, free of charge, to any person
+  obtaining a copy of this software and associated documentation files
+  (the "Software"), to deal in the Software without restriction,
+  including without limitation the rights to use, copy, modify, merge,
+  publish, distribute, sublicense, and/or sell copies of the Software,
+  and to permit persons to whom the Software is furnished to do so,
+  subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT.IN NO EVENT SHALL THE X CONSORTIUM BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  .
+  Except as contained in this notice, the name of the X Consortium
+  shall not be used in advertising or otherwise to promote the sale,
+  use or other dealings in this Software without prior written
+  authorization from the X Consortium.
+  .
+  FSF changes to this file are in the public domain.
+
+Files: fmt_filters.* 
+Copyright: © 2005 Dmitry Baryshev <ksquirrel.iv@gmail.com>
+Copyright: © 1998, 1999, 2001, 2002 Daniel M. Duley <mosfet@kde.org>
+Copyright: © 1998, 1999 Christian Tibirna <ctibirna@total.net>
+Copyright: © 1998, 1999 Dirk A. Mueller <mueller@kde.org>
+Copyright: © 1999 Geert Jansen <g.t.jansen@stud.tue.nl>
+Copyright: © 2000 Josef Weidendorfer <weidendo@in.tum.de>
+Copyright: © 2004 Zack Rusin <zack@kde.org>
+Copyright: © 2003 ImageMagick Studio, a non-profit organization
+  dedicated to making software imaging solutions freely available.
+Copyright: © 2004 Robert Merkel <robert.merkel@benambra.org>
+License: other-BSD
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+  .
+  1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+  2. Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in
+     the documentation and/or other materials provided with the
+     distribution.
+  .
+  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  .
+  Portions of this software are based on ImageMagick. Such portions
+  are clearly marked as being ported from ImageMagick. ImageMagick is
+  copyrighted under the following conditions:
+  .
+  Permission is hereby granted, free of charge, to any person
+  obtaining a copy of this software and associated documentation files
+  ("ImageMagick"), to deal in ImageMagick without restriction,
+  including without limitation the rights to use, copy, modify, merge,
+  publish, distribute, sublicense,  and/or sell copies of ImageMagick,
+  and to permit persons to whom the ImageMagick is furnished to do so,
+  subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of ImageMagick.
+  .
+  The software is provided "as is", without warranty of any kind,
+  express or implied, including but not limited to the warranties of
+  merchantability, fitness for a particular purpose and
+  noninfringement.  In no event shall ImageMagick Studio be liable for
+  any claim, damages or other liability, whether in an action of
+  contract, tort or otherwise, arising from, out of or in connection
+  with ImageMagick or the use or other dealings in ImageMagick.
+  .
+  Except as contained in this notice, the name of the ImageMagick
+  Studio shall not be used in advertising or otherwise to promote the
+  sale, use or other dealings in ImageMagick without prior written
+  authorization from the ImageMagick Studio.
+  .
+  .
+  Red-eye removal was taken from "redeye" plugin for GIMP
+  .
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the "Software"),
+  to deal in the Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+  THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  .
+  Except as contained in this notice, the name of the Author of the
+  Software shall not be used in advertising or otherwise to promote the
+  sale, use or other dealings in this Software without prior written
+  authorization from the Author.
+
+Files: sq_utils_scale.cpp
+Copyright: © 2003 ImageMagick Studio, a non-profit organization
+  dedicated to making software imaging solutions freely available.
+License: other
+  Permission is hereby granted, free of charge, to any person
+  obtaining a copy of this software and associated documentation files
+  ("ImageMagick"), to deal in ImageMagick without restriction,
+  including without limitation the rights to use, copy, modify, merge,
+  publish, distribute, sublicense,  and/or sell copies of ImageMagick,
+  and to permit persons to whom the ImageMagick is furnished to do so,
+  subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of ImageMagick.
+  .
+  The software is provided "as is", without warranty of any kind,
+  express or implied, including but not limited to the warranties of
+  merchantability, fitness for a particular purpose and
+  noninfringement.  In no event shall ImageMagick Studio be liable for
+  any claim, damages or other liability, whether in an action of
+  contract, tort or otherwise, arising from, out of or in connection
+  with ImageMagick or the use or other dealings in ImageMagick.
+  .
+  Except as contained in this notice, the name of the ImageMagick
+  Studio shall not be used in advertising or otherwise to promote the
+  sale, use or other dealings in ImageMagick without prior written
+  authorization from the ImageMagick Studio.
+
+License: GPL-2+/extra
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2, or (at your option)
+  any later version.
+  .
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  .
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA 02110-1301, USA.
+  .
+  As a special exception to the GNU General Public License, if you
+  distribute this file as part of a program that contains a
+  configuration script generated by Autoconf, you may include it under
+  the same distribution terms that you use for the rest of that
+  program.
+
+License: GPL-2+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  .
+  On Debian systems, the complete text of the GNU General Public
+  License, version 2, can be found in
+  /usr/share/common-licenses/GPL-2.
+
+License: LGPL-2+
+  This file is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Library General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+  .
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Library General Public License for more details.
+  .
+  You should have received a copy of the GNU Library General Public
+  License along with this library. If not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+  .
+  On Debian systems, the complete text of the GNU Library General
+  Public License, version 2, can be found in 
+  /usr/share/common-licenses/LGPL-2.
+
+License: LGPL-2.1+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+  .
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+  .
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA
+  .
+  On Debian systems, the complete text of the GNU Library General
+  Public License, version 2, can be found in 
+  /usr/share/common-licenses/LGPL-2.
+
+License: MIT
+  Permission is hereby granted, free of charge, to any person
+  obtaining a copy of this software and associated documentation files
+  (the "Software"), to deal in the Software without restriction,
+  including without limitation the rights to use, copy, modify, merge,
+  publish, distribute, sublicense, and/or sell copies of the Software,
+  and to permit persons to whom the Software is furnished to do so,
+  subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

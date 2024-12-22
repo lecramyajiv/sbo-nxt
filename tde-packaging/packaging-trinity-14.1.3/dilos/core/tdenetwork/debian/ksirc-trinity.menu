@@ -1,0 +1,8 @@
+?package(ksirc-trinity):\
+	needs="X11"\
+	section="Apps/Net"\
+	hints="TDE,IRC"\
+	title="KSirc"\
+	icon32x32="/usr/share/pixmaps/ksirc.xpm"\
+	icon16x16="/usr/share/pixmaps/ksirc-16.xpm"\
+	command="/usr/bin/ksirc"

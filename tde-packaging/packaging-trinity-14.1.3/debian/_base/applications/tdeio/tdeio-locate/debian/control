@@ -1,0 +1,20 @@
+Source: tdeio-locate-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Tobi Vollebregt <tobivollebregt@gmail.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: tdeio-locate-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, mlocate | locate
+Replaces: kio-locate-trinity (<< 4:14.0.0~)
+Breaks: kio-locate-trinity (<< 4:14.0.0~)
+Description: tdeio-slave for the locate command [Trinity]
+ Adds support for the "locate:" and "locater:"
+ protocols to Konqueror and other TDE applications.
+ .
+ This enables you to perform locate searches as you
+ would in a terminal. The result is displayed just
+ as a directory.

@@ -1,0 +1,9 @@
+?package(kblackbox-trinity):\
+	needs="x11"\
+	section="Games/Puzzles"\
+	hints="TDE,BlackBox"\
+	title="KBlackBox"\
+	icon32x32="/usr/share/pixmaps/kblackbox.xpm"\
+	icon16x16="/usr/share/pixmaps/kblackbox-16.xpm"\
+	command="/usr/games/kblackbox"
+

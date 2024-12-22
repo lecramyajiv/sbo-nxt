@@ -1,0 +1,14 @@
+Index: tools/dbusxml2qt3/methodgen.cpp
+===================================================================
+--- tools/dbusxml2qt3/methodgen.cpp	(Revision 805416)
++++ tools/dbusxml2qt3/methodgen.cpp	(Arbeitskopie)
+@@ -1740,7 +1740,8 @@
+     stream << "    for (; it != endIt; ++it)" << endl;
+     stream << "    {" << endl;
+     stream << "        QDBusObjectBase* interface = it.data();" << endl;
+-    stream << "        delete interface;" << endl;
++    stream << "        if (interface != this)" << endl;
++    stream << "            delete interface;" << endl;
+     stream << "    }" << endl;
+     stream << "    interfaces.clear();" << endl;
+     stream << "}" << endl;

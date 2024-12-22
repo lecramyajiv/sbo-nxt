@@ -1,0 +1,3 @@
+tdepowersave-trinity: no-shlibs-control-file opt/trinity/lib/libtdeinit_tdepowersave.so
+tdepowersave-trinity: package-name-doesnt-match-sonames libtdeinit-tdepowersave
+

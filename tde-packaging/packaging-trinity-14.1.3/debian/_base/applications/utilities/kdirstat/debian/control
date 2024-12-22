@@ -1,0 +1,22 @@
+Source: kdirstat-trinity
+Section: misc
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://kdirstat.sourceforge.net/
+
+Package: kdirstat-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: kdirstat-trinity (<< 4:14.0.0~)
+Breaks: kdirstat-trinity (<< 4:14.0.0~)
+Description: graphical disk usage display with cleanup facilities [Trinity]
+ KDirStat (TDE Directory Statistics) is a small utility program that sums
+ up disk usage for directory trees, very much like the Unix 'du' command.
+ It displays the disk space used up by a directory tree, both numerically
+ and graphically.  It is network transparent (i.e., you can use it to sum
+ up FTP servers), and comes with predefined and user configurable cleanup
+ actions.  You can directly open a directory branch in Konqueror or the
+ shell of your choice, compress it to a .tar.bz2 archive, or define your
+ own cleanup actions. 

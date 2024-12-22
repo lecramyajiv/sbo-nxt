@@ -1,0 +1,62 @@
+kstreamripper-trinity (0.3.4-0ubuntu0) maverick; urgency=low
+
+  * TDE upload
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue, 05 Jul 2011 14:35:00 -0600
+
+kstreamripper (0.3.4.debian1-2) unstable; urgency=low
+
+  * Fix Desktop file. (Closes: #425028)
+
+ -- Michael Ablassmeier <abi@debian.org>  Tue, 29 May 2007 08:30:10 +0200
+
+kstreamripper (0.3.4.debian1-1) unstable; urgency=low
+  
+  * Update debian/copyright
+  * New Maintainer E-Mail
+  * Repackage as upstream tarball shipped byte compiled python
+    modules which lead to FTBFS after python transition (due to
+    changes in binary files), add .debian.1 to version.
+  * Get rid of those .pyc files, remove them on cleanup.
+  * Conforms with latest Standards Version 3.7.2
+
+ -- Michael Ablassmeier <abi@debian.org>  Thu, 31 Aug 2006 16:51:09 +0200
+
+kstreamripper (0.3.4-2) unstable; urgency=low
+
+  * re-upload for transition 
+  * Bump up Standards-Version.
+
+ -- Michael Ablassmeier <abi@grinser.de>  Fri,  2 Sep 2005 11:39:28 +0200
+
+kstreamripper (0.3.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Build-Depend on scons (upstream uses new build system)
+  * Small update for debian/copyright
+
+ -- Michael Ablassmeier <abi@grinser.de>  Sat, 14 May 2005 18:22:57 +0200
+
+kstreamripper (0.3-1) unstable; urgency=low
+
+  * New Upstream release (Closes: #265946)
+  * Add README.Debian-source
+  * Include gnome.mk (dh_desktop ...)
+ 
+ -- Michael Ablassmeier <abi@grinser.de>  Tue, 19 Apr 2005 16:36:27 +0200
+
+kstreamripper (0.2-2) unstable; urgency=low
+
+  * Do it the cdbs way.
+  * Register .desktop file using dh_desktop
+  * Slight update for debian/copyright   
+
+ -- Michael Ablassmeier <abi@grinser.de>  Thu,  7 Apr 2005 12:55:16 +0200
+
+kstreamripper (0.2-1) unstable; urgency=low
+
+  * Initial Release. (Closes: #245862)
+  * Sponsored Upload by Alexander Wirt <formorer@debian.org>
+
+ -- Michael Ablassmeier <abi@grinser.de>  Sun, 25 Apr 2004 19:52:42 +0200
+

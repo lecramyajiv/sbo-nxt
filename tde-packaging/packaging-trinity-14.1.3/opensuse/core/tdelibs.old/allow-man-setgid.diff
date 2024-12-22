@@ -1,0 +1,32 @@
+Index: kdecore/kapplication.cpp
+===================================================================
+--- kdecore/kapplication.cpp.orig
++++ kdecore/kapplication.cpp
+@@ -87,6 +87,8 @@
+ #include <sys/stat.h>
+ #endif
+ #include <sys/wait.h>
++#include <grp.h>
++#include <sys/types.h>
+ 
+ #ifndef Q_WS_WIN
+ #include "kwin.h"
+@@ -776,10 +778,15 @@ void KApplication::init(bool GUIenabled)
+ {
+   d->guiEnabled = GUIenabled;
+   if ((getuid() != geteuid()) ||
+-      (getgid() != getegid()))
++      (getgid() != getegid()) )
+   {
+-     fprintf(stderr, "The KDE libraries are not designed to run with suid privileges.\n");
+-     ::exit(127);
++     // man permissions are not exploitable and better than 
++     // world writable directories
++     struct group *man = getgrnam("man");
++     if ( !man || man->gr_gid != getegid() ){
++       fprintf(stderr, "The KDE libraries are not designed to run with suid privileges.\n");
++       ::exit(127);
++     }
+   }
+ 
+   KProcessController::ref();

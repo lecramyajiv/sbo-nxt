@@ -1,0 +1,13 @@
+Index: kio/kio/kprotocolmanager.cpp
+===================================================================
+--- kio/kio/kprotocolmanager.cpp.orig
++++ kio/kio/kprotocolmanager.cpp
+@@ -72,7 +72,7 @@ KProtocolManagerPrivate::~KProtocolManag
+ 
+ // DEFAULT USERAGENT STRING
+ #define CFG_DEFAULT_UAGENT(X) \
+-TQString("Mozilla/5.0 (compatible; Konqueror/%1.%2%3) KHTML/%4.%5.%6 (like Gecko)") \
++TQString("Mozilla/5.0 (compatible; Konqueror/%1.%2%3) KHTML/%4.%5.%6 (like Gecko) TDE SUSE") \
+         .arg(TDE_VERSION_MAJOR).arg(TDE_VERSION_MINOR).arg(X).arg(TDE_VERSION_MAJOR).arg(TDE_VERSION_MINOR).arg(TDE_VERSION_RELEASE)
+ 
+ void KProtocolManager::reparseConfiguration()

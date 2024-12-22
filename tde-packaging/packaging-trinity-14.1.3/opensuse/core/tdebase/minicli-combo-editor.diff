@@ -1,0 +1,34 @@
+Index: kdesktop/minicli.h
+===================================================================
+--- kdesktop/minicli.h.orig
++++ kdesktop/minicli.h
+@@ -52,12 +52,14 @@ public:
+ 
+   void setCommand(const QString& command);
+   void reset();
+-  void saveConfig();
+   void clearHistory();
+   
+   virtual void show();
+   virtual QSize sizeHint() const;
+ 
++public slots:
++  void saveConfig();
++
+ protected slots:
+   virtual void accept();
+   virtual void reject();
+Index: kdesktop/minicli.cpp
+===================================================================
+--- kdesktop/minicli.cpp.orig
++++ kdesktop/minicli.cpp
+@@ -133,6 +133,9 @@ Minicli::Minicli( QWidget *parent, const
+   connect( m_dlg->cbCommand, SIGNAL( returnPressed() ),
+            m_dlg->pbRun, SLOT( animateClick() ) );
+ 
++  m_dlg->cbCommand->setHistoryEditorEnabled( true );
++  connect( m_dlg->cbCommand, SIGNAL(removed( const QString&) ), SLOT(saveConfig()) );
++
+   // Advanced group box...
+   connect(m_dlg->cbPriority, SIGNAL(toggled(bool)), SLOT(slotChangeScheduler(bool)));
+   connect(m_dlg->slPriority, SIGNAL(valueChanged(int)), SLOT(slotPriority(int)));

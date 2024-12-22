@@ -1,0 +1,17 @@
+opt/trinity/share/apps/kmm_ofximport/kmm_ofximport.rc
+opt/trinity/share/apps/kmymoney2/html/
+opt/trinity/share/apps/kmymoney2/icons/
+opt/trinity/share/apps/kmymoney2/kmymoney2ui.rc
+opt/trinity/share/apps/kmymoney2/misc/financequote.pl
+opt/trinity/share/apps/kmymoney2/pics/startlogo.png
+opt/trinity/share/apps/kmymoney2/pics/titlelabel_background.png
+opt/trinity/share/apps/kmymoney2/templates/
+opt/trinity/share/apps/kmymoney2/tips
+opt/trinity/share/config.kcfg/kmymoney2.kcfg
+opt/trinity/share/doc/
+opt/trinity/share/icons/
+opt/trinity/share/locale/
+opt/trinity/share/mimelnk/application/x-kmymoney2.desktop
+opt/trinity/share/services/kmm_ofximport.desktop
+opt/trinity/share/servicetypes/kmymoneyimporterplugin.desktop
+opt/trinity/share/servicetypes/kmymoneyplugin.desktop

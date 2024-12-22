@@ -1,0 +1,8 @@
+?package(tqt3-qtconfig):\
+        needs="x11"\
+        section="Applications/System/Administration"\
+        title="TQt3 Config"\
+        longtitle="TQt3 Configuration Utility"\
+        hints="TQt3 config tool"\
+        command="/usr/bin/tqtconfig"
+

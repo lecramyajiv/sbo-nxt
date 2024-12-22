@@ -1,0 +1,133 @@
+Index: runupdater/runupdater.desktop
+===================================================================
+--- /dev/null
++++ runupdater/runupdater.desktop
+@@ -0,0 +1,9 @@
++[Desktop Entry]
++Type=Application
++Exec=runupdater
++Terminal=false
++Name=Run Updater Tool
++Icon=www
++
++X-KDE-StartupNotify=false
++OnlyShowIn=KDE;
+Index: runupdater/runupdater.cpp
+===================================================================
+--- /dev/null
++++ runupdater/runupdater.cpp
+@@ -0,0 +1,96 @@
++/*
++ Run either opensuseupdater or zen-updater but not both.
++ For opensuseupdater its autostart condition is checked, for zen-updater
++ it's checked whether its autostart file is enabled.
++*/
++
++#include <kapplication.h>
++#include <kconfig.h>
++#include <ksimpleconfig.h>
++#include <kstandarddirs.h>
++
++static bool disabledOSU()
++    {
++    KConfig osu( "opensuseupdaterrc", true );
++    osu.setGroup( "General" );
++//    fprintf( stderr, "OSU:%d\n", osu.readBoolEntry ("Autostart", true ));
++    return !osu.readBoolEntry( "Autostart", true );
++    }
++
++static bool availableOSU()
++    {
++    return !KStandardDirs::findExe( "opensuseupdater" ).isEmpty();
++    }
++
++static bool runOSU()
++    {
++    return KApplication::kdeinitExec( "opensuseupdater", QStringList(), NULL, NULL, "0" ) == 0;
++    }
++    
++static bool disabledZU()
++    {
++    KConfig zu( "zen-updater-auto.desktop", true, false, "xdgconf-autostart" );
++    zu.setGroup( "Desktop Entry" );
++//    fprintf( stderr, "ZU %d\n", zu.readBoolEntry( "Hidden", false ) );
++    return zu.readBoolEntry( "Hidden", false );
++    }
++
++static bool availableZU()
++    {
++    return !KStandardDirs::findExe( "zen-updater" ).isEmpty();
++    }
++
++static bool runZU()
++    {
++    return KApplication::kdeinitExec( "zen-updater", QStringList(), NULL, NULL, "0" ) == 0;
++    }
++    
++extern "C"
++int kdemain()
++    {
++    KInstance inst( "runupdater" );
++    // KSimpleConfig should parse this one just fine, with entries in the default group
++    KSimpleConfig sysconfig( "/etc/sysconfig/sw_management", true );
++    QString preferred = sysconfig.readEntry( "PREFERRED_SW_MANAGER_STACK" );
++//    fprintf( stderr, "SC1: %s\n", preferred.latin1());
++    if( preferred.startsWith( "\"" ) && preferred.endsWith( "\"" )) // strip ""
++        preferred = preferred.mid( 1, preferred.length() - 2 );
++//    fprintf( stderr, "SC2: %s\n", preferred.latin1());
++    if( preferred.lower() == "opensuse" )
++        {
++        // opensuseupdater preferred - it's it's available, run it if it's enabled,
++        // try zen-updater only if opensuseupdater is not available at all
++        if( availableOSU())
++            {
++            if( !disabledOSU())
++                return runOSU();
++            return 0;
++            }
++        else if( availableZU() && !disabledZU())
++            return runZU();
++        return 0;
++        }
++    else if( preferred.lower() == "zlm" )
++        {
++        // similar like above, just the other way around
++        if( availableZU())
++            {
++            if( !disabledZU())
++                return runZU();
++            return 0;
++            }
++        else if( availableOSU() && !disabledOSU())
++            return runOSU();
++        return 0;
++        }
++    else
++        {
++        // prefer opensuseupdater, but try to run zen-updater if opensuseupdater is not run
++        // the difference is that zen-updater is still run if opensuseupdater is disabled
++        if( availableOSU() && !disabledOSU() && runOSU())
++            return 0;
++        if( availableZU() && !disabledZU() && runZU())
++            return 0;
++        return 0;
++        }
++    }
+Index: runupdater/Makefile.am
+===================================================================
+--- /dev/null
++++ runupdater/Makefile.am
+@@ -0,0 +1,13 @@
++INCLUDES = $(all_includes)
++
++bin_PROGRAMS = 
++lib_LTLIBRARIES =
++kdeinit_LTLIBRARIES = runupdater.la
++
++runupdater_la_LDFLAGS  = $(all_libraries) -module $(KDE_PLUGIN)
++runupdater_la_LIBADD   = $(LIB_KDECORE)
++
++runupdater_la_SOURCES = runupdater.cpp
++
++autostart_DATA = runupdater.desktop
++autostartdir = $(datadir)/autostart

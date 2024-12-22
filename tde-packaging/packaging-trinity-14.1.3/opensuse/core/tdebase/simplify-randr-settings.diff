@@ -1,0 +1,91 @@
+--- kcontrol/randr/krandrmodule.cpp
++++ kcontrol/randr/krandrmodule.cpp
+@@ -114,23 +114,15 @@ KRandRModule::KRandRModule(QWidget *parent, const char *name, const QStringList&
+ 	m_rotationGroup->setRadioButtonExclusive(true);
+ 	QWhatsThis::add(m_rotationGroup, i18n("The options in this section allow you to change the rotation of your screen."));
+ 
+-	m_applyOnStartup = new QCheckBox(i18n("Apply settings on KDE startup"), this);
+-	topLayout->addWidget(m_applyOnStartup);
+-	QWhatsThis::add(m_applyOnStartup, i18n("If this option is enabled the size and orientation settings will be used when KDE starts."));
+-	connect(m_applyOnStartup, SIGNAL(clicked()), SLOT(setChanged()));
+-
+-	QHBox* syncBox = new QHBox(this);
+-	syncBox->layout()->addItem(new QSpacerItem(20, 1, QSizePolicy::Maximum));
+-	m_syncTrayApp = new QCheckBox(i18n("Allow tray application to change startup settings"), syncBox);
+-	topLayout->addWidget(syncBox);
+-	QWhatsThis::add(m_syncTrayApp, i18n("If this option is enabled, options set by the system tray applet will be saved and loaded when KDE starts instead of being temporary."));
+-	connect(m_syncTrayApp, SIGNAL(clicked()), SLOT(setChanged()));
++	m_applyOnlySession = new QCheckBox(i18n("Change settings only for current session"), this);
++	topLayout->addWidget(m_applyOnlySession);
++	QWhatsThis::add(m_applyOnlySession, i18n("If this option is enabled the size and orientation settings will be only changed for the current session."));
++	connect(m_applyOnlySession, SIGNAL(clicked()), SLOT(setChanged()));
+ 
+ 	topLayout->addStretch(1);
+ 
+ 	// just set the "apply settings on startup" box
+ 	load();
+-	m_syncTrayApp->setEnabled(m_applyOnStartup->isChecked());
+ 
+ 	slotScreenChanged(QApplication::desktop()->primaryScreen());
+ 
+@@ -272,8 +264,7 @@ void KRandRModule::load( bool useDefaults )
+ 	m_oldApply = loadDisplay(config, false);
+ 	m_oldSyncTrayApp = syncTrayApp(config);
+ 
+-	m_applyOnStartup->setChecked(m_oldApply);
+-	m_syncTrayApp->setChecked(m_oldSyncTrayApp);
++	m_applyOnlySession->setChecked(!m_oldApply);
+ 
+ 	emit changed( useDefaults ); 
+ }
+@@ -291,8 +282,7 @@ void KRandRModule::save()
+ 
+ 	apply();
+ 
+-	m_oldApply = m_applyOnStartup->isChecked();
+-	m_oldSyncTrayApp = m_syncTrayApp->isChecked();
++	m_oldApply = !m_applyOnlySession->isChecked();
+ 	KConfig config("kcmrandrrc");
+ 	saveDisplay(config, m_oldApply, m_oldSyncTrayApp);
+ 
+@@ -308,8 +298,7 @@ void KRandRModule::setChanged()
+ #endif
+ 
+ 
+-	bool isChanged = (m_oldApply != m_applyOnStartup->isChecked()) || (m_oldSyncTrayApp != m_syncTrayApp->isChecked());
+-	m_syncTrayApp->setEnabled(m_applyOnStartup->isChecked());
++	bool isChanged = (m_oldApply != !m_applyOnlySession->isChecked());
+ 
+ 	if (!isChanged)
+ 		for (int screenIndex = 0; screenIndex < numScreens(); screenIndex++) {
+--- kcontrol/randr/krandrmodule.h
++++ kcontrol/randr/krandrmodule.h
+@@ -79,8 +79,7 @@ protected:
+ 	KComboBox*		m_sizeCombo;
+ 	QButtonGroup*	m_rotationGroup;
+ 	KComboBox*		m_refreshRates;
+-	QCheckBox*		m_applyOnStartup;
+-	QCheckBox*		m_syncTrayApp;
++	QCheckBox*		m_applyOnlySession;
+ 	bool			m_oldApply;
+ 	bool			m_oldSyncTrayApp;
+ 
+--- kcontrol/randr/randrdisplay.cpp
++++ kcontrol/randr/randrdisplay.cpp
+@@ -241,7 +241,7 @@ bool RandRDisplay::loadDisplay(KConfig& config, bool loadScreens)
+ bool RandRDisplay::applyOnStartup(KConfig& config)
+ {
+ 	config.setGroup("Display");
+-	return config.readBoolEntry("ApplyOnStartup", false);
++	return config.readBoolEntry("ApplyOnStartup", true);
+ }
+ 
+ bool RandRDisplay::syncTrayApp(KConfig& config)
+@@ -254,7 +254,6 @@ void RandRDisplay::saveDisplay(KConfig& config, bool applyOnStartup, bool syncTr
+ {
+ 	config.setGroup("Display");
+ 	config.writeEntry("ApplyOnStartup", applyOnStartup);
+-	config.writeEntry("SyncTrayApp", syncTrayApp);
+ 
+ #ifdef HAS_RANDR_1_2
+ 	if (RandR::has_1_2)

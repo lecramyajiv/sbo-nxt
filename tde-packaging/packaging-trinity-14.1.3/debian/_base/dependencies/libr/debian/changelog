@@ -1,0 +1,44 @@
+libr (4:0.6.0-2debian8.0.0+6~d) jessie; urgency=low
+
+  * Fix mangling of a critical elf library section on armhf
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 30 Mar 2014 06:04:00 -0600
+
+libr (4:0.6.0-1debian7.0.0+0) wheezy; urgency=low
+
+  * Fix FTBFS due to force build architecture
+  * Changes pulled into a separate patches
+  * Switch to quilt format
+
+ -- Slávek Banko <slavek.banko@axis.cz>  Sun, 03 Nov 2013 14:43:31 +0100
+
+libr (4:0.6.0-0ubuntu4~quantal) quantal; urgency=low
+
+  * Fix FTBFS on Ubuntu Quantal
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue, 12 Sep 2012 15:03:00 -0600
+
+libr (4:0.6.0-0ubuntu3~quantal) quantal; urgency=low
+
+  * Fix crash on accessing malformed icon
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Mon, 02 Jan 2012 02:18:00 -0600
+
+libr (4:0.6.0-0ubuntu2~lucid) lucid; urgency=low
+
+  * Fix armel builds
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 01 Jan 2012 02:12:00 -0600
+
+libr (4:0.6.0-0ubuntu1~lucid) lucid; urgency=low
+
+  * Fix stack smashing in edit mode
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 31 Dec 2011 20:42:00 -0600
+
+libr (4:0.6.0-0ubuntu0~lucid) lucid; urgency=low
+
+  * Initial upload
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 30 Dec 2011 16:20:00 -0600
+

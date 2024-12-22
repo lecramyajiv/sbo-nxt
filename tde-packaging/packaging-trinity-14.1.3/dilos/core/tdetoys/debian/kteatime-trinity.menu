@@ -1,0 +1,9 @@
+?package(kteatime-trinity):\
+	needs="x11"\
+	section="Games/Toys"\
+	hints="TDE"\
+	title="KTeaTime"\
+	longtitle="KTeaTime (Tea Cooker)"\
+	icon="/usr/share/pixmaps/kteatime.xpm"\
+	command="/usr/bin/kteatime"
+

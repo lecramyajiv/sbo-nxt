@@ -1,0 +1,34 @@
+#! /bin/sh
+# preinst script for trinity-keyring
+
+set -e
+
+case "$1" in
+    install|upgrade)
+        # remove keys from the trusted.gpg file as they are now shipped in fragment files in trusted.gpg.d
+        if dpkg --compare-versions "$2" 'lt' "2012.1" && which gpg > /dev/null && which apt-key > /dev/null; then
+                TRUSTEDFILE='/etc/apt/trusted.gpg'
+                eval $(apt-config shell TRUSTEDFILE Apt::GPGV::TrustedKeyring)
+                eval $(apt-config shell TRUSTEDFILE Dir::Etc::Trusted/f)
+                if [ -e "$TRUSTEDFILE" ]; then
+                        # Key F5CFC95C - 2014.06.08
+                        # Key 2B8638D0 - 2010.06.15
+                        for KEY in F5CFC95C 2B8638D0; do
+                                apt-key --keyring "$TRUSTEDFILE" del $KEY > /dev/null 2>&1 || :
+                        done
+                fi
+        fi
+    ;;
+
+    abort-upgrade)
+    ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

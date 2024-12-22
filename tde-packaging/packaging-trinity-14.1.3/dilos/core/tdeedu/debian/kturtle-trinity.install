@@ -1,0 +1,13 @@
+usr/bin/kturtle
+/usr/share/applications/tde/kturtle.desktop
+/usr/share/apps/katepart/syntax/logohighlightstyle*
+/usr/share/apps/kturtle
+/usr/share/config.kcfg/kturtle.kcfg
+/usr/share/doc/tde/HTML/en/kturtle/*.bz2
+/usr/share/doc/tde/HTML/en/kturtle/common
+/usr/share/doc/tde/HTML/en/kturtle/*.docbook
+/usr/share/doc/tde/HTML/en/kturtle/*.png
+/usr/share/icons/hicolor/16x16/apps/kturtle.png
+/usr/share/icons/hicolor/32x32/apps/kturtle.png
+/usr/share/man/man1/kturtle.1
+../icons/kturtle.xpm /usr/share/pixmaps

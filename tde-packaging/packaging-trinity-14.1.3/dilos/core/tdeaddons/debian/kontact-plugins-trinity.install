@@ -1,0 +1,6 @@
+debian/tmp/usr/lib/*/trinity/kcm_kontactknt.so
+debian/tmp/usr/lib/*/trinity/kcm_kontactknt.la
+debian/tmp/usr/lib/*/trinity/libkontact_newstickerplugin.so
+debian/tmp/usr/lib/*/trinity/libkontact_newstickerplugin.la
+debian/tmp/usr/share/services/kcmkontactknt.desktop
+debian/tmp/usr/share/services/kontact

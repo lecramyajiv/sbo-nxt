@@ -1,0 +1,12 @@
+application/pdf;	konqueror %s;	nametemplate=%s.pdf;	test=test "$DISPLAY" != "" && expr `gs --version` ">=" 3.51 >/dev/null 2>&1;	priority=5
+application/postscript;	konqueror %s;	nametemplate=%s.ps;	test=test "$DISPLAY" != "" && expr `gs --version` ">=" 3.51 >/dev/null 2>&1;	priority=5
+image/gif;	konqueror %s;	nametemplate=%s.gif;	test=test "$DISPLAY" != "";	priority=5
+image/jpeg;	konqueror %s;	nametemplate=%s.jpg;	test=test "$DISPLAY" != "";	priority=5
+image/pjpeg;	konqueror %s;	nametemplate=%s.jpg;	test=test "$DISPLAY" != "";	priority=5
+image/png;	konqueror %s;	nametemplate=%s.png;	test=test "$DISPLAY" != "";	priority=5
+image/tiff;	konqueror %s;	nametemplate=%s.tiff;	test=test "$DISPLAY" != "";	priority=5
+image/x-jng;	konqueror %s;	nametemplate=%s.jng;	test=test "$DISPLAY" != "";	priority=5
+image/x-xbm;	konqueror %s;	nametemplate=%s.xbm;	test=test "$DISPLAY" != "";	priority=5
+text/html;	konqueror %s;	nametemplate=%s.html;	test=test "$DISPLAY" != "";	priority=5
+text/plain;	konqueror %s;	nametemplate=%s.txt;	test=test "$DISPLAY" != "";	priority=5
+video/x-mng;	konqueror %s;	nametemplate=%s.mng;	test=test "$DISPLAY" != "";	priority=5

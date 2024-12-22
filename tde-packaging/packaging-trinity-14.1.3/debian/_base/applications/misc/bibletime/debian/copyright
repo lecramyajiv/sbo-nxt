@@ -1,0 +1,27 @@
+This package was initially debianized by 
+Daniel Glassey <danglassey@yahoo.com> on
+Thu, 23 Nov 2000 20:57:31 +0000.
+
+It was downloaded from www.bibletime.de
+
+Upstream Authors: Bibletime team <info@bibletime.info>
+
+Copyright 1999-2005 BibleTime team <info@bibletime.info>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+On Debian systems, the complete text of the GNU General Public
+License, version 2, can be found in /usr/share/common-licenses/GPL-2
+
+The "howto" document was originally created by Mr. Bob Harman and
+is licensed under the terms of the license
+http://creativecommons.org/licenses/by-sa/3.0/
+"Creative Commons Attribution-Share Alike".

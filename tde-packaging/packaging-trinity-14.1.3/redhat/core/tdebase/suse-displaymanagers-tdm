@@ -1,0 +1,26 @@
+tdm_start_proc() {
+    splashcopy 0 6
+    # stop plymouth (bug#775548)
+    plymouth_quit
+
+    return 0
+}
+
+tdm_vars() {
+    if [ -x /opt/trinity/bin/kdm ]; then
+      TDM_BIN=/opt/trinity/bin/kdm
+      export KDEROOTHOME=/root/.tdm
+    else
+      TDM_BIN=/opt/trinity/bin/tdm
+      export TDEROOTHOME=/root/.tdm
+    fi
+    case "${DISPLAYMANAGER##*/}" in
+       tdm)
+            DISPLAYMANAGER=$TDM_BIN
+            STARTPROC=tdm_start_proc
+            ;;
+        *) return 1 ;;
+    esac
+    return 0
+}
+

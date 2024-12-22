@@ -1,0 +1,5 @@
+debian/tmp/opt/trinity/include/poppler-link-qt3.h
+debian/tmp/opt/trinity/include/poppler-page-transition.h
+debian/tmp/opt/trinity/include/poppler-qt.h
+debian/tmp/opt/trinity/lib/pkgconfig/poppler-tqt.pc
+debian/tmp/opt/trinity/share/cmake/libpoppler-tqt.cmake

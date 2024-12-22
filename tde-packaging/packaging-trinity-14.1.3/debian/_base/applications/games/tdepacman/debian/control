@@ -1,0 +1,19 @@
+Source: tdepacman-trinity
+Section: games
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: J.rg Th.nnissen <joe@dsite.de>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libtdegames-trinity-dev
+Standards-Version: 0.3.2
+
+Package: tdepacman-trinity
+Architecture: any
+Section: games
+Depends: ${shlibs:Depends}
+Replaces: tdepacman-trinity (<< 4:14.0.0~)
+Breaks: tdepacman-trinity (<< 4:14.0.0~)
+Description: A pacman clone game for TDE.
+ TDEPacman is a classic arcade game.
+ .
+ Pac-Man was designed by Toru Iwatani, Namco first released the game in
+ Japan in May 1980.

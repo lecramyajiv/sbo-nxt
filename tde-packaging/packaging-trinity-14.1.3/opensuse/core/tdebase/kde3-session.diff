@@ -1,0 +1,13 @@
+Index: kdm/kfrontend/sessions/kde.desktop.in
+===================================================================
+--- kdm/kfrontend/sessions/kde.desktop.in.orig
++++ kdm/kfrontend/sessions/kde.desktop.in
+@@ -3,7 +3,7 @@ Encoding=UTF-8
+ Type=XSession
+ Exec=@KDE_BINDIR@/startkde
+ TryExec=@KDE_BINDIR@/startkde
+-Name=KDE
++Name=KDE3
+ Name[hi]=केडीई
+ Name[mn]=КДЭ
+ Name[ta]=Kஏற்றக் காவலன்

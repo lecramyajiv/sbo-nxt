@@ -1,0 +1,18 @@
+Source: knowit-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Lorenzo Villani <arbiter@arbiterlab.net>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://knowit.sourceforge.net/
+
+Package: knowit-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: knowit-trinity (<< 4:14.0.0~)
+Breaks: knowit-trinity (<< 4:14.0.0~)
+Description: Tool for managing notes [Trinity]
+ KnowIt is a tool for managing notes which are organized in
+ tree-like hierarchy. It is similar to TuxCards,
+ but TDE-based, and requires Trinity.

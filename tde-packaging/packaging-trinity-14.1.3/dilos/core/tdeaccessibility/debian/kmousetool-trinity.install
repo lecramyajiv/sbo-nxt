@@ -1,0 +1,19 @@
+debian/tmp/usr/bin/kmousetool
+debian/tmp/usr/share/applications/tde/kmousetool.desktop
+debian/tmp/usr/share/apps/kmousetool/icons/hicolor/16x16/actions/kmousetool_off.png
+debian/tmp/usr/share/apps/kmousetool/icons/hicolor/16x16/actions/kmousetool_on.png
+debian/tmp/usr/share/apps/kmousetool/icons/hicolor/16x16/apps/kmousetool.png
+debian/tmp/usr/share/apps/kmousetool/icons/hicolor/32x32/actions/kmousetool_off.png
+debian/tmp/usr/share/apps/kmousetool/icons/hicolor/32x32/actions/kmousetool_on.png
+debian/tmp/usr/share/apps/kmousetool/icons/hicolor/32x32/apps/kmousetool.png
+debian/tmp/usr/share/apps/kmousetool/sounds/mousetool_tap.wav
+debian/tmp/usr/share/doc/tde/HTML/en/kmousetool/common
+debian/tmp/usr/share/doc/tde/HTML/en/kmousetool/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kmousetool/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/kmousetool/man-kmousetool.1.docbook
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kmousetool.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kmousetool.png
+debian/tmp/usr/share/man/man1/kmousetool.1
+
+debian/icons/kmousetool.xpm		/usr/share/pixmaps
+debian/icons/kmousetool-16.xpm		/usr/share/pixmaps

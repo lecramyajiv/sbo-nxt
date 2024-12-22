@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PikLab
+Comment=IDE for PIC-microcontroller development
+Exec=piklab
+Icon=piklab.xpm
+Terminal=false
+Type=Application

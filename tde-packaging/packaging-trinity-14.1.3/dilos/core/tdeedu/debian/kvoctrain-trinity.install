@@ -1,0 +1,25 @@
+etc/trinity/kvoctrainrc
+usr/bin/kvoctrain
+usr/bin/spotlight2kvtml
+usr/lib/*/libkvoctraincore.la
+usr/lib/*/libkvoctraincore.so
+usr/lib/*/libkvoctraincore.so.0
+usr/lib/*/libkvoctraincore.so.0.0.0
+/usr/share/applications/tde/kvoctrain.desktop
+/usr/share/apps/kvoctrain
+/usr/share/mimelnk/text/x-kvtml.desktop
+/usr/share/config.kcfg/kvoctrain.kcfg
+/usr/share/config.kcfg/languagesettings.kcfg
+/usr/share/config.kcfg/presettings.kcfg
+/usr/share/doc/tde/HTML/en/kvoctrain/common
+/usr/share/doc/tde/HTML/en/kvoctrain/index.cache.bz2
+/usr/share/doc/tde/HTML/en/kvoctrain/*.docbook
+/usr/share/doc/tde/HTML/en/kvoctrain/*.png
+/usr/share/icons/hicolor/16x16/apps/kvoctrain.png
+/usr/share/icons/hicolor/22x22/apps/kvoctrain.png
+/usr/share/icons/hicolor/32x32/apps/kvoctrain.png
+/usr/share/icons/hicolor/48x48/apps/kvoctrain.png
+/usr/share/man/man1/kvoctrain.1
+/usr/share/man/man1/langen2kvtml.1
+/usr/share/man/man1/spotlight2kvtml.1
+../icons/kvoctrain.xpm /usr/share/pixmaps

@@ -1,0 +1,9 @@
+Document: kiten
+Title: Kiten Handbook
+Author: Jason Katz-Brown <jason@katzbrown.com>
+Abstract: Kiten is a Japanese reference/study tool for TDE.
+Section: Apps/Tools
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kiten/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kiten/*.html

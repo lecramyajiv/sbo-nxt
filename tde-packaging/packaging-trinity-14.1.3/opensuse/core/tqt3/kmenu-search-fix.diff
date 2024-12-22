@@ -1,0 +1,10 @@
+--- src/widgets/qpopupmenu.cpp
++++ src/widgets/qpopupmenu.cpp
+@@ -1391,6 +1391,7 @@
+     performDelayedChanges();
+     updateSize(TRUE);
+     TQWidget::show();
++    updateSize();
+     popupActive = -1;
+     if(style().styleHint(TQStyle::SH_PopupMenu_SubMenuPopupDelay, this))
+ 	d->mouseMoveBuffer = TQRegion();

@@ -1,0 +1,146 @@
+tork-trinity (0.33-1) unstable; urgency=low
+
+  * Initial Release for TDE
+
+ -- Slávek Banko <slavek.banko@axis.cz>  Sat, 27 Jul 2013 17:16:15 +0200
+
+tork (0.33-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.1 (no changes needed).
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 15 Aug 2010 11:44:13 +0200
+
+tork (0.32~pre1-1) unstable; urgency=medium
+
+  * New upstream pre-release.
+    - Detect GnuTLS about pkg-config now, also adding pkg-config as build
+      dependency.
+      Closes: #529908
+    - Adjust debian/tork.install.
+  * Fix typo in get-orig-source target.
+  * Merge 0.31-1~bpo50+1 changelog.
+  * Bump Standards-Version to 3.8.3 (no changes needed).
+  * Wrap build dependency line.
+  * Depend and Build-Depend on torsocks, also build tork with the external
+    torsocks option. This fixes a FTBFS with the current autofoo scripts.
+  * Convert package to 3.0 (quilt).
+  * Remove tsocks from depends, we are using now torsocks.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 20 Nov 2009 08:16:58 +0100
+
+tork (0.31-2) unstable; urgency=low
+
+  * Bump Standards-Version to 3.8.1 (no changes needed).
+  * Change my email address.
+  * Remove DM-Upload-Allowed control field.
+  * Add upstreams changelog to the packages.
+  * Refer in debian/copyright to the GPL-2 file instead of GPL.
+    This fixes the lintian warning copyright-refers-to-symlink-license.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 23 Apr 2009 13:42:39 +0200
+
+tork (0.31-1~bpo50+1) lenny-backports; urgency=low
+
+  * Rebuild for lenny-backports.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Tue, 17 Feb 2009 18:28:26 +0200
+
+tork (0.31-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add get-orig-source target.
+  * Fix copyright-with-old-dh-make-debian-copyright.
+  * Fix binary-control-field-duplicates-source.
+  * Add my own Debian packaging copyright.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Wed,  4 Feb 2009 12:42:02 +0200
+
+tork (0.30-2) unstable; urgency=low
+
+  * Removed icedove-torbutton from the suggests, it has been removed from the
+    archive.
+  * Add missing ${misc:Depends}. Thanks lintian.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Wed, 24 Dec 2008 11:20:45 +0200
+
+tork (0.30-1) unstable; urgency=low
+
+  * New upstream release.
+    Closes: #502155
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Wed, 22 Oct 2008 20:18:57 +0200
+
+tork (0.29.2-2) unstable; urgency=low
+
+  * Uploading to unstable.
+  * Set the -e flag in the maintainer scripts.
+    Thanks lintian.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Tue,  7 Oct 2008 11:08:22 +0200
+
+tork (0.29.2-1) experimental; urgency=low
+
+  * New upstream release.
+    Uploading to experimental because Lenny is frozen.
+  * Downgrade konqueror recommending to suggesting.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sun, 27 Jul 2008 16:00:21 +0200
+
+tork (0.29.1-2) unstable; urgency=low
+
+  * Remove the indefinite article "an" from the short description.
+    Closes: #490050
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Thu, 17 Jul 2008 17:28:30 +0200
+
+tork (0.29.1-1) unstable; urgency=low
+
+  * New upstream release.
+    - Patch has been merged in upstream.
+    - Drop dpatch.
+    - Drop README.source.
+  * Some little debian/rules modifications.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sun,  6 Jul 2008 09:52:00 +0200
+
+tork (0.29-1) unstable; urgency=low
+
+  * New upstream release.
+    - Included dpatch again and add 01-gcc43-ftbfs-fix.dpatch.
+  * Reorder odd dh_installdeb call and do not permit dh_makeshlibs to modify
+    the maintainer scripts.
+    Thanks lintian.
+  * Added DM-Upload-Allowed control field.
+  * Bumped Standards-Version to 3.8.0.
+    - Added README.source.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sat, 14 Jun 2008 11:18:00 +0100
+
+tork (0.28-1) unstable; urgency=low
+
+  * New upstream release.
+    - Removed 01-fix-gcc4.3-ftbfs.dpatch, it is merged in upstream.
+    - Removed now useless dpatch.
+  * Fixed grammar error in copyright.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Mon, 14 Apr 2008 15:10:22 +0100
+
+tork (0.27-2) unstable; urgency=low
+
+  * Included dpatch and added 01-fix-gcc4.3-ftbfs.dpatch. There were some
+    #include <cstdlib> missing for the getenv function.
+  * Added icedove-torbutton and iceweasel-torbutton as Suggests for tork.
+  * If the previous build failed at configure, it could happen, that the
+    config.log won't be deleted. Now it will be deleted in the clean target.
+  * Lowered down compatibility level from 6 to 5. The packaging is now tested
+    with debhelper >= 5 versions and it also fixes an lintian warning.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Thu,  3 Apr 2008 22:08:55 +0100
+
+tork (0.27-1) unstable; urgency=low
+
+  * Initial release.
+    Closes: #444329
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sun, 16 Mar 2008 11:59:21 +0100

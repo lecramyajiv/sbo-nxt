@@ -1,0 +1,13 @@
+/opt/trinity/share/apps/kblackbox/*
+/opt/trinity/share/icons/hicolor/128x128/apps/kblackbox.png
+/opt/trinity/share/icons/hicolor/64x64/apps/kblackbox.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kblackbox.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kblackbox.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kblackbox.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kblackbox.png
+/opt/trinity/share/applications/tde/kblackbox.desktop
+/opt/trinity/games/kblackbox
+/opt/trinity/share/doc/tde/HTML/en/kblackbox/*
+/opt/trinity/share/man/man6/kblackbox.6
+../icons/kblackbox.xpm /opt/trinity/share/pixmaps
+../icons/kblackbox-16.xpm /opt/trinity/share/pixmaps

@@ -1,0 +1,22 @@
+Source: kcpuload-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Helen Faulkner <helen@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: kcpuload-trinity
+Architecture: any
+Section: tde
+Replaces: kcpuload-trinity (<< 4:14.0.0~)
+Breaks: kcpuload-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}
+Suggests: knetload-trinity
+Description: a CPU meter for Kicker [Trinity]
+ KCPULoad is a small program for Kicker (the TDE panel).  It shows a
+ recent history of CPU usage in the form of one or two configurable
+ diagrams in the system tray.  These diagrams have settings for colours
+ and various different styles.
+ .
+ KCPULoad has support for SMP and separate user/system loads.

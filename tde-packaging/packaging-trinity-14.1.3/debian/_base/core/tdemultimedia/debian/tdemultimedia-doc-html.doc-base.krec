@@ -1,0 +1,10 @@
+Document: tdemultimedia-doc-html-krec
+Title: KRec Handbook
+Author: Arnold Krille
+Abstract: KRec is a sound recording application for aRts and TDE.
+Section: Apps/Sound
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/krec/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/krec/*.html
+

@@ -1,0 +1,8 @@
+?package(ktux-trinity):\
+	needs="x11"\
+	section="Screen/Saving"\
+	hints="TDE"\
+	title="KTux"\
+	icon="/usr/share/pixmaps/ktux.xpm"\
+	command="/usr/bin/ktux -root"
+

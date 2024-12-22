@@ -1,0 +1,62 @@
+FROM pclinuxos:2024
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+# Update distribution
+# Install Trinity build dependencies
+COPY packages.${ARCH} /packages
+RUN set -x \
+ && apt-get -y update \
+ && apt-get -y dist-upgrade \
+ && apt-get -y install $(</packages)
+
+# Add rpmbuild repositories
+COPY rpmbuild.list /etc/apt/sources.list.d/rpmbuild.list
+RUN sed -i "/etc/apt/sources.list.d/rpmbuild.list" -e "s|\${ARCH}|${ARCH}|g" -e "s|\${TDE_VERSION}|${TDE_VERSION}|g"
+
+# Fix SUDO configuration
+RUN sed -i "/etc/pam.d/sudo" -e "/pam_limits.so/ s|^|#|"
+
+# Fix utempter detection
+RUN chmod a+r /usr/libexec/utempter/utempter
+
+# Fix missing '.la' files
+COPY genla.sh /usr/bin/genla.sh
+RUN genla.sh libbluetooth && mv /usr/lib64/libbluetooth.la /lib64 \
+ && genla.sh libjpeg \
+ && genla.sh liblcms \
+ && genla.sh libusb-1.0 && mv /usr/lib64/libusb-1.0.la /lib64 && cp /lib64/libusb-1.0.la /lib64/libusb.la
+
+# Add non-root user to build packages
+RUN rm -rf /home/trinity \
+ && useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>"/etc/sudoers"
+
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+# Build supplementary development tools
+RUN rpm -i http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/8/SRPMS/core/release/torsocks-2.3.0-2.mga8.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/torsocks.spec -e "s|%license|%doc|" \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/torsocks.spec \
+ && sudo rpm -Uvh /home/trinity/rpmbuild/RPMS/*/torsocks-2*.rpm
+
+RUN rpm -i http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/8/SRPMS/core/release/cscope-15.9-2.mga8.src.rpm \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/cscope.spec \
+ && sudo rpm -Uvh /home/trinity/rpmbuild/RPMS/*/cscope-15*.rpm
+
+RUN rpm -i http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/8/SRPMS/core/release/rpcsvc-proto-1.4-1.mga8.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/rpcsvc-proto.spec -e "s|%autosetup .*|%setup -q|" -e "s|%configure|%configure2_5x|" -e "s|%license|%doc|" \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/rpcsvc-proto.spec \
+ && sudo rpm -Uvh /home/trinity/rpmbuild/RPMS/*/rpcgen-1*.rpm
+
+RUN rpm -i http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/8/SRPMS/core/release/html2ps-2.0-3.b7.8.mga8.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/html2ps.spec -e "s|%patch|%patch -P |" \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/html2ps.spec \
+ && sudo rpm -Uvh /home/trinity/rpmbuild/RPMS/*/html2ps-2*.rpm
+
+RUN rpm -i http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/9/SRPMS/core/release/heimdal-7.8.0-2.mga9.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/heimdal.spec -e "s|%patch|%patch -P |" -e "/Conflicts:  krb5-devel/ s|^|#|" -e "s|%mkrel 2|1%{?dist}|" \
+ && LDFLAGS="-lcrypt -Wl,--allow-shlib-undefined" rpmbuild -ba ${HOME}/rpmbuild/SPECS/heimdal.spec \
+ && sudo rpm -Uvh /home/trinity/rpmbuild/RPMS/*/heimdal-{devel,libs}-7*.rpm

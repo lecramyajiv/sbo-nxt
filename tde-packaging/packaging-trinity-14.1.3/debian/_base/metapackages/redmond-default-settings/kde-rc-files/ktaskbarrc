@@ -1,0 +1,4 @@
+[General]
+GroupTasks=GroupNever
+ShowAllWindows=false
+ShowCurrentScreenOnly=true

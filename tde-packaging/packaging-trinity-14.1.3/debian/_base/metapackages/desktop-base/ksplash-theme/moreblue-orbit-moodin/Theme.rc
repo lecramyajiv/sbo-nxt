@@ -1,0 +1,39 @@
+[KSplash Theme: moreblue-orbit-moodin]
+Name = MoreBlue Orbit (Moodin)
+Description = MoreBlue Orbit KSplash Theme using Moodin engine, based on MoreBlue Orbit artwork by Andre L. R. Ferreira and Valessio S. Brito
+Version = 1.0
+Author = Fathi Boudra, based on MoreBlue Orbit artwork by Andre L. R. Ferreira and Valessio S. Brito
+Homepage = http://www.debian.org
+Engine = Moodin
+
+BeginOpacity = 0.1
+Translate = true
+Background = Background.png
+ShowStatusText = true
+UseIconSet = true
+IconSetSize = 32
+LineUpImages = false
+BaseResolution = 1280x1024
+AppendX = true
+ImageSpacer = -1
+Labels = 2
+LabelShadow = false
+
+Image1 = kcmmemory
+Image2 = kcmsystem
+Image3 = printer1
+Image7 = kmenuedit
+Image8 = kmenu
+
+ImageCoords1 = 474,511
+ImageCoords2 = 524,511
+ImageCoords3 = 574,511
+ImageCoords4 = 624,511
+ImageCoords5 = 674,511
+ImageCoords6 = 724,511
+ImageCoords7 = 774,511
+ImageCoords8 = 624,651
+
+StatusFont = DejaVu Sans Condensed,9,-1,5,50,0
+StatusCoords = -1,480
+StatusColor = #222222

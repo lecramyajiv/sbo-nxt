@@ -1,0 +1,525 @@
+kmymoney2-trinity (1.0.4-0ubuntu0) maverick; urgency=low
+
+  * Trinity build
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 04 Jul 2010 17:25:00 -0600
+
+kmymoney2 (1.0.4-0ubuntu1) lucid; urgency=low
+
+  * New upstream bugfix release
+
+ -- Jonathan Thomas <echidnaman@kubuntu.org>  Sun, 18 Apr 2010 15:20:40 -0400
+
+kmymoney2 (1.0.3-0ubuntu1) lucid; urgency=low
+
+  * New upstream release
+  * Switch to source format 3.0 for a smaller tarball to upload
+
+ -- Jonathan Thomas <echidnaman@kubuntu.org>  Thu, 18 Feb 2010 13:09:45 -0500
+
+kmymoney2 (1.0.2-1ubuntu1) lucid; urgency=low
+
+  * Merge with Debian Testing, remaining change:
+    - Compile --without-arts since aRts is no longer around
+
+ -- Jonathan Thomas <echidnaman@kubuntu.org>  Tue, 03 Nov 2009 12:51:50 -0500
+
+kmymoney2 (1.0.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fathi Boudra <fabo@debian.org>  Mon, 05 Oct 2009 10:01:13 +0200
+
+kmymoney2 (1.0.2-0ubuntu1) karmic; urgency=low
+
+  * Sync with Debian
+  * New upstream release (LP: #432725)
+  * Compile --without-arts since aRts is no longer around
+
+ -- Jonathan Thomas <echidnaman@kubuntu.org>  Thu, 17 Sep 2009 19:45:56 -0400
+
+kmymoney2 (1.0.0-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #542503)
+    - fix a crash when opening a custom report caused by an invalid chart type.
+      (Closes: #522354)
+  * Update debian/control:
+    - Cleanup build dependency. Remove cdbs, gs-common, html2ps and
+      libxml++2.6-dev.
+    - Add libsqlite3-dev build dependency.
+    - Bump Standards-Version from 3.8.0 to 3.8.3 (add debian/README.source).
+  * Update debian/copyright:
+    - Add Alvaro Soliverez.
+    - Add Qt3 SQLite3 Library copyright.
+  * Rename debian/docs to debian/kmymoney2.docs file.
+  * Update debian/kmymoney2.install:
+    - Add libsqlite3.so (Qt3 SQLite3 driver).
+  * Remove files:
+    - debian/kmymoney2.lintian-overrides
+    - debian/kmymoney2.postinst
+    - debian/kmymoney2.postrm
+  * Update debian/rules:
+    - Convert to dh usage.
+    - Add a workaround for libsqlite3.so installation.
+
+ -- Fathi Boudra <fabo@debian.org>  Sat, 22 Aug 2009 23:49:59 +0200
+
+kmymoney2 (0.9.3-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #516980)
+  * Fix some lintian warnings:
+    - Build-depends on chrpath to remove RPATH.
+    - Add missing ${misc:Depends}.
+  * Update copyright. Some informations were wrong.
+  * Update installed files: add OFX plugin. (Closes: #517145)
+  * Cleanup lintian overrides.
+  * Add postinst and postrm scripts for update-menus call and dh_desktop
+    usage.
+  * Update rules: call dh_desktop.
+
+ -- Fathi Boudra <fabo@debian.org>  Sun, 08 Mar 2009 14:00:54 +0100
+
+kmymoney2 (0.9.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Update lintian-overrides libkmm-mymoney5
+  * Add Build-Depends: libxml++2.6-dev
+
+ -- Mark Purcell <msp@debian.org>  Tue, 21 Oct 2008 22:49:57 +1100
+
+kmymoney2 (0.9-3) unstable; urgency=low
+
+  * Upgrade to Standards-Version: 3.8.0 - no changes necessary
+  * Remove unnecessary quilt Build-Depends: Fixes lintian:quilt-build-
+    dep-but-no-series-file
+  * Cleanup diff - Fixes lintian:patch-system-but-direct-changes-in-diff
+  * Add lintian-overrides - Fixes lintian:no-symbols-control-file
+  * Set debhelper compatibility level 7
+
+ -- Mark Purcell <msp@debian.org>  Tue, 09 Sep 2008 21:47:40 +1000
+
+kmymoney2 (0.9-2) unstable; urgency=low
+
+  * Add kmymoney-dev package to fix kmymoney2-plugin-aqbanking FTBFS.
+    (Closes: #482625)
+
+ -- Fathi Boudra <fabo@debian.org>  Sat, 24 May 2008 18:40:44 +0200
+
+kmymoney2 (0.9-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #360022, #480487)
+  * Recommend kmymoney2-plugin-aqbanking. Thanks to Micha Lenk for his work.
+    (Closes: #434278)
+  * Split architecture independent data into kmymoney2-common package.
+    (Closes: #473054)
+  * Update copyright file: add KDChart copyright.
+
+ -- Fathi Boudra <fabo@debian.org>  Sat, 17 May 2008 08:55:20 +0200
+
+kmymoney2 (0.8.9-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #472827)
+  * Remove patches merged upstream:
+    * 07_ofximport_ldflags
+    * 08_remove_deprecated_miniicon
+    * 10_fix_gcc4.3
+
+ -- Fathi Boudra <fabo@debian.org>  Sat, 05 Apr 2008 10:43:03 +0200
+
+kmymoney2 (0.8.8-2) unstable; urgency=low
+
+  [ Ana Beatriz Guerrero Lopez ]
+  * Team upload to address FTBFS with GCC 4.3.
+  * Patch to fix FTBFS with GCC 4.3. (Closes: #455675)
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sun, 23 Mar 2008 18:52:44 +0100
+
+kmymoney2 (0.8.8-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #451785, #434278, #455675, #460414)
+
+  [Fathi Boudra]
+  * Bump compat to 6.
+  * Update my e-mail address.
+  * Bump debhelper to 6.
+  * Switch to quilt patch system.
+  * Replace automake1.9 build dependency by automake.
+  * Add libtool build dependency.
+  * Bump Standard-Version to 3.7.3.
+  * Use Homepage field.
+  * Add Vcs-Browser and Vcs-Svn fields.
+  * Update lintian override.
+  * Update menu section to latest Debian menu policy.
+  * Build with --as-needed linker flag.
+  * Add clean target. Useful for create-buildprep script.
+  * Add patches:
+    * Update admin directory.
+    * Update libtool.m4.in.
+    * Fix ofximport plugin LDFLAGS.
+    * Remove deprecated miniicon entry from desktop file.
+
+  [Mark Purcell]
+  * Remove get-orig-source targets. sf.net sillyness.
+
+ -- Fathi Boudra <fabo@debian.org>  Sun, 23 Dec 2007 18:00:06 +0100
+
+kmymoney2 (0.8.7-2) unstable; urgency=low
+
+  * Don't build developer pdf docs, we didn't ship anyway
+    - FTBFS: Bus error in ps2pdf14 (Closes: #434676)
+
+ -- Mark Purcell <msp@debian.org>  Wed, 25 Jul 2007 22:05:51 +0100
+
+kmymoney2 (0.8.7-1) unstable; urgency=low
+
+  * New upstream release
+    - Upstream changlog: Fixed #1723325 (Cannot quit the program)
+      - Cannot exit KMyMoney2 (Closes: #403939)
+    - Upstream changlog: Use dash as standard separator if no short date
+      - Date field separator displayed as letter a (Closes: #427122)
+  * Remove Build-Depends: libaqbanking16-dev, refer to NEWS.debian
+    - OpenSSL license violation (Closes: #423379)
+  * Document lack of online banking in NEWS.Debian
+
+ -- Mark Purcell <msp@debian.org>  Sun, 22 Jul 2007 22:27:48 +0100
+
+kmymoney2 (0.8.6-1) unstable; urgency=low
+
+  * New upstream release
+    - Crashes when updating the amount of a scheduled transaction to 0.0
+    (Closes: #412264)
+    - error while loading shared libraries: libofx.so.3 (Closes: #385773)
+    - ~/stripped.txt file created after updating currencies (Closes: #412267)
+    - Crashes when updating the amount of a scheduled transaction to 0.0
+    (Closes: #412264)
+  * Update debian/rules get-orig-source target
+  * Update debian/watch
+  * Lintian cleanup: package-has-a-duplicate-build-relation gs-common,
+    gs-common
+
+ -- Mark Purcell <msp@debian.org>  Sat, 10 Mar 2007 10:37:51 +0000
+
+kmymoney2 (0.8.5-1+b1) unstable; urgency=low
+
+  * Binary-only non-maintainer upload for i386; no source changes.
+  * Rebuild against libofx3
+
+ -- Debian/i386 Build Daemon <buildd_i386-ninsei>  Tue, 12 Sep 2006 01:39:33 -0700
+
+kmymoney2 (0.8.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove 10_add_autconf2.60_support.diff, included upstream
+  * Remove 11_fix_bug_374881.diff, included upstream
+
+ -- Mark Purcell <msp@debian.org>  Thu, 31 Aug 2006 22:43:04 +0100
+
+kmymoney2 (0.8.4-5) unstable; urgency=low
+
+  * Renamed dbug374881.diff to 10_fix_bug_374881.diff
+  * Add autoconf2.60 support patch
+  * Renamed override to kmymoney2.lintian-overrides and use it
+  * compat: bumped to 5
+  * control:
+    * add myself in uploaders
+    * cleanup build-depends
+    * bumped standards version to current 3.7.2
+  * dirs: removed, not needed
+  * rules:
+    * cleanup
+    * replace DEB_CONFIGURE_USER_FLAG by DEB_CONFIGURE_EXTRA_FLAG
+    * remove autools.mk, not needed
+    * remove --disable-shared (Closes: #378181, #383795)
+
+ -- Fathi Boudra <fboudra@free.fr>  Tue, 27 Jun 2006 22:45:47 +0100
+
+kmymoney2 (0.8.4-4) unstable; urgency=low
+
+  * kmymoney2 - FTBFS: cd: /home/buildd: No such file or directory
+    (Closes: #374881) - Thanks /Sune
+  * DEB_CONFIGURE_USER_FLAGS =  --disable-shared
+    - Fixes: non-dev-pkg-with-shlib-symlink package-name-doesnt-match-
+    sonames
+  * debian/compat 4
+
+ -- Mark Purcell <msp@debian.org>  Tue, 27 Jun 2006 22:07:26 +0100
+
+kmymoney2 (0.8.4-3) unstable; urgency=low
+
+  * export LDFLAGS=-lgwenhywfar -laqbanking -lqbanking -ltdeui
+   -- Fixes: FTBFS in sid (problem with kbanking) (Closes: #373707)
+
+ -- Mark Purcell <msp@debian.org>  Wed, 21 Jun 2006 16:34:03 +0100
+
+kmymoney2 (0.8.4-2) unstable; urgency=low
+
+  * Build-Depends: libaqbanking16-dev | libaqbanking-dev
+
+ -- Mark Purcell <msp@debian.org>  Wed, 24 May 2006 07:29:54 +0100
+
+kmymoney2 (0.8.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Disable (Build-Depends: libaqbanking0-dev) for this release as waiting for
+    libaqbanking0-dev is taking too long. See #359883.
+    - Uninstallable in Sid (Closes: #360164)
+
+ -- Mark Purcell <msp@debian.org>  Sat, 20 May 2006 23:21:37 +0100
+
+kmymoney2 (0.8.3-2) unstable; urgency=low
+
+  * Rebuild: Fixes: Uninstallable in Sid (Closes: #360164)
+
+ -- Mark Purcell <msp@debian.org>  Fri, 31 Mar 2006 07:29:14 +0100
+
+kmymoney2 (0.8.3-1) unstable; urgency=low
+
+  * New upstream release
+    . Account tree collapses without user approval (Closes: #347698)
+    . qif import: crash in finishImport() (Closes: #329995)
+    . '???' symbols in russian locale (Closes: #311768)
+    . each account and category should be sum of subaccounts/subcategories
+    (Closes: #311782)
+    . [INTL: en_GB] [PATCH] Completes the en_GB.po translation (Closes:
+    #345581)
+    . [INTL:de] German PO file corrections (Closes: #314006)
+    . Account tree collapses without user approval (Closes: #347698)
+    . default geometry too large for screen (Closes: #345815)
+  * Update debian/control
+
+ -- Mark Purcell <msp@debian.org>  Wed, 22 Feb 2006 18:11:14 +0000
+
+kmymoney2 (0.8.2-4) unstable; urgency=low
+
+  * Include debian/patches/configure.patch to attempt to resolve $HOME
+    issues
+
+ -- Mark Purcell <msp@debian.org>  Fri,  3 Feb 2006 09:24:39 +1100
+
+kmymoney2 (0.8.2-3) unstable; urgency=low
+
+  * Really Build-Depend on cdbs
+    - kmymoney2_0.8.2-2(hppa/unstable): FTBFS: missing build-depends: cdbs
+    (Closes: #350737)
+    - FTBFS: /usr/share/cdbs/1/class/autotools.mk: No such file or
+    directory (Closes: #349252)
+    - kmymoney2_0.8-6 (unstable): fails to build (Closes: #332307)
+  * Add DEB_CONFIGURE_USER_FLAGS = --enable-kbanking --enable-ofxbanking
+    --enable-ofxplugin --enable-pdf-docs
+    - Can't import ofx files anymore (Closes: #343886)
+
+ -- Mark Purcell <msp@debian.org>  Tue, 31 Jan 2006 23:54:30 +0000
+
+kmymoney2 (0.8.2-2) unstable; urgency=low
+
+  * Build Depends: cdbs
+
+ -- Mark Purcell <msp@debian.org>  Tue, 24 Jan 2006 09:07:40 +0000
+
+kmymoney2 (0.8.2-1) unstable; urgency=low
+
+  * New Upstream Release
+  * Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+  * Use /usr/share/cdbs/1/class/kde.mk in debian/rules again
+
+ -- Mark Purcell <msp@debian.org>  Tue, 17 Jan 2006 20:19:08 +0000
+
+kmymoney2 (0.8.1-3) unstable; urgency=low
+
+  * Switch to cdbs
+  * Remove build-depends libqt3-compat-headers (Closes: #338952)
+
+ -- Mark Purcell <msp@debian.org>  Mon, 14 Nov 2005 07:07:45 +0000
+
+kmymoney2 (0.8.1-2) unstable; urgency=low
+
+  * configure --enable-kbanking
+  * Build-Depends: libaqbanking0-dev >= 1.5.99)
+
+ -- Mark Purcell <msp@debian.org>  Mon,  7 Nov 2005 07:54:17 +0000
+
+kmymoney2 (0.8.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Disable --kbanking for this upload
+
+ -- Mark Purcell <msp@debian.org>  Sun,  6 Nov 2005 23:01:59 +0000
+
+kmymoney2 (0.8-7) unstable; urgency=low
+
+  * Add Build-Depends: libkbanking-dev
+  * debian/rules --enable-kbanking
+    - Please enable HBCI support in kmymoney2 (Closes: #331564)
+  * Add debian/watch
+
+ -- Mark Purcell <msp@debian.org>  Sun,  9 Oct 2005 17:11:17 +0100
+
+kmymoney2 (0.8-6) unstable; urgency=low
+
+  * Rebuild for libofx
+    - Can you compile kmymoney2 against libofx2 instead of libofx1c2
+    please ? (Closes: #326937)
+  * fix old-fsf-address-in-copyright-file
+
+ -- Mark Purcell <msp@debian.org>  Tue,  6 Sep 2005 22:13:11 +0100
+
+kmymoney2 (0.8-5) unstable; urgency=low
+
+  * Remove AUTOMAKE=automake1.6 from debian/rules
+
+ -- Mark Purcell <msp@debian.org>  Sun, 21 Aug 2005 21:34:34 +0100
+
+kmymoney2 (0.8-4) unstable; urgency=low
+
+  * Add Build-Depends: libofx-dev
+
+ -- Mark Purcell <msp@debian.org>  Sun, 21 Aug 2005 16:57:04 +0100
+
+kmymoney2 (0.8-3) unstable; urgency=low
+
+  * Lntian cleanup:
+  * Rm config.log
+  * Rm kderemove
+
+ -- Mark Purcell <msp@debian.org>  Fri, 19 Aug 2005 07:44:50 +0100
+
+kmymoney2 (0.8-2) experimental; urgency=low
+
+  * C++ migration
+  * Build-Depends: tdelibs4-dev (>= 4:3.4.2-1)
+
+ -- Mark Purcell <msp@debian.org>  Fri, 19 Aug 2005 07:22:23 +0100
+
+kmymoney2 (0.8-1) experimental; urgency=low
+
+  * New upstream release
+  * Closes: #319314: New upstream version available
+  * Upload to experimental while c++ migration on
+
+ -- Mark Purcell <msp@debian.org>  Sat, 13 Aug 2005 13:13:24 +0100
+
+kmymoney2 (0.7.5-1) experimental; urgency=low
+
+  * New upstream release
+  * New upstream version available (Closes: #319314)
+  * Remove Build-Depends: libofx-dev to upload to experimental
+
+ -- Mark Purcell <msp@debian.org>  Wed, 10 Aug 2005 20:41:38 +0100
+
+kmymoney2 (0.7.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Mark Purcell <msp@debian.org>  Wed, 20 Jul 2005 10:24:07 +1000
+
+kmymoney2 (0.7.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Mark Purcell <msp@debian.org>  Sat,  9 Jul 2005 08:18:14 +0100
+
+kmymoney2 (0.7.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Add Build-Depends: html2ps
+  * Add Build-Depends: gs-common
+  * debian/rules add dh_makeshlibs
+
+ -- Mark Purcell <msp@debian.org>  Wed,  1 Jun 2005 21:35:30 +0100
+
+kmymoney2 (0.7.0-2) unstable; urgency=low
+
+  * Enable kbanking
+
+ -- Mark Purcell <msp@debian.org>  Sun, 15 May 2005 19:23:32 +0100
+
+kmymoney2 (0.7.0-1) unstable; urgency=low
+
+  * New upstream release
+  * If people would like to see this package in Debian unstable quicker
+    (http://www.kde-apps.org/content/show.php?content=10180)
+    please do one of two things:
+    - Provide me with a sourceforge compatible debian/watch file and/or
+    - File a wishlist bug report at http://bugs.debian.org/kmymoney2
+  * Add Build-Depends: libofx-dev
+  * Closes: #270028: it does not appear in the proper KDE menu section.
+    - Add Categories=Qt;TDE;Office to kmymoney2.destop
+
+ -- Mark Purcell <msp@debian.org>  Sun, 15 May 2005 12:45:18 +0100
+
+kmymoney2 (0.6.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Mark Purcell <msp@debian.org>  Thu,  4 Nov 2004 18:14:33 +1100
+
+kmymoney2 (0.6.1-2) unstable; urgency=low
+
+  * configure   --mandir=\$${prefix}/share/man (Closes: Bug#267850)
+
+ -- Mark Purcell <msp@debian.org>  Sat,  4 Sep 2004 20:37:10 +1000
+
+kmymoney2 (0.6.1-0sarge1) testing-proposed-updates; urgency=high
+
+  * Rebuild for sarge (Trinity.2)
+  * configure   --mandir=\$${prefix}/share/man (Closes: Bug#267850)
+  * Remove debian/kmymoney2.1, its included upstream
+  * Remove depends-on-build-essential-package-without-using-version g++
+  * man page doc/en/Makefile.in gzip -9
+
+ -- Mark Purcell <msp@debian.org>  Sat,  4 Sep 2004 19:10:26 +1000
+
+kmymoney2 (0.6.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Closes: #248527: crashes during the loading of a files generated and
+    saved in a previous session.
+  * Closes: #225404: New categories doesn't show up in view
+  * Closes: #256211: New version available upstream
+  * New Maintainer (Closes: Bug#266933)
+
+ -- Mark Purcell <msp@debian.org>  Sat, 21 Aug 2004 12:03:36 +1000
+
+kmymoney2 (0.5.1-4) unstable; urgency=low
+
+  * Test build for ITA
+
+ -- Mark Purcell <msp@debian.org>  Sat, 21 Aug 2004 11:52:14 +1000
+
+kmymoney2 (0.5.1-3) unstable; urgency=low
+
+  * recompiled with newer libxml++ (closes: bug#228732)
+  * Removed automake from build-dependencies
+  * Removed xlibs fix
+  * Put quoted strings in the menu file
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Sat, 24 May 2003 22:20:19 +0200
+
+kmymoney2 (0.5.1-2) unstable; urgency=low
+
+  * 0-day NMU.
+  * Applied the patch from the BTS to fix the FTBFS (closes: bug#200365).
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 14 Sep 2003 04:14:44 +0200
+
+kmymoney2 (0.5.1-1) unstable; urgency=low
+
+  * Adopted the package (closes: Bug#190069)
+  * New upstream release, (closes: #187050 and #189994)
+  * Fixed rules file for KDE 3.1.1, added pixmap, overrides and man page
+  * Should have build-depend on libxml2-dev and libxml++-dev
+
+ -- Karolina Lindqvist <pgd-karolinali@algonet.se>  Sat, 24 May 2003 22:20:19 +0200
+
+kmymoney2 (0.4rel-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- martin f. krafft <madduck@debian.org>  Sun,  8 Sep 2002 19:12:15 +0200
+
+kmymoney2 (0.4pre2-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Martin F. Krafft <madduck@debian.org>  Tue, 26 Mar 2002 14:47:31 +0100
+

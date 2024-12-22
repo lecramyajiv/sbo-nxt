@@ -1,0 +1,89 @@
+Source: tdevelop-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Jeremy Lain <jeremy.laine@m4x.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, tdelibs14-trinity-doc, libtqtinterface-doc, flex, python3-all, libcvsservice-trinity-dev, groff-base, libsvn-dev, libaprutil1-dev, libdb-dev
+Standards-Version: 3.8.4
+
+Package: tdevelop-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, tdevelop-data-trinity (>= ${source:Version}), tdebase-trinity-bin
+Replaces: kdevelop-trinity (<< 4:14.0.0~)
+Breaks: kdevelop-trinity (<< 4:14.0.0~)
+Recommends: tdevelop-trinity-doc, make, libtool, autoconf, automaken, gdb (>= 6.4)
+Suggests: libtqtinterface-dev, tdelibs14-trinity-dev, sgmltools-lite, ark-trinity, kbabel-trinity, tdeiconedit-trinity, tdesdk-scripts-trinity, graphviz, tdebase-tdeio-plugins-trinity, exuberant-ctags, khelpcenter-trinity, tdelibs14-trinity-doc, libtqtinterface-doc, konsole-trinity, tde-cmake, ruby, python3-all, g++, kdevdesigner-trinity
+Description: An IDE for Unix/X11
+ TDevelop is an easy to use Integrated Development Environment
+ for developing C/C++ applications under X11. It features 
+ project management, an advanced editor, a class browser
+ and an integrated debugger.
+ .
+ The application wizard can generate fully functional projects
+ for terminal programs and GUI programs using TQt, Qt, TDE, KDE or GNOME.
+
+Package: tdevelop-trinity-doc
+Section: doc
+Architecture: all
+Replaces: kdevelop-trinity-doc (<< 4:14.0.0~)
+Breaks: kdevelop-trinity-doc (<< 4:14.0.0~)
+Description: An IDE for Unix/X11 - documentation
+ TDevelop is an easy to use Integrated Development Environment
+ for developing C/C++ applications under X11. It features 
+ project management, an advanced editor, a class browser
+ and an integrated debugger.
+ .
+ The application wizard can generate fully functional projects
+ for terminal programs and GUI programs using TQt, Qt, TDE, KDE or GNOME.
+ .
+ This package contains documentation for TDevelop.
+
+Package: tdevelop-data-trinity
+Architecture: all
+Replaces: kdevelop-data-trinity (<< 4:14.0.0~)
+Breaks: kdevelop-data-trinity (<< 4:14.0.0~)
+Description: An IDE for Unix/X11 - data
+ TDevelop is an easy to use Integrated Development Environment
+ for developing C/C++ applications under X11. It features 
+ project management, an advanced editor, a class browser
+ and an integrated debugger.
+ .
+ The application wizard can generate fully functional projects
+ for terminal programs and GUI programs using TQt, Qt, TDE, KDE or GNOME.
+ .
+ This package contains arch independent data for TDevelop.
+
+Package: kdevdesigner-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, tdevelop-trinity (= ${source:Version})
+Description: KDevDesigner part for TDevelop
+ This package provides the KDevDesigner part for TDevelop
+
+Package: tdevelop-trinity-dev
+Architecture: any
+Depends: tdevelop-trinity (= ${binary:Version}), tdelibs14-trinity-dev
+Replaces: kdevelop-trinity-dev (<< 4:14.0.0~)
+Breaks: kdevelop-trinity-dev (<< 4:14.0.0~)
+Description: An IDE for Unix/X11 - development files
+ TDevelop is an easy to use Integrated Development Environment
+ for developing C/C++ applications under X11. It features 
+ project management, an advanced editor, a class browser
+ and an integrated debugger.
+ .
+ The application wizard can generate fully functional projects
+ for terminal programs and GUI programs using TQt, Qt, TDE, KDE or GNOME.
+ .
+ This package contains development files for TDevelop.
+
+Package: tdevelop-trinity-dbg
+Section: debug
+Architecture: linux-any
+Priority: extra
+Replaces: kdevelop-trinity-dbg (<< 4:14.0.0~)
+Breaks: kdevelop-trinity-dbg (<< 4:14.0.0~)
+Depends: tdevelop-trinity (= ${binary:Version}), tdelibs-trinity-dbg
+Description: debugging symbols for tdevelop
+ This package contains the debugging symbols associated with tdevelop.
+ They will automatically be used by gdb for debugging tdevelop-related
+ issues.
+

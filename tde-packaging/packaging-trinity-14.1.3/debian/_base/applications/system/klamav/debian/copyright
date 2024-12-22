@@ -1,0 +1,174 @@
+This package was debianized by Anthony Mercatante <anthony.mercatante@laposte.net> on
+Wed, 15 Dec 2005 03:39:28 +0200.
+
+It is currently maintained by Scott Kitterman <scott@kitterman.com>
+
+It was downloaded from http://klamav.sf.net/
+
+Upstream Author:
+    Robert Hogan <robert@roberthogan.net>
+    uses code from :
+       Akregator
+       ClamAV
+       KCron
+       AmaroK
+       Kicker
+       K3b
+
+Uses Arkollon as an installation medium ( Copyright David Sansome ).
+
+License:
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    On Debian GNU/Linux systems, the complete text of the GNU General
+    Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+Copyright
+
+KlamAv:
+
+    (C) 2004, 2006 Robert Hogan <robert@roberthogan.net>
+
+Akregator:
+
+    (C) 2001-2004 Frerich Raabe <raabe@kde.org>
+    (C) 2003 Georg Robbers <Georg.Robbers@urz.uni-hd.de>
+    (C) 2004 Gary Cramblitt <garycramblitt@comcast.net>
+    (C) 2004 Sashmit Bhaduri <smt@vfemail.net>
+    (C) 2004 Stanislav Karchebny <stanislav.karchebny@kdemail.net>
+    (C) 2004 Teemu Rytilahti <teemu.rytilahti@kde-fi.org>
+
+ClamAv:
+
+    (C) 2002 - 2005 ClamAV Team
+ *  ClamAV DB code:
+ *  Copyright (C) 2002 - 2005 Tomasz Kojm <tkojm@clamav.net>
+
+Kcron:
+    Copyright (C) 1999, Gary Meyer <gary@meyer.net>
+
+debian/klamav.1.docbook, debian/klammail.1.docbook, debian/ScanWithKlamAV.1.docbook and debian/klamarkollon.1:
+
+    Copyright (C) 2005 by Anthony Mercatante <anthony.mercatante@laposte.net>
+
+Kicker (src/datepicker.cpp):
+
+Copyright (c) 1996-2002 the kicker authors. See file AUTHORS.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+
+K3b:
+
+/*
+ *
+ * $Id: k3bjobprogressosd_mod.cpp,v 1.5 2007/05/29 21:44:25 hoganrobert Exp $
+ * Copyright (C) 2005 Sebastian Trueg <trueg@k3b.org>
+ *
+ * This file is part of the K3b project.
+ * Copyright (C) 1998-2005 Sebastian Trueg <trueg@k3b.org>
+ *
+ * Some minor changes for KlamAV:
+ *   Copyright (C) 2006 by Robert Hogan                                    *
+ *   robert@roberthogan.net                                                *
+
+admin/install-sh:
+
+# This originates from X11R5 (mit/util/scripts/install.sh), which was
+# later released in X11R6 (xc/config/util/install.sh) with the
+# following copyright and license.
+#
+# Copyright (C) 1994 X Consortium
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+# X CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+# AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNEC-
+# TION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+# Except as contained in this notice, the name of the X Consortium shall not
+# be used in advertising or otherwise to promote the sale, use or other deal-
+# ings in this Software without prior written authorization from the X Consor-
+# tium.
+#
+#
+# FSF changes to this file are in the public domain.
+
+admin/doxygen.sh
+
+# doxygen.sh Copyright (C) 2005 by Adriaan de Groot and Dimitri van Heesch
+#            Based on some code from Doxyfile.am, among other things.
+# License:   GPL version 2.
+#            See file COPYING in kdelibs for details.
+
+src/sqlite/*
+
+** 2001 - 2005
+**
+** The author disclaims copyright to this source code.  In place of
+** a legal notice, here is a blessing:
+**
+**    May you do good and not evil.
+**    May you find forgiveness for yourself and forgive others.
+**    May you share freely, never taking more than you give.
+
+admin/config.pl
+# written by Michael Matz <matz@kde.org>
+# adapted by Dirk Mueller <mueller@kde.org>
+src/clicklineedit.cpp
+   Copyright (c) 2004 Daniel Molkentin <molkentin@kde.org>
+   based on code by Cornelius Schumacher <schumacher@kde.org>
+
+Are both licensed under LGPL2 or later
+
+   This file is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public
+   License as published by the Free Software Foundation; either
+   version 2 of the License, or (at your option) any later version.
+
+   This library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
+
+   You should have received a copy of the GNU Library General Public License
+   along with this library; see the file COPYING.LIB.  If not, write to
+   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.
+
+    On Debian GNU/Linux systems, the complete text of the GNU Library General
+    Public License can be found in `/usr/share/common-licenses/LGPL-2'.

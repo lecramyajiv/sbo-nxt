@@ -1,0 +1,22 @@
+Source: kgtk-qt3-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libgtk2.0-dev
+Standards-Version: 3.8.4
+Homepage: http://trinity.pearsoncomputing.net
+
+Package: kgtk-qt3-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: kgtk-qt3-trinity (<< 4:14.0.0~)
+Breaks: kgtk-qt3-trinity (<< 4:14.0.0~)
+Conflicts: kgtk-config-bluefish, kgtk-config-eclipse, kgtk-config-firefox, kgtk-config-gimp, kgtk-config-inkscape, kgtk-config-kino, kgtk-config-openoffice, kgtk-config-opera-qt3, kgtk-config-opera-qt4, kgtk-config-scribus, kgtk-config-thunderbird, kubuntu-kgtk-trinity
+Description: Use TDE dialogs in Gtk apps
+ This is an LD_PRELOAD hack that allows most GTK
+ applications to use Trinity's file dialogs when run under Trinity.
+ .
+ The Gtk file chooser functions have been overridden to communicate
+ with this TDE module/application.
+ .
+ This package includes the kqt3-wrapper

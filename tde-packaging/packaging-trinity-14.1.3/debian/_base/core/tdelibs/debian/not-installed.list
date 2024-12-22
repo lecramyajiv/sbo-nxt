@@ -1,0 +1,11 @@
+The following files are not installed in any binary package.
+This is deliberate.
+
+/etc/xdg/menus/applications.menu
+ - we install a renamed copy of this file (tde-applications.menu)
+   to avoid conflicts with GNOME. See debian/rules.
+
+/usr/share/icons/hicolor/index.theme
+ - This is shipped as part of the hicolor-icon-theme package,
+   which GNOME and TDE depend on. Shipping this ourselves would
+   result in file conflicts.

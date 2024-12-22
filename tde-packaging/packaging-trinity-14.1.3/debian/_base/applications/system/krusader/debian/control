@@ -1,0 +1,48 @@
+Source: krusader-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, libkonq4-trinity-dev, automake, autoconf, libtool, libltdl-dev
+Standards-Version: 3.8.4
+Homepage: http://krusader.sourceforge.net
+
+Package: krusader-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: krusader-trinity (<< 4:14.0.0~)
+Breaks: krusader-trinity (<< 4:14.0.0~)
+Suggests: md5deep | cfv, kedit-trinity, khexedit-trinity, konsole-trinity, kmail-trinity,
+ krename-trinity, kdiff3-trinity | kompare-trinity | xxdiff, ark-trinity, arj, bzip2, cpio, lha,
+ unrar | unrar-free | rar, rpm, unace, unzip, zip, p7zip, tdebase-trinity-bin,
+ tdebase-tdeio-plugins-trinity
+Description: twin-panel (commander-style) file manager for TDE (and other desktops)
+ Krusader is a simple, easy, powerful, twin-panel (commander-style) file
+ manager for TDE and other desktops, similar to Midnight Commander (C) or Total
+ Commander (C).
+ .
+ It provides all the file management features you could possibly want.
+ .
+ Plus: extensive archive handling, mounted filesystem support, FTP,
+ advanced search module, viewer/editor, directory synchronisation,
+ file content comparisons, powerful batch renaming and much much more.
+ .
+ It supports archive formats: ace, arj, bzip2, deb, iso, lha, rar, rpm, tar,
+ zip and 7-zip.
+ .
+ It handles KIOSlaves such as smb:// or fish://.
+ .
+ Almost completely customizable, Krusader is very user friendly, fast and looks
+ great on your desktop.
+
+Package: krusader-trinity-dbg
+Section: devel
+Architecture: any
+Replaces: krusader-trinity-dbg (<< 4:14.0.0~)
+Breaks: krusader-trinity-dbg (<< 4:14.0.0~)
+Priority: extra
+Depends: krusader-trinity (= ${binary:Version})
+Description: debugging symbols for krusader-trinity
+ This package contains the debugging symbols associated with krusader-trinity.
+ They will automatically be used by gdb for debugging krusader-related
+ issues.

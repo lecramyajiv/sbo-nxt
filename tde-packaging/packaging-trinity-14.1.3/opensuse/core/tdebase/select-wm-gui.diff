@@ -1,0 +1,635 @@
+Subject: GUI configuration for selecting WM
+From: Lubos Lunak
+Feature: bnc#332079
+Patch-upstream: no
+
+Index: ksmserver/startup.cpp
+===================================================================
+--- ksmserver/startup.cpp.orig
++++ ksmserver/startup.cpp
+@@ -103,38 +103,39 @@ void KSMServer::restoreSession( QString
+     config->setGroup( sessionGroup );
+     int count =  config->readNumEntry( "count" );
+     appsToStart = count;
+-
+-    QValueList<QStringList> wmCommands;
+-    if ( !wm.isEmpty() ) {
+-	for ( int i = 1; i <= count; i++ ) {
+-	    QString n = QString::number(i);
+-	    if ( wm == config->readEntry( QString("program")+n ) ) {
+-		wmCommands << config->readListEntry( QString("restartCommand")+n );
+-	    }
+-	}
+-    }
+-    if ( wmCommands.isEmpty() )
+-        wmCommands << ( QStringList() << wm );
+-
+     publishProgress( appsToStart, true );
++    upAndRunning( "ksmserver" );
+     connectDCOPSignal( launcher, launcher, "autoStart0Done()",
+                        "autoStart0Done()", true);
+     connectDCOPSignal( launcher, launcher, "autoStart1Done()",
+                        "autoStart1Done()", true);
+     connectDCOPSignal( launcher, launcher, "autoStart2Done()",
+                        "autoStart2Done()", true);
+-    upAndRunning( "ksmserver" );
+ 
+-    if ( !wmCommands.isEmpty() ) {
+-        // when we have a window manager, we start it first and give
+-        // it some time before launching other processes. Results in a
+-        // visually more appealing startup.
+-        for (uint i = 0; i < wmCommands.count(); i++)
+-            startApplication( wmCommands[i] );
+-        QTimer::singleShot( 4000, this, SLOT( autoStart0() ) );
+-    } else {
+-        autoStart0();
++    // find all commands to launch the wm in the session
++    QValueList<QStringList> wmStartCommands;
++    if ( !wm.isEmpty() ) {
++	for ( int i = 1; i <= count; i++ ) {
++	    QString n = QString::number(i);
++            // special hack for it, both kde3(=native) and kde4 kwin have the same program,
++            // but the command for kde4 kwin starts with the kde4 wrapper
++            if( config->readEntry( QString("program")+n ) == "kwin" ) {
++                QStringList command = config->readListEntry( QString("restartCommand")+n );
++                if( wmCommands.count() > 1 && wmCommands[ 0 ].endsWith( "kde4" )
++                    && command.count() > 1 && command[ 0 ].endsWith( "kde4" )) {
++                    wmStartCommands << command; // kde4 wanted, kde4 found
++                } else if(!( wmCommands.count() > 1 && wmCommands[ 0 ].endsWith( "kde4" ))
++                    && !( command.count() > 1 && command[ 0 ].endsWith( "kde4" ))) {
++                    wmStartCommands << command; // native wanted, native found
++                }
++            } else if ( wm == config->readEntry( QString("program")+n ) ) {
++		wmStartCommands << config->readListEntry( QString("restartCommand")+n );
++	    }
++	}
+     }
++    if( wmStartCommands.isEmpty()) // otherwise use the configured default
++        wmStartCommands << wmCommands;
++    launchWM( wmStartCommands );
+ }
+ 
+ /*!
+@@ -157,17 +158,53 @@ void KSMServer::startDefaultSession()
+                        "autoStart1Done()", true);
+     connectDCOPSignal( launcher, launcher, "autoStart2Done()",
+                        "autoStart2Done()", true);
+-    startApplication( wm );
++    launchWM( QValueList< QStringList >() << wmCommands );
++}
++
++void KSMServer::launchWM( const QValueList< QStringList >& wmStartCommands )
++{
++    assert( state == LaunchingWM );
++
++    // when we have a window manager, we start it first and give
++    // it some time before launching other processes. Results in a
++    // visually more appealing startup.
++    wmProcess = startApplication( wmStartCommands[ 0 ] );
++    connect( wmProcess, SIGNAL( processExited( KProcess* )), SLOT( wmProcessChange()));
++    // there can be possibly more wm's (because of forking for multihead),
++    // but in such case care only about the process of the first one
++    for (unsigned int i = 1; i < wmStartCommands.count(); i++)
++        startApplication( wmStartCommands[i] );
+     QTimer::singleShot( 4000, this, SLOT( autoStart0() ) );
+ }
+ 
+ 
+ void KSMServer::clientSetProgram( KSMClient* client )
+ {
+-    if ( !wm.isEmpty() && client->program() == wm )
++    if ( client->program() == wm )
+         autoStart0();
+ }
+ 
++void KSMServer::wmProcessChange()
++{
++    if( state != LaunchingWM )
++    { // don't care about the process when not in the wm-launching state anymore
++        wmProcess = NULL;
++        return;
++    }
++    if( !wmProcess->isRunning())
++    { // wm failed to launch for some reason, go with kwin instead
++        kdWarning( 1218 ) << "Window manager '" << wm << "' failed to launch" << endl;
++        if( wm == "kwin" )
++            return; // uhoh, kwin itself failed
++        kdDebug( 1218 ) << "Launching KWin" << endl;
++        wm = "kwin";
++        wmCommands = ( QStringList() << "kwin" ); 
++        // launch it
++        launchWM( QValueList< QStringList >() << wmCommands );
++        return;
++    }
++}
++
+ void KSMServer::autoStart0()
+ {
+     if( state != LaunchingWM )
+Index: ksmserver/server.h
+===================================================================
+--- ksmserver/server.h.orig
++++ ksmserver/server.h
+@@ -30,6 +30,8 @@ Copyright (C) 2000 Matthias Ettrich <ett
+ #define SESSION_PREVIOUS_LOGOUT "saved at previous logout"
+ #define SESSION_BY_USER  "saved by user"
+ 
++class KProcess;
++
+ typedef QValueList<QCString> QCStringList;
+ class KSMListener;
+ class KSMConnection;
+@@ -98,6 +100,8 @@ public:
+ 		      KApplication::ShutdownType sdtype,
+ 		      KApplication::ShutdownMode sdmode );
+ 
++    void launchWM( const QValueList< QStringList >& wmStartCommands );
++
+ public slots:
+     void cleanUp();
+ 
+@@ -120,6 +124,7 @@ private slots:
+     void autoStart2();
+     void tryRestoreNext();
+     void startupSuspendTimeout();
++    void wmProcessChange();
+ 
+ private:
+     void handlePendingInteractions();
+@@ -138,13 +143,14 @@ private:
+     void startProtection();
+     void endProtection();
+ 
+-    void startApplication( QStringList command,
++    KProcess* startApplication( QStringList command,
+         const QString& clientMachine = QString::null,
+         const QString& userId = QString::null );
+     void executeCommand( const QStringList& command );
+     
+     bool isWM( const KSMClient* client ) const;
+     bool isWM( const QString& program ) const;
++    void selectWm( const QString& kdewm );
+     bool defaultSession() const; // empty session
+     void setupXIOErrorHandler();
+ 
+@@ -223,6 +229,8 @@ private:
+     int lastAppStarted;
+     QString lastIdStarted;
+     
++    QStringList wmCommands;
++    KProcess* wmProcess;
+     QStringList excludeApps;
+ 
+     WindowMap legacyWindows;
+Index: ksmserver/Makefile.am
+===================================================================
+--- ksmserver/Makefile.am.orig
++++ ksmserver/Makefile.am
+@@ -15,7 +15,7 @@
+ # AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+-SUBDIRS = .
++SUBDIRS = . windowmanagers
+ 
+ INCLUDES= -I$(top_srcdir)/kdmlib $(all_includes) $(DBUS_INCS)
+ 
+Index: ksmserver/main.cpp
+===================================================================
+--- ksmserver/main.cpp.orig
++++ ksmserver/main.cpp
+@@ -203,8 +203,6 @@ extern "C" KDE_EXPORT int kdemain( int a
+     }
+ 
+     QCString wm = args->getOption("windowmanager");
+-    if ( wm.isEmpty() )
+-	wm = "kwin";
+ 
+     bool only_local = args->isSet("local");
+ #ifndef HAVE__ICETRANSNOLISTEN
+Index: ksmserver/server.cpp
+===================================================================
+--- ksmserver/server.cpp.orig
++++ ksmserver/server.cpp
+@@ -77,6 +77,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE
+ #include <kprocess.h>
+ #include <dcopclient.h>
+ #include <dcopref.h>
++#include <kdesktopfile.h>
++#include <kshell.h>
+ 
+ #include "server.h"
+ #include "global.h"
+@@ -98,11 +100,11 @@ KSMServer* KSMServer::self()
+ /*! Utility function to execute a command on the local machine. Used
+  * to restart applications.
+  */
+-void KSMServer::startApplication( QStringList command, const QString& clientMachine,
++KProcess* KSMServer::startApplication( QStringList command, const QString& clientMachine,
+     const QString& userId )
+ {
+     if ( command.isEmpty() )
+-        return;
++        return NULL;
+     if ( !userId.isEmpty()) {
+         struct passwd* pw = getpwuid( getuid());
+         if( pw != NULL && userId != QString::fromLocal8Bit( pw->pw_name )) {
+@@ -116,12 +118,12 @@ void KSMServer::startApplication( QStrin
+         command.prepend( clientMachine );
+ 	command.prepend( xonCommand ); // "xon" by default
+     }
+-    int n = command.count();
+-    QCString app = command[0].latin1();
+-    QValueList<QCString> argList;
+-    for ( int i=1; i < n; i++)
+-       argList.append( QCString(command[i].latin1()));
+-    DCOPRef( launcher ).send( "exec_blind", app, DCOPArg( argList, "QValueList<QCString>" ) );
++    KProcess* process = new KProcess( this );
++    *process << command;
++    // make it auto-delete
++    connect( process, SIGNAL( processExited( KProcess* )), process, SLOT( deleteLater()));
++    process->start();
++    return process;
+ }
+ 
+ /*! Utility function to execute a command on the local machine. Used
+@@ -580,10 +582,10 @@ extern "C" int _IceTransNoListen(const c
+ 
+ KSMServer::KSMServer( const QString& windowManager, bool _only_local )
+   : DCOPObject("ksmserver"), sessionGroup( "" )
++  , wmProcess( NULL )
+ {
+     the_server = this;
+     clean = false;
+-    wm = windowManager;
+ 
+     shutdownType = KApplication::ShutdownTypeNone;
+ 
+@@ -595,6 +597,9 @@ KSMServer::KSMServer( const QString& win
+     config->setGroup("General" );
+     clientInteracting = 0;
+     xonCommand = config->readEntry( "xonCommand", "xon" );
++
++    KGlobal::dirs()->addResourceType( "windowmanagers", "share/apps/ksmserver/windowmanagers" );
++    selectWm( windowManager );
+     
+     connect( &knotifyTimeoutTimer, SIGNAL( timeout()), SLOT( knotifyTimeout()));
+     connect( &startupSuspendTimeoutTimer, SIGNAL( timeout()), SLOT( startupSuspendTimeout()));
+@@ -851,14 +856,12 @@ void KSMServer::storeSession()
+     config->setGroup( sessionGroup );
+     count =  0;
+ 
+-    if ( !wm.isEmpty() ) {
+-        // put the wm first
+-        for ( KSMClient* c = clients.first(); c; c = clients.next() )
+-            if ( c->program() == wm ) {
+-                clients.prepend( clients.take() );
+-                break;
+-            }
+-    }
++    // put the wm first
++    for ( KSMClient* c = clients.first(); c; c = clients.next() )
++        if ( c->program() == wm ) {
++            clients.prepend( clients.take() );
++            break;
++        }
+ 
+     for ( KSMClient* c = clients.first(); c; c = clients.next() ) {
+         int restartHint = c->restartStyleHint();
+@@ -909,14 +912,65 @@ bool KSMServer::isWM( const KSMClient* c
+ 
+ bool KSMServer::isWM( const QString& program ) const
+ {
+-    // KWin relies on ksmserver's special treatment in phase1,
+-    // therefore make sure it's recognized even if ksmserver
+-    // was initially started with different WM, and kwin replaced
+-    // it later
+-    return program == wm || program == "kwin";
++    return program == wm;
+ }
+ 
+ bool KSMServer::defaultSession() const
+ {
+     return sessionGroup.isEmpty();
+ }
++
++static bool noDisplay( KDesktopFile& f )
++{
++    KConfigGroup gr( &f, "Desktop Entry" );
++    if (gr.readBoolEntry("NoDisplay", false)) {
++        return true;
++    }
++    if (gr.hasKey("OnlyShowIn")) {
++        if (!gr.readListEntry("OnlyShowIn", ';').contains("KDE"))
++            return true;
++    }
++    if (gr.hasKey("NotShowIn")) {
++        if (gr.readListEntry("NotShowIn", ';').contains("KDE"))
++            return true;
++    }
++    return false;
++}
++
++// selection logic:
++// - $KDEWM is set - use that
++// - a wm is selected using the kcm - use that
++// - if that fails, just use KWin
++void KSMServer::selectWm( const QString& kdewm )
++{
++    wm = "kwin"; // defaults
++    wmCommands = ( QStringList() << "kwin" ); 
++    if( !kdewm.isEmpty())
++    {
++        wmCommands = ( QStringList() << kdewm );
++        wm = kdewm;
++        return;
++    }
++    KConfigGroup config(KGlobal::config(), "General");
++    QString cfgwm = config.readEntry( "windowManager", "kwin" );
++    KDesktopFile file( cfgwm + ".desktop", true, "windowmanagers" );
++    if( noDisplay( file ))
++        return;
++    if( !file.tryExec())
++        return;
++        file.setDesktopGroup();
++    QString testexec = file.readEntry( "X-KDE-WindowManagerTestExec" );
++    if( !testexec.isEmpty())
++    {
++        int ret = system( QFile::encodeName( testexec ));
++        if( !WIFEXITED( ret ) || WEXITSTATUS( ret ) != 0 )
++            return;
++    }
++    QStringList cfgWmCommands = KShell::splitArgs( file.readEntry( "Exec" ));
++    if( cfgWmCommands.isEmpty())
++        return;
++    QString smname = file.readEntry( "X-KDE-WindowManagerId" );
++    // ok
++    wm = smname.isEmpty() ? cfgwm : smname;
++    wmCommands = cfgWmCommands;
++}
+Index: ksmserver/windowmanagers/openbox.desktop
+===================================================================
+--- /dev/null
++++ ksmserver/windowmanagers/openbox.desktop
+@@ -0,0 +1,5 @@
++[Desktop Entry]
++Name=Openbox
++Exec=openbox
++TryExec=openbox
++
+Index: ksmserver/windowmanagers/Makefile.am
+===================================================================
+--- /dev/null
++++ ksmserver/windowmanagers/Makefile.am
+@@ -0,0 +1,2 @@
++windowmanager_DATA = compiz-custom.desktop compiz.desktop kwin4.desktop metacity.desktop openbox.desktop
++windowmanagerdir = $(kde_datadir)/ksmserver/windowmanagers
+Index: ksmserver/windowmanagers/compiz.desktop
+===================================================================
+--- /dev/null
++++ ksmserver/windowmanagers/compiz.desktop
+@@ -0,0 +1,4 @@
++[Desktop Entry]
++Name=Compiz
++Exec=compiz ccp
++TryExec=compiz
+Index: ksmserver/windowmanagers/compiz-custom.desktop
+===================================================================
+--- /dev/null
++++ ksmserver/windowmanagers/compiz-custom.desktop
+@@ -0,0 +1,5 @@
++[Desktop Entry]
++Name=Compiz custom (create wrapper script 'compiz-kde-launcher' to launch it)
++Exec=compiz-kde-launcher
++TryExec=compiz
++X-KDE-WindowManagerId=compiz
+Index: ksmserver/windowmanagers/kwin4.desktop
+===================================================================
+--- /dev/null
++++ ksmserver/windowmanagers/kwin4.desktop
+@@ -0,0 +1,6 @@
++[Desktop Entry]
++Name=KWin (KDE4)
++Exec=kde4 /usr/bin/kwin
++TryExec=/usr/bin/kwin
++X-KDE-WindowManagerId=kwin
++
+Index: ksmserver/windowmanagers/metacity.desktop
+===================================================================
+--- /dev/null
++++ ksmserver/windowmanagers/metacity.desktop
+@@ -0,0 +1,4 @@
++[Desktop Entry]
++Name=Metacity (GNOME)
++Exec=metacity
++TryExec=metacity
+Index: kcontrol/smserver/smserverconfigdlg.ui
+===================================================================
+--- kcontrol/smserver/smserverconfigdlg.ui.orig
++++ kcontrol/smserver/smserverconfigdlg.ui
+@@ -1,4 +1,4 @@
+-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
++<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+ <class>SMServerConfigDlg</class>
+ <widget class="QWidget">
+     <property name="name">
+@@ -8,8 +8,8 @@
+         <rect>
+             <x>0</x>
+             <y>0</y>
+-            <width>325</width>
+-            <height>366</height>
++            <width>334</width>
++            <height>476</height>
+         </rect>
+     </property>
+     <property name="caption">
+@@ -148,6 +148,24 @@
+                 </widget>
+             </vbox>
+         </widget>
++        <widget class="QGroupBox">
++            <property name="name">
++                <cstring>windowManagerGroup</cstring>
++            </property>
++            <property name="title">
++                <string>Window Manager</string>
++            </property>
++            <hbox>
++                <property name="name">
++                    <cstring>unnamed</cstring>
++                </property>
++                <widget class="QComboBox">
++                    <property name="name">
++                        <cstring>windowManagerCombo</cstring>
++                    </property>
++                </widget>
++            </hbox>
++        </widget>
+         <widget class="QButtonGroup">
+             <property name="name">
+                 <cstring>advancedGroup</cstring>
+@@ -236,6 +254,12 @@
+         <receiver>SMServerConfigDlg</receiver>
+         <slot>configChanged()</slot>
+     </connection>
++    <connection>
++        <sender>windowManagerCombo</sender>
++        <signal>activated(int)</signal>
++        <receiver>SMServerConfigDlg</receiver>
++        <slot>configChanged()</slot>
++    </connection>
+ </connections>
+ <includes>
+     <include location="global" impldecl="in implementation">kdialog.h</include>
+Index: kcontrol/smserver/kcmsmserver.cpp
+===================================================================
+--- kcontrol/smserver/kcmsmserver.cpp.orig
++++ kcontrol/smserver/kcmsmserver.cpp
+@@ -22,6 +22,8 @@
+ #include <qcheckbox.h>
+ #include <qlayout.h>
+ #include <qradiobutton.h>
++#include <qcombobox.h>
++#include <qfile.h>
+ 
+ #include <dcopclient.h>
+ 
+@@ -29,6 +31,12 @@
+ #include <kconfig.h>
+ #include <kgenericfactory.h>
+ #include <klineedit.h>
++#include <kstandarddirs.h>
++#include <qregexp.h>
++#include <kdesktopfile.h>
++#include <kdebug.h>
++#include <kprocess.h>
++#include <kmessagebox.h>
+ 
+ #include "kcmsmserver.h"
+ #include "smserverconfigimpl.h"
+@@ -52,6 +60,7 @@ SMServerConfig::SMServerConfig( QWidget
+ 
+     dialog->show();
+     topLayout->add(dialog);
++    KGlobal::dirs()->addResourceType( "windowmanagers", "share/apps/ksmserver/windowmanagers" );
+     load();
+ 
+ }
+@@ -90,6 +99,7 @@ void SMServerConfig::load(bool useDefaul
+     dialog->logoutRadio->setChecked(true);
+     break;
+   }
++  loadWMs(c->readEntry("windowManager", "kwin"));
+   dialog->excludeLineedit->setText( c->readEntry("excludeApps"));
+ 
+   delete c;
+@@ -116,6 +126,7 @@ void SMServerConfig::save()
+                    dialog->rebootRadio->isChecked() ?
+                      int(KApplication::ShutdownTypeReboot) :
+                      int(KApplication::ShutdownTypeNone));
++  c->writeEntry("windowManager", currentWM());
+   c->writeEntry("excludeApps", dialog->excludeLineedit->text());
+   c->sync();
+   delete c;
+@@ -123,6 +134,12 @@ void SMServerConfig::save()
+   // update the k menu if necessary
+   QByteArray data;
+   kapp->dcopClient()->send( "kicker", "kicker", "configure()", data );
++  if( oldwm != currentWM())
++  { // TODO switch it already in the session instead and tell ksmserver
++    KMessageBox::information( this,
++        i18n( "The new window manager will be used when KDE is started the next time." ),
++        i18n( "Window manager change" ), "windowmanagerchange" );
++  }
+ }
+ 
+ void SMServerConfig::defaults()
+@@ -130,5 +147,72 @@ void SMServerConfig::defaults()
+ 	load( true );
+ }
+ 
++static bool noDisplay( KDesktopFile& f )
++{
++    KConfigGroup gr( &f, "Desktop Entry" );
++    if (gr.readBoolEntry("NoDisplay", false)) {
++        return true;
++    }
++    if (gr.hasKey("OnlyShowIn")) {
++        if (!gr.readListEntry("OnlyShowIn", ';').contains("KDE"))
++            return true;
++    }
++    if (gr.hasKey("NotShowIn")) {
++        if (gr.readListEntry("NotShowIn", ';').contains("KDE"))
++            return true;
++    }
++    return false;
++}
++
++void SMServerConfig::loadWMs( const QString& current )
++{
++  QString kwinname = i18n( "KWin (KDE default)" );
++  dialog->windowManagerCombo->insertItem( kwinname );
++  dialog->windowManagerCombo->setCurrentItem( 0 );
++  wms[ kwinname ] = "kwin";
++  oldwm = "kwin";
++  QStringList list = KGlobal::dirs()->findAllResources( "windowmanagers", QString(), false, true );
++  QRegExp reg( ".*/([^/\\.]*)\\.[^/\\.]*" );
++  for( QStringList::ConstIterator it = list.begin();
++       it != list.end();
++       ++it )
++  {
++    QString wmfile = *it;
++    KDesktopFile file( wmfile );
++    if( noDisplay( file ))
++        continue;
++    if( !file.tryExec())
++        continue;
++    file.setDesktopGroup();
++    QString testexec = file.readEntry( "X-KDE-WindowManagerTestExec" );
++    if( !testexec.isEmpty())
++    {
++        int ret = system( QFile::encodeName( testexec ));
++        if( !WIFEXITED( ret ) || WEXITSTATUS( ret ) != 0 )
++            continue;
++    }
++    QString name = file.readName();
++    if( name.isEmpty())
++        continue;
++    if( !reg.exactMatch( wmfile ))
++        continue;
++    QString wm = reg.cap( 1 );
++    if( wms.values().contains( wm ))
++        continue;
++    wms[ name ] = wm;
++    dialog->windowManagerCombo->insertItem( name );
++    if( wms[ name ] == current ) // make it selected
++    {
++        dialog->windowManagerCombo->setCurrentItem( dialog->windowManagerCombo->count() - 1 );
++        oldwm = wm;
++    }
++  }
++}
++
++QString SMServerConfig::currentWM() const
++{
++  return wms[ dialog->windowManagerCombo->currentText() ];
++}
++
+ #include "kcmsmserver.moc"
+ 
+Index: kcontrol/smserver/kcmsmserver.h
+===================================================================
+--- kcontrol/smserver/kcmsmserver.h.orig
++++ kcontrol/smserver/kcmsmserver.h
+@@ -40,6 +40,10 @@ public:
+ 
+ private:
+   SMServerConfigImpl* dialog;
++  void loadWMs( const QString& current );
++  QString currentWM() const;
++  QMap< QString, QString > wms; // i18n text -> internal name
++  QString oldwm; // the original value
+ 
+ };
+ 

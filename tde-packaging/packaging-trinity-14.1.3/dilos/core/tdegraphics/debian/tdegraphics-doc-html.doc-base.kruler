@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kruler
+Title: KRuler Handbook
+Author: Lauri Watts
+Abstract: KRuler can be used to measure objects on the screen. 
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kruler/index.html
+Files: /usr/share/doc/tde/HTML/en/kruler/*.html
+

@@ -1,0 +1,11 @@
+Index: kcontrol/kcontrol/KControl.desktop
+===================================================================
+--- kcontrol/kcontrol/KControl.desktop.orig
++++ kcontrol/kcontrol/KControl.desktop
+@@ -1,4 +1,6 @@
+ [Desktop Entry]
++Categories=Qt;KDE;X-SuSE-core
++OnlyShowIn=KDE;
+ Exec=kcontrol -caption "%c" %i %m
+ Icon=kcontrol
+ Type=Application

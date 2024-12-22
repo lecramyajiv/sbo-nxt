@@ -1,0 +1,15 @@
+Source: tde-systemsettings-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: tde-systemsettings-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, kcontrol-trinity
+Replaces: kde-systemsettings-trinity (<< 4:14.0.0~)
+Breaks: kde-systemsettings-trinity (<< 4:14.0.0~)
+Description: easy to use control centre for TDE
+ System preferences is a replacement for the TDE
+ Control Centre with an improved user interface.

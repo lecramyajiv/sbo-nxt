@@ -1,0 +1,16 @@
+/opt/trinity/bin/kalarm
+/opt/trinity/bin/kalarmd
+/opt/trinity/share/applications/tde/kalarm.desktop
+/opt/trinity/share/applnk/.hidden/kalarmd.desktop
+/opt/trinity/share/applnk/Applications/kalarm.desktop
+/opt/trinity/share/apps/kalarm
+/opt/trinity/share/autostart/kalarm.tray.desktop
+/opt/trinity/share/autostart/kalarmd.autostart.desktop
+/opt/trinity/share/doc/tde/HTML/en/kalarm
+/opt/trinity/share/icons/crystalsvg/16x16/actions/kalarm.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kalarm.png
+/opt/trinity/share/icons/crystalsvg/22x22/actions/kalarm.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kalarm.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kalarm.png
+../icons/kalarm.xpm /opt/trinity/share/pixmaps
+../icons/kalarm-16.xpm /opt/trinity/share/pixmaps

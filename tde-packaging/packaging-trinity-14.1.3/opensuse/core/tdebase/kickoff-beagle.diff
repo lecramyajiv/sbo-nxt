@@ -1,0 +1,1329 @@
+--- configure.in.in		(Revision 0)
++++ configure.in.in		(Revision 849791)
+@@ -0,0 +1,78 @@
++dnl Check for pkg-config
++AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
++
++if test "$PKG_CONFIG" = "no"; then
++  AC_MSG_ERROR([
++This package requires pkg-config.
++])
++fi
++
++dnl Check for Glib-2.0
++# GLIB_CFLAGS:  cflags for compiling glib dependant sources
++# GLIB_LIBADD:  glib libraries (-l options)
++# GLIB_LDFLAGS: flags containing path to glib libraries (-L options)
++
++GLIB_PACKAGES="gmodule-2.0 gthread-2.0"
++GLIB_VERSION="1.3.3"
++AC_MSG_CHECKING(for GLib-2.0 (at least $GLIB_VERSION))
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.15 ; then
++   if $PKG_CONFIG --atleast-version $GLIB_VERSION $GLIB_PACKAGES >/dev/null 2>&1 ; then
++       GLIB_CFLAGS="`$PKG_CONFIG --cflags $GLIB_PACKAGES`"
++       GLIB_LIBADD="`$PKG_CONFIG --libs-only-l --libs-only-other $GLIB_PACKAGES`"
++       GLIB_LDFLAGS="`$PKG_CONFIG --libs-only-L $GLIB_PACKAGES`"
++       AC_MSG_RESULT(yes)
++   fi
++else
++   if $PKG_CONFIG --atleast-version $GLIB_VERSION $GLIB_PACKAGES >/dev/null 2>&1 ; then
++       GLIB_CFLAGS="`$PKG_CONFIG --cflags $GLIB_PACKAGES`"
++       GLIB_LIBADD="`$PKG_CONFIG --libs-only-l $GLIB_PACKAGES`"
++       GLIB_LDFLAGS="`$PKG_CONFIG --libs-only-L $GLIB_PACKAGES`"
++       AC_MSG_RESULT(yes)
++       AC_MSG_WARN([you may need to run make LDFLAGS=-pthread to compile arts])
++   fi
++fi
++
++if test -z "$GLIB_LIBADD"; then
++        AC_MSG_RESULT(not installed)
++    DO_NOT_COMPILE="$DO_NOT_COMPILE kerry gmcop"
++fi
++
++AC_SUBST(GLIB_CFLAGS)
++AC_SUBST(GLIB_LIBADD)
++AC_SUBST(GLIB_LDFLAGS)
++
++dnl Check for libbeagle 0.2.0
++# LIBBEAGLE_CFLAGS:  cflags for compiling libbeagle dependant sources
++# LIBBEAGLE_LIBADD:  libbeagle libraries (-l options)
++# LIBBEAGLE_LDFLAGS: flags containing path to libbeagle libraries (-L options)
++
++LIBBEAGLE_PACKAGES="libbeagle-0.0"
++LIBBEAGLE_VERSION="0.2.4"
++AC_MSG_CHECKING(for libbeagle-0.2.4 (at least $LIBBEAGLE_VERSION))
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.15 ; then
++   if $PKG_CONFIG --atleast-version $LIBBEAGLE_VERSION $LIBBEAGLE_PACKAGES >/dev/null 2>&1 ; then
++       LIBBEAGLE_CFLAGS="`$PKG_CONFIG --cflags $LIBBEAGLE_PACKAGES`"
++       LIBBEAGLE_LIBADD="`$PKG_CONFIG --libs-only-l --libs-only-other $LIBBEAGLE_PACKAGES`"
++       LIBBEAGLE_LDFLAGS="`$PKG_CONFIG --libs-only-L $LIBBEAGLE_PACKAGES`"
++       AC_MSG_RESULT(yes)
++   fi
++else
++   if $PKG_CONFIG --atleast-version $LIBBEAGLE_VERSION $LIBBEAGLE_PACKAGES >/dev/null 2>&1 ; then
++       LIBBEAGLE_CFLAGS="`$PKG_CONFIG --cflags $LIBBEAGLE_PACKAGES`"
++       LIBBEAGLE_LIBADD="`$PKG_CONFIG --libs-only-l $LIBBEAGLE_PACKAGES`"
++       LIBBEAGLE_LDFLAGS="`$PKG_CONFIG --libs-only-L $LIBBEAGLE_PACKAGES`"
++       AC_MSG_RESULT(yes)
++       AC_MSG_WARN([you may need to run make LDFLAGS=-pthread to compile arts])
++   fi
++fi
++
++if test -z "$LIBBEAGLE_LIBADD"; then
++        AC_MSG_RESULT(not installed)
++    DO_NOT_COMPILE="$DO_NOT_COMPILE kerry gmcop"
++fi
++
++AC_SUBST(LIBBEAGLE_CFLAGS)
++AC_SUBST(LIBBEAGLE_LIBADD)
++AC_SUBST(LIBBEAGLE_LDFLAGS)
+--- kicker/plugins/beaglesearch.cpp		(Revision 0)
++++ kicker/plugins/beaglesearch.cpp		(Revision 849791)
+@@ -0,0 +1,362 @@
++/*****************************************************************
++
++   Copyright (c) 2006 Debajyoti Bera <dbera.web@gmail.com>
++
++   This program is free software; you can redistribute it and/or
++   modify it under the terms of the GNU General Public
++   License as published by the Free Software Foundation; either
++   version 2 of the License, or (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program; see the file COPYING.  If not, write to
++   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++   Boston, MA 02110-1301, USA.
++
++******************************************************************/
++
++#include "beaglesearch.h"
++
++#include <qdatetime.h>
++#include <qmutex.h>
++#include <qstringlist.h>
++#include <qapplication.h>
++#include <time.h>
++
++void beagle_init ()
++{
++    g_type_init ();
++}
++
++// ---------------- Hit ---------------------------
++
++Hit::Hit (BeagleHit *_hit) : processed (false)
++{
++    hit = beagle_hit_ref (_hit);
++}
++
++Hit::~Hit ()
++{
++    beagle_hit_unref (hit);
++    if (! processed)
++	return;
++    QDictIterator<QStringList> it (property_map);
++    for( ; it.current(); ++it )
++        ((QStringList *)it.current())->clear ();
++
++}
++
++void Hit::processProperties ()
++{
++    processed = true;
++    GSList *prop_list = beagle_hit_get_all_properties (hit);
++    GSList *it;
++    property_map.setAutoDelete (true);
++    for (it = prop_list; it; it = it->next) {
++        BeagleProperty *property = (BeagleProperty *) it->data;
++        QString key = QString::fromUtf8 (beagle_property_get_key (property));
++        if (! property_map [key])
++            property_map.insert (key, new QStringList ());
++        property_map [key]->append (QString::fromUtf8 (beagle_property_get_value (property)));
++    }
++    g_slist_free (prop_list);
++}
++
++const QString Hit::operator[] (QString prop_name)
++{
++    if (! processed)
++	processProperties ();
++
++    QStringList *prop_list = property_map [prop_name];
++    if (! prop_list)
++        return QString::null;
++    if (prop_list->count () != 1)
++        return QString::null;
++    return (QString)prop_list->first ();
++}
++
++// ---------------- BeagleSearch ------------------
++
++BeagleSearchResult::BeagleSearchResult(int client_id)
++  : client_id (client_id), total (0)
++{
++    hitlist = new QPtrList<Hit>;
++    hitlist->setAutoDelete (true);
++}
++
++
++BeagleSearchResult::~BeagleSearchResult()
++{
++    // everything is set to autodelete
++}
++
++void BeagleSearchResult::addHit(BeagleHit *_hit)
++{
++    Hit *hit = new Hit (_hit);
++    hitlist->prepend (hit);
++}
++
++const QPtrList<Hit> *BeagleSearchResult::getHits () const
++{
++    return hitlist;
++}
++
++
++static int total_hits;
++
++static void print_feed_item_hit (BeagleHit *hit)
++{
++    const char *text;
++
++    if (beagle_hit_get_one_property (hit, "dc:title", &text))
++        g_print ("Blog: %s\n", text);
++}
++
++static void print_file_hit (BeagleHit *hit)
++{
++    g_print ("File: %s, (%s)\n", beagle_hit_get_uri (hit), beagle_hit_get_mime_type (hit));
++}
++
++static void print_other_hit (BeagleHit *hit)
++{
++    const char *text;
++
++    g_print ("%s (%s)", beagle_hit_get_uri (hit),
++             beagle_hit_get_source (hit));
++    if (beagle_hit_get_one_property (hit, "dc:title", &text))
++        g_print ("title = %s\n", text);
++}
++
++static void print_hit (BeagleHit *hit) 
++{
++    if (strcmp (beagle_hit_get_type (hit), "FeedItem") == 0) {
++        print_feed_item_hit (hit);
++    } 
++    else if (strcmp (beagle_hit_get_type (hit), "File") == 0) {
++        print_file_hit (hit);
++    } else {
++        print_other_hit (hit);
++    }
++}
++
++// ---------------- BeagleSearchClient ------------------
++
++void BeagleSearchClient::run ()
++{
++    kdDebug () << "Starting query ..." << endl;
++
++    QTime query_timer;
++    query_timer.start ();
++    
++    g_signal_connect (query, "hits-added",
++                      G_CALLBACK (hitsAddedSlot),
++                      this);
++    g_signal_connect (query, "finished",
++                      G_CALLBACK (finishedSlot),
++                      this);
++    beagle_client_send_request_async (client,
++                                      BEAGLE_REQUEST (query),
++                                      NULL);
++    g_main_loop_run (main_loop);
++    kdDebug () << "Finished query ..." << endl;
++    
++    QCustomEvent *ev;
++    if (collate_results) {
++	result->query_msec = query_timer.elapsed ();
++    
++	ev =  new QCustomEvent (RESULTFOUND, result);
++        QApplication::postEvent (object, ev);
++    }
++
++    ev =  new QCustomEvent (KILLME, this);
++    QApplication::postEvent (object, ev);
++
++}
++
++void BeagleSearchClient::stopClient ()
++{
++   if (finished ())
++       return; // duh!
++   kdDebug () << "Query thread " << id << " not yet finished ..." << endl;
++   // get ready for suicide
++   client_mutex->lock ();
++   kill_me = true;
++   g_signal_handlers_disconnect_by_func (
++           query, 
++           (void *)hitsAddedSlot,
++           this);
++   g_signal_handlers_disconnect_by_func (
++           query,
++           (void *)finishedSlot,
++           this);
++   g_main_loop_quit (main_loop);
++   client_mutex->unlock ();
++}
++
++void BeagleSearchClient::hitsAddedSlot (BeagleQuery *query,
++                                        BeagleHitsAddedResponse *response,
++                                        BeagleSearchClient *bsclient)
++{
++    GSList *hits, *l;
++    gint    i;
++    gint    nr_hits;
++
++    // check if we are supposed to be killed
++    bsclient->client_mutex->lock ();
++    if (bsclient->kill_me) {
++        kdDebug () << "Suicide time before processing" << endl;
++	bsclient->client_mutex->unlock ();
++	return;
++    }
++    bsclient->client_mutex->unlock ();
++
++    hits = beagle_hits_added_response_get_hits (response);
++
++    nr_hits = g_slist_length (hits);
++    total_hits += nr_hits;
++    g_print ("Found hits (%d) at %ld:\n", nr_hits, time (NULL));
++
++    BeagleSearchResult *search_result;
++    if (! bsclient->collate_results)
++        search_result = new BeagleSearchResult (bsclient->id);
++    else
++        search_result = bsclient->result;
++    search_result->total += nr_hits;
++
++    for (l = hits, i = 1; l; l = l->next, ++i) {
++        //g_print ("[%d] ", i);
++        //print_hit (BEAGLE_HIT (l->data));
++        //g_print ("\n");
++
++        search_result->addHit(BEAGLE_HIT (l->data));//hit);
++    }
++    g_print ("[%ld] hits adding finished \n", time (NULL));
++
++    // check if we are supposed to be killed
++    bsclient->client_mutex->lock ();
++    if (bsclient->kill_me) {
++        kdDebug () << "Suicide time before sending ..." << endl;
++	bsclient->client_mutex->unlock ();
++	if (! bsclient->collate_results)
++	    delete search_result;
++	return;
++    }
++    bsclient->client_mutex->unlock ();
++
++    // time to send back results, if user asked so
++    if (bsclient->collate_results)
++        return;
++    QCustomEvent *ev =  new QCustomEvent (RESULTFOUND, search_result);
++    g_print ("[%ld] event notified \n", time (NULL));
++    QApplication::postEvent (bsclient->object, ev);
++}
++
++void BeagleSearchClient::finishedSlot (BeagleQuery *query,
++                                       BeagleFinishedResponse *response,
++                                       BeagleSearchClient *bsclient)
++{
++    // check if we are supposed to be killed
++    bsclient->client_mutex->lock ();
++    bool should_kill = bsclient->kill_me;
++    QObject* receiver = bsclient->object;
++    bsclient->client_mutex->unlock ();
++
++    if (should_kill)
++	return;
++
++    g_main_loop_quit (bsclient->main_loop);
++
++    if (bsclient->collate_results)
++        return; // if we are collating, everything will be send from a central place
++    if (receiver) {
++        QCustomEvent *ev =  new QCustomEvent (SEARCHOVER, bsclient);
++        g_print ("[%ld] query finish notified \n", time (NULL));
++        QApplication::postEvent (receiver, ev);
++    }
++}
++
++// ----------------- BeagleUtil -------------------
++
++BeagleQuery *
++BeagleUtil::createQueryFromString (QString query_str,
++                                    QStringList &sources_menu,
++                                    QStringList &types_menu,
++				    int max_hits_per_source)
++{
++    BeagleQuery *beagle_query = beagle_query_new ();
++    beagle_query_set_max_hits (beagle_query, max_hits_per_source); // this is per source!
++
++    kdDebug () << "Creating query from \"" << query_str << "\"" << endl;
++    for ( QStringList::Iterator it = sources_menu.begin(); it != sources_menu.end(); ++it )
++        beagle_query_add_source (beagle_query, g_strdup ((*it).utf8 ()));
++
++    for ( QStringList::Iterator it = types_menu.begin(); it != types_menu.end(); ++it )
++        beagle_query_add_hit_type (beagle_query, g_strdup ((*it).utf8 ()));
++
++    QStringList query_terms;
++    QString start_date, end_date;
++    QStringList words = QStringList::split (' ', query_str, false);
++    for ( QStringList::Iterator it = words.begin(); it != words.end(); ++it ) {
++        QStringList key_value_pair = QStringList::split ('=', *it, false);
++        if (key_value_pair.count () == 1)
++            query_terms += *it;
++        else if (key_value_pair.count () == 2) {
++            QString key = key_value_pair [0].lower ();
++            QString value = key_value_pair [1];
++            if (key == "mime")
++                beagle_query_add_mime_type (beagle_query, g_strdup (value.utf8 ()));
++            else if (key == "type")
++                beagle_query_add_hit_type (beagle_query, g_strdup (value.utf8 ()));
++            else if (key == "source")
++                beagle_query_add_source (beagle_query, g_strdup (value.utf8 ()));
++            else if (key == "start")
++                start_date = value;
++            else if (key == "end")
++                end_date = value;
++            else
++                query_terms += *it;
++        } else
++            query_terms += *it;
++    }
++
++    beagle_query_add_text (beagle_query, g_strdup (query_terms.join (" ").utf8 ()));
++    kdDebug () << "Adding query text:" << query_terms.join (" ").utf8 () << endl;
++
++    if (start_date.isNull () && end_date.isNull ())
++        return beagle_query;
++
++    //kdDebug () << "Handling dates ..." << endl;
++    BeagleQueryPartDate * date_part = beagle_query_part_date_new ();
++    if (! start_date.isNull ())
++        beagle_query_part_date_set_start_date (date_part, timestringToBeagleTimestamp (start_date));
++    if (! end_date.isNull ())
++        beagle_query_part_date_set_end_date (date_part, timestringToBeagleTimestamp (end_date));
++    beagle_query_add_part (beagle_query, BEAGLE_QUERY_PART (date_part));
++
++    return beagle_query;
++}
++
++// timestring format allowed YYYYmmDD
++BeagleTimestamp *
++BeagleUtil::timestringToBeagleTimestamp(QString timestring)
++{
++    //kdDebug () << "datetime string:" << timestring << endl;
++    // FIXME: error check timestring format
++    if (timestring.isNull () || timestring.stripWhiteSpace () == "" || timestring.length() != 8 )
++        return beagle_timestamp_new_from_unix_time (QDateTime::currentDateTime ().toTime_t ());
++    //QDateTime dt = QDateTime::fromString (timestring, Qt::ISODate);
++    struct tm tm_time;
++    time_t timet_time;
++    time (&timet_time);
++    localtime_r (&timet_time, &tm_time);
++    strptime (timestring.ascii(), "%Y%m%d", &tm_time);
++    tm_time.tm_sec = tm_time.tm_min = tm_time.tm_hour = 0;
++    //kdDebug() << asctime (&tm_time) << endl;
++    timet_time = mktime (&tm_time);
++    return beagle_timestamp_new_from_unix_time (timet_time);
++}
++
+--- kicker/plugins/kickoff-beagle-plugin.cpp		(Revision 0)
++++ kicker/plugins/kickoff-beagle-plugin.cpp		(Revision 849791)
+@@ -0,0 +1,499 @@
++/***************************************************************************
++ *   Copyright (C) 2006 by Stephan Binner <binner@kde.org>                 *
++ *   Copyright (c) 2006 Debajyoti Bera <dbera.web@gmail.com>               *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.          *
++ ***************************************************************************/
++
++#include "kickoff-beagle-plugin.h"
++
++#include <qregexp.h>
++#include <qtimer.h>
++
++#include <kapplication.h>
++#include <kdesktopfile.h>
++#include <kgenericfactory.h>
++#include <kservice.h>
++
++QString dc_identifier = "dc:identifier";
++QString dc_title = "dc:title";
++QString parent_dc_title = "parent:dc:title";
++QString exactfilename = "beagle:ExactFilename";
++QString fixme_name = "fixme:Name";
++QString beagle_filename = "beagle:Filename";
++QString fixme_attachment_title = "fixme:attachment_title";
++QString fixme_hasattachments = "fixme:hasAttachments";
++QString parent_prefix = "parent:";
++QString fixme_folder = "fixme:folder";
++QString fixme_categories = "fixme:Categories";
++QString fixme_comment = "fixme:Comment";
++QString fixme_width = "fixme:width";
++QString fixme_height = "fixme:height";
++QString fixme_from_address = "fixme:from_address";
++QString fixme_artist = "fixme:artist";
++QString fixme_album = "fixme:album";
++QString dc_source = "dc:source";
++QString dc_publisher = "dc:publisher";
++QString digikam_tag = "digikam:Tag";
++QString fixme_speakingto = "fixme:speakingto";
++QString fixme_starttime = "fixme:starttime";
++QString comma_string = ",";
++QString vCard_FN = "vCard:FN";
++QString vCard_PREFEMAIL = "vCard:PREFEMAIL";
++QString fixme_uid = "fixme:uid";
++
++static CATEGORY getHitCategory (Hit *hit)
++{
++    QString hittype = hit->getType();
++    QString hitsource = hit->getSource();
++
++    // if hit source is None, dont handle it. Might be anthrax-envelope :)
++    if (hitsource.isNull())
++        return OTHER;
++
++    if (hitsource == "documentation")
++        return DOCS;
++
++    if (hittype == "IMLog")
++        return CHATS;
++
++    // sure shots
++    if (hittype == "FeedItem")
++        return FEEDS;
++    if (hittype == "WebHistory")
++        return WEBHIST;
++    if (hittype == "MailMessage")
++        return MAILS;
++    if (hittype == "Note")
++        return NOTES;
++
++    // check for applications
++    if (hittype == "File" && (*hit) ["beagle:FilenameExtension"] == ".desktop")
++        return APPS;
++
++    // check for music
++    QString hitmimetype = hit->getMimeType();
++    if (hitsource == "Amarok"
++        || hitmimetype.startsWith ("audio")
++        || hitmimetype == "application/ogg")
++        return MUSIC; // not an exhaustive search
++
++    // check for images from files
++    if (hitsource == "Files" && hitmimetype.startsWith ("image"))
++        return PICS;
++
++    if (hitsource == "Files" && hitmimetype.startsWith ("video"))
++        return VIDEOS;
++
++    if (hitsource == "Files")
++        return FILES;
++
++    if (hitsource == "KAddressBook")
++        return ACTIONS;
++
++    return OTHER;
++}
++
++K_EXPORT_COMPONENT_FACTORY( kickoffsearch_beagle,
++                            KGenericFactory<KickoffBeaglePlugin>( "kickoffsearch_beagle" ) )
++
++KickoffBeaglePlugin::KickoffBeaglePlugin(QObject *parent, const char* name, const QStringList&)
++            : KickoffSearch::Plugin(parent, name ), genericTitle( true )
++{
++    g_type_init ();
++    current_beagle_client = NULL;
++}
++
++bool KickoffBeaglePlugin::daemonRunning()
++{
++    return beagle_util_daemon_is_running();
++}
++
++void KickoffBeaglePlugin::query(QString term, bool _genericTitle)
++{
++    genericTitle = _genericTitle;
++    current_query_str = term;
++
++    // Beagle search
++    if (current_beagle_client != NULL) {
++	kdDebug () << "Previous client w/id " << current_beagle_client->id << " still running ... ignoring it." << endl;
++	current_beagle_client->stopClient ();
++    }
++    current_beagle_client_id = KApplication::random ();
++    kdDebug () << "Creating client with id:" << current_beagle_client_id << endl;
++
++    BeagleClient *beagle_client = beagle_client_new (NULL);
++    if (beagle_client == NULL) {
++        kdDebug() << "beagle service not running ..." << endl;
++        return;
++    }
++
++    QStringList sources, types;
++    BeagleQuery *beagle_query = BeagleUtil::createQueryFromString (term, sources, types, 99); // maximum 99 results, if this doesnt work, blame the stars
++
++    current_beagle_client = new BeagleSearchClient (
++                                current_beagle_client_id,
++                                this,
++                                beagle_client,
++                                beagle_query,
++                                false);
++    current_beagle_client->start();
++//    kdDebug () << "Query dispatched at " << time (NULL) << endl;
++}
++
++void KickoffBeaglePlugin::cleanClientList ()
++{
++    toclean_list_mutex.lock ();
++    BeagleSearchClient *old_client = toclean_client_list.take (0);
++    if (old_client != NULL) { // failsafe
++	kdDebug () << "Cleanup old client " << old_client->id << endl;
++	delete old_client;
++    }
++    toclean_list_mutex.unlock ();
++}
++
++void KickoffBeaglePlugin::customEvent (QCustomEvent *e)
++{
++    if (e->type () == RESULTFOUND) {
++//        kdDebug () << "Quick query thread at " << time (NULL) << " with current_id=" << current_beagle_client_id <<  " finished ..." << endl;
++        BeagleSearchResult *result = (BeagleSearchResult *) e->data ();
++        if (current_beagle_client_id != result->client_id) {
++            kdDebug () << "Stale result from " << result->client_id << endl;
++	    delete result;
++	    // FIXME: Should I also free e ?
++        } else {
++            kdDebug () << "Good results ...total=" << result->total << endl;
++            showResults (result);
++        }
++        //KPassivePopup::message( "This is the message", this );
++    } else if (e->type () == SEARCHOVER) {
++        BeagleSearchClient *client = (BeagleSearchClient *) e->data ();
++	if (client == NULL) {
++//	    kdDebug () << "Query finished event at " << time (NULL) << " but client is already deleted" << endl;
++	    return;
++	}
++//        kdDebug () << "Query finished event at " << time (NULL) << " for id=" << client->id << endl;
++	if (current_beagle_client_id == client->id) {
++	    kickoffSearchInterface()->searchOver();
++ 	    current_beagle_client = NULL; // important !
++	}
++    } else if (e->type () == KILLME) {
++        BeagleSearchClient *client = (BeagleSearchClient *) e->data ();
++	if (client->finished ())
++	    delete client;
++	else {
++	    // add client to cleanup list
++	    toclean_list_mutex.lock ();
++	    toclean_client_list.append (client);
++	    kdDebug () << "Scheduling client to be deleted in 500ms" << endl;
++	    toclean_list_mutex.unlock ();
++	    QTimer::singleShot (500, this, SLOT (cleanClientList ()));
++	}
++    }
++}
++
++// this method decides what to display in the result list
++HitMenuItem *KickoffBeaglePlugin::hitToHitMenuItem (int category, Hit *hit)
++{
++    QString title, info, mimetype, icon;
++    int score = 0;
++    KURL uri;
++
++#if 0
++    kdDebug() << "*** " << hit->getUri() << endl;
++    QDict<QStringList> all = hit->getAllProperties();
++    QDictIterator<QStringList> it( all );
++    for( ; it.current(); ++it )
++        kdDebug() << it.currentKey() << ": " << *(it.current()) << endl;
++#endif
++
++    switch (category) {
++	case FILES:
++	    {
++		uri = hit->getUri ();
++		QString uristr = uri.path ();
++	    	title = (*hit) [exactfilename];
++	    	int last_slash = uristr.findRev ('/', -1);
++                info = i18n("Folder: %1").arg(last_slash == 0 ? "/" 
++                        : uristr.section ('/', -2, -2));
++	    }
++	    break;
++        case ACTIONS:
++            {
++                if (hit->getSource()=="KAddressBook"){
++		    title = i18n("Send Email to %1").arg((*hit)[vCard_FN]);
++		    info = (*hit)[vCard_PREFEMAIL];
++		    uri = "mailto:"+(*hit)[vCard_PREFEMAIL];
++		    mimetype = hit->getMimeType ();
++		    icon = "mail_new";
++
++		    HitMenuItem * first_item=new HitMenuItem (title, info, uri, mimetype, 0, category, icon, score);
++		    kickoffSearchInterface()->addHitMenuItem(first_item);
++
++		    title =i18n("Open Addressbook at %1").arg((*hit)[vCard_FN]);
++		    uri = "kaddressbook:/"+(*hit)[fixme_uid];
++		    icon = "kaddressbook";
++                }
++                break;
++            }
++	case MAILS:
++	    {
++		QString prefix = QString::null;
++		bool is_attachment = ((*hit) [parent_prefix + fixme_hasattachments] == "true");
++		bool has_parent = (! hit->getParentUri ().isEmpty ());
++		bool parent_mbox_file = false;
++		if (has_parent)
++		    parent_mbox_file = ((*hit) [parent_prefix + fixme_folder] == QString::null);
++
++		// Logic:
++		// If has_parent == false, everything is normal
++		// If has_parent == true, parent_mbox_file == false, everything is normal, use uri
++		// FIXME: If has_parent == true, parent_mbox_file == true, ???
++		// If has_parent == true, is_attachment == true, hit is attach and access with prefix "parent:", use parenturi
++		// Else, not attachment (multipart), access with prefix "parent:", use parenturi
++
++		if (has_parent && !parent_mbox_file) {
++		    uri = hit->getParentUri ();
++		    prefix = parent_prefix;
++		    if (is_attachment)
++			title = (*hit) [fixme_attachment_title];
++		    if (title.isEmpty ())
++			title = (*hit) [prefix + dc_title];
++		    if (title.isEmpty ())
++			title = i18n("No subject");
++		    if (is_attachment)
++			title = title.prepend (i18n("(Attachment) "));
++		    info = (i18n("From %1").arg((*hit) [prefix + fixme_from_address]));
++		} else {
++		    uri = hit->getUri ();
++		    title = (*hit) [dc_title];
++		    info = (i18n("From %1").arg((*hit) [fixme_from_address]));
++		}
++	    }
++	    mimetype = "message/rfc822"; // to handle attachment results
++	    break;
++ 	case MUSIC:
++	    uri = hit->getUri ();
++	    title = (*hit) [exactfilename];
++	    {
++		QString artist = (*hit) [fixme_artist];
++		QString album = (*hit) [fixme_album];
++		if (! artist.isEmpty ())
++		    info = (i18n("By %1").arg(artist));
++		else if (! album.isEmpty ())
++		    info = (i18n("From Album %1").arg(album));
++		else {
++		    QString uristr = uri.path ();
++		    int last_slash = uristr.findRev ('/', -1);
++                    info = i18n("Folder: %1")
++                        .arg(last_slash == 0 ? "/" : uristr.section ('/', -2, -2));
++		}
++	    }
++	    break;
++ 	case VIDEOS:
++	    uri = hit->getUri ();
++	    title = (*hit) [exactfilename];
++	    {
++		QString uristr = uri.path ();
++		int last_slash = uristr.findRev ('/', -1);
++                info = i18n("Folder: %1").arg(last_slash == 0 ? "/" : uristr.section ('/', -2, -2));
++	    }
++	    break;
++	case WEBHIST:
++	    uri = hit->getUri ();
++	    title = (*hit) [dc_title];
++	    title = title.replace(QRegExp("\n")," ");
++	    mimetype = "text/html";
++	    if (title.isEmpty () || title.stripWhiteSpace ().isEmpty ()) {
++		title = uri.prettyURL ();
++	    } else {
++		info = uri.host () + uri.path ();
++	    }
++	    break;
++	case FEEDS:
++	    {
++		uri = KURL ((*hit) [dc_identifier]);
++	    	title = (*hit) [dc_title];
++	    	mimetype = "text/html";
++	    	QString publisher = (*hit) [dc_publisher];
++	    	QString source = (*hit) [dc_source];
++	    	if (! publisher.isEmpty ())
++	    	    info = publisher;
++	    	else if (! source.isEmpty ())
++	    	    info = source;
++	    }
++	    break;
++	case PICS:
++	    {
++		uri = hit->getUri ();
++		title = (*hit) [exactfilename];
++		QString width = (*hit) [fixme_width];
++		QString height = (*hit) [fixme_height];
++		if (width.isEmpty () || height.isEmpty ()) {
++		    QString uristr = uri.path ();
++		    int last_slash = uristr.findRev ('/', -1);
++                    info = i18n("Folder: %1")
++                        .arg(last_slash == 0 ? "/" : uristr.section ('/', -2, -2));
++		    break;
++		}
++		info = (QString (" (%1x%2)").arg (width).arg (height));
++		const QStringList *tags = hit->getProperties (digikam_tag);
++		if (tags == NULL)
++		    break;
++		QString tags_string = tags->join (comma_string);
++		info += (" " + tags_string);
++	    }
++	    break;
++	case APPS:
++	    {
++		uri = hit->getUri ();
++	    	title = (*hit) [dc_title];
++		KDesktopFile desktopfile(uri.path(),true);
++		if (genericTitle && !desktopfile.readGenericName().isEmpty()) {
++		  title = desktopfile.readGenericName();
++		  info = desktopfile.readName();
++		}
++		else {
++		  title = desktopfile.readName();
++		  info = desktopfile.readGenericName();
++		}
++		icon = desktopfile.readIcon();
++                QString input = current_query_str.lower();
++		QString command = desktopfile.readEntry("Exec");
++		if (command==input)
++                  score = 100;
++                else if (command.find(input)==0)
++                  score = 50;
++                else if (command.find(input)!=-1)
++                  score = 10;
++		else if (title==input)
++                  score = 100;
++                else if (title.find(input)==0)
++                  score = 50;
++                else if (title.find(input)!=-1)
++                  score = 10;
++	    	break;
++	    }
++	    break;
++	case NOTES:
++            {
++	        uri = hit->getUri ();
++	        title = (*hit) [dc_title];
++	        title = i18n("Title: %1").arg(title.isEmpty() ? i18n("Untitled") : title);
++
++	        if (hit->getSource()=="KNotes")
++                   icon="knotes";
++                else
++                   icon="contents2";
++            }
++	    break;
++	case CHATS:
++            {
++	        uri = hit->getUri ();
++	        title = (*hit) [fixme_speakingto];
++	        title = i18n("Conversation With %1").arg(title.isEmpty() ? i18n("Unknown Person") : title);
++	        QDateTime datetime;
++	        datetime = datetimeFromString((*hit) [fixme_starttime]);
++                info=i18n("Date: %1").arg(KGlobal::locale()->formatDateTime(datetime,false));
++	        if (hit->getMimeType()=="beagle/x-kopete-log")
++                   icon="kopete";
++                else
++                   icon="gaim";
++            }
++	    break;
++	case DOCS:
++	    {
++		uri = hit->getUri ();
++		title = (*hit) [dc_title];
++		if (title.isEmpty () || title.stripWhiteSpace ().isEmpty ())
++		    title = uri.prettyURL ();
++		else {
++			QString uristr = uri.path ();
++			int last_slash = uristr.findRev ('/', -1);
++                        info = i18n("Folder: %1").arg(last_slash == 0 ? "/" : uristr.section ('/',
++                                    -2, -2));
++		}
++	    }
++	    break;
++	default:
++	    return NULL;
++    }
++    if (mimetype.isEmpty ())
++	mimetype = hit->getMimeType ();
++    return new HitMenuItem (title, info, uri, mimetype, 0, category, icon, score);
++}
++
++void KickoffBeaglePlugin::showResults(BeagleSearchResult *result)
++{
++    if (result->total == 0 ) {
++	// Dont report error from here ...
++        kdDebug() << "No matches found" << endl;
++	delete result;
++	return;
++    }
++
++    const QPtrList<Hit> *hits = result->getHits();
++    if (hits == NULL) {
++        kdDebug () << "Hmm... null" << endl;
++	delete result;
++        return;
++    }
++    kickoffSearchInterface()->initCategoryTitlesUpdate();
++
++    QPtrListIterator<Hit> it (*hits);
++    Hit *hit;
++    for (; (hit = it.current ()) != NULL; ++it) {
++	CATEGORY category = getHitCategory (hit);
++
++	// if category is not handled, continue
++	if (category == OTHER)
++          continue;
++
++        if ( category == APPS ) {
++            // we need to check if this is useful
++            KService cs( hit->getUri().path() );
++            if ( cs.noDisplay() )
++                continue;
++        }
++
++        if (!kickoffSearchInterface()->anotherHitMenuItemAllowed(category))
++          continue;
++
++        HitMenuItem *hit_item = hitToHitMenuItem (category, hit);
++
++        if (!hit_item)
++	   continue;
++
++        kickoffSearchInterface()->addHitMenuItem(hit_item);
++    }
++
++    kickoffSearchInterface()->updateCategoryTitles();
++
++    delete result;
++}
++
++QDateTime KickoffBeaglePlugin::datetimeFromString( const QString& s)
++{
++      int year( s.mid( 0, 4 ).toInt() );
++      int month( s.mid( 4, 2 ).toInt() );
++      int day( s.mid( 6, 2 ).toInt() );
++      int hour( s.mid( 8, 2 ).toInt() );
++      int min( s.mid( 10, 2 ).toInt() );
++      int sec( s.mid( 12, 2 ).toInt() );
++      return QDateTime(QDate(year,month,day),QTime(hour,min,sec));
++}
++
++#include "kickoff-beagle-plugin.moc"
+--- kicker/plugins/Makefile.am		(Revision 0)
++++ kicker/plugins/Makefile.am		(Revision 849791)
+@@ -0,0 +1,24 @@
++INCLUDES    = -I$(top_srcdir)/interfaces $(all_includes) $(LIBBEAGLE_CFLAGS) $(GLIB_CFLAGS)
++METASOURCES = AUTO
++
++# Install this plugin in the KDE modules directory
++kde_module_LTLIBRARIES = kickoffsearch_beagle.la
++
++# Srcs for the plugin
++kickoffsearch_beagle_la_SOURCES = kickoff-beagle-plugin.cpp beaglesearch.cpp
++
++# Libs needed by the plugin
++kickoffsearch_beagle_la_LIBADD = $(LIB_KPARTS) ../interfaces/libkickoffsearch_interfaces.la \
++	$(LIBBEAGLE_LIBADD) $(GLIB_LIBADD)
++
++# LD flags for the plugin
++# -module says: this is a module, i.e. something you're going to dlopen
++# so e.g. it has no version number like a normal shared lib would have.
++kickoffsearch_beagle_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
++
++# Install the desktop file needed to detect the plugin
++kde_services_DATA = kickoffsearch_beagle.desktop
++
++# i18n translation messages
++messages: rc.cpp
++	$(XGETTEXT) *.cpp *.h -o $(podir)/kickoffsearch_beagle.pot
+--- kicker/plugins/kickoffsearch_beagle.desktop		(Revision 0)
++++ kicker/plugins/kickoffsearch_beagle.desktop		(Revision 849791)
+@@ -0,0 +1,6 @@
++[Desktop Entry]
++Name=Beagle Search
++Comment=Beagle search plugin for Kickoff search
++ServiceTypes=KickoffSearch/Plugin
++Type=Service
++X-KDE-Library=kickoffsearch_beagle
+--- kicker/plugins/beaglesearch.h		(Revision 0)
++++ kicker/plugins/beaglesearch.h		(Revision 849791)
+@@ -0,0 +1,234 @@
++/*****************************************************************
++
++   Copyright (c) 2006 Debajyoti Bera <dbera.web@gmail.com>
++
++   This program is free software; you can redistribute it and/or
++   modify it under the terms of the GNU General Public
++   License as published by the Free Software Foundation; either
++   version 2 of the License, or (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program; see the file COPYING.  If not, write to
++   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++   Boston, MA 02110-1301, USA.
++
++******************************************************************/
++
++#ifndef BEAGLESEARCH_H
++#define BEAGLESEARCH_H
++
++#include <qdict.h>
++#include <qptrlist.h>
++#include <qthread.h>
++#include <qevent.h>
++#include <qmutex.h>
++
++#include <kdebug.h>
++#include <kurl.h>
++
++extern "C" {
++#include <glib.h>
++#include <beagle/beagle.h>
++}
++
++// BeagleSearchClient sends 3 types of events
++// when results are to be sent as they arrive,
++//  - RESULTFOUND : when result is found
++//  - SEARCHOVER :  when search is over
++//  - KILLME : just before thread finishes - used to cleanup the thread object
++// when results are to be sent after receiving all of them
++//  - RESULTFOUND : when all results are obtained
++//  - KILLME : just before thread finishes - used to cleanup the thread object
++#define RESULTFOUND (QEvent::Type)1001 /* QEvent::User + 1 */
++#define SEARCHOVER  (QEvent::Type)1002 /* QEvent::User + 2 */
++#define KILLME      (QEvent::Type)1003 /* QEvent::User + 3 */
++
++class QStringList;
++
++// IMPORTANT: Call this before any beagle calls
++void beagle_init ();
++
++class Hit {
++public:
++    Hit (BeagleHit *_hit);
++    ~Hit ();
++    
++    // convenience wrappers
++    // remember that the hit values are utf8 strings
++    const KURL getUri () const { return KURL (QString::fromUtf8 (beagle_hit_get_uri (hit)));}
++    const QString getType () const { return QString::fromUtf8 (beagle_hit_get_type (hit));}
++    const QString getMimeType () const { return QString::fromUtf8 (beagle_hit_get_mime_type (hit));}
++    const QString getSource () const { return QString::fromUtf8 (beagle_hit_get_source (hit));}
++    const KURL getParentUri () const { return KURL (QString::fromUtf8 (beagle_hit_get_parent_uri (hit)));}
++    const QDict<QStringList>& getAllProperties ()
++    {
++	if (! processed)
++	    processProperties ();
++	return property_map;
++    }
++    const QStringList* getProperties (QString prop_name)
++    {
++	if (! processed)
++	    processProperties ();
++	return property_map [prop_name];
++    }
++    const QString operator[] (QString prop_name);
++
++private:
++    BeagleHit *hit;
++    QDict<QStringList> property_map;
++    // not every hit may be used. so, do a lazy processing of property_map
++    bool processed;
++    void processProperties ();
++};
++
++class BeagleSearchResult{
++public:
++    BeagleSearchResult(int client_id);
++    ~BeagleSearchResult();
++    void addHit (BeagleHit *hit);
++    QString getHitCategory (Hit *hit);
++
++    // id of the bsclient
++    int client_id;
++    // time taken to finish query
++    int query_msec;
++    // total number of results in this query
++    int total;
++
++    const QPtrList<Hit> *getHits () const;
++
++private:
++    // lists of hits
++    QPtrList<Hit> *hitlist;
++};
++
++// caller should delete bsclient->result and bsclient
++class BeagleSearchClient : public QThread {
++public:
++    // passing NULL for client makes bsclient create client itself and
++    // delete it later
++    BeagleSearchClient (int id,
++                        QObject *y,
++                        BeagleClient *client,
++                        BeagleQuery *query,
++                        bool collate_results)
++    : id (id), kill_me (false), object (y), client (client),
++      query (query), destroy_client (false), collate_results (collate_results)
++    {
++        if (client == NULL) {
++	    client = beagle_client_new (NULL);
++            destroy_client = true;
++        }
++	
++//        if (client == NULL)
++//            throw -1;
++
++        main_loop = g_main_loop_new (NULL, FALSE);
++        if (collate_results)
++            result = new BeagleSearchResult (id);
++
++	client_mutex = new QMutex ();
++    }
++
++    // It is never safe to delete BeagleSearchClient directly, the thread might still be running
++    ~BeagleSearchClient ()
++    {
++	if (! finished ()) {
++	    kdDebug () << "Thread " << id << " still running. Waiting.........." << endl;
++	    wait ();
++	}
++
++        if (destroy_client)
++            g_object_unref (client);
++        g_main_loop_unref (main_loop);
++        g_object_unref (query);
++        kdDebug() << "Deleting client ..." << id << endl;
++	delete client_mutex;
++    }
++
++private:
++    static void hitsAddedSlot (BeagleQuery *query,
++                               BeagleHitsAddedResponse *response,
++                               BeagleSearchClient *bsclient);
++
++    static void finishedSlot (BeagleQuery  *query,
++                              BeagleFinishedResponse *response,
++                              BeagleSearchClient *bsclient);
++
++public:
++    // run() starts the query and sends the result as follows:
++    // - either wait till get back all results and send it as RESULTFOUND
++    // - or, send results as it gets them as RESULTFOUND and 
++    //       send SEARCHOVER when finished
++    // collate_results controls the behaviour
++    virtual void run ( );
++    
++    // after stopClient() is called, application can safely go and remove previous menu entries
++    // - i.e. after stopClient is called, app doesnt except the eventhandler to receive any results
++    // - use client_id to determine which is the current client, set it right after stopclient
++    // - Eventhandler checks client id, if it is current, it adds stuff to the menu
++    //   else, it discards everything
++    // Once eventhandler is being processed, doQuery() wont be called and vice versa
++    //   so no need to serialize eventhandler and doquery
++    //
++    // stopClient needs to make sure that once it is called, the thread is finished asap. Use a mutex
++    // to serialize actions. callbacks need to use mutex too.
++    // stopclient has to remove signal handlers to prevent further signal calls, set kill_me flag
++    //   and quite main loop
++    // stopClient can be called at the following times:
++    // - Waiting for the first result:
++    //   nothing extra
++    // - in hitsAddedSlot, processing results
++    //   in callback, before processing, if killme is set, just return.
++    // - in hitsAddedSlot, after sending results
++    //   before sending, if killme is set, dont send results
++    //   (doing it twice in hitsAdded because forming BeagleSearchResult can take time)
++    // - Waiting for more results
++    //   nothing extra
++    // - in finishedSlot, before sending finishedMsg
++    //   if killme is set, just return
++    // - in finishedSlot, after sending finishedMsg
++    //   if killme is set, just return
++    //  in Run(), when return from mainloop, if killme is set, dont do anything more but call delete this
++    void stopClient ();
++
++    // id of the client
++    // this is required in case applications fires many clients in rapid succession
++    int id;
++    
++    GMainLoop * main_loop;
++    BeagleSearchResult *result;
++    
++    // this is set if the client is obsolete now i.e.
++    // the application doesnt need the results from the client anymore
++    bool kill_me;
++private:
++    // the application; need this to send events to the application
++    QObject *object;
++    // mutex to control setting the kill_me shared variable
++    QMutex *client_mutex;
++    BeagleClient *client;
++    BeagleQuery *query;
++    // should the client be destroyed by the client
++    // if the client created it, then most probably it should
++    bool destroy_client;
++    bool collate_results;
++};
++
++class BeagleUtil {
++public:
++
++    static BeagleQuery *createQueryFromString (QString query_str,
++					       QStringList &sources,
++                                               QStringList &types,
++					       int max_hits_per_source = 100);
++    static BeagleTimestamp *timestringToBeagleTimestamp (QString timestring);
++};
++
++#endif
+--- kicker/plugins/kickoff-beagle-plugin.h		(Revision 0)
++++ kicker/plugins/kickoff-beagle-plugin.h		(Revision 849791)
+@@ -0,0 +1,64 @@
++/***************************************************************************
++ *   Copyright (C) 2006 by Stephan Binner <binner@kde.org>                 *
++ *   Copyright (c) 2006 Debajyoti Bera <dbera.web@gmail.com>               *
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 2 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program; if not, write to the                         *
++ *   Free Software Foundation, Inc.,                                       *
++ *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.          *
++ ***************************************************************************/
++
++#ifndef CAPITALIZEPLUGIN_H
++#define CAPITALIZEPLUGIN_H
++
++#include "../interfaces/kickoff-search-plugin.h"
++#include "beaglesearch.h"
++
++class KickoffBeaglePlugin :public KickoffSearch::Plugin
++{
++    Q_OBJECT
++
++public:
++    KickoffBeaglePlugin(QObject *parent, const char* name, const QStringList&);
++
++    void query(QString, bool);
++    bool daemonRunning();
++
++protected slots:
++    // to clean beaglesearchclients
++    void cleanClientList ();
++
++private:
++    QString current_query_str;
++
++    // all beagle activity is done through the BSC object
++    BeagleSearchClient *current_beagle_client;
++
++    // used to send notification from the beagle thread to the main event loop
++    virtual void customEvent (QCustomEvent *e);
++
++    QPtrList<BeagleSearchClient> toclean_client_list;
++    QMutex toclean_list_mutex;
++
++    // show the results
++    void showResults (BeagleSearchResult *);
++    HitMenuItem *hitToHitMenuItem (int category, Hit *hit);
++
++    // use a different id for each bsc client, and use that to separate stale responses from current ones
++    int current_beagle_client_id;
++
++    bool genericTitle;
++    QDateTime datetimeFromString( const QString& );
++};
++
++#endif /* CAPITALIZEPLUGIN_H */
+
+Eigenschaftsänderungen: kicker/plugins
+___________________________________________________________________
+Hinzugefügt: svn:ignore
+   + .deps
+kickoffsearch_beagle.la
+.libs
+Makefile
+Makefile.in
+*.moc
+
+
+--- kicker/Makefile.am	2010/08/10 08:10:21	1.1
++++ kicker/Makefile.am	2010/08/10 08:10:33
+@@ -1,6 +1,6 @@
+ INCLUDES = $(all_includes)
+ 
+-SUBDIRS = core ui buttons interfaces .
++SUBDIRS = core ui buttons interfaces plugins .
+ 
+ bin_PROGRAMS =
+ lib_LTLIBRARIES =
+--- kicker/core/Makefile.am	2010/08/10 08:15:06	1.2
++++ kicker/core/Makefile.am	2010/08/10 08:17:08
+@@ -1,6 +1,6 @@
+ INCLUDES = -I$(srcdir)/../../libkicker -I../../libkicker \
+ 	 -I../ui -I$(srcdir)/../ui -I$(srcdir)/../buttons -I$(top_srcdir)/libkonq \
+-	 $(all_includes)
++	 $(all_includes) $(LIBBEAGLE_CFLAGS) $(GLIB_CFLAGS)
+ 
+ noinst_LTLIBRARIES = libkicker_core.la
+ 
+--- kicker/buttons/Makefile.am	2010/08/10 08:16:06	1.1
++++ kicker/buttons/Makefile.am	2010/08/10 08:16:28
+@@ -1,5 +1,5 @@
+ INCLUDES = -I$(srcdir)/../core -I$(srcdir)/../../libkicker -I../../libkicker \
+-	-I../ui -I$(srcdir)/../ui -I$(top_srcdir)/libkonq $(all_includes)
++	-I../ui -I$(srcdir)/../ui -I$(top_srcdir)/libkonq $(all_includes) $(LIBBEAGLE_CFLAGS) $(GLIB_CFLAGS)
+ 
+ noinst_LTLIBRARIES = libkicker_buttons.la
+ 

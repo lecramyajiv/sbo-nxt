@@ -1,0 +1,11 @@
+Document: tdenetwork-doc-html-lisa
+Title: Lisa Handbook
+Author: Alexander Neundorf
+Abstract: Lisa is intended to provide a kind of Network Neighborhood, but
+ only relying on the TCP/IP protocol stack.
+Section: Apps/Net
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/lisa/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/lisa/*.html
+

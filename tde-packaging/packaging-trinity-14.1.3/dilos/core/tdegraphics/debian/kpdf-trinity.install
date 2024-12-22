@@ -1,0 +1,23 @@
+debian/tmp/usr/bin/kpdf
+debian/tmp/usr/lib/*/trinity/libkpdfpart.la
+debian/tmp/usr/lib/*/trinity/libkpdfpart.so
+debian/tmp/usr/share/applications/tde/kpdf.desktop
+debian/tmp/usr/share/apps/kpdf/shell.rc
+debian/tmp/usr/share/apps/kpdfpart/part.rc
+debian/tmp/usr/share/config.kcfg/kpdf.kcfg
+debian/tmp/usr/share/doc/tde/HTML/en/kpdf/common
+debian/tmp/usr/share/doc/tde/HTML/en/kpdf/configure.png
+debian/tmp/usr/share/doc/tde/HTML/en/kpdf/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kpdf/index.docbook
+debian/tmp/usr/share/icons/hicolor/128x128/apps/kpdf.png
+debian/tmp/usr/share/icons/hicolor/16x16/apps/kpdf.png
+debian/tmp/usr/share/icons/hicolor/22x22/apps/kpdf.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/kpdf.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/kpdf.png
+debian/tmp/usr/share/icons/hicolor/64x64/apps/kpdf.png
+debian/tmp/usr/share/icons/hicolor/scalable/apps/kpdf.svgz
+debian/tmp/usr/share/man/man1/kpdf.1
+debian/tmp/usr/share/services/kpdf_part.desktop
+
+debian/icons/kpdf.xpm		/usr/share/pixmaps
+debian/icons/kpdf-16.xpm	/usr/share/pixmaps

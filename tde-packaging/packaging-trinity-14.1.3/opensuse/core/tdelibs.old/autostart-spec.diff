@@ -1,0 +1,55 @@
+Index: kdecore/kstandarddirs.cpp
+===================================================================
+--- kdecore/kstandarddirs.cpp.orig
++++ kdecore/kstandarddirs.cpp
+@@ -100,7 +100,7 @@ static const char* const types[] = {"htm
+ 			      "wallpaper", "lib", "pixmap", "templates",
+ 			      "module", "qtplugins",
+ 			      "xdgdata-apps", "xdgdata-dirs", "xdgconf-menu",
+-			      "xdgdata-icon", "xdgdata-pixmap",
++			      "xdgdata-icon", "xdgdata-pixmap", "xdgconf-autostart",
+ 			      "kcfg", "emoticons", 0 };
+ 
+ static int tokenize( QStringList& token, const QString& str,
+@@ -1067,6 +1067,8 @@ QString KStandardDirs::kde_default(const
+         return "desktop-directories/";
+     if (!strcmp(type, "xdgconf-menu"))
+         return "menus/";
++    if (!strcmp(type, "xdgconf-autostart"))
++        return "autostart/";
+     if (!strcmp(type, "kcfg"))
+ 	return "share/config.kcfg";
+     if (!strcmp(type, "emoticons"))
+Index: kinit/autostart.cpp
+===================================================================
+--- kinit/autostart.cpp.orig
++++ kinit/autostart.cpp
+@@ -104,7 +104,9 @@ static bool startCondition(const QString
+ void
+ AutoStart::loadAutoStartList()
+ {
+-   QStringList files = KGlobal::dirs()->findAllResources("autostart", "*.desktop", false, true);
++   QStringList files = KGlobal::dirs()->findAllResources("xdgconf-autostart", "*.desktop", false, true);
++   QStringList kdefiles = KGlobal::dirs()->findAllResources("autostart", "*.desktop", false, true);
++   files += kdefiles;
+    
+    for(QStringList::ConstIterator it = files.begin();
+        it != files.end();
+@@ -129,6 +131,17 @@ AutoStart::loadAutoStartList()
+                continue;
+        }
+        
++       if (config.hasKey("OnlyShowIn"))
++       {
++          if (!config.readListEntry("OnlyShowIn", ';').contains("KDE"))
++              continue;
++       }
++       if (config.hasKey("NotShowIn"))
++       {
++           if (config.readListEntry("NotShowIn", ';').contains("KDE"))
++               continue;
++       }
++
+        AutoStartItem *item = new AutoStartItem;
+        item->name = extractName(*it);
+        item->service = *it;

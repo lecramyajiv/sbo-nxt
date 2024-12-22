@@ -1,0 +1,29 @@
+Source: kbibtex-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev (>= 3.3.2), libxslt1-dev, libyaz-dev
+Standards-Version: 3.9.0
+Homepage: http://www.unix-ag.uni-kl.de/~fischer/kbibtex
+Vcs-Browser: http://git.debian.org/?p=pkg-exppsy/kbibtex.git
+Vcs-Git: git://git.debian.org/git/pkg-exppsy/kbibtex.git
+XS-DM-Upload-Allowed: yes
+
+
+Package: kbibtex-trinity
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: texlive-latex-base | tetex-extra, bibtex2html, latex2rtf
+Recommends: texlive-bibtex-extra
+Description: BibTeX editor for TDE
+ An application to manage bibliography databases in the BibTeX format. KBibTeX
+ can be used as a standalone program, but can also be embedded into other TDE 
+ applications (e.g. as bibliography editor into Kile).
+ .
+ KBibTeX can query online ressources (e.g. Google scholar) via customizable 
+ search URLs. It is also able to import complete datasets from NCBI Pubmed.
+ It also supports tagging references with keywords and manages references to
+ local files.
+ .
+ BibTeX files can be exported into HTML, XML, PDF, PS and RTF format using a 
+ number of citation styles.

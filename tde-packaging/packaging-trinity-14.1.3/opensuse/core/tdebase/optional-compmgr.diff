@@ -1,0 +1,32 @@
+Index: kwin/workspace.cpp
+===================================================================
+--- kwin/workspace.cpp.orig
++++ kwin/workspace.cpp
+@@ -59,6 +59,17 @@ KSelectionOwner* kompmgr_selection;
+ 
+ bool allowKompmgrRestart = TRUE;
+ 
++bool supportsCompMgr()
++{
++    int i;
++
++    bool damageExt = XQueryExtension(qt_xdisplay(), "DAMAGE", &i, &i, &i);
++    bool compositeExt = XQueryExtension(qt_xdisplay(), "Composite", &i, &i, &i);
++    bool xfixesExt = XQueryExtension(qt_xdisplay(), "XFIXES", &i, &i, &i);
++
++    return damageExt && compositeExt && xfixesExt;
++}
++
+ // Rikkus: This class is too complex. It needs splitting further.
+ // It's a nightmare to understand, especially with so few comments :(
+ 
+@@ -199,6 +210,9 @@ Workspace::Workspace( bool restore )
+     connect( kapp->desktop(), SIGNAL( resized( int )), SLOT( desktopResized()));
+ #endif
+ 
++    if (!supportsCompMgr())
++        options->useTranslucency = false;
++
+     // start kompmgr - i wanted to put this into main.cpp, but that would prevent dcop support, as long as Application was no dcop_object
+     if (options->useTranslucency)
+         {

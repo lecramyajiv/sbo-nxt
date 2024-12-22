@@ -1,0 +1,11 @@
+?package(konsole-trinity):\
+	needs="X11"\
+	section="Applications/Terminal Emulators"\
+	hints="TDE"\
+	title="Konsole"\
+	icon32x32="/opt/trinity/share/pixmaps/konsole.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/konsole-16.xpm"\
+	command="/opt/trinity/bin/konsole"
+
+# Icon 32x32 konsole/other/cr32-app-konsole.png konsole.xpm
+# Icon 16x16 konsole/other/cr16-app-konsole.png konsole-16.xpm

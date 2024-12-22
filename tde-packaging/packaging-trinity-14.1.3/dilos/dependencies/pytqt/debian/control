@@ -1,0 +1,128 @@
+Source: pytqt
+Section: python
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Torsten Marek <shlomme@debian.org>, Bernd Zeimetz <bzed@debian.org>, Michael Casadevall <mcasadevall@debian.org>
+Build-Depends: debhelper (>= 10~), python3-all-dev, python3-all-dbg [!solaris-any], libtqtinterface-dev, tqt3-dev-tools, tqt3-apps-dev, python3-sip-tqt-dev, python3-sip-tqt-dbg [!solaris-any], libtqscintilla-dev, dh-python
+Standards-Version: 3.8.4
+XS-Python-Version: >= 2.3
+X-Python3-Version: >= 3.0
+
+Package: python3-pytqt
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends}, ${py3sip-tqt:Depends}, ${misc:Depends}
+Suggests: python3-pytqt-gl, pytqt-doc, libtqt3-mt-mysql|libtqt3-mt-odbc|libtqt3-mt-psql
+Provides: ${python3:Provides}
+Replaces: python3-tqt
+Breaks: python3-tqt
+Description: TQt bindings for Python 3
+ Python binding module that allows use of TQt X Window toolkit v3.
+ You can use it to create portable graphics-capable scripts (there
+ are PyTQt versions for Linux, Windows and MacOS X).
+ .
+ At this moment PyTQt offers a vast subset of TQt API. There are
+ some minor issues related to the differences between C++ and Python
+ (types, etc), but usually you'll be able to write code pretty much the
+ same way in both languages (with syntax differences, of course)
+
+Package: python3-pytqt-dbg
+Architecture: any
+Priority: extra
+Section: debug
+Depends: ${shlibs:Depends}, python3-all-dbg, python3-pytqt (= ${binary:Version}), python3-sip-tqt-dbg, ${misc:Depends}
+Replaces: python3-tqt-dbg
+Breaks: python3-tqt-dbg
+Description: TQt bindings for Python 3 (debug extension)
+ Python binding module that allows use of TQt X Window toolkit v3.
+ You can use it to create portable graphics-capable scripts (there
+ are PyTQt versions for Linux, Windows and MacOS X).
+ .
+ This package contains the extension built for the Python debug interpreter.
+
+Package: python3-pytqt-gl
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends}, python3-pytqt (= ${binary:Version}), python3-opengl, ${misc:Depends}
+Suggests: pytqt-doc
+Provides: ${python3:Provides}
+Replaces: python3-tqt-gl
+Breaks: python3-tqt-gl
+Description: TQt OpenGL bindings for Python 3
+ Python binding module that allows use of the OpenGL facilities
+ offered by the TQt X Window toolkit v3. You can use it to create
+ portable graphics-capable scripts (there are PyTQt versions for
+ Linux, Windows and MacOS X).
+
+Package: python3-pytqt-gl-dbg
+Priority: extra
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, python3-all-dbg, python3-pytqt-gl (= ${binary:Version}), python3-pytqt-dbg (= ${binary:Version}), ${misc:Depends}
+Replaces: python3-tqt-gl-dbg
+Breaks: python3-tqt-gl-dbg
+Description: TQt OpenGL bindings for Python 3 (debug extension)
+ Python binding module that allows use of the OpenGL facilities
+ offered by the TQt X Window toolkit v3. You can use it to create
+ portable graphics-capable scripts (there are PyTQt versions for
+ Linux, Windows and MacOS X).
+ .
+ This package contains the extension built for the Python debug interpreter.
+
+Package: python3-pytqtext
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends}, python3-pytqt (= ${binary:Version}), ${misc:Depends}
+Provides: ${python3:Provides}
+Replaces: python3-tqtext
+Breaks: python3-tqtext
+Description: TQt extensions for PyTQt
+ PyTQt Extensions. Contains:
+ .
+   * TQScintilla: a featureful TQt source code editing component based
+                 on Scintilla.
+
+Package: python3-pytqtext-dbg
+Priority: extra
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, python3-all-dbg, python3-pytqtext (= ${binary:Version}), python3-pytqt-dbg (= ${binary:Version}), ${misc:Depends}
+Replaces: python3-tqtext-dbg
+Breaks: python3-tqtext-dbg
+Description: TQt debug extensions for PyTQt
+ PyTQt debug Extensions. Contains:
+ .
+   * TQScintilla: a featureful TQt source code editing component based
+                 on Scintilla.
+
+Package: pytqt-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: pytqt-tools (<< 4:14.0.0~)
+Breaks: pytqt-tools (<< 4:14.0.0~)
+Description: pyuic and pylupdate for TQt
+ pyuic is the PyTQt counterpart for TQt's uic. It takes an XML
+ user interface file and generates Python code.
+ .
+ pylupdate is the counterpart for TQt's lupdate. It updates TQt
+ Linguist translation files from Python code.
+
+Package: pytqt-dev
+Depends: python3-pytqt (= ${binary:Version}), ${misc:Depends}
+Suggests: python3-sip-tqt-dev, sip-tqt-dev
+Replaces: python-tqt-dev
+Breaks: python-tqt-dev
+Architecture: all
+Description: TQt bindings for Python - Development files
+ Development .sip files with definitions of PyTQt classes. They
+ are needed to build PyTQt, but also as building blocks of other
+ packages based on them, like PyTDE.
+
+Package: pytqt-doc
+Section: doc
+Architecture: all
+Replaces: python-tqt-doc
+Breaks: python-tqt-doc
+Depends: ${misc:Depends}
+Suggests: python3-pytqt
+Description: TQt bindings for Python - Documentation and examples
+ Documentation and examples for the PyTQt (bindings that allow
+ the use of TQt library from within a Python script).

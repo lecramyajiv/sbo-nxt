@@ -1,0 +1,10 @@
+debian/tmp/opt/trinity/bin/po2xml
+debian/tmp/opt/trinity/bin/split2po
+debian/tmp/opt/trinity/bin/swappo
+debian/tmp/opt/trinity/bin/transxx
+debian/tmp/opt/trinity/bin/xml2pot
+debian/tmp/opt/trinity/share/man/man1/po2xml.1
+debian/tmp/opt/trinity/share/man/man1/split2po.1
+debian/tmp/opt/trinity/share/man/man1/swappo.1
+debian/tmp/opt/trinity/share/man/man1/transxx.1
+debian/tmp/opt/trinity/share/man/man1/xml2pot.1

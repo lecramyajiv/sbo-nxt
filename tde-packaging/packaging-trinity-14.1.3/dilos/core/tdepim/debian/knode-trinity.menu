@@ -1,0 +1,8 @@
+?package(knode-trinity):\
+	needs="X11"\
+	section="Applications/Network/Communication"\
+	hints="TDE,News"\
+	title="KNode"\
+	icon32x32="/usr/share/pixmaps/knode.xpm"\
+	icon16x16="/usr/share/pixmaps/knode-16.xpm"\
+	command="/usr/bin/knode"

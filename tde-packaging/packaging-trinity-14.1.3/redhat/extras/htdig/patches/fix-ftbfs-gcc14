@@ -1,0 +1,11 @@
+--- a/db/os_map.c
++++ b/db/os_map.c
+@@ -31,6 +31,8 @@
+ #endif
+ 
+ #include "db_int.h"
++#include "db_page.h"
++#include "db_ext.h"
+ #include "os_jump.h"
+ 
+ #ifdef HAVE_MMAP

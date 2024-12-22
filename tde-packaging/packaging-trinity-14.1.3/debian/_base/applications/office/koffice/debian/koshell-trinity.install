@@ -1,0 +1,20 @@
+debian/koshell.xpm opt/trinity/share/pixmaps
+debian/tmp/opt/trinity/bin/koshell
+debian/tmp/opt/trinity/lib/trinity/koshell.la
+debian/tmp/opt/trinity/lib/trinity/koshell.so
+debian/tmp/opt/trinity/lib/libtdeinit_koshell.so
+debian/tmp/opt/trinity/share/applications/tde/koshell.desktop
+debian/tmp/opt/trinity/share/apps/koshell/koshellui.rc
+debian/tmp/opt/trinity/share/config.kcfg/koshell.kcfg
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/koshell/*.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/koshell/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/koshell/*.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/koshell/*.png
+debian/tmp/opt/trinity/share/icons/hicolor/128x128/apps/koshell.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/koshell.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/koshell.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/koshell.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/koshell.png
+debian/tmp/opt/trinity/share/icons/hicolor/64x64/apps/koshell.png
+debian/tmp/opt/trinity/share/icons/hicolor/scalable/apps/koshell.svgz
+debian/tmp/opt/trinity/share/man/man1/koshell.1

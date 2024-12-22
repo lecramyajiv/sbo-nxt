@@ -1,0 +1,74 @@
+Index: libtdeldap/src/libtdeldap.cpp
+===================================================================
+--- libtdeldap.orig/src/libtdeldap.cpp
++++ libtdeldap/src/libtdeldap.cpp
+@@ -25,6 +25,10 @@
+ #include <netdb.h>
+ #include <pwd.h>
+ 
++#ifdef	__dilos__
++#define	__TDE_HAVE_TDEHWLIB
++#endif	/* __dilos__ */
++
+ #include <tqdir.h>
+ #include <tqfile.h>
+ #include <tqprocess.h>
+@@ -39,8 +43,58 @@
+ #include <tdesu/process.h>
+ #include <ksslcertificate.h>
+ #include <krfcdate.h>
++#ifdef	__dilos__
++//class TDEGenericHardwareList;
++
++class TDEGenericDevice;
++class TDEHardwareDevices;
++
++namespace TDEGenericDeviceType {
++enum TDEGenericDeviceType {
++        CryptographicCard
++};
++};
++
++class TDEGenericDevice
++{
++	void	*dummy;
++};
++
++typedef TQPtrList<TDEGenericDevice> TDEGenericHardwareList;
++typedef TQValueList<X509*> X509CertificatePtrList;
++
++class TDECryptographicCardDevice:public TDEGenericDevice
++{
++public:
++	X509CertificatePtrList cardX509Certificates(){return (X509CertificatePtrList());}
++
++	static TQString pkcsProviderLibrary(){return (TQString::null);}
++};
++
++
++
++
++class TDEHardwareDevices
++{
++	void *dummy;
++public:
++	TDEGenericHardwareList listByDeviceClass(const TDEGenericDeviceType::TDEGenericDeviceType)
++	{
++		return TDEGenericHardwareList();
++	}
++};
++
++TDEHardwareDevices *
++TDEGlobal::hardwareDevices()
++{
++
++	return (NULL);
++}
++
++#else	/* !__dilos__ */
+ #include <tdehardwaredevices.h>
+ #include <tdecryptographiccarddevice.h>
++#endif	/* __dilos__ */
+ 
+ #include <ldap.h>
+ #include <sasl/sasl.h>

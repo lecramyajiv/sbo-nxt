@@ -1,0 +1,9 @@
+Document: kgeography
+Title: KGeography Handbook
+Author: Anne-Marie Mahfouf <annma@kde.org>
+Abstract: KGeography is a geography learning tool for TDE.
+Section: Apps/Education
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kgeography/index.html
+Files: /usr/share/doc/tde/HTML/en/kgeography/*.html

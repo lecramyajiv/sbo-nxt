@@ -1,0 +1,7 @@
+?package(khangman-trinity):needs="X11"\
+  section="Games/Puzzles"\
+  hints="TDE"\
+  title="KHangMan"\
+  longtitle="KHangMan (Hangman Game)"\
+  command="/opt/trinity/bin/khangman"\
+  icon="/opt/trinity/share/pixmaps/khangman.xpm"

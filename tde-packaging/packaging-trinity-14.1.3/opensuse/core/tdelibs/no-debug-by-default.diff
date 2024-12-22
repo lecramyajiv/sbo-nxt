@@ -1,0 +1,158 @@
+--- tdecore/kdebug.cpp.orig	2011-12-11 18:54:28.986987249 +0100
++++ tdecore/kdebug.cpp	2011-12-11 19:00:22.478987207 +0100
+@@ -170,7 +170,7 @@
+ static KStaticDeleter<KDebugDCOPIface> dcopsd;
+ static KDebugDCOPIface* kDebugDCOPIface = 0;
+ 
+-static void kDebugBackend( unsigned short nLevel, unsigned int nArea, const char *data)
++static void kDebugInitBackend(unsigned int nArea)
+ {
+   if ( !kDebug_data )
+   {
+@@ -205,41 +205,46 @@
+       if ( KGlobal::_instance )
+         kDebug_data->aAreaName = KGlobal::instance()->instanceName();
+   }
++}
+ 
+-  int nPriority = 0;
+-  TQString aCaption;
+-
+-    /* Determine output */
+-
++static short kDebugAreaOutput(unsigned short nLevel, unsigned int nArea)
++{
++  kDebugInitBackend (nArea);
++ 
++  /* Determine output */
+   TQString key;
+   switch( nLevel )
+   {
+   case KDEBUG_INFO:
+       key = "InfoOutput";
+-      aCaption = "Info";
+-      nPriority = LOG_INFO;
+       break;
+   case KDEBUG_WARN:
+       key = "WarnOutput";
+-      aCaption = "Warning";
+-      nPriority = LOG_WARNING;
+ 	break;
+   case KDEBUG_FATAL:
+       key = "FatalOutput";
+-      aCaption = "Fatal Error";
+-      nPriority = LOG_CRIT;
+       break;
+   case KDEBUG_ERROR:
+   default:
+       /* Programmer error, use "Error" as default */
+       key = "ErrorOutput";
+-      aCaption = "Error";
+-      nPriority = LOG_ERR;
+       break;
+   }
+ 
+-  // if no output mode is specified default to no debug output
+-  short nOutput = kDebug_data->config ? kDebug_data->config->readNumEntry(key, 4) : 4;
++  return kDebug_data->config ? kDebug_data->config->readNumEntry(key, 4) : 4;
++}
++
++
++bool kDebugAreaEnabled(unsigned short nLevel, unsigned int nArea)
++{
++    return kDebugAreaOutput(nLevel, nArea) != 4;
++}
++
++static void kDebugBackend( unsigned short nLevel, unsigned int nArea, const char *data)
++{
++  kDebugInitBackend (nArea);
++
++  short nOutput = kDebugAreaOutput(nLevel, nArea);
+ 
+   // If the application doesn't have a TQApplication object it can't use
+   // a messagebox.
+@@ -248,6 +253,32 @@
+   else if ( nOutput == 4 && nLevel != KDEBUG_FATAL )
+       return;
+ 
++  int nPriority = 0;
++  TQString aCaption;
++  switch( nLevel )
++  {
++  case KDEBUG_INFO:
++      aCaption = "Info";
++      nPriority = LOG_INFO;
++      break;
++  case KDEBUG_WARN:
++      aCaption = "Warning";
++      nPriority = LOG_WARNING;
++	break;
++  case KDEBUG_FATAL:
++      aCaption = "Fatal Error";
++      nPriority = LOG_CRIT;
++      break;
++  case KDEBUG_ERROR:
++  default:
++      /* Programmer error, use "Error" as default */
++      aCaption = "Error";
++      nPriority = LOG_ERR;
++      break;
++  }
++
++
++
+   const int BUFSIZE = 4096;
+   char buf[BUFSIZE];
+   if ( !kDebug_data->aAreaName.isEmpty() ) {
+@@ -315,13 +346,25 @@
+ }
+ 
+ kdbgstream &perror( kdbgstream &s) { return s << TQString(TQString::fromLocal8Bit(strerror(errno))); }
+-kdbgstream kdDebug(int area) { return kdbgstream(area, KDEBUG_INFO); }
+-kdbgstream kdDebug(bool cond, int area) { if (cond) return kdbgstream(area, KDEBUG_INFO); else return kdbgstream(0, 0, false); }
++kdbgstream kdDebug(int area) { return kdbgstream(area, KDEBUG_INFO, kDebugAreaEnabled(KDEBUG_INFO, area)); }
++kdbgstream kdDebug(bool cond, int area) { if (cond) return kdbgstream(area, KDEBUG_INFO, kDebugAreaEnabled(KDEBUG_INFO, area)); else return kdbgstream(0, 0, false); }
+ 
+ kdbgstream kdError(int area) { return kdbgstream("ERROR: ", area, KDEBUG_ERROR); }
+ kdbgstream kdError(bool cond, int area) { if (cond) return kdbgstream("ERROR: ", area, KDEBUG_ERROR); else return kdbgstream(0,0,false); }
+-kdbgstream kdWarning(int area) { return kdbgstream("WARNING: ", area, KDEBUG_WARN); }
+-kdbgstream kdWarning(bool cond, int area) { if (cond) return kdbgstream("WARNING: ", area, KDEBUG_WARN); else return kdbgstream(0,0,false); }
++
++kdbgstream kdWarning(int area)
++{
++    return kdbgstream("WARNING: ", area, KDEBUG_WARN, kDebugAreaEnabled(KDEBUG_WARN, area));
++}
++
++kdbgstream kdWarning(bool cond, int area) 
++{
++    if (cond)
++        return kdbgstream("WARNING: ", area, KDEBUG_WARN, kDebugAreaEnabled(KDEBUG_WARN, area));
++    else
++        return kdbgstream(0,0,false);
++}
++
+ kdbgstream kdFatal(int area) { return kdbgstream("FATAL: ", area, KDEBUG_FATAL); }
+ kdbgstream kdFatal(bool cond, int area) { if (cond) return kdbgstream("FATAL: ", area, KDEBUG_FATAL); else return kdbgstream(0,0,false); }
+ 
+@@ -332,9 +375,10 @@
+ }
+ 
+ void kdbgstream::flush() {
+-    if (output.isEmpty() || !print)
++    if (output.isEmpty())
+ 	return;
+-    kDebugBackend( level, area, output.local8Bit().data() );
++    if (print)
++        kDebugBackend( level, area, output.local8Bit().data() );
+     output = TQString::null;
+ }
+ 
+@@ -350,7 +394,7 @@
+ }
+ 
+ kdbgstream::~kdbgstream() {
+-    if (!output.isEmpty()) {
++    if (print && !output.isEmpty()) {
+ 	fprintf(stderr, "ASSERT: debug output not ended with \\n\n");
+        TQString backtrace = kdBacktrace();
+ 	if (backtrace.ascii() != NULL) {

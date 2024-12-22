@@ -1,0 +1,67 @@
+/etc/trinity/kmail.antispamrc
+/etc/trinity/kmail.antivirusrc
+/usr/bin/kmail
+/usr/bin/kmail_*.sh
+/usr/lib/*/trinity/kcm_kmail.la
+/usr/lib/*/trinity/kcm_kmail.so
+/usr/lib/*/trinity/libkmail_bodypartformatter_application_octetstream.la
+/usr/lib/*/trinity/libkmail_bodypartformatter_application_octetstream.so
+/usr/lib/*/trinity/libkmail_bodypartformatter_text_calendar.la
+/usr/lib/*/trinity/libkmail_bodypartformatter_text_calendar.so
+/usr/lib/*/trinity/libkmail_bodypartformatter_text_vcard.la
+/usr/lib/*/trinity/libkmail_bodypartformatter_text_vcard.so
+/usr/lib/*/trinity/libkmail_bodypartformatter_text_xdiff.la
+/usr/lib/*/trinity/libkmail_bodypartformatter_text_xdiff.so
+/usr/lib/*/trinity/libkmailpart.la
+/usr/lib/*/trinity/libkmailpart.so
+/usr/lib/*/libkmailprivate.la
+/usr/lib/*/libkmailprivate.so
+/usr/share/applications/tde/KMail.desktop
+/usr/share/applications/tde/kmail_view.desktop
+/usr/share/apps/tdeconf_update/kmail-3.1-update-new-mail-notification-settings.pl
+/usr/share/apps/tdeconf_update/kmail-3.1-use-UOID-for-identities.pl
+/usr/share/apps/tdeconf_update/kmail-3.1.4-dont-use-UOID-0-for-any-identity.pl
+/usr/share/apps/tdeconf_update/kmail-3.2-misc.sh
+/usr/share/apps/tdeconf_update/kmail-3.2-update-loop-on-goto-unread-settings.sh
+/usr/share/apps/tdeconf_update/kmail-3.3-aegypten.pl
+/usr/share/apps/tdeconf_update/kmail-3.3-misc.pl
+/usr/share/apps/tdeconf_update/kmail-3.3-move-identities.pl
+/usr/share/apps/tdeconf_update/kmail-3.3-split-sign-encr-keys.sh
+/usr/share/apps/tdeconf_update/kmail-3.3-use-ID-for-accounts.pl
+/usr/share/apps/tdeconf_update/kmail-3.3b1-misc.pl
+/usr/share/apps/tdeconf_update/kmail-3.4-misc.pl
+/usr/share/apps/tdeconf_update/kmail-3.4.1-update-status-filters.pl
+/usr/share/apps/tdeconf_update/kmail-3.5-trigger-flag-migration.pl
+/usr/share/apps/tdeconf_update/kmail-3.5-filter-icons.pl
+/usr/share/apps/tdeconf_update/kmail-pgpidentity.pl
+/usr/share/apps/tdeconf_update/kmail-upd-identities.pl
+/usr/share/apps/tdeconf_update/kmail.upd
+/usr/share/apps/tdeconf_update/upgrade-signature.pl
+/usr/share/apps/tdeconf_update/upgrade-transport.pl
+/usr/share/apps/kmail
+/usr/share/config.kcfg/custommimeheader.kcfg
+/usr/share/config.kcfg/kmail.kcfg
+/usr/share/config.kcfg/customtemplates_kfg.kcfg
+/usr/share/config.kcfg/replyphrases.kcfg
+/usr/share/config.kcfg/templatesconfiguration_kfg.kcfg
+/usr/share/doc/tde/HTML/en/kmail
+/usr/share/icons/hicolor/128x128/apps/kmail.png
+/usr/share/icons/hicolor/16x16/apps/kmail.png
+/usr/share/icons/hicolor/22x22/apps/kmail.png
+/usr/share/icons/crystalsvg/22x22/apps/kmaillight.png
+/usr/share/icons/hicolor/32x32/apps/kmail.png
+/usr/share/icons/crystalsvg/32x32/apps/kmaillight.png
+/usr/share/icons/hicolor/48x48/apps/kmail.png
+/usr/share/icons/hicolor/64x64/apps/kmail.png
+/usr/share/icons/hicolor/scalable/apps/kmail.svgz
+/usr/share/services/kmail_config_*.desktop
+/usr/share/services/kontact/kmailplugin.desktop
+/usr/share/servicetypes/dcopimap.desktop
+/usr/share/servicetypes/dcopmail.desktop
+/usr/share/apps/konqueror/servicemenus/email.desktop
+../icons/kmail.xpm /usr/share/pixmaps
+../icons/kmail-16.xpm /usr/share/pixmaps
+../man/out/kmail_antivir.sh-trinity.1 /usr/share/man/man1
+../man/out/kmail_clamav.sh-trinity.1 /usr/share/man/man1
+../man/out/kmail_fprot.sh-trinity.1 /usr/share/man/man1
+../man/out/kmail_sav.sh-trinity.1 /usr/share/man/man1

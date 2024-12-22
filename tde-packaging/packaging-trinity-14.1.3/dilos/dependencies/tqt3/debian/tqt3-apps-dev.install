@@ -1,0 +1,4 @@
+usr/lib/$(DEB_HOST_MULTIARCH)/libtqteditor.so
+usr/lib/$(DEB_HOST_MULTIARCH)/libtqtdesignercore.so
+usr/lib/$(DEB_HOST_MULTIARCH)/libtqassistantclient.so
+usr/include/tqt3/ntqassistantclient.h

@@ -1,0 +1,13 @@
+Index: src/kernel/qimage.h
+===================================================================
+--- src/kernel/qimage.h	(revision 594273)
++++ src/kernel/qimage.h	(working copy)
+@@ -55,7 +55,7 @@ public:
+     QCString lang;
+ 
+     bool operator< (const QImageTextKeyLang& other) const
+-	{ return key < other.key || key==other.key && lang < other.lang; }
++	{ return key < other.key || (key==other.key && lang < other.lang); }
+     bool operator== (const QImageTextKeyLang& other) const
+ 	{ return key==other.key && lang==other.lang; }
+ };

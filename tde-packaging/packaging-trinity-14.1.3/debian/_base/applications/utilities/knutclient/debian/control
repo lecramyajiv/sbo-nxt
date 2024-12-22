@@ -1,0 +1,19 @@
+Source: knutclient-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Arnaud Quette <aquette@debian.org>
+Standards-Version: 3.8.4
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Homepage: http://www.knut.noveradsl.cz/knutclient/
+
+Package: knutclient-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: knutclient-trinity (<< 4:14.0.0~)
+Breaks: knutclient-trinity (<< 4:14.0.0~)
+Description: A TDE GUI that displays UPS statistics from NUT's upsd [Trinity]
+ KNutClient monitors UPS statistics through the NUT (Network UPS Tools,
+ http://www.networkupstools.org/) framework on Linux and other systems. This
+ information, presented in a nice visual format, can be invaluable on
+ stations using an UPS.

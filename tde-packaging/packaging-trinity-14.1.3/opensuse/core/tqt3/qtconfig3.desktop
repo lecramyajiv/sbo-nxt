@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Qt;Settings;
+Encoding=UTF-8
+Exec=/usr/lib/qt3/bin/qtconfig
+Name=Qt Settings
+X-KDE-StartupNotify=true
+Icon=designer3
+Terminal=false
+Type=Application
+

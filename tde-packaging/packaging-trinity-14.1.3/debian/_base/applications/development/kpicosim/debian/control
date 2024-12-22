@@ -1,0 +1,18 @@
+Source: kpicosim-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: kpicosim-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: kpicosim-trinity (<< 4:14.0.0~)
+Breaks: kpicosim-trinity (<< 4:14.0.0~)
+Description: IDE and simulator for the Xilinx PicoBlaze-3 [Trinity]
+ kpicosim is a development environment for the Xilinx 
+ PicoBlaze-3 soft-core processor for the Trinity Desktop (Linux).
+ The environment has an editor with syntax highlighting, compiler,
+ simulator and export functions to VHDL, HEX and MEM files.
+

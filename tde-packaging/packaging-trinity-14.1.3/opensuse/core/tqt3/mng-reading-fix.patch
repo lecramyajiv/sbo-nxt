@@ -1,0 +1,30 @@
+--- src/kernel/qmngio.cpp.sav	2007-02-23 14:01:19.000000000 +0100
++++ src/kernel/qmngio.cpp	2007-08-28 15:27:28.000000000 +0200
+@@ -414,8 +414,11 @@ int QMNGFormat::decode( QImage& img, QIm
+     }
+ 
+     losttime += losingtimer.elapsed();
+-    if ( ndata || !length )
+-	mng_display_resume(handle);
++    bool needmore = false;
++    if ( ndata ) {
++	mng_retcode r = mng_display_resume(handle);
++	needmore = ( r == MNG_NEEDMOREDATA );
++    }
+     losingtimer.start();
+ 
+     image = 0;
+@@ -425,6 +428,13 @@ int QMNGFormat::decode( QImage& img, QIm
+ 	// Move back unused tail
+ 	memcpy(buffer,buffer+ubuffer,nbuffer);
+     }
++    // "The function should return without processing all the data if it reaches the end of a frame in the input."
++    if( ndata && !needmore ) {
++	length -= ndata;
++	ndata = 0;
++	if( length == 0 ) // 0 means done, process at least one byte
++	    length = ndata = 1;
++    }
+     if ( ndata ) {
+ 	// Not all used.
+ 	enlargeBuffer(nbuffer+ndata);

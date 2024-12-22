@@ -1,0 +1,36 @@
+debian/tmp/usr/bin/kcontroledit
+debian/tmp/usr/bin/kmenuedit
+debian/tmp/usr/lib/*/trinity/kcontroledit.la
+debian/tmp/usr/lib/*/trinity/kcontroledit.so
+debian/tmp/usr/lib/*/trinity/kmenuedit.la
+debian/tmp/usr/lib/*/trinity/kmenuedit.so
+debian/tmp/usr/lib/*/libtdeinit_kcontroledit.so
+debian/tmp/usr/lib/*/libtdeinit_kmenuedit.so
+debian/tmp/usr/share/applications/tde/kmenuedit.desktop
+debian/tmp/usr/share/applnk/System/kmenuedit.desktop
+debian/tmp/usr/share/apps/kcontroledit/icons/crystalsvg/22x22/actions/menu_new.png
+debian/tmp/usr/share/apps/kcontroledit/icons/crystalsvg/22x22/actions/menu_new_sep.png
+debian/tmp/usr/share/apps/kcontroledit/icons/crystalsvg/32x32/actions/menu_new.png
+debian/tmp/usr/share/apps/kcontroledit/icons/crystalsvg/32x32/actions/menu_new_sep.png
+debian/tmp/usr/share/apps/kcontroledit/icons/locolor/16x16/actions/menu_new.png
+debian/tmp/usr/share/apps/kcontroledit/kcontroleditui.rc
+debian/tmp/usr/share/apps/kmenuedit/icons/crystalsvg/22x22/actions/menu_new.png
+debian/tmp/usr/share/apps/kmenuedit/icons/crystalsvg/22x22/actions/menu_new_sep.png
+debian/tmp/usr/share/apps/kmenuedit/icons/crystalsvg/22x22/actions/filesave_and_close.png
+debian/tmp/usr/share/apps/kmenuedit/icons/crystalsvg/32x32/actions/menu_new.png
+debian/tmp/usr/share/apps/kmenuedit/icons/crystalsvg/32x32/actions/menu_new_sep.png
+debian/tmp/usr/share/apps/kmenuedit/icons/locolor/16x16/actions/menu_new.png
+debian/tmp/usr/share/apps/kmenuedit/kmenueditui.rc
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/common
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/done.png
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/itemname.png
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/kmenueditmain.png
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/new.png
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/selecticon.png
+debian/tmp/usr/share/doc/tde/HTML/en/kmenuedit/selectinternet.png
+debian/tmp/usr/share/man/man1/kmenuedit.1
+
+debian/icons/kmenuedit.xpm		/usr/share/pixmaps
+debian/icons/kmenuedit-16.xpm		/usr/share/pixmaps

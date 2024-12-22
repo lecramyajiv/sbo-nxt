@@ -1,0 +1,13 @@
+/opt/trinity/share/apps/kgoldrunner/*
+/opt/trinity/share/icons/hicolor/16x16/apps/kgoldrunner.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kgoldrunner.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kgoldrunner.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kgoldrunner.png
+/opt/trinity/share/icons/hicolor/64x64/apps/kgoldrunner.png
+/opt/trinity/share/icons/hicolor/128x128/apps/kgoldrunner.png
+/opt/trinity/share/applications/tde/KGoldrunner.desktop
+/opt/trinity/games/kgoldrunner
+/opt/trinity/share/doc/tde/HTML/en/kgoldrunner/*
+/opt/trinity/share/man/man6/kgoldrunner.6
+../icons/kgoldrunner.xpm /opt/trinity/share/pixmaps
+../icons/kgoldrunner-16.xpm /opt/trinity/share/pixmaps

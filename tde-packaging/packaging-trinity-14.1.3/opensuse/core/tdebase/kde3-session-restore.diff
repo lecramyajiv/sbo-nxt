@@ -1,0 +1,12 @@
+Index: kde3
+===================================================================
+--- kde3.orig
++++ kde3
+@@ -6,4 +6,7 @@
+ #  and make sure this script is in $PATH (e.g. make a symlink if necessary).
+ #
+ 
++PATH=/opt/kde3/bin:${PATH/:\/opt\/kde3\/bin}
++export PATH
++
+ exec "$@"

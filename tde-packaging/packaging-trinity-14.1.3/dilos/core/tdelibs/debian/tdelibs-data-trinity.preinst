@@ -1,0 +1,38 @@
+#!/bin/sh -e
+
+FILE="/etc/xdg/menus/applications.menu"
+MD5SUM332="3750f06e08cfd048952f4cd82b97652c"
+MD5SUM340="ea26be9e934fb23c04b0b1409706bace"
+
+case "$1" in
+
+	upgrade)
+	rm -f /etc/trinity/colors/40\ Colors
+	rm -f /etc/trinity/colors/Royal
+	rm -f /etc/trinity/colors/Web
+	rm -f /etc/trinity/tdetexteditor_autobookmarkerrc
+	[ -f "$FILE" ] || exit 0
+	MD5SUMOLD=`md5sum $FILE | awk '{print $1}'`
+	if dpkg --compare-versions "$2" lt "4:3.4.0-0pre5"; then
+		if [ "$MD5SUM332" = "$MD5SUMOLD" ] || [ "$MD5SUM340" = "$MD5SUMOLD" ]; then
+			rm -f "$FILE"
+		fi
+	fi
+	;;
+
+	install)
+	;;
+
+	abort-upgrade)
+	;;
+
+	*)
+	echo "preinst called with unknown argument \`$1'" >&2
+	exit 1
+	;;
+
+esac
+
+#DEBHELPER#
+
+exit 0

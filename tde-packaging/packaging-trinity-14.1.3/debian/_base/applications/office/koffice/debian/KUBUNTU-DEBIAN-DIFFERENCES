@@ -1,0 +1,3 @@
+don't build-dep on libgraphicsmagick1-dev
+edit chalk.install and chalk-data.install for *magick*
+add build-deps on libpoppler-qt-dev, libexif-dev

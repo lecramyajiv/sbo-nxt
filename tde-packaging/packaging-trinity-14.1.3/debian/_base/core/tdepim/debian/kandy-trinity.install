@@ -1,0 +1,9 @@
+/opt/trinity/bin/kandy
+/opt/trinity/bin/kandy_client
+/opt/trinity/share/applications/tde/kandy.desktop
+/opt/trinity/share/applnk/Utilities/kandy.desktop
+/opt/trinity/share/apps/kandy
+/opt/trinity/share/config.kcfg/kandy.kcfg
+/opt/trinity/share/doc/tde/HTML/en/kandy
+../icons/kandy.xpm /opt/trinity/share/pixmaps
+../icons/kandy-16.xpm /opt/trinity/share/pixmaps

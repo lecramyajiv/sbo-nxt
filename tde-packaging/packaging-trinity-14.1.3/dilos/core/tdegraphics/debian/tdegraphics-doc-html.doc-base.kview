@@ -1,0 +1,10 @@
+Document: tdegraphics-doc-html-kview
+Title: KView Handbook
+Author: Hauke Hildebrandt, Sirtaj Singh Kang
+Abstract: KView is an image viewing program. 
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kview/index.html
+Files: /usr/share/doc/tde/HTML/en/kview/*.html
+

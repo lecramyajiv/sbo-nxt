@@ -1,0 +1,8 @@
+?package(kmouth-trinity):\
+	needs="x11"\
+	section="Applications/Accessibility"\
+	hints="TDE"\
+	title="KMouth"\
+	icon32x32="/usr/share/pixmaps/kmouth.xpm"\
+	icon16x16="/usr/share/pixmaps/kmouth-16.xpm"\
+	command="/usr/bin/kmouth"

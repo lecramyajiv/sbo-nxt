@@ -1,0 +1,189 @@
+Index: kscreensaver/random.cpp
+===================================================================
+--- kscreensaver/random.cpp.orig
++++ kscreensaver/random.cpp
+@@ -1,4 +1,4 @@
+-//-----------------------------------------------------------------------------
++ //-----------------------------------------------------------------------------
+ //
+ // Screen savers for KDE
+ //
+@@ -19,6 +19,7 @@
+ #include <qframe.h>
+ #include <qcheckbox.h>
+ #include <qwidget.h>
++#include <qfileinfo.h>
+ 
+ #include <kapplication.h>
+ #include <kstandarddirs.h>
+@@ -36,7 +37,7 @@
+ 
+ #define MAX_ARGS    20
+ 
+-void usage(char *name)
++static void usage(char *name)
+ {
+ 	puts(i18n("Usage: %1 [-setup] [args]\n"
+ 				"Starts a random screen saver.\n"
+@@ -60,6 +61,43 @@ static const KCmdLineOptions options[] =
+ 
+ //----------------------------------------------------------------------------
+ 
++#ifdef HAVE_GLXCHOOSEVISUAL
++#include <GL/glx.h>
++#endif
++
++//-------------------------------------
++bool hasDirectRendering () {
++    Display *dpy = QApplication::desktop()->x11Display();
++
++#ifdef HAVE_GLXCHOOSEVISUAL
++    int attribSingle[] = {
++        GLX_RGBA,
++        GLX_RED_SIZE,   1,
++        GLX_GREEN_SIZE, 1,
++        GLX_BLUE_SIZE,  1,
++        None
++    };
++    XVisualInfo* visinfo = glXChooseVisual (
++        dpy, QApplication::desktop()->primaryScreen(), attribSingle
++    );
++    if (visinfo) {
++        GLXContext ctx = glXCreateContext ( dpy, visinfo, NULL, True );
++        if (glXIsDirect(dpy, ctx)) {
++            glXDestroyContext (dpy,ctx);
++            return true;
++        }
++        glXDestroyContext (dpy,ctx);
++        return false;
++    } else {
++        return false;
++    }
++#else
++#error no GL?
++    return false;
++#endif
++
++}
++
+ int main(int argc, char *argv[])
+ {
+ 	KLocale::setMainCatalogue("kscreensaver");
+@@ -103,55 +141,63 @@ int main(int argc, char *argv[])
+ 
+ 	KConfig type("krandom.kssrc");
+ 	type.setGroup("Settings");
+-	bool opengl = type.readBoolEntry("OpenGL");
++	bool opengl = type.readBoolEntry("OpenGL", hasDirectRendering());
++        kdDebug() << "hasOPEN " << opengl << endl;
+ 	bool manipulatescreen = type.readBoolEntry("ManipulateScreen");
+         bool fortune = !KStandardDirs::findExe("fortune").isEmpty();
++        QStringList defaults = type.readListEntry( "Defaults" );
++        QMap<QString, int> def_numbers;
++        for ( QStringList::ConstIterator it = defaults.begin(); it != defaults.end(); ++it ) {
++            int index = ( *it ).find( ':' );
++            if ( index == -1 )
++                def_numbers[*it] = 1;
++            else
++                def_numbers[( *it ).left( index )] = ( *it ).mid( index + 1 ).toInt();
++        }
+ 
+ 	for (uint i = 0; i < tempSaverFileList.count(); i++)
+ 	{
+-		kdDebug() << "Looking at " << tempSaverFileList[i] << endl;
++                int howoften = 1;
++                if ( defaults.count() != 0 ) {
++                    QFileInfo fi( tempSaverFileList[i] );
++                    if ( def_numbers.contains( fi.fileName() ) )
++                        howoften = def_numbers[fi.fileName()];
++                    else
++                        howoften = 0;
++                }
++
+ 		KDesktopFile saver(tempSaverFileList[i], true);
+-		if(!saver.tryExec())
+-			continue;
+-		kdDebug() << "read X-KDE-Type" << endl;
++                if (!saver.tryExec())
++                    continue;
+ 		QString saverType = saver.readEntry("X-KDE-Type");
+-
+-		if (saverType.isEmpty()) // no X-KDE-Type defined so must be OK
+-		{
+-			saverFileList.append(tempSaverFileList[i]);
+-		}
+-		else
+-		{
++		if (!saverType.isEmpty()) // no X-KDE-Type defined so must be OK
++                {
+ 			QStringList saverTypes = QStringList::split(";", saverType);
+ 			for (QStringList::ConstIterator it =  saverTypes.begin(); it != saverTypes.end(); ++it )
+ 			{
+-				kdDebug() << "saverTypes is "<< *it << endl;
+ 				if (*it == "ManipulateScreen")
+ 				{
+-					if (manipulatescreen)
+-					{
+-						saverFileList.append(tempSaverFileList[i]);
+-					}
++					if (!manipulatescreen)
++                                            howoften = 0;
+ 				}
+ 				else
+ 				if (*it == "OpenGL")
+ 				{
+-					if (opengl)
+-					{
+-						saverFileList.append(tempSaverFileList[i]);
+-					}
++					if (!opengl)
++                                            howoften = 0;
+ 				}
+ 				if (*it == "Fortune")
+ 				{
+-					if (fortune)
+-					{
+-						saverFileList.append(tempSaverFileList[i]);
+-					}
++					if (!fortune)
++                                            howoften = 0;
+ 				}
+ 
+ 			}
+ 		}
++                for ( int j = 0; j < howoften; ++j )
++                    saverFileList.append(tempSaverFileList[i]);
+ 	}
++        kdDebug() << "final " << saverFileList << endl;
+ 
+ 	KRandomSequence rnd;
+ 	int indx = rnd.getLong(saverFileList.count());
+@@ -229,7 +275,7 @@ KRandomSetup::KRandomSetup( QWidget *par
+ 
+ 	KConfig config("krandom.kssrc");
+ 	config.setGroup("Settings");
+-	openGL->setChecked(config.readBoolEntry("OpenGL", true));
++	openGL->setChecked(config.readBoolEntry("OpenGL", hasDirectRendering()));
+ 	manipulateScreen->setChecked(config.readBoolEntry("ManipulateScreen", true));
+ }
+ 
+Index: kscreensaver/Makefile.am
+===================================================================
+--- kscreensaver/Makefile.am.orig
++++ kscreensaver/Makefile.am
+@@ -3,13 +3,13 @@
+ 
+ AM_CPPFLAGS = -UQT_NO_ASCII_CAST
+ 
+-INCLUDES = $(all_includes)
++INCLUDES = $(GLINC) $(all_includes)
+ AM_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+ 
+ bin_PROGRAMS = krandom.kss kblankscrn.kss
+ 
+ krandom_kss_SOURCES = random.cpp
+-krandom_kss_LDADD = $(LIB_KDEUI) -lm
++krandom_kss_LDADD = $(LIB_KDEUI) $(GLLIB) -lm
+ 
+ kblankscrn_kss_SOURCES = blankscrn.cpp
+ kblankscrn_kss_LDADD = $(LIB_KDEUI) -lkscreensaver -lm 

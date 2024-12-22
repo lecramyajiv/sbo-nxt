@@ -1,0 +1,9 @@
+Document: tdegames-doc-html-kshisen
+Title: The KShisen Handbook
+Author: Dirk Doerflinger
+Abstract: This Handbook describes KShisen Version 1.3.
+Section: Games/Board
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kshisen/index.html
+Files: /usr/share/doc/tde/HTML/en/kshisen/*.html

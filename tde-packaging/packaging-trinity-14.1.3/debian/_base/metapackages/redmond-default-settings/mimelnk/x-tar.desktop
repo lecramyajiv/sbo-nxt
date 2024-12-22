@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Archive Tar
+Hidden=false
+Patterns=*.tar
+X-TDE-AutoEmbed=true
+
+[Property::X-TDE-LocalProtocol]
+Type=
+Value=

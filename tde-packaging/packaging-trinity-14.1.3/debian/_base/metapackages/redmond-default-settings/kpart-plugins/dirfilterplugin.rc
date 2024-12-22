@@ -1,0 +1,19 @@
+<!DOCTYPE kpartplugin>
+<kpartplugin library="libdirfilterplugin" version="4" name="DirFilter" >
+ <MenuBar>
+  <Menu name="tools" >
+   <Text>&amp;Tools</Text>
+   <Action name="filterdir" />
+  </Menu>
+ </MenuBar>
+ <ToolBar name="extraToolBar" >
+  <text>Extra Toolbar</text>
+  <Action name="filterdir" />
+ </ToolBar>
+ <ToolBar newline="true" noMerge="1" name="locationToolBar" fullWidth="true" >
+  <text>Filter Toolbar</text>
+  <Separator lineSeparator="false" name="separator_0" />
+  <Action name="clear_filter" />
+  <Action name="toolbar_filter_field" />
+ </ToolBar>
+</kpartplugin>

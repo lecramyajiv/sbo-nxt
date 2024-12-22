@@ -1,0 +1,72 @@
+summary.qt3                  A library for developing applications with graphical user interfaces
+summary.qt3-devel            Include Files and Libraries mandatory for Development
+summary.qt3-devel-doc        Documentation for the Qt 3 Development Kit
+summary.qt3-devel-examples   Programming Examples for Qt 3
+summary.qt3-devel-tools      User Interface Builder and other tools (designer, assistant, linguist)
+summary.qt3-extensions       Qt3 Extensions
+summary.qt3-man              Qt 3 Man Pages
+summary.qt3-mysql            MySQL Plug-In for Qt
+summary.qt3-postgresql       A PostgreSQL Plug-In for Qt
+summary.qt3-sqlite           SQLite Database Plug-In for Qt
+summary.qt3-unixODBC         A UnixODBC Plug-In for Qt
++description.qt3
+Qt is a program library for developing applications with graphical user
+interfaces. It allows you to rapidly develop professional programs. The
+Qt library is available not only for Linux but for a great number of
+Unices and even for Windows. Thus it is possible to write programs that
+may be easily ported to those platforms.
+
+You need a license for using Qt with a non-GPL application, which can
+be acquired from sales@trolltech.com.
+
+See /usr/share/doc/packages/qt3 for details about the new features of
+the current Qt library!
+-description.qt3
++description.qt3-devel
+You need this package if you want to compile programs with Qt 3. It
+contains the "Qt Crossplatform Development Kit 2". Under /usr/lib/qt3
+you will find include files.
+
+You need a license for using Qt with a non-GPL application. A license
+can be acquired at sales@trolltech.com.
+-description.qt3-devel
++description.qt3-devel-doc
+This package contains the documentation for the Qt 3 Development Kit.
+
+You will find documentation, precompiled examples, and a tutorial for
+getting started with Qt in /usr/lib/qt3/doc.
+-description.qt3-devel-doc
++description.qt3-devel-examples
+This package contains small executables with code to demonstrate Qt
+programming.
+
+Have a look in /usr/share/doc/packages/qt3/examples/.
+-description.qt3-devel-examples
++description.qt3-devel-tools
+The designer creates .ui files. The uic generates C++ code from these
+files. The package also contains the Qt Assistant (Qt documentation
+browser) and the Qt Linguist (for translations).
+-description.qt3-devel-tools
++description.qt3-extensions
+This package contains extension libraries for Qt 3, such as the
+Netscape plug-in modules.
+-description.qt3-extensions
++description.qt3-man
+This package contains all the man pages for all the Qt 3 classes.
+-description.qt3-man
++description.qt3-mysql
+Plug-in for using the MySQL database with the generic Qt database
+interface.
+-description.qt3-mysql
++description.qt3-postgresql
+A Plug-in for using the PostgreSQL database with the generic Qt
+database interface.
+-description.qt3-postgresql
++description.qt3-sqlite
+The Qt database supports SQLite with this plug-in. (No configured and
+running daemon is required.)
+-description.qt3-sqlite
++description.qt3-unixODBC
+A plug-in for using UnixODBC supported databases with the generic Qt
+database interface.
+-description.qt3-unixODBC

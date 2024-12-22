@@ -1,0 +1,9 @@
+?package(cervisia-trinity):\
+  needs="x11"\
+  section="Applications/Programming"\
+  hints="TDE,Version control"\
+  title="Cervisia"\
+  longtitle="Cervisia (CVS Frontend)"\
+  icon="/usr/share/pixmaps/cervisia.xpm"\
+  command="/usr/bin/cervisia"
+

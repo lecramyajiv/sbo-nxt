@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/include/*
+debian/tmp/opt/trinity/lib/pkgconfig/*
+debian/tmp/opt/trinity/lib/*.la
+debian/tmp/opt/trinity/lib/lib*.so

@@ -1,0 +1,9 @@
+[Options]
+background=false
+focus=false
+height=70
+location=50
+screen=1
+steps=20
+tabs=true
+width=80

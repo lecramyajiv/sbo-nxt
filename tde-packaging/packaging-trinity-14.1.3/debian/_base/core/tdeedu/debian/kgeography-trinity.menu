@@ -1,0 +1,7 @@
+?package(kgeography-trinity):needs="X11"\
+  section="Applications/Education"\
+  hints="TDE"\
+  title="KGeography"\
+  longtitle="KGeography (Geography Learning Tool)"\
+  command="/opt/trinity/bin/kgeography"\
+  icon="/opt/trinity/share/pixmaps/kgeography.xpm"

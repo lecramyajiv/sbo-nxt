@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+# Set LD_LIBRARY_PATH to the installed library directory to allow dh_shlibdeps to function
+# Also include the main Trinity path
+ifeq ("$(LD_LIBRARY_PATH)", "")
+LD_LIBRARY_PATH=debian/tmp/opt/trinity/lib
+else
+LD_LIBRARY_PATH += :debian/tmp/opt/trinity/lib
+endif
+export LD_LIBRARY_PATH
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_KDE_APIDOX := yes
+
+CXXFLAGS := -DSMB_CTX_FLAG_USE_KERBEROS -DSMB_CTX_FLAG_FALLBACK_AFTER_KERBEROS -g -Wall $(DEB_OPT_FLAG)
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_EXPORT_COMPILE_COMMANDS="ON" \
+ -DLIB_SUFFIX="" \
+ -DCMAKE_INSTALL_PREFIX="/opt/trinity" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_LIBRARY_PATH="/opt/trinity/lib" \
+ -DCMAKE_INCLUDE_PATH="/opt/trinity/include/" \
+ -DAUTODETECT_QT_DIRS="ON" \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DBUILD_ALL="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+binary-install/tdesvn-trinity::
+	# remove libsvnqt.so* from tdesvn-trinity - are included in libsvnqt4-trinity
+	rm debian/$(cdbs_curpkg)/opt/trinity/lib*/libsvnqt.so*

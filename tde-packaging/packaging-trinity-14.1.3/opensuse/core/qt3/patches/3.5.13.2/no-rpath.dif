@@ -1,0 +1,21 @@
+--- mkspecs/linux-g++-64/qmake.conf
++++ mkspecs/linux-g++-64/qmake.conf
+@@ -58,7 +58,7 @@
+ QMAKE_LFLAGS_PLUGIN	= $$QMAKE_LFLAGS_SHLIB
+ QMAKE_LFLAGS_SONAME	= -Wl,-soname,
+ QMAKE_LFLAGS_THREAD	=
+-QMAKE_RPATH		= -Wl,-rpath,
++QMAKE_RPATH		= 
+ 
+ QMAKE_LIBS		=
+ QMAKE_LIBS_DYNLOAD	= -ldl
+--- mkspecs/linux-g++/qmake.conf
++++ mkspecs/linux-g++/qmake.conf
+@@ -55,7 +55,6 @@
+ QMAKE_LFLAGS_PLUGIN	= $$QMAKE_LFLAGS_SHLIB
+ QMAKE_LFLAGS_SONAME	= -Wl,-soname,
+ QMAKE_LFLAGS_THREAD	=
+-QMAKE_RPATH		= -Wl,-rpath,
+ 
+ QMAKE_LIBS		=
+ QMAKE_LIBS_DYNLOAD	= -ldl

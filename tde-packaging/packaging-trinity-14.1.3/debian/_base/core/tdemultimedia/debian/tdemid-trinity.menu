@@ -1,0 +1,11 @@
+?package(tdemid-trinity):\
+	needs="X11"\
+	section="Apps/Sound"\
+	hints="TDE"\
+	title="KMid"\
+	icon32x32="/opt/trinity/share/pixmaps/tdemid.xpm"\
+	icon16x16="/opt/trinity/share/pixmaps/tdemid-16.xpm"\
+	command="/opt/trinity/bin/tdemid"
+
+# Icon 32x32 tdemid/cr32-app-tdemid.png tdemid.xpm
+# Icon 16x16 tdemid/cr16-app-tdemid.png tdemid-16.xpm

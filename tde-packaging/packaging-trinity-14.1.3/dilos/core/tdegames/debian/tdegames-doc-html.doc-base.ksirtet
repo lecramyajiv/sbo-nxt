@@ -1,0 +1,10 @@
+Document: tdegames-doc-html-ksirtet
+Title: The KSirtet Handbook
+Author: Dirk Doerflinger
+Abstract: This program is a clone of the well known game Tetris. You
+ must fit the falling pieces to form full lines.
+Section: Games/Tetris-like
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/ksirtet/index.html
+Files: /usr/share/doc/tde/HTML/en/ksirtet/*.html

@@ -1,0 +1,142 @@
+libtqt-perl (3.008-0ubuntu0) maverick; urgency=low
+
+  * Absorbed upstream
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 18 Dec 2011 03:09:00 -0600
+
+libqt-perl (3.008-4ubuntu7) oneiric; urgency=low
+
+  * Oneiric upload
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Mon, 15 Aug 2011 13:47:00 -0600
+
+libqt-perl (3.008-4ubuntu1) karmic; urgency=low
+
+  * Fixing FTBFS
+    + debian/rules:
+      - Fixed cp command for libtool.m4 from /usr/share/libtool to /usr/share/aclocal
+      - Fixed cp command for ltmain.sh from /usr/share/libtool to /usr/share/libtool/config
+
+ -- Stephan Hermann <sh@sourcecode.de>  Thu, 13 Aug 2009 06:12:48 +0000
+
+libqt-perl (3.008-4) unstable; urgency=low
+
+  * Ack NMU.
+  * Fix build on GNU/k*BSD.  Closes: #511429.
+    - admin/cvs.sh: Added autoconf*2.6* and autoconf*2.6*.
+    - debian/control: libtool >= 1.5.2.
+    - debian/rules: Updated the pre-build rule, see #511429.
+  * debian/copyright: Fixed copyright-without-copyright-notice.
+  * debian/control: Fixed debhelper-but-no-misc-depends and
+    out-of-date-standards-version.
+
+ -- Bart Martens <bartm@debian.org>  Thu, 12 Feb 2009 19:19:43 +0100
+
+libqt-perl (3.008-3.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Use patch from Steve Cotton <steve0001@s.cotton.clara.co.uk>
+    to break a ``use'' cycle between Qt and Qt::debug. Closes: #481642
+
+ -- Marc 'HE' Brockschmidt <he@debian.org>  Sat, 06 Sep 2008 22:09:32 +0200
+
+libqt-perl (3.008-3) unstable; urgency=low
+
+  * New maintainer.  Closes: #379681.
+  * debian/compat, debian/control, debian/examples, debian/manpages,
+    debian/rules: Repackaged using dh-make and cdbs.  Closes: #463089.
+  * debian/control, debian/rules: Using chrpath to remove rpath.
+  * config.h.in, PerlTQt/bin/pqtapi, PerlTQt/bin/pqtsh: Removed previously
+    automatically added changes.
+  * debian/watch: Added.
+
+ -- Bart Martens <bartm@debian.org>  Sat, 09 Feb 2008 14:45:59 +0100
+
+libqt-perl (3.008-2) unstable; urgency=low
+
+  * QA Upload (Ack NMU; Closes: #327326,#327993,#274779,#289658)
+  * Set Maintainer to QA Group; Orphaned:  #379681
+  * Higher compat level, depend on at least dh 4.0.0
+  * Update debian/copyright
+  * "Fix" removing of empty directoriese in debian/rules (-exec instead
+     of |xargs which will produce a warning)
+  * Conforms to latest Standards Version 3.7.2
+
+ -- Michael Ablassmeier <abi@debian.org>  Tue,  8 Aug 2006 15:29:52 +0200
+
+libqt-perl (3.008-1.4) unstable; urgency=low
+
+  * Non-maintainer upload.
+
+  * Rebuild against transitioned Qt libraries. (Closes: #327993)
+
+  * Now that libsmokeqt1 is available everywhere, don't use the internal copy
+    of the library on mips and mipsel. Changes:
+
+    + debian/control:
+      - build-depend on libsmokeqt-dev on all arches
+      - drop build-dependency on chrpath
+      - remove ${mipsen:Conflicts} from libqt-perl's Conflicts line
+
+    + debian/rules:
+      - no --enable-smoke for ./configure
+      - no make -C smoke call
+      - no chrpath invocation
+      - no -Vmipsen:Conflicts for dh_gencontrol
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Wed, 26 Oct 2005 22:42:24 +0200
+
+libqt-perl (3.008-1.3) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Use -Wa,-xgot on mipsel when building libsmokeqt, otherwise we
+    overflow the symbol table and the package fails to build.
+    Closes: #289658.
+
+ -- Steve Langasek <vorlon@debian.org>  Mon, 10 Jan 2005 04:16:37 -0800
+
+libqt-perl (3.008-1.2) unstable; urgency=high
+
+  * Non-maintainer upload, with thanks to Adeodato Simó for his help in
+    preparing it
+  * High-urgency upload for sarge-targetted RC bugfix
+  * Revert the changes in the previous upload for mips and mipsel,
+    required for libqt-perl to be buildable on all arches and eligible
+    for sarge.  (See discussion in Bug#274779).
+  * Make sure to keep --disable-rpath on all architectures and re-add
+    LD_RUN_PATH='', as this is still needed.
+  * Make libqt-perl conflict libsmokeqt1 and libsmokeqt-dev on mipsen.
+
+ -- Steve Langasek <vorlon@debian.org>  Fri,  7 Jan 2005 18:13:13 -0800
+
+libqt-perl (3.008-1.1) unstable; urgency=low
+
+  * Non maintainer upload.
+  * Do not build libsmokeqt, as it already exists in the libsmokeqt1 package.
+    (Closes: #274779)
+  * List of changes:
+    - added versioned Build-Dependency on libsmokeqt-dev.
+    - remove --disable-rpath and --enable-smoke from ./configure invocation.
+    - do not set LD_RUN_PATH when calling make.
+    - remove chrpath on no-longer built libsmokeqt.so, remove Build-Dependency
+      on chrpath too.
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Thu, 07 Oct 2004 20:55:04 +0200
+
+libqt-perl (3.008-1) unstable; urgency=low
+
+  * New upstream release.
+  * This updated tarball appears to happily build from source again. I
+    couldn't reproduce the exact bug described by the submitter, however I did
+    fix the other FTBFS bug I found by the version update (g++ 3.3
+    incompatibilities). I'll assume things are ok now unless proved otherwise.
+    (closes: #215048)
+
+ -- Peter Hawkins <peterh@debian.org>  Sat, 11 Oct 2003 09:47:11 +1000
+
+libqt-perl (3.006-1) unstable; urgency=low
+
+  * Initial Release. (closes: #177909)
+
+ -- Peter Hawkins <peterh@debian.org>  Fri, 24 Jan 2003 10:02:36 +0800
+

@@ -1,0 +1,10 @@
+Document: tdebase-doc-html-kfind
+Title: KFind Handbook
+Author: Dirk Doerflinger
+Abstract: This Handbook describes KFind, TDE's file find utility.
+Section: Apps/Utils
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kfind/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kfind/*.html
+

@@ -1,0 +1,25 @@
+## Type: yesno
+## Default: no
+## Path: Desktop/KDE
+## Description: KDE uses fam support
+#
+# KDE use the fam daemon 
+# (makes only sense on NFS mounted directorys)
+#
+KDE_USE_FAM="no"
+
+## Type:    string
+## Default: 
+#
+# space separated list of users for which icons should be shown in KDM
+# if empty, then take system defaults
+#
+KDM_USERS=""
+
+## Type:    string
+## Default: 
+#
+# Special greeting words in kdm
+#
+KDM_GREETSTRING=""
+

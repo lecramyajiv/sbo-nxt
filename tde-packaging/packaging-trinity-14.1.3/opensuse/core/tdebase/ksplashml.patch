@@ -1,0 +1,19 @@
+Index: ksplashml/kcmksplash/installer.cpp
+===================================================================
+--- ksplashml/kcmksplash/installer.cpp.orig
++++ ksplashml/kcmksplash/installer.cpp
+@@ -474,6 +474,14 @@ void SplashInstaller::slotTest()
+       KMessageBox::error(this,i18n("Unable to start ksplashsimple."));
+     return;
+   }
++  if( themeName.startsWith( "ksplashx-" ))
++  {
++    KProcess proc;
++    proc << "ksplashx" << themeName.mid( 9 ) << "--test";
++    if (!proc.start(KProcess::Block))
++      KMessageBox::error(this,i18n("Unable to start ksplashx."));
++    return;
++  }
+   KProcess proc;
+   proc << "ksplash" << "--test" << "--theme" << themeName;
+   if (!proc.start(KProcess::Block))

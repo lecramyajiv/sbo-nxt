@@ -1,0 +1,11 @@
+--- kdecore/svgicons/ksvgiconengine.cpp.orig	2011-03-15 01:29:21.172970849 +0300
++++ kdecore/svgicons/ksvgiconengine.cpp	2011-03-15 01:42:09.904779795 +0300
+@@ -538,6 +538,8 @@
+ 
+ bool KSVGIconEngine::load(int width, int height, const QString &path)
+ {
++	if(path.isNull()) return false;
++
+ 	QDomDocument svgDocument("svg");
+ 	QFile file(path);
+ 

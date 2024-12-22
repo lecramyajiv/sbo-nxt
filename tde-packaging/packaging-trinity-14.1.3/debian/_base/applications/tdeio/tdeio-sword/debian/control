@@ -1,0 +1,20 @@
+Source: tdeio-sword-trinity
+Section: tde
+Priority: extra
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, libsword-dev (>= 1.5.8-1), tdelibs14-trinity-dev
+Standards-Version: 3.7.2
+
+Package: tdeio-sword-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, konqueror
+Suggests: sword-text, sword-dict, sword-comm
+Provides: sword-frontend
+Description: tdeio-slave for the Sword Bible tool
+ TDEio-Sword provides access to Bibles, commentaries
+ and other texts in an easy to use and attractive
+ interface -- the Konqueror web browser.  It does so
+ using the SWORD Bible project and implementing a TDE
+ ioslave, providing the sword:/ protocol.
+ .
+ http://lukeplant.me.uk/kio-sword/

@@ -1,0 +1,15 @@
+.TH GROUPWISEWIZARD 1
+.SH NAME
+groupwisewizard \- Novell GroupWise Setup Wizard
+.SH SYNOPSIS
+.B groupwisewizard
+.I [Qt-options] [TDE-options] [options]
+.SH DESCRIPTION
+.B groupwisewizard
+is a front end to configure Novell GroupWise servers.
+.SH PROGRAM OPTIONS
+.TP
+.B --verbose
+Enable verbose output.
+.so kdeopt.part
+

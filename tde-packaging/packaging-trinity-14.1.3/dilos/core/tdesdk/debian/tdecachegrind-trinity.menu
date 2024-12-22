@@ -1,0 +1,9 @@
+?package(tdecachegrind-trinity):\
+  needs="x11"\
+  section="Applications/Programming"\
+  hints="TDE"\
+  title="KCachegrind"\
+  longtitle="KCachegrind (Profiler Frontend)"\
+  icon="/usr/share/pixmaps/tdecachegrind.xpm"\
+  command="/usr/bin/tdecachegrind"
+

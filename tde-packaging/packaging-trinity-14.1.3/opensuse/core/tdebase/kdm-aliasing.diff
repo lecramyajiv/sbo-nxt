@@ -1,0 +1,11 @@
+Index: kdm/backend/Makefile.am
+===================================================================
+--- kdm/backend/Makefile.am.orig
++++ kdm/backend/Makefile.am
+@@ -1,5 +1,6 @@
+ # forcibly remove thread-related defines & flags
+ AUTOMAKE_OPTIONS = foreign
++CFLAGS = $(XDM_CFLAGS) -fno-strict-aliasing
+ CPPFLAGS = $(USER_INCLUDES) $(X_INCLUDES) $(KRB4_INCS) $(KRB5_INCS) -I.. -I../..
+ LDFLAGS = $(USER_LDFLAGS) $(X_LDFLAGS) $(X_RPATH) $(KRB4_RPATH) $(KRB5_RPATH)
+ LDADD = $(LIB_X11) -lXau $(LIBXDMCP) $(PASSWDLIBS) $(LIBSHADOW) $(LIBGEN) \

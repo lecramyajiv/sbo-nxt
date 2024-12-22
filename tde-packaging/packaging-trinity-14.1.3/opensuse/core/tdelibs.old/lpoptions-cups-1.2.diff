@@ -1,0 +1,28 @@
+Index: kdeprint/kmvirtualmanager.cpp
+===================================================================
+--- kdeprint/kmvirtualmanager.cpp.orig
++++ kdeprint/kmvirtualmanager.cpp
+@@ -179,7 +179,7 @@ void KMVirtualManager::setAsDefault(KMPr
+ 
+ void KMVirtualManager::refresh()
+ {
+-	QFileInfo	fi(QDir::homeDirPath() + QFile::decodeName("/.lpoptions"));
++	QFileInfo	fi(QDir::homeDirPath() + QFile::decodeName("/.cups/lpoptions"));
+ 	QFileInfo	fi2(QFile::decodeName("/etc/cups/lpoptions"));
+ 
+ 	// if root, then only use global file: trick -> use twice the same file
+@@ -301,7 +301,13 @@ void KMVirtualManager::triggerSave()
+ 			filename = QFile::decodeName("/etc/cups/lpoptions");
+ 	}
+ 	else
+-		filename = QDir::homeDirPath() + QFile::decodeName("/.lpoptions");
++	{
++		QDir cupsDir(QDir::home().absPath()+"/.cups");
++		if (!cupsDir.exists())
++			cupsDir.mkdir(QDir::home().absPath()+"/.cups");
++		filename = QDir::homeDirPath() + QFile::decodeName("/.cups/lpoptions");
++	}
++
+ 	if (!filename.isEmpty())
+ 	{
+ 		saveFile(filename);

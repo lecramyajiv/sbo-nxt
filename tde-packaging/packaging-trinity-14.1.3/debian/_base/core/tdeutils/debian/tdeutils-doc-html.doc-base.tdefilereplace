@@ -1,0 +1,10 @@
+Document: tdefilereplace
+Title: TDEFileReplace Handbook
+Author: Emiliano Gulmini <emi_barbarossa@yahoo.it>
+Abstract: TDEFileReplace is an utility to search and replace strings.
+Section: Apps/Net
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/tdefilereplace/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/tdefilereplace/*.html
+

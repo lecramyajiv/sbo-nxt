@@ -1,0 +1,12 @@
+Document: tdenetwork-doc-html-krdc
+Title: Krdc Handbook
+Author: Brad Hards
+Abstract: Krdc is a client application that allows you to view or even control
+ the desktop session on another machine that is running a compatible
+ (VNC) server.
+Section: Apps/Net
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/krdc/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/krdc/*.html
+

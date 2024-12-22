@@ -1,0 +1,33 @@
+Source: gtk-qt-engine-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Bastian Venthur <venthur@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev, libgtk2.0-dev (>= 2.10.1)
+Standards-Version: 3.8.4
+
+Package: gtk-qt-engine-trinity
+Architecture: any
+Provides: gtk2-engines-gtk-qt-trinity
+Replaces: gtk-qt-engine-trinity (<< 4:14.0.0~)
+Breaks: gtk-qt-engine-trinity (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: gtk3-tqt-engine-trinity
+Description: theme engine using Qt for GTK+ 2.x and Trinity
+ The GTK-Qt Theme Engine (also known as gtk-qt-engine) is a GTK 2 theme engine
+ that calls Qt to do the actual drawing. This makes your GTK 2 applications
+ look almost like real Qt applications and gives you a more unified desktop
+ experience.
+ .
+ Please note that this package is targeted at Trinity users and therefore provides
+ a way to configure it from within KControl.
+
+Package: gtk-qt-engine-trinity-dbg
+Section: devel
+Architecture: any
+Priority: extra
+Depends: gtk-qt-engine-trinity (= ${binary:Version}), tdelibs-trinity-dbg
+Description: debugging symbols for the GTK-Qt Theme Engine [Trinity]
+ This package contains the debugging symbols associated with gtk-qt-engine-trinity.
+ They will automatically be used by gdb for debugging gtk-qt-engine-trinity-related
+ issues.

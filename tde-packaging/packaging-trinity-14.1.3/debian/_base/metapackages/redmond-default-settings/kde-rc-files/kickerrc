@@ -1,0 +1,91 @@
+[AddAppletDialog Settings]
+Height 800=738
+Height 900=205
+Width 1280=1272
+Width 1440=487
+
+[Applet_1]
+ConfigFile=minipager_panelapplet_kubuntu_rc
+DesktopFile=minipagerapplet.desktop
+WidthForHeightHint=204
+FreeSpace2=0
+
+[Applet_2]
+ConfigFile=systemtray_panelappletrc
+DesktopFile=systemtrayapplet.desktop
+WidthForHeightHint=240
+FreeSpace2=1
+
+[Applet_3]
+ConfigFile=clock_panelapplet_kubuntu_rc
+DesktopFile=clockapplet.desktop
+WidthForHeightHint=123
+FreeSpace2=1
+
+[Applet_4]
+ConfigFile=taskbar_panelapplet_kubuntu_rc
+DesktopFile=taskbarapplet.desktop
+WidthForHeightHint=209
+FreeSpace2=0
+
+[Applet_5]
+ConfigFile=taskbar_quicklaunchapplet_kubuntu_rc
+DesktopFile=quicklauncher.desktop
+WidthForHeightHint=141
+FreeSpace2=0
+
+[General]
+Alignment=0
+Applets2=KMenuButton_1,Applet_5,Applet_1,Applet_4,Applet_2,Applet_3
+AutoHideDelay=3
+AutoHidePanel=false
+AutoHideSwitch=false
+BackgroundHide=false
+CustomSize=56
+ExpandSize=true
+FadeOutAppletHandles=true
+HideAppletHandles=false
+HideAnimation=true
+HideAnimationSpeed=40
+IExist=true
+panelIconWidth=22
+Position=3
+ShowIconActivationEffect=false
+ShowRightHideButton=true
+Size=1
+SizePercentage=100
+TintColor=188,183,171
+Transparent=false
+UnhideLocation=0
+UntrustedApplets=
+UntrustedExtensions=
+UseBackgroundTheme=false
+
+[KFileDialog Settings]
+Automatic Preview=true
+Autoplay sounds=true
+
+[KMenu]
+UseSidePixmap=true
+
+[KMenuButton_1]
+FreeSpace2=0
+
+[button_tiles]
+EnableBrowserTiles=false
+EnableDesktopButtonTiles=false
+EnableKMenuTiles=false
+EnableURLTiles=false
+EnableWindowListTiles=false
+
+[buttons]
+EnableIconZoom=true
+EnableTileBackground=false
+
+[menus]
+Extensions=find.desktop,remotemenu.desktop,printmenu.desktop,recentdocs.desktop,prefmenu.desktop,systemmenu.desktop,konsolemenu.desktop
+MenuEntryHeight=16
+NumVisibleEntries=4
+RecentAppsStat=20000 1225867511 /usr/share/applications/synaptic-kde.desktop,21000 1226223271 /opt/trinity/share/applications/tde/konsole.desktop
+UseBookmarks=true
+MenuEntryFormat=NameAndDescription

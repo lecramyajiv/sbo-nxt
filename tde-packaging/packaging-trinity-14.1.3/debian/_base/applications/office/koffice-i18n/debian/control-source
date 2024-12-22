@@ -1,0 +1,6 @@
+Source: koffice-i18n-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 9~), quilt, cmake-trinity, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4

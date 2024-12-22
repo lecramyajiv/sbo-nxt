@@ -1,0 +1,175 @@
+Index: kioslave/media/mediamanager/halbackend.cpp
+===================================================================
+--- kioslave/media/mediamanager/halbackend.cpp.orig	2011-05-31 13:41:55.000000000 +0200
++++ kioslave/media/mediamanager/halbackend.cpp	2011-05-31 13:42:48.317334543 +0200
+@@ -1379,4 +1379,54 @@ QString HALBackend::unmount(const QStrin
+     return QString();
+ }
+ 
++bool HALBackend::teardown(const QString &_udi)
++{
++	const char* dm_udi = _udi.latin1();
++	const QString blockudi = libhal_device_get_property_QString(m_halContext, dm_udi, "volume.crypto_luks.clear.backing_volume");
++	if (!blockudi.isEmpty()) {
++		const char* udi = blockudi.latin1();
++		DBusMessage *dmesg, *reply;
++		DBusError error;
++		const char *options[2];
++
++		kdDebug() << "tearDown " << udi << "..." << endl;
++
++		dbus_error_init(&error);
++		DBusConnection *dbus_connection = dbus_bus_get(DBUS_BUS_SYSTEM, &error);
++		if (dbus_error_is_set(&error))
++		{
++			dbus_error_free(&error);
++			return false;
++		}
++
++		if (!(dmesg = dbus_message_new_method_call ("org.freedesktop.Hal", udi,
++						"org.freedesktop.Hal.Device.Volume.Crypto",
++						"Teardown"))) {
++			kdDebug() << "teardown failed for " << udi << ": could not create dbus message\n";
++			return false;
++		}
++
++		dbus_error_init (&error);
++		if (!(reply = dbus_connection_send_with_reply_and_block (dbus_connection, dmesg, -1, &error)))
++		{
++			QString qerror;
++
++			kdDebug() << "teardown failed for " << udi << ": " << error.name << " " << error.message << endl;
++			qerror = QString("teardown failed for %1 because: %2").arg(udi).arg(error.name);
++			dbus_message_unref (dmesg);
++			dbus_error_free (&error);
++			return false;
++		}
++
++		kdDebug() << "teardown queued for " << udi << endl;
++
++		dbus_message_unref (dmesg);
++		dbus_message_unref (reply);
++       return true;
++	}
++
++	return false;
++}
++
++
+ #include "halbackend.moc"
+Index: kioslave/media/mediamanager/halbackend.h
+===================================================================
+--- kioslave/media/mediamanager/halbackend.h.orig	2011-05-31 13:39:05.000000000 +0200
++++ kioslave/media/mediamanager/halbackend.h	2011-05-31 13:42:48.317334543 +0200
+@@ -85,6 +85,7 @@ public:
+ 	QString mount(const QString &id);
+ 	QString mount(const Medium *medium);
+ 	QString unmount(const QString &id);
++	bool teardown(const QString &_udi);
+ 
+     static bool isHotplug( const QString & id );
+ 
+Index: kioslave/media/mediamanager/mediamanager.cpp
+===================================================================
+--- kioslave/media/mediamanager/mediamanager.cpp.orig	2011-05-31 13:39:05.000000000 +0200
++++ kioslave/media/mediamanager/mediamanager.cpp	2011-05-31 13:43:07.916484054 +0200
+@@ -232,6 +232,17 @@ QString MediaManager::unmount(const QStr
+ #endif
+ }
+ 
++bool MediaManager::teardown(const QString &name)
++{
++#ifdef COMPILE_HALBACKEND
++    if (!m_halbackend)
++        return false;
++    return m_halbackend->teardown(name);
++#else
++    return false;
++#endif
++}
++
+ QString MediaManager::nameForLabel(const QString &label)
+ {
+     const QPtrList<Medium> media = m_mediaList.list();
+Index: kioslave/media/mediamanager/mediamanager.h
+===================================================================
+--- kioslave/media/mediamanager/mediamanager.h.orig	2011-05-31 13:39:05.000000000 +0200
++++ kioslave/media/mediamanager/mediamanager.h	2011-05-31 13:42:48.318334448 +0200
+@@ -47,6 +47,7 @@ k_dcop:
+ 
+ 	QString mount(const QString &uid);
+ 	QString unmount(const QString &uid);
++	bool teardown(const QString &uid); 
+ 
+ 	QString nameForLabel(const QString &label);
+ 	ASYNC setUserLabel(const QString &name, const QString &label);
+Index: kioslave/media/mounthelper/kio_media_mounthelper.h
+===================================================================
+--- kioslave/media/mounthelper/kio_media_mounthelper.h.orig	2007-01-15 12:31:31.000000000 +0100
++++ kioslave/media/mounthelper/kio_media_mounthelper.h	2011-05-31 13:42:48.318334448 +0200
+@@ -40,6 +40,8 @@ private:
+ 	QString m_errorStr;
+ 	QString m_device;
+ 	bool m_isCdrom;
++	bool isCryptMedia(QString);
++   bool teardown(QString);
+ 
+ private slots:
+ 	void ejectFinished(KProcess* proc);
+Index: kioslave/media/mounthelper/kio_media_mounthelper.cpp
+===================================================================
+--- kioslave/media/mounthelper/kio_media_mounthelper.cpp.orig	2007-05-14 09:55:40.000000000 +0200
++++ kioslave/media/mounthelper/kio_media_mounthelper.cpp	2011-05-31 13:42:48.319334353 +0200
+@@ -27,6 +27,7 @@
+ #include <dcopclient.h>
+ #include <dcopref.h>
+ #include <qtimer.h>
++#include <qregexp.h>
+ #include <stdlib.h>
+ #include <kdebug.h>
+ #include <kglobal.h>
+@@ -117,14 +118,17 @@ MountHelper::MountHelper() : KApplicatio
+ 			DCOPRef mediamanager("kded", "mediamanager");
+ 			DCOPReply reply = mediamanager.call( "unmount", medium.id());
+ 			if (reply.isValid())
+-                            reply.get(m_errorStr);
+-                        if (m_errorStr.isNull())
+-                            invokeEject(device, true);
+-                        else
+-                            error();
++				reply.get(m_errorStr);
++			if (m_errorStr.isNull()) {
++				if (!teardown(medium.id()))
++					invokeEject(device, true);
++			} else
++				error();
+ 			m_device = device;
+-		} else
+-                    invokeEject(device, true);
++		} else {
++			if (!teardown(medium.id()))
++				invokeEject(device, true);
++		}
+ 	}
+ 	else
+ 	{
+@@ -139,6 +143,19 @@ MountHelper::MountHelper() : KApplicatio
+ 	}
+ }
+ 
++bool MountHelper::teardown(QString id)
++{
++	DCOPRef mediamanager("kded", "mediamanager");
++	DCOPReply reply = mediamanager.call( "teardown", id);
++	if (reply.isValid()) {
++	 	bool rep;
++	 	reply.get(rep);
++		kdDebug() << "reply from teardown: " << rep << endl;
++	    return rep;
++	}
++	    return false;
++}
++
+ void MountHelper::invokeEject(const QString &device, bool quiet)
+ {
+ 	KProcess *proc = new KProcess(this);

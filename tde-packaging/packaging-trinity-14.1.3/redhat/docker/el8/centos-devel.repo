@@ -1,0 +1,12 @@
+[centos-devel]
+name=centos-devel
+baseurl=http://repo/repo/centos-devel/8/$basearch/
+enabled=1
+gpgcheck=0
+
+[centos-devel.noarch]
+name=centos-devel.noarch
+baseurl=http://repo/repo/centos-devel/8/noarch/
+enabled=1
+gpgcheck=0
+

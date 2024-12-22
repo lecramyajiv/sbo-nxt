@@ -1,0 +1,232 @@
+dolphin-trinity (0.9.2-1ubuntu0) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+dolphin-trinity (0.9.2-0ubuntu3) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 04 March 2009 08:18:00 -0600
+
+dolphin-trinity (0.9.2-0ubuntu2) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Mon, 15 Dec 2008 10:27:00 -0600
+
+dolphin (0.9.2-0ubuntu6.1) hardy-proposed; urgency=low
+
+  * Add kubuntu_09_addaspodcast_invalid_servicemenu.diff to fix 
+    invalid addAsPodcast service menu. (Closes LP: #199393)
+
+ -- Adam Spain <mail@adamspain.me.uk>  Sun, 08 Jun 2008 18:26:17 +0100
+
+dolphin (0.9.2-0ubuntu6) hardy; urgency=low
+
+  * Added kubuntu_07_open_as_root_supports_spaces.diff:
+    - Closes LP: #209831
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 17 Apr 2008 22:52:12 +0200
+
+dolphin (0.9.2-0ubuntu5) hardy; urgency=low
+
+  * Fix patch kubuntu_02_change_name_to_dolphin.patch to use Dolphin
+    name not D3lphin and to accept URLs
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 05 Mar 2008 14:30:49 +0000
+
+dolphin (0.9.2-0ubuntu4) hardy; urgency=low
+
+  * Rebuild with tdesdk-script 4:3.5.8-1ubuntu6 to ensure .desktop
+    file translations are used
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 14 Dec 2007 16:58:36 +0000
+
+dolphin (0.9.2-0ubuntu3) hardy; urgency=low
+
+  * added kubuntu_07_ark_contextmenu.diff
+    fixes file compression for files and folders
+    also adds .zip file support
+
+ -- Brandon Holtsclaw <imbrandon@kubuntu.org>  Sat, 01 Dec 2007 06:23:46 -0600
+
+dolphin (0.9.2-0ubuntu2) gutsy; urgency=low
+
+  * debian/patches/kubuntu_06_edit_category.diff: fix Category, so it
+    doesn't show up on GNOME System Tools -menu. (LP: #151306)
+
+ -- Timo Aaltonen <tepsipakki@ubuntu.com>  Wed, 10 Oct 2007 17:59:46 +0300
+
+dolphin (0.9.2-0ubuntu1) gutsy; urgency=low
+
+  * New upstream version. 
+    isoservice patch dropped, and compress.desktop servicemenu added.
+
+ -- Stefan Skotte <sfs@enhance-it.dk>  Wed, 05 Sep 2007 23:59:58 +0200
+
+dolphin (0.9.1-0ubuntu6) gutsy; urgency=low
+
+  [ Juan Carlos G. Torres ]
+  * Added kubuntu_05_trash_contextmenu.diff 
+   - Allows items from Trash folder to be restored and for Trash folder to be emptied
+
+  [ Jonathan Riddell ]
+  * Add kubuntu_00_automake10.diff for automake 1.10 support
+
+ -- Juan Carlos G. Torres <jucato@kubuntu.org>  Wed, 05 Sep 2007 17:44:01 +0800
+
+dolphin (0.9.1-0ubuntu5) gutsy; urgency=low
+
+  * Add users' folders to kubuntu_04_add_system_bookmark.diff
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 31 Aug 2007 13:33:19 +0100
+
+dolphin (0.9.1-0ubuntu4) gutsy; urgency=low
+
+  * Add more transations to kubuntu_02_change_name_to_dolphin.patch
+    and make it set the mimetype and open with URL (%u) for system
+    menu support
+  * Add kubuntu_04_add_system_bookmark.diff to add bookmarks for
+    system and system:/media, given these URLs nice icons
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 31 Aug 2007 12:57:39 +0100
+
+dolphin (0.9.1-0ubuntu3) gutsy; urgency=low
+
+  * Disable broken isoservice servicemenu entry. 
+
+ -- Frode M. Døving <frode@ubuntu.com>  Mon, 30 Jul 2007 19:49:11 +0200
+
+dolphin (0.9.1-0ubuntu2) gutsy; urgency=low
+
+  * Fix typo in file name of kubuntu_01_kdepot.patch
+  * Don't change internal name in kubuntu_02_change_name_to_dolphin.patch
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 16 Jul 2007 13:16:21 +0100
+
+dolphin (0.9.1-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 14 May 2007 11:00:13 +0000
+
+dolphin (0.8.2-2ubuntu1) gutsy; urgency=low
+
+  * Merge from debian unstable, remaining changes:
+    + Add kubuntu_02_clean_desktop_file.patch
+      - If set as default, Dolphin will not complain when opening
+        URLs like remote:/ trash:/ ...
+      - Dolphin supports inode/directory mimetype
+      - Add French GenericName
+  * debian/control:
+    - Added Ubuntu Maintainer, moved old one to XSBC-Original-Maintainer
+
+ -- Stephan Hermann <sh@sourcecode.de>  Fri, 25 May 2007 11:00:13 +0000
+
+dolphin (0.8.2-2) unstable; urgency=low
+
+  * debian/rules: remove /usr/share/locale/dolphin (Closes: #418644)
+
+ -- Varun Hiremath <varunhiremath@gmail.com>  Thu, 12 Apr 2007 22:22:11 +0530
+
+dolphin (0.8.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Varun Hiremath <varunhiremath@gmail.com>  Fri, 26 Jan 2007 22:41:23 +0530
+
+dolphin (0.8.1-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Varun Hiremath <varunhiremath@gmail.com>  Sun,  7 Jan 2007 23:15:34 +0530
+
+dolphin (0.8.1-0ubuntu2) feisty; urgency=low
+
+  * Add kubuntu_02_clean_desktop_file.patch
+    - If set as default, Dolphin will not complain when opening
+      URLs like remote:/ trash:/ ...
+    - Dolphin supports inode/directory mimetype
+    - Add French GenericName
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 06 Apr 2007 14:15:32 +1100
+
+dolphin (0.8.1-0ubuntu1) feisty; urgency=low
+
+  * New Upstream Version
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Thu, 11 Jan 2007 00:41:38 +1100
+
+dolphin (0.8.0-1) experimental; urgency=low
+
+  [ Varun Hiremath ]
+  * New upstream release
+
+  [ Torsten Werner ]
+  * Upload to experimental
+
+ -- Torsten Werner <twerner@debian.org>  Thu, 28 Dec 2006 10:24:17 +0100
+
+dolphin (0.7.0-2) unstable; urgency=low
+
+  * debian/control: Improve the description.
+  * debian/copyright: Change the download from url.
+  * Improve the manpage debian/dolphin.1
+
+ -- Varun Hiremath <varunhiremath@gmail.com>  Thu,  7 Dec 2006 01:56:18 +0530
+
+dolphin (0.7.0-1) unstable; urgency=low
+
+  * Initial upload (Closes: #373291)
+  * New upstream release
+  * Add debian/watch file
+  * Add Homepage to debian/control file
+  * Add XS-X-Vcs-Svn header in debian/control.
+  * debian/copyright:
+    + Include the full text of the GFDL, since the Dolphin handbook is
+      licensed under the terms of the GFDL.
+
+ -- Varun Hiremath <varunhiremath@gmail.com>  Fri,  3 Nov 2006 18:33:35 +0530
+
+dolphin (0.7.0-0ubuntu2) feisty; urgency=low
+
+  * Applied patch from Michael Biebl to remove duplicate desktop file
+    (Closes Ubuntu: #78647)
+
+ -- Emmet Hikory <emmet.hikory@gmail.com>  Wed, 10 Jan 2007 21:54:50 +0900
+
+dolphin (0.7.0-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+  * Add kubuntu_01_kdepot.patch for pot file extraction to rosetta
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Tue,  5 Dec 2006 01:08:13 +0100
+
+dolphin (0.6.2-1) unstable; urgency=low
+
+  * New upstream release
+  * remove doc/en/index.docbook from upstream tarball because of license issues
+
+ -- Varun Hiremath <varunhiremath@gmail.com>  Fri,  6 Oct 2006 01:50:59 +0530
+
+dolphin (0.6.1-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Varun Hiremath <varunhiremath@gmail.com>  Sun, 27 Aug 2006 20:23:52 +0530
+
+dolphin (0.6.0-0ubuntu1) edgy; urgency=low
+
+  * New upstream release
+
+ -- Robert Stoffers <rstoffers@gmail.com>  Mon, 24 Jul 2006 17:18:30 +1000
+
+dolphin (0.5.2-0ubuntu1) edgy; urgency=low
+
+  * Initial release
+
+ -- Robert Stoffers <rstoffers@gmail.com>  Thu, 22 Jun 2006 06:31:46 +1000
+

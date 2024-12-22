@@ -1,0 +1,7 @@
+%dist .oss155
+%_smp_mflags -j8
+%jobs 8
+%sle_version 150500
+%_build_insert_debug_package %nil
+%python python3
+%__python /usr/bin/python3

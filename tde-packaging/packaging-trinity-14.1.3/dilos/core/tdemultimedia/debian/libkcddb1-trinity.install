@@ -1,0 +1,7 @@
+debian/tmp/usr/lib/*/trinity/kcm_cddb.la
+debian/tmp/usr/lib/*/trinity/kcm_cddb.so
+debian/tmp/usr/lib/*/libkcddb.so.1
+debian/tmp/usr/lib/*/libkcddb.so.1.0.0
+debian/tmp/usr/share/applications/tde/libkcddb.desktop
+debian/tmp/usr/share/apps/tdeconf_update/kcmcddb-emailsettings.upd
+debian/tmp/usr/share/config.kcfg/libkcddb.kcfg

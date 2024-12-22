@@ -1,0 +1,2 @@
+debian/tmp/usr/lib/*/libsmoketde.so
+debian/tmp/usr/lib/*/libsmoketde.la

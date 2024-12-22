@@ -1,0 +1,16 @@
+Source: kdpkg-trinity
+Section: admin
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Alexander Kopf <kopf-alexander@gmx.de>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: kdpkg-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, apt, dpkg (>=1.14), sudo-trinity, menu
+Replaces: kdpkg-trinity (<< 4:14.0.0~)
+Breaks: kdpkg-trinity (<< 4:14.0.0~)
+Description: TDE frontend for dpkg [Trinity]
+ kdpkg is a utility for installing .deb package files.
+ It is similar to gdebi, except that kdpkg is a TDE application

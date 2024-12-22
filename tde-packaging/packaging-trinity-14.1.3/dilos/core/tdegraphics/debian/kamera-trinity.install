@@ -1,0 +1,11 @@
+
+debian/tmp/usr/lib/*/trinity/kcm_kamera.la
+debian/tmp/usr/lib/*/trinity/kcm_kamera.so
+debian/tmp/usr/lib/*/trinity/tdeio_kamera.la
+debian/tmp/usr/lib/*/trinity/tdeio_kamera.so
+debian/tmp/usr/share/applications/tde/kamera.desktop
+debian/tmp/usr/share/doc/tde/HTML/en/kamera/common
+debian/tmp/usr/share/doc/tde/HTML/en/kamera/index.cache.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/kamera/index.docbook
+debian/tmp/usr/share/doc/tde/HTML/en/tdeioslave/camera
+debian/tmp/usr/share/services/camera.protocol

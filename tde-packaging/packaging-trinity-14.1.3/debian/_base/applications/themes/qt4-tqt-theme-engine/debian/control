@@ -1,0 +1,12 @@
+Source: qt4-tqt-theme-engine
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: debhelper (>= 10~), quilt, cdbs, tdelibs14-trinity-dev, libqt4-dev, automake, autoconf, libtool, libltdl-dev
+Standards-Version: 3.8.4
+
+Package: qt4-tqt-theme-engine
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: TDE theme engine for Qt4
+ TDE theme engine for Qt4

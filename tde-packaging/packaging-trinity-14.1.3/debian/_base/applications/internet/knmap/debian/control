@@ -1,0 +1,25 @@
+Source: knmap-trinity
+Section: tde
+Priority: extra
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.2
+
+Package: knmap-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, nmap
+Description: nmap graphical interface for TDE
+ Knmap is a TDE-based interface to the 'nmap' facility.
+ .
+ The main Knmap window provides for the entry of nmap options and the
+ display of nmap-generated output.
+ .
+ This program is a complete re-write of one by the same name written by
+ Alexandre Sagala. The last version of that program was 0.9 which was
+ released on 2003-03-09 and targeted the KDE 2.2 and QT 2.3 environments.
+ It can be compiled on today's TDE / TQt environment.
+ .
+ Not to mention that it did not cater for the full set of 'nmap' options.
+ Or, perhaps, 'nmap' progressed whilst that version of Knmap languished.
+ .
+ http://www.kde-apps.org/content/show.php?content=31108

@@ -1,0 +1,31 @@
+Source: tde-style-qtcurve-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Bastian Venthur <venthur@debian.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+
+Package: tde-style-qtcurve-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: kde-style-qtcurve-trinity (<< 4:14.0.0~)
+Breaks: kde-style-qtcurve-trinity (<< 4:14.0.0~)
+Suggests: gtk2-engines-qtcurve
+Provides: tde-style-qtcurve
+Description: This is a set of widget styles for Trinity based apps
+ This package together with gtk2-engines-qtcurve aim to provide a unified look
+ and feel on the desktop when using TDE and Gnome applications.
+ .
+ This package is most useful when installed together with 
+ gtk2-engines-qtcurve.
+
+Package: tde-style-qtcurve-trinity-dbg
+Section: libdevel
+Architecture: any
+Priority: extra
+Depends: tde-style-qtcurve-trinity (= ${source:Version}), tdelibs-trinity-dbg
+Description: debugging symbols for tde-style-qtcurve-trinity
+ This package contains the debugging symbols associated with tde-style-qtcurve.
+ They will automatically be used by gdb for debugging tde-style-qtcurve-related
+ issues.

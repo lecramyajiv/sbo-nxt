@@ -1,0 +1,14 @@
+/opt/trinity/share/applications/tde/ksirtet.desktop
+/opt/trinity/share/icons/hicolor/128x128/apps/ksirtet.png
+/opt/trinity/share/icons/hicolor/64x64/apps/ksirtet.png
+/opt/trinity/share/icons/hicolor/48x48/apps/ksirtet.png
+/opt/trinity/share/icons/hicolor/32x32/apps/ksirtet.png
+/opt/trinity/share/icons/hicolor/22x22/apps/ksirtet.png
+/opt/trinity/share/icons/hicolor/16x16/apps/ksirtet.png
+/opt/trinity/share/apps/ksirtet/*
+/opt/trinity/games/ksirtet
+/opt/trinity/share/config.kcfg/ksirtet.kcfg
+/opt/trinity/share/doc/tde/HTML/en/ksirtet/*
+/opt/trinity/share/man/man6/ksirtet.6
+../icons/ksirtet.xpm /opt/trinity/share/pixmaps
+../icons/ksirtet-16.xpm /opt/trinity/share/pixmaps

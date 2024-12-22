@@ -1,0 +1,24 @@
+debian/kpresenter.xpm opt/trinity/share/pixmaps
+debian/tmp/opt/trinity/share/applications/tde/kpresenter.desktop
+debian/tmp/opt/trinity/share/apps/konqueror/servicemenus/kpresenter_konqi.desktop
+debian/tmp/opt/trinity/share/apps/kpresenter
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kpresenter/*.bz2
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kpresenter/common
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kpresenter/*.docbook
+debian/tmp/opt/trinity/share/doc/tde/HTML/en/kpresenter/*.png
+debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/kpresenter.png
+debian/tmp/opt/trinity/share/icons/hicolor/22x22/apps/kpresenter.png
+debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/kpresenter.png
+debian/tmp/opt/trinity/share/icons/hicolor/48x48/apps/kpresenter.png
+debian/tmp/opt/trinity/share/services/generic_filter.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_bmp_export.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_jpeg_export.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_mng_export.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_ooimpress_export.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_ooimpress_import.desktop
+debian/tmp/opt/trinity/share/services/kpresenterpart.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_png_export.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_svg_export.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_xbm_export.desktop
+debian/tmp/opt/trinity/share/services/kpresenter_xpm_export.desktop
+debian/tmp/opt/trinity/share/services/ole_powerpoint97_import.desktop

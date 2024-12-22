@@ -1,0 +1,106 @@
+FROM rockylinux:9
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+# Enable proxy
+# Install OVL plugin for DNF
+# Update distribution packages
+# Add EPEL repository
+# Add RPMFUSION repository
+# Enable supplementary repositories
+# Install Trinity build dependencies
+COPY packages /packages
+RUN echo "proxy=http://proxy:3128" >>"/etc/dnf/dnf.conf" \
+ && curl -o /usr/lib/python3.9/site-packages/dnf-plugins/ovl.py https://raw.githubusercontent.com/FlorianLudwig/dnf-plugin-ovl/master/ovl.py \
+ && dnf -y update \
+ && dnf -y install epel-release \
+ && dnf -y install https://download1.rpmfusion.org/free/el/updates/9/x86_64/r/rpmfusion-free-release-9-1.noarch.rpm \
+ && dnf -y install dnf-plugins-core \
+ && dnf config-manager --enable devel \
+ && dnf config-manager --enable plus \
+ && dnf -y --enableplugin=ovl install $(</packages)
+
+# Add YUM repository for locally built packages
+WORKDIR /etc/yum.repos.d
+COPY rpmbuild.repo rpmbuild.repo
+RUN sed -i "rpmbuild.repo" -e "s|\${ARCH}|${ARCH}|g" -e "s|\${TDE_VERSION}|${TDE_VERSION}|g"
+
+# Fix utempter detection
+RUN chmod a+r /usr/libexec/utempter/utempter
+
+# Add non-root user to build packages
+RUN useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>"/etc/sudoers"
+
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+# Build supplementary development tools
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/g/gnuchess-6.2.9-3.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/gnuchess-6*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/pilot-link-0.12.5-50.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/pilot-link-{devel,libs}-0*.rpm
+
+RUN wget -nv -P ${HOME}/rpmbuild/RPMS/x86_64 \
+  http://rpms.remirepo.net/enterprise/9/remi/x86_64/libicu69-69.1-4.el9.remi.x86_64.rpm \
+  http://rpms.remirepo.net/enterprise/9/remi/x86_64/libyaz{,-devel}-5.32.0-1.el9.remi.x86_64.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/lib{icu69,yaz}-*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/perl-PAR-1.017-5.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-PAR-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/perl-Getopt-ArgvFile-1.11-37.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-Getopt-ArgvFile-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/perl-PAR-Packer-1.054-3.fc36.src.rpm --nocheck \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/perl-PAR-Packer-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/b/bdftopcf-1.1-4.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/bdftopcf-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/paper-2.3-4.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/paper-2*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/psutils-2.07-2.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/psutils-2*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/v/vorbis-tools-1.4.2-4.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/vorbis-tools-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/35/Everything/source/tree/Packages/w/wireless-tools-29-28.fc35.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/wireless-tools{,-devel}-29*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/s/sword-1.9.0-9.fc36.src.rpm --undefine "__cmake_in_source_build" \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/sword{,-devel}-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/c/chmlib-0.40-26.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/chmlib{,-devel}-0*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/h/html2ps-1.0-0.42.b7.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/html2ps-1*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/l/libxml++-2.42.1-3.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/libxml++{,-devel}-2*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/l/libofx-0.10.3-2.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/libofx{,-devel}-0*.rpm
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/g/GeoIP-GeoLite-data-2018.06-9.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/GeoIP-GeoLite-data-2*.rpm 
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/g/GeoIP-1.6.12-11.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/GeoIP{,-devel}-1*.rpm 
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/l/liblo-0.31-5.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/liblo{,-devel}-0*.rpm 
+
+RUN rpmbuild --rebuild https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/36/Everything/source/tree/Packages/p/pcsc-perl-1.4.14-19.fc36.src.rpm \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/pcsc-perl-1*.rpm 
+
+RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/10/Everything/source/tree/Packages/l/libunibreak-6.1-2.el10_0.src.rpm \
+ && sed -i ${HOME}/rpmbuild/SPECS/libunibreak.spec -e "/^Patch:.*offline_files.patch/ s/^Patch:/Patch1:/" -e "/^Patch:.*remove_unused_var.patch/ s/^Patch:/Patch2:/" \
+ && rpmbuild -ba ${HOME}/rpmbuild/SPECS/libunibreak.spec \
+ && sudo rpm -Uvh ${HOME}/rpmbuild/RPMS/*/libunibreak-{6,devel}*.rpm

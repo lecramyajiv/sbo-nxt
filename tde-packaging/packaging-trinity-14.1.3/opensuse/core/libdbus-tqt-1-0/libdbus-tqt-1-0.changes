@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Sat Jul 28 21:34:15 UTC 2012 - robxu9@gmail.com
+
+- rebuild dbus-tqt/libdbus-tqt-1-0 for suse12.1
+
+-------------------------------------------------------------------
+Wed Aug 24 19:36:38 UTC 2011 - rxu@lincomlinux.org
+
+- fix naming error: libdbus-tqt-1-0
+
+-------------------------------------------------------------------
+Sat Aug 13 16:49:42 UTC 2011 - rxu@lincomlinux.org
+
+- upgrade to trinity dbus-tqt and adjust accordingly
+
+-------------------------------------------------------------------
+Sat Dec 19 00:39:25 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Nov  6 15:53:15 CET 2006 - thoenig@suse.de
+
+- loosen dependency to D-Bus 
+
+-------------------------------------------------------------------
+Fri Oct 20 16:42:06 CEST 2006 - thoenig@suse.de
+
+- add dbus-qt3-do-not-close-shared-connection-thoenig-01.patch:
+  Do not close shared connection
+- F=dbus-qt3-compile-fix-thoenig-01; mv $.diff $F.patch
+
+-------------------------------------------------------------------
+Mon Aug 21 12:49:44 CEST 2006 - thoenig@suse.de
+
+- remove hack for 64bit architectures 
+- use bz2 for tar ball
+
+-------------------------------------------------------------------
+Thu Aug 17 18:22:08 CEST 2006 - dmueller@suse.de
+
+- really enable -fstack-protector
+- fix build on x86_64
+
+-------------------------------------------------------------------
+Tue Aug  1 23:03:23 CEST 2006 - thoenig@suse.de
+
+- split out binings to sparate spec files
+

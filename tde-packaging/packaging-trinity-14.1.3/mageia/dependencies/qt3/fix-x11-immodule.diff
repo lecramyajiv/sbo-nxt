@@ -1,0 +1,18 @@
+--- src/kernel/qinputcontext.cpp
++++ src/kernel/qinputcontext.cpp	2004/09/03 15:27:45
+@@ -769,6 +769,7 @@
+ */
+ QCString QInputContext::identifierName()
+ {
++    return "";
+ }
+ 
+ 
+@@ -790,6 +791,7 @@
+ */
+ QCString QInputContext::language()
+ {
++    return "";
+ }
+ 
+ 

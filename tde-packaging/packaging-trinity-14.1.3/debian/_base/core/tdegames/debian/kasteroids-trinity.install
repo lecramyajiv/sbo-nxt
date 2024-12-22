@@ -1,0 +1,14 @@
+/opt/trinity/games/kasteroids
+/opt/trinity/share/icons/hicolor/128x128/apps/kasteroids.png
+/opt/trinity/share/icons/hicolor/64x64/apps/kasteroids.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kasteroids.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kasteroids.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kasteroids.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kasteroids.png
+/opt/trinity/share/applications/tde/kasteroids.desktop
+/opt/trinity/share/apps/kasteroids/*
+/opt/trinity/share/config.kcfg/kasteroids.kcfg
+/opt/trinity/share/doc/tde/HTML/en/kasteroids/*
+/opt/trinity/share/man/man6/kasteroids.6
+../icons/kasteroids.xpm /opt/trinity/share/pixmaps
+../icons/kasteroids-16.xpm /opt/trinity/share/pixmaps

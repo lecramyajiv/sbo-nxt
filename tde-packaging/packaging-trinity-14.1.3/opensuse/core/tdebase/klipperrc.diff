@@ -1,0 +1,22 @@
+Index: klipper/klipperrc.desktop
+===================================================================
+--- klipper/klipperrc.desktop.orig
++++ klipper/klipperrc.desktop
+@@ -232,7 +232,7 @@ Number of commands=5
+ Regexp=^https?://.
+ 
+ [Action_1/Command_0]
+-Commandline=kfmclient exec %s
++Commandline=kfmclient openURL %s
+ Description=Open with &Konqueror
+ Description[af]=Maak oop met Konqueror
+ Description[ar]=إفتح بــ &Konqueror
+@@ -1644,7 +1644,7 @@ Number of commands=5
+ Regexp=^ftp://.
+ 
+ [Action_6/Command_0]
+-Commandline=kfmclient exec %s
++Commandline=kfmclient openURL %s
+ Description=Open with &Konqueror
+ Description[af]=Maak oop met Konqueror
+ Description[ar]=إفتح بــ &Konqueror

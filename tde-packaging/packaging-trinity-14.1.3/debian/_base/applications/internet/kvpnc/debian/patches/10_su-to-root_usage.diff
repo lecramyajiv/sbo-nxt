@@ -1,0 +1,11 @@
+--- a/src/kvpnc.desktop
++++ b/src/kvpnc.desktop
+@@ -18,7 +18,7 @@
+ GenericName[xx]=xxVPN Client GUIxx
+ 
+ Categories=Network;RemoteAccess;TDE;Qt
+-Exec=kvpnc
++Exec=su-to-root -X -c /opt/trinity/bin/kvpnc
+ X-TDE-SubstituteUID=true
+ Icon=kvpnc
+ Type=Application

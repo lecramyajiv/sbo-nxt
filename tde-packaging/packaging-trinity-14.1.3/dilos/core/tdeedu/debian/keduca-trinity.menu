@@ -1,0 +1,15 @@
+?package(keduca-trinity):needs="X11"\
+  section="Applications/Education"\
+  hints="TDE"\
+  title="KEduca"\
+  longtitle="KEduca (Tests and Exams)"\
+  command="/usr/bin/keduca"\
+  icon="/usr/share/pixmaps/keduca.xpm"
+
+?package(keduca-trinity):needs="X11"\
+  section="Applications/Education"\
+  hints="TDE"\
+  title="KEduca-Editor"\
+  longtitle="KEduca-Editor (Tests and Exams Editor)"\
+  command="/usr/bin/keducabuilder"\
+  icon="/usr/share/pixmaps/keduca.xpm"

@@ -1,0 +1,24 @@
+etc/trinity/kwordquizrc
+opt/trinity/bin/kwordquiz
+/opt/trinity/share/applications/tde/kwordquiz.desktop
+/opt/trinity/share/apps/kwordquiz
+/opt/trinity/share/config.kcfg/kwordquiz.kcfg
+/opt/trinity/share/doc/tde/HTML/en/kwordquiz/*.bz2
+/opt/trinity/share/doc/tde/HTML/en/kwordquiz/common
+/opt/trinity/share/doc/tde/HTML/en/kwordquiz/*.docbook
+/opt/trinity/share/doc/tde/HTML/en/kwordquiz/*.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kwordquiz.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kwordquiz.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kwordquiz.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kwordquiz.png
+/opt/trinity/share/icons/hicolor/128x128/apps/kwordquiz.png
+/opt/trinity/share/icons/hicolor/scalable/apps/kwordquiz.svg
+/opt/trinity/share/icons/crystalsvg/16x16/mimetypes/kwordquiz_doc.png
+/opt/trinity/share/icons/crystalsvg/22x22/mimetypes/kwordquiz_doc.png
+/opt/trinity/share/icons/crystalsvg/32x32/mimetypes/kwordquiz_doc.png
+/opt/trinity/share/icons/crystalsvg/48x48/mimetypes/kwordquiz_doc.png
+/opt/trinity/share/icons/crystalsvg/128x128/mimetypes/kwordquiz_doc.png
+/opt/trinity/share/icons/crystalsvg/scalable/mimetypes/kwordquiz_doc.svg
+/opt/trinity/share/man/man1/kwordquiz.1
+/opt/trinity/share/mimelnk/application/x-kwordquiz.desktop
+../icons/kwordquiz.xpm /opt/trinity/share/pixmaps

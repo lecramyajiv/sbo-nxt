@@ -1,0 +1,11 @@
+--- qt-x11-free-3.3.2/configure--	2004-06-03 09:44:18.137414194 +0200
++++ qt-x11-free-3.3.2/configure	2004-06-03 09:44:54.007847860 +0200
+@@ -3189,7 +3189,7 @@ if [ -n "$QCONFIG_FLAGS" ]; then
+ 
+ cat >>$outpath/include/qconfig.h.new << EOF
+ #ifndef $cfg
+-# define $cfg
++#define $cfg
+ #endif
+ 
+ EOF

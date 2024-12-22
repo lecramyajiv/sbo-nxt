@@ -1,0 +1,85 @@
+--- plugins/src/inputmethods/imsw-multi/qmultiinputcontext.cpp.orig	2006-02-17 16:15:21.000000000 -0500
++++ plugins/src/inputmethods/imsw-multi/qmultiinputcontext.cpp	2006-02-17 16:17:55.000000000 -0500
+@@ -306,8 +306,8 @@
+ 
+         currentIMKey = key;
+ 
+-	qDebug( "QMultiInputContext::changeInputMethod(): index=%d, slave=%s",
+-		imIndex, (const char *)_slave->identifierName() );
++	//qDebug( "QMultiInputContext::changeInputMethod(): index=%d, slave=%s",
++	//	imIndex, (const char *)_slave->identifierName() );
+     }
+ }
+ 
+--- plugins/src/inputmethods/simple/qsimpleinputcontext.cpp.orig	2006-02-17 16:15:33.000000000 -0500
++++ plugins/src/inputmethods/simple/qsimpleinputcontext.cpp	2006-02-17 16:18:49.000000000 -0500
+@@ -140,7 +140,7 @@
+         // only one character. See description of
+         // QInputContext::filterEvent() about key compression.
+         val = text[0].unicode();
+-        qDebug( "str = %s", (const char*)keyevent->text().local8Bit() );
++        //qDebug( "str = %s", (const char*)keyevent->text().local8Bit() );
+     }
+ 
+     // Store value
+@@ -164,14 +164,14 @@
+ 
+ void QSimpleInputContext::setFocus()
+ {
+-    qDebug( "QSimpleInputContext: %p->setFocus(), focusWidget()=%p",
+-            this, focusWidget() );
++    //qDebug( "QSimpleInputContext: %p->setFocus(), focusWidget()=%p",
++    //        this, focusWidget() );
+ }
+ 
+ void QSimpleInputContext::unsetFocus()
+ {
+-    qDebug( "QSimpleInputContext: %p->unsetFocus(), focusWidget()=%p",
+-            this, focusWidget() );
++    //qDebug( "QSimpleInputContext: %p->unsetFocus(), focusWidget()=%p",
++    //        this, focusWidget() );
+     reset();
+ }
+ 
+@@ -188,8 +188,8 @@
+     case QEvent::MouseButtonRelease:
+     case QEvent::MouseButtonDblClick:
+     case QEvent::MouseMove:
+-        qDebug( "QSimpleInputContext::mouseHandler: "
+-                "x=%d, type=%d, button=%d, state=%d", x, type, button, state );
++        //qDebug( "QSimpleInputContext::mouseHandler: "
++        //        "x=%d, type=%d, button=%d, state=%d", x, type, button, state );
+         break;
+     default:
+         break;
+@@ -240,7 +240,7 @@
+ 
+     // no entries were found
+     if ( p == composeTable->data + composeTable->size ) {
+-        qDebug( "no match" );
++        //qDebug( "no match" );
+         clearComposeBuffer();
+         return FALSE;
+     }
+@@ -250,18 +250,18 @@
+ 
+         // check if partial match
+         if ( composeBuffer[i] == 0 && p->keys[i] ) {
+-            qDebug("partial match");
++            //qDebug("partial match");
+             return TRUE;
+         }
+ 
+         if ( composeBuffer[i] != p->keys[i] ) {
+-            qDebug("different entry");
++            //qDebug("different entry");
+             clearComposeBuffer();
+             return i!=0;
+         }
+     }
+ 
+-    qDebug("match exactly");
++    //qDebug("match exactly");
+ 
+     // match exactly
+     commitChar( p->value );

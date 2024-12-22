@@ -1,0 +1,31 @@
+#! /usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+include debian/cdbs/debian-tde.mk
+
+DEB_CONFIGURE_INCLUDEDIR := /usr/include
+DEB_CONFIGURE_MANDIR := /usr/share/man
+DEB_CONFIGURE_PREFIX := /usr
+DEB_CONFIGURE_INFODIR := /usr/share/info
+
+cdbs_configure_flags := --with-qt-dir=/usr/share/qt3 --disable-rpath --with-xinerama $(cdbs_kde_enable_final) $(cdbs_kde_enable_debug)
+
+DEB_CONFIGURE_EXTRA_FLAGS := --prefix=/usr --with-extra-libs=/usr/lib --includedir="/usr/include" --mandir="/usr/share/man" --infodir="/usr/share/info"
+
+DEB_CMAKE_EXTRA_FLAGS := \
+ -DCMAKE_INSTALL_PREFIX="/usr" \
+ -DCONFIG_INSTALL_DIR="/etc/trinity" \
+ -DSYSCONF_INSTALL_DIR="/etc/trinity" \
+ -DXDG_MENU_INSTALL_DIR="/etc/xdg/menus" \
+ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+ -DCMAKE_VERBOSE_MAKEFILE="ON" \
+ -DCMAKE_SKIP_RPATH="OFF" \
+ -DBUILD_ALL="ON" \
+ -DCMAKE_C_COMPILER=gcc \
+ -DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)"
+
+DEB_DH_STRIP_ARGS  := --dbg-package=tdetoys-trinity-dbg
+
+DEB_INSTALL_CHANGELOGS_kodo-trinity := kodo/ChangeLog
+DEB_INSTALL_CHANGELOGS_kteatime-trinity := kteatime/ChangeLog

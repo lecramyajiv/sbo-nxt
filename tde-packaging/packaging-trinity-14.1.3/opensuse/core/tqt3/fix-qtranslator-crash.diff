@@ -1,0 +1,11 @@
+--- src/kernel/qtranslator.cpp
++++ src/kernel/qtranslator.cpp
+@@ -1015,7 +1015,7 @@
+ 	char con[256];
+ 	for ( ;; ) {
+ 	    t >> len;
+-	    if ( len == 0 )
++	    if ( len == 0 || t.atEnd())
+ 		return TQTranslatorMessage();
+ 	    t.readRawBytes( con, len );
+ 	    con[len] = '\0';

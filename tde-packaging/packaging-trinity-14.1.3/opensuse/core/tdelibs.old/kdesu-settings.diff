@@ -1,0 +1,50 @@
+Subject: Change kdesu settings
+From: Lubos Lunak
+Bug: 216796
+Relates: kdelibs4/kdesu-settings.diff
+Patch-upstream: never
+
+Change kdesu(d) password keeping timeout only to 5 minutes and enable
+it by default (to match kdesu using sudo in 10.3 behaviour).
+KDE3 needs a hack in KPasswordDialog for enabling it by default.
+
+Update: Change the timeout back to 2 hours (bnc#404521).
+
+Index: kdesu/defaults.h
+===================================================================
+--- kdesu/defaults.h.orig
++++ kdesu/defaults.h
+@@ -13,8 +13,9 @@
+ #ifndef __Defaults_h_included__
+ #define __Defaults_h_included__
+ 
++/*const int defTimeout = 120*60;*/
+ const int defTimeout = 120*60;
+ const int defEchoMode = 0;
+-const int defKeep = false;
++const int defKeep = true;
+ 
+ #endif
+Index: kdeui/kpassdlg.cpp
+===================================================================
+--- kdeui/kpassdlg.cpp.orig
++++ kdeui/kpassdlg.cpp
+@@ -49,6 +49,8 @@
+ 
+ #include "kpassdlg.h"
+ 
++#include "../kdesu/defaults.h"
++
+ /*
+  * Password line editor.
+  */
+@@ -337,7 +339,8 @@ void KPasswordDialog::init()
+ 
+     KConfig* const cfg = KGlobal::config();
+     const KConfigGroupSaver saver(cfg, "Passwords");
+-    if (m_Keep && cfg->readBoolEntry("Keep", false))
++    bool def = ( qstrcmp( qAppName(), "kdesu" ) == 0 ? defKeep : false );
++    if (m_Keep && cfg->readBoolEntry("Keep", def))
+ 	++m_Keep;
+ 
+     m_pMain = new QWidget(this);

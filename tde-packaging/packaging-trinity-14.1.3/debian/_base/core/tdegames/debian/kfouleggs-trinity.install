@@ -1,0 +1,14 @@
+/opt/trinity/share/applications/tde/kfouleggs.desktop
+/opt/trinity/share/apps/kfouleggs/*
+/opt/trinity/share/config.kcfg/kfouleggs.kcfg
+/opt/trinity/games/kfouleggs
+/opt/trinity/share/doc/tde/HTML/en/kfouleggs/*
+/opt/trinity/share/icons/hicolor/16x16/apps/kfouleggs.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kfouleggs.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kfouleggs.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kfouleggs.png
+/opt/trinity/share/icons/hicolor/64x64/apps/kfouleggs.png
+/opt/trinity/share/icons/hicolor/128x128/apps/kfouleggs.png
+/opt/trinity/share/man/man6/kfouleggs.6
+../icons/kfouleggs.xpm /opt/trinity/share/pixmaps
+../icons/kfouleggs-16.xpm /opt/trinity/share/pixmaps

@@ -1,0 +1,39 @@
+Index: mimetypes/application/vnd.oasis.opendocument.formula.desktop
+===================================================================
+--- mimetypes/application/vnd.oasis.opendocument.formula.desktop.orig
++++ mimetypes/application/vnd.oasis.opendocument.formula.desktop
+@@ -2,7 +2,7 @@
+ Type=MimeType
+ MimeType=application/vnd.oasis.opendocument.formula
+ Patterns=*.odf;*.ODF
+-Icon=formula
++Icon=kformula_kfo
+ Comment=OASIS OpenDocument Formula
+ Comment[af]=OASIS Oop Dokument formule
+ Comment[be]=Формула OASIS OpenDocument
+Index: mimetypes/application/vnd.sun.xml.base.desktop
+===================================================================
+--- mimetypes/application/vnd.sun.xml.base.desktop.orig
++++ mimetypes/application/vnd.sun.xml.base.desktop
+@@ -67,7 +67,7 @@ Comment[vi]=Cơ sở dữ liệu OpenOff
+ Comment[zh_CN]=OpenOffice.org 数据库
+ Comment[zh_HK]=OpenOffice.org 資料庫
+ Comment[zh_TW]=OpenOffice.org 資料庫
+-Icon=spreadsheet
++Icon=database
+ Type=MimeType
+ Patterns=*.odb;*.ODB;
+ MimeType=application/vnd.sun.xml.base
+Index: mimetypes/text/rtf.desktop
+===================================================================
+--- mimetypes/text/rtf.desktop.orig
++++ mimetypes/text/rtf.desktop
+@@ -77,7 +77,7 @@ Comment[wa]=Documint RTF
+ Comment[zh_CN]=RTF 文档
+ Comment[zh_HK]=RTF 文件
+ Comment[zh_TW]=RTF 文件
+-Icon=wordprocessing
++Icon=rtf
+ Type=MimeType
+ Patterns=*.rtf;*.RTF;
+ [Property::X-KDE-text]

@@ -1,0 +1,16 @@
+Index: dcop/dcopidlng/dcopidlng
+===================================================================
+--- dcop/dcopidlng/dcopidlng.orig
++++ dcop/dcopidlng/dcopidlng
+@@ -5,7 +5,11 @@ trap "rm -f dcopidlng.stderr.$$" 0 1 2 1
+ if test -z "$KDECONFIG"; then
+     KDECONFIG=kde-config
+ fi
++if type kde-config > /dev/null; then
+ LIBDIR="`$KDECONFIG --install data --expandvars`/dcopidlng"
++else
++LIBDIR="${0%/*}"
++fi
+ perl -I"$LIBDIR" "$LIBDIR/kalyptus" --allow_k_dcop_accessors -f dcopidl $1 2> dcopidlng.stderr.$$
+ RET=$?
+ if [ $RET -ne 0 ]

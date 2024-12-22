@@ -1,0 +1,13 @@
+/opt/trinity/share/apps/konquest/*
+/opt/trinity/share/icons/hicolor/128x128/apps/konquest.png
+/opt/trinity/share/icons/hicolor/64x64/apps/konquest.png
+/opt/trinity/share/icons/hicolor/48x48/apps/konquest.png
+/opt/trinity/share/icons/hicolor/32x32/apps/konquest.png
+/opt/trinity/share/icons/hicolor/22x22/apps/konquest.png
+/opt/trinity/share/icons/hicolor/16x16/apps/konquest.png
+/opt/trinity/share/applications/tde/konquest.desktop
+/opt/trinity/games/konquest
+/opt/trinity/share/doc/tde/HTML/en/konquest/*
+/opt/trinity/share/man/man6/konquest.6
+../icons/konquest.xpm /opt/trinity/share/pixmaps
+../icons/konquest-16.xpm /opt/trinity/share/pixmaps

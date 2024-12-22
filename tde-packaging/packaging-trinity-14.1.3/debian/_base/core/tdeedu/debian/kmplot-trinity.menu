@@ -1,0 +1,7 @@
+?package(kmplot-trinity):needs="X11"\
+  section="Applications/Science/Mathematics"\
+  hints="TDE"\
+  title="KmPlot"\
+  longtitle="KmPlot (Mathematical Function Plotter)"\
+  command="/opt/trinity/bin/kmplot"\
+  icon="/opt/trinity/share/pixmaps/kmplot.xpm"

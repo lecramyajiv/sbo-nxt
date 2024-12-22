@@ -1,0 +1,28 @@
+Index: kdm/kfrontend/kgapp.cpp
+===================================================================
+--- kdm/kfrontend/kgapp.cpp.orig
++++ kdm/kfrontend/kgapp.cpp
+@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fi
+ #include <qtimer.h>
+ #include <qcursor.h>
+ #include <qpalette.h>
++#include <qfile.h>
+ 
+ #include <stdlib.h> // free(), exit()
+ #include <unistd.h> // alarm()
+@@ -144,7 +145,14 @@ kg_main( const char *argv0 )
+ 	if (!_GUIStyle.isEmpty())
+ 		app.setStyle( _GUIStyle );
+ 
+-	_colorScheme = locate( "data", "kdisplay/color-schemes/" + _colorScheme + ".kcsrc" );
++        const QString _configColorScheme = _colorScheme;
++
++	if (_useTheme && !_theme.isEmpty())
++	   _colorScheme = _theme + "/color.kcsrc";
++
++	if (!QFile::exists(_colorScheme))
++	  _colorScheme = locate( "data", "kdisplay/color-schemes/" + _configColorScheme + ".kcsrc" );
++
+ 	if (!_colorScheme.isEmpty()) {
+ 		KSimpleConfig config( _colorScheme, true );
+ 		config.setGroup( "Color Scheme" );

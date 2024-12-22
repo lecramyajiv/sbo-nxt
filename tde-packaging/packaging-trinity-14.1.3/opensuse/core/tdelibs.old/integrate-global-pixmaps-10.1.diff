@@ -1,0 +1,26 @@
+Index: pics/crystalsvg/index.theme
+===================================================================
+--- pics/crystalsvg/index.theme	(Revision 505161)
++++ pics/crystalsvg/index.theme	(Arbeitskopie)
+@@ -78,7 +78,7 @@
+ Comment[zh_HK]=由 Everaldo.com 提供的圖示主題
+ DisplayDepth=32
+ 
+-Inherits=hicolor
++Inherits=suseadds,hicolor
+ 
+ Example=folder
+ LinkOverlay=link_overlay
+Index: kdecore/kicontheme.cpp
+===================================================================
+--- kdecore/kicontheme.cpp	(Revision 458165)
++++ kdecore/kicontheme.cpp	(Arbeitskopie)
+@@ -146,6 +146,8 @@
+     if ( name != "crystalsvg" )
+       for ( QStringList::Iterator it = mInherits.begin(); it != mInherits.end(); ++it )
+          if ( *it == "default" || *it == "hicolor" ) *it="crystalsvg";
++    if ( name == "hicolor" )
++	mInherits = "crystalsuse";
+ 
+     d->hidden = cfg.readBoolEntry("Hidden", false);
+     d->example = cfg.readPathEntry("Example");

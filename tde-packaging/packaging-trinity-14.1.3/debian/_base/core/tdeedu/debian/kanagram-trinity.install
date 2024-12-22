@@ -1,0 +1,16 @@
+opt/trinity/bin/kanagram
+/opt/trinity/share/applications/tde/kanagram.desktop
+/opt/trinity/share/apps/kanagram
+/opt/trinity/share/config.kcfg/kanagram.kcfg
+/opt/trinity/share/doc/tde/HTML/en/kanagram/common
+/opt/trinity/share/doc/tde/HTML/en/kanagram/index.cache.bz2
+/opt/trinity/share/doc/tde/HTML/en/kanagram/*.docbook
+/opt/trinity/share/doc/tde/HTML/en/kanagram/*.png
+/opt/trinity/share/icons/hicolor/16x16/apps/kanagram.png
+/opt/trinity/share/icons/hicolor/22x22/apps/kanagram.png
+/opt/trinity/share/icons/hicolor/32x32/apps/kanagram.png
+/opt/trinity/share/icons/hicolor/48x48/apps/kanagram.png
+/opt/trinity/share/icons/hicolor/128x128/apps/kanagram.png
+/opt/trinity/share/icons/hicolor/scalable/apps/kanagram.svgz
+/opt/trinity/share/man/man1/kanagram.1
+../icons/kanagram.xpm /opt/trinity/share/pixmaps

@@ -1,0 +1,7 @@
+The following files are not installed in any binary package.
+This is deliberate.
+
+/usr/bin/winpopup-install.sh
+/usr/bin/winpopup-send.sh
+ - Winpopup needs all sorts of unsecure setup. Best just to
+   leave it out.

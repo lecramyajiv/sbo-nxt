@@ -1,0 +1,9 @@
+image/bmp;	kview %s;	nametemplate=%s.bmp;	test=test "$DISPLAY" != "";	priority=5
+image/gif;	kview %s;	nametemplate=%s.gif;	test=test "$DISPLAY" != "";	priority=5
+image/jpeg;	kview %s;	nametemplate=%s.jpg;	test=test "$DISPLAY" != "";	priority=5
+image/png;	kview %s;	nametemplate=%s.png;	test=test "$DISPLAY" != "";	priority=5
+image/x-ms-bmp;	kview %s;	nametemplate=%s.bmp;	test=test "$DISPLAY" != "";	priority=5
+image/x-jng;	kview %s;	nametemplate=%s.jng;	test=test "$DISPLAY" != "";	priority=5
+image/x-xbm;	kview %s;	nametemplate=%s.xbm;	test=test "$DISPLAY" != "";	priority=5
+image/x-xpm;	kview %s;	nametemplate=%s.xpm;	test=test "$DISPLAY" != "";	priority=5
+video/x-mng;	kview %s;	nametemplate=%s.mng;	test=test "$DISPLAY" != "";	priority=5

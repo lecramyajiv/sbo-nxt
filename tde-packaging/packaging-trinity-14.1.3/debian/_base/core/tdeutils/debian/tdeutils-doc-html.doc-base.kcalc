@@ -1,0 +1,10 @@
+Document: tdeutils-doc-html-kcalc
+Title: KCalc Handbook
+Author: Bernd Johannes Wuebben, Pamela Roberts
+Abstract: KCalc is a scientific calculator for TDE
+Section: Tools
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kcalc/index.html
+Files: /usr/share/doc/tde/HTML/en/kcalc/*.html
+

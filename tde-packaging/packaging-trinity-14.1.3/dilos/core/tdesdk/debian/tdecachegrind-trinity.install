@@ -1,0 +1,20 @@
+debian/tmp/usr/bin/tdecachegrind
+debian/tmp/usr/share/applications/tde/tdecachegrind.desktop
+debian/tmp/usr/share/apps/tdecachegrind/icons/hicolor/16x16/actions/fromrec.png
+debian/tmp/usr/share/apps/tdecachegrind/icons/hicolor/16x16/actions/percent.png
+debian/tmp/usr/share/apps/tdecachegrind/icons/hicolor/16x16/actions/recrec.png
+debian/tmp/usr/share/apps/tdecachegrind/icons/hicolor/16x16/actions/torec.png
+debian/tmp/usr/share/apps/tdecachegrind/icons/hicolor/22x22/actions/percent.png
+debian/tmp/usr/share/apps/tdecachegrind/icons/hicolor/32x32/actions/percent.png
+debian/tmp/usr/share/apps/tdecachegrind/tdecachegrindui.rc
+debian/tmp/usr/share/apps/tdecachegrind/tips
+debian/tmp/usr/share/doc/tde/HTML/en/tdecachegrind/*.bz2
+debian/tmp/usr/share/doc/tde/HTML/en/tdecachegrind/common
+debian/tmp/usr/share/doc/tde/HTML/en/tdecachegrind/*.docbook
+debian/tmp/usr/share/icons/locolor/32x32/apps/tdecachegrind.png
+debian/tmp/usr/share/icons/locolor/16x16/apps/tdecachegrind.png
+debian/tmp/usr/share/icons/hicolor/48x48/apps/tdecachegrind.png
+debian/tmp/usr/share/icons/hicolor/32x32/apps/tdecachegrind.png
+debian/tmp/usr/share/man/man1/tdecachegrind.1
+debian/tmp/usr/share/mimelnk/application/x-tdecachegrind.desktop
+debian/icons/tdecachegrind.xpm /usr/share/pixmaps

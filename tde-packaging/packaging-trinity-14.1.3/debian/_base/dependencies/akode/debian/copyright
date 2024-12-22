@@ -1,0 +1,15 @@
+This package was debianized by Christopher Martin <chrsmrtn@debian.org> on
+Tue, 29 Nov 2005 13:24:40 -0500.
+
+It was downloaded from:
+http://www.kde-apps.org/content/show.php?content=30375
+
+Copyright (C) 2004-2005 Allan Sandfeld Jensen <kde@carewolf.com>
+
+License:
+
+The core library akodelib is released under the GNU Library General Public
+License. Some plugins are instead licensed under the GNU General Public
+License. On Debian systems, the complete text of the GPL can
+be found at /usr/share/common-licenses/GPL, while the LGPL can be found
+at /usr/share/common-licenses/LGPL-2.

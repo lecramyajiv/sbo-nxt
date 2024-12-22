@@ -1,0 +1,35 @@
+Source: libksquirrel-trinity
+Section: libs
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+XSBC-Original-Maintainer: Harald Sitter <apachelogger@ubuntu.com>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs14-trinity-dev,
+  netpbm, libiconv-hook-dev, liblcms1-dev, libjpeg-dev, libjasper-dev,
+  libgif-dev, libtiff-dev, djvulibre-bin, fig2dev | transfig, libmng-dev, libwmf-dev,
+  libopenexr-dev, medcon, librsvg2-bin, ghostscript, x11proto-core-dev,
+Standards-Version: 3.8.4
+
+Package: libksquirrel0-trinity
+Architecture: any
+Depends: ${shlibs:Depends}
+Replaces: libksquirrel0-trinity (<< 4:14.0.0~)
+Breaks: libksquirrel0-trinity (<< 4:14.0.0~)
+Description: Trinity image viewer
+ Runtime libraries for KSquirrel.
+
+Package: libksquirrel-trinity-dev
+Section: libdevel
+Architecture: any
+Replaces: libksquirrel-trinity-dev (<< 4:14.0.0~)
+Breaks: libksquirrel-trinity-dev (<< 4:14.0.0~)
+Depends: ${shlibs:Depends}, libksquirrel0-trinity (= ${binary:Version})
+Description: Trinity image viewer
+ Development libraries for KSquirrel.
+
+Package: libksquirrel-tools-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, libksquirrel0-trinity (= ${binary:Version})
+Replaces: libksquirrel-tools-trinity (<< 4:14.0.0~)
+Breaks: libksquirrel-tools-trinity (<< 4:14.0.0~)
+Description: Trinity image viewer
+ Tools for KSquirrel.

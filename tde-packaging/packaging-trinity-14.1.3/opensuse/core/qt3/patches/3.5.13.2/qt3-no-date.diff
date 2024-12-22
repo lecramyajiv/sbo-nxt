@@ -1,0 +1,65 @@
+--- src/moc/moc.y	2008-01-15 20:09:13.000000000 +0100
++++ src/moc/moc.y	2009-02-07 19:35:47.703930527 +0100
+@@ -2833,7 +2833,7 @@
+ {
+     const char *hdr1 = "/****************************************************************************\n"
+ 		 "** %s meta object code from reading C++ file '%s'\n**\n";
+-    const char *hdr2 = "** Created: %s\n"
++    const char *hdr2 = "** Created:\n"
+     const char *hdr3 = "** WARNING! All changes made in this file will be lost!\n";
+     const char *hdr4 = "*****************************************************************************/\n\n";
+     int   i;
+@@ -2872,7 +2872,7 @@
+ 	if ( i >= 0 )
+ 	    fn = &g->fileName[i];
+ 	fprintf( out, hdr1, (const char*)qualifiedClassName(),(const char*)fn);
+-	fprintf( out, hdr2, (const char*)dstr );
++	fprintf( out, hdr2 );
+ 	fprintf( out, hdr3 );
+ 	fprintf( out, hdr4 );
+ 
+diff -ru src/moc/moc_yacc.cpp src/moc/moc_yacc.cpp
+--- src/moc/moc_yacc.cpp	2008-01-14 13:24:36.000000000 +0100
++++ src/moc/moc_yacc.cpp	2009-02-07 19:35:30.039680400 +0100
+@@ -2872,7 +2872,7 @@
+ {
+     const char *hdr1 = "/****************************************************************************\n"
+ 		 "** %s meta object code from reading C++ file '%s'\n**\n";
+-    const char *hdr2 = "** Created: %s\n"
++    const char *hdr2 = "** Created: \n"
+ 		 "**      by: The Qt MOC ($Id: qt/moc_yacc.cpp   3.3.8   edited Feb 2 14:59 $)\n**\n";
+     const char *hdr3 = "** WARNING! All changes made in this file will be lost!\n";
+     const char *hdr4 = "*****************************************************************************/\n\n";
+@@ -2912,7 +2912,7 @@
+ 	if ( i >= 0 )
+ 	    fn = &g->fileName[i];
+ 	fprintf( out, hdr1, (const char*)qualifiedClassName(),(const char*)fn);
+-	fprintf( out, hdr2, (const char*)dstr );
++	fprintf( out, hdr2 );
+ 	fprintf( out, hdr3 );
+ 	fprintf( out, hdr4 );
+ 
+diff -ru tools/designer/uic/embed.cpp tools/designer/uic/embed.cpp
+--- tools/designer/uic/embed.cpp	2008-01-15 20:09:14.000000000 +0100
++++ tools/designer/uic/embed.cpp	2009-02-07 19:36:25.950931409 +0100
+@@ -137,7 +137,7 @@
+     for ( it = images.begin(); it != images.end(); ++it )
+ 	out << "**      " << *it << "\n";
+     out << "**\n";
+-    out << "** Created: " << QDateTime::currentDateTime().toString() << "\n";
++    out << "** Created:\n";
+     out << "**\n";
+     out << "** WARNING! All changes made in this file will be lost!\n";
+     out << "****************************************************************************/\n";
+diff -ru tools/designer/uic/main.cpp tools/designer/uic/main.cpp
+--- tools/designer/uic/main.cpp	2008-01-15 20:09:14.000000000 +0100
++++ tools/designer/uic/main.cpp	2009-02-07 19:36:36.603680916 +0100
+@@ -320,7 +320,7 @@
+ 	out << "/****************************************************************************" << endl;
+ 	out << "** Form "<< (impl? "implementation" : "interface") << " generated from reading ui file '" << fileName << "'" << endl;
+ 	out << "**" << endl;
+-	out << "** Created: " << QDateTime::currentDateTime().toString() << endl;
++	out << "** Created:" << endl;
+ 	out << "**" << endl;
+ 	out << "** WARNING! All changes made in this file will be lost!" << endl;
+ 	out << "****************************************************************************/" << endl << endl;

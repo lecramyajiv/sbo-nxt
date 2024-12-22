@@ -1,0 +1,4 @@
+debian/tmp/opt/trinity/lib/perl5/auto/DCOP/*
+debian/tmp/opt/trinity/lib/perl5/DCOP.pm
+debian/tmp/opt/trinity/lib/perl5/DCOP/*
+debian/tmp/opt/trinity/share/man/man3/DCOP.3pm

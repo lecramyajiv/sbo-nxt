@@ -1,0 +1,16 @@
+Source: kvkbd-trinity
+Section: tde
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, libxtst-dev, tdelibs14-trinity-dev
+Standards-Version: 3.8.4
+Homepage: http://pan4os.info/main/index.php
+
+Package: kvkbd-trinity
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: kvkbd-trinity (<< 4:14.0.0~)
+Breaks: kvkbd-trinity (<< 4:14.0.0~)
+Description: Virtual keyboard for TDE [Trinity]
+ Virtual keyboard for TDE for use with accessibility. Application contains
+ a systray widget as well as a dockwidget.

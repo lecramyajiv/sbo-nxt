@@ -1,0 +1,35 @@
+FROM opensuse/tumbleweed:latest
+
+ARG TDE_VERSION=14.1.2
+ARG ARCH=x86_64
+
+# Add PACKMAN repository
+COPY packages /packages
+RUN set -x \
+ && zypper ar -f -G -n packman http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman \
+ && zypper -n refresh \
+ && zypper -n dup \
+ && zypper -n update \
+ && zypper -n install --allow-vendor-change $(</packages)
+
+# Add non-root user to build packages
+RUN /usr/sbin/useradd -m -s /bin/bash -u 1000 trinity \
+ && echo "trinity ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+
+USER trinity
+COPY rpmmacros /home/trinity/.rpmmacros
+
+# Add YUM repository for locally built packages
+RUN mkdir -p /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} \
+ && sudo zypper ar -C -G /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/${ARCH} rpmbuild.${ARCH} \
+ && mkdir -p /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch \
+ && sudo zypper ar -C -G /home/trinity/rpmbuild/RPMS.tde-${TDE_VERSION}/noarch rpmbuild.noarch
+
+# Install heimdal development files
+RUN rpm -Uvh https://ftp.lysator.liu.se/pub/opensuse/source/tumbleweed/repo/oss/src/libheimdal-7.8.0-4.1.src.rpm \
+ && wget -nv -O "${HOME}/rpmbuild/SOURCES/heimdal-7.8.0.tar.gz" "https://github.com/heimdal/heimdal/releases/download/heimdal-7.8.0/heimdal-7.8.0.tar.gz" \
+ && sed -i "${HOME}/rpmbuild/SPECS/libheimdal.spec" -e "/^Source0:/ s|.*|Source0: heimdal-7.8.0.tar.gz|" -e "/^Patch0/ s|^|#|" \
+ && export ac_cv_sys_large_files=no \
+ && export ac_cv_sys_file_offset_bits=no \
+ && LDFLAGS="-lcrypt -Wl,--allow-shlib-undefined" rpmbuild -bc ${HOME}/rpmbuild/SPECS/libheimdal.spec \
+ && sudo make -C ${HOME}/rpmbuild/BUILD/heimdal-7.8.0/tools/ install

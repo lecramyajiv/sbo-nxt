@@ -1,0 +1,40 @@
+This package was debianized by Christopher L Cheney <ccheney@debian.org> on
+Tue, 16 Apr 2002 22:00:00 -0500.
+
+
+It was downloaded from: http://www.kde.org/download
+
+Upstream Authors: Stephan Kulow <coolo@kde.org> and many others.
+
+
+License:
+
+The code files in this package are under the GNU General Public License:
+
+    | This program is free software; you can redistribute it and/or modify
+    | it under the terms of the GNU General Public License as published by
+    | the Free Software Foundation; version 2 dated June, 1991.
+    |
+    | This package is distributed in the hope that it will be useful,
+    | but WITHOUT ANY WARRANTY; without even the implied warranty of
+    | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    | GNU General Public License for more details.
+    |
+    | You should have received a copy of the GNU General Public License
+    | along with this program; if not, write to the Free Software Foundation,
+    | Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+  The full text of the GNU General Public License version 2 is available on
+  Debian systems in /usr/share/common-licenses/GPL-2.
+
+The documentation docbook files in this package are under the 
+GNU Free Documentation License:
+
+    | Permission is granted to copy, distribute and/or modify this
+    | document under the terms of the GNU Free Documentation License,
+    | Version 1.1 or any later version published by the Free Software
+    | Foundation; with no Invariant Sections, with no Front-Cover Texts,
+    | and with no Back-Cover Texts.
+
+  The full text of the GNU Free Documentation License is available on
+  Debian systems in /usr/share/common-licenses/GFDL-1.2

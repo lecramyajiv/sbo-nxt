@@ -1,0 +1,236 @@
+libkipi-trinity (0.1.5-3intrepid0) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+libkipi-trinity (0.1.5-2intrepid6) jaunty; urgency=low
+
+  * Jaunty rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue, 28 April 2009 13:23:00 -0600
+
+libkipi-trinity (0.1.5-2intrepid5) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 05 March 2009 01:11:00 -0600
+
+libkipi-trinity (0.1.5-2intrepid3) intrepid; urgency=low
+
+  [ Timothy Pearson ]
+  * Added -trinity prefix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Tue,  2 Dec 2008 01:33:00 -0600
+
+libkipi (0.1.5-2) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * Merge branches/experimental with trunk and upload 1.5 to unstable
+  * libkipi-dev Depends: pkg-config
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sat,  3 Mar 2007 18:17:38 +0000
+
+libkipi (0.1.5-1) experimental; urgency=low
+
+  * New upstream release
+
+  [ Mark Purcell ]
+  * Add Build-Depends: autotools-dev
+
+  [ Achim Bohnet ]
+  * Relibtoolization patches:
+    + remove patches/05_pedantic-errors.diff. No need to be more pedantic than
+      upstream.
+    + remove patches/10_aclocal.m4_update.diff, debian/patches/99_only_-lqt-mt.diff
+      no longer necessary
+    + regenerate patches/98_buildpref.diff and patches/98_configure.diff
+  * Set standards-version to 3.7.2.  No changes necessary.
+  * Add XS-Vcs-Svn and XS-Vcs-Browser info to debian/control
+  * Long description: update homepage URL to new http://www.kipi-plugins.org/
+    site
+  * Check sources for licenses/copyrights. No changes in debian/copyright
+    necessary.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Fri, 29 Dec 2006 14:34:34 +0100
+
+libkipi (0.1.4-1) unstable; urgency=low
+
+  [ Achim Bohnet ]
+  * new upstream release.  Fixes FTBFS on first installation.
+  * Remove 11_tdesvn_r540613_fix_include_path.diff.  Included upstream
+  * Remove 06_disable_no_undefined.diff. Not needed. Pkg is properly
+    relibtoolized
+  * Update relibtoolization patches: 98_buildprep.diff 99_only_-lqt-mt.diff
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue, 16 May 2006 20:55:30 +0200
+
+libkipi (0.1.3-2) unstable; urgency=low
+
+  [ Achim Bohnet ]
+  * Add 11_tdesvn_r540613_fix_include_path.diff.  Closes: #366933: libkipi -
+    FTBFS: error: libkipi/interface.h: No such file or directory
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sun, 14 May 2006 11:03:25 +0200
+
+libkipi (0.1.3-1) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * New upstream release
+  * Relibtoolize from /pkg-kde/trunk/common-patches/ for 3.5.2
+  * Dropped from debian/patches (seems OK)
+      + 08_disable-visibility.diff
+
+   [ Achim Bohnet ]
+   o Update 98_buildprep.diff
+   o Replace 10_link_to_right_libs.diff with 99_only_-lqt-mt.diff
+     Relibtoolization patch was accepted upstream, except for LIB_QT hack.
+     Now patch configure to hardcode LIB_QT to -lqt-mt instead of
+     patching every Makefile.am/.in.
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Tue,  9 May 2006 22:45:55 +0100
+
+libkipi (0.1.2-4) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * Rebuild for libXrender.la
+  * Package needs to be rebuilt against new version of libxrender-dev.
+    Cannot build KphotoAlbum against it. (Closes: #363918)
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Thu, 20 Apr 2006 18:30:51 +0100
+
+libkipi (0.1.2-3) unstable; urgency=low
+
+  [ Achim Bohnet ]
+  * relibtoolize libkipi:
+      + Closes #304336 libkipi_0.1.1-2(GNU/k*BSD): FTBFS: out of date
+        libtool scripts
+      + use tool/patches of Debian Qt/KDE Team packages: patches/0*.diff
+      + update 03_libtool_update.diff to libtool 1.5.20-2
+      + debian/rules: add buildprep rule to recreate the buildpref diff
+      + add 06_aclocal_update.diff: aclocal.m4 gets recreated after each
+        new buildprep diff
+      + patches/10_link_to_right_libs.diff: add missing libraries -ltdecore
+        -lqt-mt
+    Result: libkipi0 now depends on 5 instead of 25 packages
+  * remove unnecessary build dependency on libimlib2-dev
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Wed, 28 Dec 2005 00:07:03 +0100
+
+libkipi (0.1.2-2) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * Add debian/watch: sf.net kipi project will be used for
+    future releases
+
+  [ Achim Bohnet ]
+  * 2nd g++ v4 ABI change: Because we already depend on tdelibs4c2a,
+    remove c2 that was unnecessarily introduced for the 1st g++ v4.0
+    ABI change.  Now backporting and sync with kunbuntu needs no
+    source changes again.
+  * rules:
+      + use utils.mk from cdbs instead of calling dh_install with
+        --list-missing
+      + remove unnecessary --disable-debug configure option
+      + build with --enable-final
+  * Temporarily Build-Depend on tdelibs4-dev (>= 4:3.4.3-2) to make
+    sure we build against tdelibs4c2a
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Fri,  2 Dec 2005 15:49:45 +0100
+
+libkipi (0.1.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Pkg now maintained by Debian KDE Extras Team
+
+  +++ Changes by Achim Bohnet:
+
+  * remove versioned build-dependency of tdelibs4-dev now that
+    it's build on all archs with new C++ ABI.
+  * patches/00_fix-home-page-url.patch removed. Fixed upstream.
+  * updated debian/copyright for 0.1.2 tarball
+
+ -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Thu, 15 Sep 2005 02:29:15 +0200
+
+libkipi (0.1.1-4) unstable; urgency=low
+
+  * Conflicts:/ Replaces: libkipi0
+  * libkipi0-dev Depends: libkipi0c2
+
+ -- Mark Purcell <msp@debian.org>  Fri, 19 Aug 2005 17:49:41 +0100
+
+libkipi (0.1.1-3) unstable; urgency=low
+
+  * C++ transition package
+  * Upgrade Build-Depends: tdelibs4-dev (>= 3.4.2-1)
+  * Uploaders: Achim Bohnet <ach@mpe.mpg.de>, Mark Purcell
+    <msp@debian.org>
+
+ -- Mark Purcell <msp@debian.org>  Thu, 18 Aug 2005 17:52:32 +0100
+
+libkipi (0.1.1-2) unstable; urgency=low
+
+  * debian/copyright: fix typo
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Thu, 10 Mar 2005 01:52:32 +0100
+
+libkipi (0.1.1-1) unstable; urgency=low
+
+  * new upstream release
+  * control: removed unused misc:Depends var
+  * control: update homepage URL (closes: #294947)
+  * updated debian/copyright
+  * fix homepage URL in About dialogs (use simplepatchsys)
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Mon, 14 Feb 2005 22:16:20 +0100
+
+libkipi (0.1-2~kalyxo1) unstable; urgency=low
+
+  * Initial upload (Closes: #280439)
+  * get rid of debug output (configure with --disable-debug)
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue,  9 Nov 2004 23:31:13 +0100
+
+libkipi (0.1-1) unstable; urgency=low
+
+  * control: remove libkexif0-dev build dependency
+  * libkipi/Makefile.am: fix compilation without libkipi0-dev
+  	installed
+  * change distribtion to unstable
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue, 19 Oct 2004 00:48:03 +0200
+
+libkipi (0.1-0) experimental; urgency=low
+
+  * first upstream release
+  * added homepage URL to extended description
+  * add translation to libkipi0 deb
+  * main.cpp: fix URL
+  * copyright: mention the 3 GPL files, rest LGPL
+  * install libkipi/design as doc to -dev pkgs
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Sun, 17 Oct 2004 00:50:36 +0200
+
+libkipi (0.0.cvs20040802-1) experimental; urgency=low
+
+  * sync with cvs
+  * fix libkexif.install to install icons servicetypes and apps dirs
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Tue,  3 Aug 2004 01:18:47 +0200
+
+libkipi (0.0.cvs20040726-1) experimental; urgency=low
+
+  * rebuild against new libkexif (should fix rpath stuff)
+  * all build-deps on one line (lintian)
+  * use configure --disable-rpath 
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Mon, 26 Jul 2004 21:42:03 +0200
+
+libkipi (0.0.cvs20040721-1) unstable; urgency=low
+
+  * Initial Release
+  * WARNING experimental pkg!
+
+ -- Achim Bohnet <ach@mpe.mpg.de>  Wed, 21 Jul 2004 01:25:11 +0200
+

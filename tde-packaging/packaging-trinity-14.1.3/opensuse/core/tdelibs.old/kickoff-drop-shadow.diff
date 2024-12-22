@@ -1,0 +1,177 @@
+Index: kdefx/kstyle.cpp
+===================================================================
+--- kdefx/kstyle.cpp.orig
++++ kdefx/kstyle.cpp
+@@ -31,6 +31,7 @@
+ 
+ #include <qapplication.h>
+ #include <qbitmap.h>
++#include <qmetaobject.h>
+ #include <qcleanuphandler.h>
+ #include <qmap.h>
+ #include <qimage.h>
+@@ -79,7 +80,7 @@ namespace
+ 		QWidget* w1;
+ 		QWidget* w2;
+ 	};
+-	typedef QMap<const QPopupMenu*,ShadowElements> ShadowMap;
++	typedef QMap<const QWidget*,ShadowElements> ShadowMap;
+         static ShadowMap *_shadowMap = 0;
+         QSingleCleanupHandler<ShadowMap> cleanupShadowMap;
+         ShadowMap &shadowMap() {
+@@ -113,8 +114,13 @@ namespace
+ 
+ 	const double shadow_strip[4] =
+ 		{ 0.565, 0.675, 0.835, 0.945 };
+-}
+ 
++	static bool useDropShadow(QWidget* w)
++	{
++		return w && w->metaObject() && 
++			w->metaObject()->findProperty("KStyleMenuDropShadow") != -1;
++	}
++}
+ 
+ namespace
+ {
+@@ -128,12 +134,12 @@ class TransparencyHandler : public QObje
+ 
+ 	protected:
+ 		void blendToColor(const QColor &col);
+-		void blendToPixmap(const QColorGroup &cg, const QPopupMenu* p);
++		void blendToPixmap(const QColorGroup &cg, const QWidget* p);
+ #ifdef HAVE_XRENDER
+-		void XRenderBlendToPixmap(const QPopupMenu* p);
++		void XRenderBlendToPixmap(const QWidget* p);
+ #endif
+-		void createShadowWindows(const QPopupMenu* p);
+-		void removeShadowWindows(const QPopupMenu* p);
++		void createShadowWindows(const QWidget* p);
++		void removeShadowWindows(const QWidget* p);
+ 		void rightShadow(QImage& dst);
+ 		void bottomShadow(QImage& dst);
+ 	private:
+@@ -256,8 +262,16 @@ void KStyle::polish( QWidget* widget )
+ 				widget->installEventFilter(this);
+ 		} 
+ 	}
+-}
++	if (widget->isTopLevel())
++	{
++		if (!d->menuHandler && useDropShadow(widget))
++			d->menuHandler = new TransparencyHandler(this, Disabled, 1.0, false);
+ 
++		if (d->menuHandler && useDropShadow(widget))
++			widget->installEventFilter(d->menuHandler);
++	}
++}
++
+ 
+ void KStyle::unPolish( QWidget* widget )
+ {
+@@ -267,8 +281,10 @@ void KStyle::unPolish( QWidget* widget )
+ 			QFrame::Shape shape = frame->frameShape();
+ 			if (shape == QFrame::ToolBarPanel || shape == QFrame::MenuBarPanel)
+ 				widget->removeEventFilter(this);
+-		} 
++		}
+ 	}
++	if (widget->isTopLevel() && d->menuHandler && useDropShadow(widget))
++		widget->removeEventFilter(d->menuHandler);
+ }
+ 
+ 
+@@ -1997,7 +2013,7 @@ void TransparencyHandler::bottomShadow(Q
+ }
+ 
+ // Create a shadow of thickness 4.
+-void TransparencyHandler::createShadowWindows(const QPopupMenu* p)
++void TransparencyHandler::createShadowWindows(const QWidget* p)
+ {
+ #ifdef Q_WS_X11
+ 	int x2 = p->x()+p->width();
+@@ -2044,7 +2060,7 @@ void TransparencyHandler::createShadowWi
+ #endif
+ }
+ 
+-void TransparencyHandler::removeShadowWindows(const QPopupMenu* p)
++void TransparencyHandler::removeShadowWindows(const QWidget* p)
+ {
+ #ifdef Q_WS_X11
+ 	ShadowMap::iterator it = shadowMap().find(p);
+@@ -2070,7 +2086,7 @@ bool TransparencyHandler::eventFilter( Q
+ 	// Copyright (C) 2000 Daniel M. Duley <mosfet@kde.org>
+ 
+ 	// Added 'fake' menu shadows <04-Jul-2002> -- Karol
+-	QPopupMenu* p = (QPopupMenu*)object;
++	QWidget* p = (QWidget*)object;
+ 	QEvent::Type et = event->type();
+ 
+ 	if (et == QEvent::Show)
+@@ -2109,13 +2125,23 @@ bool TransparencyHandler::eventFilter( Q
+ 		// * shadows after duplicate show events.
+ 		// * TODO : determine real cause for duplicate events
+ 		// * till 20021005
+-		if (dropShadow && p->width() > 16 && p->height() > 16 && !shadowMap().contains( p ))
++		if ((dropShadow  || useDropShadow(p))
++		    && p->width() > 16 && p->height() > 16 && !shadowMap().contains( p ))
+ 			createShadowWindows(p);
+ 	}
++        else if (et == QEvent::Resize && p->isShown() && p->isTopLevel())
++        {
++		// Handle drop shadow
++		if (dropShadow || useDropShadow(p))
++		{
++			removeShadowWindows(p);
++			createShadowWindows(p);
++		}
++        }
+ 	else if (et == QEvent::Hide)
+ 	{
+ 		// Handle drop shadow
+-		if (dropShadow)
++		if (dropShadow || useDropShadow(p))
+ 			removeShadowWindows(p);
+ 
+ 		// Handle translucency
+@@ -2140,7 +2166,7 @@ void TransparencyHandler::blendToColor(c
+ }
+ 
+ 
+-void TransparencyHandler::blendToPixmap(const QColorGroup &cg, const QPopupMenu* p)
++void TransparencyHandler::blendToPixmap(const QColorGroup &cg, const QWidget* p)
+ {
+ 	if (opacity < 0.0 || opacity > 1.0)
+ 		return;
+@@ -2153,7 +2179,10 @@ void TransparencyHandler::blendToPixmap(
+ 		return;
+ 
+ 	// Allow styles to define the blend pixmap - allows for some interesting effects.
+-	kstyle->renderMenuBlendPixmap( blendPix, cg, p );
++	if (::qt_cast<QPopupMenu*>(p))
++		kstyle->renderMenuBlendPixmap( blendPix, cg, ::qt_cast<QPopupMenu*>(p) );
++	else
++		blendPix.fill(cg.button());	// Just tint as the default behavior
+ 
+ 	QImage blendImg = blendPix.convertToImage();
+ 	QImage backImg  = pix.convertToImage();
+@@ -2166,13 +2195,17 @@ void TransparencyHandler::blendToPixmap(
+ // Here we go, use XRender in all its glory.
+ // NOTE: This is actually a bit slower than the above routines
+ // on non-accelerated displays. -- Karol.
+-void TransparencyHandler::XRenderBlendToPixmap(const QPopupMenu* p)
++void TransparencyHandler::XRenderBlendToPixmap(const QWidget* p)
+ {
+ 	KPixmap renderPix;
+ 	renderPix.resize( pix.width(), pix.height() );
+ 
+ 	// Allow styles to define the blend pixmap - allows for some interesting effects.
+-	kstyle->renderMenuBlendPixmap( renderPix, p->colorGroup(), p );
++	if (::qt_cast<QPopupMenu*>(p))
++	   kstyle->renderMenuBlendPixmap( renderPix, p->colorGroup(),
++			   ::qt_cast<QPopupMenu*>(p) );
++	else
++		renderPix.fill(p->colorGroup().button());	// Just tint as the default behavior
+ 
+ 	Display* dpy = qt_xdisplay();
+ 	Pixmap   alphaPixmap;

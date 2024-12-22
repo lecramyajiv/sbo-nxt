@@ -1,0 +1,28 @@
+commit 1ee1ffbae69dc78721af139f0794628571fd35ef
+Author: Slávek Banko <slavek.banko@axis.cz>
+Date:   1386900429 +0100
+
+    Fix FTBFS with libfreetype6 >= 2.5.x
+    This resolves Bug 1765
+
+diff --git a/config.tests/x11/xfreetype.test b/config.tests/x11/xfreetype.test
+index 5cabc32..d4cb4ba 100755
+--- config.tests/x11/xfreetype.test
++++ config.tests/x11/xfreetype.test
+@@ -116,12 +116,15 @@ fi
+ # check for freetype2 headers
+ FREETYPE2_INCDIR=
+ if [ "$XFT" = "yes" ]; then
+-    INC="freetype2/freetype/freetype.h"
+     XDIRS=`sed -n -e '/^QMAKE_INCDIR_X11[	]*=/ { s/[^=]*=[	 ]*//; s/-I/ /g; p; }' $XCONFIG`
+     LDIRS=`sed -n -e '/^QMAKE_INCDIR[	]*=/ { s/[^=]*=[	 ]*//; s/-I/ /g; p; }' $XCONFIG`
+     INCDIRS="$IN_INCDIRS $XDIRS $LDIRS /usr/include /include"
+     F=
+     for INCDIR in $INCDIRS; do
++	INC="freetype2/freetype/freetype.h"  # libfreetype <= 2.4.9-1.1
++	if ! [ -f $INCDIR/$INC ]; then
++	    INC="freetype2/freetype.h"  # libfreetype >= 2.5.1-1
++	fi
+ 	if [ -f $INCDIR/$INC ]; then
+ 	    # detect major version of freetype2
+ 	    FREETYPE_MAJOR=`grep "#define FREETYPE_MAJOR" $INCDIR/$INC | head -n 1 | awk '{ print \$3 }'`

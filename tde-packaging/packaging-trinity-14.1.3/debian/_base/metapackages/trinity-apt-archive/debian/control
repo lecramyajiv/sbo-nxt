@@ -1,0 +1,15 @@
+Source: trinity-apt-archive
+Section: misc
+Priority: optional
+Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
+Build-Depends: debhelper (>= 10~), cdbs
+Standards-Version: 3.8.4
+
+Package: trinity-apt-archive
+Priority: optional
+Architecture: any
+Depends: apt
+Pre-Depends: trinity-keyring
+Description: APT sources list for the Trinity Desktop Environment repository
+ This convenience package contains the APT source list files for the 
+ Trinity Desktop Environment repository.

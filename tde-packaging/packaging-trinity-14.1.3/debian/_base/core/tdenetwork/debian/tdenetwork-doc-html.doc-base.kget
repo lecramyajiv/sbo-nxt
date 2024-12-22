@@ -1,0 +1,10 @@
+Document: tdenetwork-doc-html-kget
+Title: KGet Handbook
+Author: Jonathan E. Drews
+Abstract: KGet allows you to group and manage downloads.
+Section: Apps/Web
+
+Format: HTML
+Index: /opt/trinity/share/doc/tde/HTML/en/kget/index.html
+Files: /opt/trinity/share/doc/tde/HTML/en/kget/*.html
+

@@ -1,0 +1,6 @@
+/opt/trinity/lib/trinity/tdefile_ics.la
+/opt/trinity/lib/trinity/tdefile_ics.so
+/opt/trinity/lib/trinity/tdefile_vcf.la
+/opt/trinity/lib/trinity/tdefile_vcf.so
+/opt/trinity/share/services/tdefile_ics.desktop
+/opt/trinity/share/services/tdefile_vcf.desktop

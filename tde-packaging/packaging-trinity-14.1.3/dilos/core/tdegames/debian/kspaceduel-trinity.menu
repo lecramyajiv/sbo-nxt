@@ -1,0 +1,9 @@
+?package(kspaceduel-trinity):\
+	needs="x11"\
+	section="Games/Arcade"\
+	hints="TDE"\
+	title="TDE SpaceDuel"\
+	icon32x32="/usr/share/pixmaps/kspaceduel.xpm"\
+	icon16x16="/usr/share/pixmaps/kspaceduel-16.xpm"\
+	command="/usr/games/kspaceduel"
+

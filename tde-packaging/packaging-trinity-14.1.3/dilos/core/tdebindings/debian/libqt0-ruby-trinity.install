@@ -1,0 +1,20 @@
+debian/tmp/usr/bin/rbqtsh
+debian/tmp/usr/bin/rbqtapi
+debian/tmp/usr/bin/rbuic
+debian/tmp/usr/bin/qtrubyinit
+
+debian/tmp/usr/lib/ruby/*/Qt/qtruby.rb
+debian/tmp/usr/lib/ruby/*/Qt.rb
+
+debian/tmp/usr/lib/*/*/*/qtruby.so*
+debian/tmp/usr/lib/*/*/*/qtruby.la
+
+debian/tmp/usr/lib/*/*/*/tqui.so*
+debian/tmp/usr/lib/*/*/*/tqui.la
+
+debian/tmp/usr/share/man/man1/qtrubyinit.1
+debian/tmp/usr/share/man/man1/rbqtsh.1
+debian/tmp/usr/share/man/man1/rbqtapi.1
+debian/tmp/usr/share/man/man1/rbuic.1
+
+qtruby/ChangeLog /usr/share/doc/libqt0-ruby

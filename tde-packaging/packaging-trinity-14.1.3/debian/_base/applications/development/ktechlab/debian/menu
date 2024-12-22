@@ -1,0 +1,6 @@
+?package(ktechlab-trinity):needs="X11" \
+  section="Applications/Programming" \
+  hints="TDE" \
+  title="KTechLab" \
+  command="/opt/trinity/bin/ktechlab" \
+  icon="/opt/trinity/share/pixmaps/ktechlab.xpm"

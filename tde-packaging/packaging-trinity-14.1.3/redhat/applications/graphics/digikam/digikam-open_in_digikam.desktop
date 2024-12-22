@@ -1,0 +1,8 @@
+[Desktop Action OpenDigikam]
+Exec=digikam --download-from %u
+Icon=digikam
+Name=Open in Digikam
+
+[Desktop Entry]
+Actions=OpenDigikam;
+ServiceTypes=media/gphoto2camera,media/camera_mounted,media/camera_unmounted

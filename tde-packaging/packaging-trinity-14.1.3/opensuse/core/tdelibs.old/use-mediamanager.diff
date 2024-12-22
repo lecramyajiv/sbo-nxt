@@ -1,0 +1,44 @@
+Index: kioslave/file/file.cc
+===================================================================
+--- kioslave/file/file.cc.orig
++++ kioslave/file/file.cc
+@@ -69,6 +69,7 @@
+ #include <qvaluelist.h>
+ #include <qregexp.h>
+ 
++#include <dcopref.h>
+ #include <kshred.h>
+ #include <kdebug.h>
+ #include <kurl.h>
+@@ -1609,6 +1610,31 @@ void FileProtocol::unmount( const QStrin
+ #endif /* HAVE_VOLMGT */
+ 
+     err = testLogFile( tmp );
++
++    if (err.contains("fstab") || err.contains("root")) {
++       QString olderr;
++       err = QString::null;
++
++       DCOPRef d("kded", "mediamanager");
++       d.setDCOPClient ( dcopClient() );
++       DCOPReply reply = d.call("properties", _point);
++       QString udi;
++
++       if ( reply.isValid() ) {
++           QStringList list = reply;
++           if (list.size())
++               udi = list[0];
++       }
++
++       if (!udi.isEmpty())
++           reply = d.call("unmount", udi);
++       
++       if (udi.isEmpty() || !reply.isValid())
++         err = olderr;
++       else if (reply.isValid())
++         reply.get(err);
++    }
++
+     if ( err.isEmpty() )
+ 	finished();
+     else

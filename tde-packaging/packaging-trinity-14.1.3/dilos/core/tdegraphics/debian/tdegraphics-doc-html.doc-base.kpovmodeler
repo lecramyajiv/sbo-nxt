@@ -1,0 +1,11 @@
+Document: tdegraphics-doc-html-kpovmodeler
+Title: KPovModeler Handbook
+Author: Lauri Watts, Andreas Zehender, Olivier Saraja
+Abstract: KPovModeler is a graphical 3D modeler, which can generate
+ scenes for PovRay.
+Section: Apps/Graphics
+
+Format: HTML
+Index: /usr/share/doc/tde/HTML/en/kpovmodeler/index.html
+Files: /usr/share/doc/tde/HTML/en/kpovmodeler/*.html
+

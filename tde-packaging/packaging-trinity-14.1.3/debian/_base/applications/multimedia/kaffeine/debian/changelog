@@ -1,0 +1,795 @@
+kaffeine-trinity (0.8.6-0ubuntu6) karmic; urgency=low
+
+  * Karmic rebuild
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 02 Jul 2009 16:08:00 -0600
+
+kaffeine-trinity (0.8.6-0ubuntu5) intrepid; urgency=low
+
+  * Moved Trinity to /opt/trinity
+  * Integrated properly with KDE4.2+
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 04 March 2009 01:11:00 -0600
+
+kaffeine-trinity (0.8.6-0ubuntu3) intrepid; urgency=low
+
+  * Added -trinity suffix
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 04 Dec 2008 22:52:00 -0600
+
+kaffeine (0.8.6-0ubuntu8.3) hardy-proposed; urgency=low
+
+  * install-codecs: don't loop on unsupported media (LP: #210303)
+
+ -- Harald Sitter <apachelogger@ubuntu.com>  Mon, 22 Sep 2008 13:38:25 +0200
+
+kaffeine (0.8.6-0ubuntu8.1) hardy-proposed; urgency=low
+
+  * Change kaffeine_xine-install-dvdcss.desktop
+   - Revert the dvd codec autoinstalling (LP: #226475)
+  * In debian/rules install script install-css.sh
+  * Alter debian/install-codecs
+   - handle possible loop by ffmpeg autoinstallation (http://bugs.kde.org/show_bug.cgi?id=161592)
+  * Alter kxinewidget.cpp in kubuntu_07_codecs_installation.diff
+   - Hide extra error messagebox
+   - Handling of additional situations of the codecs absense
+
+ -- Sergey Rudchenko <sergey.rudchenko@gmail.com>  Wed, 30 Apr 2008 22:32:41 +0300
+
+kaffeine (0.8.6-0ubuntu8) hardy; urgency=low
+
+  * rewrite install-codecs script in python
+  * add i18n to codec installation procedure
+
+ -- Sergey Rudchenko <sergey.rudchenko@gmail.com>  Sun, 09 Mar 2008 12:02:46 +0200
+
+kaffeine (0.8.6-0ubuntu7) hardy; urgency=low
+
+  * fix 'dash' quoting issues
+  * handle XINE_MSG_ENCRYPTED SOURCE for dvdcss installation
+  * rebuild patches
+
+ -- Sergey Rudchenko <sergey.rudchenko@gmail.com>  Mon, 03 Mar 2008 14:24:45 +0200
+
+kaffeine (0.8.6-0ubuntu6) hardy; urgency=low
+
+  * Fix Recommends, add missing commas
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 27 Feb 2008 16:50:26 +0000
+
+kaffeine (0.8.6-0ubuntu5) hardy; urgency=low
+
+  * Refactor install-codecs script
+  * Implement libdvdcss installing
+
+ -- Sergey Rudchenko <sergey.rudchenko@gmail.com>  Tue, 26 Feb 2008 19:03:36 +0200
+
+kaffeine (0.8.6-0ubuntu4) hardy; urgency=low
+
+  * Adapt install-codecs script to dash shell syntax
+
+ -- Sergey Rudchenko <sergey.rudchenko@gmail.com>  Tue, 26 Feb 2008 12:58:33 +0200
+
+kaffeine (0.8.6-0ubuntu3) hardy; urgency=low
+
+  * Set fixperms exclude for install-codecs
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 22 Feb 2008 14:29:51 +0000
+
+kaffeine (0.8.6-0ubuntu2) hardy; urgency=low
+
+  * Make install-codecs executable in debian/rules
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 04 Feb 2008 14:39:57 +0000
+
+kaffeine (0.8.6-0ubuntu1) hardy; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@kubuntu>  Tue, 22 Jan 2008 13:50:29 +0100
+
+kaffeine (0.8.5-1ubuntu2) hardy; urgency=low
+
+  * Remove depends on kaffeine-xine
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 28 Nov 2007 20:37:29 +0000
+
+kaffeine (0.8.5-1ubuntu1) hardy; urgency=low
+
+  * Merge with Debian, remaining changes:
+    - kaffeine can't depend on libxine1-ffmpeg
+    - kaffeine does depend on kaffeine-xine, remove conflicts/replaces
+    - add kaffeine-gstreamer.install and description
+    - build-dep on libgstreamer0.10-dev, libgstreamer-plugins-base0.10-dev
+    - Debian patches in debian/patches/
+    - Remove --without-gstreamer
+    - Remove DEB_DESTDIR line in debian/rules
+  * Update kubuntu_07_codecs_installation.diff and add autocodec files to install/kaffeine::
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 28 Nov 2007 19:01:00 +0000
+
+kaffeine (0.8.5-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Fathi Boudra <fboudra@free.fr>  Sat, 28 Jul 2007 19:59:41 +0200
+
+kaffeine (0.8.4-6) unstable; urgency=low
+
+  * Add patch to add AM_INIT_AUTOMAKE to configure.in.in. It fixes broken
+    modulename after relibtoolization. (Closes: #432112)
+
+ -- Fathi Boudra <fboudra@free.fr>  Wed, 18 Jul 2007 18:01:13 +0200
+
+kaffeine (0.8.4-5) unstable; urgency=low
+
+  [ Fathi Boudra ]
+  * Update desktop file for iso. It should be hidden. (Closes: #420127)
+    Thanks to Michael Biebl.
+  * Add version to xine build dependency.
+
+  [ Mark Purcell ]
+  * Update kaffeine-dbg Depends: kaffeine (= ${binary:Version}),
+    tdelibs-dbg
+
+ -- Mark Purcell <msp@debian.org>  Fri, 06 Jul 2007 10:22:19 +0100
+
+kaffeine (0.8.4-4) unstable; urgency=low
+
+  * Remove libxine1-kde recommends.
+  * Raise libxine1-ffmpeg relationship. (Closes: #426247)
+
+ -- Fathi Boudra <fboudra@free.fr>  Mon, 04 Jun 2007 22:17:33 +0200
+
+kaffeine (0.8.4-3) unstable; urgency=low
+
+  * Add libxcb1-dev and chrpath build-dependency.
+  * Add libxine1-ffmpeg and libxine1-kde recommends. (Closes: #427085)
+
+ -- Fathi Boudra <fboudra@free.fr>  Sun, 03 Jun 2007 22:10:26 +0200
+
+kaffeine (0.8.4-2) unstable; urgency=low
+
+  * Remove CMakeLists.txt
+    - Problem during upgrade: trying to overwrite
+    `/usr/share/doc/tde/HTML/en/doc/CMakeLists.txt' (Closes: #419477)
+
+ -- Mark Purcell <msp@debian.org>  Thu, 19 Apr 2007 05:50:00 +1000
+
+kaffeine (0.8.4-1) unstable; urgency=low
+
+  * New upstream release
+    - Ripping CD to OGG produces white noise on powerpc (probably
+    endianness issue) (Closes: #376025)
+    - debian/patches/Bug403749.diff removed - encorporated upstream
+    (Closes: #403749)
+    - fails to properly play files with names containing '#' character
+    (Closes: #362807)
+  * Build-Depends: libogg-dev
+  * Add /usr/share/applications/tde/kaffeine-iso.desktop
+    - play DVD ISO files on filesystem (rather than in DVD drive)
+    automatically (Closes: #402382)
+
+ -- Mark Purcell <msp@debian.org>  Sat, 14 Apr 2007 10:03:23 +0100
+
+kaffeine (0.8.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove patch for bug 390829, merged upstream
+  * Update copyright file
+  * Update lintian override
+
+ -- Fathi Boudra <fboudra@free.fr>  Mon, 27 Nov 2006 21:21:58 +0100
+
+kaffeine (0.8.2-2) unstable; urgency=low
+
+  * Kaffeine refuses to start completely (Closes: #390829)
+
+ -- Mark Purcell <msp@debian.org>  Sun,  8 Oct 2006 09:59:13 +1000
+
+kaffeine (0.8.2-1) unstable; urgency=low
+
+  [ Mark Purcell ]
+  * Update debian/watch & ~beta1
+  * New upstream release
+
+  [ Fathi Boudra ]
+  * New upstream release (Closes: #366993):
+    * DVB: cicam support for HLCI and LLCI interfaces
+    * Systray: reversed mouse wheel behaviour
+    * Playlist: added a KURLComboBox to file browser
+    * DVB: fixed fast zap lock
+    * fixed: reduced minimum window size
+    * Playlist: autoselect subtitle when unique
+  * Update copyright file
+  * Add patch to fix kaffeine_part crash, thanks to Olivier Trichet
+    (Closes: #338756)
+
+ -- Mark Purcell <msp@debian.org>  Tue, 12 Sep 2006 21:33:30 +0100
+
+kaffeine (0.8.1-3) unstable; urgency=low
+
+  [ Fathi Boudra ]
+  * Updated copyright file according to GFDL documentations
+  * Added hdparm to kaffeine Depends (Closes: #289895)
+  * Added informations about css and region setting in README.Debian
+  * Added install-css script taken from libdvdread3 package
+  * Removed x-mplayer2.desktop shipped by tdelibs (Closes: #372514)
+
+ -- Fathi Boudra <fboudra@free.fr>  Sat, 10 Jun 2006 00:25:04 +0200
+
+kaffeine (0.8.1-2) unstable; urgency=low
+
+  * Requires libxine-dev (>=1.1.1-2), various archs have build empty
+    .debs with old libxine...
+
+ -- Riku Voipio <riku.voipio@iki.fi>  Sat,  8 Apr 2006 11:26:20 +0300
+
+kaffeine (0.8.1-1) unstable; urgency=low
+
+  [ Fathi Boudra ]
+  * New upstream release
+  * Remove patch 10_gstreamer_service_menu.diff merged upstream
+  * Remove libqt3-compat-headers from Build-Depends
+
+ -- Fathi Boudra <fboudra@free.fr>  Mon,  3 Apr 2006 23:59:25 +0200
+
+kaffeine (0.8-1) experimental; urgency=low
+
+  [ Fathi Boudra ]
+  * New upstream release, Closes: #360393
+  * Clean up control
+  * Add libcdparanoia0-dev to Build-Depends
+  * Add libxtst-dev to Build-Depends (thanks to Jonathan Riddell)
+  * Disable gstreamer support, Closes: #346252, #328786
+  * Merge kaffeine-xine in kaffeine package
+
+  [ Riku Voipio ]
+  * The -dbg package feature needs cdbs (>= 0.4.37)
+  * Acknowledge NMU's: Closes: #329010, #329143, #329177, #328738
+    (Thanks to Adeodato Simó and LaMont Jones !)
+  * Remove build-dependency on g++-3.4 on selected archs, Closes: #342974
+  * Remove build-dependency on linux-kernel-headers, Closes: #328550
+  * Documentation link is correct now, Closes: #336738
+  * The new upstream version fixes a range of problems:
+  * Audio busy problem, and failure to fall back to another
+    audio sink: Closes: #328788, #336306, #358234
+  * Keyboard shortcuts no longer crash after playback, Closes: #329178
+  * Xine engine configuration dialog is now scrollable, Closes: #344093
+  * Upload to experimental since 0.8.1 is coming this week
+
+ -- Riku Voipio <riku.voipio@iki.fi>  Mon,  3 Apr 2006 23:16:16 +0300
+
+kaffeine (0.8.5-0ubuntu3) hardy; urgency=low
+
+  * Reuploaded as the buildd seems to be fixed
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 12 Nov 2007 14:09:56 +0100
+
+kaffeine (0.8.5-0ubuntu2) hardy; urgency=low
+
+  * Added kubuntu_07_codecs_installation.patch:
+    - Let kaffeine install missing codecs
+    - Patch from Sergey Rudchenko <sergey.rudchenko@gmail.com>
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 09 Nov 2007 14:06:07 +0100
+
+kaffeine (0.8.5-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 30 Jul 2007 13:01:45 +0200
+
+kaffeine (0.8.4-0ubuntu3) gutsy; urgency=low
+
+  * Removed kubuntu_07_player_parts_identification.diff
+    That patch is in the work, shouldn't have been upload,
+    as it creates a crash with the xine-part.
+    
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 28 Jun 2007 23:46:38 +0200
+
+kaffeine (0.8.4-0ubuntu2) gutsy; urgency=low
+
+  * Removed debian/tmp/usr/share/apps/kaffeine/xine_part from
+    kaffeine-xine.install - this is already being installed in kaffeine, and
+    fixes the file overwrite problem.
+
+ -- Sarah Hobbs <hobbsee@ubuntu.com>  Wed, 06 Jun 2007 16:16:07 +1000
+
+kaffeine (0.8.4-0ubuntu1) gutsy; urgency=low
+
+  * New upstream release.
+  * Added libxcb builddep.
+  * Added back kaffeine-gstreamer package
+  * Removed obsolete kubuntu_05_restore_contrast.diff
+  * Add kubuntu_06_tdeparts_mimetype_checking.diff:
+    - Makes it possible to select the engine to use.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Wed, 05 Mai 2007 11:02:23 +0100
+
+kaffeine (0.8.3-0ubuntu7) feisty; urgency=low
+
+  * Add kubuntu_05_restore_contrast.diff from SVN, fixes contrast restore
+    nice to those affected by XV on i810 washout problem
+    fixes http://bugs.kde.org/show_bug.cgi?id=138340
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  8 Mar 2007 10:15:05 +0000
+
+kaffeine (0.8.3-0ubuntu6) feisty; urgency=low
+
+  * Added kubuntu_services_list.patch, lists the services with
+    avi mimetype instead of x-mp3.
+    Closes Malone #22902
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 14 Dec 2006 17:40:34 +0200
+
+kaffeine (0.8.3-0ubuntu5) feisty; urgency=low
+
+  * Include header files in kaffeine.install
+  * Add back kaffeineoggvorbis plugin
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 19 Jan 2007 13:33:10 +0000
+
+kaffeine (0.8.3-0ubuntu4) feisty; urgency=low
+
+  * Make sure kubuntu_04_locate_wizard_stamp.diff patch applies cleanly
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 15 Jan 2007 16:56:20 +0000
+
+kaffeine (0.8.3-0ubuntu3) feisty; urgency=low
+
+  * Add back kubuntu_04_locate_wizard_stamp.diff
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 14 Jan 2007 13:34:26 +0000
+
+kaffeine (0.8.3-0ubuntu2) feisty; urgency=low
+
+  * Changed debian/control, kaffeine-xine depends on kaffeine
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 14 Dec 2006 17:40:34 +0200
+
+kaffeine (0.8.3-0ubuntu1) feisty; urgency=low
+
+  * New upstream release
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 12 Dec 2006 18:35:22 +0200
+
+kaffeine (0.8.2-2ubuntu1) feisty; urgency=low
+
+  * Merged packaging with debian
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 16 Nov 2006 02:42:34 +0200
+
+kaffeine (0.8.2-0ubuntu4) feisty; urgency=low
+
+  * Removed kubuntu_70_no_audiocd_features.patch.
+    This as been rediscussed and the choice is to keep the audio
+    features for the moment.
+    Codeine is an candidate for feisty as the default
+    video player.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 16 Nov 2006 02:42:34 +0200
+
+kaffeine (0.8.2-0ubuntu3) feisty; urgency=low
+
+  * Add kubuntu_70_no_audio_features.patch to remove audio features
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Fri, 20 Oct 2006 16:05:34 +0200
+
+kaffeine (0.8.2-0ubuntu2) edgy; urgency=low
+
+  * Add kubuntu_04_mimetypes.patch for complete mimetypes
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 11 Sep 2006 14:45:43 +0200
+
+kaffeine (0.8.2-0ubuntu1) edgy; urgency=low
+
+  * New upstream release (closed Malone #61860)
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Wed, 27 Sep 2006 02:37:43 +0200
+
+kaffeine (0.8.1-3ubuntu3) edgy; urgency=low
+
+  * Don't install x-mplayer2 mimetype, now part of KDE
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 26 Jul 2006 19:06:08 +0100
+
+kaffeine (0.8.1-3ubuntu2) edgy; urgency=low
+
+  * Added missing kaffeine-xine.install
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Thu, 18 Jul 2006 18:50:32 +0200
+
+kaffeine (0.8.1-3ubuntu1) edgy; urgency=low
+
+  * New upstream release.
+  * Removed obsolete patches.
+  * Porting existing and still required patches.
+
+ -- Anthony Mercatante <tonio@ubuntu.com>  Mon, 03 Jul 2006 19:18:45 +0200
+
+kaffeine (0.7.1-1.3ubuntu10) dapper; urgency=low
+
+  * Add kubuntu_07_system_media.diff to fix the use of system:/ in kaffeine,
+    thanks to Bastian Holst (Closes: Malone #37131)
+
+ -- Raphaël Pinson <raphink@ubuntu.com>  Mon, 22 May 2006 17:24:59 +0200
+
+kaffeine (0.7.1-1.3ubuntu9) dapper; urgency=low
+
+  * debian/cdbs/kde.mk:
+    - added dh_iconcache.
+
+ -- Daniel Holbach <daniel.holbach@ubuntu.com>  Thu, 18 May 2006 20:59:38 +0200
+
+kaffeine (0.7.1-1.3ubuntu8) dapper; urgency=low
+
+  * Remove version on build-dep of libxine-dev so
+    Kaffeine can be backported 
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 13 Apr 2006 21:04:06 +0100
+
+kaffeine (0.7.1-1.3ubuntu7) dapper; urgency=low
+
+  * Add kubuntu_06_ioslave_protocols.diff, restrict protocols
+    KDE will pass to kaffeine, stop it copying system:/ files.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 12 Apr 2006 13:09:50 +0000
+
+kaffeine (0.7.1-1.3ubuntu6) dapper; urgency=low
+
+  * SECURITY UPDATE: fix buffer overflow
+  * Add kubuntu_05_buffer_overflow.diff
+  * Remotely supplied playlists can be used to execute 
+    arbitrary code on the local machine using a buffer 
+    overflow in http_peek() while creating HTTP requests
+  * kaffeine/player-parts/playlistimport.cpp: replace
+    custom made checks with those from KIO::NetAccess
+  * References:
+    CVE-2006-0051
+    http://www.kde.org/info/security/advisory-20060404-1.txt
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu,  6 Apr 2006 11:01:04 +0100
+
+kaffeine (0.7.1-1.3ubuntu5) dapper; urgency=low
+
+  * Add build-dep on libxtst-dev, should stop screensaver cutting in
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun,  2 Apr 2006 20:38:14 +0100
+
+kaffeine (0.7.1-1.3ubuntu4) dapper; urgency=low
+
+  * Remove GStreamer 0.8 build-dep and kaffeine-gstreamer package
+    (GStreamer 0.8 now unsupported upstream, waiting on 0.10 support)
+  * Remove debian/patches/kubuntu_01_default_gstreamer.diff
+  * Remove GCC 3.4 usage on hppa,arm,m68k
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed,  1 Feb 2006 12:01:23 +0000
+
+kaffeine (0.7.1-1.3ubuntu3) dapper; urgency=low
+
+  * rebuild to depend on libxine-main1 instead of libxine1c2 (and don't
+      break upgrades from breezy anymore)
+
+ -- Michael Vogt <michael.vogt@ubuntu.com>  Mon, 23 Jan 2006 10:50:15 +0100
+
+kaffeine (0.7.1-1.3ubuntu2) dapper; urgency=low
+
+  * Rebuild because libXft.la is gone
+
+ -- Stephan Hermann <sh@sourcecode.de>  Sat, 14 Jan 2006 13:48:30 +0100
+
+kaffeine (0.7.1-1.3ubuntu1) dapper; urgency=low
+
+  * Sync with Debian
+  * Rebuild for libstdc++ transition
+  * Alter rules file for .pot generation and add kubuntu_01_kdepot.diff
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue,  6 Dec 2005 23:50:31 +0000
+
+kaffeine (0.7.1-1.3) unstable; urgency=low
+
+  * NMU with maintainer's approval. All changes come straight from a patch
+    sent by Modestas Vainius <geromanas@mailas.com> to the BTS. Thanks!
+
+  * Remove 13_xine_service_menu.diff, since it breaks loading of
+    libkaffeinepart (the name "Kaffeine" is hardcored in many places in the
+    code, so leave it). Closes: #328738
+
+  * Make kaffeine depend on kaffeine-xine | kaffeine-gstreamer instead of
+    backwards, so that the XINE engine (the only one it used to exist) gets
+    installed by default when upgrading from << 0.7 versions.
+
+  * Update 12_gstreamer_service_menu.diff to leave "Name" section unchanged;
+    no need to risk breaking things (like the bug above) in the future. Leave
+    "Icon" unchanged as well.
+
+ -- Adeodato Simó <dato@the-barrel.org>  Fri, 11 Nov 2005 00:06:35 +0100
+
+kaffeine (0.7.1-1.2ubuntu1) dapper; urgency=low
+
+  * Sync with Debian
+  * Fix kubuntu_04_locate_wizard_stamp.diff for http://bugzilla.ubuntu.com/17109
+    Kaffeine install wizard runs everytime I run kaffeine  
+  * Alter kaffeine.install to install /usr/lib/libkmediapart.so
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 28 Oct 2005 03:18:37 +0000
+
+kaffeine (0.7.1-1.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * work around gcc-4.0 FTBFS on some architectures
+
+ -- LaMont Jones <lamont@debian.org>  Fri, 14 Oct 2005 19:28:28 +0000
+
+kaffeine (0.7.1-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+
+  * Make Kaffeine not crash at exist. For this, don't call ./configure with
+    --with-xorg and --with-xinit-workaround. Kudos to Christopher Martin for
+    diagnosing the issue. Closes: #329010, #329143
+
+  * Make Kaffeine not display the configuration wizard every time it starts.
+    For this, remove bogus patch kubuntu_04_locate_wizard_stamp.diff (bug:
+    even if locate() is used to check for system-wide configuration files, the
+    file to write must be obtained with locateLocal()). Closes: #329177
+
+ -- Adeodato Simó <asp16@alu.ua.es>  Sun, 25 Sep 2005 20:08:28 +0200
+
+kaffeine (0.7.1-1) unstable; urgency=low
+
+  * New upstream release. Closes: #326491
+  * Built against tdelibs4c2. Closes: #325074
+  * Removed kubuntu_03_gstreamer_stop.diff, which was included upstream.
+  * Updated kubuntu_04_locate_wizard_stamp.diff.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Sun, 11 Sep 2005 02:19:50 -0400
+
+kaffeine (0.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * Removed code that moved the menu file, as dh_installmenu does it now.
+  * Removed patches that were included upstream.
+  * Updated patches that weren't.
+  * Moved 14_resume-playback.diff into old_patches/ - i.e. dropped it
+    (hopefully temporarily).
+  * Add DVB and GStreamer Build-Depends.
+  * Split playing engines into kaffeine-gstreamer and kaffeine-xine.
+  * Added Recommends and Suggests for several GStreamer plugins.
+  * Updated package description.
+  * Added 12_gstreamer_service_menu.diff, based on Debian's patch
+    kubuntu_02_gstreamer_service_menu.diff to change name, icon and MIME types
+  	of the GStreamer part.
+  * Added 13_xine_service_menu.diff to change name of the xine part.
+  * Added kubuntu_03_gstreamer_stop.diff from Debian to not attempt to play
+    the logo file when the stop button is pressed.
+  * Added 16_xine_stop.diff to not attempt to play the logo file when the stop
+    button is pressed.
+  * Re-added the logo files.
+  * Added dbg-packages.diff to source package in case users want to build -dbg
+    packages. They haven't helped me fix the bug I was trying to fix (the
+    100% CPU on exit bug), so I'm not shipping them at this time.
+  * Added a README to explain how to build the -dbg packages, and to note a
+    workaround for the 100%-CPU bug.
+  * Removed notes about kaffeine-dev from kaffeine.TODO, since they were
+    out-of-date and really just unnecessary.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Tue,  9 Aug 2005 20:37:05 -0400
+
+kaffeine (0.6-2) unstable; urgency=low
+
+  * Fixed copyright holders in debian/copyright.
+  * Replaced GPL statement with the boilerplate one.
+  * Added an XPM icon for use in the Debian menu.
+  * Changed a 'mv -f' to 'mv' in debian/rules.
+  * Added patch from Jens Seidel <jensseidel@users.sf.net> to address some
+    typos. Closes: #314025
+  * Moved menu file from /usr/lib/menu to /usr/share/menu.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Mon, 13 Jun 2005 18:07:12 -0400
+
+kaffeine (0.7-0ubuntu4) breezy; urgency=low
+
+  * Fix description of kaffeine-xine
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 12 Aug 2005 19:36:47 +0000
+
+kaffeine (0.7-0ubuntu3) breezy; urgency=low
+
+  * Update kubuntu_03_gstreamer_stop.diff, sync with CVS
+  * Add kubuntu_04_locate_wizard_stamp.diff so wizard can be turned off globally
+  * Sync changelog with Debian
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 12 Aug 2005 18:57:03 +0000
+
+kaffeine (0.7-0ubuntu2) breezy; urgency=low
+
+  * Add kubuntu_03_gstreamer_stop.diff to make a playing stop by stopping
+    not by playing the logo file
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 10 Aug 2005 22:27:53 +0000
+
+kaffeine (0.7-0ubuntu1) breezy; urgency=low
+
+  * New upstream release
+  * Add DVB and GStreamer build-deps
+  * Split playing engines into kaffeine-gstreamer and kaffeine-xine
+  * Add kubuntu_01_default_gstreamer.diff to default to GStreamer
+  * Add kubuntu_02_gstreamer_service_menu.diff to use standard Kaffine icon for 
+    GStreamer engine and open same media mimetypes.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon,  8 Aug 2005 13:13:39 +0000
+
+kaffeine (0.6-1) unstable; urgency=low
+
+  * New upstream release.
+  * Upstream added ability to disable the "Pause video when hidden"
+    setting. Closes: #298205
+  * Upstream fixed the bug causing the "Pause video when hidden" to unpause
+    kaffeine even when it was paused manually. Closes: #298204
+  * Upstream fixed the multiple xine error dialog bug. Closes: #293692
+  * Upstream kinda fixed the problem with opening m3u playlists. You have to
+    drag-and-drop the file onto kaffeine for it to work. Closes: #289460
+  * Xine provides libdvdread and libdvdnav functionality. Closes: #295068
+  * Forward-ported patches.
+  * Added a patch from CVS to make the "Append to Kaffeine Playlist service
+    menu only show up for mimetypes that kaffeine can actually use.
+  * Renamed "Save State" feature to "Resume Playback"
+  * Added icon to Debian menu entry.
+  * Updated the manpage.
+  * Updated authors in debian/control and debian/copyright.
+  * Moved HTML docs to the right place. I guess nobody missed them.
+  * Added an exclude to keep dh_compress from compressing .docbook files.
+
+  Riku Voipio:
+
+  * Add myself as uploader
+  * Fix kaffeine.menu
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Sun, 20 Mar 2005 12:29:08 -0500
+
+kaffeine (0.6-0ubuntu6) breezy; urgency=low
+
+  * Rebuild package for new C++ ABI.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 30 May 2005 20:06:33 +0000
+
+kaffeine (0.6-0ubuntu5) breezy; urgency=low
+
+  * added --with-xorg compile option, in same special cases
+    kaffeine hangs on start, it will fix this issue. 
+    
+ -- Andreas Mueller <amu@ubuntu.com>  Thu, 12 May 2005 19:53:27 +0200
+
+kaffeine (0.6-0ubuntu4) breezy; urgency=low
+
+  * merge with debian
+  
+ -- Andreas Mueller <amu@ubuntu.com>  Fri, 15 Apr 2005 22:58:03 +0200
+
+kaffeine (0.6-0ubuntu2) hoary; urgency=low
+
+  * added missing builddepend libqt3-compat-headers 
+
+ -- Andreas Mueller <amu@ubuntu.com>  Sun, 27 Mar 2005 23:26:34 +0000
+
+kaffeine (0.6-0ubuntu1) hoary; urgency=low
+
+  * New upstream release
+
+ -- Andreas Mueller <amu@ubuntu.com>  Wed, 23 Mar 2005 00:18:48 +0000
+
+kaffeine (0.5-1ubuntu1.1) hoary; urgency=low
+
+  * sync with debian 
+
+ -- Andreas Mueller <amu@ubuntu.com>  Sun, 13 Feb 2005 00:01:04 +0100
+
+kaffeine (0.5-1) unstable; urgency=low
+
+  * New upstream release. Closes: #289488
+  * Dropped patches that were included upstream.
+  * Updated patches that weren't.
+  * Refactored part of the save-state patch to better detect whether kaffeine
+    was playing and/or paused on exit.
+  * Added a toggle to the view menu: "Save State"
+  * Added a patch to re-add skip-ahead and skip-back.
+  * Added a patch to remove the broken, useless "preserve aspect" toggle.
+    Closes: #281188
+  * Split off *.h and *.so; not shipping kaffeine-dev at this time.
+  * Removed /usr/share/lintian/overrides/kaffeine
+  * Tweaked package description - it still needs work.
+  * Removed /usr/share/apps/kaffeine/logo .
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Thu,  6 Jan 2005 22:25:12 -0500
+
+kaffeine (0.4.92+0.5rc2-3) unstable; urgency=low
+
+  * Add suggests for libdvdread3 and libdvdnav4.
+  * Tightened build-depends for tdelibs4-dev.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Mon, 13 Dec 2004 12:04:36 -0500
+
+kaffeine (0.4.92+0.5rc2-2) unstable; urgency=low
+
+  * Don't resume on startup if URLs are passed as command-line arguments.
+    Closes: #281192
+  * Remove all CVS dirs before building. Thanks suy!
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Sun, 14 Nov 2004 14:57:44 -0500
+
+kaffeine (0.4.92+0.5rc2-1) unstable; urgency=low
+
+  * New upstream release. Closes: #278832
+  * Upstream fixed buffer overflow.
+  * No longer crashes while playing audio streams. Closes: #249889, #253601
+  * Upstream added PlayAudioCD() DCOP function. Closes: #272246
+  * Upstream fixed stop functionality. Closes: #272355
+  * Verified that playlists can be saved. Closes: #279354
+  * Bookmarks don't exist anymore. Closes: #276710
+  * Added patch to fix HTTP_PROXY crash. Closes: #279748
+  * Added a patch to remember the position in the current file on exit,
+    and to return to that position on startup.
+  * Changed default UI a bit to make it less cluttered.
+  * Massive changes upstream broke debian/rules so I redid the packaging using
+    CDBS, and as little magic as possible.
+  * Made package description a little better.
+  * Added /usr/share/lintian/overrides/kaffeine until I make a decision on
+    if/how I will split kaffeine into multiple packages.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Mon,  8 Nov 2004 11:22:38 -0500
+
+kaffeine (0.4.3.1-2) unstable; urgency=low
+
+  * Diverted user settings to '~/.kde/share/apps/kaffeine'. Closes: #261245
+  * Removed logo.avi - if this is a big problem, we can talk.
+  * Now build-depends on libxine-dev >= 1-rc5-1. Closes: #268819 
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Tue,  7 Sep 2004 23:11:30 -0400
+
+kaffeine (0.4.3.1-1) unstable; urgency=low
+
+  * This version corresponds to '0.4.3b' upstream.
+  * The mozilla plugin has been split at the source level upstream. Removed
+    all references to kaffeine-mozilla.
+  * upstream dropped the SuperKaramba theme. Removed related patches.
+  * /usr/share/mimelnk/application/x-mplayer2.desktop somehow got lost
+    during Chris' NMU. I put it back.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Mon, 17 May 2004 11:22:39 -0400
+
+kaffeine (0.4.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Improved the manpage
+  * Thanks Chris. Closes: #245062
+  * SuperKaramba theme accidentally broken. Fixed.
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Mon,  3 May 2004 16:32:03 -0400
+
+kaffeine (0.4.2-1.1) unstable; urgency=low
+
+  * NMU.
+  * debian dir redone with permission of maintainer.
+  * Install docs into /usr/share/doc/tde/HTML. (Closes: #245062)
+
+ -- Christopher L Cheney <ccheney@debian.org>  Thu, 22 Apr 2004 00:30:00 -0500
+
+kaffeine (0.4.2-1) unstable; urgency=low
+
+  * Initial Release.
+  * Generated manpage with help2man and tweaked it a bit
+  * Fixed a bug in kaffeine/Makefile.am that made libkaffeinepart.(so|la)
+     be installed into /usr/lib instead of /usr/lib/trinity
+  * Split into two packages: kaffeine and kaffeine-mozilla
+  * Fixed a bug in configure.in.in that made kaffeineplugin.(so|la) be
+     installed into /usr/lib. I put it in /usr/lib/mozilla/plugins and
+     symlinks to it in /usr/lib/mozilla-firefox/plugins and
+     /usr/lib/mozilla-snapshot/plugins.
+  * Had to remove debian/kaffeine/usr/share/services/mms.protocol and
+     debian/kaffeine/usr/share/mimelnk/video/x-ms-wmv.desktop (thanks grepper!)
+  * Put the SuperKaramba theme in /usr/share/superkaramba/themes/kaffeine_bw/
+
+ -- Zack Cerza <zcerza@coe.neu.edu>  Mon, 05 Apr 2004 22:41:00 -0500
+
