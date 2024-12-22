@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+    |-----handy-ruler------------------------------------------------------|
+libr: libr (Resource Manager library)
+libr:
+libr: This library is intended to provide an easy to use mechanism
+libr: for managing (embedding, retrieving, deleting) resources in
+libr: ELF binaries.  The library provides a solid API and ABI that
+libr: implements the preliminary spec for adding ELF resources.
+libr:
+libr:
+libr:
+libr: Homepage:https://trinitydesktop.org
+libr:

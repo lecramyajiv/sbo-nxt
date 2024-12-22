@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+        |-----handy-ruler------------------------------------------------------|
+tqca-tls: tqca-tls (TQT Cryptographic Architecture)
+tqca-tls:
+tqca-tls: This library provides an easy API for the following features:
+tqca-tls: SSL/TLS,X509,SASL,RSA,Hashing and Ciphers.Functionality is
+tqca-tls: supported via plugins.This is useful for avoiding dependence
+tqca-tls: on a particular crypto library and makes upgrading easier/
+tqca-tls:
+tqca-tls:
+tqca-tls:
+tqca-tls: Homepage:https://trinitydesktop.org
+tqca-tls:

@@ -1,0 +1,142 @@
+#!/bin/bash
+
+# Slackware build script for libr
+
+# Copyright 2024 Vijay Marcel
+# All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#       http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=libr
+VERSION=${VERSION:-14.1.3}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-txz}
+SRCNAM=${SRCNAM:-libr-trinity}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=pentium4 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.xz
+cd $SRCNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+# uses newer cmake and ninja
+# Add these line to the subsequent deps
+
+export CC=gcc
+export CXX=g++
+export ld=/usr/bin/ld
+
+export b=${b:-/opt/bin}
+export s=${s:-/opt/share}
+export l=${l:-/opt/lib64}
+export i=${i:-/opt/include/}
+export c=${c:-$s/cmake}
+export m=${m:-$s/Modules}
+
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+
+prefix="/opt/trinity"
+mkdir -pv $PKG$prefix
+
+export BINDIR=$prefix/bin
+export INCDIR=$prefix/include
+export PRIV_INC_DIR=$prefix/include/private
+export SYSCONFDIR=$prefix/etc
+export LIBDIR=$prefix/lib${LIBDIRSUFFIX}
+export LIBDIR1=$LIBDIR/plugins/styles
+export LIBDIR2=$LIBDIR/tqt
+export L3=$LIBIDR/plugins/inputmethods
+export L4=$LIBDIR/plugins/designer
+export L5=$LIBDIR/plugins/crypto
+export MANDIR=$prefix/man
+export PKGCONF_DIR=$LIBDIR/pkgconfig
+
+export PATH=$b:$s:$l:$i:$c:$m:$BINDIR:$INCDIR:$PRIV_INC_DIR:$LIBDIR:$LIBDIR1:$LIBDIR2:$L3:$L4:$L5:$PATH
+export PKG_CONFIG_PATH=$PKGCONF_DIR:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$l:$LIBDIR:$LIBDIR1:$LIBDIR2:$L3:$L4:$L5:$LD_LIBRARY_PATH
+
+cmake -B build -S $TMP/$SRCNAM-$VERSION -G Ninja \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=$prefix \
+    -DCMAKE_INSTALL_BINDIR=${BINDIR} \
+    -DLIB_INSTALL_DIR=${LIBDIR} \
+    -DMAN_INSTALL_DIR=${MANDIR} \
+    -DINCLUDE_INSTALL_DIR=${INCDIR} \
+    -DPKGCONFIG_INSTALL_DIR=${PKGCONF_DIR} \
+    -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build
+DESTDIR=$PKG cmake --install build
+
+# Don't ship .la files:
+rm -vf $PKG$prefix/lib${LIBDIRSUFFIX}/*.la
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+find $PKG$MANDIR/man3 -type f -exec gzip -9 {} \;
+for i in $( find $PKG$MANDIR/man3 -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS COPYING ChangeLog README $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

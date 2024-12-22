@@ -1,0 +1,6 @@
+aRts is a short form for "analog realtime synthesizer".
+aRts is highly modular, creating and processing sound using small
+modules performing specific tasks.These may create a waveform
+play samples, filter data, add signals, perform effects like
+delay/flanger/chorus, or output the data to the soundcard.
+

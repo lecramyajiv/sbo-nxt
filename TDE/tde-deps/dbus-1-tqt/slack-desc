@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+          |-----handy-ruler------------------------------------------------------|
+dbus-1-tqt: dbus-1-tqt (Qt4 Dbus bindings)
+dbus-1-tqt:
+dbus-1-tqt: Some Qt4 based code had no direct equivalent in Qt3.Cases where this
+dbus-1-tqt: transition to Qt3 might not be fully correct are marked
+dbus-1-tqt: with FIXME-QT4.Depending on the use case it might be necessary
+dbus-1-tqt: to extend QDBusMesssage to allow marshalling/de-marshalling
+dbus-1-tqt: based on an application provided helper as the Qt3 QVariant
+dbus-1-tqt: can not handle all cases.
+dbus-1-tqt:
+dbus-1-tqt: Homepage:https://trinitydesktop.org
+dbus-1-tqt:

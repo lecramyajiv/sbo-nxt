@@ -1,0 +1,5 @@
+Polkit-tqt is a library that lets developers use the PolicyKit
+API through a nice TQt-styled API. It is mainly a wrapper around
+TQAction and TQButton that lets you integrate those two component
+easily with PolicyKit.
+

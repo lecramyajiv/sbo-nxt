@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+          |-----handy-ruler------------------------------------------------------|
+polkit-tqt: polkit-tqt (Policykit API)
+polkit-tqt:
+polkit-tqt: Polkit-tqt is a library that lets developers use the PolicyKit
+polkit-tqt: API through a nice TQt-styled API. It is mainly a wrapper around
+polkit-tqt: TQAction and TQButton that lets you integrate those two component
+polkit-tqt: easily with PolicyKit.
+polkit-tqt:
+polkit-tqt:
+polkit-tqt:
+polkit-tqt: Homepage:https://trinitydesktop.org
+polkit-tqt:

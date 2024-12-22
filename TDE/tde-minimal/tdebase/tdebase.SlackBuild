@@ -1,0 +1,338 @@
+#!/bin/bash
+
+# Slackware build script for tdebase-1
+# Builds without xsessions or xinitrc
+
+# Copyright 2024 Vijay Marcel
+# All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#       http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=tdebase
+VERSION=${VERSION:-14.1.3}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-txz}
+SRCNAM=${SRCNAM:-tdebase-trinity}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=pentium4 -mtune=generic -pipe -O2 -fPIC -I/usr/include/tqt"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC -I/usr/include/tqt"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.xz
+cd $SRCNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+## make default tdm screen text clearer against dark background and align login button with clickable area
+## edit color="#ffff74" and/or color="#ff0000" for your own choice
+echo $'
+--- tdm/kfrontend/themes/o2_enterprise/enterprise.xml
++++ tdm/kfrontend/themes/o2_enterprise/enterprise.xml
+@@ -12 +12 @@
+-			<normal color="#000000" font="Sans 10" />
++			<normal color="#ffff74" font="Sans 10" />
+@@ -39 +39 @@
+-			<pos width="box" x="540" y="188" anchor="c" height="box" />
++			<pos width="38" x="540" y="188" anchor="c" height="box" />
+@@ -42 +42 @@
+-					<pos x="90%" y="50%" anchor="c" />
++					<pos x="40%" y="50%" anchor="c" />
+@@ -59 +59 @@
+-								<normal color="#000000" font="Sans Condensed 10" />
++								<normal color="#ffff74" font="Sans Condensed 10" />
+@@ -64 +64 @@
+-								<normal color="#000000" font="Sans Condensed 10" />
++								<normal color="#ffff74" font="Sans Condensed 10" />
+@@ -86,2 +86,2 @@
+-				<pos x="435" y="293" anchor="s" />
+-				<normal color="#CD0000" font="Sans 10" />
++				<pos x="435" y="240" anchor="s" />
++				<normal color="#ff0000" font="Sans 11" />
+@@ -93,2 +93,2 @@
+-				<normal color="#CD0000" font="Sans 10" />
+-				<pos x="435" y="323" anchor="s" />
++				<normal color="#ff0000" font="Sans 11" />
++				<pos x="435" y="260" anchor="s" />
+' | patch -N -p0 || true
+
+
+## enable konqueror filemanagement ViewMode to be set - TDE bug 1963
+echo $'
+--- konqueror/listview/konq_detailedlistview.desktop
++++ konqueror/listview/konq_detailedlistview.desktop
+@@ -86,0 +87 @@
++X-TDE-BrowserView-Built-Into=konqueror
+--- konqueror/iconview/konq_iconview.desktop
++++ konqueror/iconview/konq_iconview.desktop
+@@ -87,0 +88 @@
++X-TDE-BrowserView-Built-Into=konqueror
+--- konqueror/iconview/konq_multicolumnview.desktop
++++ konqueror/iconview/konq_multicolumnview.desktop
+@@ -87,0 +88 @@
++X-TDE-BrowserView-Built-Into=konqueror
+--- konqueror/listview/konq_infolistview.desktop
++++ konqueror/listview/konq_infolistview.desktop
+@@ -84,0 +85 @@
++X-TDE-BrowserView-Built-Into=konqueror
+--- konqueror/listview/konq_textview.desktop
++++ konqueror/listview/konq_textview.desktop
+@@ -87,0 +88 @@
++X-TDE-BrowserView-Built-Into=konqueror
+--- konqueror/listview/konq_treeview.desktop
++++ konqueror/listview/konq_treeview.desktop
+@@ -87,0 +88 @@
++X-TDE-BrowserView-Built-Into=konqueror
+' | patch -N -p0 || true
+
+## allow for configuration files directory == *tde*
+## and plugins in $INSTALL_TDE/lib$LIBDIRSUFFIX/tde
+sed -i "s|trinity|/opt/trinity/lib${LIBDIRSUFFIX}/plugins|g" tdm/config.def || true
+sed -i "s|/etc/trinity|/opt/trinity/share/config|" tdm/kfrontend/gentdmconf.c || true
+sed -i "s|trinity|/opt/trinity/lib${LIBDIRSUFFIX}/plugins|" tdm/kfrontend/gentdmconf.c || true
+sed -i "s|trinity|/opt/trinity/lib${LIBDIRSUFFIX}/plugins|" kcontrol/hwmanager/devicepropsdlg.cpp || true
+sed -i "s|trinity|/opt/trinity/lib${LIBDIRSUFFIX}/plugins|" tdeioslave/trash/testtrash.cpp || true
+
+patch -N -p0 << EOF || true
+--- translations/desktop_files/kcontrol-desktops/en_GB.po
++++ translations/desktop_files/kcontrol-desktops/en_GB.po
+@@ -1355,3 +1355,3 @@
+ msgid "Configure display ICC color profile"
+-msgstr ""
++msgstr "Configure display ICC colour profile"
+ 
+@@ -1360,3 +1360,3 @@
+ msgid "ICC;display;color;profile;"
+-msgstr ""
++msgstr "ICC;display;colour;profile;"
+ 
+@@ -1365,3 +1365,3 @@
+ msgid "Color Profile"
+-msgstr ""
++msgstr "Colour Profile"
+ 
+EOF
+
+## find htsearch - add this Slackware default path to list of possible locations
+## rather than set HTDIG_SEARCH_BINARY which fixes the location
+sed -i 's|HINTS|&\n      /var/www/cgi-bin|' khelpcenter/searchhandlers/CMakeLists.txt
+
+## correct test for sudo
+sed -i 's|^if( TDESU_BACKEND-NOTFOUND )|if( ${TDESU_BACKEND} STREQUAL "TDESU_BACKEND-NOTFOUND" )|' tdesu/CMakeLists.txt
+sed -i 's|endif( TDESU_BACKEND-NOTFOUND )|endif()|' tdesu/CMakeLists.txt
+sed -i 's|"sudo su"|sudo|' konsole/other/CMakeLists.txt
+
+# uses newer cmake and ninja
+# Add these line to the subsequent deps
+
+export CC=gcc
+export CXX=g++
+export ld=/usr/bin/ld
+
+export b=${b:-/opt/bin}
+export s=${s:-/opt/share}
+export c=${c:-$s/cmake}
+export m=${m:-$s/Modules}
+
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+
+prefix="/opt/trinity"
+mkdir -pv $PKG$prefix
+
+export BINDIR=$prefix/bin
+export INCDIR=$prefix/include
+export PRIV_INC_DIR=$prefix/include/private
+export SYSCONFDIR=$prefix/etc
+export LIBDIR=$prefix/lib${LIBDIRSUFFIX}
+export LIBDIR1=$LIBDIR/plugins/styles
+export LIBDIR2=$LIBDIR/tqt
+export MANDIR=$prefix/man
+export PKGCONF_DIR=$LIBDIR/pkgconfig
+export L3=$LIBDIR/plugins/inputmethods
+export L4=$LIBDIR/plugins/designer
+export L5=$LIBDIR/plugins/crypto
+export L6=$LIBDIR/trinity
+export L7=$L6/plugins/styles
+export L8=$L6/plugins/designer
+export L9=$LIBDIR/ksquirrel-libs
+
+export PATH=$b:$s:$c:$m:$BINDIR:$INCDIR:$PRIV_INC_DIR:$LIBDIR:$LIBDIR1:$LIBDIR2:$L3:$L4:$L5:$L6:$L7:$L8:$L9:$PATH
+export PKG_CONFIG_PATH=$PKGCONF_DIR:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$LIBDIR:$LIBDIR1:$LIBDIR2:$L3:$L4:$L5:$L6:$L7:$L8:$L9:$LD_LIBRARY_PATH
+
+cmake -B build -S $TMP/$SRCNAM-$VERSION -G Ninja \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=$prefix \
+    -DCMAKE_INSTALL_BINDIR=${BINDIR} \
+    -DLIB_INSTALL_DIR=${LIBDIR} \
+    -DMAN_INSTALL_DIR=${MANDIR} \
+    -DINCLUDE_INSTALL_DIR=${INCDIR} \
+    -DPKGCONFIG_INSTALL_DIR=${PKGCONF_DIR} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_SASL=ON \
+    -DWITH_LDAP=ON \
+    -DWITH_SAMBA=ON \
+    -DWITH_SFTP=ON \
+    -DWITH_OPENEXR=ON \
+    -DWITH_XCOMPOSITE=ON \
+    -DWITH_XCURSOR=ON \
+    -DWITH_XFIXES=ON \
+    -DWITH_XRANDR=ON \
+    -DWITH_XRENDER=ON \
+    -DWITH_LIBCONFIG=ON \
+    -DWITH_PCRE2=ON \
+    -DWITH_XTEST=ON \
+    -DWITH_OPENGL=ON \
+    -DWITH_XSCREENSAVER=ON \
+    -DWITH_LIBART=ON \
+    -DWITH_LIBUSB=ON \
+    -DWITH_LIBRAW1394=ON \
+    -DWITH_SUDO_TDESU_BACKEND=OFF \
+    -DWITH_SUDO_KONSOLE_SUPER_USER_COMMAND=OFF \
+    -DWITH_PAM=ON \
+    -DWITH_SHADOW=ON \
+    -DWITH_XDMCP=ON \
+    -DWITH_XINERAMA=ON \
+    -DWITH_ARTS=ON \
+    -DWITH_I8K=ON \
+    -DWITH_SENSORS=ON \
+    -DWITH_TDEHWLIB=ON \
+    -DWITH_UPOWER=ON \
+    -DWITH_ELFICON=OFF \
+    -DWITH_GCC_VISIBILITY=ON \
+    -DWITH_XKB_TRANSLATIONS=ON \
+    -DBUILD_TDEINIT=ON \
+    -DBUILD_L10N=ON \
+    -DBUILD_PICS=ON \
+    -DBUILD_APPLNK=ON \
+    -DBUILD_DOC=OFF \
+    -DBUILD_LIBKONQ=ON \
+    -DBUILD_KCMINIT=ON \
+    -DBUILD_KCONTROL=ON \
+    -DBUILD_TWIN=ON \
+    -DBUILD_KATE=ON \
+    -DBUILD_KONQUEROR=ON \
+    -DBUILD_TDEIOSLAVES=ON \
+    -DBUILD_KICKER=ON \
+    -DBUILD_KDESKTOP=ON \
+    -DBUILD_KONSOLE=ON \
+    -DBUILD_KLIPPER=ON \
+    -DBUILD_KMENUEDIT=ON \
+    -DBUILD_TDEPRINT=ON \
+    -DBUILD_KPERSONALIZER=ON \
+    -DBUILD_TDEPASSWD=ON \
+    -DBUILD_KTIP=ON \
+    -DBUILD_TDEEJECT=ON \
+    -DBUILD_KDIALOG=ON \
+    -DBUILD_KREADCONFIG=ON \
+    -DBUILD_TDESU=ON \
+    -DBUILD_TDM=ON \
+    -DBUILD_TDM_SYSTEMD_UNIT_FILE=OFF \
+    -DBUILD_KSMSERVER=ON \
+    -DBUILD_KSPLASHML=ON \
+    -DBUILD_STARTTDE=ON \
+    -DBUILD_KFIND=ON \
+    -DBUILD_DRKONQI=ON \
+    -DBUILD_KDCOP=ON \
+    -DBUILD_TDEDEBUGDIALOG=ON \
+    -DBUILD_KNETATTACH=ON \
+    -DBUILD_KPAGER=ON \
+    -DBUILD_KAPPFINDER=ON \
+    -DBUILD_KCHECKPASS=ON \
+    -DBUILD_KHELPCENTER=ON \
+    -DBUILD_KHOTKEYS=ON \
+    -DBUILD_TDESCREENSAVER=ON \
+    -DBUILD_KSTART=ON \
+    -DBUILD_KSYSTRAYCMD=ON \
+    -DBUILD_NSPLUGINS=ON \
+    -DBUILD_KSYSGUARD=ON \
+    -DBUILD_KXKB=ON \
+    -DBUILD_TSAK=ON \
+    -DBUILD_TDEKBDLEDSYNC=ON \
+    -DBUILD_KROOTBACKING=ON \
+    -DBUILD_TQT3INTEGRATION=ON \
+    -DBUILD_CRASHTEST=ON \
+    -DBUILD_PROFILE_SHUTDOWN=ON
+
+cmake --build build
+DESTDIR=$PKG cmake --install build
+
+# Don't ship .la files:
+# rm -vf $PKG$prefix/lib${LIBDIRSUFFIX}/*.la
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+rm -rvf $PKG/opt/trinity/share/templates/.source/emptydir
+
+mkdir -pv $PKG/etc/profile.d
+sed -e "s|@LIBDIRSUFFIX@|${LIBDIRSUFFIX}|g" $CWD/profile.d/$PRGNAM.sh > $PKG/etc/profile.d/$PRGNAM.sh
+chmod 0755 $PKG/etc/profile.d/*
+
+mkdir -pv $PKG/etc/rc.d
+install -Dvm 0755 $CWD/rc.4.local -t $PKG/etc/rc.d
+
+mkdir -pv $PKG/etc/X11/xinit
+install -Dvm 0755 $CWD/xinitrc.tde -t $PKG/etc/X11/xinit
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS COPYING COPYING-DOCS $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+find $PKG -xtype l -print -delete
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

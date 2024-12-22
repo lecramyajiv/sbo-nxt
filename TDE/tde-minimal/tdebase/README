@@ -1,0 +1,4 @@
+tdebase is the second mandatory package (besides tdelibs)
+for the Trinity Desktop Environment. Here we have various
+applications and infrastructure files and libraries.
+

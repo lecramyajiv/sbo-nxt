@@ -1,0 +1,4 @@
+This package includes libraries that abstract the underlying
+Qt system from the actual Trinity code, allowing easy,
+complete upgrades to new versions of Qt.
+

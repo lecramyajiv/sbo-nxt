@@ -1,0 +1,5 @@
+A core concept of the D-BUS implementation is that "libdbus" is
+intended to be a low-level API,similar to Xlib. Most programmers are
+intended to use the bindings to GLib, Qt, Python, Mono,
+or whatever. These bindings have varying levels of completeness.
+

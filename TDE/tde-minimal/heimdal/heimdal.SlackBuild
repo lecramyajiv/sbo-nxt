@@ -1,0 +1,186 @@
+#!/bin/bash
+
+# Slackware build script for heimdal
+
+# Copyright 2024 Vijay Marcel
+# All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#       http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=heimdal
+VERSION=${VERSION:-7.8.0}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-txz}
+SRCNAM=${SRCNAM:-heimdal-heimdal}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=pentium4 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+cd $SRCNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+export CC=gcc
+export CXX=g++
+export ld=/usr/bin/ld
+
+export b=${b:-/opt/bin}
+export s=${s:-/opt/share}
+export l=${l:-/opt/lib64}
+export i=${i:-/opt/include/}
+export c=${c:-$s/cmake}
+export m=${m:-$s/Modules}
+export p=${p:-$l/pkgconfig}
+
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+
+prefix="/opt/trinity"
+mkdir -pv $PKG$prefix
+
+export BINDIR=$prefix/bin
+export INCDIR=$prefix/include
+export PRIV_INC_DIR=$prefix/include/private
+export SYSCONFDIR=$prefix/etc
+export LIBDIR=$prefix/lib${LIBDIRSUFFIX}
+export LIBDIR1=$LIBDIR/plugins
+export LIBDIR2=$LIBDIR/tqt
+export MANDIR=$prefix/man
+export PKGCONF_DIR=$LIBDIR/pkgconfig
+
+export PATH=$b:$s:$l:$i:$c:$m:$p:$BINDIR:$INCDIR:$PRIV_INC_DIR:$LIBDIR:$LIBDIR1:$LIBDIR2:$PATH
+export PKG_CONFIG_PATH=$p:$PKGCONF_DIR:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$l:$LIBDIR:$LIBDIR1:$LIBDIR2:$LD_LIBRARY_PATH
+
+# from heimdal slackbuild by Thibaut Notteboom from SBo
+# 20220322 bkw: disable 2 of the unit tests that won't work on 32-bit,
+# because they rely on pre-generated certificates whose expiration
+# dates are ~500 years in the future (meaning past 2038, meaning a
+# 32-bit time_t can't handle it). This has been a known issue upstream
+# since at least 2019: https://github.com/heimdal/heimdal/issues/533
+[ -z "$LIBDIRSUFFIX" ] && \
+  sed -i '/^[\t ]*test_c\(hain\|ms\)[\t ]/d' lib/hx509/Makefile.??
+
+./autogen.sh
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+./configure \
+  --prefix=$prefix \
+  --libdir=$LIBDIR \
+  --sysconfdir=$prefix/etc \
+  --mandir=$MANDIR \
+  --localstatedir=$prefix/var \
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --with-openldap=/usr \
+  --with-libedit=/usr \
+  --with-sqlite3=/usr \
+  --with-libintl=/usr \
+  --with-x \
+  --with-ipv6 \
+  --without-hesiod \
+  --enable-pk-init \
+  --enable-hdb-openldap-module \
+  --enable-pthread-support \
+  --enable-osfc2  \
+  --enable-kcm \
+  --disable-static \
+  --disable-otp \
+  --with-gnu-ld
+
+make
+make install DESTDIR=$PKG
+
+# Don't ship .la files:
+rm -vf $PKG$prefix/lib${LIBDIRSUFFIX}/*.la
+rm -vf $PKG$prefix/lib/*.la
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+rm -rvf $PKG/opt/trinity/man/cat?
+find $PKG/opt/trinity/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/opt/trinity/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+find $PKG/opt/trinity/man/ -type f -exec gzip -9 {} \;
+for i in $( find $PKG/opt/trinity/man -type f -links +1 ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+find $PKG/opt/trinity/man -xtype l -delete
+
+mkdir -p $PKG/etc/rc.d
+cat $CWD/config/krb5.conf > $PKG/etc/krb5.conf.new
+cat $CWD/config/rc.kdc > $PKG/etc/rc.d/rc.kdc.new
+cat $CWD/config/rc.kadmind > $PKG/etc/rc.d/rc.kadmind-heimdal.new
+cat $CWD/config/rc.kpasswdd > $PKG/etc/rc.d/rc.kpasswdd.new
+cat $CWD/config/rc.ipropd-master > $PKG/etc/rc.d/rc.ipropd-master.new
+cat $CWD/config/rc.ipropd-slave > $PKG/etc/rc.d/rc.ipropd-slave.new
+
+mkdir -p $PKG/var/heimdal
+cat $CWD/config/kdc.conf > $PKG/var/heimdal/kdc.conf.new
+cat $CWD/config/kadmind.acl > $PKG/var/heimdal/kadmind.acl.new
+
+mkdir -pv $PKG/etc/profile.d
+sed -e "s|@LIBDIRSUFFIX@|${LIBDIRSUFFIX}|g" $CWD/profile.d/$PRGNAM.sh \
+  > $PKG/etc/profile.d/$PRGNAM.sh
+chmod 0755 $PKG/etc/profile.d/*
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a LICENSE README $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+sed -e "s|@LIBDIRSUFFIX@|$LIBDIRSUFFIX|" $CWD/doinst.sh > $PKG/install/doinst.sh
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export TDE_DIR=/opt/trinity
+export BIN_DIR=$TDE_DIR/bin
+
+if [ -x $BIN_DIR/tdm ]; then
+ exec $BIN_DIR/tdm -nodaemon -error /var/log/tdm.log
+fi

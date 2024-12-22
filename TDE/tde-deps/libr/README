@@ -1,0 +1,5 @@
+This library is intended to provide an easy to use mechanism
+for managing (embedding, retrieving, deleting) resources in
+ELF binaries.  The library provides a solid API and ABI that
+implements the preliminary spec for adding ELF resources.
+

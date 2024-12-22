@@ -1,0 +1,4 @@
+akode is a multithreaded audio library that provides arts
+with plugins to play a variety of formats such as  ogg vorbis,
+musepack,FLAC,libmpeg1,libmpeg2 and libsamplerate.
+

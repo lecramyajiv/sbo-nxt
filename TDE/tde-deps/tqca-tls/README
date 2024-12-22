@@ -1,0 +1,5 @@
+This library provides an easy API for the following features:
+SSL/TLS,X509,SASL,RSA,Hashing and Ciphers.Functionality is
+supported via plugins.This is useful for avoiding dependence
+on a particular crypto library and makes upgrading easier/
+
