@@ -1,0 +1,16 @@
+PRGNAM="wezterm"
+VERSION="20240203_110809_5046fc22"
+HOMEPAGE="https://wezfurlong.org/wezterm"
+DOWNLOAD="https://github.com/wezterm/wezterm/archive/termwiz-0.23.3/termwiz-0.23.3.tar.gz https://github.com/harfbuzz/harfbuzz/archive/8.3.0/harfbuzz-8.3.0.tar.gz https://github.com/madler/zlib/archive/v1.2.11/zlib-1.2.11.tar.gz https://github.com/glennrp/libpng/archive/8439534daa1d3a5705ba92e653eda9251246dd61/libpng-8439534daa1d3a5705ba92e653eda9251246dd61.tar.gz https://github.com/wez/freetype2/archive/e4586d960f339cf75e2e0b34aee30a0ed8353c0d/freetype2-e4586d960f339cf75e2e0b34aee30a0ed8353c0d.tar.gz https://github.com/wez/xcb-imdkit-rs/archive/215ce4b08ac9c4822e541efd4f4ffb1062806051/xcb-imdkit-rs-215ce4b08ac9c4822e541efd4f4ffb1062806051.tar.gz https://github.com/fcitx/xcb-imdkit/archive/30e2f16f9a8b0e338e25ce5e3643809a07ad41f0/xcb-imdkit-30e2f16f9a8b0e338e25ce5e3643809a07ad41f0.tar.gz"
+MD5SUM="da014a91bf67d58076fa446e91a47fae \
+        695b66f27dd3abbddce526e0b5aef74f \
+        0095d2d2d1f3442ce1318336637b695f \
+        be0fd7ed978023dbc6dfb0485ed7ae64 \
+        02e40b0f03633461d521d90bbd4d622e \
+        5eb2e09ac813c6a57cd45ab93f69f5ad \
+        f5ad6d69842265a1becc4eb3efb7ec77"
+DOWNLOAD_x86_64=""
+MD5SUM_x86_64=""
+REQUIRES="rust-opt"
+MAINTAINER="Vijay Marcel"
+EMAIL="vijaymarcel@outlook.com"
