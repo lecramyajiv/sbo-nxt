@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+        |-----handy-ruler------------------------------------------------------|
+libblkio: libblkio (Block Device I/O library)
+libblkio:
+libblkio: libblkio is a library for high-performance block device I/O
+libblkio: with support for multi queue devices. A C API is provided
+libblkio: so applications can use it from most programming languages.
+libblkio:
+libblkio:
+libblkio:
+libblkio: Homepage:https://libblkio.gitlab.io/libblkio
+libblkio:
+libblkio:
