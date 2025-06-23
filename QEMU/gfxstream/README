@@ -1,0 +1,3 @@
+Graphics streaming kit is a code generator that makes it easier to
+serialize and forward graphics API calls from one place to
+another.

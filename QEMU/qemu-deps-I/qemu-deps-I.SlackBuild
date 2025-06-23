@@ -1,0 +1,726 @@
+#!/bin/bash
+
+# Slackware build script for qemu-deps-I
+
+# Copyright 2025 Vijay Marcel
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=qemu-deps-I
+VERSION=${VERSION:-1.0}
+BUILD=${BUILD:-2}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+nprocr=$(expr $(nproc))
+sys_arch=${sys_arch:-$(uname -m)}
+
+# Dep name:
+
+# libiscsi
+iscnam=${iscnam:-libiscsi}
+iscver=${iscver:-1.20.2}
+
+# libnfs Qemu needs libnfs version < 6.0.0
+nfsnam=${nfsnam:-libnfs-libnfs}
+nfsver=${nfsver:-5.0.3}
+
+#libslirp
+slrpnam=${slrpnam:-libslirp}
+slrpver=${slrpver:-4.9.1}
+
+#libvirglrenderer
+virgnam=${virgnam:-virglrenderer}
+virgver=${virgver:-1.1.1}
+
+#usbredir
+usbnam=${usbnam:-usbredir}
+usbver=${usbver:-0.15.0}
+
+#libbpf
+bpfnam=${bpfnam:-libbpf}
+bpfver=${bpfver:-1.5.1}
+
+# bpftool
+bpftnam=${bpftnam:-bpftool}
+bpftver=${bpftver:-7.5.0}
+
+# Device tree compiler
+dtcnam=${dtcnam:-dtc}
+dtcver=${dtcver:-1.7.2}
+
+#Capstone
+capnam=${capnam:-capstone}
+capver=${capver:-5.0.6}
+
+# Numactl
+numanam=${numanam:-numactl}
+numaver=${numaver:-2.0.19}
+
+#acpica
+acpnam=${acpnam:-acpica-unix}
+acpver=${acpver:-20250404}
+
+#xattr
+xatnam=${xatnam:-xattr}
+xatver=${xatver:-1.1.4}
+
+#libtpms
+tpmnam=${tpmnam:-libtpms}
+tpmver=${tpmver:-0.10.1}
+
+#cmocka
+cmonam=${cmonam:-cmocka}
+cmover=${cmover:-1.1.7}
+
+# pmdk
+pmdnam=${pmdnam:-pmdk}
+pmdver=${pmdver:-2.1.1}
+
+# spice-protocol
+
+sprotnam=${sprotnam:-spice-protocol}
+sprotver=${sprotver:-0.14.5}
+
+# jq
+jqnam=${jqnam:-jq}
+jqver=${jqver:-1.8.0}
+
+
+case "$sys_arch" in
+   	x86_64) export ARCH=x86_64 ;;
+	     *) echo "This SlackBuild will not run on $sys_arch platform" && exit 1 ;;
+esac
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "x86_64" ]; then
+  LIBDIRSUFFIX="64"
+  PFLAGS="-fno-delete-null-pointer-checks -Wno-incompatible-pointer-types"
+  PXXFLAGS="-fno-delete-null-pointer-checks"
+  ARCHFLAGS="-march=x86-64 -mtune=native -pipe -ffunction-sections -fdata-sections -O2 -fPIC"
+  GCFLAGS="-Wl,--sort-common=ascending -Wl,--sort-section=alignment -Wl,--gc-sections -Wl,-z,unique-symbol"
+  SLKCFLAGS="$ARCHFLAGS $PFLAGS"
+  SLKCXXFLAGS="$ARCHFLAGS $PXXFLAGS"
+  SLDFLAGS="$GCFLAGS"
+else  echo "this slackbuild will work only on $ARCH" && exit 1
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+export CC=${CC:-gcc}
+export CXX=${CXX:-g++}
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCXXFLAGS"
+export LDFLAGS="$SLDFLAGS"
+
+export m=/opt/meson/bin # meson path
+
+PYVER=$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+export PYTHONPATH=/opt/python$PYVER/site-packages
+export PATH=$m:$PATH
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+
+cd $TMP
+
+# Building bpftool
+
+rm -rf $bpftnam
+tar xvf $CWD/$bpftnam-v$bpftver-amd64.tar.gz
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+mkdir -pv $PKG/usr/bin
+install -Dvm 0750 bpftool -t $PKG/usr/bin
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION/$bpftnam
+cp -av $CWD/bpfdoc/* $PKG/usr/doc/$PRGNAM-$VERSION/$bpftnam
+
+cd $TMP
+
+# Building jq
+# this is needed by libblkio
+
+rm -rf $jqnam-$jqver
+tar xvf $CWD/$jqnam-$jqver.tar.gz
+cd $jqnam-$jqver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --mandir=/usr/man \
+  --with-gnu-ld  \
+  --disable-gcov \
+  --disable-static \
+  --disable-docs
+
+make -j$nprocr
+make install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION/$jqnam
+cp -av AUTHORS COPYING README.md $PKG/usr/doc/$PRGNAM-$VERSION/$jqnam
+
+cd $TMP
+
+# Building spice-protocol
+
+rm -rf $sprotnam-$sprotver
+tar xvf $CWD/$sprotnam-$sprotver.tar.xz
+cd $sprotnam-$sprotver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" LDFLAGS="$SLDFLAGS" meson setup build $TMP/$sprotnam-$sprotver \
+    --prefix=/usr \
+    --libdir=lib${LIBDIRSUFFIX} \
+    --libexecdir=/usr/libexec \
+    --bindir=/usr/bin \
+    --sbindir=/usr/sbin \
+    --includedir=/usr/include \
+    --datadir=/usr/share \
+    --mandir=/usr/man \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --buildtype=release
+
+ninja -j$nprocr -C build
+DESTDIR=$PKG ninja -C build install
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$sprotnam
+cp -av COPYING README.md $PKG/usr/doc/$PRGNAM-$VERSION/$sprotnam
+
+cd $TMP
+
+# Building pmdk
+
+rm -rf $pmdnam-$pmdver
+tar xvf $CWD/$pmdnam-$pmdver.tar.gz
+cd $pmdnam-$pmdver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCXXFLAGS" LDFLAGS=$SLDFLAGS make -j$nprocr -C src
+CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCXXFLAGS" LDFLAGS=$SLDFLAGS make -j$nprocr -C utils
+CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCXXFLAGS" LDFLAGS=$SLDFLAGS \
+make -j$nprocr -C src LIB_PREFIX=lib${LIBDIRSUFFIX} HEADERS_DESTDIR=/usr/include  prefix=/usr PREFIX=/usr install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$pmdnam
+cp -av LICENSE.txt README.md $PKG/usr/doc/$PRGNAM-$VERSION/$pmdnam
+
+mv -v $PKG/usr/etc  $PKG/etc
+
+find $PKG/usr/lib${LIBDIRSUFFIX} -name '*.a' -type f -exec chmod 0644 {} \+
+
+cd $TMP
+
+# Building cmocka
+
+rm -rf $cmonam-$cmover
+tar xvf $CWD/$cmonam-$cmover.tar.xz
+cd $cmonam-$cmover
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+cmake -B build -S $TMP/$cmonam-$cmover \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCXXFLAGS" \
+    -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCXXFLAGS" \
+    -DCMAKE_EXE_LINKER_FLAGS:STRING="$SLDFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
+    -DCMAKE_INSTALL_BINDIR=/usr/bin \
+    -DLIB_SUFFIX=${LIBDIRSUFFIX} \
+    -DMAN_INSTALL_DIR=/usr/man \
+    -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build --parallel $nprocr
+DESTDIR=$PKG cmake --install build
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$cmonam
+cp -av AUTHORS COPYING README.md $PKG/usr/doc/$PRGNAM-$VERSION/$cmonam
+
+cd $TMP
+
+# Building libtpms
+
+rm -rf $tpmnam-$tpmver
+tar xvf $CWD/$tpmnam-$tpmver.tar.gz
+cd $tpmnam-$tpmver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+./autogen.sh
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --docdir=/usr/doc/$PRGNAM-$VERSION/$tpmnam \
+  --mandir=/usr/man \
+  --with-tpm1 \
+  --with-tpm2 \
+  --with-openssl \
+  --with-gnu-ld \
+  --disable-hardening \
+  --disable-debug \
+  --disable-test-coverage \
+  --disable-static-tests \
+  --disable-static \
+  --with-selinux=no
+
+make -j$nprocr
+make install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION/$tpmnam
+cp -av CREDITS LICENSE README $PKG/usr/doc/$PRGNAM-$VERSION/$tpmnam
+
+cd $TMP
+
+# Building xattr
+
+rm -rf $xatnam-$xatver
+tar xvf $CWD/$xatnam-$xatver.tar.gz
+cd $xatnam-$xatver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCXXFLAGS" LDFLAGS="$SLDFLAGS" python3 setup.py install --prefix=/usr --root=$PKG --optimize=1
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION/$xatnam
+cp -a README.rst LICENSE.txt $PKG/usr/doc/$PRGNAM-$VERSION/$xatnam
+
+cd $TMP
+
+# Building acpica
+
+rm -rf $acpnam-$acpver
+tar xvf $CWD/$acpnam-$acpver.tar.gz
+cd $acpnam-$acpver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+cd generate/unix
+  OPT_CFLAGS="$SLKCFLAGS" \
+  OPT_CXXFLAGS="$SLKCXXFLAGS" \
+  OPT_LDFLAGS="$SLDFLAGS" \
+  make -j$nprocr
+  make install DESTDIR=$PKG
+cd -
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$acpnam
+cp -av changes.txt $PKG/usr/doc/$PRGNAM-$VERSION/$acpnam
+
+cd $TMP
+
+# Building Numactl
+
+rm -rf $numanam-$numaver
+tar xvf $CWD/$numanam-$numaver.tar.gz
+cd $numanam-$numaver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --mandir=/usr/man \
+  --enable-shared \
+  --enable-static=no
+
+make -j$nprocr
+make install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$numanam
+cp -ar INSTALL.md README.md LICENSE.GPL2 LICENSE.LGPL2.1 $PKG/usr/doc/$PRGNAM-$VERSION/$numanam
+
+cd $TMP
+
+# Building libiscsi
+
+rm -rf $iscnam-$iscver
+tar xvf $CWD/$iscnam-$iscver.tar.gz
+cd $iscnam-$iscver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+./autogen.sh
+CFLAGS="$SLKCFLAGS -fcommon" \
+CXXFLAGS="$SLKCXXFLAGS -fcommon" \
+LDFLAGS="$SLDFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --mandir=/usr/man \
+  --docdir=/usr/doc/$iscnam \
+  --with-gnu-ld \
+  --with-gnutls \
+  --disable-static \
+  --disable-tests \
+  --disable-test-tool \
+  --disable-werror \
+  --disable-examples \
+  --disable-manpages \
+  --build=$ARCH-slackware-linux
+
+make -j$nprocr
+make install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$iscnam
+cp -av COPYING LICENCE-GPL-2.txt LICENCE-LGPL-2.1.txt  $PKG/usr/doc/$PRGNAM-$VERSION/$iscnam
+
+cd $TMP
+
+# Building libnfs
+
+rm -rf $nfsnam-$nfsver
+tar xvf $CWD/$nfsnam-$nfsver.tar.gz
+cd $nfsnam-$nfsver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+./bootstrap
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --mandir=/usr/man \
+  --enable-utils \
+  --enable-pthread \
+  --with-gnu-ld   \
+  --disable-examples \
+  --disable-dependency-tracking \
+  --disable-silent-rules \
+  --disable-static
+
+make clean
+make -j$nprocr
+make install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$nfsnam
+cp -av COPYING LICENCE* README $PKG/usr/doc/$PRGNAM-$VERSION/$nfsnam
+
+cd $TMP
+
+# Building capstone
+
+rm -rf $capnam-$capver
+tar xvf $CWD/$capnam-$capver.tar.gz
+cd $capnam-$capver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+cmake -B build -S $TMP/$capnam-$capver \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCXXFLAGS" \
+    -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCXXFLAGS" \
+    -DCMAKE_EXE_LINKER_FLAGS:STRING="$SLDFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
+    -DCMAKE_INSTALL_BINDIR=/usr/bin \
+    -DCMAKE_INSTALL_FULL_INCLUDEDIR=/usr/include \
+    -DBUILD_SHARED_LIBS=ON \
+    -DCAPSTONE_BUILD_TESTS=OFF \
+    -DBUILD_STATIC_LIBS=OFF \
+    -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build --parallel $nprocr
+DESTDIR=$PKG cmake --install build
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$capnam
+cp -av CREDITS.TXT LICENSE* README.md SPONSORS.TXT $PKG/usr/doc/$PRGNAM-$VERSION/$capnam
+
+cd $TMP
+
+# Building libslirp
+
+rm -rf $slrpnam-v$slrpver
+tar xvf $CWD/$slrpnam-v$slrpver.tar.gz
+cd $slrpnam-v$slrpver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" LDFLAGS="$SLDFLAGS" meson setup build $TMP/$slrpnam-v$slrpver \
+    -Dprefix=/usr \
+    -Dlibdir=/usr/lib${LIBDIRSUFFIX} \
+    -Dlocalstatedir=/var \
+    -Dmandir=/usr/man \
+    -Dsysconfdir=/etc \
+    -Dincludedir=/usr/include \
+    -Ddatadir=/usr/share \
+    -Dsbindir=/usr/sbin \
+    -Dlibexecdir=/usr/libexec \
+    -Dbuildtype=release \
+    -Dstrip=true
+
+ninja -j$nprocr -C build
+DESTDIR=$PKG ninja -C build install
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$slrpnam
+cp -a COPYRIGHT README.md  $PKG/usr/doc/$PRGNAM-$VERSION/$slrpnam
+
+cd $TMP
+
+# Building virglrenderer
+
+rm -rf $virgnam-$virgver
+tar xvf $CWD/$virgnam-$virgver.tar.bz2
+cd $virgnam-$virgver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCXXFLAGS" LDFLAGS="$SLDFLAGS" meson setup build $TMP/$virgnam-$virgver \
+    --prefix=/usr \
+    --libdir=/usr/lib${LIBDIRSUFFIX} \
+    --sysconfdir=/etc  \
+    --localstatedir=/var \
+    --mandir=/usr/man \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/libexec \
+    -Dvideo=true \
+    -Dvenus=true \
+    -Dminigbm_allocation=true \
+    -Drender-server-worker=process
+
+ninja -j$nprocr -v -C build
+DESTDIR=$PKG ninja -v -C build install
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$virgnam
+cp -av COPYING $PKG/usr/doc/$PRGNAM-$VERSION/$virgnam
+
+cd $TMP
+
+# Building device tree compiler
+
+rm -rf $dtcnam-$dtcver
+tar xvf $CWD/$dtcnam-$dtcver.tar.gz
+cd $dtcnam-$dtcver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+# patch from SBo:
+
+patch -p1 --verbose --unified  < $CWD/patches/fix-python-destdir-usage.diff
+
+CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCXXFLAGS" LDFLAGS="$SLDFLAGS" meson setup build $TMP/$dtcnam-$dtcver \
+        --prefix=/usr \
+        --libdir=/usr/lib${LIBDIRSUFFIX} \
+        --includedir=/usr/include \
+        --buildtype=release
+
+meson compile -C build
+meson install -C build --destdir $PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$dtcnam
+cp -av Documentation/manual.txt GPL README* $PKG/usr/doc/$PRGNAM-$VERSION/$dtcnam
+
+cd $TMP
+
+# Building usbredir
+
+rm -rf $usbnam-$usbver
+tar xvf $CWD/$usbnam-$usbver.tar.xz
+cd $usbnam-$usbver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCXXFLAGS" LDFLAGS="$SLDFLAGS" meson setup build $TMP/$usbnam-$usbver \
+        --prefix=/usr \
+        --libdir=/usr/lib${LIBDIRSUFFIX} \
+        --localstatedir=/var \
+        --mandir=/usr/man \
+        --sysconfdir=/etc \
+        -Dtests=disabled \
+        --buildtype=release
+
+ninja -j$nprocr -v -C build
+DESTDIR=$PKG ninja -v -C build install
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$usbnam
+cp -av COPYING $PKG/usr/doc/$PRGNAM-$VERSION/$usbnam
+
+cd $TMP
+
+# Building libbpf
+
+rm -rf $bpfnam-$bpfver
+tar xvf $CWD/$bpfnam-$bpfver.tar.gz
+cd $bpfnam-$bpfver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+(
+  cd src
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+make -j$nprocr
+make install DESTDIR=$PKG
+)
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$bpfnam
+cp -av docs $PKG/usr/doc/$PRGNAM-$VERSION/$bpfnam
+
+cd $TMP
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+find $PKG -name perllocal.pod -o -name ".packlist" -o -name "*.bs" | xargs rm -f || true
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+find $PKG/usr/doc/$PRGNAM-$VERSION -type f -exec chmod 0644 {} \+
+find $PKG/usr/doc/$PRGNAM-$VERSION -exec chown -v root:root {} \+
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

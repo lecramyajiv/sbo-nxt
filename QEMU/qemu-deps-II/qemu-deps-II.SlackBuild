@@ -1,0 +1,308 @@
+#!/bin/bash
+
+# Slackware build script for qemu-deps-II
+
+# Copyright 2025 Vijay Marcel
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=qemu-deps-II
+VERSION=${VERSION:-1.0}
+BUILD=${BUILD:-3}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+nprocr=$(expr $(nproc))
+sys_arch=${sys_arch:-$(uname -m)}
+
+# Dependency name:
+
+# libxdp
+xdpnam=${xdpnam:-xdp-tools}
+xdpver=${xdpver:-1.5.5}
+
+#spice
+spinam=${spinam:-spice}
+spiver=${spiver:-0.16.0}
+
+# libcbor
+cbornam=${cbornam:-libcbor}
+cborver=${cborver:-0.12.0}
+
+# libblkio
+blknam=${blknam:-libblkio}
+blkver=${blkver:-1.5.0}
+
+# rust-bindgen
+bindgnam=${bindgnam:-rust-bindgen}
+bindgver=${bindgver:-0.72.0}
+
+
+case "$sys_arch" in
+   	x86_64) export ARCH=x86_64 ;;
+	     *) echo "This SlackBuild will not run on $sys_arch platform" && exit 1 ;;
+esac
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "x86_64" ]; then
+  LIBDIRSUFFIX="64"
+  PFLAGS="-fno-delete-null-pointer-checks -Wno-incompatible-pointer-types"
+  PXXFLAGS="-fno-delete-null-pointer-checks"
+  ARCHFLAGS="-march=x86-64 -mtune=native -pipe -ffunction-sections -fdata-sections -O2 -fPIC"
+  GCFLAGS="-Wl,--sort-common=ascending -Wl,--sort-section=alignment -Wl,--gc-sections -Wl,-z,unique-symbol"
+  SLKCFLAGS="$ARCHFLAGS $PFLAGS"
+  SLKCXXFLAGS="$ARCHFLAGS $PXXFLAGS"
+  SLDFLAGS="$GCFLAGS"
+  SXLDFLAGS="-Wl,--sort-common=ascending -Wl,--sort-section=alignment -Wl,-z,unique-symbol"
+else  echo "this slackbuild will work only on $ARCH" && exit 1
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+export CC=${CC:-gcc}
+export CXX=${CXX:-g++}
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCXXFLAGS"
+export LDFLAGS="$SLDFLAGS"
+TARGET="$(rustc -vV | sed -n 's/host: //p')"
+
+export m=/opt/meson/bin # meson path
+export r=/opt/rust/bin # rust path
+export rl=/opt/rust/lib64
+
+PYVER=$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+export PYTHONPATH=/opt/python$PYVER/site-packages
+export PATH=$m:$r:$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$rl
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+
+cd $TMP
+
+# Building libcbor
+
+rm -rf $cbornam-$cborver
+tar xvf $CWD/$cbornam-$cborver.tar.gz
+cd $cbornam-$cborver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+cmake -B build -S $TMP/$cbornam-$cborver \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCXXFLAGS" \
+    -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCXXFLAGS" \
+    -DCMAKE_EXE_LINKER_FLAGS:STRING="$SLDFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
+    -DCMAKE_INSTALL_BINDIR=/usr/bin \
+    -DBUILD_SHARED_LIBS=ON \
+    -DWITH_EXAMPLES=OFF \
+    -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build --parallel $nprocr
+DESTDIR=$PKG cmake --install build
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$cbornam
+cp -av LICENSE.md README.md $PKG/usr/doc/$PRGNAM-$VERSION/$cbornam
+
+cd $TMP
+
+# Building spice
+# gst-plugins ugly with x264 is optional Dependency
+
+rm -rf $spinam-$spiver
+tar xvf $CWD/$spinam-$spiver.tar.bz2
+cd $spinam-$spiver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+meson setup build $TMP/$spinam-$spiver \
+    --prefix=/usr \
+    --libdir=lib${LIBDIRSUFFIX} \
+    --libexecdir=/usr/libexec \
+    --bindir=/usr/bin \
+    --sbindir=/usr/sbin \
+    --includedir=/usr/include \
+    --datadir=/usr/share \
+    --mandir=/usr/man \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --buildtype=release \
+    -Dgstreamer=1.0 \
+    -Dlz4=true \
+    -Dsasl=true \
+    -Dopus=enabled \
+    -Dmanual=false \
+    -Dtests=false \
+    -Dinstrumentation=no
+
+ninja -j$nprocr -C build
+DESTDIR=$PKG ninja -C build install
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$spinam
+cp -av COPYING $PKG/usr/doc/$PRGNAM-$VERSION/$spinam
+
+cd $TMP
+
+# Building xdp-tools for libxdp
+
+rm -rf $xdpnam-$xdpver
+tar xvf $CWD/$xdpnam-$xdpver.tar.gz
+cd $xdpnam-$xdpver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+export PRODUCTION=1
+export DYNAMIC_LIBXDP=1
+export FORCE_SYSTEM_LIBBPF=1
+export DESTDIR="$PKG"
+export PREFIX="/usr"
+export SBINDIR="/usr/bin"
+export LIBDIR="/usr/lib${LIBDIRSUFFIX}"
+export MANDIR="/usr/man"
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCXXFLAGS"
+export LDFLAGS="$SXLDFLAGS"
+./configure
+make V=1 -j$nprocr
+make install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$xdpnam
+cp -av LICENSE README.org $PKG/usr/doc/$PRGNAM-$VERSION/$xdpnam
+
+cd $TMP
+
+# Building libblkio
+
+rm -rf $blknam-$blkver
+tar xvf $CWD/$blknam-v$blkver.tar.gz
+cd $blknam-v$blkver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+mkdir -pv ".cargo"
+export CARGO_HOME=".cargo"
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+meson setup build $TMP/$blknam-v$blkver \
+    --prefix=/usr \
+    --libdir=/usr/lib${LIBDIRSUFFIX} \
+    --mandir=/usr/man  \
+    --datadir=/usr/share  \
+    --buildtype=release  \
+    --wrap-mode=default  \
+    --optimization=2
+
+meson compile -j$nprocr -C build
+DESTDIR=$PKG ninja install -C build
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+# Cleanup CARGO_HOME and possible unnecessary artifacts in $PKG.
+rm -rf "$CARGO_HOME" "$PKG/usr/.cargo" "$PKG/usr/.crates*"
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$blknam
+cp -av LICENSE-APACHE LICENSE-MIT LICENSE.crosvm README.rst $PKG/usr/doc/$PRGNAM-$VERSION/$blknam
+cp -av examples $PKG/usr/doc/$PRGNAM-$VERSION/$blknam
+
+cd $TMP
+
+# building rust-bindgen
+
+rm -rf $bindgnam-$bindgver
+tar xvf $CWD/$bindgnam-$bindgver.tar.gz
+cd $bindgnam-$bindgver
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+mkdir -pv $PKG/usr/bin
+mkdir -pv ".cargo"
+export CARGO_HOME=".cargo"
+
+cargo fetch --locked --target $TARGET
+cargo build --release --frozen
+
+install -Dvm0755 "target/release/bindgen" -t $PKG/usr/bin
+
+# Cleanup CARGO_HOME and possible unnecessary artifacts in $PKG.
+rm -rf "$CARGO_HOME" "$PKG/usr/.cargo" "$PKG/usr/.crates*"
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$bindgnam
+cp -av LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION/$bindgnam
+
+cd $TMP
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+find $PKG/usr/doc/$PRGNAM-$VERSION -type f -exec chmod 0644 {} \+
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
