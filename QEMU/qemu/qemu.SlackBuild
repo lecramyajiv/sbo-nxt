@@ -1,0 +1,218 @@
+#!/bin/bash
+
+# Slackware build script for qemu
+
+# Copyright 2025 Vijay Marcel
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=qemu
+VERSION=${VERSION:-10.0.2}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+nprocr=$(expr $(nproc))
+sys_arch=${sys_arch:-$(uname -m)}
+kvmgroup=${kvmgroup:-users}
+
+case "$sys_arch" in
+   	x86_64) export ARCH=x86_64 ;;
+	     *) echo "This SlackBuild will not run on $sys_arch platform" && exit 1 ;;
+esac
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "x86_64" ]; then
+  LIBDIRSUFFIX="64"
+  PFLAGS="-fno-delete-null-pointer-checks -Wno-incompatible-pointer-types"
+  PXXFLAGS="-fno-delete-null-pointer-checks"
+  ARCHFLAGS="-march=x86-64 -mtune=native -pipe -ffunction-sections -fdata-sections -O2 -fPIC"
+  GCFLAGS="-Wl,--sort-common=ascending -Wl,--sort-section=alignment -Wl,--gc-sections -Wl,-z,unique-symbol"
+  SLKCFLAGS="$ARCHFLAGS $PFLAGS"
+  SLKCXXFLAGS="$ARCHFLAGS $PXXFLAGS"
+  SLDFLAGS="$GCFLAGS -lrt -lpthread"
+else  echo "this slackbuild will work only on $ARCH" && exit 1
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+export CC=${CC:-gcc}
+export CXX=${CXX:-g++}
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCXXFLAGS"
+export LDFLAGS="$SLDFLAGS"
+
+export m=/opt/meson/bin # meson path
+export r=/opt/rust/bin # rust path
+export rl=/opt/rust/lib64
+
+PYVER=$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+export PYTHONPATH=/opt/python$PYVER/site-packages
+export PATH=$m:$r:$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$rl
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+cd $PRGNAM-$VERSION
+rm -rvf roms/edk2/EmulatorPkg/Unix/Host/X11IncludeHack
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+ # need older versions \ --enable-libnfs \ --enable-dbus-display \
+ # gcrypt and nettle are mutually exclusive
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCXXFLAGS" \
+LDFLAGS="$SLDFLAGS" \
+./configure \
+    --prefix=/usr \
+    --includedir=/usr/include \
+    --libdir=/usr/lib${LIBDIRSUFFIX} \
+    --bindir=/usr/bin \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --docdir=/usr/doc/$PRGNAM-$VERSION \
+    --mandir=/usr/man \
+    --target-list="x86_64-linux-user,x86_64-softmmu" \
+    --audio-drv-list="alsa,pa,sdl" \
+    --smbd=/usr/bin \
+    --enable-fdt=system \
+    --enable-module-upgrades \
+    --enable-rng-none \
+    --enable-af-xdp \
+    --enable-alsa \
+    --enable-attr \
+    --enable-auth-pam \
+    --enable-avx2  \
+    --enable-blkio \
+    --enable-bpf \
+    --enable-bzip2  \
+    --enable-capstone \
+    --enable-curl \
+    --enable-curses \
+    --enable-fuse \
+    --enable-fuse-lseek \
+    --enable-gcrypt \
+    --enable-gettext \
+    --enable-gnutls \
+    --enable-gtk \
+    --enable-gtk-clipboard \
+    --enable-guest-agent \
+    --enable-hv-balloon \
+    --enable-kvm \
+    --enable-libcbor \
+    --enable-libdaxctl \
+    --enable-libiscsi \
+    --enable-libpmem \
+    --enable-libssh \
+    --enable-libudev \
+    --enable-libusb \
+    --enable-libvduse \
+    --enable-linux-aio  \
+    --enable-linux-io-uring \
+    --enable-malloc=jemalloc \
+    --enable-membarrier \
+    --enable-modules \
+    --enable-numa \
+    --enable-opengl \
+    --enable-pa \
+    --enable-pixman \
+    --enable-plugins \
+    --enable-rutabaga-gfx \
+    --enable-sdl \
+    --enable-sdl-image \
+    --enable-seccomp \
+    --enable-slirp \
+    --enable-slirp-smbd \
+    --enable-spice \
+    --enable-spice-protocol \
+    --enable-tools \
+    --enable-tpm \
+    --enable-usb-redir \
+    --enable-vduse-blk-export \
+    --enable-vfio-user-server \
+    --enable-vhost-crypto \
+    --enable-vhost-kernel \
+    --enable-vhost-net \
+    --enable-vhost-user \
+    --enable-vhost-user-blk-server \
+    --enable-vhost-vdpa \
+    --enable-virglrenderer \
+    --enable-virtfs \
+    --enable-vte \
+    --enable-xkbcommon \
+    --enable-zstd \
+    --enable-system \
+    --enable-user \
+    --enable-linux-user \
+    --disable-fuzzing \
+    --disable-cfi \
+    --disable-gcov \
+    --disable-lto \
+    --disable-qom-cast-debug \
+    --disable-debug-info  \
+    --disable-coroutine-pool \
+    --disable-docs 2>&1 | tee /tmp/configure-qemu.log
+
+make V=1 -j$nprocr 2>&1 | tee /tmp/make-qemu.log
+make install DESTDIR=$PKG
+
+# From SBo:-install some udev rules for /dev/kvm
+# Note: no udev rules for usb pasthrough when running qemu as non-root on linux hosts. See Section 2.11.2
+# https://qemu.weilnetz.de/doc/qemu-doc.html
+mkdir -pv $PKG/lib/udev/rules.d/
+sed "s/@GROUP@/$kvmgroup/" $CWD/65-kvm.rules \
+  > $PKG/lib/udev/rules.d/65-kvm.rules
+
+# From SBo:- create a symlink for qemu-kvm to support aqemu and such frontends
+# even though qemu now has a gtk gui.
+[ ! -z $KVMARCH ] && ln -s qemu-system-$KVMARCH $PKG/usr/bin/qemu-kvm
+
+chmod u+s $PKG/usr/libexec/qemu-bridge-helper
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a COPYING* LICENSE MAINTAINERS README.rst $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
