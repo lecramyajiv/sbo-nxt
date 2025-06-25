@@ -119,13 +119,14 @@ rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 # Cleanup CARGO_HOME and possible unnecessary artifacts in $PKG.
 rm -rf "$CARGO_HOME" "$PKG/usr/.cargo" "$PKG/usr/.crates*"
 
+( cd $PKG/usr/lib${LIBDIRSUFFIX}
+ln -sf librutabaga_gfx_ffi.so.0.1.6 librutabaga_gfx_ffi.so.0
+ln -sf librutabaga_gfx_ffi.so.0 librutabaga_gfx_ffi.so )
+
 cd $TMP/$PRGNAM
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
-
-#find $PKG/usr/man -type f -exec gzip -9 {} \;
-#for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a LICENSE OWNERS OWNERS_COUNCIL README.md $PKG/usr/doc/$PRGNAM-$VERSION
