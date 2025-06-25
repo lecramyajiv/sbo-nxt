@@ -3,8 +3,40 @@ VERSION="1.0"
 HOMEPAGE="https://qemu.org"
 DOWNLOAD=""
 MD5SUM=""
-DOWNLOAD_x86_64="https://github.com/libbpf/bpftool/releases/download/v7.5.0/bpftool-v7.5.0-amd64.tar.gz https://github.com/jqlang/jq/releases/download/jq-1.8.0/jq-1.8.0.tar.gz https://www.spice-space.org/download/releases/spice-protocol-0.14.5.tar.xz https://github.com/pmem/pmdk/archive/2.1.1/pmdk-2.1.1.tar.gz https://github.com/stefanberger/libtpms/archive/v0.10.1/libtpms-0.10.1.tar.gz https://github.com/xattr/xattr/archive/v1.1.4/xattr-1.1.4.tar.gz https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz https://github.com/user-attachments/files/19613932/acpica-unix-20250404.tar.gz https://github.com/numactl/numactl/releases/download/v2.0.19/numactl-2.0.19.tar.gz https://github.com/sahlberg/libnfs/archive/libnfs-5.0.3/libnfs-libnfs-5.0.3.tar.gz https://github.com/sahlberg/libiscsi/archive/1.20.2/libiscsi-1.20.2.tar.gz https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/1.1.1/virglrenderer-1.1.1.tar.bz2 https://www.spice-space.org/download/usbredir/usbredir-0.15.0.tar.xz https://github.com/libbpf/libbpf/archive/v1.5.1/libbpf-1.5.1.tar.gz https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/dtc-1.7.2.tar.gz https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.9.1/libslirp-v4.9.1.tar.gz https://github.com/aquynh/capstone/archive/5.0.6/capstone-5.0.6.tar.gz"
-MD5SUM_x86_64=""
+DOWNLOAD_x86_64="https://github.com/user-attachments/files/19613932/acpica-unix-20250404.tar.gz \
+                 https://github.com/libbpf/bpftool/releases/download/v7.5.0/bpftool-v7.5.0-amd64.tar.gz \
+                 https://github.com/aquynh/capstone/archive/5.0.6/capstone-5.0.6.tar.gz \
+                 https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz \
+                 https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/dtc-1.7.2.tar.gz \
+                 https://github.com/jqlang/jq/releases/download/jq-1.8.0/jq-1.8.0.tar.gz \
+                 https://github.com/libbpf/libbpf/archive/v1.5.1/libbpf-1.5.1.tar.gz \
+                 https://github.com/sahlberg/libiscsi/archive/1.20.2/libiscsi-1.20.2.tar.gz \
+                 https://github.com/sahlberg/libnfs/archive/libnfs-5.0.3/libnfs-libnfs-5.0.3.tar.gz \
+                 https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.9.1/libslirp-v4.9.1.tar.gz \
+                 https://github.com/stefanberger/libtpms/archive/v0.10.1/libtpms-0.10.1.tar.gz \
+                 https://github.com/numactl/numactl/releases/download/v2.0.19/numactl-2.0.19.tar.gz \
+                 https://github.com/pmem/pmdk/archive/2.1.1/pmdk-2.1.1.tar.gz \
+                 https://www.spice-space.org/download/releases/spice-protocol-0.14.5.tar.xz \
+                 https://www.spice-space.org/download/usbredir/usbredir-0.15.0.tar.xz \
+                 https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/1.1.1/virglrenderer-1.1.1.tar.bz2
+                 https://github.com/xattr/xattr/archive/v1.1.4/xattr-1.1.4.tar.gz"
+MD5SUM_x86_64="6be54c07383843d13dfaaaaffea74116 \
+               bda860b3926395b67a63f8e98ef2aea1 \
+               a2f94feb0cb9d7d4a0ef9ef5f99c2800 \
+               dc23f4870eb7dfa6da065f3056e815b0 \
+               a35aefd37cab86013a10ebdfc599f0c4 \
+               46856841b9fd765b852023b881cd2e8b \
+               5478926fe2e47203a968da951fff60f5 \
+               a046ba4e327591f5d0f4853f7f761efc \
+               27318b6192c960f440415d3284663162 \
+               9732ac0d2caf4fe1db76dd96c9957327 \
+               05c5c0aec50f4afe7de0724d3bf7eb2e \
+               06e454dd4df7f5d0b8d6db975305456d \
+               fea0e264a2eed2e2525aac154e8601d8 \
+               53bfb120525a23a795b5faf134fc1dc7 \
+               5ebe2bb840fd538a95c9089d0a782458 \
+               2c7588e8ced5053224f9bb5330f9bad6 \
+               8fae4d781636fa08a987f1fbe66f161e"
 REQUIRES="valgrind rust-opt pandoc-bin python3-meson-opt"
 MAINTAINER="Vijay Marcel"
 EMAIL="vijaymarcel@outlook.com"

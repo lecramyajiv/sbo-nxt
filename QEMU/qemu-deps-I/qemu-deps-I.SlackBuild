@@ -152,6 +152,7 @@ mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cd $TMP
 
 # Building bpftool
+# needed by xpd-tools
 
 rm -rf $bpftnam
 tar xvf $CWD/$bpftnam-v$bpftver-amd64.tar.gz
@@ -395,37 +396,37 @@ cd $TMP
 
 # Building Numactl
 
-rm -rf $numanam-$numaver
-tar xvf $CWD/$numanam-$numaver.tar.gz
-cd $numanam-$numaver
-chown -R root:root .
-find -L . \
- \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \+ -o \
- \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+#rm -rf $numanam-$numaver
+#tar xvf $CWD/$numanam-$numaver.tar.gz
+#cd $numanam-$numaver
+#chown -R root:root .
+#find -L . \
+# \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+#  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+# \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+#  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCXXFLAGS" \
-LDFLAGS="$SLDFLAGS" \
-./configure \
-  --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --mandir=/usr/man \
-  --enable-shared \
-  --enable-static=no
+#CFLAGS="$SLKCFLAGS" \
+#CXXFLAGS="$SLKCXXFLAGS" \
+#LDFLAGS="$SLDFLAGS" \
+#./configure \
+#  --prefix=/usr \
+#  --libdir=/usr/lib${LIBDIRSUFFIX} \
+#  --sysconfdir=/etc \
+#  --localstatedir=/var \
+#  --mandir=/usr/man \
+#  --enable-shared \
+#  --enable-static=no
 
-make -j$nprocr
-make install DESTDIR=$PKG
+#make -j$nprocr
+#make install DESTDIR=$PKG
 
-rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+#rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 
-mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$numanam
-cp -ar INSTALL.md README.md LICENSE.GPL2 LICENSE.LGPL2.1 $PKG/usr/doc/$PRGNAM-$VERSION/$numanam
+#mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION/$numanam
+#cp -ar INSTALL.md README.md LICENSE.GPL2 LICENSE.LGPL2.1 $PKG/usr/doc/$PRGNAM-$VERSION/$numanam
 
-cd $TMP
+#cd $TMP
 
 # Building libiscsi
 

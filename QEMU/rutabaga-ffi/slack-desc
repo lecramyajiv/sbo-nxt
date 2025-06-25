@@ -8,12 +8,12 @@
             |-----handy-ruler------------------------------------------------------|
 rutabaga-ffi: rutabaga-ffi (rutabaga)
 rutabaga-ffi:
+rutabaga-ffi: rutabaga-ffi is part of the crosvm project (Chromium OS Virtual
+rutabaga-ffi: machine and is designed to abstract away the complexities of
+rutabaga-ffi: different graphics backends (such as gfxstream and
+rutabaga-ffi: virglrenderer), providing a unified interface for virtualized
+rutabaga-ffi: graphics.
 rutabaga-ffi:
 rutabaga-ffi:
-rutabaga-ffi:
-rutabaga-ffi:
-rutabaga-ffi:
-rutabaga-ffi:
-rutabaga-ffi:
-rutabaga-ffi:
+rutabaga-ffi: Homepage:https://chromium.googlesource.com/crosvm/
 rutabaga-ffi:
