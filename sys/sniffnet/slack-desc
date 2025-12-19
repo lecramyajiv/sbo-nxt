@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+        |-----handy-ruler------------------------------------------------------|
+sniffnet: sniffnet (Network Monitor)
+sniffnet:
+sniffnet: Sniffnet, a Application to comfortably monitor your Internet traffic.
+sniffnet: Whether you want to gather statistics, you’re curious to see
+sniffnet: who you are exchanging data with, or you need to inspect more
+sniffnet: in depth what's going on in your network, this app will get you
+sniffnet: covered.Sniffnet's cornerstones is to be usable with ease by
+sniffnet: everyone.
+sniffnet:
+sniffnet:
+sniffnet: Homepage:https://sniffnet.net/

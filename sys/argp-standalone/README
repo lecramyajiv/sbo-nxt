@@ -1,0 +1,4 @@
+argp-standalone is another standalone version of the argp argument
+parsing functions from glibc by Thomas Mathys. It is distributed
+under the terms of the GNU LGPL v2.1.
+
