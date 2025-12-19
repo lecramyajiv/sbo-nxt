@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+       |-----handy-ruler------------------------------------------------------|
+systemd: systemd (System and Service manager)
+systemd:
+systemd: systemd is a suite of basic building blocks for a Linux system.
+systemd: It provides a system and service manager that runs as PID 1 and
+systemd: starts the rest of the system. systemd supports SysV and LSB
+systemd: init scripts and works as a replacement for sysvinit.
+systemd:
+systemd:
+systemd:
+systemd: Homepage:https://systemd.io/
+systemd:
