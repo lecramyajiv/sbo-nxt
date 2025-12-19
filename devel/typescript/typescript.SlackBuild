@@ -20,9 +20,9 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=typescript
-VERSION=${VERSION:-5.6.2}
+VERSION=${VERSION:-5.9.3}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_lec}
+TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 SRCNAM=${SRCNAM:-TypeScript}
 
@@ -52,12 +52,8 @@ elif [ "$ARCH" = "i686" ]; then
 elif [ "$ARCH" = "x86_64" ]; then
   SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
   LIBDIRSUFFIX="64"
-elif [ "$ARCH" = "aarch64" ]; then
-  SLKCFLAGS="-O2 -fPIC"
-  LIBDIRSUFFIX="64"
 else
-  SLKCFLAGS="-O2"
-  LIBDIRSUFFIX=""
+ echo "This slackbuild will not run on $ARCH" && exit 1
 fi
 
 set -e
@@ -72,9 +68,9 @@ cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \; -o \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 mkdir -pv $PKG/usr/bin
 mkdir -pv $PKG/usr/lib${LIBDIRSUFFIX}/node_modules/$PRGNAM
@@ -116,3 +112,4 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
+
