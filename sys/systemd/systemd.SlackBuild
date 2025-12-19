@@ -1,0 +1,238 @@
+#!/bin/bash
+
+# Slackware build script for systemd
+
+# Copyright 2025 Vijay Marcel
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=systemd
+VERSION=${VERSION:-258.3}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i586" ]; then
+  SLKCFLAGS="-march=i586 -mtune=i686 -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=i686 -mtune=i686 -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+ echo "This SlackBuild will not run on $ARCH" && exit 1
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+cd $PRGNAM-$VERSION
+rm -rf test/integration-tests/standalone/integration-tests
+rm -rf test/testdata
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+
+mkdir -pv $PKG/opt/{bin,lib${LIBDIRSUFFIX},var,etc,include,share,sbin,libexec,man}
+
+
+PYVER=$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+export PYTHONPATH=/opt/python$PYVER/site-packages
+export m=/opt/meson/bin
+export PATH=$m:$PATH
+
+tsvs=({0..3}.arch.pool.ntp.org)
+nsvs=(
+    #  * Cloudflare (https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/)
+    '1.1.1.1#cloudflare-dns.com'
+    '2606:4700:4700::1111#cloudflare-dns.com'
+    #  * Google (https://developers.google.com/speed/public-dns/privacy)
+    '8.8.8.8#dns.google'
+    '2001:4860:4860::8888#dns.google'
+    # You do not agree? Fine, change it in your local configuration.
+)
+
+export PYTHON=python3
+
+meson -v
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" meson setup build $TMP/$PRGNAM-$VERSION \
+    --prefix=/opt \
+    --libdir=/opt/lib${LIBDIRSUFFIX} \
+    -Dversion-tag=$VERSION \
+    -Dvcs-tag=false \
+    -Dmode=release \
+    -Dsplit-bin=false \
+    -Dseccomp=enabled \
+    -Dselinux=disabled \
+    -Dapparmor=disabled \
+    -Dbpf-framework=disabled \
+    -Dima=false \
+    -Dinstall-tests=false \
+    -Dman=disabled \
+    -Dsshdprivsepdir=/usr/share/empty.sshd \
+    -Dvmlinux-h=provided \
+    -Dvmlinux-h-path=/usr/src/linux/vmlinux.h \
+    -Ddbuspolicydir=/usr/share/dbus-1/system.d \
+    -Ddefault-dnssec=no \
+    -Ddefault-kill-user-processes=false \
+    -Ddefault-locale='C.UTF-8' \
+    -Dlocalegen-path=/usr/bin/locale-gen \
+    -Ddefault-dns-over-tls=opportunistic \
+    -Ddns-over-tls=openssl \
+    -Dfallback-hostname='darkstar' \
+    -Dnologin-path=/usr/bin/nologin \
+    -Drpmmacrosdir=no \
+    -Drc-local="/etc/rc.d/rc.local" \
+    -Dsbat-distro='slackware' \
+    -Dsbat-distro-summary='Slackware Linux' \
+    -Dsbat-distro-pkgname="${PRGNAM}" \
+    -Dsbat-distro-version="${VERSION}" \
+    -Dsbat-distro-url="https://www.slackware.com" \
+    -Dhibernate=false \
+    -Defi=false \
+    -Dtpm=false \
+    -Dsysupdated=disabled \
+    -Dlogind=false \
+    -Dhostnamed=false \
+    -Dlocaled=false \
+    -Dmachined=false \
+    -Dportabled=false \
+    -Dsysext=false \
+    -Dmountfsd=false \
+    -Duserdb=false \
+    -Dhomed=disabled \
+    -Dnetworkd=false \
+    -Dtimedated=false \
+    -Dtimesyncd=false \
+    -Dremote=disabled \
+    -Dnsresourced=false \
+    -Dnss-myhostname=false \
+    -Dnss-mymachines=disabled \
+    -Dnss-resolve=disabled \
+    -Dnss-systemd=false \
+    -Dfirstboot=false \
+    -Drandomseed=false \
+    -Dbacklight=true \
+    -Dvconsole=false \
+    -Dvmspawn=disabled \
+    -Dquotacheck=false \
+    -Dsysusers=false \
+    -Dstoragetm=false \
+    -Dtmpfiles=false \
+    -Dimportd=disabled \
+    -Dhwdb=false \
+    -Drfkill=false \
+    -Dxdg-autostart=false \
+    -Dnspawn=disabled \
+    -Dhtml=disabled \
+    -Dtranslations=false \
+    -Dsmack=false \
+    -Dacl=disabled \
+    -Daudit=disabled \
+    -Dblkid=disabled \
+    -Dfdisk=disabled \
+    -Dkmod=disabled \
+    -Dxenctrl=disabled \
+    -Dpasswdqc=disabled \
+    -Dpwquality=disabled \
+    -Dmicrohttpd=disabled \
+    -Dlibcryptsetup=disabled \
+    -Dlibcryptsetup-plugins=disabled \
+    -Dlibcurl=disabled \
+    -Didn=false \
+    -Dlibidn2=disabled \
+    -Dlibidn=disabled \
+    -Dlibiptc=disabled \
+    -Dqrencode=disabled \
+    -Dgcrypt=enabled \
+    -Dgnutls=enabled \
+    -Dopenssl=enabled \
+    -Dcryptolib=auto \
+    -Dp11kit=disabled \
+    -Dlibfido2=disabled \
+    -Dtpm2=disabled \
+    -Delfutils=disabled \
+    -Dzlib=enabled \
+    -Dbzip2=enabled \
+    -Dxz=enabled \
+    -Dlz4=enabled \
+    -Ddefault-compression=auto \
+    -Dxkbcommon=enabled \
+    -Dpcre2=disabled \
+    -Dglib=disabled \
+    -Ddbus=disabled \
+    -Dlibarchive=enabled \
+    -Dlibmount=disabled \
+    -Dbootloader=disabled \
+    -Dtests=false \
+    -Dukify=false \
+    -Danalyze=false
+
+ninja -C build
+DESTDIR=$PKG ninja -C build install
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.la
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+find $PKG/opt/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/opt/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -av LICENSE.GPL2 LICENSE.LGPL2.1 README README.md $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
