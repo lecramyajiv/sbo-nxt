@@ -1,2 +1,0 @@
-application/x-deb;	kpackage -caption "Package Manager" %s;	nametemplate=%s.deb;	test=test "$DISPLAY" != "";	priority=7
-application/x-rpm;	kpackage -caption "Package Manager" %s;	nametemplate=%s.rpm;	test=test "$DISPLAY" != "";	priority=7

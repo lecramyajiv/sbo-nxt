@@ -1,7 +1,0 @@
-htdig_3.2.0b6-13.diff
-kfreebsd
-gcc-6
-sourceforge_logo
-drop-bogus-assignment
-gcc-11.patch
-fix-ftbfs-gcc14

@@ -1,7 +1,0 @@
-?package(kvoctrain-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="KVocTrain"\
-  longtitle="KVocTrain (Vocabulary Trainer)"\
-  command="/opt/trinity/bin/kvoctrain"\
-  icon="/opt/trinity/share/pixmaps/kvoctrain.xpm"

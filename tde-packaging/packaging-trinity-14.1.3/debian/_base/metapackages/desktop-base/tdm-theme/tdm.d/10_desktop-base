@@ -1,5 +1,0 @@
-USETHEME="true"
-THEME="/usr/share/apps/tdm/themes/moreblue-orbit"
-WALLPAPER="/usr/share/apps/tdm/themes/moreblue-orbit/background.png"
-COMPOSITOR="compton-tde"
-

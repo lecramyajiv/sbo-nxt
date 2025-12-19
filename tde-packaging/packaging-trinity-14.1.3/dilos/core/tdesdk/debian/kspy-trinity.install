@@ -1,6 +1,0 @@
-debian/tmp/usr/include/kspy.h
-debian/tmp/usr/lib/*/libkspy.la
-debian/tmp/usr/lib/*/libkspy.so
-debian/tmp/usr/lib/*/libkspy.so.1
-debian/tmp/usr/lib/*/libkspy.so.1.2.0
-debian/tmp/usr/share/man/man1/testkspy.1

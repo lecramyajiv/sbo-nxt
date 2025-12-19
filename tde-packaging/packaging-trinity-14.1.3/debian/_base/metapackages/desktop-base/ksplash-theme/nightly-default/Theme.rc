@@ -1,8 +1,0 @@
-[KSplash Theme: nightly-default]
-Name = Nightly (Default)
-Description = Nightly KSplash Theme using Default engine
-Version = 1.0
-Author = Robert Jaehne
-Engine = Default
-
-Icons Flashing = true

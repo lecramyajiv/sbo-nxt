@@ -1,3 +1,0 @@
-06_disable_rpath.diff
-09_amd64_lib64.diff
-72_dont_trust_uname-m_use_dpkg-arch_instead.diff

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Archive AR
-Hidden=false
-Patterns=*.a
-X-TDE-AutoEmbed=true
-
-[Property::X-TDE-LocalProtocol]
-Type=
-Value=

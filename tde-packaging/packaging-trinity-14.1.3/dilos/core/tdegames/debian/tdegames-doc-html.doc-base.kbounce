@@ -1,9 +1,0 @@
-Document: tdegames-doc-html-kbounce
-Title: The KBounce Handbook
-Author: Aaron J. Seigo
-Abstract: KBounce is a clone of Jezzball for TDE.
-Section: Games/Arcade
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/kbounce/index.html
-Files: /usr/share/doc/tde/HTML/en/kbounce/*.html

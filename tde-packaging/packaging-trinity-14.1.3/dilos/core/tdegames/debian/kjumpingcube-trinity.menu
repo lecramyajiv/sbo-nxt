@@ -1,9 +1,0 @@
-?package(kjumpingcube-trinity):\
-	needs="x11"\
-	section="Games/Strategy"\
-	hints="TDE"\
-	title="KJumpingCube"\
-	icon32x32="/usr/share/pixmaps/kjumpingcube.xpm"\
-	icon16x16="/usr/share/pixmaps/kjumpingcube-16.xpm"\
-	command="/usr/games/kjumpingcube"
-

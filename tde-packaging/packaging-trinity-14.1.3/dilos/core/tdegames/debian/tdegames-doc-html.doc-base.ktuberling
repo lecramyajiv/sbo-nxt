@@ -1,9 +1,0 @@
-Document: tdegames-doc-html-ktuberling
-Title: The KTuberling Handbook
-Author: Eric Bischoff, Paul E. Ahlquist Jr.
-Abstract: KTuberling is a game intended for small children.
-Section: Games/Toys
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/ktuberling/index.html
-Files: /usr/share/doc/tde/HTML/en/ktuberling/*.html

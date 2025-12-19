@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ "$1" = "purge" ]; then
-  if [ -d "/usr/share/doc/libtqt3-mt/" ]; then
-    rm -rf /usr/share/doc/libtqt3-mt/
-  fi
-fi
-
-#DEBHELPER#

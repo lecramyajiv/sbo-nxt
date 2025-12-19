@@ -1,8 +1,0 @@
-KGeography for Debian
----------------------
-
-This application provides documentation in a docbook format that the TDE
-Help Centre can display.  For HTML documentation that can be read in any
-web browser, see the package tdeedu-doc-html.
-
- -- Daniel Schepler <schepler@debian.org>, Tue Dec 13 23:02:33 2005

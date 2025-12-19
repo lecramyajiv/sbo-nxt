@@ -1,4 +1,0 @@
-/opt/trinity/include/*
-opt/trinity/lib/lib*.so
-opt/trinity/lib/pkgconfig/*
-opt/trinity/lib/*.la

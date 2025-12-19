@@ -1,9 +1,0 @@
-?package(kasteroids-trinity):\
-	needs="x11"\
-	section="Games/Arcade"\
-	hints="TDE"\
-	title="KAsteroids"\
-	icon32x32="/usr/share/pixmaps/kasteroids.xpm"\
-	icon16x16="/usr/share/pixmaps/kasteroids-16.xpm"\
-	command="/usr/games/kasteroids"
-

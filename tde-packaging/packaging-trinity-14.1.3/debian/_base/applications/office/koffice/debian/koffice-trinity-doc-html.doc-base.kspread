@@ -1,9 +1,0 @@
-Document: koffice-doc-html-kspread
-Title: KSpread Handbook
-Author: Pamela Roberts <pamroberts@blueyonder.co.uk>
-Abstract: KSpread is a full featured spreadsheet program.
-Section: Science/Mathematics
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/kspread/index.html
-Files: /usr/share/doc/tde/HTML/en/kspread/*.html

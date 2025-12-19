@@ -1,5 +1,0 @@
-?package(klamav-trinity):needs="X11"\
-  section="Apps/System"\
-  hints="TDE,KlamAV"\
-  title="klamav"\
-  command="/opt/trinity/bin/klamav"

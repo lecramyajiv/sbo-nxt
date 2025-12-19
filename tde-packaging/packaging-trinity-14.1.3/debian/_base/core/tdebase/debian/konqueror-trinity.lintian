@@ -1,3 +1,0 @@
-konqueror-trinity: shlib-missing-in-control-file libtdeinit_keditbookmarks.so opt/trinity/lib/libtdeinit_keditbookmarks.so
-konqueror-trinity: shlib-missing-in-control-file libtdeinit_kfmclient.so opt/trinity/lib/libtdeinit_kfmclient.so
-konqueror-trinity: shlib-missing-in-control-file libtdeinit_konqueror.so opt/trinity/lib/libtdeinit_konqueror.so

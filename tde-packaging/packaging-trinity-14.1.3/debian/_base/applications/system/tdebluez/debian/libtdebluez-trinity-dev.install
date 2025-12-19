@@ -1,3 +1,0 @@
-opt/trinity/include/tdebluez/*
-opt/trinity/lib/libtdebluez.so
-opt/trinity/share/cmake/libtdebluez.cmake

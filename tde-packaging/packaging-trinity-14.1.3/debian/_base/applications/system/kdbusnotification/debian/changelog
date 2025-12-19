@@ -1,9 +1,0 @@
-kdbusnotification-trinity (0.1-0ubuntu1) squeeze; urgency=low
-
-  * Initial upload
-
- -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sun, 17 Oct 2010 19:35:00 -0600
-
-Local variables:
-mode: debian-changelog
-End:

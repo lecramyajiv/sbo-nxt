@@ -1,7 +1,0 @@
-debian/tmp/usr/lib/*/libarts_audiofile.la
-debian/tmp/usr/lib/*/libarts_audiofile.so
-debian/tmp/usr/lib/*/libarts_audiofile.so.0
-debian/tmp/usr/lib/*/libarts_audiofile.so.0.0.0
-debian/tmp/usr/lib/*/mcop/Arts/audiofilePlayObject.mcopclass
-debian/tmp/usr/lib/*/mcop/audiofilearts.mcopclass
-debian/tmp/usr/lib/*/mcop/audiofilearts.mcoptype

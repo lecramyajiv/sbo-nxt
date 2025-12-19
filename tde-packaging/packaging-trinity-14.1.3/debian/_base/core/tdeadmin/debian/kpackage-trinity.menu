@@ -1,8 +1,0 @@
-?package(kpackage-trinity):\
-	needs="X11"\
-	section="Applications/System/Package Management"\
-	hints="TDE"\
-	title="TDE Package Manager"\
-	icon32x32="/opt/trinity/share/pixmaps/kpackage.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kpackage-16.xpm"\
-	command="/opt/trinity/bin/kpackage"

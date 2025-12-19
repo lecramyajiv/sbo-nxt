@@ -1,4 +1,0 @@
-kword-trinity: shlib-missing-in-control-file libtdeinit_kword.so for opt/trinity/lib/libtdeinit_kword.so
-kword-trinity: menu-icon-missing /opt/trinity/share/pixmaps/kword.xpm
-kword-trinity: package-name-doesnt-match-sonames libtdeinit-kword libkwordprivate4
-

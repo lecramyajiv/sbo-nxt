@@ -1,6 +1,0 @@
-dbus-tqt (0.63.svn.0ubuntu0) maverick; urgency=low
-
-  * Migrate to Trinity Qt [TQt] Interface
-
- -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Wed, 23 Mar 2011 17:11:00 -0600
-

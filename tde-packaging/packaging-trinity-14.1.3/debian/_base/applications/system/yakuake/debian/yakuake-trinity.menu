@@ -1,8 +1,0 @@
-?package(yakuake-trinity):\
-	needs="X11"\
-	section="Applications/Terminal Emulators"\
-	title="YaKuake"\
-	icon32x32="/opt/trinity/share/pixmaps/yakuake.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/yakuake-16.xpm"\
-	command="/opt/trinity/bin/yakuake"
-

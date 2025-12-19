@@ -1,8 +1,0 @@
-?package(kdat-trinity):\
-	needs="X11"\
-	section="Applications/System/Hardware"\
-	hints="TDE"\
-	title="KDat"\
-	icon32x32="/opt/trinity/share/pixmaps/kdat.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kdat-16.xpm"\
-	command="/opt/trinity/bin/kdat"

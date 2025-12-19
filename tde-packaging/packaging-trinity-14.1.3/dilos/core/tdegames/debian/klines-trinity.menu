@@ -1,8 +1,0 @@
-?package(klines-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE"\
-	title="KLines"\
-	icon32x32="/usr/share/pixmaps/klines.xpm"\
-	icon16x16="/usr/share/pixmaps/klines-16.xpm"\
-	command="/usr/games/klines"

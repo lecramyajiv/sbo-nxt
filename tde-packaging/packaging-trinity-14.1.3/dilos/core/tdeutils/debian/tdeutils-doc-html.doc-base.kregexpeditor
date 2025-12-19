@@ -1,9 +1,0 @@
-Document: tdeutils-doc-html-kregexpeditor
-Title: The Regular Expression Editor Manual
-Author: Jesper K. Pedersen
-Abstract: This Handbook describes the Regular Expression Editor widget
-Section: Tools
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/KRegExpEditor/index.html
-Files: /usr/share/doc/tde/HTML/en/KRegExpEditor/*.html

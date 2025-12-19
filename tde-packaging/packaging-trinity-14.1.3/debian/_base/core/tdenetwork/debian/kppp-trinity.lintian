@@ -1,3 +1,0 @@
-kppp-trinity: setuid-binary opt/trinity/bin/kppp 4754 root/dip
-kppp-trinity: non-standard-executable-perm opt/trinity/bin/kppplogview 0754 != 0755
-kppp-trinity: non-standard-file-perm etc/ppp/peers/kppp-options 0640 != 0644

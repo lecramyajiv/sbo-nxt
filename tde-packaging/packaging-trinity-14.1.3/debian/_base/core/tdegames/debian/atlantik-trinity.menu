@@ -1,9 +1,0 @@
-?package(atlantik-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE,Monopoly"\
-	title="Atlantik"\
-	icon32x32="/opt/trinity/share/pixmaps/atlantik.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/atlantik-16.xpm"\
-	command="/opt/trinity/games/atlantik"
-

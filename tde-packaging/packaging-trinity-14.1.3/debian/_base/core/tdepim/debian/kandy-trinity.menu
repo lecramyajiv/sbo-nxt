@@ -1,6 +1,0 @@
-?package(kandy-trinity):\
-	needs="X11"\
-	section="Applications/Mobile Devices"\
-	hints="TDE"\
-	title="Kandy"\
-	command="/opt/trinity/bin/kandy"

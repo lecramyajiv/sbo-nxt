@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Archive Rar
-Hidden=false
-Patterns=*.rar;*.RAR
-X-TDE-AutoEmbed=true
-
-[Property::X-TDE-LocalProtocol]
-Type=
-Value=

@@ -1,6 +1,0 @@
-[Plain]
-Font=Tahoma,8,-1,5,50,0,0,0,0,0
-
-[System Tray]
-ShowClockInTray=true
-systrayIconWidth=16

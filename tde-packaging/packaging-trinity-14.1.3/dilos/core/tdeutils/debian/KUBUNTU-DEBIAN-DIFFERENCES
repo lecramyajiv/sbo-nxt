@@ -1,3 +1,0 @@
-no build-dep on pbbuttonsd-dev [powerpc]
-Add kmilo-legacy with old plugins, change descriptions, change .install files
-remove kmilo.install.powerpc

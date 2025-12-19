@@ -1,3 +1,0 @@
-kcontrol-trinity: shlib-missing-in-control-file libtdeinit_kaccess.so opt/trinity/lib/libtdeinit_kaccess.so
-kcontrol-trinity: shlib-missing-in-control-file libtdeinit_kcontrol.so opt/trinity/lib/libtdeinit_kcontrol.so
-kcontrol-trinity: shlib-missing-in-control-file libtdeinit_tderandrinithack.so opt/trinity/lib/libtdeinit_tderandrinithack.so

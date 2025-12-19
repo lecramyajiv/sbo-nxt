@@ -1,5 +1,0 @@
-%dist .oss154
-%_smp_mflags -j8
-%jobs 8
-%sle_version 150400
-%_build_insert_debug_package %nil

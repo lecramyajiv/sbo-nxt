@@ -1,1 +1,0 @@
-application/x-dvi;	kviewshell dvi %s -caption "DVI Viewer";	nametemplate=%s.dvi;	test=test "$DISPLAY" != "";	priority=4

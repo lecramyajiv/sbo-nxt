@@ -1,4 +1,0 @@
-debian/tmp/opt/trinity/bin/feedbrowser
-debian/tmp/opt/trinity/bin/rssclient
-debian/tmp/opt/trinity/bin/rssservice
-debian/tmp/opt/trinity/share/services/rssservice.desktop

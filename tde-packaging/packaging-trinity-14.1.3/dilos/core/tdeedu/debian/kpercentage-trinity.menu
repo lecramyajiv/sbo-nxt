@@ -1,7 +1,0 @@
-?package(kpercentage-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="KPercentage"\
-  longtitle="KPercentage (Exercise Percentages)"\
-  command="/usr/bin/kpercentage"\
-  icon="/usr/share/pixmaps/kpercentage.xpm"

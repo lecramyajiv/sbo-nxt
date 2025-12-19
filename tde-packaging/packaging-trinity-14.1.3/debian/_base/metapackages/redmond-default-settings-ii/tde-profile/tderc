@@ -1,5 +1,0 @@
-[Directories]
-userProfileMapFile=/etc/tde-user-profile
-
-[Directories-default]
-prefixes=/usr/share/redmond-default-settings-trinity/tde-profile/default/

@@ -1,5 +1,0 @@
-?package(kshowmail-trinity): \
-  needs="X11" \
-  section="Apps/Net" \
-  title="kshowmail" \
-  command="/opt/trinity/bin/kshowmail"

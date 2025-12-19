@@ -1,4 +1,0 @@
-kugar-trinity: shlib-missing-in-control-file libtdeinit_kudesigner.so for opt/trinity/lib/libtdeinit_kudesigner.so
-kugar-trinity: shlib-missing-in-control-file libtdeinit_kugar.so for opt/trinity/lib/libtdeinit_kugar.so
-kugar-trinity: shlib-missing-in-control-file libkudesignercore.so for opt/trinity/lib/libkudesignercore.so
-kugar-trinity: package-name-doesnt-match-sonames libtdeinit-kudesigner libtdeinit-kugar libkudesignercore libkugarlib1

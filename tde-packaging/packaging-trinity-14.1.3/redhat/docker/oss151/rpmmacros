@@ -1,3 +1,0 @@
-%dist .oss151
-%_smp_mflags -j8
-%jobs 8

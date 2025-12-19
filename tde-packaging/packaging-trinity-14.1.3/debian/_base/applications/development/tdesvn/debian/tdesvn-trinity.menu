@@ -1,8 +1,0 @@
-?package(tdesvn-trinity):\
-  needs="X11"\
-  section="Applications/Programming"\
-  hints="TDE,Version control"\
-  title="TDESvn"\
-  longtitle="SVN client"\
-  icon="/opt/trinity/share/pixmaps/tdesvn.xpm"\
-  command="/opt/trinity/bin/tdesvn"

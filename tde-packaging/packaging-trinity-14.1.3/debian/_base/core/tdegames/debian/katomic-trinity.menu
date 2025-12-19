@@ -1,9 +1,0 @@
-?package(katomic-trinity):\
-	needs="x11"\
-	section="Games/Puzzles"\
-	hints="TDE"\
-	title="TDE Atomic Entertainment"\
-	icon32x32="/opt/trinity/share/pixmaps/katomic.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/katomic-16.xpm"\
-	command="/opt/trinity/games/katomic"
-

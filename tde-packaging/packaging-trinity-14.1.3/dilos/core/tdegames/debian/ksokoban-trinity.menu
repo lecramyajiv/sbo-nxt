@@ -1,9 +1,0 @@
-?package(ksokoban-trinity):\
-	needs="x11"\
-	section="Games/Puzzles"\
-	hints="TDE,Sokoban"\
-	title="TDE Sokoban"\
-	icon32x32="/usr/share/pixmaps/ksokoban.xpm"\
-	icon16x16="/usr/share/pixmaps/ksokoban-16.xpm"\
-	command="/usr/games/ksokoban"
-

@@ -1,5 +1,0 @@
-# There is no -dev package.
-kchart-trinity: non-dev-pkg-with-shlib-symlink opt/trinity/lib/libkdchart.so.0.0.0 opt/trinity/lib/libkdchart.so
-kchart-trinity: shlib-missing-in-control-file libtdeinit_kchart.so for opt/trinity/lib/libtdeinit_kchart.so
-kchart-trinity: package-name-doesnt-match-sonames libkchartcommon2 libkchartimageexport4 libkdchart0 libtdeinit-kchart
-

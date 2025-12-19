@@ -1,9 +1,0 @@
-Document: tdepim-doc-html-konsolekalendar
-Title: The KonsoleKalendar Handbook
-Author: Tuukka Pasanen, Allen Winter
-Abstract: KonsoleKalendar is a command line interface to TDE calendars.
-Section: Apps/Tools
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/konsolekalendar/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/konsolekalendar/*.html

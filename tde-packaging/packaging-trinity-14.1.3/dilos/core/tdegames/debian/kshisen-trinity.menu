@@ -1,9 +1,0 @@
-?package(kshisen-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE"\
-	title="TDE Shisen-Sho"\
-	icon32x32="/usr/share/pixmaps/kshisen.xpm"\
-	icon16x16="/usr/share/pixmaps/kshisen-16.xpm"\
-	command="/usr/games/kshisen"
-

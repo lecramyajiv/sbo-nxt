@@ -1,9 +1,0 @@
-?package(kuiviewer-trinity):\
-  needs="x11"\
-  section="Applications/Programming"\
-  hints="TDE"\
-  title="KUIViewer"\
-  longtitle="KUIViewer (Qt Designer UI File Viewer)"\
-  icon="/opt/trinity/share/pixmaps/kuiviewer.xpm"\
-  command="/opt/trinity/bin/kuiviewer"
-

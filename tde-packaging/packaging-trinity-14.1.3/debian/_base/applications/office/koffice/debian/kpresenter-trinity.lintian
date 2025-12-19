@@ -1,4 +1,0 @@
-kpresenter-trinity: script-with-language-extension opt/trinity/bin/kprconverter.pl
-kpresenter-trinity: shlib-missing-in-control-file libtdeinit_kpresenter.so for opt/trinity/lib/libtdeinit_kpresenter.so
-kpresenter-trinity: menu-icon-missing /opt/trinity/share/pixmaps/kpresenter.xpm
-kpresenter-trinity: package-name-doesnt-match-sonames libtdeinit-kpresenter libkpresenterimageexport4 libkpresenterprivate4

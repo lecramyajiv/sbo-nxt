@@ -1,6 +1,0 @@
-?package(kjscmd-trinity):\
-	needs="X11"\
-	section="Applications/Programming"\
-	hints="TDE"\
-	title="TDE JavaScript Console"\
-	command="/opt/trinity/bin/kjscmd --console --exec"

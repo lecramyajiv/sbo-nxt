@@ -1,4 +1,0 @@
-# Trinity repositories
-
-deb [arch=<arch>] http://mirror.ppa.trinitydesktop.org/trinity/deb/trinity-r14.1.x <distribution> main deps
-deb-src [arch=<arch>] http://mirror.ppa.trinitydesktop.org/trinity/deb/trinity-r14.1.x <distribution> main deps

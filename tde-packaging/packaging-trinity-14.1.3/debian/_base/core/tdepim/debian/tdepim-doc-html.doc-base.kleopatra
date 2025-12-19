@@ -1,9 +1,0 @@
-Document: tdepim-doc-html-kleopatra
-Title: The Kleopatra Handbook
-Author: Marc Mutz
-Abstract: Kleopatra is a tool for managing X.509 certificates.
-Section: Apps/Net
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/kleopatra/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/kleopatra/*.html

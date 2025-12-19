@@ -1,8 +1,0 @@
-?package(kimagemapeditor-trinity):\
-    needs="X11"\
-    hints="TDE"\
-    section="Apps/Editors"\
-    title="KImageMapEditor"\
-    longtitle="KImageMapEditor (HTML Image Map Editor)"\
-    icon="/opt/trinity/share/pixmaps/kimagemapeditor.xpm"\
-    command="/opt/trinity/bin/kimagemapeditor"

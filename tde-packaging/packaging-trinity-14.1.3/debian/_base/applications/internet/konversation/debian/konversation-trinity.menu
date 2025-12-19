@@ -1,9 +1,0 @@
-?package(konversation-trinity):\
-	needs="X11"\
-	section="Applications/Network/Communication"\
-	title="Konversation IRC Client"\
-	hints="TDE,IRC Clients"\
-	icon="/opt/trinity/share/pixmaps/konversation32x32.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/konversation16x16.xpm"\
-	icon32x32="/opt/trinity/share/pixmaps/konversation32x32.xpm"\
-	command="/opt/trinity/bin/konversation"

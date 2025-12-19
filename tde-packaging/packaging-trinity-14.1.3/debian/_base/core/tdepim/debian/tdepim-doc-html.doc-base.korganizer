@@ -1,9 +1,0 @@
-Document: tdepim-doc-html-korganizer
-Title: The KOrganizer Handbook
-Author: Milos Prudek, Paul E. Ahlquist Jr., Jürgen Nagel
-Abstract: KOrganizer is an easy to use personal information manager.
-Section: Apps/Tools
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/korganizer/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/korganizer/*.html

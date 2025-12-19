@@ -1,7 +1,0 @@
-?package(kiten-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="Kiten"\
-  longtitle="Kiten (Japanese Reference/Study Tool)"\
-  command="/usr/bin/kiten"\
-  icon="/usr/share/pixmaps/kiten.xpm"

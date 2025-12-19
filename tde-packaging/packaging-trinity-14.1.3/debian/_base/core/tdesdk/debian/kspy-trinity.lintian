@@ -1,5 +1,0 @@
-# There is no -dev package.
-kspy-trinity: non-dev-pkg-with-shlib-symlink opt/trinity/lib/libkspy.so.1.2.0 opt/trinity/lib/libkspy.so
-
-# This does not come with a separate library package.
-kspy-trinity: package-name-doesnt-match-sonames libkspy1

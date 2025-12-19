@@ -1,4 +1,0 @@
-debian/tmp/usr/include/libcaldav/*
-debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libcaldav.so
-debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libcaldav.la
-debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/*

@@ -1,6 +1,0 @@
-# These are shipped with quanta's kommander scripts and do not need to be
-# executable.
-quanta-data-trinity: script-not-executable ./opt/trinity/share/apps/quanta/scripts/dwt.pl
-quanta-data-trinity: script-not-executable ./opt/trinity/share/apps/quanta/scripts/TemplateMagic.pl
-quanta-data-trinity: script-not-executable ./opt/trinity/share/apps/quanta/scripts/externalpreview.sh
-

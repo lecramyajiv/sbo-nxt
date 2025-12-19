@@ -1,6 +1,0 @@
-%dist .el7
-%_smp_mflags -j8
-%jobs 8
-%cmake %cmake3
-%python python3
-%__python /usr/bin/python3

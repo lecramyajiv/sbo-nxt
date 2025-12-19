@@ -1,8 +1,0 @@
-?package(kdbg-trinity):\
-	needs="x11"\
-	section="Applications/Programming"\
-	hints="TDE,Debuggers"\
-	title="KDbg"\
-	longtitle="KDbg (graphical debugger interface)"\
-	command="/opt/trinity/bin/kdbg"\
-	icon="/opt/trinity/share/pixmaps/kdbg.xpm"

@@ -1,3 +1,0 @@
-# This does not include a separate library package.
-kompare-trinity: package-name-doesnt-match-sonames libkompareinterface0
-kompare-trinity: non-dev-pkg-with-shlib-symlink opt/trinity/lib/libkompareinterface.so.0.0.0 opt/trinity/lib/libkompareinterface.so

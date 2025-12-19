@@ -1,9 +1,0 @@
-?package(amor-trinity):\
-	needs="x11"\
-	section="Games/Toys"\
-	hints="TDE"\
-	title="AMOR"\
-	longtitle="AMOR (Amusing Misuse Of Resources)"\
-	icon="/usr/share/pixmaps/amor.xpm"\
-	command="/usr/bin/amor"
-

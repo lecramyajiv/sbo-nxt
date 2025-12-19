@@ -1,7 +1,0 @@
-?package(kommander-trinity):\
-    needs="X11"\
-    hints="TDE"\
-    section="Apps/Tools"\
-    title="Kommander Editor"\
-    longtitle="Kommander Editor (Dynamic Dialog Editor)"\
-    command="/opt/trinity/bin/kmdr-editor"

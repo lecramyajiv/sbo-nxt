@@ -1,7 +1,0 @@
-kspread-trinity: shlib-missing-in-control-file libtdeinit_kspread.so for opt/trinity/lib/libtdeinit_kspread.so
-kspread-trinity: executable-not-elf-or-script ./opt/trinity/share/apps/kspread/scripts/scripteditor/ScriptEditor.rc
-kspread-trinity: executable-not-elf-or-script ./opt/trinity/share/apps/kspread/scripts/exporthtml/ExportHtml.rc
-kspread-trinity: executable-not-elf-or-script ./opt/trinity/share/apps/kspread/scripts/exporthtml/ExportHtml.py
-kspread-trinity: executable-not-elf-or-script ./opt/trinity/share/apps/kspread/scripts/scripteditor/ScriptEditor.py
-kspread-trinity: package-name-doesnt-match-sonames libtdeinit-kspread libkspreadcommon0
-

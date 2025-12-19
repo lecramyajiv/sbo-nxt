@@ -1,5 +1,0 @@
-?package(qalculate-trinity):\
-  needs="X11"\
-  section="Applications/Science/Mathematics" \
-  title="Qalculate"\
-  command="/opt/trinity/bin/qalculate-tde"

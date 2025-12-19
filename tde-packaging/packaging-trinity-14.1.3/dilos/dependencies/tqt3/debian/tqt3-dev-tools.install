@@ -1,9 +1,0 @@
-usr/share/tqt3/mkspecs/*
-usr/share/tqt3/doc/html/qmake*html
-usr/share/tqt3/doc/html/qmake*dcf
-usr/bin/tqmake
-usr/bin/tqlupdate
-usr/bin/tqlrelease
-usr/bin/tquic
-usr/bin/tqmoc
-usr/bin/tqembed

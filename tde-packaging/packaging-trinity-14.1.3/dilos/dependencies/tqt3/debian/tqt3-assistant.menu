@@ -1,6 +1,0 @@
-?package(tqt3-assistant):\
-        needs="x11"\
-        section="Applications/Programming"\
-        hints="TDE"\
-        title="TQt3 Assistant"\
-        command="/usr/bin/tqassistant"

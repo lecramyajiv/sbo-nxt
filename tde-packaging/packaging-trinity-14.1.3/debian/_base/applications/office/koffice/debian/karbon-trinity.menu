@@ -1,9 +1,0 @@
-?package(karbon-trinity):\
-	needs="x11"\
-	section="Applications/Graphics"\
-	hints="TDE,Vector"\
-	title="Karbon"\
-	longtitle="Karbon (Scalable Graphics)"\
-	icon="/opt/trinity/share/pixmaps/karbon.xpm"\
-	command="/opt/trinity/bin/karbon"
-

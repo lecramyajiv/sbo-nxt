@@ -1,4 +1,0 @@
-usr/lib/$(DEB_HOST_MULTIARCH)/libtqt-mt.so.*
-usr/lib/$(DEB_HOST_MULTIARCH)/libtqui.so.1.*
-usr/lib/$(DEB_HOST_MULTIARCH)/tqt3/plugins/imageformats/libqmng.so
-usr/lib/$(DEB_HOST_MULTIARCH)/tqt3/plugins/inputmethods/*.so

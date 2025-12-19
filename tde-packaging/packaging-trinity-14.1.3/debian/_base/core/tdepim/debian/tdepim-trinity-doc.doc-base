@@ -1,9 +1,0 @@
-Document: tdepim-trinity-doc
-Title: TDE PIM Library API Documentation
-Author: The KDE Developers, The TDE Team
-Abstract: This is the developers' API documentation for tdepim.
-Section: Apps/Programming
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/tdepim-apidocs/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/tdepim-apidocs/*.html

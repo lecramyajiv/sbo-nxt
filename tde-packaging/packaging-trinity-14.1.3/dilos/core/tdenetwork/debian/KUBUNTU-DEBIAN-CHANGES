@@ -1,2 +1,0 @@
-Uncomment noauth in debian/kppp-options
-don't build-dep on libgsmme-dev, failed main inclusion

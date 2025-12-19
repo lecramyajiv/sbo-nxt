@@ -1,9 +1,0 @@
-debian/tmp/opt/trinity/include/cvsjob_stub.h
-debian/tmp/opt/trinity/include/cvsservice_stub.h
-debian/tmp/opt/trinity/include/repository_stub.h
-debian/tmp/opt/trinity/lib/libcvsservice.la
-debian/tmp/opt/trinity/lib/libcvsservice.so
-debian/tmp/opt/trinity/lib/libtdeinit_cvsaskpass.la
-debian/tmp/opt/trinity/lib/libtdeinit_cvsservice.la
-
-debian/tmp/opt/trinity/share/cmake/cervisia.cmake

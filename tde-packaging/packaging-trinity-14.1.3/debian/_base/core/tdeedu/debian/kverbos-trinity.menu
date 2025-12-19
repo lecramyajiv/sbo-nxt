@@ -1,7 +1,0 @@
-?package(kverbos-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="Kverbos"\
-  longtitle="Kverbos (Study Spanish Verbforms)"\
-  command="/opt/trinity/bin/kverbos"\
-  icon="/opt/trinity/share/pixmaps/kverbos.xpm"

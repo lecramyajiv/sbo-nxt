@@ -1,9 +1,0 @@
-Document: tdepim-doc-html-knotes
-Title: The KNotes Handbook
-Author: Fabian Dal Santo, Grep M. Holmes
-Abstract: KNotes is a sticky notes application for the desktop.
-Section: Apps/Tools
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/knotes/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/knotes/*.html

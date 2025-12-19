@@ -1,4 +1,0 @@
-?package(potracegui-trinity):needs="X11" section="Apps/Graphics"\
-  title="potracegui" command="/opt/trinity/bin/potracegui"\
-  hints="TDE frontend for tracing programs"
-

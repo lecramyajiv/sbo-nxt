@@ -1,7 +1,0 @@
-?package(tdepowersave-trinity):\
-  needs="X11"\
-  section="Applications/System/Monitoring"\
-  title="TDEPowersave"\
-  longtitle="Battery monitor and general power management"\
-  icon="/opt/trinity/share/pixmaps/tdepowersave.xpm"\
-  command="/opt/trinity/bin/tdepowersave"

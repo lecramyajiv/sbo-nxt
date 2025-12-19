@@ -1,2 +1,0 @@
-?package(basket-trinity):needs="X11" section="Apps/Tools" \
-  title="basket" command="/opt/trinity/bin/basket"

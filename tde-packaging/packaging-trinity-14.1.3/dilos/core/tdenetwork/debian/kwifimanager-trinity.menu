@@ -1,8 +1,0 @@
-?package(kwifimanager-trinity):\
-	needs="X11"\
-	section="Apps/Net"\
-	hints="TDE"\
-	title="KWifiManager"\
-	icon32x32="/usr/share/pixmaps/kwifimanager.xpm"\
-	icon16x16="/usr/share/pixmaps/kwifimanager-16.xpm"\
-	command="/usr/bin/kwifimanager"

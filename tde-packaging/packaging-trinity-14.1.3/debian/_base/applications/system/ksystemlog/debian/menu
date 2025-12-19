@@ -1,4 +1,0 @@
-?package(ksystemlog-trinity):needs="X11"\
-  section="Apps/Tools"\
-  title="KSystemLog"\
-  command="ksystemlog"

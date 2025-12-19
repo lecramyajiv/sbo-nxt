@@ -1,9 +1,0 @@
-?package(kivio-trinity):\
-	needs="x11"\
-	section="Applications/Graphics"\
-	hints="TDE,Vector"\
-	title="Kivio"\
-	longtitle="Kivio (Flowchart and Diagram Editing)"\
-	icon="/opt/trinity/share/pixmaps/kivio.xpm"\
-	command="/opt/trinity/bin/kivio"
-

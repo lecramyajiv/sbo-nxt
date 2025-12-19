@@ -1,8 +1,0 @@
-?package(ktnef-trinity):\
-	needs="X11"\
-	section="Applications/Viewers"\
-	hints="TDE"\
-	title="KTnef"\
-	icon32x32="/opt/trinity/share/pixmaps/ktnef.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/ktnef-16.xpm"\
-	command="/opt/trinity/bin/ktnef"

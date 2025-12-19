@@ -1,5 +1,0 @@
-debian/tmp/opt/trinity/lib/lib*.so.*
-debian/tmp/opt/trinity/share/apps/kipi
-debian/tmp/opt/trinity/share/icons
-debian/tmp/opt/trinity/share/servicetypes
-debian/tmp/opt/trinity/share/locale

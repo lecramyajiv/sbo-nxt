@@ -1,6 +1,0 @@
-?package(kbarcode-trinity):\
-  needs="X11"\
-  section="Applications/Graphics"\
-  hints="TDE,Barcode"\
-  title="KBarcode"\
-  command="/opt/trinity/bin/kbarcode"

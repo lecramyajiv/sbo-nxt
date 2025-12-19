@@ -1,6 +1,0 @@
-?package(tqt3-linguist):\
-        needs="x11"\
-        section="Applications/Programming"\
-        hints="TDE"\
-        title="TQt3 Linguist"\
-        command="/usr/bin/tqlinguist"

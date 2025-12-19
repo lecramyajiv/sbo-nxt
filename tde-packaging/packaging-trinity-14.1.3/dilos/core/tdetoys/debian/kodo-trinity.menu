@@ -1,9 +1,0 @@
-?package(kodo-trinity):\
-	needs="x11"\
-	section="Games/Toys"\
-	hints="TDE"\
-	title="KOdometer"\
-	longtitle="KOdometer (Measure Your Desktop Mileage)"\
-	icon="/usr/share/pixmaps/kodo.xpm"\
-	command="/usr/bin/kodo"
-

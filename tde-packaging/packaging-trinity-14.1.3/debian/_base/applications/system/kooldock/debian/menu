@@ -1,4 +1,0 @@
-?package(kooldock-trinity):needs="X11"\
- section="Apps/System"\
- title="kooldock"\
- command="/opt/trinity/bin/kooldock"

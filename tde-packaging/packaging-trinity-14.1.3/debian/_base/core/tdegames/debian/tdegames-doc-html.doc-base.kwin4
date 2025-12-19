@@ -1,9 +1,0 @@
-Document: tdegames-doc-html-twin4
-Title: KWin4 Manual
-Author: Martin Heni
-Abstract: This documentation describes KWin4 version 1.0.0.
-Section: Games/Board
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/twin4/index.html
-Files: /usr/share/doc/tde/HTML/en/twin4/*.html

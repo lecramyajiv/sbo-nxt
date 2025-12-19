@@ -1,2 +1,0 @@
-?package(kchmviewer-trinity):needs="X11" section="Applications/Viewers"\
-  title="kchmviewer" command="/opt/trinity/bin/kchmviewer"

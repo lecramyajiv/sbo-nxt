@@ -1,9 +1,0 @@
-?package(kreversi-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE"\
-	title="TDE Reversi"\
-	icon32x32="/opt/trinity/share/pixmaps/kreversi.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kreversi-16.xpm"\
-	command="/opt/trinity/games/kreversi"
-

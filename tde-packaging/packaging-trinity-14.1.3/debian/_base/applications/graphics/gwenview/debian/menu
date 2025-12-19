@@ -1,7 +1,0 @@
-?package(gwenview-trinity):\
-	needs="X11"\
-	section="Applications/Viewers"\
-	hints="TDE,Images"\
-	title="Gwenview"\
-	command="/opt/trinity/bin/gwenview"\
-	icon="/opt/trinity/share/pixmaps/gwenview.xpm"

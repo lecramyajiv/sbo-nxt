@@ -1,9 +1,0 @@
-Document: libtdegames-trinity-doc
-Title: TDE Games Library API Documentation
-Author: The KDE Developers, The TDE Team
-Abstract: This is the developers' API documentation for libtdegames.
-Section: Apps/Programming
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/tdegames-apidocs/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/tdegames-apidocs/*.html

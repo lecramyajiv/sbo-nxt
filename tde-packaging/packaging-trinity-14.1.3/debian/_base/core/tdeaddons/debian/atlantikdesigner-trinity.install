@@ -1,8 +1,0 @@
-debian/tmp/opt/trinity/bin/atlantikdesigner
-debian/tmp/opt/trinity/share/apps/atlantikdesigner
-debian/tmp/opt/trinity/share/applications/tde/atlantikdesigner.desktop
-debian/tmp/opt/trinity/share/doc/tde/HTML/en/atlantikdesigner
-debian/tmp/opt/trinity/share/icons/hicolor/32x32/apps/atlantikdesigner.png
-debian/tmp/opt/trinity/share/icons/hicolor/16x16/apps/atlantikdesigner.png
-debian/icons/atlantikdesigner.xpm /opt/trinity/share/pixmaps
-debian/tmp/opt/trinity/share/man/man1/atlantikdesigner.1

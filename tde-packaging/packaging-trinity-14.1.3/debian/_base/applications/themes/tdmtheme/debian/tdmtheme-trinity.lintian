@@ -1,6 +1,0 @@
-# provided by tdelibs
-tdmtheme: desktop-command-not-in-package ./usr/share/applications/tde/tdmtheme.desktop tdecmshell
-# kcontrol module
-tdmtheme: desktop-entry-invalid-category X-TDE-settings-system ./usr/share/applications/tde/tdmtheme.desktop
-tdmtheme: desktop-entry-lacks-main-category ./usr/share/applications/tde/tdmtheme.desktop
-

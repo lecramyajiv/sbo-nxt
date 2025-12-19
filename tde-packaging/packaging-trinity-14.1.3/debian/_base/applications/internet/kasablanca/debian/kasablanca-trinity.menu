@@ -1,7 +1,0 @@
-?package(kasablanca-trinity):\
-	needs="X11" \
-	hints="TDE" \
-	section="Apps/Net"\
-	title="kasablanca" \
-	longtitle="kasablanca - ftp client" \
-	command="/opt/trinity/bin/kasablanca"

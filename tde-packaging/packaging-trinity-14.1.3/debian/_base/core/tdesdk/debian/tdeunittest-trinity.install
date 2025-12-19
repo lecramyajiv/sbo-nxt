@@ -1,7 +1,0 @@
-debian/tmp/opt/trinity/bin/tdeunittestmod
-debian/tmp/opt/trinity/bin/tdeunittestguimodrunner
-debian/tmp/opt/trinity/lib/libtdeunittestgui.la
-debian/tmp/opt/trinity/lib/libtdeunittestgui.so
-debian/tmp/opt/trinity/lib/libtdeunittestgui.so.0
-debian/tmp/opt/trinity/lib/libtdeunittestgui.so.0.0.0
-debian/tmp/opt/trinity/include/tdeunittest/runnergui.h

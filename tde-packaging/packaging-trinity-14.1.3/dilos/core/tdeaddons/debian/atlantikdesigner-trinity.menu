@@ -1,7 +1,0 @@
-?package(atlantikdesigner-trinity):needs="X11"\
-  section="Games/Tool"\
-  hints="TDE,Monopoly"\
-  title="Atlantik Designer"\
-  longtitle="Atlantik Designer (Monopoly(R)-like Board Designer)"\
-  command="/usr/bin/atlantikdesigner"\
-  icon="/usr/share/pixmaps/atlantikdesigner.xpm"

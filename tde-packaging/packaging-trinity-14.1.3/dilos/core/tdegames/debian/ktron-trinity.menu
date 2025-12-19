@@ -1,9 +1,0 @@
-?package(ktron-trinity):\
-	needs="x11"\
-	section="Games/Arcade"\
-	hints="TDE"\
-	title="TDE Tron"\
-	icon32x32="/usr/share/pixmaps/ktron.xpm"\
-	icon16x16="/usr/share/pixmaps/ktron-16.xpm"\
-	command="/usr/games/ktron"
-

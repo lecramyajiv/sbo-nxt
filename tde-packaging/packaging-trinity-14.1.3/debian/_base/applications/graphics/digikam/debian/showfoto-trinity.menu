@@ -1,7 +1,0 @@
-?package(showfoto-trinity):\
-	needs="X11"\
-	section="Applications/Viewers"\
-	title="showfoto"\
-	icon32x32="/opt/trinity/share/pixmaps/showfoto.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/showfoto-16.xpm"\
-	command="/opt/trinity/bin/showfoto"

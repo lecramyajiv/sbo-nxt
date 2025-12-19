@@ -1,7 +1,0 @@
-?package(konq-plugins-trinity):needs="X11"\
-  section="Applications/System/Monitoring"\
-  hints="TDE"\
-  title="FSView"\
-  longtitle="FSView (Graphical Disk Usage / Filesystem Viewer)"\
-  command="/usr/bin/fsview"\
-  icon="/usr/share/pixmaps/fsview.xpm"

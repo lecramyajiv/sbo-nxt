@@ -1,8 +1,0 @@
-?package(tdepacman-trinity):\
-	needs="x11"\
-	section="Games/Arcade"\
-	hints="TDE"\
-	title="TDEPacMan"\
-	icon32x32="/opt/trinity/share/icons/hicolor/32x32/apps/tdepacman.png"\
-	command="/opt/trinity/bin/tdepacman"
-

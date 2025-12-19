@@ -1,9 +1,0 @@
-?package(kpat-trinity):\
-	needs="x11"\
-	section="Games/Card"\
-	hints="TDE"\
-	title="TDE Patience"\
-	icon32x32="/opt/trinity/share/pixmaps/kpat.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kpat-16.xpm"\
-	command="/opt/trinity/games/kpat"
-

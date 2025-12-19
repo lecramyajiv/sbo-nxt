@@ -1,9 +1,0 @@
-?package(kpoker-trinity):\
-	needs="x11"\
-	section="Games/Card"\
-	hints="TDE"\
-	title="TDE Poker"\
-	icon32x32="/usr/share/pixmaps/kpoker.xpm"\
-	icon16x16="/usr/share/pixmaps/kpoker-16.xpm"\
-	command="/usr/games/kpoker"
-

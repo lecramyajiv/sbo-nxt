@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Service
-Name=SourceForge Tracker
-ServiceTypes=SearchProvider
-Keys=sft
-Query=https://sourceforge.net/support/tracker.php?aid=\{@}
