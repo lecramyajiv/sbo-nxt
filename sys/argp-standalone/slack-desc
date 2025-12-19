@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+               |-----handy-ruler------------------------------------------------------|
+argp-standalone: argp-standalone ()
+argp-standalone:
+argp-standalone: argp-standalone is another standalone version of the argp argument
+argp-standalone: parsing functions from glibc by Thomas Mathys. It is distributed
+argp-standalone: under the terms of the GNU LGPL v2.1.
+argp-standalone:
+argp-standalone:
+argp-standalone:
+argp-standalone:
+argp-standalone: Homepage:https://github.com/tom42/argp-standalone
+argp-standalone:
