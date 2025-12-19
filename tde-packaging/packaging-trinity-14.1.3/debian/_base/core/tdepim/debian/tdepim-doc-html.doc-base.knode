@@ -1,9 +1,0 @@
-Document: tdepim-doc-html-knode
-Title: The KNode manual
-Author: Stephan Johach, Thomas Schûtz
-Abstract: KNode is an easy-to-use newsreader.
-Section: Apps/Net
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/knode/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/knode/*.html

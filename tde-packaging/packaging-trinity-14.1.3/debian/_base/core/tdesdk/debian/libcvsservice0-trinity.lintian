@@ -1,3 +1,0 @@
-# This is from tdeinit black magic.
-libcvsservice0-trinity: shlib-missing-in-control-file libtdeinit_cvsaskpass.so opt/trinity/lib/libtdeinit_cvsaskpass.so
-libcvsservice0-trinity: shlib-missing-in-control-file libtdeinit_cvsservice.so opt/trinity/lib/libtdeinit_cvsservice.so

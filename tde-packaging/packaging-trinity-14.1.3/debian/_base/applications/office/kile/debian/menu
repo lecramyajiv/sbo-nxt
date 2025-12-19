@@ -1,7 +1,0 @@
-?package(kile-trinity):needs="X11" \
-  section="Applications/Editors" \
-  hints="TDE" \
-  title="Kile" \
-  longtitle="Kile (LaTeX development environment)" \
-  command="/opt/trinity/bin/kile" \
-  icon="/opt/trinity/share/pixmaps/kile.xpm"

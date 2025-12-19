@@ -1,6 +1,0 @@
-?package(tdepasswd-trinity):\
-	needs="X11"\
-	section="Applications/System/Administration"\
-	hints="TDE"\
-	title="tdepasswd"\
-	command="/opt/trinity/bin/tdepasswd"

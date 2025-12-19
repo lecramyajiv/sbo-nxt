@@ -1,7 +1,0 @@
-application/ogg;	noatun --nofork %s;	nametemplate=%s.ogg;	test=test "$DISPLAY" != ""
-application/x-ogg;	noatun --nofork %s;	nametemplate=%s.ogg;	test=test "$DISPLAY" != ""
-audio/mpeg;	noatun --nofork %s;	nametemplate=%s.mpg;	test=test "$DISPLAY" != ""
-audio/mpegurl;	noatun --nofork %s;	nametemplate=%s.m3u;	test=test "$DISPLAY" != ""
-audio/x-mp2;	noatun --nofork %s;	nametemplate=%s.mp2;	test=test "$DISPLAY" != ""
-audio/x-mp3;	noatun --nofork %s;	nametemplate=%s.mp3;	test=test "$DISPLAY" != ""
-audio/x-wav;	noatun --nofork %s;	nametemplate=%s.wav;	test=test "$DISPLAY" != ""

@@ -1,3 +1,0 @@
-network-manager-tde: no-shlibs-control-file opt/trinity/lib/libtdeinit_tdenetworkmanager.so
-network-manager-tde: package-name-doesnt-match-sonames libtdeinit-tdenetworkmanager
-

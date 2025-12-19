@@ -1,1 +1,0 @@
-don't build-dep on libgtk1.2-dev, it's needed for xparts which we don't package

@@ -1,7 +1,0 @@
-usr/lib/python3*/*-packages/PyTQt/tqtcanvas.so
-usr/lib/python3*/*-packages/PyTQt/tqtnetwork.so
-usr/lib/python3*/*-packages/PyTQt/tqtsql.so
-usr/lib/python3*/*-packages/PyTQt/tqttable.so
-usr/lib/python3*/*-packages/PyTQt/tqtui.so
-usr/lib/python3*/*-packages/PyTQt/tqtxml.so
-usr/lib/python3*/*-packages/PyTQt/tqt.so

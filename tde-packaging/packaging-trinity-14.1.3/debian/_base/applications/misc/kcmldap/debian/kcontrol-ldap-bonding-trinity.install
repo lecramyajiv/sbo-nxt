@@ -1,6 +1,0 @@
-debian/tmp/opt/trinity/bin/tdeldapbonding
-debian/tmp/opt/trinity/lib/trinity/kcm_ldapbonding.so
-debian/tmp/opt/trinity/lib/trinity/kcm_ldapbonding.la
-debian/tmp/opt/trinity/share/pixmaps/kcmldapbonding_step1.png
-debian/tmp/opt/trinity/share/pixmaps/kcmldapbonding_step3.png
-debian/tmp/opt/trinity/share/applications/tde/ldapbonding.desktop

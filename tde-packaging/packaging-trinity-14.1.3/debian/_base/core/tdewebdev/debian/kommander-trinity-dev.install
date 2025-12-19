@@ -1,7 +1,0 @@
-debian/tmp/opt/trinity/include/kommander*
-debian/tmp/opt/trinity/include/specials.h
-debian/tmp/opt/trinity/lib/libkommanderplugin.la
-debian/tmp/opt/trinity/lib/libkommanderplugin.so
-debian/tmp/opt/trinity/lib/libkommanderwidget.la
-debian/tmp/opt/trinity/lib/libkommanderwidget.so
-debian/tmp/opt/trinity/lib/libkommanderwidgets.so

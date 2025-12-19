@@ -1,6 +1,0 @@
-not DEB_KDE_CVS_MAKE
-remove from rules clean:: rm -f patches and .tar.bz2
-don't build-dep on automake1.9
-remove stamp-libtool rules (3 of them) from debian/rules
-tdegames suggests khelpcentre
-remove clean rule

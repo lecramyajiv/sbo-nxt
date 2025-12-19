@@ -1,8 +1,0 @@
-debian/tmp/etc/dbus-1/system.d/org.tqt.policykit.examples.conf
-debian/tmp/usr/bin/polkit-tqt-agent-example
-debian/tmp/usr/bin/polkit-tqt-example
-debian/tmp/usr/bin/polkit-tqt-example-helper
-debian/tmp/usr/share/apps/polkit-tqt/examples/*
-debian/tmp/usr/share/apps/polkit-tqt/icons/*
-debian/tmp/usr/share/dbus-1/system-services/org.tqt.policykit.examples.service
-debian/tmp/usr/share/polkit-1/actions/org.tqt.policykit.examples.policy

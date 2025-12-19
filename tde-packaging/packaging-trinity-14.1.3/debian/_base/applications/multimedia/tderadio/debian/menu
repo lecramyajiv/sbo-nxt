@@ -1,7 +1,0 @@
-?package(tderadio-trinity):needs="X11" \
-  section="Applications/TV and Radio" \
-  hints="TDE" \
-  title="TDERadio" \
-  longtitle="K-Radio Application" \
-  command="/opt/trinity/bin/tderadio" \
-  icon="/opt/trinity/share/pixmaps/tderadio.xpm"

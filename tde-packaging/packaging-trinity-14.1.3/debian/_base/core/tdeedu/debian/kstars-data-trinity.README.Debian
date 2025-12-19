@@ -1,7 +1,0 @@
-KStars data for Debian
-----------------------
-
-This package merely provides supporting data files for KStars.  The
-KStars application itself can be found in the kstars package.
-
- -- Ben Burton <bab@debian.org>, Mon, 23 Feb 2004 08:14:22 +1100

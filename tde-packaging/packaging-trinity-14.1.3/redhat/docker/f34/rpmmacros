@@ -1,6 +1,0 @@
-%dist .fc34
-%_smp_mflags -j8
-%jobs 8
-%__cmake_builddir %nil
-%_debugsource_packages %nil
-%_debugsource_template %nil

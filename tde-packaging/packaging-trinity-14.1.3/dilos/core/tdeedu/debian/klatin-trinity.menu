@@ -1,7 +1,0 @@
-?package(klatin-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="KLatin"\
-  longtitle="KLatin (Latin Reviser)"\
-  command="/usr/bin/klatin"\
-  icon="/usr/share/pixmaps/klatin.xpm"

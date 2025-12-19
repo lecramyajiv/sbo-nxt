@@ -1,7 +1,0 @@
-#
-# /etc/pam.d/kcheckpass - specify the PAM behaviour of kcheckpass
-#
-@include common-auth
-@include common-account
-@include common-password
-@include common-session

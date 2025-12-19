@@ -1,9 +1,0 @@
-Document: tdegames-doc-html-kolf
-Title: The Kolf Handbook
-Author: Jason Katz-Brown
-Abstract: Kolf is a miniature golf game for TDE.
-Section: Games/Arcade
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/kolf/index.html
-Files: /usr/share/doc/tde/HTML/en/kolf/*.html

@@ -1,9 +1,0 @@
-[Number]
-NumberOfWindows=1
-
-[WindowProperties1]
-ClassName=KmagApp
-Height 768=390
-ObjectName=kmag-mainwindow#1
-Width 1024=460
-

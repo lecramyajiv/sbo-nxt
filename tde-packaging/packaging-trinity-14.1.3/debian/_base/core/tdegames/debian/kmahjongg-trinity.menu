@@ -1,9 +1,0 @@
-?package(kmahjongg-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE,Mahjongg"\
-	title="KMahjongg"\
-	icon32x32="/opt/trinity/share/pixmaps/kmahjongg.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kmahjongg-16.xpm"\
-	command="/opt/trinity/games/kmahjongg"
-

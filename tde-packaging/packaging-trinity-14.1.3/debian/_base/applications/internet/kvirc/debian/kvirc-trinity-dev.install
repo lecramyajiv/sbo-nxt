@@ -1,5 +1,0 @@
-debian/tmp/opt/trinity/bin/kvirc-config
-debian/tmp/opt/trinity/include/kvirc/
-debian/tmp/opt/trinity/lib/*.la
-debian/tmp/opt/trinity/lib/*.so
-debian/tmp/opt/trinity/lib/kvirc/*/modules/*.la

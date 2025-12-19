@@ -1,8 +1,0 @@
-?package(kcron-trinity):\
-	needs="X11"\
-	section="Applications/Editors"\
-	hints="TDE"\
-	title="TDE Task Scheduler"\
-	icon32x32="/usr/share/pixmaps/kcron.xpm"\
-	icon16x16="/usr/share/pixmaps/kcron-16.xpm"\
-	command="/usr/bin/kcron"

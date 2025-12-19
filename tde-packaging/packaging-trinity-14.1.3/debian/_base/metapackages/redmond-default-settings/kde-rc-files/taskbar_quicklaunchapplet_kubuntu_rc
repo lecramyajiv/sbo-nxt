@@ -1,9 +1,0 @@
-[General]
-AutoAdjustMinItems=0
-Buttons=firefox.desktop,thunderbird.desktop,tde-kcalc.desktop,tde-Home.desktop
-IconDim=24
-
-[PopularityData]
-ServiceHistories=0.5/0.111565/0.0248935/0.0055545/0.00123938/0.000276542/6.17049e-05/1.37682e-05,0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0
-ServiceInspos=7,4,8,3,2,5
-ServiceNames=tde-kcalc.desktop,tde-Help.desktop,tde-Home.desktop,tde-KControl.desktop,tde-konsole.desktop,tde-kwrite.desktop

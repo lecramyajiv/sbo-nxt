@@ -1,5 +1,0 @@
-/opt/trinity/include/*.h
-/opt/trinity/include/kgame
-/opt/trinity/lib/libtdegames.so
-/opt/trinity/lib/libtdegames.la
-/opt/trinity/lib/pkgconfig/libtdegames.pc

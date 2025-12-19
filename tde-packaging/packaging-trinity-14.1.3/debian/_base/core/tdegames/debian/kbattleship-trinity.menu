@@ -1,8 +1,0 @@
-?package(kbattleship-trinity):\
-        needs="x11"\
-        section="Games/Board"\
-        hints="TDE"\
-        title="KBattleship"\
-	icon32x32="/opt/trinity/share/pixmaps/kbattleship.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kbattleship-16.xpm"\
-        command="/opt/trinity/games/kbattleship"

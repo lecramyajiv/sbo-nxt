@@ -1,8 +1,0 @@
-?package(akregator-trinity):\
-	needs="X11"\
-	section="Applications/Network/Web News"\
-	hints="TDE"\
-	title="aKregator"\
-	icon32x32="/opt/trinity/share/pixmaps/akregator.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/akregator-16.xpm"\
-	command="/opt/trinity/bin/akregator"

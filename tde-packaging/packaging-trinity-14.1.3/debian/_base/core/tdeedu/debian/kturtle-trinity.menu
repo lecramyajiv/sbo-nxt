@@ -1,7 +1,0 @@
-?package(kturtle-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="KTurtle"\
-  longtitle="KTurtle (Logo Programming Environment)"\
-  command="/opt/trinity/bin/kturtle"\
-  icon="/opt/trinity/share/pixmaps/kturtle.xpm"

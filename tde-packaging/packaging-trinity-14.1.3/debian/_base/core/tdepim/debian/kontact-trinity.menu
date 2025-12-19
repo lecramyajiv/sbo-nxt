@@ -1,8 +1,0 @@
-?package(kontact-trinity):\
-	needs="X11"\
-	section="Applications/Data Management"\
-	hints="TDE"\
-	title="Kontact"\
-	icon32x32="/opt/trinity/share/pixmaps/kontact.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kontact-16.xpm"\
-	command="/opt/trinity/bin/kontact"

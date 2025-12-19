@@ -1,6 +1,0 @@
-?package(lilo-config-trinity):\
-	needs="X11"\
-	section="Applications/System/Administration"\
-	hints="TDE"\
-	title="lilo-config"\
-	command="/usr/bin/tdesu tdecmshell lilo"

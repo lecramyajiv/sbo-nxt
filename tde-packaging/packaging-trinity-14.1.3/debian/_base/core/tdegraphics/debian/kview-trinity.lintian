@@ -1,3 +1,0 @@
-kview-trinity: shlib-missing-in-control-file libphotobook.so opt/trinity/lib/libphotobook.so
-kview-trinity: shlib-missing-in-control-file libtdeinit_kview.so opt/trinity/lib/libtdeinit_kview.so
-kview-trinity: package-name-doesnt-match-sonames libtdeinit-kview libkimageviewer0

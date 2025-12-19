@@ -1,9 +1,0 @@
-[General]
-AutoAdjustMinItems=0
-Buttons=SPECIAL_BUTTON__SHOW_DESKTOP,tde-konqbrowser.desktop,tde-Kontact.desktop,tde-amarok.desktop,tde-kopete.desktop
-ConserveSpace=false
-
-[PopularityData]
-ServiceHistories=0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0,0/0/0/0/0/0/0/0
-ServiceInspos=4,1,3,2,5
-ServiceNames=tde-Help.desktop,tde-Home.desktop,tde-KControl.desktop,tde-konsole.desktop,tde-kwrite.desktop

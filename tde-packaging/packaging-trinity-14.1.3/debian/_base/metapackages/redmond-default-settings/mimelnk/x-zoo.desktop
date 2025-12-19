@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Archive Zoo
-Hidden=false
-Patterns=*.zoo;*.ZOO
-X-TDE-AutoEmbed=true
-
-[Property::X-TDE-LocalProtocol]
-Type=
-Value=

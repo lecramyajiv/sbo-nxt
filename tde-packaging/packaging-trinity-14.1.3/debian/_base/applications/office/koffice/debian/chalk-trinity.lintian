@@ -1,4 +1,0 @@
-chalk-trinity: shlib-missing-in-control-file libtdeinit_chalk.so for opt/trinity/lib/libtdeinit_chalk.so
-chalk-trinity: menu-icon-missing /opt/trinity/share/pixmaps/chalk.xpm
-chalk-trinity: package-name-doesnt-match-sonames libtdeinit-chalk libchalk-cmyk-u16-0 libchalk-gray-u16-0 libchalk-lms-f32-0 libchalk-rgb-f16half0 libchalk-rgb-f32-0 libchalk-rgb-u16-0 libchalk-ycbcr-u16-0 libchalk-ycbcr-u8-0 libchalkcolor1 libchalkcommon1 libchalkgrayscale0 libchalkimage1 libchalkrgb0 libchalkscripting0 libchalkui1
-

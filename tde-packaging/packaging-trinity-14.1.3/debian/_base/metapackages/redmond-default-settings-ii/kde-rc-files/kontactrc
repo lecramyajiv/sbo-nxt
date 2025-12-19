@@ -1,6 +1,0 @@
-[Plugins]
-kontact_knodepluginEnabled=true
-kontact_multisynkEnabled=false
-
-[TipOfDay]
-RunOnStart=false

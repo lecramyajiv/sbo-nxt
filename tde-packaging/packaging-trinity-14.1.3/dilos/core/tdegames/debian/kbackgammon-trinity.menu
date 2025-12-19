@@ -1,9 +1,0 @@
-?package(kbackgammon-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE"\
-	title="TDE Backgammon"\
-	icon32x32="/usr/share/pixmaps/kbackgammon.xpm"\
-	icon16x16="/usr/share/pixmaps/kbackgammon-16.xpm"\
-	command="/usr/games/kbackgammon"
-

@@ -1,4 +1,0 @@
-debian/overrides/kvirc-trinity usr/share/lintian/overrides
-debian/tmp/opt/trinity/bin/kvirc
-debian/tmp/opt/trinity/lib/*.so.*
-debian/tmp/opt/trinity/lib/kvirc/*/modules/*.so

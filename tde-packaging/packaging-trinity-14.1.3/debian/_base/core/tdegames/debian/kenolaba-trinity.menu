@@ -1,8 +1,0 @@
-?package(kenolaba-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE"\
-	title="KEnolaba"\
-	icon32x32="/opt/trinity/share/pixmaps/kenolaba.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/kenolaba-16.xpm"\
-	command="/opt/trinity/games/kenolaba"

@@ -1,2 +1,0 @@
-kfaxview-trinity: no-shlibs-control-file opt/trinity/lib/libkfaximage.so
-kfaxview-trinity: package-name-doesnt-match-sonames libkfaximage

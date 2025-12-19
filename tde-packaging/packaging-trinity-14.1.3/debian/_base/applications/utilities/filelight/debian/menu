@@ -1,6 +1,0 @@
-?package(filelight-trinity):needs="X11" \
-        section="Apps/System" \
-        hints="TDE, Monitoring, Files" \
-        command="/opt/trinity/bin/filelight" \
-        title="Filelight" \
-        longtitle="Filelight: disk usage as concentric rings"

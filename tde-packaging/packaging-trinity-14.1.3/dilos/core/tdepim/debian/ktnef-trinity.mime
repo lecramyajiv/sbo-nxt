@@ -1,2 +1,0 @@
-application/vnd.ms-tnef;        ktnef '%s'; test=test "$DISPLAY" != ""
-application/ms-tnef;        	ktnef '%s'; test=test "$DISPLAY" != ""

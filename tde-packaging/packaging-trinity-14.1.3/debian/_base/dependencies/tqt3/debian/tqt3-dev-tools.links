@@ -1,7 +1,0 @@
-/usr/share/tqt3/mkspecs/linux-g++ /usr/share/tqt3/mkspecs/default
-/usr/bin/tqmake /usr/share/tqt3/bin/tqmake
-/usr/bin/tqlupdate /usr/share/tqt3/bin/tqlupdate
-/usr/bin/tqlrelease /usr/share/tqt3/bin/tqlrelease
-/usr/bin/tquic /usr/share/tqt3/bin/tquic
-/usr/bin/tqmoc /usr/share/tqt3/bin/tqmoc
-/usr/bin/tqembed /usr/share/tqt3/bin/tqembed

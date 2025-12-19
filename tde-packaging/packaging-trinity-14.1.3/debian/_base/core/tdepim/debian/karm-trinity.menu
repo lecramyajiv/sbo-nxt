@@ -1,8 +1,0 @@
-?package(karm-trinity):\
-	needs="X11"\
-	section="Applications/Project Management"\
-	hints="TDE"\
-	title="KArm"\
-	icon32x32="/opt/trinity/share/pixmaps/karm.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/karm-16.xpm"\
-	command="/opt/trinity/bin/karm"

@@ -1,8 +1,0 @@
-/usr/lib/$(DEB_HOST_MULTIARCH)/libtqteditor.prl /usr/share/tqt3/lib/libtqteditor.prl
-/usr/lib/$(DEB_HOST_MULTIARCH)/libtqteditor.so /usr/share/tqt3/lib/libtqteditor.so
-/usr/lib/$(DEB_HOST_MULTIARCH)/libtqtdesignercore.prl /usr/share/tqt3/lib/libtqtdesignercore.prl
-/usr/lib/$(DEB_HOST_MULTIARCH)/libtqtdesignercore.so /usr/share/tqt3/lib/libtqtdesignercore.so
-/usr/lib/$(DEB_HOST_MULTIARCH)/libtqassistantclient.prl /usr/share/tqt3/lib/libtqassistantclient.prl
-/usr/lib/$(DEB_HOST_MULTIARCH)/libtqassistantclient.so /usr/share/tqt3/lib/libtqassistantclient.so
-/usr/include/tqt3 /usr/share/tqt3/tools/designer/editor
-/usr/include/tqt3 /usr/share/tqt3/tools/designer/interfaces

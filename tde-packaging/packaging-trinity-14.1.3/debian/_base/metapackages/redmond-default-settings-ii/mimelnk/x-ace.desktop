@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Archive ACE
-Hidden=false
-Patterns=*.ace;*.ACE
-X-TDE-AutoEmbed=true
-
-[Property::X-TDE-LocalProtocol]
-Type=
-Value=

@@ -1,9 +1,0 @@
-Document: klatin
-Title: KLatin Handbook
-Author: George Wright <gwright@users.sourceforge.net> and Anne-Marie Mahfouf <annma@kde.org>
-Abstract: KLatin is a TDE application to help revise/teach Latin.
-Section: Apps/Tools
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/klatin/index.html
-Files: /usr/share/doc/tde/HTML/en/klatin/*.html

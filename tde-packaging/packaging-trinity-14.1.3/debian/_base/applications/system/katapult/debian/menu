@@ -1,3 +1,0 @@
-?package(katapult-trinity):needs="X11" section="Apps/Tools"\
-  title="Katapult" command="/opt/trinity/bin/katapult"
-

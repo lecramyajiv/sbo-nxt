@@ -1,2 +1,0 @@
-setBadness('library-without-ldconfig-postun', 0)
-setBadness('library-without-ldconfig-postin', 0)

@@ -1,9 +1,0 @@
-Document: tdepim-doc-html-karm
-Title: The KArm Handbook
-Author: Jonathan Singer, Mark Bucciarelli, Sirtaj Singh Kang
-Abstract: KArm tracks time spent on various tasks.
-Section: Apps/Tools
-
-Format: HTML
-Index: /opt/trinity/share/doc/tde/HTML/en/karm/index.html
-Files: /opt/trinity/share/doc/tde/HTML/en/karm/*.html

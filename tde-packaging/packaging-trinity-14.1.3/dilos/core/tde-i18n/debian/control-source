@@ -1,6 +1,0 @@
-Source: tde-i18n-trinity
-Section: tde
-Priority: optional
-Maintainer: TDE Debian Team <team-debian@trinitydesktop.org>
-Build-Depends: cdbs, debhelper (>= 10~), quilt, tde-cmake, ninja-build, tdelibs-trinity-dev
-Standards-Version: 3.8.4

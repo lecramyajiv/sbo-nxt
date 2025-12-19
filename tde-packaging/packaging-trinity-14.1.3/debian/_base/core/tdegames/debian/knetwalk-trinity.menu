@@ -1,9 +1,0 @@
-?package(knetwalk-trinity):\
-	needs="x11"\
-	section="Games/Puzzles"\
-	hints="TDE,Mines"\
-	title="KNetwalk"\
-	icon32x32="/opt/trinity/share/pixmaps/knetwalk.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/knetwalk-16.xpm"\
-	command="/opt/trinity/games/knetwalk"
-

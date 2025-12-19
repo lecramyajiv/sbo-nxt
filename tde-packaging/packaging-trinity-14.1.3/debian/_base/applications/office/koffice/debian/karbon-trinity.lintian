@@ -1,2 +1,0 @@
-karbon-trinity: shlib-missing-in-control-file libtdeinit_karbon.so for opt/trinity/lib/libtdeinit_karbon.so
-karbon-trinity: package-name-doesnt-match-sonames libkarboncommon0 libtdeinit-karbon

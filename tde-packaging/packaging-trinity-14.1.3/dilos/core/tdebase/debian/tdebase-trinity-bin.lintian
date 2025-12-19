@@ -1,7 +1,0 @@
-tdebase-bin-trinity: setuid-binary usr/bin/kcheckpass 4711 root/root
-tdebase-bin-trinity: setuid-binary usr/bin/tdekbdledsync 4711 root/root
-tdebase-bin-trinity: setgid-binary usr/bin/tdesud 2755 root/nogroup
-tdebase-bin-trinity: setuid-binary usr/bin/tdmtsak 4711 root/root
-tdebase-bin-trinity: no-shlibs-control-file usr/lib/libtdeinit_kcminit.so
-tdebase-bin-trinity: no-shlibs-control-file usr/lib/libtdeinit_khotkeys.so
-tdebase-bin-trinity: no-shlibs-control-file usr/lib/libtdeinit_kxkb.so

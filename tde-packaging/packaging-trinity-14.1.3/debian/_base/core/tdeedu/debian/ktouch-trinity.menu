@@ -1,7 +1,0 @@
-?package(ktouch-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="KTouch"\
-  longtitle="KTouch (Touch Typing Tutor)"\
-  command="/opt/trinity/bin/ktouch"\
-  icon="/opt/trinity/share/pixmaps/ktouch.xpm"

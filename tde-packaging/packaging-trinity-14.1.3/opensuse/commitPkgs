@@ -1,5 +1,0 @@
-#!/bin/bash
-
-osc vc || exit 1
-osc add .
-osc ci

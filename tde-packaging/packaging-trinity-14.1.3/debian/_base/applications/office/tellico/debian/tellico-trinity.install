@@ -1,5 +1,0 @@
-debian/tmp/opt/trinity/bin/*
-debian/tmp/opt/trinity/share/applications/*
-debian/tmp/opt/trinity/share/man/man1/tellico.1
-
-debian/tellico.xpm /opt/trinity/share/pixmaps/

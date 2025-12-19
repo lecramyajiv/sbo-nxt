@@ -1,9 +1,0 @@
-Document: tdegames-doc-html-kpoker
-Title: KPoker Handbook
-Author: Jochen Tuchbreiter, Andreas Beckermann
-Abstract: This is the helpfile of KPoker, a little poker game.
-Section: Games/Card
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/kpoker/index.html
-Files: /usr/share/doc/tde/HTML/en/kpoker/*.html

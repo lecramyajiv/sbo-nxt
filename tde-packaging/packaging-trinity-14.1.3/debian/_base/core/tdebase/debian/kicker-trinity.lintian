@@ -1,3 +1,0 @@
-kicker-trinity: shlib-missing-in-control-file libtdeinit_extensionproxy.so opt/trinity/lib/libtdeinit_extensionproxy.so
-kicker-trinity: shlib-missing-in-control-file libtdeinit_kicker.so opt/trinity/lib/libtdeinit_kicker.so
-kicker-trinity: shlib-missing-in-control-file libtdeinit_appletproxy.so opt/trinity/lib/libtdeinit_appletproxy.so

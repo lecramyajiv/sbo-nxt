@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Archive 7-Zip
-Hidden=false
-Patterns=*.7z;*.7Z
-X-TDE-AutoEmbed=true
-
-[Property::X-TDE-LocalProtocol]
-Type=
-Value=

@@ -1,9 +1,0 @@
-?package(kolf-trinity):\
-	needs="x11"\
-	section="Games/Arcade"\
-	hints="TDE"\
-	title="TDE Miniature Golf"\
-	icon32x32="/usr/share/pixmaps/kolf.xpm"\
-	icon16x16="/usr/share/pixmaps/kolf-16.xpm"\
-	command="/usr/games/kolf"
-

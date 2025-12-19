@@ -1,6 +1,0 @@
-debian/tmp/usr/include/dbus*/dbus/dbus-qt.h
-debian/tmp/usr/include/dbus*/dbus/connection.h
-debian/tmp/usr/include/dbus*/dbus/server.h
-debian/tmp/usr/include/dbus*/dbus/message.h
-debian/tmp/usr/lib/libdbus-tqt-*.so
-debian/tmp/usr/lib/pkgconfig/*.pc

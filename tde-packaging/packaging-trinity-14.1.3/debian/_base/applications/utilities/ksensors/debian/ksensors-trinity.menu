@@ -1,7 +1,0 @@
-?package(ksensors-trinity): \
-	needs="X11" \
-	section="Applications/System/Hardware" \
-	hints="TDE" \
-	title="KSensors" \
-	command="/opt/trinity/bin/ksensors" \
-	icon="/opt/trinity/share/pixmaps/ksensors.xpm"

@@ -1,8 +1,0 @@
-smb4k for Debian
-----------------
-
-Thanks to Mindaugas Zaksauskas and Alexander Reinholdt who packaged a first version of this program.
-I modified for an up-to-date policy and added cdbs debianizing tool support.
-
- -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 18 Jun 2004 17:00:05 +0200
-

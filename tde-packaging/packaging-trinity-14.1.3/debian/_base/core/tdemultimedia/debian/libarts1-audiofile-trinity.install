@@ -1,7 +1,0 @@
-debian/tmp/opt/trinity/lib/libarts_audiofile.la
-debian/tmp/opt/trinity/lib/libarts_audiofile.so
-debian/tmp/opt/trinity/lib/libarts_audiofile.so.0
-debian/tmp/opt/trinity/lib/libarts_audiofile.so.0.0.0
-debian/tmp/opt/trinity/lib/mcop/Arts/audiofilePlayObject.mcopclass
-debian/tmp/opt/trinity/lib/mcop/audiofilearts.mcopclass
-debian/tmp/opt/trinity/lib/mcop/audiofilearts.mcoptype

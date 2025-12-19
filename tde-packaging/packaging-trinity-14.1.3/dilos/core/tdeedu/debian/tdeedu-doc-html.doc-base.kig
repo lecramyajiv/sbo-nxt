@@ -1,9 +1,0 @@
-Document: kig
-Title: Kig Handbook
-Author: Dominique Devriese <devriese@kde.org>
-Abstract: Kig is a TDE application for Interactive Geometry.
-Section: Apps/Math
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/kig/index.html
-Files: /usr/share/doc/tde/HTML/en/kig/*.html

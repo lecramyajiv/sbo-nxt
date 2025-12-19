@@ -1,8 +1,0 @@
-?package(kmag-trinity):\
-	needs="x11"\
-	section="Applications/Accessibility"\
-	hints="TDE"\
-	title="KMag"\
-	icon32x32="/usr/share/pixmaps/kmag.xpm"\
-	icon16x16="/usr/share/pixmaps/kmag-16.xpm"\
-	command="/usr/bin/kmag"

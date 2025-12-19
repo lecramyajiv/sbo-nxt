@@ -1,1 +1,0 @@
-rpm file:/home/trinity/rpmbuild RPMS.tde-${TDE_VERSION} ${ARCH} noarch

@@ -1,6 +1,0 @@
-?package(tdefifteen-trinity):\
-	needs="x11"\
-	section="Games/Board"\
-	hints="TDE"\
-	title="TDE Fifteen Pieces"\
-	command="/opt/trinity/games/tdefifteen"

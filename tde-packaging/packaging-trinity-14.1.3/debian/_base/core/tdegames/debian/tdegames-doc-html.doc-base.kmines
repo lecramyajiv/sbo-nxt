@@ -1,9 +1,0 @@
-Document: tdegames-doc-html-kmines
-Title: The KMines Handbook
-Author: Nicolas Hadacek, Michael McBride
-Abstract: KMines is the TDE version of the classic minesweeper game.
-Section: Games/Puzzles
-
-Format: HTML
-Index: /usr/share/doc/tde/HTML/en/kmines/index.html
-Files: /usr/share/doc/tde/HTML/en/kmines/*.html

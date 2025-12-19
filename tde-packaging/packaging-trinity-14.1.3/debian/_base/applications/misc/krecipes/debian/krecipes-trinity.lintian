@@ -1,4 +1,0 @@
-# Don't warn about missing icon file as this is in the -data package
-krecipes-trinity binary: menu-icon-missing /opt/trinity/share/pixmaps/krecipes.xpm
-# Don't warn about missing man page as this is in the -data package
-krecipes-trinity binary: binary-without-manpage opt/trinity/bin/krecipes

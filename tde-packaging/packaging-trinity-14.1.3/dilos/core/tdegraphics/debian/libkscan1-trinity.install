@@ -1,8 +1,0 @@
-debian/tmp/usr/lib/*/libkscan.la
-debian/tmp/usr/lib/*/libkscan.so.1
-debian/tmp/usr/lib/*/libkscan.so.1.0.0
-debian/tmp/usr/share/icons/crystalsvg/16x16/actions/palette_color.png
-debian/tmp/usr/share/icons/crystalsvg/16x16/actions/palette_gray.png
-debian/tmp/usr/share/icons/crystalsvg/16x16/actions/palette_halftone.png
-debian/tmp/usr/share/icons/crystalsvg/16x16/actions/palette_lineart.png
-debian/tmp/usr/share/services/scanservice.desktop

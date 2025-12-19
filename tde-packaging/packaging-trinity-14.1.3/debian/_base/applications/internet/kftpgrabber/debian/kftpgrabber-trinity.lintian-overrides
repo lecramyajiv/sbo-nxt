@@ -1,4 +1,0 @@
-# It isn't a library or a development package and no other packages uses libkftpinterfaces
-# kftpgrabber-trinity needs it and maybe a split can happen later if needed
-kftpgrabber-trinity: non-dev-pkg-with-shlib-symlink opt/trinity/lib/libkftpinterfaces.so.0.0.0 usr/lib/libkftpinterfaces.so
-kftpgrabber-trinity: package-name-doesnt-match-sonames libkftpinterfaces0

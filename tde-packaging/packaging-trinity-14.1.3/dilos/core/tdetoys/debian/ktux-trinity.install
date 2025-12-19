@@ -1,8 +1,0 @@
-debian/tmp/usr/bin/ktux
-debian/tmp/usr/share/apps/ktux
-debian/tmp/usr/share/applnk/System/ScreenSavers/ktux.desktop
-debian/tmp/usr/share/icons/hicolor/32x32/apps/ktux.png
-debian/tmp/usr/share/icons/hicolor/16x16/apps/ktux.png
-debian/tmp/usr/share/man/man1/ktux.1
-
-debian/icons/ktux.xpm	usr/share/pixmaps

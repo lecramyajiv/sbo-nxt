@@ -1,2 +1,0 @@
-text/plain;	kate %s;	nametemplate=%s.txt;	test=test "$DISPLAY" != "";	priority=5
-text/plain;	kwrite %s;	nametemplate=%s.txt;	test=test "$DISPLAY" != "";	priority=3

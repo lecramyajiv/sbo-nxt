@@ -1,5 +1,0 @@
-?package(universal-indent-gui-tqt): \
-  needs="X11" \
-  section="Applications/Programming" \
-  title="Universal Indent Gui TQt" \
-  command="/usr/bin/universal-indent-gui-tqt"

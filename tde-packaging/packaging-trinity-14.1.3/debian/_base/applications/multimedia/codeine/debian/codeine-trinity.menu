@@ -1,7 +1,0 @@
-?package(codeine-trinity):\
- needs="X11"\
- section="Applications/Video"\
- title="Codeine"\
- command="/opt/trinity/bin/codeine"\
- hints="TDE"
-

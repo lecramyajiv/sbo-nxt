@@ -1,8 +1,0 @@
-?package(kdict-trinity):\
-	needs="X11"\
-	section="Apps/Net"\
-	hints="TDE"\
-	title="KDict"\
-	icon32x32="/usr/share/pixmaps/kdict.xpm"\
-	icon16x16="/usr/share/pixmaps/kdict-16.xpm"\
-	command="/usr/bin/kdict"

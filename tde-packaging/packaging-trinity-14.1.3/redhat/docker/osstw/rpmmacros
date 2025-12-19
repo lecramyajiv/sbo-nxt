@@ -1,5 +1,0 @@
-%dist .osstw
-%_smp_mflags -j8
-%jobs 8
-%python python3
-%__python %__python3

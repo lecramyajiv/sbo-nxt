@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Bzip2 File
-Hidden=false
-Patterns=*.bz2;*.BZ2
-X-TDE-AutoEmbed=true
-
-[Property::X-TDE-LocalProtocol]
-Type=
-Value=

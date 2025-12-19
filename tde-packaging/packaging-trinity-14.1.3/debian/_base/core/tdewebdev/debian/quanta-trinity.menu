@@ -1,8 +1,0 @@
-?package(quanta-trinity):\
-    needs="X11"\
-    hints="TDE"\
-    section="Apps/Editors"\
-    title="Quanta Plus"\
-    longtitle="Quanta Plus (Web Development Environment)"\
-    icon="/opt/trinity/share/pixmaps/quanta.xpm"\
-    command="/opt/trinity/bin/quanta"

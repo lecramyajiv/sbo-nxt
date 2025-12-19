@@ -1,8 +1,0 @@
-?package(tdevelop-trinity):\
-        needs="X11"\
-        section="Applications/Programming"\
-        hints="TDE,Development"\
-        title="TDevelop"\
-        longtitle="TDevelop (Development Environment)"\
-        icon="/usr/share/pixmaps/tdevelop.xpm"\
-        command="/usr/bin/tdevelop"

@@ -1,7 +1,0 @@
-# tdeconf_update scripts don't need to be executable.
-cervisia-trinity: script-not-executable ./usr/share/apps/tdeconf_update/change_colors.pl
-cervisia-trinity: script-not-executable ./usr/share/apps/tdeconf_update/move_repositories.pl
-
-# This is from tdeinit black magic.
-cervisia-trinity: no-shlibs-control-file usr/lib/libtdeinit_cervisia.so
-cervisia-trinity: package-name-doesnt-match-sonames libtdeinit-cervisia

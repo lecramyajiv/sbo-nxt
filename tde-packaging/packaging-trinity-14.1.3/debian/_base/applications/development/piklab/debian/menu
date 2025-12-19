@@ -1,3 +1,0 @@
-?package(piklab-trinity):needs="X11" section="Applications/Programming" \
-	title="Piklab" command="/opt/trinity/bin/piklab" \
-	icon="/opt/trinity/share/pixmaps/piklab.xpm"

@@ -1,5 +1,0 @@
-version=3
-opts=dversionmangle=s/~/-/ \
-  http://www.kbfx.net/release/0.4.9/sources/kbfx-([\d]\.[\d].*)\.tar\.bz2	debian	svn-upgrade
-opts=dversionmangle=s/~/-/ \
-  http://www.kbfx.net/release/0.4.9/testing/kbfx-(.*)\.tar\.bz2	debian	svn-upgrade

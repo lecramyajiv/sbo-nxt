@@ -1,9 +1,0 @@
-?package(kspread-trinity):\
-	needs="x11"\
-	section="Applications/Office"\
-	hints="TDE,Spreadsheets"\
-	title="KSpread"\
-	longtitle="KSpread (Spreadsheets)"\
-	icon="/opt/trinity/share/pixmaps/kspread.xpm"\
-	command="/opt/trinity/bin/kspread"
-

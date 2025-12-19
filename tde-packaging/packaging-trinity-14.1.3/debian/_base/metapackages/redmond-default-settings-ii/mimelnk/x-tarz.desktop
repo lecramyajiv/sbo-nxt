@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Compressed Tar Archive
-Hidden=false
-Patterns=*.tar.Z
-X-TDE-AutoEmbed=true
-
-[Property::X-TDE-LocalProtocol]
-Type=
-Value=

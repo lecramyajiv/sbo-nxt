@@ -1,9 +1,0 @@
-?package(ksame-trinity):\
-	needs="x11"\
-	section="Games/Puzzles"\
-	hints="TDE,SameGame"\
-	title="TDE SameGame"\
-	icon32x32="/usr/share/pixmaps/ksame.xpm"\
-	icon16x16="/usr/share/pixmaps/ksame-16.xpm"\
-	command="/usr/games/ksame"
-

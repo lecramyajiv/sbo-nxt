@@ -1,5 +1,0 @@
-don't build-dep on imlib or xpdf-common
-don't include kuickshow, edit tdegraphics-dev.install
-remove kuickshow depends from tdegraphics-dev
-kuickshow-tar: rule, and update kuickshow with each new upstream release
-kpdf.mime, raise priority to 6

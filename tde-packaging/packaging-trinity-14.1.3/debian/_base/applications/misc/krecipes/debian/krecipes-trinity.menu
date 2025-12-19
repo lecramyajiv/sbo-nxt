@@ -1,7 +1,0 @@
-?package(krecipes-trinity): \
-	needs="x11" \
-	section="Applications/Data Management" \
-	hints="TDE" \
-	title="Krecipes" \
-	icon="/opt/trinity/share/pixmaps/krecipes.xpm" \
-	command="/opt/trinity/bin/krecipes"

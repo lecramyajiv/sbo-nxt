@@ -1,9 +1,0 @@
-?package(ksmiletris-trinity):\
-	needs="x11"\
-	section="Games/Tetris-like"\
-	hints="TDE"\
-	title="TDE Smiletris"\
-	icon32x32="/opt/trinity/share/pixmaps/ksmiletris.xpm"\
-	icon16x16="/opt/trinity/share/pixmaps/ksmiletris-16.xpm"\
-	command="/opt/trinity/games/ksmiletris"
-

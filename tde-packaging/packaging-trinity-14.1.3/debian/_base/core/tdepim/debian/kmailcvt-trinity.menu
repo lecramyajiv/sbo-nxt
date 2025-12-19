@@ -1,6 +1,0 @@
-?package(kmailcvt-trinity):\
-	needs="X11"\
-	section="Applications/Data Management"\
-	hints="TDE,Mail"\
-	title="KMail/KAB Import Tool"\
-	command="/opt/trinity/bin/kmailcvt"

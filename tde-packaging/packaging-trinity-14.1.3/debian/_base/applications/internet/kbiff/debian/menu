@@ -1,6 +1,0 @@
-?package(kbiff-trinity):\
-	needs=X11\
-	section="Apps/Net"\
-	title="Kbiff"\
-	command="/opt/trinity/bin/kbiff"\
-	kderemove="y"

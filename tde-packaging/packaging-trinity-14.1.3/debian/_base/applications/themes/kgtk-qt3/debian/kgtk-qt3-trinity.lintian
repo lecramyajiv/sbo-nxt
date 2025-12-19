@@ -1,2 +1,0 @@
-kgtk-qt3-trinity: no-shlibs-control-file opt/trinity/lib/kgtk/libkgtk2.so
-kgtk-qt3-trinity: no-shlibs-control-file opt/trinity/lib/kgtk/libkqt3.so

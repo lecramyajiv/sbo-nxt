@@ -1,8 +1,0 @@
-?package(kig-trinity):needs="X11"\
-  section="Applications/Science/Mathematics"\
-  hints="TDE"\
-  title="Kig"\
-  longtitle="Kig (Interactive Geometry)"\
-  command="/usr/bin/kig"\
-  icon="/usr/share/pixmaps/kig.xpm"
-

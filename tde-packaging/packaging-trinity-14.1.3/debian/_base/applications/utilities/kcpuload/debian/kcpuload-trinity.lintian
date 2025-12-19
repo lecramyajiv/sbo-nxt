@@ -1,2 +1,0 @@
-# This tag is required for apps already in the TDE menu.
-kcpuload-trinity: menu-item-contains-unknown-tag kderemove /usr/share/menu/kcpuload-trinity:7

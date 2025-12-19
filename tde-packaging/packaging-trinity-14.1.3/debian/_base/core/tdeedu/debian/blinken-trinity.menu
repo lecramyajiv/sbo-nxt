@@ -1,7 +1,0 @@
-?package(blinken-trinity):needs="X11"\
-  section="Games/Puzzles"\
-  hints="TDE"\
-  title="Blinken"\
-  longtitle="Blinken (Memory Game)"\
-  command="/opt/trinity/bin/blinken"\
-  icon="/opt/trinity/share/pixmaps/blinken.xpm"

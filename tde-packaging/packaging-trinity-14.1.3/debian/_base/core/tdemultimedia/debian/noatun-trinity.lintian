@@ -1,4 +1,0 @@
-noatun-trinity: shlib-missing-in-control-file libwinskinvis.so opt/trinity/lib/libwinskinvis.so
-noatun-trinity: shlib-missing-in-control-file libartseffects.so opt/trinity/lib/libartseffects.so
-noatun-trinity: shlib-missing-in-control-file libnoatunarts.so opt/trinity/lib/libnoatunarts.so
-noatun-trinity: shlib-missing-in-control-file libtdeinit_noatun.so opt/trinity/lib/libtdeinit_noatun.so

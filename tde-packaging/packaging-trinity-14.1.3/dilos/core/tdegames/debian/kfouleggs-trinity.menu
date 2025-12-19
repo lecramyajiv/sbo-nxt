@@ -1,9 +1,0 @@
-?package(kfouleggs-trinity):\
-        needs="x11"\
-        section="Games/Tetris-like"\
-	hints="TDE"\
-        title="TDE Foul Eggs"\
-	icon32x32="/usr/share/pixmaps/kfouleggs.xpm"\
-	icon16x16="/usr/share/pixmaps/kfouleggs-16.xpm"\
-        command="/usr/games/kfouleggs"
-

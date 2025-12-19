@@ -1,9 +1,0 @@
-debian/tmp/usr/bin/yaf-cdda
-debian/tmp/usr/bin/yaf-mpgplay
-debian/tmp/usr/bin/yaf-splay
-debian/tmp/usr/bin/yaf-tplay
-debian/tmp/usr/bin/yaf-vorbis
-debian/tmp/usr/bin/yaf-yuv
-debian/tmp/usr/lib/*/libmpeg-0.3.0.so
-debian/tmp/usr/lib/*/libyafcore.so
-debian/tmp/usr/lib/*/libyafxplayer.so

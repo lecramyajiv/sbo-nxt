@@ -1,7 +1,0 @@
-?package(klettres-trinity):needs="X11"\
-  section="Applications/Education"\
-  hints="TDE"\
-  title="KLettres"\
-  longtitle="KLettres (Learn Alphabet)"\
-  command="/opt/trinity/bin/klettres"\
-  icon="/opt/trinity/share/pixmaps/klettres.xpm"

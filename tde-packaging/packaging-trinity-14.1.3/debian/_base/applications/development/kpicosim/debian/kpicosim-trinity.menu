@@ -1,2 +1,0 @@
-?package(kpicosim-trinity):needs="X11" section="Apps/Science"\
-  title="kpicosim" command="/opt/trinity/bin/kpicosim"
