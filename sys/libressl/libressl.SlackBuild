@@ -1,0 +1,116 @@
+#!/bin/bash
+
+# slackbuild script for libressl
+# Copyright 2023 D Woodfall <dave@slackbuilds.org>
+# Licensed under the WTFPL (http://www.wtfpl.net)
+#
+# 2023-04-18 12:11:51 +0100 Thanks to Naglfar: --with-openssldir=/etc/$PRGNAM
+# 2023-05-10 12:04:05 +0100 Remove ld.so.conf stuff.
+# Copyright 2025 Vijay Marcel
+# All rights reserved.
+#
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=libressl
+VERSION=${VERSION:-4.2.1}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+nprocr=$(expr $(nproc) + 1)
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i586" ]; then
+  SLKCFLAGS="-march=i586 -mtune=i686 -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=i686 -mtune=i686 -pipe -O2 -fPIC"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+ echo "This SlackBuild will not run on $ARCH" && exit 1
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+cd $PRGNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+# Don't install man page symlinks
+sed -i '/ln -sf.*\.3"$/d' man/Makefile.in
+
+if [ "${MANPAGES:-no}" = no ]; then
+  sed -i '/man\/Makefile/d' configure.ac
+  autoreconf -f
+  sed -i "s, man , ,g; s, install-man , ,g" Makefile.in
+fi
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+./configure \
+  --enable-nc \
+  --disable-tests \
+  --disable-static \
+  --enable-shared \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX}/$PRGNAM \
+  --includedir=/usr/include/$PRGNAM \
+  --with-openssldir=/etc/$PRGNAM \
+  --program-prefix "$PRGNAM-" \
+  --mandir=/usr/man \
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --with-gnu-ld \
+  --build=$ARCH-slackware-linux
+
+make -j$nprocr
+make install DESTDIR=$PKG
+
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/$PRGNAM/*.la
+
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a COPYING ChangeLog README.md $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/README > $PKG/usr/doc/$PRGNAM-$VERSION/README
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+find $PKG/usr/lib${LIBDIRSUFFIX}/$PRGNAM -type f -exec chmod 0755 {} \+
+find $PKG/usr/doc/$PRGNAM-$VERSION -type f -exec chmod 0644 {} \+
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
+
