@@ -1,0 +1,4 @@
+C++ support for the GNU Compiler Collection.
+This package contains those parts of the compiler collection needed
+to compile C++ code.
+
