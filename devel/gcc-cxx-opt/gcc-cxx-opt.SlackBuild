@@ -1,0 +1,189 @@
+#!/bin/bash
+
+# Slackware build script for gcc-cxx-opt
+
+# Copyright 2025 Vijay Marcel
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=gcc-cxx-opt
+SRCNAM=gcc
+VERSION=${VERSION:-15.2.0}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+nprocr=$(nproc)
+sys_arch=${sys_arch:-$(uname -m)}
+ARCH=$sys_arch
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-march=x86-64 -mtune=generic -pipe -O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  echo "This slackbuild is intended to run only on x86_64 arch only" && exit 1
+fi
+
+set -e
+trap 'echo "$0 FAILED at line $LINENO!" | tee -a $OUTPUT/error-${PRGNAM}.log' ERR
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.xz
+cd $SRCNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+
+export TARGET=$ARCH-slackware-linux
+
+mkdir -pv $PKG/opt/{bin,libexec,share/locale,man,info,lib${LIBDIRSUFFIX}}
+mkdir -pv $PKG/opt/doc/$SRCNAM-$VERSION
+
+mkdir $TMP/build
+cd $TMP/build
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+./../$SRCNAM-$VERSION/configure \
+  --prefix=/opt \
+  --bindir=/opt/bin \
+  --libdir=/opt/lib${LIBDIRSUFFIX} \
+  --includedir=/opt/include \
+  --libexecdir=/opt/libexec \
+  --datarootdir=/opt/share \
+  --localedir=/opt/share/locale \
+  --infodir=/opt/info \
+  --mandir=/opt/man \
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --pdfdir=/opt/doc/$SRCNAM-$VERSION \
+  --with-cpu-64=x86-64 \
+  --with-arch-64=x86-64 \
+  --with-tune-64=generic \
+  --enable-languages=c,c++,objc,cobol,d,lto,obj-c++ \
+  --enable-objc-gc \
+  --enable-host-shared \
+  --enable-host-pie \
+  --enable-host-bind-now \
+  --enable-shared \
+  --enable-libssp \
+  --enable-libgdiagnostics \
+  --enable-tls \
+  --enable-threads=posix \
+  --enable-decimal-float \
+  --enable-lto \
+  --enable-checking=release \
+  --enable-gnu-indirect-function \
+  --enable-gnu-unique-object \
+  --enable-plugin \
+  --enable-clocale=gnu \
+  --enable-libstdcxx \
+  --enable-__cxa_atexit \
+  --enable-libvtv \
+  --enable-vtable-verify \
+  --enable-initfini-array \
+  --enable-libsanitizer \
+  --enable-libphobos \
+  --with-gnu-as \
+  --with-gnu-ld \
+  --with-system-zlib \
+  --with-zstd \
+  --with-isl \
+  --with-default-libstdcxx-abi=new \
+  --with-diagnostics-color=always \
+  --with-diagnostics-urls=always \
+  --disable-multiarch \
+  --disable-multilib \
+  --disable-bootstrap \
+  --disable-install-libiberty \
+  --disable-gcov \
+  --disable-gprofng \
+  --disable-werror \
+  --disable-coverage \
+  --disable-libstdcxx-pch \
+  --disable-libunwind-exceptions \
+  --disable-libstdcxx-dual-abi \
+  --disable-gtktest \
+  --disable-libada \
+  --disable-libgm2 \
+  --target=${TARGET} \
+  --build=${TARGET} \
+  --host=${TARGET}
+  
+make -j$nprocr
+make install DESTDIR=$PKG
+make pdf
+make install-pdf DESTDIR=$PKG
+
+# Don't ship .la files:
+rm -f $PKG/opt/lib${LIBDIRSUFFIX}/*.la
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded --remove-section=.comment --remove-section=.note 2> /dev/null || true
+
+find $PKG/opt/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/opt/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+# remove empty dir
+rm -rvf $PKG/opt/man/man3
+
+rm -f $PKG/opt/info/dir
+gzip -9 $PKG/opt/info/*.info*
+
+cd $TMP/$SRCNAM-$VERSION
+
+mkdir -pv $PKG/usr/doc/$PRGNAM-$VERSION
+cp -av README MAINTAINERS COPYING COPYING3 COPYING.LIB COPYING.RUNTIME COPYING3.LIB $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+find $PKG/opt/lib${LIBDIRSUFFIX} -type f -exec chmod 0755 {} \+
+find $PKG/usr/doc/$PRGNAM-$VERSION -type f -exec chmod 0644 {} \+
+find $PKG/opt/doc/$SRCNAM-$VERSION -type f -exec chmod 0644 {} \+
+
+# Create symlinks in /usr/bin
+mkdir -pv $PKG/usr/bin
+( cd $PKG/usr/bin ; ln -sf /opt/bin/gcc gcc15 )
+( cd $PKG/usr/bin ; ln -sf /opt/bin/cpp cpp15 )
+( cd $PKG/usr/bin ; ln -sf /opt/bin/gcc-ar ar15 )
+( cd $PKG/usr/bin ; ln -sf /opt/bin/gcc-nm nm15 )
+( cd $PKG/usr/bin ; ln -sf /opt/bin/gcc-ranlib ranlib15 )
+( cd $PKG/usr/bin ; ln -sf /opt/bin/c++ cxx15 )
+( cd $PKG/usr/bin ; ln -sf /opt/bin/g++ gxx15 )
+( cd $PKG/usr/bin ; ln -sf /opt/bin/sarif-replay sarifr15 )
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths --remove-tmp-rpaths $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
