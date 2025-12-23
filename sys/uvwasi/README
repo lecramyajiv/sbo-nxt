@@ -1,0 +1,4 @@
+uvwasi implements the WASI system API by leveraging libuv for
+maximum portablility so that webassembly runtimes can easily
+implement WASI calls.
+
